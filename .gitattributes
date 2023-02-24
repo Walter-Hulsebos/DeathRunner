@@ -1,3 +1,9 @@
+# Macro for Unity YAML-based asset files.
+[attr]wunityyaml -text merge=unityyamlmerge diff
+
+# Macro for all binary files that should use Git LFS.
+[attr]wlfs -text filter=lfs diff=lfs merge=lfs
+
 # Default to auto-normalized line endings.
 * text=auto
 
@@ -33,10 +39,11 @@
 # Unity Binary Assets
 *.cubemap -text filter=lfs diff=lfs merge=lfs
 *.unitypackage -text filter=lfs diff=lfs merge=lfs
+
 # Note: Unity terrain assets must have "-Terrain" suffix.
-*-[Tt]errain.asset --text merge=unityyamlmerge diff -text filter=lfs diff=lfs merge=lfs
+*-[Tt]errain.asset -wunityyaml wlfs
 # Note: Unity navmesh assets must have "-NavMesh" suffix.
-*-[Nn]av[Mm]esh.asset --text merge=unityyamlmerge diff -text filter=-text filter=lfs diff=lfs merge=lfs diff=-text filter=lfs diff=lfs merge=lfs merge=-text filter=lfs diff=lfs merge=lfs
+*-[Nn]av[Mm]esh.asset -wunityyaml wlfs
 
 # Image
 *.jpg -text filter=lfs diff=lfs merge=lfs
