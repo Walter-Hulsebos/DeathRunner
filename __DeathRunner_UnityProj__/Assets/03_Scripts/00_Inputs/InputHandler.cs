@@ -34,7 +34,7 @@ namespace Game.Inputs
         [SerializeField, HideInInspector] private InputAction secondaryFireInputAction;
 
         [field:SerializeField] public F32x2                   MoveInput          { get; private set; }
-        //[field:SerializeField] public F32x3                   MoveInputFlat      { get; private set; }
+        [field:SerializeField] public F32x3                   MoveInputFlat      { get; private set; }
         [field:SerializeField] public Boolean                 DashInput          { get; private set; }
         [field:SerializeField] public Boolean                 PrimaryFireInput   { get; private set; }
         [field:SerializeField] public Boolean                 SecondaryFireInput { get; private set; }
@@ -138,16 +138,18 @@ namespace Game.Inputs
         //NOTE: [Walter] Unfortunately these methods have to be public if you want to use `PlayerInputs` components (using Unity Events). With the current setup that isn't required.
         private void OnMoveInputStarted(InputAction.CallbackContext ctx)
         {
-            MoveInput = ctx.ReadValue<Vector2>();
-            //MoveInputFlat.xz = MoveInput;
+            MoveInput     = ctx.ReadValue<Vector2>();
+            MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y); 
         }
         private void OnMoveInputPerformed(InputAction.CallbackContext ctx)
         {
-            MoveInput = ctx.ReadValue<Vector2>();
+            MoveInput     = ctx.ReadValue<Vector2>();
+            MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y); 
         }
         private void OnMoveInputCanceled(InputAction.CallbackContext ctx)
         {
-            MoveInput = F32x2.zero;
+            MoveInput     = F32x2.zero;
+            MoveInputFlat = F32x3.zero;
         }
 
 

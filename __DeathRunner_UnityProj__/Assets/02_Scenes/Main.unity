@@ -754,6 +754,10 @@ MonoBehaviour:
   <MoveInput>k__BackingField:
     x: 0
     y: 0
+  <MoveInputFlat>k__BackingField:
+    x: 0
+    y: 0
+    z: 0
   <DashInput>k__BackingField: 0
   <PrimaryFireInput>k__BackingField: 0
   <SecondaryFireInput>k__BackingField: 0
@@ -929,15 +933,15 @@ MonoBehaviour:
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
-  m_XDamping: 0.25
-  m_YDamping: 0.5
-  m_ZDamping: 1
+  m_XDamping: 0
+  m_YDamping: 0
+  m_ZDamping: 0
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 20
-  m_DeadZoneWidth: 0.025
-  m_DeadZoneHeight: 0.05
+  m_DeadZoneWidth: 0
+  m_DeadZoneHeight: 0
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
   m_SoftZoneWidth: 0.8
@@ -1662,6 +1666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterTransform: {fileID: 255851900}
+  playerCamera: {fileID: 1430411469}
   animator: {fileID: 1383548242}
 --- !u!1 &1386517984
 GameObject:

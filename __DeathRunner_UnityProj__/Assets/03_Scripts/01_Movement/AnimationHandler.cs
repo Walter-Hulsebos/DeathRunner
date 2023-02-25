@@ -1,7 +1,10 @@
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 using JetBrains.Annotations;
 
+using Drawing;
+using ProjectDawn.Mathematics;
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
@@ -16,10 +19,12 @@ namespace Game.Movement
 
         [SerializeField] private Transform characterTransform;
         
+        [SerializeField] private Camera playerCamera;
+
         [SerializeField, HideInInspector] private Animator animator;
         
-        private static readonly I32 forward = Animator.StringToHash(name: "Forward");
-        private static readonly I32 right   = Animator.StringToHash(name: "Right");
+        private static readonly I32 right   = Animator.StringToHash(name: "MoveX");
+        private static readonly I32 forward = Animator.StringToHash(name: "MoveY");
 
         #endregion
 
@@ -32,6 +37,8 @@ namespace Game.Movement
             FindAnimatorReference();
             
             FindCharacterTransform();
+            
+            FindPlayerCamera();
         }
         
         private void OnValidate()
@@ -44,6 +51,11 @@ namespace Game.Movement
             if (characterTransform == null)
             {
                 FindCharacterTransform();
+            }
+            
+            if (playerCamera == null)
+            {
+                FindPlayerCamera();
             }
         }
         
@@ -59,22 +71,45 @@ namespace Game.Movement
         {
             characterTransform = transform.parent;
         }
+        
+        private void FindPlayerCamera()
+        {
+            playerCamera = Camera.main;
+        }
         #endif
-        
-        
+
         [PublicAPI]
         public void SetMoveVector(F32x3 moveVector)
         {
-            //Rotate the moveVector to match the character's rotation
-            //moveVector = (Quaternion.Inverse(transform.rotation) * moveVector);
-            
-            Vector3 __localMoveVector = characterTransform.InverseTransformDirection(moveVector);
+            if (all(moveVector == F32x3.zero)) return;
 
-            // Transform the input vector based on the character's rotation
-            Vector3 __rotatedMoveVector = Quaternion.Euler(0, characterTransform.rotation.eulerAngles.y, 0) * __localMoveVector;
+            F32x3 __moveDirection = normalize(moveVector);
+            F32x3 __moveDirectionNonRelative   = __moveDirection.InverseRelativeTo(playerCamera.transform);
+
+            F32x3 __facingDirection = characterTransform.forward;
+            F32x3 __facingDirectionNonRelative = __facingDirection.InverseRelativeTo(playerCamera.transform);
+
+            F32x3 __orthogonalDirection = normalize(new F32x3(
+                x: -dot(__moveDirectionNonRelative, cross(__facingDirectionNonRelative, up())), 
+                y: 0f, 
+                z: dot(__moveDirectionNonRelative, __facingDirectionNonRelative)));
+
+            F32x3 __characterPosition = characterTransform.position;
             
-            animator.SetFloat(id: right,   value: __rotatedMoveVector.x);
-            animator.SetFloat(id: forward, value: __rotatedMoveVector.z);
+            //Draw the moveVector 
+            Draw.Arrow(
+                from: __characterPosition,
+                to: __characterPosition + moveVector,
+                color: Color.cyan);
+
+            //Draw the facing vector
+            Draw.Arrow(
+                from: __characterPosition,
+                to: __characterPosition + __facingDirection,
+                color: Color.green);
+
+            animator.SetFloat(id: right,   value: __orthogonalDirection.x);
+            animator.SetFloat(id: forward, value: __orthogonalDirection.z);
         }
 
         #endregion
