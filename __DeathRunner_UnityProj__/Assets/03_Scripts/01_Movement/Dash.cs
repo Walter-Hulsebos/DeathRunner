@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
 using EasyCharacterMovement;
 using Game.Inputs;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 using F32   = System.Single;
@@ -13,6 +16,8 @@ using static Unity.Mathematics.math;
 
 namespace Game.Movement
 {
+    [RequireComponent(typeof(InputHandler), typeof(CharacterMotor))]
+    
     public class Dash : MonoBehaviour
     {
         // References to other components
@@ -33,23 +38,22 @@ namespace Game.Movement
         private F32x3 relativeDashDir;
         
         [SerializeField] float dashTime = 1; // Length of the dash in seconds
-
+        [SerializeField] float dashSpeed = 8; //Speed of dash
+        
+        [SerializeField, HideInInspector] private WaitForSeconds _dashWait;
         // Initialization
         void Start()
         {
-            inputHandler = GetComponent<InputHandler>(); 
-            motor = GetComponent<CharacterMotor>();
-            _locomotion = GetComponent<Locomotion>();
-            _orientation = GetComponent<Orientation>();
+       
         }
 
         // Update is called once per frame
-        void Update()
+        private async UniTask Update()
         {
             // Check if dash input is given and able to dash
             if (inputHandler.DashInput && canDash)
             {
-                print("dashing");
+                Debug.Log("dashing");
                 canDash = false;
                 isDashing = true;
 
@@ -68,30 +72,51 @@ namespace Game.Movement
                 // Disable locomotion and orientation while dashing
                 _locomotion.enabled = false;
                 _orientation.enabled = false;
+                
+                await UniTask.Delay(TimeSpan.FromSeconds(dashTime), ignoreTimeScale: false);
 
+                // Reset dash direction and status, and enable locomotion and orientation
+                dashDir = Vector3.zero;
+                isDashing = false;
+                _locomotion.enabled = true;
+                _orientation.enabled = true;
+                canDash = true;
+                
                 // Start the coroutine to end the dash
-                StartCoroutine(EndDash());
+
             }
 
             if (isDashing)
             {
                 // Move the player in the dash direction
-                motor.Move(relativeDashDir * 8);
+                motor.Move(relativeDashDir * dashSpeed);
             }
         }
 
-        // Coroutine to end the dash
-        IEnumerator EndDash()
+    #if UNITY_EDITOR
+        private void Reset()
         {
-            // Wait for the specified dash time
-            yield return new WaitForSeconds(dashTime);
-
-            // Reset dash direction and status, and enable locomotion and orientation
-            dashDir = Vector3.zero;
-            isDashing = false;
-            _locomotion.enabled = true;
-            _orientation.enabled = true;
-            canDash = true;
+            FindInputHandler();
         }
+
+        private void OnValidate()
+        {
+
+            if(inputHandler == null)
+            {
+                FindInputHandler();
+            }
+            //do this for every single one of those.
+        }
+
+        private void FindInputHandler()
+        {
+            inputHandler = GetComponent<InputHandler>(); 
+            motor = GetComponent<CharacterMotor>();
+            _locomotion = GetComponent<Locomotion>();
+            _orientation = GetComponent<Orientation>();
+        }
+    #endif
+        
     }
 }

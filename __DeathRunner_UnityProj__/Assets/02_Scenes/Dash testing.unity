@@ -382,14 +382,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 166296418}
-  m_LocalRotation: {x: 0.20341176, y: -0.5200611, z: 0.12908937, w: 0.81944865}
-  m_LocalPosition: {x: 15.996202, y: 10.352794, z: -7.5264053}
+  m_LocalRotation: {x: 0.25565708, y: -0.040661912, z: 0.009424449, w: 0.9658661}
+  m_LocalPosition: {x: 1.105936, y: 8.419411, z: -12.989582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 693588325}
   m_Father: {fileID: 0}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 29.645, y: -4.866, z: -0.17}
 --- !u!114 &166296421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -855,8 +855,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a44782c72a096343b0f35cddd330075, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 0}
-  dashTime: 0.3
+  playerCamera: {fileID: 1430411469}
+  dashTime: 0.1
+  dashSpeed: 15
 --- !u!1 &480840129
 GameObject:
   m_ObjectHideFlags: 0
@@ -950,7 +951,7 @@ MonoBehaviour:
   m_TargetMovementOnly: 1
   m_ScreenX: 0.5
   m_ScreenY: 0.5
-  m_CameraDistance: 20
+  m_CameraDistance: 15
   m_DeadZoneWidth: 0.025
   m_DeadZoneHeight: 0.05
   m_DeadZoneDepth: 0
@@ -1851,13 +1852,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430411467}
-  m_LocalRotation: {x: 0.20341176, y: -0.5200611, z: 0.12908937, w: 0.81944865}
-  m_LocalPosition: {x: 15.996202, y: 10.352794, z: -7.5264053}
+  m_LocalRotation: {x: 0.25565708, y: -0.040661912, z: 0.009424449, w: 0.9658661}
+  m_LocalPosition: {x: 1.105936, y: 8.419411, z: -12.989582}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 45, y: -45.282, z: -0.2}
+  m_LocalEulerAnglesHint: {x: 27.701, y: -64.602, z: 0.429}
 --- !u!114 &1430411471
 MonoBehaviour:
   m_ObjectHideFlags: 0
