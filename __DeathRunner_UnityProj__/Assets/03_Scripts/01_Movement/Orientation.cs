@@ -6,11 +6,12 @@ using static Unity.Mathematics.math;
 using EasyCharacterMovement;
 using ProjectDawn.Geometry3D;
 
+using quaternion = Unity.Mathematics.quaternion;
+using Ray = UnityEngine.Ray;
+
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
-using quaternion = Unity.Mathematics.quaternion;
-using Ray = UnityEngine.Ray;
 
 namespace Game.Movement
 {
@@ -224,13 +225,10 @@ namespace Game.Movement
             F32x3 __projectedLookDirection = normalize(__plane3D.Projection(point: lookDirection));
             
             if (lengthsq(__projectedLookDirection) == 0) return;
-            //if (all(__projectedLookDirection == F32x3.zero)) return;
-            
+
             quaternion __targetRotation = quaternion.LookRotation(forward: __projectedLookDirection, up: up());
 
             Rot = slerp(q1: Rot, q2: __targetRotation, t: orientationSpeed * Time.deltaTime);
-            
-            //motor.RotateTowards(worldDirection: MovementDirection, maxDegreesDelta: rotationRate * Time.deltaTime);
         }
         
         #endregion

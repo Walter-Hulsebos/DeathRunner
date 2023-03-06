@@ -109,38 +109,50 @@ namespace Game.Movement
         #if UNITY_EDITOR
         private void Reset()
         {
-            playerCamera = Camera.main;
-
-            inputHandler = GetComponent<InputHandler>();
-
-            // Cache CharacterMovement component
-            motor = GetComponent<CharacterMotor>();
-
-            // Enable default physic interactions
-            motor.enablePhysicsInteraction = true;
+            FindPlayerCamera();
+            
+            FindInputHandler();
+            
+            FindCharacterMotor();
         }
 
         private void OnValidate()
         {
             if (playerCamera == null)
             {
-                playerCamera = Camera.main;
+                FindPlayerCamera();
             }
             
             if (inputHandler == null)
             {
-                inputHandler = GetComponent<InputHandler>();
+                FindInputHandler();
             }
             
             if (motor == null)
             {
-                // Cache CharacterMovement component
-                motor = GetComponent<CharacterMotor>();
-
-                // Enable default physic interactions
-                motor.enablePhysicsInteraction = true;
+                FindCharacterMotor();
             }
         }
+
+        private void FindPlayerCamera()
+        {
+            playerCamera = Camera.main;
+        }
+        
+        private void FindInputHandler()
+        {
+            inputHandler = GetComponent<InputHandler>();
+        }
+        
+        private void FindCharacterMotor()
+        {
+            // Cache CharacterMovement component
+            motor = GetComponent<CharacterMotor>();
+
+            // Enable default physic interactions
+            motor.enablePhysicsInteraction = true;
+        }
+        
         #endif
 
         private void OnEnable()
@@ -251,13 +263,12 @@ namespace Game.Movement
         /// </summary>
         private void Move()
         {
-            // Create a Movement direction vector (in world space)
-            F32x3 __moveDirection = F32x3.zero;
-            __moveDirection.xz = inputHandler.MoveInput;
-            
+            // Create a Movement direction vector in world space. For example: (x: 0, y: 0, z: 1) is forward, (x: 0.7071068f, y: 0f, z: 0.7071068f) is diagonally forward-right.
+            F32x3 __moveDirection = inputHandler.MoveInputFlat;
+
             // Make Sure it won't move faster diagonally
             __moveDirection.SetMaxLength(1.0f);
-            
+
             // Make movementDirection relative to camera view direction
             F32x3 __moveDirectionRelativeToCamera = __moveDirection.RelativeTo(playerCamera.transform);
             
@@ -273,7 +284,7 @@ namespace Game.Movement
                 NotGroundedMovement(desiredVelocity: __desiredVelocity);
             }
             
-            OnMove?.Invoke(__moveDirection);
+            OnMove?.Invoke(__moveDirectionRelativeToCamera);
             
             // Perform movement using character's current velocity
             motor.Move();
