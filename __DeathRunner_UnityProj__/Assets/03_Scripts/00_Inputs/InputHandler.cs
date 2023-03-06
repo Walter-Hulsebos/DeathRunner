@@ -59,25 +59,17 @@ namespace Game.Inputs
 
         private void UpdateInputActions()
         {
-            if (moveInputActionReference != null)
-            {
-                moveInputAction = moveInputActionReference.action;
-            }
+            // if (moveInputActionReference != null)
+            moveInputAction = moveInputActionReference.action;
 
-            if (dashInputActionReference != null)
-            {
-                dashInputAction = dashInputActionReference.action;
-            }
-            
-            if (primaryFireInputActionReference != null)
-            {
-                primaryFireInputAction = primaryFireInputActionReference.action;
-            }
-            
-            if (secondaryFireInputActionReference != null)
-            {
-                secondaryFireInputAction = secondaryFireInputActionReference.action;
-            }
+            //if (dashInputActionReference != null)
+            dashInputAction = dashInputActionReference.action;
+
+            //if (primaryFireInputActionReference != null)
+            primaryFireInputAction = primaryFireInputActionReference.action;
+
+            //if (secondaryFireInputActionReference != null)
+            secondaryFireInputAction = secondaryFireInputActionReference.action;
         }
         #endif
 
