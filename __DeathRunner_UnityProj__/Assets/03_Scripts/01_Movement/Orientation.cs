@@ -1,10 +1,10 @@
 using System;
-using Drawing;
 using UnityEngine;
 using static Unity.Mathematics.math;
 
 using EasyCharacterMovement;
 using ProjectDawn.Geometry3D;
+using Drawing;
 
 using quaternion = Unity.Mathematics.quaternion;
 using Ray = UnityEngine.Ray;
@@ -132,7 +132,7 @@ namespace Game.Movement
 
 
         private F32x3 _cachedLookPosition = F32x3.zero;
-        private F32x3 LookPosition
+        public F32x3 LookPosition
         {
             get
             {
@@ -163,6 +163,8 @@ namespace Game.Movement
                 return _cachedLookPosition;
             }
         }
+        
+        public F32x3 LookDirection => normalize(LookPosition - WorldPos);
 
         private void Update()
         {
@@ -213,9 +215,9 @@ namespace Game.Movement
         // }
         public void OrientTowardsPos(F32x3 lookPosition)
         {
-            F32x3 __lookDirection = (lookPosition - WorldPos);
+            F32x3 __lookDirection = normalize(lookPosition - WorldPos);
             
-            OrientTowardsDir(lookDirection: __lookDirection);;
+            OrientTowardsDir(lookDirection: __lookDirection);
         }
         
         public void OrientTowardsDir(F32x3 lookDirection)

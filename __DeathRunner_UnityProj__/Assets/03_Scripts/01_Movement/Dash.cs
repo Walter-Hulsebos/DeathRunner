@@ -1,122 +1,175 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine;
+using static Unity.Mathematics.math;
+
+using JetBrains.Annotations;
 using Cysharp.Threading.Tasks;
 using EasyCharacterMovement;
+using static ProjectDawn.Mathematics.math2;
+
 using Game.Inputs;
-using Sirenix.OdinInspector;
-using UnityEngine;
+using Game.Utils;
 
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 
-using static ProjectDawn.Mathematics.math2;
-using static Unity.Mathematics.math;
+using Bool  = System.Boolean;
 
 namespace Game.Movement
 {
-    [RequireComponent(typeof(InputHandler), typeof(CharacterMotor))]
-    
+    [RequireComponent(requiredComponent: typeof(InputHandler), requiredComponent2: typeof(CharacterMotor))]
     public class Dash : MonoBehaviour
     {
         // References to other components
-        private InputHandler inputHandler;
-        private CharacterMotor motor;
-        private Locomotion _locomotion;
-        private Orientation _orientation;
+        [SerializeField, HideInInspector] private InputHandler   _inputHandler;
+        [SerializeField, HideInInspector] private CharacterMotor _motor;
+        [SerializeField, HideInInspector] private Locomotion     _locomotion;
+        [SerializeField, HideInInspector] private Orientation    _orientation;
+        
         [SerializeField] private Camera playerCamera;
         
         // Dash input and direction
-        private bool dashInput;
-        private F32x3 dashDir;
+        private Bool _dashInput;
+        private F32x3 _dashDir;
 
         // Dash cooldown and status
-        private bool canDash = true;
-        private bool isDashing = false;
+        private Bool _canDash = true;
+        private Bool _isDashing = false;
 
-        private F32x3 relativeDashDir;
+        private F32x3 _relativeDashDir;
         
-        [SerializeField] float dashTime = 1; // Length of the dash in seconds
-        [SerializeField] float dashSpeed = 8; //Speed of dash
-        
-        [SerializeField, HideInInspector] private WaitForSeconds _dashWait;
-        // Initialization
-        void Start()
-        {
-       
-        }
+        [SerializeField] private F32 dashTime  = 0.1f; // Length of the dash in seconds
+        [SerializeField] private F32 dashSpeed = 15f; //Speed of dash
 
-        // Update is called once per frame
+        [UsedImplicitly]
+        // ReSharper disable once Unity.IncorrectMethodSignature
         private async UniTask Update()
         {
             // Check if dash input is given and able to dash
-            if (inputHandler.DashInput && canDash)
+            if (_inputHandler.DashInput && _canDash)
             {
-                Debug.Log("dashing");
-                canDash = false;
-                isDashing = true;
+                Debug.Log(message: "dashing");
+                _canDash = false;
+                _isDashing = true;
 
                 // Get dash direction from input
-                dashDir = new Vector3(inputHandler.MoveInput.x, 0, inputHandler.MoveInput.y);
+                _dashDir = new F32x3(x: _inputHandler.MoveInput.x, y: 0, z: _inputHandler.MoveInput.y);
 
                 // If no input is given, dash in the direction the player is facing
-                if (all(dashDir == F32x3.zero))
+                if (all(x: _dashDir == F32x3.zero))
                 {
-                    dashDir = new F32x3(x: 0, y: 0, z: -1);
+                    _dashDir = _orientation.LookDirection;
                 }
 
                 // Convert dash direction to be relative to the player camera
-                relativeDashDir = dashDir.RelativeTo(playerCamera.transform);
+                _relativeDashDir = _dashDir.RelativeTo(relativeToThis: playerCamera.transform);
 
                 // Disable locomotion and orientation while dashing
                 _locomotion.enabled = false;
                 _orientation.enabled = false;
                 
-                await UniTask.Delay(TimeSpan.FromSeconds(dashTime), ignoreTimeScale: false);
+                await UniTask.Delay(delayTimeSpan: TimeSpan.FromSeconds(value: dashTime), ignoreTimeScale: false);
 
                 // Reset dash direction and status, and enable locomotion and orientation
-                dashDir = Vector3.zero;
-                isDashing = false;
+                _dashDir = F32x3.zero;
+                _isDashing = false;
                 _locomotion.enabled = true;
                 _orientation.enabled = true;
-                canDash = true;
+                _canDash = true;
                 
                 // Start the coroutine to end the dash
 
             }
 
-            if (isDashing)
+            if (_isDashing)
             {
                 // Move the player in the dash direction
-                motor.Move(relativeDashDir * dashSpeed);
+                _motor.Move(newVelocity:_relativeDashDir * dashSpeed);
             }
         }
 
-    #if UNITY_EDITOR
+        #if UNITY_EDITOR
         private void Reset()
         {
+            FindCameraReference();
             FindInputHandler();
+            FindCharacterMotor();
+            FindLocomotion();
+            FindOrientation();
         }
 
         private void OnValidate()
         {
-
-            if(inputHandler == null)
+            if(playerCamera == null)
+            {
+                FindCameraReference();
+            }
+            
+            if(_inputHandler == null)
             {
                 FindInputHandler();
             }
-            //do this for every single one of those.
+            
+            if(_motor == null)
+            {
+                FindCharacterMotor();
+            }
+            
+            if(_locomotion == null)
+            {
+                FindLocomotion();
+            }
+            
+            if(_orientation == null)
+            {
+                FindOrientation();
+            }
         }
 
+        private void FindCameraReference()
+        {
+            Camera __mainCamera = Camera.main;
+            if(__mainCamera == null)
+            {
+                Boolean __foundUnTaggedCamera = Utils.Extensions.TryFindObjectOfType(out __mainCamera);
+                if (__foundUnTaggedCamera)
+                {
+                    Debug.LogWarning(message: "There was a Camera found in the scene, but it's not tagged as \"MainCamera\", if there is supposed to be one, tag it correctly.", context: this);
+                    playerCamera = __mainCamera;
+                }
+                else
+                {
+                    Debug.LogError(message: $"No Camera found in the scene. Please add one to the scene. and Reset this {nameof(Orientation)}", context: this);
+                }
+            }
+            else
+            {
+                playerCamera = __mainCamera;
+            }
+        }
+        
         private void FindInputHandler()
         {
-            inputHandler = GetComponent<InputHandler>(); 
-            motor = GetComponent<CharacterMotor>();
+            _inputHandler = GetComponent<InputHandler>();
+        }
+        
+        private void FindCharacterMotor()
+        {
+            _motor = GetComponent<CharacterMotor>();
+        }
+        
+        private void FindLocomotion()
+        {
             _locomotion = GetComponent<Locomotion>();
+        }
+        
+        private void FindOrientation()
+        {
             _orientation = GetComponent<Orientation>();
         }
-    #endif
+        
+        #endif
         
     }
 }
