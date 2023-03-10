@@ -4,8 +4,10 @@ using UnityEngine;
 using static Unity.Mathematics.math;
 
 using EasyCharacterMovement;
+using Game.Utils;
 using JetBrains.Annotations;
 using UltEvents;
+using UnityEngine.Serialization;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -18,6 +20,7 @@ using Component = Game.Shared.Component;
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
+using Object = System.Object;
 
 namespace Game.Movement
 {
@@ -39,6 +42,8 @@ namespace Game.Movement
 
         [Tooltip(tooltip: "Max Acceleration (rate of change of velocity).")]
         [SerializeField] private F32 maxAcceleration = 20.0f;
+
+        [SerializeField] private F32 moveDirectionSmoothingSpeed = 0.2f;
 
         [Tooltip(tooltip: "Setting that affects movement control. Higher values allow faster changes in direction.")]
         [SerializeField] private F32 groundFriction = 8.0f;
@@ -200,21 +205,78 @@ namespace Game.Movement
                 OnLateFixedUpdate();
             }
         }
+        /// <summary>
+        /// Post-Physics update, used to sync our character with physics.
+        /// </summary>
+        private void OnLateFixedUpdate()
+        {
+            //UpdateRotation();
+            Move();
+        }
+        
+        private F32x3 _oldMoveDirection = F32x3.zero;
+        private F32x3 _moveDirectionVelocity;
 
+        /// <summary>
+        /// Perform character movement.
+        /// </summary>
+        private void Move()
+        {
+            // Create a Movement direction vector in world space. For example: (x: 0, y: 0, z: 1) is forward, (x: 0.7071068f, y: 0f, z: 0.7071068f) is diagonally forward-right.
+            F32x3 __newMoveDirection = inputHandler.MoveInputFlat;
+            //__newMoveDirection.SetMaxLength(1.0f);
+            
+            // Make sure that if it's close to zero, it's zero.
+            // if (lengthsq(__newMoveDirection) < 0.001f)
+            // {
+            //     __newMoveDirection = F32x3.zero;
+            // }
+
+            F32x3 __moveDirection = __newMoveDirection;
+            
+            if (lengthsq(__newMoveDirection) > 0.001f) //Smoothly interpolate if we're not trying to stand still.
+            {
+                __moveDirection = _oldMoveDirection.SmoothDamp(target: __newMoveDirection, currentVelocity: ref _moveDirectionVelocity, smoothTime: moveDirectionSmoothingSpeed, maxSpeed: 1000);
+            }
+
+            _oldMoveDirection = __moveDirection;
+
+            // Make movementDirection relative to camera view direction
+            F32x3 __moveDirectionRelativeToCamera = __moveDirection.RelativeTo(playerCamera.transform);
+            
+            F32x3 __desiredVelocity = (__moveDirectionRelativeToCamera * maxSpeed);
+
+            // Update character’s velocity based on its grounding status
+            if (motor.isGrounded)
+            {
+                GroundedMovement(desiredVelocity: __desiredVelocity);
+            }
+            else
+            {
+                NotGroundedMovement(desiredVelocity: __desiredVelocity);
+            }
+
+            OnMove?.Invoke(__moveDirectionRelativeToCamera);
+            
+            // Perform movement using character's current velocity
+            motor.Move();
+        }
+        
+        
         /// <summary>
         /// Move the character when on walkable ground.
         /// </summary>
-
         private void GroundedMovement(Vector3 desiredVelocity)
         {
-            motor.velocity = Vector3.Lerp(a: motor.velocity, b: desiredVelocity,
-                t: 1f - Mathf.Exp(power: -groundFriction * Time.deltaTime));
+            motor.velocity = Vector3.Lerp(
+                a: motor.velocity, 
+                b: desiredVelocity,
+                t: 1f - exp(-groundFriction * Time.deltaTime));
         }
 
         /// <summary>
         /// Move the character when falling or on not-walkable ground.
         /// </summary>
-
         private void NotGroundedMovement(F32x3 desiredVelocity)
         {
             // Current character's velocity
@@ -236,7 +298,7 @@ namespace Game.Movement
             if (all(desiredVelocity != F32x3.zero))
             {
                 F32x3 __flatVelocity = new F32x3(x: __velocity.x, y: 0,            z: __velocity.z);
-                F32x3 __verVelocity   = new F32x3(x: 0,            y: __velocity.y, z: 0);
+                F32x3 __verVelocity  = new F32x3(x: 0,            y: __velocity.y, z: 0);
 
                 // Accelerate horizontal velocity towards desired velocity
                 F32x3 __horizontalVelocity = Vector3.MoveTowards(
@@ -258,46 +320,6 @@ namespace Game.Movement
             motor.velocity = __velocity;
         }
 
-        /// <summary>
-        /// Perform character movement.
-        /// </summary>
-        private void Move()
-        {
-            // Create a Movement direction vector in world space. For example: (x: 0, y: 0, z: 1) is forward, (x: 0.7071068f, y: 0f, z: 0.7071068f) is diagonally forward-right.
-            F32x3 __moveDirection = inputHandler.MoveInputFlat;
-
-            // Make Sure it won't move faster diagonally
-            __moveDirection.SetMaxLength(1.0f);
-
-            // Make movementDirection relative to camera view direction
-            F32x3 __moveDirectionRelativeToCamera = __moveDirection.RelativeTo(playerCamera.transform);
-            
-            Vector3 __desiredVelocity = (__moveDirectionRelativeToCamera * maxSpeed);
-
-            // Update character’s velocity based on its grounding status
-            if (motor.isGrounded)
-            {
-                GroundedMovement(desiredVelocity: __desiredVelocity);
-            }
-            else
-            {
-                NotGroundedMovement(desiredVelocity: __desiredVelocity);
-            }
-            
-            OnMove?.Invoke(__moveDirectionRelativeToCamera);
-            
-            // Perform movement using character's current velocity
-            motor.Move();
-        }
-
-        /// <summary>
-        /// Post-Physics update, used to sync our character with physics.
-        /// </summary>
-        private void OnLateFixedUpdate()
-        {
-            //UpdateRotation();
-            Move();
-        }
 
         #endregion
     }
