@@ -21,113 +21,84 @@ namespace Game.Inputs
         //This leaves open the possibility of having multiple cars with very few changes, just comment out the Input Actions, add the `PlayerInput` component, and link up the events.
         
         [SerializeField] private InputActionReference         moveInputActionReference;
-        [SerializeField, HideInInspector] private InputAction moveInputAction;
-        
-        [SerializeField] private InputActionReference         dashInputActionReference;
-        [SerializeField, HideInInspector] private InputAction dashInputAction;
-
-        [SerializeField] private InputActionReference         primaryFireInputActionReference;
-        [SerializeField, HideInInspector] private InputAction primaryFireInputAction;
-
-
-        [SerializeField] private InputActionReference         secondaryFireInputActionReference;
-        [SerializeField, HideInInspector] private InputAction secondaryFireInputAction;
-
         [field:SerializeField] public F32x2                   MoveInput          { get; private set; }
         [field:SerializeField] public F32x3                   MoveInputFlat      { get; private set; }
+        
+        
+        [SerializeField] private InputActionReference         dashInputActionReference;
         [field:SerializeField] public Boolean                 DashInput          { get; private set; }
+
+
+        [SerializeField] private InputActionReference         primaryFireInputActionReference;
         [field:SerializeField] public Boolean                 PrimaryFireInput   { get; private set; }
+        
+        
+        [SerializeField] private InputActionReference         secondaryFireInputActionReference;
         [field:SerializeField] public Boolean                 SecondaryFireInput { get; private set; }
+        
+        
         public Vector2                                        MouseScreenPosition => Mouse.current.position.ReadValue();
         
         #endregion
 
         #region Methods
-        
-        #if UNITY_EDITOR
-        private void Reset()
-        {
-            //NOTE [Walter] On creation of the script (in the editor) the actions will automatically be configured.
-            UpdateInputActions();
-        }
-
-        private void OnValidate()
-        {
-            //NOTE: [Walter] If inputs are assigned via the editor the actions have to be reconfigured.
-            UpdateInputActions();
-        }
-
-        private void UpdateInputActions()
-        {
-            // if (moveInputActionReference != null)
-            moveInputAction = moveInputActionReference.action;
-
-            //if (dashInputActionReference != null)
-            dashInputAction = dashInputActionReference.action;
-
-            //if (primaryFireInputActionReference != null)
-            primaryFireInputAction = primaryFireInputActionReference.action;
-
-            //if (secondaryFireInputActionReference != null)
-            secondaryFireInputAction = secondaryFireInputActionReference.action;
-        }
-        #endif
 
         private void OnEnable()
         {
             //NOTE: [Walter] This shouldn't be necessary, but apparently it is, I'm getting a null reference exception if I don't do this.
-            moveInputAction.Enable();
-            dashInputAction.Enable();
-            primaryFireInputAction.Enable();
-            secondaryFireInputAction.Enable();
+            moveInputActionReference.action.Enable();
+            dashInputActionReference.action.Enable();
+            primaryFireInputActionReference.action.Enable();
+            secondaryFireInputActionReference.action.Enable();
         }
         
         private void OnDisable()
         {
-            moveInputAction.Disable();
-            dashInputAction.Disable();
-            primaryFireInputAction.Disable();
-            secondaryFireInputAction.Disable();
+            moveInputActionReference.action.Disable();
+            dashInputActionReference.action.Disable();
+            primaryFireInputActionReference.action.Disable();
+            secondaryFireInputActionReference.action.Disable();
         }
         
         private void Awake()
         {
-            moveInputAction.started            += OnMoveInputStarted;
-            dashInputAction.started            += OnDashInputStarted;
-            primaryFireInputAction.started     += OnPrimaryFireInputStarted;
-            secondaryFireInputAction.started   += OnSecondaryFireInputStarted;
+            moveInputActionReference.action.started            += OnMoveInputStarted;
+            dashInputActionReference.action.started            += OnDashInputStarted;
+            primaryFireInputActionReference.action.started     += OnPrimaryFireInputStarted;
+            secondaryFireInputActionReference.action.started   += OnSecondaryFireInputStarted;
 
-            moveInputAction.performed          += OnMoveInputPerformed;
-            dashInputAction.performed          += OnDashInputPerformed;
-            primaryFireInputAction.performed   += OnPrimaryFireInputPerformed;
-            secondaryFireInputAction.performed += OnSecondaryFireInputPerformed;
+            moveInputActionReference.action.performed          += OnMoveInputPerformed;
+            dashInputActionReference.action.performed          += OnDashInputPerformed;
+            primaryFireInputActionReference.action.performed   += OnPrimaryFireInputPerformed;
+            secondaryFireInputActionReference.action.performed += OnSecondaryFireInputPerformed;
             
-            moveInputAction.canceled           += OnMoveInputCanceled;
-            dashInputAction.canceled           += OnDashInputCanceled;
-            primaryFireInputAction.canceled    += OnPrimaryFireInputCanceled;
-            secondaryFireInputAction.canceled  += OnSecondaryFireInputCanceled;
+            moveInputActionReference.action.canceled           += OnMoveInputCanceled;
+            dashInputActionReference.action.canceled           += OnDashInputCanceled;
+            primaryFireInputActionReference.action.canceled    += OnPrimaryFireInputCanceled;
+            secondaryFireInputActionReference.action.canceled  += OnSecondaryFireInputCanceled;
         }
 
         private void OnDestroy()
         {
-            moveInputAction.started            -= OnMoveInputStarted;
-            dashInputAction.started            -= OnDashInputStarted;
-            primaryFireInputAction.started     -= OnPrimaryFireInputStarted;
-            secondaryFireInputAction.started   -= OnSecondaryFireInputStarted;
+            moveInputActionReference.action.started            -= OnMoveInputStarted;
+            dashInputActionReference.action.started            -= OnDashInputStarted;
+            primaryFireInputActionReference.action.started     -= OnPrimaryFireInputStarted;
+            secondaryFireInputActionReference.action.started   -= OnSecondaryFireInputStarted;
 
-            moveInputAction.performed          -= OnMoveInputPerformed;
-            dashInputAction.performed          -= OnDashInputPerformed;
-            primaryFireInputAction.performed   -= OnPrimaryFireInputPerformed;
-            secondaryFireInputAction.performed -= OnSecondaryFireInputPerformed;
+            moveInputActionReference.action.performed          -= OnMoveInputPerformed;
+            dashInputActionReference.action.performed          -= OnDashInputPerformed;
+            primaryFireInputActionReference.action.performed   -= OnPrimaryFireInputPerformed;
+            secondaryFireInputActionReference.action.performed -= OnSecondaryFireInputPerformed;
                                                     
-            moveInputAction.canceled           -= OnMoveInputCanceled;
-            dashInputAction.canceled           -= OnDashInputCanceled;
-            primaryFireInputAction.canceled    -= OnPrimaryFireInputCanceled;
-            secondaryFireInputAction.canceled  -= OnSecondaryFireInputCanceled;
+            moveInputActionReference.action.canceled           -= OnMoveInputCanceled;
+            dashInputActionReference.action.canceled           -= OnDashInputCanceled;
+            primaryFireInputActionReference.action.canceled    -= OnPrimaryFireInputCanceled;
+            secondaryFireInputActionReference.action.canceled  -= OnSecondaryFireInputCanceled;
         }
-        
-        
-        //NOTE: [Walter] Unfortunately these methods have to be public if you want to use `PlayerInputs` components (using Unity Events). With the current setup that isn't required.
+
+        #region Move Input Callbacks
+
+        //NOTE: [Walter] If you want to use `PlayerInputs` components (using Unity Events), you'll want to make these public. With the current setup that isn't required.
         private void OnMoveInputStarted(InputAction.CallbackContext ctx)
         {
             MoveInput     = ctx.ReadValue<Vector2>();
@@ -143,7 +114,9 @@ namespace Game.Inputs
             MoveInput     = F32x2.zero;
             MoveInputFlat = F32x3.zero;
         }
+        #endregion
 
+        #region Dash Input Callbacks
 
         private void OnDashInputStarted(InputAction.CallbackContext ctx)
         {
@@ -158,7 +131,10 @@ namespace Game.Inputs
             DashInput = false;
         }
         
-        
+        #endregion
+
+        #region Primary Fire Input Callbacks
+
         private void OnPrimaryFireInputStarted(InputAction.CallbackContext ctx)
         {
             PrimaryFireInput = ctx.ReadValueAsButton();
@@ -174,7 +150,10 @@ namespace Game.Inputs
             PrimaryFireInput = false;
         }
         
+        #endregion
         
+        #region Secondary Fire Input Callbacks
+
         private void OnSecondaryFireInputStarted(InputAction.CallbackContext ctx)
         {
             SecondaryFireInput = ctx.ReadValueAsButton();
@@ -190,7 +169,8 @@ namespace Game.Inputs
             SecondaryFireInput = false;
         }
 
-
+        #endregion
+        
         #endregion
     }
 }
