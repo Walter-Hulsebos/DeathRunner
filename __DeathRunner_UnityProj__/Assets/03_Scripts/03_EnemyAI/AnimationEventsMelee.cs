@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Game.EnemyAI
 {
-    public class AnimationEvents : MonoBehaviour
+    public class AnimationEventsMelee : MonoBehaviour
     {
         [SerializeField] private MeleeEnemyAI meleeEnemyAI;
 
