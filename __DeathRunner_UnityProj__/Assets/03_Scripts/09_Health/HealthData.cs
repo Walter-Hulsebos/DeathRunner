@@ -7,6 +7,8 @@ using U16 = System.UInt16;
 using U32 = System.UInt32;
 using F32 = System.Single;
 
+using Bool = System.Boolean;
+
 namespace DeathRunner.Health
 {
     [Serializable]
@@ -38,11 +40,11 @@ namespace DeathRunner.Health
             this.unitType    = unitType;
             this.primantissa = current / max;
         }
-        
+
         public void Clear()
         {
-            current  = 0;
-            max      = 0;
+            current     = -1;
+            max         = 0;
             primantissa = 0;
         }
     }

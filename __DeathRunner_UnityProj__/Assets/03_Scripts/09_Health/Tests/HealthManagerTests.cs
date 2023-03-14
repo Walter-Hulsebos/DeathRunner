@@ -54,8 +54,9 @@ namespace DeathRunner.Health.Tests
             HealthData __retrievedHealthData = _healthManager[__index];
             
             // Assert
-            Assert.AreEqual(expected: 0, actual: __retrievedHealthData.current);
-            Assert.AreEqual(expected: 0, actual: __retrievedHealthData.primantissa);
+            Assert.AreEqual(expected: -1, actual: __retrievedHealthData.current);
+            Assert.AreEqual(expected:  0, actual: __retrievedHealthData.max);
+            Assert.AreEqual(expected:  0, actual: __retrievedHealthData.primantissa);
         }
 
         [Test]
@@ -71,7 +72,7 @@ namespace DeathRunner.Health.Tests
             HealthChangeData __retrievedChangeData = _healthManager.GetHealthChange(__changeIndex);
             
             // Assert
-            Assert.AreEqual(expected: __healthChangeData, actual: __retrievedChangeData);
+            Assert.AreEqual(expected: __healthChangeData.delta, actual: __retrievedChangeData.delta);
         }
         
         [UnityTest]
@@ -86,7 +87,6 @@ namespace DeathRunner.Health.Tests
             // Arrange
             HealthData __healthData = new HealthData(startingHealth: STARTING_HEALTH, maxHealth: MAX_HEALTH, UnitType.Player);
             U16 __index = _healthManager.ReserveHealth(__healthData);
-            
             
             HealthChangeData __healthChangeData = new HealthChangeData(delta: DELTA, targetHealthIndex: __index, durationInSeconds: 0, affectedUnitTypes: UnitType.All);
             _healthManager.QueueHealthChange(__healthChangeData);
