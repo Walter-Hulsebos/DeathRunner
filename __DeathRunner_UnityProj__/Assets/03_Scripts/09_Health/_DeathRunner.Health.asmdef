@@ -1,8 +1,12 @@
 {
-    "name": "Game.Utils",
-    "rootNamespace": "Game.Utils",
+    "name": "DeathRunner.Health",
+    "rootNamespace": "DeathRunner.Health",
     "references": [
-        "Unity.Mathematics"
+        "Unity.Jobs",
+        "Unity.Burst",
+        "Unity.Collections",
+        "Unity.Mathematics",
+        "ProjectDawn.Mathematics"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

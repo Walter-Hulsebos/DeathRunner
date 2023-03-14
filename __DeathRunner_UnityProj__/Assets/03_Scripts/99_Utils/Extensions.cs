@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-
 using Object = UnityEngine.Object;
 
 using static Unity.Mathematics.math;
@@ -8,7 +7,7 @@ using static Unity.Mathematics.math;
 using F32  = System.Single;
 using F32x3 = Unity.Mathematics.float3;
 
-namespace Game.Utils
+namespace DeathRunner.Utils
 {
     public static class Extensions
     {

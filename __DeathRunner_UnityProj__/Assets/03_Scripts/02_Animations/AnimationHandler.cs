@@ -1,18 +1,13 @@
+using Drawing;
+using JetBrains.Annotations;
+using ProjectDawn.Mathematics;
 using UnityEngine;
 using static Unity.Mathematics.math;
-
-using JetBrains.Annotations;
-
-using Drawing;
-using ProjectDawn.Mathematics;
-
-using F32   = System.Single;
-using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 
 using I32   = System.Int32;
 
-namespace Game.Movement
+namespace DeathRunner.Animations
 {
     public sealed class AnimationHandler : MonoBehaviour
     {

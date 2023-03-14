@@ -1,11 +1,12 @@
 using System;
+using DeathRunner.Inputs;
 using UnityEngine;
 using static Unity.Mathematics.math;
 
 using EasyCharacterMovement;
 using ProjectDawn.Geometry3D;
 using Drawing;
-
+using Extensions = DeathRunner.Utils.Extensions;
 using quaternion = Unity.Mathematics.quaternion;
 using Ray = UnityEngine.Ray;
 
@@ -15,9 +16,8 @@ using F32x3 = Unity.Mathematics.float3;
 
 namespace Game.Movement
 {
-    using Game.Inputs;
     using Component  = Game.Shared.Component;
-    using Extensions = Game.Utils.Extensions;
+    using Extensions = Extensions;
     
     public sealed class Orientation : Component
     {

@@ -4,17 +4,15 @@ using static Unity.Mathematics.math;
 
 using JetBrains.Annotations;
 using Cysharp.Threading.Tasks;
+using DeathRunner.Inputs;
 using EasyCharacterMovement;
 using static ProjectDawn.Mathematics.math2;
-
-using Game.Inputs;
-using Game.Utils;
-
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 
 using Bool  = System.Boolean;
+using Extensions = DeathRunner.Utils.Extensions;
 
 namespace Game.Movement
 {
@@ -132,7 +130,7 @@ namespace Game.Movement
             Camera __mainCamera = Camera.main;
             if(__mainCamera == null)
             {
-                Boolean __foundUnTaggedCamera = Utils.Extensions.TryFindObjectOfType(out __mainCamera);
+                Boolean __foundUnTaggedCamera = Extensions.TryFindObjectOfType(out __mainCamera);
                 if (__foundUnTaggedCamera)
                 {
                     Debug.LogWarning(message: "There was a Camera found in the scene, but it's not tagged as \"MainCamera\", if there is supposed to be one, tag it correctly.", context: this);

@@ -1,10 +1,8 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
-namespace Game.EnemyAI
+namespace DeathRunner.EnemyAI
 {
     public class AnimationEventsMelee : MonoBehaviour
     {

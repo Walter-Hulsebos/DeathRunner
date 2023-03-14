@@ -1,15 +1,12 @@
 using System;
-
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using JetBrains.Annotations;
-
-using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 
-namespace Game.Inputs
+namespace DeathRunner.Inputs
 {
     [PublicAPI]
     public sealed class InputHandler : MonoBehaviour
@@ -20,24 +17,20 @@ namespace Game.Inputs
         //For this reason I used methods such as OnThrottleInputStarted, OnThrottleInputPerformed, and OnThrottleInputCanceled to handle the input.
         //This leaves open the possibility of having multiple cars with very few changes, just comment out the Input Actions, add the `PlayerInput` component, and link up the events.
         
-        [SerializeField] private InputActionReference         moveInputActionReference;
-        [field:SerializeField] public F32x2                   MoveInput          { get; private set; }
-        [field:SerializeField] public F32x3                   MoveInputFlat      { get; private set; }
+        [SerializeField] private InputActionReference moveInputActionReference;
+        [field:SerializeField] public F32x2           MoveInput          { get; private set; }
+        [field:SerializeField] public F32x3           MoveInputFlat      { get; private set; }
         
+        [SerializeField] private InputActionReference dashInputActionReference;
+        [field:SerializeField] public Boolean         DashInput          { get; private set; }
         
-        [SerializeField] private InputActionReference         dashInputActionReference;
-        [field:SerializeField] public Boolean                 DashInput          { get; private set; }
-
-
-        [SerializeField] private InputActionReference         primaryFireInputActionReference;
-        [field:SerializeField] public Boolean                 PrimaryFireInput   { get; private set; }
+        [SerializeField] private InputActionReference primaryFireInputActionReference;
+        [field:SerializeField] public Boolean         PrimaryFireInput   { get; private set; }
         
+        [SerializeField] private InputActionReference secondaryFireInputActionReference;
+        [field:SerializeField] public Boolean         SecondaryFireInput { get; private set; }
         
-        [SerializeField] private InputActionReference         secondaryFireInputActionReference;
-        [field:SerializeField] public Boolean                 SecondaryFireInput { get; private set; }
-        
-        
-        public Vector2                                        MouseScreenPosition => Mouse.current.position.ReadValue();
+        public Vector2                                MouseScreenPosition => Mouse.current.position.ReadValue();
         
         #endregion
 
@@ -45,7 +38,6 @@ namespace Game.Inputs
 
         private void OnEnable()
         {
-            //NOTE: [Walter] This shouldn't be necessary, but apparently it is, I'm getting a null reference exception if I don't do this.
             moveInputActionReference.action.Enable();
             dashInputActionReference.action.Enable();
             primaryFireInputActionReference.action.Enable();

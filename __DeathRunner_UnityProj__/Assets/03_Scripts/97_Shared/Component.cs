@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
+using Rotor = Unity.Mathematics.quaternion;
 
 namespace Game.Shared
 {
@@ -22,7 +23,7 @@ namespace Game.Shared
             set => transform.localPosition = value;
         }
         
-        public quaternion Rot
+        public Rotor Rot
         {
             get => transform.rotation;
             set => transform.rotation = value;

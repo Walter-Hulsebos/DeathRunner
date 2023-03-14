@@ -1,15 +1,14 @@
-    using System.Collections;
-    using System.Diagnostics.Contracts;
-    using Cysharp.Threading.Tasks;
-    using UnityEngine;
-    using UnityEngine.AI;
+using System.Collections;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
+using UnityEngine.AI;
 
-    namespace Game.EnemyAI
+namespace DeathRunner.EnemyAI
     {
-        public class RangedEnemyAI : MonoBehaviour
+        public class MeleeEnemyAI : MonoBehaviour
         {
             // Define possible states for the enemy AI
-            [SerializeField] public enum States
+            public enum States
             {
                 Attacking,
                 Chasing,
@@ -28,7 +27,7 @@
             [HideInInspector] public States currentState;
 
             // Distance at which the enemy will start attacking the player
-            [SerializeField] private float attackDistance = 10;
+            [SerializeField] private float attackDistance = 2;
 
             // Animator component for the enemy
             [SerializeField] private Animator animator;
@@ -38,10 +37,6 @@
 
             [HideInInspector] public bool moveInAttack = false;
 
-            [SerializeField] private Transform[] walkPositions;
-
-            private Transform currentWalkPos;
-            [HideInInspector] public bool hasPickedWalkPos = false;
             // Called once when the object is created
             void Start()
             {
@@ -63,7 +58,6 @@
 
                 // Enable NavMeshAgent component
                 navMeshAgent.enabled = true;
-                
             }
 
             // Called once per frame
@@ -77,7 +71,7 @@
                         navMeshAgent.SetDestination(_player.transform.position);
 
                         // Look at the player
-                      //  LookAtPlayer();
+                        LookAtPlayer();
 
                         // If the enemy is within attack distance, start attacking
                         if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance)
@@ -94,7 +88,11 @@
                             // Set animator bool to indicate that the enemy is no longer chasing
                             animator.SetBool("isChasing", false);
 
-                         //   navMeshAgent.enabled = false;
+                            // Delay ending the attack
+                         //   StartCoroutine(EndAttack());
+
+
+                            navMeshAgent.enabled = false;
                             //TODO make it delay endAttack if the enemy gets attacked.
                             //TODO figure out how to make attacking state only while actually attacking, then go to idle for some time
                         }
@@ -102,23 +100,16 @@
                         break;
 
                     case States.Attacking:
-                        LookAtPlayer();
+                        if (moveInAttack)
+                        {
+                            rigidbody.MovePosition(rigidbody.position + transform.forward * Time.deltaTime * 5f);
+                        }
+
                         break;
 
                     case States.Idle:
                         // Look at the player
                         LookAtPlayer();
-                        if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance - 2)
-                        {
-                            if (!hasPickedWalkPos)
-                            {
-                                hasPickedWalkPos = true;
-                                currentWalkPos = walkPositions[Random.Range(0, walkPositions.Length + 1)];
-                            }
-                            Debug.Log("ranged enemy moving");
-                            navMeshAgent.SetDestination(currentWalkPos.position);
-                            //Make enemy walk back to create distance with the player if they are too close
-                        }
                         break;
                 }
             }
@@ -126,8 +117,6 @@
             // Rotate the enemy to face the player
             void LookAtPlayer()
             {
-                Debug.Log("islookingatplayer");
-                
                 Vector3 dir = _player.transform.position - transform.position;
                 dir.y = 0; // keep the direction strictly horizontal
                 Quaternion rot = Quaternion.LookRotation(dir);

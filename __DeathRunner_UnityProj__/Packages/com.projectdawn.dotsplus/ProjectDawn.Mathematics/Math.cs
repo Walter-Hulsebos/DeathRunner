@@ -15,7 +15,15 @@ using F64x2   = Unity.Mathematics.double2;
 using F64x3   = Unity.Mathematics.double3;
 using F64x3x3 = Unity.Mathematics.double3x3;
 
+using I08     = System.SByte;
+using I16     = System.Int16;
 using I32     = System.Int32;
+using I64     = System.Int64;
+
+using U08     = System.Byte;
+using U16     = System.UInt16;
+using U32     = System.UInt32;
+using U64     = System.UInt64;
 
 using Bool    = System.Boolean;
 using Boolx2  = Unity.Mathematics.bool2;
@@ -408,5 +416,8 @@ namespace ProjectDawn.Mathematics
             a = b;
             b = temp;
         }
+        
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static U08 min(U08 a, U08 b) => a < b ? a : b;
     }
 }

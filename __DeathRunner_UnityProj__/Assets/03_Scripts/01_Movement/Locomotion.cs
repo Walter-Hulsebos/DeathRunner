@@ -1,10 +1,10 @@
 using System.Collections;
-
+using DeathRunner.Inputs;
+using DeathRunner.Utils;
 using UnityEngine;
 using static Unity.Mathematics.math;
 
 using EasyCharacterMovement;
-using Game.Utils;
 using JetBrains.Annotations;
 using UltEvents;
 using UnityEngine.Serialization;
@@ -24,8 +24,6 @@ using Object = System.Object;
 
 namespace Game.Movement
 {
-    using Game.Inputs;
-    
     public sealed class Locomotion : Component
     {
         #region Variables

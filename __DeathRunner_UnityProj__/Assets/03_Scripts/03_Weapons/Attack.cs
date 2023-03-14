@@ -1,9 +1,8 @@
+using UltEvents;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using UltEvents;
-
-namespace Game.Weapons
+namespace DeathRunner.Weapons
 {
     public sealed class Attack : MonoBehaviour
     {
