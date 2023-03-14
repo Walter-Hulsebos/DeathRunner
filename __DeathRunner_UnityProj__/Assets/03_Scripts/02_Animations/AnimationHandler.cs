@@ -23,6 +23,7 @@ namespace DeathRunner.Animations
         private static readonly I32 forward = Animator.StringToHash(name: "MoveY");
         
         private static readonly I32 attack  = Animator.StringToHash(name: "Attack");
+        private static readonly I32 dash    = Animator.StringToHash(name: "Dash");
 
         #endregion
 

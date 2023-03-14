@@ -1,13 +1,11 @@
 using System.Collections;
-using DeathRunner.Inputs;
-using DeathRunner.Utils;
+
 using UnityEngine;
 using static Unity.Mathematics.math;
 
 using EasyCharacterMovement;
 using JetBrains.Annotations;
 using UltEvents;
-using UnityEngine.Serialization;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -15,16 +13,17 @@ using Sirenix.OdinInspector;
 
 using static ProjectDawn.Mathematics.math2;
 
-using Component = Game.Shared.Component;
-
+using DeathRunner.Inputs;
+using DeathRunner.Shared;
+using DeathRunner.Utils;
+using ProjectDawn.Mathematics;
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
-using Object = System.Object;
 
-namespace Game.Movement
+namespace DeathRunner.Movement
 {
-    public sealed class Locomotion : Component
+    public sealed class Locomotion : Module
     {
         #region Variables
         
@@ -240,7 +239,7 @@ namespace Game.Movement
             _oldMoveDirection = __moveDirection;
 
             // Make movementDirection relative to camera view direction
-            F32x3 __moveDirectionRelativeToCamera = __moveDirection.RelativeTo(playerCamera.transform);
+            F32x3 __moveDirectionRelativeToCamera = math2.RelativeTo(__moveDirection, playerCamera.transform);
             
             F32x3 __desiredVelocity = (__moveDirectionRelativeToCamera * maxSpeed);
 
