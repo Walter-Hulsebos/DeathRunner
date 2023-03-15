@@ -2,10 +2,8 @@ using System;
 using UnityEngine;
 using static Unity.Mathematics.math;
 
-using JetBrains.Annotations;
 using Cysharp.Threading.Tasks;
 using EasyCharacterMovement;
-using static ProjectDawn.Mathematics.math2;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -14,7 +12,10 @@ using Sirenix.OdinInspector;
 using DeathRunner.Inputs;
 using DeathRunner.Shared;
 using DeathRunner.Utils;
+using DG.Tweening;
 using ProjectDawn.Mathematics;
+using UltEvents;
+using UnityEngine.Serialization;
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
@@ -49,25 +50,26 @@ namespace DeathRunner.Movement
         #endif
         [SerializeField] private F32 dashCooldown = 0.01f; // Cooldown between dashes in seconds
         
+        #if UNITY_EDITOR
         #if ODIN_INSPECTOR
         [DisplayAsString]
         #endif
-        private String DashTimeMax
-        {
-            get
-            {
-                //Calculates the time it takes to dash the given distance at the given speed, up to 2 decimal places
-                return $"{dashDistance / dashSpeed:F2}";
-            }
-        }
-
+        [SerializeField] private String dashTime;
+        #endif
+        
+        [SerializeField] private UltEvent<F32x3> onDash;
+        
+        [SerializeField] private UltEvent onEndDash;
+        
+        [SerializeField] private UltEvent onHitWhileDashing;
+        
         // Dash input and direction
         //private Bool  _dashInput;
         //private F32x3 _dashDir;
         //private F32x3 _relativeDashDir;
 
         // Dash cooldown and status
-        private Bool _canDash = true;
+        //private Bool _canDash = true;
         private Bool _isDashing = false;
 
         private void Update()
@@ -86,48 +88,103 @@ namespace DeathRunner.Movement
                 // Convert dash direction to be relative to the player camera
                 F32x3 __relativeDashDir = math2.RelativeTo(__dashDir, relativeToThis: playerCamera.transform);
 
-                //TODO: Recalculate dash end position every frame?
-                
-                // Calculate dash end position
-                Bool __hitsSomethingWhileDashing = _motor.MovementSweepTest(characterPosition: _motor.position, sweepDirection: __relativeDashDir, sweepDistance: dashDistance, out CollisionResult __collisionResult);
-
-                F32x3 __displacement = (__hitsSomethingWhileDashing) 
-                    ? (F32x3)__collisionResult.displacementToHit 
-                    : (__relativeDashDir * dashDistance);
-
                 // Move the player in the dash direction
-                DashMovement(__displacement).Forget();
+                //DashMovement(__relativeDashDir).Forget();
+                DashMovement(__relativeDashDir);
             }
         }
 
-        private async UniTask DashMovement(F32x3 displacement)
+        private void DashMovement(F32x3 direction)
         {
+            //TODO: Recalculate dash end position every frame?
+            
+            //NOTE: [Walter] This completely disregards any collisions that might occur during the dash if they're not detected by the initial sweep test. Whether this is good or bad is TBD.
+                
+            // Calculate dash end position
+            Bool __hitsSomethingWhileDashing = _motor.MovementSweepTest(characterPosition: _motor.position, sweepDirection: direction, sweepDistance: dashDistance, out CollisionResult __collisionResult);
+            
+            F32x3 __displacement = (__hitsSomethingWhileDashing) 
+                ? (F32x3)__collisionResult.displacementToHit 
+                : (direction * dashDistance);
+            
+            
             Debug.Log(message: "Dash - Begin");
+            onDash.Invoke(direction);
+            
             _isDashing = true;
             
             // Disable locomotion and orientation while dashing
             _locomotion.enabled  = false;
             _orientation.enabled = false;
-                
-            F32 __dashTime = length(displacement) / dashSpeed;
-            while (__dashTime > 0)
-            {
-                __dashTime -= Time.deltaTime;
-                
-                F32x3 __positionNextFrame = _motor.position + (displacement / __dashTime);
-                    
-                _motor.interpolation = RigidbodyInterpolation.None;
-                _motor.SetPosition(__positionNextFrame, updateGround: true);
-                _motor.interpolation = RigidbodyInterpolation.Interpolate;
-            }
-                
-            // Re-enable locomotion and orientation
-            _locomotion.enabled  = true;
-            _orientation.enabled = true;
             
-            Debug.Log(message: "Dash - End");
-            _isDashing = false;
+            F32 __dashTime = length(__displacement) / dashSpeed;
+            
+            DOTween.To(
+                    getter: () => _motor.position, 
+                    setter: pos =>
+                    {
+                        _motor.interpolation = RigidbodyInterpolation.None;
+                        _motor.SetPosition(pos, updateGround: true);
+                        _motor.interpolation = RigidbodyInterpolation.Interpolate;
+                    },
+                    endValue: _motor.position + (Vector3)__displacement, 
+                    duration: __dashTime)
+                .OnComplete(() =>
+                {
+                    // Re-enable locomotion and orientation
+                    _locomotion.enabled  = true;
+                    _orientation.enabled = true;
+                    
+                    Debug.Log(message: "Dash - End");
+                    
+                    onEndDash.Invoke();
+                    
+                    _isDashing = false;
+                });
         }
+
+        // private async UniTask DashMovement(F32x3 direction)
+        // {
+        //     //TODO: Recalculate dash end position every frame?
+        //         
+        //     // Calculate dash end position
+        //     Bool __hitsSomethingWhileDashing = _motor.MovementSweepTest(characterPosition: _motor.position, sweepDirection: direction, sweepDistance: dashDistance, out CollisionResult __collisionResult);
+        //
+        //     F32x3 __displacement = (__hitsSomethingWhileDashing) 
+        //         ? (F32x3)__collisionResult.displacementToHit 
+        //         : (direction * dashDistance);
+        //     
+        //     Debug.Log(message: "Dash - Begin");
+        //     _isDashing = true;
+        //
+        //     
+        //     // Disable locomotion and orientation while dashing
+        //     _locomotion.enabled  = false;
+        //     _orientation.enabled = false;
+        //         
+        //     F32 __dashTime = length(__displacement) / dashSpeed;
+        //     while (__dashTime > 0)
+        //     {
+        //         __dashTime -= Time.deltaTime;
+        //         
+        //         F32x3 __displacementThisFrame = __displacement * Time.deltaTime;
+        //         
+        //         F32x3 __positionNextFrame = (F32x3)_motor.position + (__displacement * Time.deltaTime);
+        //             
+        //         _motor.interpolation = RigidbodyInterpolation.None;
+        //         _motor.SetPosition(__positionNextFrame, updateGround: true);
+        //         _motor.interpolation = RigidbodyInterpolation.Interpolate;
+        //         
+        //         await UniTask.Yield();
+        //     }
+        //         
+        //     // Re-enable locomotion and orientation
+        //     _locomotion.enabled  = true;
+        //     _orientation.enabled = true;
+        //     
+        //     Debug.Log(message: "Dash - End");
+        //     _isDashing = false;
+        // }
         
         // [UsedImplicitly]
         // // ReSharper disable once Unity.IncorrectMethodSignature
@@ -188,6 +245,8 @@ namespace DeathRunner.Movement
 
         private void OnValidate()
         {
+            dashTime = $"{dashDistance / dashSpeed:F3}";
+            
             if(playerCamera == null)
             {
                 FindCameraReference();

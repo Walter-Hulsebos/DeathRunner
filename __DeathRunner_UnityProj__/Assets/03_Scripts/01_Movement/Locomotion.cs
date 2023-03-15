@@ -288,7 +288,7 @@ namespace DeathRunner.Movement
 
                 F32x3 __planeNormal = normalize(new F32x3(x: __groundNormal.x, y: 0, z: __groundNormal.y));
 
-                desiredVelocity = desiredVelocity.ProjectedOnPlane(planeNormal: __planeNormal);
+                desiredVelocity = math2.ProjectedOnPlane(desiredVelocity, planeNormal: __planeNormal);
             }
 
             // If moving...

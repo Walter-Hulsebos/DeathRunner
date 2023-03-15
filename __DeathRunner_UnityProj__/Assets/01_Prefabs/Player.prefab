@@ -179,7 +179,7 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   maxSpeed: 5
   maxAcceleration: 20
-  moveDirectionSmoothingSpeed: 0.2
+  moveDirectionSmoothingSpeed: 0.25
   groundFriction: 8
   airFriction: 0.1
   airControl: 0.3
@@ -256,8 +256,72 @@ MonoBehaviour:
   _locomotion: {fileID: 840112497073696545}
   _orientation: {fileID: 840112497073696544}
   playerCamera: {fileID: 0}
-  dashTime: 0.1
+  dashDistance: 7
   dashSpeed: 15
+  dashCooldown: 0.01
+  dashTime: 0.467
+  onDash:
+    _PersistentCalls:
+    - _Target: {fileID: 840112496488637365}
+      _MethodName: TriggerDash
+      _PersistentArguments:
+      - _Type: 14
+        _Int: 0
+        _String: Unity.Mathematics.float3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 0}
+      _MethodName: set_Priority
+      _PersistentArguments:
+      - _Type: 3
+        _Int: 5
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 0}
+      _MethodName: set_Priority
+      _PersistentArguments:
+      - _Type: 3
+        _Int: 20
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+  onEndDash:
+    _PersistentCalls:
+    - _Target: {fileID: 0}
+      _MethodName: set_Priority
+      _PersistentArguments:
+      - _Type: 3
+        _Int: 5
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 0}
+      _MethodName: set_Priority
+      _PersistentArguments:
+      - _Type: 3
+        _Int: 20
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+  onHitWhileDashing:
+    _PersistentCalls: []
 --- !u!1001 &840112496488637321
 PrefabInstance:
   m_ObjectHideFlags: 0
