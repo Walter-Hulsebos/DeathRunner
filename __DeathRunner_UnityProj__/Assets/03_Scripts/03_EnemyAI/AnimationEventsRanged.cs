@@ -10,10 +10,13 @@ namespace Game.EnemyAI
     {
         [SerializeField] private RangedEnemyAI rangedEnemyAI;
         
+        [SerializeField] private GameObject bulletPrefab;
+        [SerializeField] private Transform shootPos;
+        
         //these can also be used to handle hitboxes
         public void Attack()
         {
-     
+            Instantiate(bulletPrefab,shootPos.position, transform.rotation);
         }
 
         public async UniTask EndAttack()
@@ -23,7 +26,7 @@ namespace Game.EnemyAI
             //change this to make walk around
             rangedEnemyAI.StartChase();
             rangedEnemyAI.hasPickedWalkPos = false;
-            
+         
             Debug.Log("over");
         }
     }
