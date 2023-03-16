@@ -1,3 +1,4 @@
+    using System;
     using System.Collections;
     using Cysharp.Threading.Tasks;
     using UnityEngine;
@@ -125,12 +126,26 @@
 
             //TODO delete this or do it better, this is managed by animation events now
             // Delay ending the attack
-            public IEnumerator EndAttack()
+            public IEnumerator EndAttack(float waitTime)
             {
-                yield return new WaitForSeconds(attackCooldown);
+                yield return new WaitForSeconds(waitTime);
                 StartChase();
             }
 
+            public void OnTakeDamage()
+            {
+                //TODO move all the stuff from animation events to this script, then you can stop attacks here
+                animator.SetTrigger("Stun");
+                ExitAttack();
+            }
+            
+            public void ExitAttack()
+            {
+                currentState = States.Idle;
+                //TODO make it have different time if the attack finishes naturally, and if you get stunned mid attack
+                StartCoroutine(EndAttack(1));
+            }
+            
             // Editor-only code for cleaning up the script
 #if UNITY_EDITOR
             private void Reset()

@@ -2,22 +2,37 @@ using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class Bullet : MonoBehaviour
+namespace Damageable
 {
-    public GameObject ball;
-    [FormerlySerializedAs("launchVelocity")] public float launchSpeed;
-    public float destroyTime;
-    private Rigidbody rb;
-
-    private void Start()
+    public class Bullet : MonoBehaviour
     {
-        rb = ball.GetComponent<Rigidbody>();
-    }
+        public GameObject ball;
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + transform.forward * launchSpeed * Time.deltaTime);
-        Destroy(gameObject, destroyTime);
+        [FormerlySerializedAs("launchVelocity")]
+        public float launchSpeed;
+
+        public float destroyTime;
+        private Rigidbody rb;
+
+        private void Start()
+        {
+            rb = ball.GetComponent<Rigidbody>();
+        }
+
+        // Update is called once per frame
+        void FixedUpdate()
+        {
+            rb.MovePosition(rb.position + transform.forward * launchSpeed * Time.deltaTime);
+            Destroy(gameObject, destroyTime);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player"))
+            {
+                Destroy(gameObject);
+            }
+        //TODO make bullet dissapear when it hits anything except an enemy
+        }
     }
 }

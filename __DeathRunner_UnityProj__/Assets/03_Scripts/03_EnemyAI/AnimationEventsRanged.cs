@@ -21,13 +21,12 @@ namespace Game.EnemyAI
 
         public async UniTask EndAttack()
         {
-            rangedEnemyAI.currentState = RangedEnemyAI.States.Idle; 
-            await UniTask.Delay(TimeSpan.FromSeconds(1), ignoreTimeScale: false);
-            //change this to make walk around
-            rangedEnemyAI.StartChase();
-            rangedEnemyAI.hasPickedWalkPos = false;
-         
-            Debug.Log("over");
+        //TODO maybe this stuff should be handled in main script and just called from here
+            rangedEnemyAI.FinishAttack();
+            // rangedEnemyAI.currentState = RangedEnemyAI.States.Idle; 
+            // await UniTask.Delay(TimeSpan.FromSeconds(1), ignoreTimeScale: false);
+            // rangedEnemyAI.StartChase();
+            // rangedEnemyAI.hasPickedWalkPos = false;
         }
     }
 }

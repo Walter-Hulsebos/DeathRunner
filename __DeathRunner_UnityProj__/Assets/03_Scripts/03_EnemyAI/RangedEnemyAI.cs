@@ -115,7 +115,6 @@
                                 hasPickedWalkPos = true;
                                 currentWalkPos = walkPositions[Random.Range(0, walkPositions.Length + 1)];
                             }
-                            Debug.Log("ranged enemy moving");
                             navMeshAgent.SetDestination(currentWalkPos.position);
                             //Make enemy walk back to create distance with the player if they are too close
                         }
@@ -126,8 +125,7 @@
             // Rotate the enemy to face the player
             void LookAtPlayer()
             {
-                Debug.Log("islookingatplayer");
-                
+
                 Vector3 dir = _player.transform.position - transform.position;
                 dir.y = 0; // keep the direction strictly horizontal
                 Quaternion rot = Quaternion.LookRotation(dir);
@@ -141,6 +139,21 @@
                 yield return new WaitForSeconds(attackCooldown);
                 StartChase();
             }
+
+            public void FinishAttack()
+            { //TODO make it have different time if the attack finishes naturally, and if you get stunned mid attack
+                currentState = RangedEnemyAI.States.Idle; 
+                hasPickedWalkPos = false;
+                StartCoroutine(EndAttack());
+            }
+            public void OnTakeDamage()
+            {
+                LookAtPlayer();
+                //TODO move all the stuff from animation events to this script, then you can stop attacks here
+                animator.SetTrigger("Stun");
+                FinishAttack();
+            }
+
 
             // Editor-only code for cleaning up the script
 #if UNITY_EDITOR
