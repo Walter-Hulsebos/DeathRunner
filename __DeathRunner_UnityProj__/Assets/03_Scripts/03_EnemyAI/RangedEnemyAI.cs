@@ -13,7 +13,8 @@
             {
                 Attacking,
                 Chasing,
-                Idle
+                Idle,
+                Dead
             }
 
             // Reference to the player GameObject
@@ -119,6 +120,9 @@
                             //Make enemy walk back to create distance with the player if they are too close
                         }
                         break;
+                    case States.Dead:
+                        
+                        break;
                 }
             }
 
@@ -148,12 +152,16 @@
             }
             public void OnTakeDamage()
             {
-                LookAtPlayer();
+                  transform.LookAt(_player.transform.position);
                 //TODO move all the stuff from animation events to this script, then you can stop attacks here
                 animator.SetTrigger("Stun");
                 FinishAttack();
             }
-
+            public void OnDeath()
+            {
+                currentState = States.Dead;
+                animator.SetTrigger("Death");
+            }
 
             // Editor-only code for cleaning up the script
 #if UNITY_EDITOR

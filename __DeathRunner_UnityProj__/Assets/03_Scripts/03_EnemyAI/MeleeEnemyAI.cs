@@ -13,7 +13,8 @@
             {
                 Attacking,
                 Chasing,
-                Idle
+                Idle,
+                Dead
             }
 
             // Reference to the player GameObject
@@ -135,6 +136,7 @@
             public void OnTakeDamage()
             {
                 //TODO move all the stuff from animation events to this script, then you can stop attacks here
+                transform.LookAt(_player.transform.position);
                 animator.SetTrigger("Stun");
                 ExitAttack();
             }
@@ -144,6 +146,12 @@
                 currentState = States.Idle;
                 //TODO make it have different time if the attack finishes naturally, and if you get stunned mid attack
                 StartCoroutine(EndAttack(1));
+            }
+            
+            public void OnDeath()
+            {
+                currentState = States.Dead;
+                animator.SetTrigger("Death");
             }
             
             // Editor-only code for cleaning up the script
