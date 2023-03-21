@@ -1314,7 +1314,7 @@ Camera:
     height: 1
   near clip plane: 5
   far clip plane: 1000
-  field of view: 40
+  field of view: 30
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -1600,6 +1600,59 @@ Transform:
   - {fileID: 245887021}
   m_Father: {fileID: 1524868352}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2003905247
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2003905249}
+  - component: {fileID: 2003905248}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2003905248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003905247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15f5348636d473549ac8395bd5b4d6e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  func:
+    _target: {fileID: 11400000, guid: d619e00ee9aee1944b1ce558cfb1c012, type: 2}
+    _methodName: PublicBooleanMethod
+    _args: []
+    _dynamic: 0
+    _typeName: CGTK.Utils.SerializableCallbacks.SerializableFunc`1[[System.Boolean,
+      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]],
+      CGTK.Utils.SerializableCallbacks.Runtime, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    dirty: 0
+--- !u!4 &2003905249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003905247}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.1994061, y: -2.8554926, z: 4.7458296}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &840112496819720790
 PrefabInstance:
