@@ -20,7 +20,7 @@ namespace HFSM
         ///     Class constructor. Creates a <see cref="State" /> and initializes it. Throws
         ///     <see cref="StatelessStateMachineException" /> if no <see cref="StateObject" /> is passed as argument.
         /// </summary>
-        /// <param name="stateObjects">
+        /// <param name="childStates">
         ///     List of state objects inside this <see cref="State" />. <see cref="StateObject" />s inherit from
         ///     <see cref="State" />State
         ///     or <see cref="StateLeaf" /> classes.
@@ -28,9 +28,9 @@ namespace HFSM
         /// <exception cref="StatelessStateMachineException">
         ///     Thrown when no <see cref="StateObject" /> is passed as argument.
         /// </exception>
-        public State(params StateObject[] stateObjects)
+        public State(params StateObject[] childStates)
         {
-            if (stateObjects.Length == 0)
+            if (childStates.Length == 0)
             {
                 throw new StatelessStateMachineException(
                     message: "A State Machine must have at least one state object." +
@@ -45,8 +45,11 @@ namespace HFSM
             _initialized = false;
             _changedState = false;
 
-            DefaultStateObject = stateObjects[0];
-            foreach (StateObject __stateObject in stateObjects) __stateObject.State = this;
+            DefaultStateObject = childStates[0];
+            foreach (StateObject __childState in childStates)
+            {
+                __childState.State = this;
+            }
         }
 
         public StateObject DefaultStateObject { get; }

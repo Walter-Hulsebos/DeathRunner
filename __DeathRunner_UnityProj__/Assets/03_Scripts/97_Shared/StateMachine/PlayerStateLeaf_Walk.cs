@@ -2,8 +2,8 @@ using HFSM;
 
 namespace DeathRunner.Shared.StateMachine
 {
-    public class PlayerStateLeaf_Attack : StateLeaf
+    public sealed class PlayerStateLeaf_Walk : StateLeaf
     {
-        
+
     }
 }

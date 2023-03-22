@@ -5,41 +5,131 @@ namespace DeathRunner.Shared.StateMachine
 {
     public sealed class Player : MonoBehaviour
     {
-        private State _stateMachine;
+        //NOTE: [Walter] Make shared states possible??
+        
+        private State     root;
+        
+        private State     alive;
+        private StateLeaf dead;
+
+        private State     normalTime;
+        private State     bulletTime;
+
+        private StateLeaf idleNormalTime;
+        private StateLeaf walkNormalTime;
+        private StateLeaf dashNormalTime;
+        private StateLeaf primaryNormalTime;
+        private StateLeaf secondaryNormalTime;
+        
+        private StateLeaf idleBulletTime;
+        private StateLeaf walkBulletTime;
+        private StateLeaf primaryBulletTime;
 
         private void Awake()
         {
+            CreateStateTree();
+            CreateStateTransitions();
+        }
+
+        private void CreateStateTree()
+        {
+            root = new PlayerState_Root(alive, dead);
+            {
+                alive = new PlayerState_Alive(normalTime, bulletTime);
+                {
+                    normalTime = new PlayerState_NormalTime(idleNormalTime, walkNormalTime, dashNormalTime, primaryNormalTime, secondaryNormalTime);
+                    {
+                        idleNormalTime      = new PlayerStateLeaf_Idle();
+                        walkNormalTime      = new PlayerStateLeaf_Walk();
+                        dashNormalTime      = new PlayerStateLeaf_Dash();
+                        primaryNormalTime   = new PlayerStateLeaf_Primary();
+                        secondaryNormalTime = new PlayerStateLeaf_Secondary();
+                    }
+                    bulletTime = new PlayerState_BulletTime(idleBulletTime, walkBulletTime, primaryBulletTime);
+                    {
+                        idleBulletTime    = new PlayerStateLeaf_Idle();
+                        walkBulletTime    = new PlayerStateLeaf_Walk();
+                        primaryBulletTime = new PlayerStateLeaf_Primary();
+                    }
+                }
+                dead = new PlayerStateLeaf_Dead();
+            }
+        }
+
+        private void CreateStateTransitions()
+        {
+            alive.AddTransition(to: dead);
+            alive.AddAnyTransition(dead);
+
+            dead.AddTransition(to: alive);
+
+            normalTime.AddTransition(to: bulletTime);
+            normalTime.AddAnyTransition(bulletTime);
             
+            bulletTime.AddTransition(to: normalTime);
+            bulletTime.AddAnyTransition(normalTime);
+
+            
+            idleNormalTime.AddTransition(to: walkNormalTime);
+            idleNormalTime.AddTransition(to: dashNormalTime);
+            idleNormalTime.AddTransition(to: primaryNormalTime);
+            idleNormalTime.AddTransition(to: secondaryNormalTime);
+
+            walkNormalTime.AddTransition(to: idleNormalTime);
+            walkNormalTime.AddTransition(to: dashNormalTime);
+            walkNormalTime.AddTransition(to: primaryNormalTime);
+            walkNormalTime.AddTransition(to: secondaryNormalTime);
+            
+            dashNormalTime.AddTransition(to: idleNormalTime);
+            dashNormalTime.AddTransition(to: walkNormalTime);
+            
+            primaryNormalTime.AddTransition(to: idleNormalTime);
+            primaryNormalTime.AddTransition(to: walkNormalTime);
+            primaryNormalTime.AddTransition(to: secondaryNormalTime);
+
+            secondaryNormalTime.AddTransition(to: idleNormalTime);
+            secondaryNormalTime.AddTransition(to: walkNormalTime);
+            secondaryNormalTime.AddTransition(to: primaryNormalTime);
+
+            
+            idleBulletTime.AddTransition(to: walkBulletTime);
+            idleBulletTime.AddTransition(to: primaryBulletTime);
+
+            walkBulletTime.AddTransition(to: idleBulletTime);
+            walkBulletTime.AddTransition(to: primaryBulletTime);
+
+            primaryBulletTime.AddTransition(to: idleBulletTime);
+            primaryBulletTime.AddTransition(to: walkBulletTime);
         }
 
         private void Update()
         {
-            _stateMachine.Update();
+            root.Update();
         }
 
         private void FixedUpdate()
         {
-            _stateMachine.FixedUpdate();
+            root.FixedUpdate();
         }
 
         private void LateUpdate()
         {
-            _stateMachine.LateUpdate();
+            root.LateUpdate();
         }
 
         private void OnEnable()
         {
-            //_stateMachine.OnEnable();
+            //root.OnEnable();
         }
 
         private void OnDisable()
         {
-            //_stateMachine.OnDisable();
+            //root.OnDisable();
         }
 
         private void OnDestroy()
         {
-            //_stateMachine.OnDestroy();
+            //root.OnDestroy();
         }
     }
 }
