@@ -1,16 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-
-namespace HFSM {
+namespace HFSM
+{
     /// <summary>
-    /// Thrown when a <see cref="StateMachine"/> has been created without passsing any
-    /// <see cref="StateObject"/> as argument.
+    ///     Thrown when a <see cref="State" /> has been created without passsing any
+    ///     <see cref="StateObject" /> as argument.
     /// </summary>
-    public class StatelessStateMachineException : Exception {
-        public StatelessStateMachineException(string message) : base(message) { }
+    public class StatelessStateMachineException : Exception
+    {
+        public StatelessStateMachineException(String message) : base(message: message) { }
     }
 }
-

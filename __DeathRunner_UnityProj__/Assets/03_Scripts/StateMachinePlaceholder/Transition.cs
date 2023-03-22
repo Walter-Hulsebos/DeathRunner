@@ -1,53 +1,53 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-
-namespace HFSM {
+namespace HFSM
+{
     /// <summary>
-    /// Transition behaviour of a hierarchical finite state machine pattern.
+    ///     Transition behaviour of a hierarchical finite state machine pattern.
     /// </summary>
-    internal class Transition {
-        internal StateObject OriginStateObject { get; private set; }
-        internal StateObject TargetStateObject { get; private set; }
-        internal Action TransitionAction { get; private set; }
-
-        private Func<bool>[] conditions;
+    internal class Transition
+    {
+        protected readonly Func<Boolean>[] conditions;
 
         /// <summary>
-        /// Transition class constructor.
+        ///     Transition class constructor.
         /// </summary>
-        /// <param name="originSateObject">
-        /// Origin <see cref="StateObject"/> of the transition.
+        /// <param name="from">
+        ///     Origin <see cref="StateObject" /> of the transition.
         /// </param>
-        /// <param name="targetStateObject">
-        /// Target <see cref="StateObject"/> of the transition.
+        /// <param name="to">
+        ///     Target <see cref="StateObject" /> of the transition.
         /// </param>
         /// <param name="transitionAction">
-        /// Function executed when the transition occurs.
+        ///     Function executed when the transition occurs.
         /// </param>
         /// <param name="conditions">
-        /// List of conditions that must be met (all of them) in order for the transition to occur.
+        ///     List of conditions that must be met (all of them) in order for the transition to occur.
         /// </param>
-        public Transition(StateObject originSateObject, StateObject targetStateObject, Action transitionAction = null,
-             params Func<bool>[] conditions) {
-
-            OriginStateObject = originSateObject;
-            TargetStateObject = targetStateObject;
-            this.conditions = conditions;
-            TransitionAction = transitionAction;
+        public Transition(StateObject from, StateObject to, Action transitionAction = null, params Func<Boolean>[] conditions)
+        {
+            this.From = from;
+            this.To   = to;
+            this.TransitionAction  = transitionAction;
+            this.conditions        = conditions;
         }
 
+        internal StateObject From { get; }
+        internal StateObject To   { get; }
+        internal Action TransitionAction { get; }
+
         /// <summary>
-        /// Checks whether all <see cref="Transition.conditions"/> are met or not.
+        ///     Checks whether all <see cref="conditions" /> are met or not.
         /// </summary>
         /// <returns>
-        /// <see langword="true"/> if all <see cref="Transition.conditions"/> are met, <see langword="false"/> otherwise.
+        ///     <see langword="true" /> if all <see cref="conditions" /> are met, <see langword="false" /> otherwise.
         /// </returns>
-        public virtual bool AllConditionsMet() {
-            foreach (Func<bool> condition in conditions) {
-                if (!condition()) {
+        public virtual Boolean AllConditionsMet()
+        {
+            foreach (Func<Boolean> __condition in conditions)
+            {
+                if (!__condition())
+                {
                     return false;
                 }
             }
@@ -55,9 +55,10 @@ namespace HFSM {
         }
 
         /// <summary>
-        /// Executes <see cref="Transition.TransitionAction"/>, if defined.
+        ///     Executes <see cref="Transition.TransitionAction" />, if defined.
         /// </summary>
-        public virtual void InvokeTransitionAction() {
+        public virtual void InvokeTransitionAction()
+        {
             TransitionAction?.Invoke();
         }
     }

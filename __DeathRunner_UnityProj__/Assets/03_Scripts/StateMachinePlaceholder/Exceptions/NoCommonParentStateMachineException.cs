@@ -1,11 +1,13 @@
 using System;
 
-namespace HFSM {
+namespace HFSM
+{
     /// <summary>
-    /// Thrown when <see cref="StateObject"/>s of a <see cref="Transition"/> do not share a common
-    /// <see cref="StateMachine"/> ancestor, that is, a common parent state machine in the hierarchy.
+    ///     Thrown when <see cref="StateObject" />s of a <see cref="Transition" /> do not share a common
+    ///     <see cref="State" /> ancestor, that is, a common parent state machine in the hierarchy.
     /// </summary>
-    public class NoCommonParentStateMachineException : Exception {
-        public NoCommonParentStateMachineException(string message) : base(message) { }
+    public class NoCommonParentStateMachineException : Exception
+    {
+        public NoCommonParentStateMachineException(String message) : base(message: message) { }
     }
 }

@@ -1,60 +1,62 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-namespace HFSM {
+namespace HFSM
+{
     /// <summary>
-    /// Base class for <see cref="EventTransition"/> classes. Implements the same behaviour of a
-    /// <see cref="Transition"/> and listens to events.
+    ///     Base class for <see cref="EventTransition" /> classes. Implements the same behaviour of a
+    ///     <see cref="Transition" /> and listens to events.
     /// </summary>
-    internal abstract class EventTransitionBase : Transition {
+    internal abstract class EventTransitionBase : Transition
+    {
+        private protected Boolean eventListened;
+        private protected readonly Boolean processInstantly;
 
-        private protected bool eventListened;
-        private protected bool processInstantly;
         /// <summary>
-        /// Transition class constructor.
+        ///     Transition class constructor.
         /// </summary>
-        /// <param name="originSateObject">
-        /// Origin <see cref="StateObject"/> of the transition.
+        /// <param name="from">
+        ///     Origin <see cref="StateObject" /> of the transition.
         /// </param>
-        /// <param name="targetStateObject">
-        /// Target <see cref="StateObject"/> of the transition.
+        /// <param name="to">
+        ///     Target <see cref="StateObject" /> of the transition.
+        /// </param>
+        /// <param name="processInstantly">
+        ///     If <see langword="true" />, the transition will be processed immediately. If <see langword="false" />,
         /// </param>
         /// <param name="transitionAction">
-        /// Function executed when the transition occurs.
+        ///     Function executed when the transition occurs.
         /// </param>
-        /// <param name="conditions">
-        /// List of conditions that must be met (all of them) in order for the transition to occur.
-        /// </param>
-        public EventTransitionBase(StateObject originSateObject, StateObject targetStateObject, bool processInstantly = false, Action transitionAction = null) : 
-            base(originSateObject, targetStateObject, transitionAction) {
-
+        public EventTransitionBase(StateObject from, StateObject to, Action transitionAction = null, Boolean processInstantly = false) :
+            base(from: from, to: to, transitionAction: transitionAction)
+        {
             this.processInstantly = processInstantly;
         }
 
-        public virtual void ConsumeEvent() {
+        public virtual void ConsumeEvent()
+        {
             eventListened = false;
         }
 
         /// <summary>
-        /// Checks whether all <see cref="Transition.conditions"/> (if any) are met and whether the event this transition
-        /// is subscribed to has been fired.
+        ///     Checks whether all <see cref="Transition.conditions"/> (if any) are met and whether the event this transition
+        ///     is subscribed to has been fired.
         /// </summary>
         /// <returns>
-        /// <see langword="true"/> if all <see cref="Transition.conditions"/> (if any) are met and the event was fired, <see langword="false"/> otherwise.
+        ///     <see langword="true" /> if all <see cref="Transition.conditions"/> (if any) are met and the event was fired,
+        ///     <see langword="false" /> otherwise.
         /// </returns>
-        public override bool AllConditionsMet() {
+        public override Boolean AllConditionsMet()
+        {
             return eventListened && ConditionsMet();
         }
 
         /// <summary>
-        /// Checks whether all <see cref="Transition.conditions"/> (if any) are met.
+        ///     Checks whether all <see cref="Transition.conditions"/> (if any) are met.
         /// </summary>
         /// <returns>
-        /// <see langword="true"/> if all <see cref="Transition.conditions"/> (if any) are met, <see langword="false"/> otherwise.
+        ///     <see langword="true" /> if all <see cref="Transition.conditions"/> (if any) are met, <see langword="false"/>
+        ///     otherwise.
         /// </returns>
-        private protected abstract bool ConditionsMet();
+        protected abstract Boolean ConditionsMet();
     }
-
 }
