@@ -1,15 +1,17 @@
 {
-    "name": "DeathRunner.Shared",
-    "rootNamespace": "DeathRunner.Shared",
+    "name": "DeathRunner.PlayerState",
+    "rootNamespace": "DeathRunner.PlayerState",
     "references": [
-        "Unity.Mathematics"
+        "Unity.Mathematics",
+        "HFSM.Runtime",
+        "DeathRunner.Inputs"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
-    "autoReferenced": false,
+    "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
