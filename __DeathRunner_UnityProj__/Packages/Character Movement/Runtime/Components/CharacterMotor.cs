@@ -850,13 +850,13 @@ namespace EasyCharacterMovement
         /// The character's speed along its forward vector (e.g: in local space).
         /// </summary>
 
-        public float forwardSpeed => _velocity.dot(transform.forward);
+        public float forwardSpeed => Vector3.Dot(_velocity, transform.forward);
 
         /// <summary>
         /// The character's speed along its right vector (e.g: in local space).
         /// </summary>
 
-        public float sidewaysSpeed => _velocity.dot(transform.right);
+        public float sidewaysSpeed => Vector3.Dot(_velocity, transform.right);
 
         /// <summary>
         /// The Character's capsule collider radius.
@@ -1551,8 +1551,8 @@ namespace EasyCharacterMovement
             // Only apply braking if there is no input acceleration,
             // or we are over our max speed and need to slow down to it
 
-            bool isZeroAcceleration = requestedAcceleration.isZero();
-            bool isVelocityOverMax = currentVelocity.isExceeding(actualMaxSpeed);
+            bool isZeroAcceleration = requestedAcceleration.IsZero();
+            bool isVelocityOverMax = currentVelocity.IsExceeding(actualMaxSpeed);
 
             if (isZeroAcceleration || isVelocityOverMax)
             {
@@ -1566,7 +1566,7 @@ namespace EasyCharacterMovement
 
                 // Don't allow braking to lower us below max speed if we started above it
 
-                if (isVelocityOverMax && currentVelocity.sqrMagnitude < actualMaxSpeed.square() &&
+                if (isVelocityOverMax && currentVelocity.sqrMagnitude < actualMaxSpeed.Square() &&
                     Vector3.Dot(requestedAcceleration, oldVelocity) > 0.0f)
                     currentVelocity = oldVelocity.normalized * actualMaxSpeed;
             }
@@ -1581,10 +1581,10 @@ namespace EasyCharacterMovement
 
             if (!isZeroAcceleration)
             {
-                float newMaxSpeed = currentVelocity.isExceeding(actualMaxSpeed) ? currentVelocity.magnitude : actualMaxSpeed;
+                float newMaxSpeed = currentVelocity.IsExceeding(actualMaxSpeed) ? currentVelocity.magnitude : actualMaxSpeed;
 
                 currentVelocity += requestedAcceleration * deltaTime;
-                currentVelocity = currentVelocity.clampedTo(newMaxSpeed);
+                currentVelocity = currentVelocity.ClampedTo(newMaxSpeed);
             }
 
             // Return new velocity
@@ -1853,7 +1853,7 @@ namespace EasyCharacterMovement
 
         public Vector3 ConstrainVectorToPlane(Vector3 vector)
         {
-            return isConstrainedToPlane ? vector.projectedOnPlane(_constraintPlaneNormal) : vector;
+            return isConstrainedToPlane ? vector.ProjectedOnPlane(_constraintPlaneNormal) : vector;
         }
 
         /// <summary>
@@ -1880,7 +1880,7 @@ namespace EasyCharacterMovement
 
         private HitLocation ComputeHitLocation(Vector3 inNormal)
         {
-            float verticalComponent = inNormal.dot(_characterUp);
+            float verticalComponent = Vector3.Dot(inNormal, _characterUp);
 
             if (verticalComponent > kHemisphereLimit)
                 return HitLocation.Below;
@@ -1954,13 +1954,13 @@ namespace EasyCharacterMovement
             {
                 Vector3 actualGroundNormal = _hasLanded ? _foundGround.normal : _currentGround.normal;
 
-                Vector3 forward = actualGroundNormal.perpendicularTo(inNormal);
-                Vector3 blockingNormal = forward.perpendicularTo(_characterUp);
+                Vector3 forward = actualGroundNormal.PerpendicularTo(inNormal);
+                Vector3 blockingNormal = forward.PerpendicularTo(_characterUp);
 
                 if (Vector3.Dot(blockingNormal, inNormal) < 0.0f)
                     blockingNormal = -blockingNormal;
 
-                if (!blockingNormal.isZero())
+                if (!blockingNormal.IsZero())
                     inNormal = blockingNormal;
 
                 return inNormal;
@@ -2316,7 +2316,7 @@ namespace EasyCharacterMovement
         
         public bool IsWithinEdgeTolerance(Vector3 characterPosition, Vector3 inPoint, float testRadius)
         {
-            float distFromCenterSq = (inPoint - characterPosition).projectedOnPlane(_characterUp).sqrMagnitude;
+            float distFromCenterSq = (inPoint - characterPosition).ProjectedOnPlane(_characterUp).sqrMagnitude;
 
             float reducedRadius = Mathf.Max(kSweepEdgeRejectDistance + kKindaSmallNumber,
                 testRadius - kSweepEdgeRejectDistance);
@@ -2538,7 +2538,7 @@ namespace EasyCharacterMovement
                 if (ShouldFilter(hit.collider))
                     continue;
 
-                bool isOverlapping = hit.distance <= 0.0f && !hit.point.isZero();
+                bool isOverlapping = hit.distance <= 0.0f && !hit.point.IsZero();
                 if (isOverlapping)
                 {
                     // Overlaps
@@ -2692,7 +2692,7 @@ namespace EasyCharacterMovement
         private bool ResolvePenetration(Vector3 displacement, Vector3 proposedAdjustment)
         {
             Vector3 adjustment = ConstrainVectorToPlane(proposedAdjustment);
-            if (adjustment.isZero())
+            if (adjustment.IsZero())
                 return false;
 
             // We really want to make sure that precision differences or differences between the overlap test and sweep tests don't put us into another overlap,
@@ -2732,7 +2732,7 @@ namespace EasyCharacterMovement
                     Vector3 secondMTD = recoverDirection * (recoverDistance + kContactOffset + kPenetrationOffset);
                     Vector3 combinedMTD = adjustment + secondMTD;
                     
-                    if (secondMTD != adjustment && !combinedMTD.isZero())
+                    if (secondMTD != adjustment && !combinedMTD.IsZero())
                     {
                         lastPosition = updatedPosition;
                         
@@ -2756,7 +2756,7 @@ namespace EasyCharacterMovement
                     // This can sometimes get out of penetrations with multiple objects.
 
                     Vector3 moveDelta = ConstrainVectorToPlane(displacement);
-                    if (!moveDelta.isZero())
+                    if (!moveDelta.IsZero())
                     {
                         lastPosition = updatedPosition;
 
@@ -2926,9 +2926,9 @@ namespace EasyCharacterMovement
 
                     // Make remaining portion of original result horizontal and parallel to impact normal.
 
-                    Vector3 lateralRemainder = (slideResult - result).projectedOnPlane(_characterUp);
-                    Vector3 lateralNormal = inNormal.projectedOnPlane(_characterUp).normalized;
-                    Vector3 adjust = lateralRemainder.projectedOnPlane(lateralNormal);
+                    Vector3 lateralRemainder = (slideResult - result).ProjectedOnPlane(_characterUp);
+                    Vector3 lateralNormal = inNormal.ProjectedOnPlane(_characterUp).normalized;
+                    Vector3 adjust = lateralRemainder.ProjectedOnPlane(lateralNormal);
 
                     result += adjust;
                 }
@@ -2946,14 +2946,14 @@ namespace EasyCharacterMovement
             if (isGrounded)
             {
                 if (isWalkable)
-                    displacement = displacement.tangentTo(inNormal, _characterUp);
+                    displacement = displacement.TangentTo(inNormal, _characterUp);
                 else
                 {
-                    Vector3 right = inNormal.perpendicularTo(groundNormal);
-                    Vector3 up = right.perpendicularTo(inNormal);
+                    Vector3 right = inNormal.PerpendicularTo(groundNormal);
+                    Vector3 up = right.PerpendicularTo(inNormal);
 
-                    displacement = displacement.projectedOnPlane(inNormal);
-                    displacement = displacement.tangentTo(up, _characterUp);
+                    displacement = displacement.ProjectedOnPlane(inNormal);
+                    displacement = displacement.TangentTo(up, _characterUp);
                 }
             }
             else
@@ -2961,13 +2961,13 @@ namespace EasyCharacterMovement
                 if (isWalkable)
                 {
                     if (_isConstrainedToGround)
-                        displacement = displacement.projectedOnPlane(_characterUp);
+                        displacement = displacement.ProjectedOnPlane(_characterUp);
                     
-                    displacement = displacement.projectedOnPlane(inNormal);
+                    displacement = displacement.ProjectedOnPlane(inNormal);
                 }
                 else
                 {
-                    Vector3 slideResult = displacement.projectedOnPlane(inNormal);
+                    Vector3 slideResult = displacement.ProjectedOnPlane(inNormal);
 
                     if (_isConstrainedToGround)
                         slideResult = HandleSlopeBoosting(slideResult, displacement, inNormal);
@@ -3001,37 +3001,37 @@ namespace EasyCharacterMovement
 
             if (inHit.isWalkable && isConstrainedToGround)
             {
-                inVelocity = ComputeSlideVector(inVelocity, inHit.normal, true);
+                inVelocity   = ComputeSlideVector(inVelocity, inHit.normal, true);
                 displacement = ComputeSlideVector(displacement, inHit.normal, true);
             }
             else
             {
                 if (iteration == 0)
                 {
-                    inVelocity = ComputeSlideVector(inVelocity, inHit.normal, inHit.isWalkable);
+                    inVelocity   = ComputeSlideVector(inVelocity, inHit.normal, inHit.isWalkable);
                     displacement = ComputeSlideVector(displacement, inHit.normal, inHit.isWalkable);
 
                     iteration++;
                 }
                 else if (iteration == 1)
                 {
-                    Vector3 crease = prevNormal.perpendicularTo(inHit.normal);
+                    Vector3 crease = prevNormal.PerpendicularTo(inHit.normal);
 
-                    Vector3 oVel = inputDisplacement.projectedOnPlane(crease);
+                    Vector3 oVel = inputDisplacement.ProjectedOnPlane(crease);
 
                     Vector3 nVel = ComputeSlideVector(displacement, inHit.normal, inHit.isWalkable);
-                            nVel = nVel.projectedOnPlane(crease);
+                            nVel = nVel.ProjectedOnPlane(crease);
 
-                    if (oVel.dot(nVel) <= 0.0f || prevNormal.dot(inHit.normal) < 0.0f)
+                    if (Vector3.Dot(oVel, nVel) <= 0.0f || Vector3.Dot(prevNormal, inHit.normal) < 0.0f)
                     {
-                        inVelocity = ConstrainVectorToPlane(inVelocity.projectedOn(crease));
-                        displacement = ConstrainVectorToPlane(displacement.projectedOn(crease));
+                        inVelocity   = ConstrainVectorToPlane(inVelocity.ProjectedOn(crease));
+                        displacement = ConstrainVectorToPlane(displacement.ProjectedOn(crease));
 
                         ++iteration;
                     }
                     else
                     {
-                        inVelocity = ComputeSlideVector(inVelocity, inHit.normal, inHit.isWalkable);
+                        inVelocity   = ComputeSlideVector(inVelocity, inHit.normal, inHit.isWalkable);
                         displacement = ComputeSlideVector(displacement, inHit.normal, inHit.isWalkable);
                     }
                 }
@@ -3067,7 +3067,7 @@ namespace EasyCharacterMovement
             // If grounded, discard velocity vertical component
 
             if (isGrounded)
-                _velocity = _velocity.projectedOnPlane(_characterUp);
+                _velocity = _velocity.ProjectedOnPlane(_characterUp);
 
             // Compute displacement
 
@@ -3078,7 +3078,7 @@ namespace EasyCharacterMovement
 
             if (isGrounded)
             {
-                displacement = displacement.tangentTo(groundNormal, _characterUp);
+                displacement = displacement.TangentTo(groundNormal, _characterUp);
                 displacement = ConstrainVectorToPlane(displacement);
             }
 
@@ -3097,7 +3097,7 @@ namespace EasyCharacterMovement
             {
                 ref CollisionResult collisionResult = ref _collisionResults[i];
 
-                bool opposesMovement = displacement.dot(collisionResult.normal) < 0.0f;
+                bool opposesMovement = Vector3.Dot(displacement, collisionResult.normal) < 0.0f;
                 if (!opposesMovement)
                     continue;
                 
@@ -3241,7 +3241,7 @@ namespace EasyCharacterMovement
 
             if (isGrounded)
             {
-                _velocity = _velocity.projectedOnPlane(_characterUp).normalized * _velocity.magnitude;
+                _velocity = _velocity.ProjectedOnPlane(_characterUp).normalized * _velocity.magnitude;
                 _velocity = ConstrainVectorToPlane(_velocity);
             }
         }
@@ -3311,10 +3311,10 @@ namespace EasyCharacterMovement
 		        return false;
 	        }
 
-            float distFromCenterSq = (inHit.point - characterPosition).projectedOnPlane(_characterUp).sqrMagnitude;
+            float distFromCenterSq = (inHit.point - characterPosition).ProjectedOnPlane(_characterUp).sqrMagnitude;
             float standOnEdgeRadius = GetValidPerchRadius(inHit.collider);
 
-            if (distFromCenterSq <= standOnEdgeRadius.square())
+            if (distFromCenterSq <= standOnEdgeRadius.Square())
             {
                 // Already within perch radius.
 
@@ -4025,16 +4025,16 @@ namespace EasyCharacterMovement
                 }
                 else if (iteration == 1)
                 {
-                    Vector3 crease = prevNormal.perpendicularTo(inHit.normal);
+                    Vector3 crease = prevNormal.PerpendicularTo(inHit.normal);
 
-                    Vector3 oVel = inputDisplacement.projectedOnPlane(crease);
+                    Vector3 oVel = inputDisplacement.ProjectedOnPlane(crease);
 
                     Vector3 nVel = ComputeSlideVector(displacement, inHit.normal, inHit.isWalkable);
-                            nVel = nVel.projectedOnPlane(crease);
+                            nVel = nVel.ProjectedOnPlane(crease);
 
-                    if (oVel.dot(nVel) <= 0.0f || prevNormal.dot(inHit.normal) < 0.0f)
+                    if (Vector3.Dot(oVel, nVel) <= 0.0f || Vector3.Dot(prevNormal, inHit.normal) < 0.0f)
                     {
-                        displacement = ConstrainVectorToPlane(displacement.projectedOn(crease));
+                        displacement = ConstrainVectorToPlane(displacement.ProjectedOn(crease));
                         ++iteration;
                     }
                     else
@@ -4321,7 +4321,7 @@ namespace EasyCharacterMovement
             }
 
             if (isGrounded)
-                _velocity = _velocity.projectedOnPlane(_characterUp).normalized * _velocity.magnitude;
+                _velocity = _velocity.ProjectedOnPlane(_characterUp).normalized * _velocity.magnitude;
 
             _velocity = ConstrainVectorToPlane(_velocity);
         }
@@ -4430,7 +4430,7 @@ namespace EasyCharacterMovement
             Vector3 characterUp = transform.up;
 
             if (updateYawOnly)
-                worldDirection = worldDirection.projectedOnPlane(characterUp);
+                worldDirection = worldDirection.ProjectedOnPlane(characterUp);
 
             if (worldDirection == Vector3.zero)
                 return;
@@ -4547,12 +4547,12 @@ namespace EasyCharacterMovement
             Vector3 characterUp = transform.up;
 
             if (!overrideLateralVelocity)
-                finalVelocity += _velocity.projectedOnPlane(characterUp);
+                finalVelocity += _velocity.ProjectedOnPlane(characterUp);
 
             // If not override, add vertical velocity to given launch velocity
 
             if (!overrideVerticalVelocity)
-                finalVelocity += _velocity.projectedOn(characterUp);
+                finalVelocity += _velocity.ProjectedOn(characterUp);
 
             _pendingLaunchVelocity = finalVelocity;
         }
@@ -4685,10 +4685,10 @@ namespace EasyCharacterMovement
                 // Calc not grounded velocity
 
                 Vector3 worldUp = -1.0f * gravity.normalized;
-                Vector3 v = onlyHorizontal ? velocity.projectedOnPlane(worldUp) : velocity;
+                Vector3 v = onlyHorizontal ? velocity.ProjectedOnPlane(worldUp) : velocity;
 
                 if (onlyHorizontal)
-                    desiredVelocity = desiredVelocity.projectedOnPlane(worldUp);
+                    desiredVelocity = desiredVelocity.ProjectedOnPlane(worldUp);
 
                 // On not walkable ground ?
 
@@ -4698,10 +4698,10 @@ namespace EasyCharacterMovement
                     // Allow movement parallel to the wall, but not into it because that may push us up.
 
                     Vector3 actualGroundNormal = groundNormal;
-                    if (desiredVelocity.dot(actualGroundNormal) < 0.0f)
+                    if (Vector3.Dot(desiredVelocity, actualGroundNormal) < 0.0f)
                     {
-                        actualGroundNormal = actualGroundNormal.projectedOnPlane(worldUp).normalized;
-                        desiredVelocity = desiredVelocity.projectedOnPlane(actualGroundNormal);
+                        actualGroundNormal = actualGroundNormal.ProjectedOnPlane(worldUp).normalized;
+                        desiredVelocity = desiredVelocity.ProjectedOnPlane(actualGroundNormal);
                     }
                 }
 

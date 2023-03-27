@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 840112497073696545}
   - component: {fileID: 840112497073696544}
   - component: {fileID: 840112497073696555}
+  - component: {fileID: 840112496819720796}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -150,45 +151,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveInputActionReference: {fileID: 6740287480885424194, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7, type: 3}
-  moveInputAction:
-    m_Name: Move
-    m_Type: 0
-    m_ExpectedControlType: Vector2
-    m_Id: ef7c3862-6f35-40be-8532-13737f388377
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 1
-  dashInputActionReference: {fileID: 7344340980552612455, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7, type: 3}
-  dashInputAction:
-    m_Name: Dash
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: 59dbb8f0-0c2e-4025-ba6a-edf068329d46
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  primaryFireInputActionReference: {fileID: -4813116327349068454, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7, type: 3}
-  primaryFireInputAction:
-    m_Name: Primary
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: d17cfbd8-26eb-46f5-ae2b-405216267612
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  secondaryFireInputActionReference: {fileID: -533271173522944404, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7, type: 3}
-  secondaryFireInputAction:
-    m_Name: Secondary
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: b4ed392f-0130-4291-a048-309e618f2ea5
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
   <MoveInput>k__BackingField:
     x: 0
     y: 0
@@ -196,8 +158,11 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
+  dashInputActionReference: {fileID: 7344340980552612455, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7, type: 3}
   <DashInput>k__BackingField: 0
+  primaryFireInputActionReference: {fileID: -4813116327349068454, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7, type: 3}
   <PrimaryFireInput>k__BackingField: 0
+  secondaryFireInputActionReference: {fileID: -533271173522944404, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7, type: 3}
   <SecondaryFireInput>k__BackingField: 0
 --- !u!114 &840112497073696545
 MonoBehaviour:
@@ -214,6 +179,7 @@ MonoBehaviour:
   playerCamera: {fileID: 0}
   maxSpeed: 5
   maxAcceleration: 20
+  moveDirectionSmoothingSpeed: 0.25
   groundFriction: 8
   airFriction: 0.1
   airControl: 0.3
@@ -273,6 +239,89 @@ MonoBehaviour:
     - _Target: {fileID: 840112496488637365}
       _MethodName: TriggerAttack
       _PersistentArguments: []
+--- !u!114 &840112496819720796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840112497073696547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a44782c72a096343b0f35cddd330075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputHandler: {fileID: 840112497073696558}
+  _motor: {fileID: 840112497073696559}
+  _locomotion: {fileID: 840112497073696545}
+  _orientation: {fileID: 840112497073696544}
+  playerCamera: {fileID: 0}
+  dashDistance: 7
+  dashSpeed: 15
+  dashCooldown: 0.01
+  dashTime: 0.467
+  onDash:
+    _PersistentCalls:
+    - _Target: {fileID: 840112496488637365}
+      _MethodName: TriggerDash
+      _PersistentArguments:
+      - _Type: 14
+        _Int: 0
+        _String: Unity.Mathematics.float3, Unity.Mathematics, Version=1.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 0}
+      _MethodName: set_Priority
+      _PersistentArguments:
+      - _Type: 3
+        _Int: 5
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 0}
+      _MethodName: set_Priority
+      _PersistentArguments:
+      - _Type: 3
+        _Int: 20
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+  onEndDash:
+    _PersistentCalls:
+    - _Target: {fileID: 0}
+      _MethodName: set_Priority
+      _PersistentArguments:
+      - _Type: 3
+        _Int: 5
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+    - _Target: {fileID: 0}
+      _MethodName: set_Priority
+      _PersistentArguments:
+      - _Type: 3
+        _Int: 20
+        _String: 
+        _X: 0
+        _Y: 0
+        _Z: 0
+        _W: 0
+        _Object: {fileID: 0}
+  onHitWhileDashing:
+    _PersistentCalls: []
 --- !u!1001 &840112496488637321
 PrefabInstance:
   m_ObjectHideFlags: 0

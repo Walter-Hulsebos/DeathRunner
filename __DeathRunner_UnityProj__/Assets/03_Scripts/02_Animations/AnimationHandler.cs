@@ -1,18 +1,13 @@
+using Drawing;
+using JetBrains.Annotations;
+using ProjectDawn.Mathematics;
 using UnityEngine;
 using static Unity.Mathematics.math;
-
-using JetBrains.Annotations;
-
-using Drawing;
-using ProjectDawn.Mathematics;
-
-using F32   = System.Single;
-using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 
 using I32   = System.Int32;
 
-namespace Game.Movement
+namespace DeathRunner.Animations
 {
     public sealed class AnimationHandler : MonoBehaviour
     {
@@ -24,10 +19,15 @@ namespace Game.Movement
 
         [SerializeField, HideInInspector] private Animator animator;
         
-        private static readonly I32 right   = Animator.StringToHash(name: "MoveX");
-        private static readonly I32 forward = Animator.StringToHash(name: "MoveY");
+        private static readonly I32 move_x = Animator.StringToHash(name: "MoveX");
+        private static readonly I32 move_y = Animator.StringToHash(name: "MoveY");
         
         private static readonly I32 attack  = Animator.StringToHash(name: "Attack");
+        private static readonly I32 dash    = Animator.StringToHash(name: "Dash");
+        
+        private static readonly I32 dash_x = Animator.StringToHash(name: "DashDirX");
+        private static readonly I32 dash_y = Animator.StringToHash(name: "DashDirY");
+        
 
         #endregion
 
@@ -86,8 +86,8 @@ namespace Game.Movement
         {
             if (all(moveVector == F32x3.zero))
             {
-                animator.SetFloat(id: right,   value: 0);
-                animator.SetFloat(id: forward, value: 0);
+                animator.SetFloat(id: move_x, value: 0);
+                animator.SetFloat(id: move_y, value: 0);
                 return;
             }
 
@@ -115,14 +115,41 @@ namespace Game.Movement
                 to: __characterPosition + __facingDirection,
                 color: Color.green);
 
-            animator.SetFloat(id: right,   value: __orthogonalDirection.x);
-            animator.SetFloat(id: forward, value: __orthogonalDirection.z);
+            animator.SetFloat(id: move_x, value: __orthogonalDirection.x);
+            animator.SetFloat(id: move_y, value: __orthogonalDirection.z);
         }
         
         [PublicAPI]
         public void TriggerAttack()
         {
             animator.SetTrigger(id: attack);
+        }
+        
+        [PublicAPI]
+        public void TriggerDash(F32x3 dashDir)
+        {
+            if (all(dashDir == F32x3.zero))
+            {
+                animator.SetFloat(id: dash_x, value: 0);
+                animator.SetFloat(id: dash_y, value: 0);
+                return;
+            }
+
+            F32x3 __dashDirection = normalize(dashDir);
+            F32x3 __dashDirectionNonRelative   = __dashDirection.InverseRelativeTo(playerCamera.transform);
+
+            F32x3 __facingDirection = characterTransform.forward;
+            F32x3 __facingDirectionNonRelative = __facingDirection.InverseRelativeTo(playerCamera.transform);
+
+            F32x3 __orthogonalDirection = normalize(new F32x3(
+                x: -dot(__dashDirectionNonRelative, cross(__facingDirectionNonRelative, up())), 
+                y: 0f, 
+                z: dot(__dashDirectionNonRelative, __facingDirectionNonRelative)));
+
+            animator.SetFloat(id: dash_x, value: __orthogonalDirection.x);
+            animator.SetFloat(id: dash_y, value: __orthogonalDirection.z);
+            
+            animator.SetTrigger(id: dash);
         }
 
         #endregion

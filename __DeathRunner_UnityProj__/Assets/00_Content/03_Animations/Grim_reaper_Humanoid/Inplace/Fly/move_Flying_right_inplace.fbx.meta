@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: 2efd3c7ece6bb7a4c8c2e63114d7444e
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 20300
   internalIDToNameTable:
   - first:
       74: -4168155007681022182
-    second: move_Flying_right
+    second: move_Flying_right_inplace
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -35,7 +35,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: move_Flying_right
+      name: move_Flying_right_inplace
       takeName: move_Flying_right
       internalID: 0
       firstFrame: 0
@@ -864,6 +864,7 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
