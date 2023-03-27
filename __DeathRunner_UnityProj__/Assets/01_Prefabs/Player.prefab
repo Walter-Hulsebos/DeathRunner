@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &98529278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 98529279}
+  - component: {fileID: 98529281}
+  - component: {fileID: 98529280}
+  m_Layer: 0
+  m_Name: ScytheHitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &98529279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98529278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.837}
+  m_LocalScale: {x: 1.0619, y: 1.0619, z: 1.0619}
+  m_Children: []
+  m_Father: {fileID: 9147880801587938483}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &98529281
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98529278}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.32017103, y: 0.9602601, z: 0.61326855}
+  m_Center: {x: -0.00000002863582, y: 0.3024366, z: -0.30576056}
+--- !u!114 &98529280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98529278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da0d385c8d03284bb9147985a13c59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Enemy
+  damageInflicted: 1
 --- !u!1 &840112496810956820
 GameObject:
   m_ObjectHideFlags: 0
@@ -46,6 +105,8 @@ GameObject:
   - component: {fileID: 840112497073696545}
   - component: {fileID: 840112497073696544}
   - component: {fileID: 840112497073696555}
+  - component: {fileID: 945930218}
+  - component: {fileID: 945930219}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -273,6 +334,53 @@ MonoBehaviour:
     - _Target: {fileID: 840112496488637365}
       _MethodName: TriggerAttack
       _PersistentArguments: []
+--- !u!114 &945930218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840112497073696547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c1fad7b72cbb064aa01f58048b217da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHitPoints: 10
+  invulnerabiltyTime: 1
+  hitAngle: 360
+  hitForwardRotation: 360
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
+  OnReceiveDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnHitWhileInvulnerable:
+    m_PersistentCalls:
+      m_Calls: []
+  OnBecomeVulnerable:
+    m_PersistentCalls:
+      m_Calls: []
+  OnResetDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  onDamageMessageReceivers: []
+--- !u!114 &945930219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840112497073696547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a44782c72a096343b0f35cddd330075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCamera: {fileID: 0}
+  dashTime: 0.2
+  dashSpeed: 10
 --- !u!1001 &840112496488637321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -353,6 +461,11 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
   m_PrefabInstance: {fileID: 840112496488637321}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &9147880801587938483 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -766912923740035270, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
+  m_PrefabInstance: {fileID: 840112496488637321}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &840112496488637365
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,3 +481,17 @@ MonoBehaviour:
   characterTransform: {fileID: 840112497073696554}
   playerCamera: {fileID: 0}
   animator: {fileID: 6539851682838404632}
+--- !u!114 &261084226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534173589467782872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96f4447f330176429dbd60aef294894, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scytheHitbox: {fileID: 98529278}
+  _characterMotor: {fileID: 840112497073696559}
