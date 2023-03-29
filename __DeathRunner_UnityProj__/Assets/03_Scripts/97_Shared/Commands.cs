@@ -2,6 +2,8 @@ using DG.Tweening;
 using QFSW.QC;
 using UnityEngine;
 
+using F32  = System.Single;
+
 using Bool  = System.Boolean;
 
 namespace DeathRunner.Shared
@@ -32,5 +34,7 @@ namespace DeathRunner.Shared
                 DOTween.useSmoothDeltaTime = false;
             }
         }
+        
+        public static F32 DeltaTime => IsSlowMotionEnabled ? Time.unscaledDeltaTime : Time.deltaTime;
     }
 }

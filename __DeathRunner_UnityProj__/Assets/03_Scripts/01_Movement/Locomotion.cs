@@ -233,7 +233,7 @@ namespace DeathRunner.Movement
                     __moveDirection = _oldMoveDirection.SmoothDamp(
                         target: __targetMoveDir,
                         currentVelocity: ref _moveDirectionVelocity,
-                        deltaTime: Time.unscaledDeltaTime,
+                        deltaTime: Commands.DeltaTime,
                         smoothTime: moveDirectionSmoothingSpeed,
                         maxSpeed: 100);
 
@@ -264,7 +264,7 @@ namespace DeathRunner.Movement
             OnMove?.Invoke(__moveDirectionRelativeToCamera);
             
             // Perform movement using character's current velocity
-            motor.Move(deltaTime: Time.unscaledDeltaTime);
+            motor.Move(deltaTime: Commands.DeltaTime);
         }
         
         
@@ -276,7 +276,7 @@ namespace DeathRunner.Movement
             motor.velocity = Vector3.Lerp(
                 a: motor.velocity, 
                 b: desiredVelocity,
-                t: 1f - exp(-groundFriction * Time.unscaledDeltaTime));
+                t: 1f - exp(-groundFriction * Commands.DeltaTime));
         }
 
         /// <summary>
@@ -307,17 +307,17 @@ namespace DeathRunner.Movement
                 F32x3 __horizontalVelocity = Vector3.MoveTowards(
                     current: __flatVelocity, 
                     target: desiredVelocity,
-                    maxDistanceDelta: maxAcceleration * airControl * Time.unscaledDeltaTime);
+                    maxDistanceDelta: maxAcceleration * airControl * Commands.DeltaTime);
 
                 // Update velocity preserving gravity effects (vertical velocity)
                 __velocity = __horizontalVelocity + __verVelocity;
             }
 
             // Apply gravity
-            __velocity += gravity * Time.unscaledDeltaTime;
+            __velocity += gravity * Commands.DeltaTime;
 
             // Apply Air friction (Drag)
-            __velocity -= __velocity * airFriction * Time.unscaledDeltaTime;
+            __velocity -= __velocity * airFriction * Commands.DeltaTime;
 
             // Update character's velocity
             motor.velocity = __velocity;

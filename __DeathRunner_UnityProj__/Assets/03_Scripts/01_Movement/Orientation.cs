@@ -229,7 +229,7 @@ namespace DeathRunner.Movement
 
             quaternion __targetRotation = quaternion.LookRotation(forward: __projectedLookDirection, up: up());
 
-            Rot = slerp(q1: Rot, q2: __targetRotation, t: orientationSpeed * Time.unscaledDeltaTime);
+            Rot = slerp(q1: Rot, q2: __targetRotation, t: orientationSpeed * Commands.DeltaTime);
         }
         
         #endregion
