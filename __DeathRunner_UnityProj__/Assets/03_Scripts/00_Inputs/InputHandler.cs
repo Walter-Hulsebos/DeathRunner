@@ -200,7 +200,7 @@ namespace DeathRunner.Inputs
 
         private void OnSlowMoInputStarted(InputAction.CallbackContext ctx)
         {
-            Debug.Log(message: "SlowMo Input Started");
+            //Debug.Log(message: "SlowMo Input Started");
         }
 
         private void OnSlowMoInputPerformed(InputAction.CallbackContext ctx)
@@ -223,7 +223,7 @@ namespace DeathRunner.Inputs
 
         private void OnSlowMoInputCanceled(InputAction.CallbackContext ctx)
         {
-            Debug.Log(message: "SlowMo Input Canceled");
+            //Debug.Log(message: "SlowMo Input Canceled");
         }
 
         #endregion

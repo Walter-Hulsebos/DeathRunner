@@ -25,7 +25,7 @@ using Bool  = System.Boolean;
 
 namespace DeathRunner.Movement
 {
-    public sealed class SlowMo : Module
+    public sealed class SlowMoLocomotion : Module
     {
         #region Variables
         
@@ -38,7 +38,7 @@ namespace DeathRunner.Movement
         #if ODIN_INSPECTOR
         [SuffixLabel(label: "m/s", overlay: true)]
         #endif
-        [SerializeField] private F32 maxSpeed = 3.5f;
+        [SerializeField] private F32 maxSpeed = 5f;
 
         [Tooltip(tooltip: "Max Acceleration (rate of change of velocity).")]
         [SerializeField] private F32 maxAcceleration = 10.0f;
@@ -176,10 +176,10 @@ namespace DeathRunner.Movement
         /// </summary>
         private void OnLateFixedUpdate()
         {
-            if (inputHandler.IsSlowMoToggled)
-            {
-                Move();   
-            }
+            //if (inputHandler.IsSlowMoToggled)
+            //{
+            Move();   
+            //}
         }
 
         private F32x3 _oldMoveDirection = F32x3.zero;
@@ -228,7 +228,7 @@ namespace DeathRunner.Movement
             OnMove?.Invoke(__moveDirectionRelativeToCamera);
             
             // Perform movement using character's current velocity
-            motor.Move();
+            motor.Move(deltaTime: Time.unscaledDeltaTime);
         }
         
         
@@ -240,7 +240,7 @@ namespace DeathRunner.Movement
             motor.velocity = Vector3.Lerp(
                 a: motor.velocity, 
                 b: desiredVelocity,
-                t: 1f - exp(-groundFriction * Time.deltaTime));
+                t: 1f - exp(-groundFriction * Time.unscaledDeltaTime));
         }
 
         /// <summary>
@@ -272,17 +272,17 @@ namespace DeathRunner.Movement
                 F32x3 __horizontalVelocity = Vector3.MoveTowards(
                     current: __flatVelocity, 
                     target: desiredVelocity,
-                    maxDistanceDelta: maxAcceleration * airControl * Time.deltaTime);
+                    maxDistanceDelta: maxAcceleration * airControl * Time.unscaledDeltaTime);
 
                 // Update velocity preserving gravity effects (vertical velocity)
                 __velocity = __horizontalVelocity + __verVelocity;
             }
 
             // Apply gravity
-            __velocity += gravity * Time.deltaTime;
+            __velocity += gravity * Time.unscaledDeltaTime;
 
             // Apply Air friction (Drag)
-            __velocity -= __velocity * airFriction * Time.deltaTime;
+            __velocity -= __velocity * airFriction * Time.unscaledDeltaTime;
 
             // Update character's velocity
             motor.velocity = __velocity;

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using QFSW.QC;
 using UnityEngine;
 
@@ -22,7 +23,8 @@ namespace DeathRunner.Shared
             set
             {
                 _isSlowMotionEnabled = value;
-                Time.timeScale = _isSlowMotionEnabled ? 0.1f : 1.0f;
+                Time.timeScale = _isSlowMotionEnabled ? 0.01f : 1.0f;
+                DOTween.timeScale = Time.timeScale;
             }
         }
     }

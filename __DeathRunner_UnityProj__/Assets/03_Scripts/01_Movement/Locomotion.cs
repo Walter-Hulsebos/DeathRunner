@@ -33,12 +33,12 @@ namespace DeathRunner.Movement
         #if ODIN_INSPECTOR
         [SuffixLabel(label: "m/s", overlay: true)]
         #endif
-        [SerializeField] private F32 maxSpeed = 5.0f;
+        [SerializeField] private F32 maxSpeed = 7.5f;
 
         [Tooltip(tooltip: "Max Acceleration (rate of change of velocity).")]
         [SerializeField] private F32 maxAcceleration = 20.0f;
 
-        [SerializeField] private F32 moveDirectionSmoothingSpeed = 0.2f;
+        [SerializeField] private F32 moveDirectionSmoothingSpeed = 0.25f;
 
         [Tooltip(tooltip: "Setting that affects movement control. Higher values allow faster changes in direction.")]
         [SerializeField] private F32 groundFriction = 8.0f;
@@ -206,10 +206,8 @@ namespace DeathRunner.Movement
         private void OnLateFixedUpdate()
         {
             //UpdateRotation();
-            if (!inputHandler.IsSlowMoToggled)
-            {
-                Move();
-            }
+            //if (!inputHandler.IsSlowMoToggled)
+            Move(); 
         }
         
         private F32x3 _oldMoveDirection = F32x3.zero;
@@ -257,7 +255,7 @@ namespace DeathRunner.Movement
             OnMove?.Invoke(__moveDirectionRelativeToCamera);
             
             // Perform movement using character's current velocity
-            motor.Move();
+            motor.Move(deltaTime: Time.deltaTime);
         }
         
         
