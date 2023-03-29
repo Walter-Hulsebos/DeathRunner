@@ -260,7 +260,7 @@ namespace DeathRunner.Movement
             motor.velocity = Vector3.Lerp(
                 a: motor.velocity, 
                 b: desiredVelocity,
-                t: 1f - exp(-groundFriction * Time.deltaTime));
+                t: 1f - exp(-groundFriction * Time.unscaledDeltaTime));
         }
 
         /// <summary>
@@ -293,17 +293,17 @@ namespace DeathRunner.Movement
                 F32x3 __horizontalVelocity = Vector3.MoveTowards(
                     current: __flatVelocity, 
                     target: desiredVelocity,
-                    maxDistanceDelta: maxAcceleration * airControl * Time.deltaTime);
+                    maxDistanceDelta: maxAcceleration * airControl * Time.unscaledDeltaTime);
 
                 // Update velocity preserving gravity effects (vertical velocity)
                 __velocity = __horizontalVelocity + __verVelocity;
             }
 
             // Apply gravity
-            __velocity += gravity * Time.deltaTime;
+            __velocity += gravity * Time.unscaledDeltaTime;
 
             // Apply Air friction (Drag)
-            __velocity -= __velocity * airFriction * Time.deltaTime;
+            __velocity -= __velocity * airFriction * Time.unscaledDeltaTime;
 
             // Update character's velocity
             motor.velocity = __velocity;
