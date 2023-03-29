@@ -8,7 +8,8 @@ namespace Damageable
     {
         public GameObject ball;
 
-        [FormerlySerializedAs("launchVelocity")]
+        [FormerlySerializedAs("launchVelocity")] [SerializeField]
+        private String target = "Player";
         public float launchSpeed;
 
         public float destroyTime;
@@ -28,7 +29,7 @@ namespace Damageable
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(target))
             {
                 Destroy(gameObject);
             }

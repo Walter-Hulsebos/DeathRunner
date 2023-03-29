@@ -240,7 +240,7 @@ namespace DeathRunner.Movement
                     // Set the move direction's length to that of the target.
                     //__moveDirection = normalize(__moveDirection) * length(__targetMoveDir);
 
-                    Debug.Log(message: $"__moveDirection: {__moveDirection}");
+            //        Debug.Log(message: $"__moveDirection: {__moveDirection}");
                 }
             }
 

@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -152,14 +153,17 @@ namespace DeathRunner.EnemyAI
             }
             public void OnTakeDamage()
             {
-                  transform.LookAt(_player.transform.position);
-                //TODO move all the stuff from animation events to this script, then you can stop attacks here
+                StopAllCoroutines();
+                transform.LookAt(_player.transform.position);
                 animator.SetTrigger("Stun");
                 FinishAttack();
             }
             public void OnDeath()
             {
                 currentState = States.Dead;
+                navMeshAgent.SetDestination(transform.position);
+                navMeshAgent.velocity = Vector3.zero;
+                StopAllCoroutines();
                 animator.SetTrigger("Death");
             }
 

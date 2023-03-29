@@ -134,8 +134,8 @@ namespace DeathRunner.EnemyAI
 
             public void OnTakeDamage()
             {
-                print("GotHIt");
-                //TODO move all the stuff from animation events to this script, then you can stop attacks here
+                StopAllCoroutines();
+                navMeshAgent.velocity = Vector3.zero;
                 transform.LookAt(_player.transform.position);
                 animator.SetTrigger("Stun");
                 ExitAttack();
@@ -151,6 +151,9 @@ namespace DeathRunner.EnemyAI
             public void OnDeath()
             {
                 currentState = States.Dead;
+                navMeshAgent.SetDestination(transform.position);
+                navMeshAgent.velocity = Vector3.zero;
+                StopAllCoroutines();
                 animator.SetTrigger("Death");
             }
             
