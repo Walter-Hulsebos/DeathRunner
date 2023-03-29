@@ -4,7 +4,7 @@ using Sirenix.OdinInspector;
 using UltEvents;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
+
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 
@@ -49,7 +49,7 @@ namespace DeathRunner.Inputs
         [field:FoldoutGroup(groupName: "SlowMo")]
         [field:SerializeField] public Bool            IsSlowMoToggled  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
-        [field:SerializeField] public UltEvent<Bool>  OnSlowMoToggled  { get; private set; }
+        [field:SerializeField] public UltEvent<Bool>  OnSlowMoToggleChange  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
         [field:SerializeField] public UltEvent        OnSlowMoEnabled  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
@@ -205,10 +205,20 @@ namespace DeathRunner.Inputs
 
         private void OnSlowMoInputPerformed(InputAction.CallbackContext ctx)
         {
-            if (ctx.ReadValueAsButton())
+            if (!ctx.ReadValueAsButton()) return;
+            
+            IsSlowMoToggled = !IsSlowMoToggled;
+                
+            if (IsSlowMoToggled)
             {
-                IsSlowMoToggled = !IsSlowMoToggled;
+                OnSlowMoEnabled.Invoke();
             }
+            else
+            {
+                OnSlowMoDisabled.Invoke();
+            }
+                
+            OnSlowMoToggleChange.Invoke(IsSlowMoToggled);
         }
 
         private void OnSlowMoInputCanceled(InputAction.CallbackContext ctx)

@@ -184,6 +184,15 @@ namespace DeathRunner.Movement
 
         private F32x3 _oldMoveDirection = F32x3.zero;
         private F32x3 _moveDirectionVelocity;
+        
+        public void EnableSlowMo()
+        {
+            Commands.IsSlowMotionEnabled = true;
+        }
+        public void DisableSlowMo()
+        {
+            Commands.IsSlowMotionEnabled = false;
+        }
 
         /// <summary>
         /// Perform character movement.

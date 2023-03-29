@@ -105,9 +105,6 @@ namespace Game
                 ? (F32x3)__collisionResult.displacementToHit 
                 : (direction * dashDistance);
             
-            
-            Debug.Log(message: "Dash - Begin");
-
             _isDashing = true;
             
             // Disable locomotion and orientation while dashing
@@ -128,7 +125,6 @@ namespace Game
                     duration: __dashTime)
                 .OnComplete(() =>
                 {
-                    Debug.Log(message: "Dash - End");
                     _isDashing = false;
                 });
         }
