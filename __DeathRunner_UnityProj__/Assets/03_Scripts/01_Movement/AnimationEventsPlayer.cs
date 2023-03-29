@@ -54,14 +54,12 @@ namespace Game
 
         public void DisableInputs()
         {
-            Debug.Log("disablin");
             _locomotion.enabled = false;
             _orientation.enabled = false;
         }
         
         public void EnableInputs()
         {
-            Debug.Log("enablin");
             _locomotion.enabled = true;
             _orientation.enabled = true;
         }
@@ -82,8 +80,7 @@ namespace Game
         public void StartMoving()
         {
            // if (isMoving){
-                print("Moving");
-                F32x3 __dashDir = new F32x3(x: _inputHandler.MoveInput.x, y: 0, z: _inputHandler.MoveInput.y);
+           F32x3 __dashDir = new F32x3(x: _inputHandler.MoveInput.x, y: 0, z: _inputHandler.MoveInput.y);
                 __dashDir = _orientation.LookDirection;
                 // Convert dash direction to be relative to the player camera
                 F32x3 __relativeDashDir = math2.RelativeTo(__dashDir, relativeToThis: playerCamera.transform);
@@ -138,7 +135,6 @@ namespace Game
         public void StopMoving()
         {
             isMoving = false;
-            print("StopMoving");
         }
 
         private void Update()
