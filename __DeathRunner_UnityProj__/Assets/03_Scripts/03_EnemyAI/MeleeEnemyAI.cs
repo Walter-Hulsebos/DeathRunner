@@ -138,6 +138,7 @@
                 //TODO move all the stuff from animation events to this script, then you can stop attacks here
                 transform.LookAt(_player.transform.position);
                 animator.SetTrigger("Stun");
+                navMeshAgent.velocity = Vector3.zero;
                 ExitAttack();
             }
             

@@ -81,7 +81,7 @@ namespace Damageable
             {
                 OnHitWhileInvulnerable.Invoke();
                 return;
-            }
+            }   
 
             Vector3 forward = transform.forward;
             forward = Quaternion.AngleAxis(hitForwardRotation, transform.up) * forward;
@@ -110,8 +110,6 @@ namespace Damageable
                 var receiver = onDamageMessageReceivers[i] as IMessageReceiver;
                 receiver.OnReceiveMessage(messageType, this, data);
             }
-            
-            Debug.Log(gameObject + "took damage");
         }
 
         void LateUpdate()

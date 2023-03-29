@@ -21,7 +21,6 @@ namespace Game.EnemyAI
 
         public async UniTask EndAttack()
         {
-        //TODO maybe this stuff should be handled in main script and just called from here
             rangedEnemyAI.FinishAttack();
             // rangedEnemyAI.currentState = RangedEnemyAI.States.Idle; 
             // await UniTask.Delay(TimeSpan.FromSeconds(1), ignoreTimeScale: false);

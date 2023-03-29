@@ -1,9 +1,13 @@
 using UnityEngine;
 
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+[InlineEditor(Expanded = true)]
+#endif
 [CreateAssetMenu(menuName = "Weapon SO", order = 1)]
 public class WeaponSO : ScriptableObject, ISerializationCallbackReceiver
 {
-    public string weaponName;
+    //public string weaponName;
     public ShotTypeTutorial shotType;
     public float fireRate;
 

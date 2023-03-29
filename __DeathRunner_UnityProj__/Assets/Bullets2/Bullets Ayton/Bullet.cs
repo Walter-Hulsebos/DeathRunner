@@ -1,20 +1,31 @@
-using System;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Damageable
 {
     public class Bullet : MonoBehaviour
     {
         public GameObject ball;
+        
+        public float launchSpeed = 20;
 
-        [FormerlySerializedAs("launchVelocity")]
-        public float launchSpeed;
+        public float destroyTime = 5;
 
-        public float destroyTime;
-        private Rigidbody rb;
+        //[SerializeField] private LayerMask collideWith;
 
-        private void Start()
+        
+        [SerializeField] private string hitTag = "Player";
+        
+        //public Collider ignorePhysicsWith;
+        
+        [SerializeField] private Rigidbody rb;
+
+        private void Reset()
+        {
+            FindRigidbody();
+        }
+
+        [ContextMenu("FindRigidbody")]
+        private void FindRigidbody()
         {
             rb = ball.GetComponent<Rigidbody>();
         }
@@ -23,16 +34,17 @@ namespace Damageable
         void FixedUpdate()
         {
             rb.MovePosition(rb.position + transform.forward * launchSpeed * Time.deltaTime);
-            Destroy(gameObject, destroyTime);
+            Destroy(this.gameObject, t: destroyTime);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(hitTag))
             {
-                Destroy(gameObject);
+                Destroy(this.gameObject);
             }
-        //TODO make bullet dissapear when it hits anything except an enemy
+            
+            //TODO make bullet dissapear when it hits anything except an enemy
         }
     }
 }
