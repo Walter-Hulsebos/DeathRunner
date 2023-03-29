@@ -14,6 +14,8 @@ namespace Damageable
         public float destroyTime;
         private Rigidbody rb;
 
+        [SerializeField] private string target = "Player";
+
         private void Start()
         {
             rb = ball.GetComponent<Rigidbody>();
