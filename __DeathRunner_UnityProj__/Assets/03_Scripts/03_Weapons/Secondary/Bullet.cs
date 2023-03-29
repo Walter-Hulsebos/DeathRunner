@@ -30,7 +30,7 @@ namespace Damageable
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (other.CompareTag(target))
             {
                 Destroy(gameObject);
             }
