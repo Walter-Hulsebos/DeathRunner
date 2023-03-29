@@ -25,7 +25,7 @@ namespace FastScriptReload.Runtime
         }
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
-        static void Init()
+        private static void Init()
         {
 #if UNITY_EDITOR
             LastDetourFilePath = Path.GetTempPath() + Application.productName + "-last-detour.txt";

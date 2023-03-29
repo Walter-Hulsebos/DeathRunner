@@ -6,7 +6,7 @@ namespace ProjectDawn.Geometry2D.Tests
 {
     internal class ConvexPolygonTests
     {
-        struct Transform : ITransformFloat2
+        private struct Transform : ITransformFloat2
         {
             float2 ITransformFloat2.Transform(float2 point) => point;
         }

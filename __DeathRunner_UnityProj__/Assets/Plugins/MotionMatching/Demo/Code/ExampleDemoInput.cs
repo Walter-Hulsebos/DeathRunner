@@ -58,7 +58,7 @@ namespace MxMGameplay
         }
 
         // Start is called before the first frame update
-        void Start()
+        private void Start()
         {
             m_mxmAnimator = GetComponentInChildren<MxMAnimator>();
             m_controller = GetComponent<GenericControllerWrapper>();
@@ -79,7 +79,7 @@ namespace MxMGameplay
         }
 
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             if (m_locomotionSpeedRamp != null)
                 m_locomotionSpeedRamp.UpdateSpeedRamp();

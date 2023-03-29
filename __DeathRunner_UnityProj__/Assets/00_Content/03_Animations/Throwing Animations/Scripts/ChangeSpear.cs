@@ -72,8 +72,8 @@ namespace KevinIglesias {
             changeCO = StartChange();
             StartCoroutine(changeCO);
         }
-        
-        IEnumerator StartChange()
+
+        private IEnumerator StartChange()
         {
             //Remove prop from hand
             spear.SetParent(characterRoot);

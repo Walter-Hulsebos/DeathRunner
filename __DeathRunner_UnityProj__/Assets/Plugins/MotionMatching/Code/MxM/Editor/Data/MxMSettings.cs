@@ -7,7 +7,7 @@ namespace MxMEditor
 
     public class MxMSettings : ScriptableObject
     {
-        const string k_mxmSettingsPath = "Assets/Plugins/MxMSettings.asset";
+        private const string k_mxmSettingsPath = "Assets/Plugins/MxMSettings.asset";
 
         [SerializeField]
         public MxMAnimationClipComposite ActiveComposite;

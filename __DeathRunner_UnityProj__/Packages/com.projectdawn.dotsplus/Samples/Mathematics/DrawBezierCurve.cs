@@ -8,7 +8,7 @@ public class DrawBezierCurve : MonoBehaviour
     public int NumSteps = 100;
     public float DottedLineSize = 0.1f;
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         var transforms = transform.GetComponentsInChildren<Transform>();
 
@@ -63,7 +63,7 @@ public class DrawBezierCurve : MonoBehaviour
         }
     }
 
-    static void DrawLine(float2 a, float2 b, Color color)
+    private static void DrawLine(float2 a, float2 b, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.color = color;
@@ -71,7 +71,7 @@ public class DrawBezierCurve : MonoBehaviour
 #endif
     }
 
-    static void DrawDottedLine(float2 a, float2 b, float size, Color color)
+    private static void DrawDottedLine(float2 a, float2 b, float size, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.color = color;

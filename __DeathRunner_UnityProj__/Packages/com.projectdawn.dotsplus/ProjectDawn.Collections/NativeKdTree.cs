@@ -44,8 +44,7 @@ namespace ProjectDawn.Collections
         where TValue : unmanaged
         where TComparer : unmanaged, IKdTreeComparer<TValue>
     {
-        [NativeDisableUnsafePtrRestriction]
-        UnsafeKdTree<TValue, TComparer>* m_Data;
+        [NativeDisableUnsafePtrRestriction] private UnsafeKdTree<TValue, TComparer>* m_Data;
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
         internal AtomicSafetyHandle m_Safety;
@@ -305,10 +304,9 @@ namespace ProjectDawn.Collections
         [StructLayout(LayoutKind.Sequential)]
         public unsafe struct Iterator
         {
-            [NativeDisableUnsafePtrRestriction]
-            UnsafeKdTree<TValue, TComparer>* m_Data;
+            [NativeDisableUnsafePtrRestriction] private UnsafeKdTree<TValue, TComparer>* m_Data;
 
-            UnsafeKdTree<TValue, TComparer>.Handle m_Handle;
+            private UnsafeKdTree<TValue, TComparer>.Handle m_Handle;
 
             /// <summary>
             /// Iterator referenced value.
@@ -354,7 +352,7 @@ namespace ProjectDawn.Collections
         }
 
         [BurstCompile]
-        unsafe struct DisposeJob : IJob
+        private unsafe struct DisposeJob : IJob
         {
             [NativeDisableUnsafePtrRestriction]
             public UnsafeKdTree<TValue, TComparer>* Data;

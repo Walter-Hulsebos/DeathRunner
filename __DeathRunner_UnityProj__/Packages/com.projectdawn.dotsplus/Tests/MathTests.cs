@@ -316,46 +316,52 @@ namespace ProjectDawn.Mathematics.Tests
         }
         
         //TODO: Consider increasing the delta of double tests?
-        
-        static void AreEqual(float expected, float actual, float delta = 0.00001f)
+
+        private static void AreEqual(float expected, float actual, float delta = 0.00001f)
         {
             Assert.AreEqual(expected: expected, actual: actual, delta: delta);
         }
-        static void AreEqual(float2 expected, float2 actual, float delta = 0.00001f)
+
+        private static void AreEqual(float2 expected, float2 actual, float delta = 0.00001f)
         {
             Assert.AreEqual(expected: expected.x, actual: actual.x, delta: delta);
             Assert.AreEqual(expected: expected.y, actual: actual.y, delta: delta);
         }
-        static void AreEqual(float3 expected, float3 actual, float delta = 0.00001f)
+
+        private static void AreEqual(float3 expected, float3 actual, float delta = 0.00001f)
         {
             Assert.AreEqual(expected: expected.x, actual: actual.x, delta: delta);
             Assert.AreEqual(expected: expected.y, actual: actual.y, delta: delta);
             Assert.AreEqual(expected: expected.z, actual: actual.z, delta: delta);
         }
-        static void AreEqual(float4 expected, float4 actual, float delta = 0.00001f)
+
+        private static void AreEqual(float4 expected, float4 actual, float delta = 0.00001f)
         {
             Assert.AreEqual(expected: expected.x, actual: actual.x, delta: delta);
             Assert.AreEqual(expected: expected.y, actual: actual.y, delta: delta);
             Assert.AreEqual(expected: expected.z, actual: actual.z, delta: delta);
             Assert.AreEqual(expected: expected.w, actual: actual.w, delta: delta);
         }
-        
-        static void AreEqual(double expected, double actual, double delta = 0.0000001d)
+
+        private static void AreEqual(double expected, double actual, double delta = 0.0000001d)
         {
             Assert.AreEqual(expected: expected, actual: actual, delta: delta);
         }
-        static void AreEqual(double2 expected, double2 actual, double delta = 0.0000001d)
+
+        private static void AreEqual(double2 expected, double2 actual, double delta = 0.0000001d)
         {
             Assert.AreEqual(expected: expected.x, actual: actual.x, delta: delta);
             Assert.AreEqual(expected: expected.y, actual: actual.y, delta: delta);
         }
-        static void AreEqual(double3 expected, double3 actual, double delta = 0.0000001d)
+
+        private static void AreEqual(double3 expected, double3 actual, double delta = 0.0000001d)
         {
             Assert.AreEqual(expected: expected.x, actual: actual.x, delta: delta);
             Assert.AreEqual(expected: expected.y, actual: actual.y, delta: delta);
             Assert.AreEqual(expected: expected.z, actual: actual.z, delta: delta);
         }
-        static void AreEqual(double4 expected, double4 actual, double delta = 0.0000001d)
+
+        private static void AreEqual(double4 expected, double4 actual, double delta = 0.0000001d)
         {
             Assert.AreEqual(expected: expected.x, actual: actual.x, delta: delta);
             Assert.AreEqual(expected: expected.y, actual: actual.y, delta: delta);

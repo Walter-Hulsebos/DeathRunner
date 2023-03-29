@@ -11,7 +11,7 @@ namespace Drawing.Examples {
 		public Color gizmoColor2 = new Color(79/255f, 204/255f, 237/255f);
 
 		// Update is called once per frame
-		void Update () {
+		private void Update () {
 			// Draw in-game.
 			// This will draw the things even in standalone games
 			var draw = Draw.ingame;

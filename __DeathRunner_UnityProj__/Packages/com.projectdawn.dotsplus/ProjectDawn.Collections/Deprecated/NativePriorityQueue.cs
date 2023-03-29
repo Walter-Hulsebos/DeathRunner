@@ -24,8 +24,7 @@ namespace ProjectDawn.Collections
         where TValue : unmanaged
         where TComparer : unmanaged, IComparer<TValue>
     {
-        [NativeDisableUnsafePtrRestriction]
-        UnsafeLinkedPriorityQueue<TValue, TComparer>* m_Data;
+        [NativeDisableUnsafePtrRestriction] private UnsafeLinkedPriorityQueue<TValue, TComparer>* m_Data;
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
         internal AtomicSafetyHandle m_Safety;

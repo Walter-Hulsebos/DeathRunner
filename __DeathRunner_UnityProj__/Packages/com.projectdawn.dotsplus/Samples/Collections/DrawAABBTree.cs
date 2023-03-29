@@ -24,7 +24,7 @@ public class DrawAABBTree : MonoBehaviour
         Line,
     }
 
-    struct Volume : ISurfaceArea<Volume>, IUnion<Volume>
+    private struct Volume : ISurfaceArea<Volume>, IUnion<Volume>
     {
         public Rectangle Rectangle;
 
@@ -99,7 +99,7 @@ public class DrawAABBTree : MonoBehaviour
         }
     }
 
-    void DrawNode(UnsafeAABBTree<Volume> tree, UnsafeAABBTree<Volume>.Handle node)
+    private void DrawNode(UnsafeAABBTree<Volume> tree, UnsafeAABBTree<Volume>.Handle node)
     {
         if (!node.Valid)
             return;

@@ -52,7 +52,7 @@ namespace LibTessDotNet
         public delegate bool LessOrEqual(TValue lhs, TValue rhs);
 
         private LessOrEqual _leq;
-        Node _head;
+        private Node _head;
 
         public Dict(LessOrEqual leq)
         {

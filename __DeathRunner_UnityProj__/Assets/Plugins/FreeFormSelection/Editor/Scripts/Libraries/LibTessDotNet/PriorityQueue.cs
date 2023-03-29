@@ -65,12 +65,12 @@ namespace LibTessDotNet
             _initialized = false;
         }
 
-        class StackItem
+        private class StackItem
         {
             internal int p, r;
         };
 
-        static void Swap(ref int a, ref int b)
+        private static void Swap(ref int a, ref int b)
         {
             int tmp = a;
             a = b;

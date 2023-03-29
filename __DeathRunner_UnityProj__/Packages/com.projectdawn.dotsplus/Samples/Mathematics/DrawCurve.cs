@@ -30,7 +30,7 @@ public abstract class DrawCurve : MonoBehaviour
 
     protected abstract float SolveForY(float x);
 
-    void DrawRect(Rectangle rect, Color color)
+    private void DrawRect(Rectangle rect, Color color)
     {
         Gizmos.color = color;
         var a = new Vector3(rect.Min.x, rect.Min.y) + transform.position;
@@ -43,7 +43,7 @@ public abstract class DrawCurve : MonoBehaviour
         Gizmos.DrawLine(d, a);
     }
 
-    void DrawDottedLine(float2 a, float2 b, float size, Color color)
+    private void DrawDottedLine(float2 a, float2 b, float size, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.color = color;

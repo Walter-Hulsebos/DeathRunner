@@ -14,7 +14,7 @@ namespace FastScriptReload.Runtime
         }
         
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterAssembliesLoaded)]
-        static void Init()
+        private static void Init()
         {
             LoggerScoped.LogPrefix = "FSR: ";
         }

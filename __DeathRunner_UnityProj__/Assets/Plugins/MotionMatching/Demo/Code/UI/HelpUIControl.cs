@@ -20,7 +20,7 @@ namespace MxMExamples
 
         private bool m_uiHidden = false;
 
-        void Update()
+        private void Update()
         {
             if (Input.GetKeyDown(KeyCode.H))
             {

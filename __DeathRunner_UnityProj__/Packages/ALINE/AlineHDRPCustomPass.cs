@@ -6,7 +6,7 @@ using UnityEngine.Experimental.Rendering;
 
 namespace Drawing {
 	/// <summary>Custom High Definition Render Pipeline Render Pass for ALINE</summary>
-	class AlineHDRPCustomPass : CustomPass {
+	internal class AlineHDRPCustomPass : CustomPass {
 		protected override void Setup (ScriptableRenderContext renderContext, CommandBuffer cmd) {
 		}
 

@@ -23,8 +23,7 @@ namespace ProjectDawn.Geometry3D
     [DebuggerDisplay("Length = {Length}, Capacity = {Capacity}, IsCreated = {IsCreated}")]
     public unsafe struct VertexData : INativeDisposable
     {
-        [NativeDisableUnsafePtrRestriction]
-        UnsafeVertexData* m_Data;
+        [NativeDisableUnsafePtrRestriction] private UnsafeVertexData* m_Data;
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
         internal AtomicSafetyHandle m_Safety;
@@ -304,7 +303,7 @@ namespace ProjectDawn.Geometry3D
     }
 
     [BurstCompile]
-    unsafe struct VertexDataDisposeJob : IJob
+    internal unsafe struct VertexDataDisposeJob : IJob
     {
         [NativeDisableUnsafePtrRestriction]
         public UnsafeVertexData* VertexData;

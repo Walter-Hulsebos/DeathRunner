@@ -8,12 +8,12 @@ namespace Drawing.Examples {
 	public class BurstExample : MonoBehaviour {
 		// Use [BurstCompile] to allow Unity to compile the job using the Burst compiler
 		[BurstCompile]
-		struct DrawingJob : IJob {
+		private struct DrawingJob : IJob {
 			public float2 offset;
 			// The job takes a command builder which we can use to draw things with
 			public CommandBuilder builder;
 
-			Color Colormap (float x) {
+			private Color Colormap (float x) {
 				// Simple color map that goes from black through red to yellow
 				float r = math.clamp(8.0f / 3.0f * x, 0.0f, 1.0f);
 				float g = math.clamp(8.0f / 3.0f * x - 1.0f, 0.0f, 1.0f);

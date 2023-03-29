@@ -5,8 +5,7 @@ using UnityEngine;
 namespace KevinIglesias {
 
     public class ThrowNova : StateMachineBehaviour {
-
-        CastSpells cS;
+        private CastSpells cS;
     
         public float spawnDelay;
         

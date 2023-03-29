@@ -22,7 +22,7 @@ namespace Drawing {
 		///
 		/// By using OnDrawGizmosSelected instead of OnDrawGizmos we minimize the overhead of Unity calling this empty method.
 		/// </summary>
-		void OnDrawGizmosSelected () {
+		private void OnDrawGizmosSelected () {
 		}
 
 		public virtual void DrawGizmos () {

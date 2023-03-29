@@ -17,7 +17,7 @@ namespace BlenderActions
 		public static Color DimGreen = new Color(0.5f, 0.7f, 0.5f);
 
 		public int FontSize = 14;
-		int TitleFontSize = 24;
+		private int TitleFontSize = 24;
 
 		[MenuItem("Window/Blender Actions")]
 		public static void OpenWindow()
@@ -39,8 +39,9 @@ namespace BlenderActions
 		}
 
 		/// <summary>Last frame user's position in the ScrollView.</summary>
-		Vector2 lastScrollViewPosition = Vector2.zero;
-		void OnGUI()
+		private Vector2 lastScrollViewPosition = Vector2.zero;
+
+		private void OnGUI()
 		{
 			if (Event.current != null && Event.current.type == EventType.KeyDown
 				&& Event.current.keyCode == KeyCode.Escape)
@@ -1237,7 +1238,7 @@ namespace BlenderActions
 			}
 		}
 
-		void ToggleBlenderActionsON_OFF()
+		private void ToggleBlenderActionsON_OFF()
 		{
 			SavableEditorPrefs.BlenderActionsON = !SavableEditorPrefs.BlenderActionsON;
 			if (SavableEditorPrefs.BlenderActionsON)
@@ -1246,7 +1247,7 @@ namespace BlenderActions
 				BlenderActions.TurnBlenderActionsOFF();
 		}
 
-		void OnLostFocus()
+		private void OnLostFocus()
 		{
 			SavableEditorPrefs.Save();
 		}
@@ -1257,8 +1258,8 @@ namespace BlenderActions
 	{
 		public ConfigWindow ConfigWindow;
 		public bool IsMain = false;
-		GUIContent content = new GUIContent();
-		GUIStyle style = new GUIStyle(EditorStyles.textField);
+		private GUIContent content = new GUIContent();
+		private GUIStyle style = new GUIStyle(EditorStyles.textField);
 
 		public static EnterKey OpenWindow(ConfigWindow configWindow, bool isMain)
 		{
@@ -1290,7 +1291,7 @@ namespace BlenderActions
 			return window;
 		}
 
-		void FocusConfigWindow()
+		private void FocusConfigWindow()
 		{
 			if (ConfigWindow != null)
 			{
@@ -1317,7 +1318,7 @@ namespace BlenderActions
 		}
 
 
-		void OnGUI()
+		private void OnGUI()
 		{
 			string text = "";
 			if (SavableEditorPrefs.Language == Language.ENG)

@@ -19,8 +19,8 @@ using System.Threading;
 
 public class DeferredSynchronizeInvoke : ISynchronizeInvoke
 {
-    Queue<UnityAsyncResult> fifoToExecute = new Queue<UnityAsyncResult>();
-    Thread mainThread;
+    private Queue<UnityAsyncResult> fifoToExecute = new Queue<UnityAsyncResult>();
+    private Thread mainThread;
     public bool InvokeRequired { get { return mainThread.ManagedThreadId != Thread.CurrentThread.ManagedThreadId; } }
 
     public DeferredSynchronizeInvoke()
@@ -87,7 +87,8 @@ public class DeferredSynchronizeInvoke : ISynchronizeInvoke
             data.IsCompleted = true;
         }
     }
-    class UnityAsyncResult : IAsyncResult
+
+    private class UnityAsyncResult : IAsyncResult
     {
         public Delegate method;
         public object[] args;

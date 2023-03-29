@@ -25,7 +25,7 @@ namespace ProjectDawn.Collections
         where TComparer : unmanaged, IComparer<TValue>
     {
         public UnsafeLinkedList<TValue> m_Data;
-        TComparer m_Comparer;
+        private TComparer m_Comparer;
 
         /// <summary>
         /// Whether the queue is empty.
@@ -230,7 +230,7 @@ namespace ProjectDawn.Collections
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        static void ThrowQueueEmpty()
+        private static void ThrowQueueEmpty()
         {
             throw new InvalidOperationException("Trying to dequeue from an empty queue");
         }

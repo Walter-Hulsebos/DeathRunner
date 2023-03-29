@@ -161,7 +161,7 @@ namespace ProjectDawn.Collections.Tests
             list.Dispose();
         }
 
-        struct IntComparer : IComparer<int>
+        private struct IntComparer : IComparer<int>
         {
             public int Compare(int x, int y) => x.CompareTo(y);
         }
@@ -239,7 +239,7 @@ namespace ProjectDawn.Collections.Tests
             linkedList.Dispose();
         }
 
-        static T GetElementAtIndex<T>(UnsafeLinkedList<T> list, int index) where T : unmanaged
+        private static T GetElementAtIndex<T>(UnsafeLinkedList<T> list, int index) where T : unmanaged
         {
             var itr = list.Begin;
             for (int i = 0; i < index; ++i)

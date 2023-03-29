@@ -111,9 +111,9 @@ namespace ProjectDawn.Geometry2D
         /// </summary>
         public NativeList<VoronoiVertex> Vertices;
 
-        NativeList<int> EdgeIndices;
-        Rectangle Bounds;
-        int4 CornerVertexIndices;
+        private NativeList<int> EdgeIndices;
+        private Rectangle Bounds;
+        private int4 CornerVertexIndices;
 
         public VoronoiDiagram(Rectangle bounds, Allocator allocator)
         {
@@ -231,7 +231,7 @@ namespace ProjectDawn.Geometry2D
             EdgeIndices.Dispose();
         }
 
-        void CreateCornerVertices()
+        private void CreateCornerVertices()
         {
             Bounds.GetPoints(out float2 a, out float2 b, out float2 c, out float2 d);
             CornerVertexIndices.x = CreateVertex(c, VoronoiVertexType.Corner);
@@ -240,7 +240,7 @@ namespace ProjectDawn.Geometry2D
             CornerVertexIndices.w = CreateVertex(b, VoronoiVertexType.Corner);
         }
 
-        void ConnectEdges(NativeLinkedList<VoronoiEdge>.Iterator position, NativeLinkedList<VoronoiEdge>.Iterator from, NativeLinkedList<VoronoiEdge>.Iterator to)
+        private void ConnectEdges(NativeLinkedList<VoronoiEdge>.Iterator position, NativeLinkedList<VoronoiEdge>.Iterator from, NativeLinkedList<VoronoiEdge>.Iterator to)
         {
             int fromVertexIndex = from.Value.ToVertexIndex;
             int toVertexIndex = to.Value.FromVertexIndex;
@@ -293,7 +293,7 @@ namespace ProjectDawn.Geometry2D
             }
         }
 
-        int CreateVertex(float2 point, VoronoiVertexType type = VoronoiVertexType.Default)
+        private int CreateVertex(float2 point, VoronoiVertexType type = VoronoiVertexType.Default)
         {
             int index = Vertices.Length;
             Vertices.Add(new VoronoiVertex
@@ -304,7 +304,7 @@ namespace ProjectDawn.Geometry2D
             return index;
         }
 
-        NativeLinkedList<VoronoiEdge>.Iterator CreateEdgeAt(NativeLinkedList<VoronoiEdge>.Iterator position, int fromVertexIndex, int toVertexIndex)
+        private NativeLinkedList<VoronoiEdge>.Iterator CreateEdgeAt(NativeLinkedList<VoronoiEdge>.Iterator position, int fromVertexIndex, int toVertexIndex)
         {
             return Edges.Insert(position, new VoronoiEdge
             {
@@ -313,7 +313,7 @@ namespace ProjectDawn.Geometry2D
             });
         }
 
-        struct EdgeComparer : IComparer<VoronoiEdge>
+        private struct EdgeComparer : IComparer<VoronoiEdge>
         {
             public VoronoiVertex* Vertices;
             public float2 Center;
@@ -332,7 +332,7 @@ namespace ProjectDawn.Geometry2D
             }
         }
 
-        bool ClipEdgeWithBounds(
+        private bool ClipEdgeWithBounds(
             double a, double b, double c, int leftVertexIndex, int rightVertexIndex, Rectangle rectangle, 
             out double2 leftVertex, out double2 rightVertex, 
             out VoronoiVertexType leftVertexType, out VoronoiVertexType rightVertexType)

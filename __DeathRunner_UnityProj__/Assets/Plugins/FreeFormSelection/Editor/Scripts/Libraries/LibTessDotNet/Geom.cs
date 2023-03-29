@@ -206,7 +206,7 @@ namespace LibTessDotNet
                     : (y + (x-y) * (b/(a+b))));
         }
 
-        static void Swap(ref MeshUtils.Vertex a, ref MeshUtils.Vertex b)
+        private static void Swap(ref MeshUtils.Vertex a, ref MeshUtils.Vertex b)
         {
             var tmp = a;
             a = b;

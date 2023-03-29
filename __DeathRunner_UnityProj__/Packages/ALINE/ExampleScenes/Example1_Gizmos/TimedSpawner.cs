@@ -9,7 +9,7 @@ namespace Drawing.Examples {
 		public GameObject prefab;
 
 		// Start is called before the first frame update
-		IEnumerator Start () {
+		private IEnumerator Start () {
 			while (true) {
 				var go = GameObject.Instantiate(prefab, transform.position + Random.insideUnitSphere * 0.01f, Random.rotation);
 				StartCoroutine(DestroyAfter(go, lifeTime));
@@ -17,7 +17,7 @@ namespace Drawing.Examples {
 			}
 		}
 
-		IEnumerator DestroyAfter (GameObject go, float delay) {
+		private IEnumerator DestroyAfter (GameObject go, float delay) {
 			yield return new WaitForSeconds(delay);
 			GameObject.Destroy(go);
 		}

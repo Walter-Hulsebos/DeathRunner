@@ -8,16 +8,13 @@ namespace FastScriptReload.Examples
 {
 	public class Graph : MonoBehaviour {
 
-		[SerializeField]
-		Transform pointPrefab;
+		[SerializeField] private Transform pointPrefab;
 
-		[SerializeField, Range(10, 100)]
-		int resolution = 10;
+		[SerializeField, Range(10, 100)] private int resolution = 10;
 
-		[SerializeField]
-		FunctionLibrary.FunctionName function;
-		
-		Transform[] points;
+		[SerializeField] private FunctionLibrary.FunctionName function;
+
+		private Transform[] points;
 		
 		/*  EXPERIMENTAL: Add new fields at runtime (editor rendered)
 		 *  To enable feature please go to Fast Script Reload -> Start Screen -> New Fields -> Enable experimental added field support
@@ -34,7 +31,7 @@ namespace FastScriptReload.Examples
 		
 		// [SerializeField] [Range(-3, 3)] private float _testUMove = 0f; //EXPERIMENTAL: Add new field example
 
-		void Awake ()
+		private void Awake ()
 		{
 			var pointsHolderGo = new GameObject("PointsHolder");
 		
@@ -47,9 +44,9 @@ namespace FastScriptReload.Examples
 				point.SetParent(pointsHolderGo.transform, false);
 			}
 		}
-		
 
-		void Update() 
+
+		private void Update() 
 		{
 			var f = FunctionLibrary.GetFunction(function);
 			var time = Time.time;
@@ -73,12 +70,12 @@ namespace FastScriptReload.Examples
 			}
 		}
 
-		void OnScriptHotReload()
+		private void OnScriptHotReload()
 		{
 			Debug.Log($"Script 'Graph.cs' was changed and hot reloaded, you have access to instance via 'this', eg: {nameof(resolution)} value is: {resolution}"); 
 		}
-		
-		static void OnScriptHotReloadNoInstance()
+
+		private static void OnScriptHotReloadNoInstance()
 		{
 			Debug.Log("Script 'Graph.cs' was changed - this method is executed even without any instance in the scene. There's no access to 'this'. " +
 			          "Useful if you just added a type / need to perform some one-off init"); 

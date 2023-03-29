@@ -12,7 +12,7 @@ namespace ProjectDawn.Geometry2D
         /// Polygon points must be convex and sorted counter clockwise.
         /// Based on https://stackoverflow.com/questions/27872964/confusion-on-delaunay-triangulation-and-largest-inscribed-circle
         /// </summary>
-        static Circle MaxInscribedCircle<TTranform>(NativeSlice<float2> points, TTranform transform, float2 centroid)
+        private static Circle MaxInscribedCircle<TTranform>(NativeSlice<float2> points, TTranform transform, float2 centroid)
             where TTranform : unmanaged, ITransformFloat2
         {
             // Idea of algorithm is to construct straight skeleton https://en.wikipedia.org/wiki/Straight_skeleton.
@@ -73,7 +73,7 @@ namespace ProjectDawn.Geometry2D
             return new Circle(center, radius);
         }
 
-        static float2 GetTriangleMaxInscribedCircleRadius(Line previousEdge, Line edge, Line nextEdge)
+        private static float2 GetTriangleMaxInscribedCircleRadius(Line previousEdge, Line edge, Line nextEdge)
         {
             float2 normal = math2.perpendicularleft(edge.Direction);
             float2 previousNormal = math2.perpendicularleft(previousEdge.Direction);
@@ -92,7 +92,7 @@ namespace ProjectDawn.Geometry2D
             return collapsePoint;
         }
 
-        static float GetInscribedCircleRadius<TTranform>(NativeSlice<float2> points, TTranform transform, float2 center)
+        private static float GetInscribedCircleRadius<TTranform>(NativeSlice<float2> points, TTranform transform, float2 center)
             where TTranform : unmanaged, ITransformFloat2
         {
             var radius = float.MaxValue;
@@ -109,7 +109,7 @@ namespace ProjectDawn.Geometry2D
             return radius;
         }
 
-        static int Collapse(NativeArray<CollapseEdge> edges, CollapseEvent ev)
+        private static int Collapse(NativeArray<CollapseEdge> edges, CollapseEvent ev)
         {
             CollapseEdge edge = edges[ev.EdgeIndex];
             CollapseEdge previousEdge = edges[edge.PreviousEdgeIndex];
@@ -129,7 +129,7 @@ namespace ProjectDawn.Geometry2D
             return edge.NextEdgeIndex;
         }
 
-        static void RecalculateNormals(NativeArray<CollapseEdge> edges, int edgeIndex)
+        private static void RecalculateNormals(NativeArray<CollapseEdge> edges, int edgeIndex)
         {
             int currentEdge = edgeIndex;
             while (true)
@@ -147,7 +147,7 @@ namespace ProjectDawn.Geometry2D
             }
         }
 
-        static CollapseEvent FindCollapseEvent(NativeArray<CollapseEdge> edges, int headIndex)
+        private static CollapseEvent FindCollapseEvent(NativeArray<CollapseEdge> edges, int headIndex)
         {
             CollapseEvent e = new CollapseEvent { EdgeIndex = -1, Time = float.MaxValue };
             int currentEdge = headIndex;
@@ -192,7 +192,7 @@ namespace ProjectDawn.Geometry2D
             return e;
         }
 
-        static void Shrink(NativeArray<CollapseEdge> edges, int edgeIndex, float time)
+        private static void Shrink(NativeArray<CollapseEdge> edges, int edgeIndex, float time)
         {
             int currentEdge = edgeIndex;
             while (true)
@@ -226,14 +226,14 @@ namespace ProjectDawn.Geometry2D
             }
         }
 
-        struct CollapseEvent
+        private struct CollapseEvent
         {
             public int EdgeIndex;
             public float2 CollapsePoint;
             public float Time;
         }
 
-        struct CollapseEdge
+        private struct CollapseEdge
         {
             public Line Line;
             public int PreviousEdgeIndex;

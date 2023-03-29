@@ -113,7 +113,7 @@ namespace MxM
         *  trajectory generator
         *         
         *********************************************************************************************/
-        void Start()
+        private void Start()
         {
             m_navAgent = GetComponentInChildren<NavMeshAgent>();
             Assert.IsNotNull(m_navAgent, "Error: MxMTrajectoryGEnerator_AI - cannot find NavMeshAgent component");

@@ -13,7 +13,7 @@ public class DrawParabola : DrawCurve
     public int NumSteps = 100;
     public float DottedLineSize = 10;
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         DrawGizmos(Bounds, NumSteps, DottedLineSize);
     }

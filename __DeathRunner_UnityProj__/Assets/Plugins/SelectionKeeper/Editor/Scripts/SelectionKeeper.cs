@@ -19,8 +19,8 @@ namespace kamgam.editor.selectionkeeper
     [InitializeOnLoad]
     public class SelectionKeeper
     {
-        static int _ignoreNextSceneLoads;
-        static bool _ignoreNextSelectionChange;
+        private static int _ignoreNextSceneLoads;
+        private static bool _ignoreNextSelectionChange;
 
         static SelectionKeeper()
         {
@@ -50,7 +50,7 @@ namespace kamgam.editor.selectionkeeper
             }
         }
 
-        static void onPlayModeStateChanged(PlayModeStateChange state)
+        private static void onPlayModeStateChanged(PlayModeStateChange state)
         {
             // handle scene changes in between changes from Edit to Play mode.
             if (state.Equals(PlayModeStateChange.ExitingEditMode))
@@ -97,7 +97,7 @@ namespace kamgam.editor.selectionkeeper
         /// </summary>
         /// <param name="scene"></param>
         /// <param name="sceneMode"></param>
-        static void onSceneLoaded( Scene scene, LoadSceneMode sceneMode )
+        private static void onSceneLoaded( Scene scene, LoadSceneMode sceneMode )
         {
             if ( SelectionKeeper_Settings.enablePlugin && _ignoreNextSceneLoads-- <= 0 )
             {
@@ -106,7 +106,7 @@ namespace kamgam.editor.selectionkeeper
         }
 
         [MenuItem("Tools/Selection Keeper/Clear Selection Memory", priority = 200)]
-        static void ClearSelectionMemory()
+        private static void ClearSelectionMemory()
         {
             EditorPrefs.DeleteKey("SelectionKeeper.selection");
             EditorPrefs.DeleteKey("SelectionKeeper.openedScenes");
@@ -122,7 +122,7 @@ namespace kamgam.editor.selectionkeeper
         /// Tries to find and select the objects stored in EditorPrefs.SelectionKeeper.selection.
         /// </summary>
         // [MenuItem("Tools/Selection Keeper/LoadSelection")] // for testing purposes
-        static void LoadSelection()
+        private static void LoadSelection()
         {
             List<GameObject> newSelection = new List<GameObject>();
 
@@ -194,7 +194,7 @@ namespace kamgam.editor.selectionkeeper
             }
         }
 
-        static void removePingObjectEffect()
+        private static void removePingObjectEffect()
         {
             // undocumented feature thus wrapped in try/catch
             try
@@ -210,7 +210,7 @@ namespace kamgam.editor.selectionkeeper
             };
         }
 
-        static List<string[]> deserializeSavedSelection()
+        private static List<string[]> deserializeSavedSelection()
         {
             var results = new List<string[]>();
             string selection = EditorPrefs.GetString("SelectionKeeper.selection", "");
@@ -227,7 +227,7 @@ namespace kamgam.editor.selectionkeeper
             return results;
         }
 
-        static List<Transform> getEquallyNamedChildren( Transform parent, string name )
+        private static List<Transform> getEquallyNamedChildren( Transform parent, string name )
         {
             var results = new List<Transform>();
             for( int i=0; i<parent.childCount; ++i )
@@ -240,7 +240,7 @@ namespace kamgam.editor.selectionkeeper
             return results;
         }
 
-        static Scene? getLoadedSceneByGuid(string sceneGuid)
+        private static Scene? getLoadedSceneByGuid(string sceneGuid)
         {
             if (SceneManager.sceneCount > 0)
             {
@@ -261,7 +261,7 @@ namespace kamgam.editor.selectionkeeper
             return null;
         }
 
-        static void onSelectionChanged()
+        private static void onSelectionChanged()
         {
             if (SelectionKeeper_Settings.enablePlugin)
             {
@@ -314,7 +314,7 @@ namespace kamgam.editor.selectionkeeper
         ///   scene.name \t scene.guid \t rootObjName \t rootObjSameNameSiblingIndex \t childObjName \t childObjSameNameSiblingIndex , ... \n [next path] \n [next path], ...
         ///   Example: MainScene \t as8u2o23rf98a9h3ajsd8hfa \t CharRoot \t 0 \t Torso \t 0 \t UpperArm \t 1 \t LowerArm \t 0 \t Hand \t 0 \t Finger \t 4
         /// </summary>
-        static void SaveSelection()
+        private static void SaveSelection()
         {
             List<string> allowedSceneGuids = null;
             if (EditorApplication.isPlaying)

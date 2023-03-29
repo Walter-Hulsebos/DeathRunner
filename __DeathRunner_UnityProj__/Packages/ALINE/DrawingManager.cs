@@ -21,10 +21,10 @@ namespace Drawing {
 	/// <summary>Info about the current selection in the editor</summary>
 	public static class GizmoContext {
 #if UNITY_EDITOR
-		static Transform activeTransform;
+		private static Transform activeTransform;
 #endif
 
-		static HashSet<Transform> selectedTransforms = new HashSet<Transform>();
+		private static HashSet<Transform> selectedTransforms = new HashSet<Transform>();
 
 		static internal bool drawingGizmos;
 
@@ -117,19 +117,18 @@ namespace Drawing {
 	[AddComponentMenu("")]
 	public class DrawingManager : MonoBehaviour {
 		public DrawingData gizmos;
-		static List<IDrawGizmos> gizmoDrawers = new List<IDrawGizmos>();
-		static DrawingManager _instance;
-		bool framePassed;
-		int lastFrameCount = int.MinValue;
+		private static List<IDrawGizmos> gizmoDrawers = new List<IDrawGizmos>();
+		private static DrawingManager _instance;
+		private bool framePassed;
+		private int lastFrameCount = int.MinValue;
 #if UNITY_EDITOR
-		bool builtGizmos;
+		private bool builtGizmos;
 #endif
 
 		/// <summary>True if OnEnable has been called on this instance and OnDisable has not</summary>
-		[SerializeField]
-		bool actuallyEnabled;
+		[SerializeField] private bool actuallyEnabled;
 
-		RedrawScope previousFrameRedrawScope;
+		private RedrawScope previousFrameRedrawScope;
 
 		/// <summary>
 		/// Allow rendering to cameras that render to RenderTextures.
@@ -141,10 +140,9 @@ namespace Drawing {
 		/// </summary>
 		public static bool allowRenderToRenderTextures = false;
 		public static bool drawToAllCameras = false;
-		CommandBuffer commandBuffer;
+		private CommandBuffer commandBuffer;
 
-		[System.NonSerialized]
-		DetectedRenderPipeline detectedRenderPipeline = DetectedRenderPipeline.BuiltInOrCustom;
+		[System.NonSerialized] private DetectedRenderPipeline detectedRenderPipeline = DetectedRenderPipeline.BuiltInOrCustom;
 
 #if MODULE_RENDER_PIPELINES_UNIVERSAL
 		HashSet<ScriptableRenderer> scriptableRenderersWithPass = new HashSet<ScriptableRenderer>();
@@ -185,7 +183,7 @@ namespace Drawing {
 		}
 
 		/// <summary>Detects which render pipeline is being used and configures them for rendering</summary>
-		void RefreshRenderPipelineMode () {
+		private void RefreshRenderPipelineMode () {
 			var pipelineType = RenderPipelineManager.currentPipeline != null? RenderPipelineManager.currentPipeline.GetType() : null;
 
 #if MODULE_RENDER_PIPELINES_HIGH_DEFINITION
@@ -219,20 +217,20 @@ namespace Drawing {
 		}
 
 #if UNITY_EDITOR
-		void DelayedDestroy () {
+		private void DelayedDestroy () {
 			EditorApplication.update -= DelayedDestroy;
 			// Check if the object still exists (it might have been destroyed in some other way already).
 			if (gameObject) GameObject.DestroyImmediate(gameObject);
 		}
 
-		void OnPlayModeStateChanged (PlayModeStateChange change) {
+		private void OnPlayModeStateChanged (PlayModeStateChange change) {
 			if (change == PlayModeStateChange.ExitingEditMode || change == PlayModeStateChange.ExitingPlayMode) {
 				gizmos.sceneModeVersion++;
 			}
 		}
 #endif
 
-		void OnEnable () {
+		private void OnEnable () {
 			if (_instance == null) _instance = this;
 
 			// Ensure we don't have duplicate managers
@@ -266,7 +264,7 @@ namespace Drawing {
 #endif
 		}
 
-		void BeginFrameRendering (ScriptableRenderContext context, Camera[] cameras) {
+		private void BeginFrameRendering (ScriptableRenderContext context, Camera[] cameras) {
 			RefreshRenderPipelineMode();
 
 #if MODULE_RENDER_PIPELINES_UNIVERSAL
@@ -286,7 +284,7 @@ namespace Drawing {
 #endif
 		}
 
-		void OnDisable () {
+		private void OnDisable () {
 			if (!actuallyEnabled) return;
 			actuallyEnabled = false;
 			Camera.onPostRender -= PostRender;
@@ -331,7 +329,7 @@ namespace Drawing {
 		// Draw.ingame_builder = gizmos.GetBuiltInBuilder(true);
 		// }
 
-		void OnUpdate () {
+		private void OnUpdate () {
 			framePassed = true;
 			if (Time.frameCount > lastFrameCount + 1) {
 				// More than one frame old
@@ -366,7 +364,7 @@ namespace Drawing {
 			}
 		}
 
-		void PostRender (Camera camera) {
+		private void PostRender (Camera camera) {
 			// This method is only called when using Unity's built-in render pipeline
 			commandBuffer.Clear();
 			SubmitFrame(camera, commandBuffer, false);
@@ -375,7 +373,7 @@ namespace Drawing {
 			UnityEngine.Profiling.Profiler.EndSample();
 		}
 
-		void CheckFrameTicking () {
+		private void CheckFrameTicking () {
 			if (Time.frameCount != lastFrameCount) {
 				framePassed = true;
 				lastFrameCount = Time.frameCount;
@@ -417,12 +415,12 @@ namespace Drawing {
 		}
 
 #if UNITY_EDITOR
-		static System.Reflection.MethodInfo IsGizmosAllowedForObject = typeof(UnityEditor.EditorGUIUtility).GetMethod("IsGizmosAllowedForObject", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
-		static System.Type AnnotationUtility = typeof(UnityEditor.PlayModeStateChange).Assembly?.GetType("UnityEditor.AnnotationUtility");
-		System.Object[] cachedObjectParameterArray = new System.Object[1];
+		private static System.Reflection.MethodInfo IsGizmosAllowedForObject = typeof(UnityEditor.EditorGUIUtility).GetMethod("IsGizmosAllowedForObject", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
+		private static System.Type AnnotationUtility = typeof(UnityEditor.PlayModeStateChange).Assembly?.GetType("UnityEditor.AnnotationUtility");
+		private System.Object[] cachedObjectParameterArray = new System.Object[1];
 #endif
 
-		bool use3dGizmos {
+		private bool use3dGizmos {
 			get {
 #if UNITY_EDITOR
 				var use3dGizmosProperty = AnnotationUtility.GetProperty("use3dGizmos", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic);
@@ -433,9 +431,9 @@ namespace Drawing {
 			}
 		}
 
-		Dictionary<System.Type, bool> typeToGizmosEnabled = new Dictionary<Type, bool>();
+		private Dictionary<System.Type, bool> typeToGizmosEnabled = new Dictionary<Type, bool>();
 
-		bool ShouldDrawGizmos (UnityEngine.Object obj) {
+		private bool ShouldDrawGizmos (UnityEngine.Object obj) {
 #if UNITY_EDITOR
 			// Use reflection to call EditorGUIUtility.IsGizmosAllowedForObject which is an internal method.
 			// It is exactly the information we want though.
@@ -447,7 +445,7 @@ namespace Drawing {
 #endif
 		}
 
-		void RemoveDestroyedGizmoDrawers () {
+		private void RemoveDestroyedGizmoDrawers () {
 			UnityEngine.Profiling.Profiler.BeginSample("Filter destroyed objects");
 			int j = 0;
 			for (int i = 0; i < gizmoDrawers.Count; i++) {
@@ -462,7 +460,7 @@ namespace Drawing {
 		}
 
 #if UNITY_EDITOR
-		void DrawGizmos (bool usingRenderPipeline) {
+		private void DrawGizmos (bool usingRenderPipeline) {
 			UnityEngine.Profiling.Profiler.BeginSample("Refresh Selection Cache");
 			GizmoContext.Refresh();
 			UnityEngine.Profiling.Profiler.EndSample();
@@ -579,7 +577,7 @@ namespace Drawing {
 
 		/// <summary>Submit a camera for rendering.</summary>
 		/// <param name="allowCameraDefault">Indicates if built-in command builders and custom ones without a custom CommandBuilder.cameraTargets should render to this camera.</param>
-		void Submit (Camera camera, CommandBuffer cmd, bool usingRenderPipeline, bool allowCameraDefault) {
+		private void Submit (Camera camera, CommandBuffer cmd, bool usingRenderPipeline, bool allowCameraDefault) {
 			// This must always be done to avoid a potential memory leak if gizmos are never drawn
 			RemoveDestroyedGizmoDrawers();
 #if UNITY_EDITOR

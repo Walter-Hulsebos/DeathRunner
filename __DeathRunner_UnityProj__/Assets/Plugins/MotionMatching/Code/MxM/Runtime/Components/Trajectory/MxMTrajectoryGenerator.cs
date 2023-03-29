@@ -334,7 +334,7 @@ namespace MxM
         * smooth manner.
         *         
         *********************************************************************************************/
-        void UpdatePrediction_ComplexAI()
+        private void UpdatePrediction_ComplexAI()
         {
             if (m_path == null)
                 m_path = new Vector3[6];

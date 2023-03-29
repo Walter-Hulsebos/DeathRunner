@@ -5,8 +5,7 @@ using UnityEngine;
 namespace KevinIglesias {
 
     public class AddCastEffect : StateMachineBehaviour {
-
-        CastSpells cS;
+        private CastSpells cS;
 
         public CastHand castHand;
         

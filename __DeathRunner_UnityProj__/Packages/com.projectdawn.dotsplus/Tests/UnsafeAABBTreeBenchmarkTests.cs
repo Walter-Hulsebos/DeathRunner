@@ -16,7 +16,7 @@ namespace ProjectDawn.Collections.Tests
 {
     internal class UnsafeAABBTreeBenchmarkTests
     {
-        struct AABRectangle : ISurfaceArea<AABRectangle>, IUnion<AABRectangle>
+        private struct AABRectangle : ISurfaceArea<AABRectangle>, IUnion<AABRectangle>
         {
             public Rectangle Rectangle;
 
@@ -29,7 +29,7 @@ namespace ProjectDawn.Collections.Tests
         }
 
         [BurstCompile(CompileSynchronously = true)]
-        unsafe struct AABRectangleJob : IJob
+        private unsafe struct AABRectangleJob : IJob
         {
             [NativeDisableUnsafePtrRestriction]
             public int* Count;
@@ -81,7 +81,7 @@ namespace ProjectDawn.Collections.Tests
         }
 
         [BurstCompile(CompileSynchronously = true)]
-        unsafe struct RectangleBruteForceJob : IJob
+        private unsafe struct RectangleBruteForceJob : IJob
         {
             [NativeDisableUnsafePtrRestriction]
             public int* Count;
@@ -186,7 +186,7 @@ namespace ProjectDawn.Collections.Tests
             rectangles.Dispose();
         }
 
-        struct AABCircle : ISurfaceArea<AABCircle>, IUnion<AABCircle>
+        private struct AABCircle : ISurfaceArea<AABCircle>, IUnion<AABCircle>
         {
             public Circle Shape;
 
@@ -199,7 +199,7 @@ namespace ProjectDawn.Collections.Tests
         }
 
         [BurstCompile(CompileSynchronously = true)]
-        unsafe struct AABCircleJob : IJob
+        private unsafe struct AABCircleJob : IJob
         {
             [NativeDisableUnsafePtrRestriction]
             public int* Count;
@@ -252,7 +252,7 @@ namespace ProjectDawn.Collections.Tests
         }
 
         [BurstCompile(CompileSynchronously = true)]
-        unsafe struct CircleBruteForceJob : IJob
+        private unsafe struct CircleBruteForceJob : IJob
         {
             [NativeDisableUnsafePtrRestriction]
             public int* Count;

@@ -5,8 +5,7 @@ using UnityEngine;
 namespace KevinIglesias {
 
     public class ThrowFireball : StateMachineBehaviour {
-
-        CastSpells cS;
+        private CastSpells cS;
 
         public CastHand castHand;
         

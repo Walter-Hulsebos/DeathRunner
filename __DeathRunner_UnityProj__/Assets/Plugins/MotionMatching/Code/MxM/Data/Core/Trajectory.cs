@@ -6,58 +6,58 @@ namespace MxM
     [System.Serializable]
     public struct Trajectory
     {
-        TrajectoryPoint PointA;
-        TrajectoryPoint PointB;
-        TrajectoryPoint PointC;
-        TrajectoryPoint PointD;
+        private TrajectoryPoint PointA;
+        private TrajectoryPoint PointB;
+        private TrajectoryPoint PointC;
+        private TrajectoryPoint PointD;
 
     }//End of struct: Trajectory
 
     public struct TrajectoryFlat
     {
-        float PointAPosX;
-        float PointAPosY;
-        float PointAPosZ;
-        float PointAFacing;
+        private float PointAPosX;
+        private float PointAPosY;
+        private float PointAPosZ;
+        private float PointAFacing;
 
-        float PointBPosX;
-        float PointBPosY;
-        float PointBPosZ;
-        float PointBFacing;
+        private float PointBPosX;
+        private float PointBPosY;
+        private float PointBPosZ;
+        private float PointBFacing;
 
-        float PointCPosX;
-        float PointCPosY;
-        float PointCPosZ;
-        float PointCFacing;
+        private float PointCPosX;
+        private float PointCPosY;
+        private float PointCPosZ;
+        private float PointCFacing;
 
-        float PointDPosX;
-        float PointDPosY;
-        float PointDPosZ;
-        float PointDFacing;
+        private float PointDPosX;
+        private float PointDPosY;
+        private float PointDPosZ;
+        private float PointDFacing;
 
-        float PointEPosX;
-        float PointEPosY;
-        float PointEPosZ;
-        float PointEFacing;
+        private float PointEPosX;
+        private float PointEPosY;
+        private float PointEPosZ;
+        private float PointEFacing;
 
     }//End of struct: TrajectoryFlat
 
     public struct TrajectorySemi
     {
-        Vector3 PointAPos;
-        float PointAFacing;
+        private Vector3 PointAPos;
+        private float PointAFacing;
 
-        Vector3 PointBPos;
-        float PointBFacing;
+        private Vector3 PointBPos;
+        private float PointBFacing;
 
-        Vector3 PointCPos;
-        float PointCFacing;
+        private Vector3 PointCPos;
+        private float PointCFacing;
 
-        Vector3 PointDPos;
-        float PointDFacing;
+        private Vector3 PointDPos;
+        private float PointDFacing;
 
-        Vector3 PointEPos;
-        float PointEFacing;
+        private Vector3 PointEPos;
+        private float PointEFacing;
     }//End of struct: TrajectorySemi
 
 

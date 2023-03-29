@@ -17,7 +17,7 @@ namespace kamgam.editor
     [InitializeOnLoad]
     public class Coroutines
     {
-        static List<IEnumerator> _coroutines;
+        private static List<IEnumerator> _coroutines;
 
         static Coroutines()
         {
@@ -28,7 +28,7 @@ namespace kamgam.editor
         /// <summary>
         /// Update loop for the coroutines.
         /// </summary>
-        static void advanceCoroutines()
+        private static void advanceCoroutines()
         {
             for (int i = _coroutines.Count() - 1; i >= 0; --i)
             {

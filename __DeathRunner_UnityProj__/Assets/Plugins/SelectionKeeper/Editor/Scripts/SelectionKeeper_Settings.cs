@@ -104,7 +104,7 @@ namespace kamgam.editor.selectionkeeper
             return settings;
         }
 
-        static SelectionKeeper_Settings getSettingsFromFile()
+        private static SelectionKeeper_Settings getSettingsFromFile()
         {
             SelectionKeeper_Settings settings = null;
 
@@ -117,7 +117,7 @@ namespace kamgam.editor.selectionkeeper
             return settings;
         }
 
-        static SelectionKeeper_Settings createSettingsInstance()
+        private static SelectionKeeper_Settings createSettingsInstance()
         {
             SelectionKeeper_Settings settings = ScriptableObject.CreateInstance<SelectionKeeper_Settings>();
             return settings;

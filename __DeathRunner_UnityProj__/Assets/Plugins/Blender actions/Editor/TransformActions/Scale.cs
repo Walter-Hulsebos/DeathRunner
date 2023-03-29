@@ -82,10 +82,7 @@ namespace BlenderActions
 		}
 
 
-
-
-
-		void GetColliderParameters(out Vector3 size, out float radius, out float height)
+		private void GetColliderParameters(out Vector3 size, out float radius, out float height)
 		{//#colreg(green);
 			size = Vector3.zero;
 			radius = 0;
@@ -114,7 +111,7 @@ namespace BlenderActions
 		}//#endcolreg
 
 
-		void SetColliderParameters(Vector3 size, float radius, float height)
+		private void SetColliderParameters(Vector3 size, float radius, float height)
 		{//#colreg(green);
 			if (BA.EditedBoxCollider != null)
 				BA.EditedBoxCollider.size = size;

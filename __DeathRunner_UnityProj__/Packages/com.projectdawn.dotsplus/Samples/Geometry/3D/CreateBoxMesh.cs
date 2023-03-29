@@ -9,7 +9,7 @@ public class CreateBoxMesh : MonoBehaviour
 {
     public Box Box = new Box(0, 1);
 
-    void Update()
+    private void Update()
     {
         var attributes = new NativeArray<VertexAttributeDescriptor>(1, Allocator.Temp);
         attributes[0] = new VertexAttributeDescriptor(VertexAttribute.Position, VertexAttributeFormat.Float32, 3);

@@ -29,7 +29,7 @@ namespace kamgam.editor
         }
 
 #if UNITY_5_6_OR_NEWER
-        static void onSceneLoaded(Scene scene, LoadSceneMode sceneMode)
+        private static void onSceneLoaded(Scene scene, LoadSceneMode sceneMode)
         {
             if (sceneLoaded != null)
             {

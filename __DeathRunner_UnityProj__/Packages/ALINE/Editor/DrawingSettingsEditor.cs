@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Drawing {
 	/// <summary>Helper for adding project settings</summary>
-	static class ALINESettingsRegister {
+	internal static class ALINESettingsRegister {
 		[SettingsProvider]
 		public static SettingsProvider CreateMyCustomSettingsProvider () {
 			// First parameter is the path in the Settings window.

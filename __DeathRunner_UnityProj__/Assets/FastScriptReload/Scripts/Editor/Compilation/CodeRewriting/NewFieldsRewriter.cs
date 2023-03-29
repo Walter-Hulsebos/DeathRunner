@@ -11,7 +11,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace FastScriptReload.Editor.Compilation.CodeRewriting
 {
-	class NewFieldsRewriter : FastScriptReloadCodeRewriterBase
+	internal class NewFieldsRewriter : FastScriptReloadCodeRewriterBase
 	{
 		private readonly Dictionary<string, List<string>> _typeToNewFieldDeclarations;
 

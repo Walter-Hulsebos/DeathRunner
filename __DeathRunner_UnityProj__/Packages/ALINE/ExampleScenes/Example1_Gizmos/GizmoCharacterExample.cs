@@ -14,14 +14,15 @@ namespace Drawing.Examples {
 		public int plotStartStep = 10;
 		public int plotEveryNSteps = 10;
 
-		float seed;
-		Vector3 startPosition;
-		void Start () {
+		private float seed;
+		private Vector3 startPosition;
+
+		private void Start () {
 			seed = Random.value * 1000;
 			startPosition = transform.position;
 		}
 
-		Vector3 GetSmoothRandomVelocity (float time, Vector3 position) {
+		private Vector3 GetSmoothRandomVelocity (float time, Vector3 position) {
 			// Use perlin noise to get a smoothly varying vector
 			float t = time * movementNoiseScale + seed;
 			var dx = 2*Mathf.PerlinNoise(t, t + 5341.23145f) - 1;
@@ -34,7 +35,7 @@ namespace Drawing.Examples {
 			return velocity;
 		}
 
-		void PlotFuturePath (float time, Vector3 position) {
+		private void PlotFuturePath (float time, Vector3 position) {
 			float dt = 0.05f;
 
 			for (int i = 0; i < futurePathPlotSteps; i++) {
@@ -49,7 +50,7 @@ namespace Drawing.Examples {
 		}
 
 		// Update is called once per frame
-		void Update () {
+		private void Update () {
 			PlotFuturePath(Time.time, transform.position);
 			Vector3 velocity = GetSmoothRandomVelocity(Time.time, transform.position);
 			transform.rotation = Quaternion.LookRotation(velocity);

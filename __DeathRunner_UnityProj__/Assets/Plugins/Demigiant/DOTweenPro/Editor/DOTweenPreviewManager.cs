@@ -16,9 +16,9 @@ namespace DG.DOTweenEditor
 {
     public static class DOTweenPreviewManager
     {
-        static bool _previewOnlyIfSetToAutoPlay = true;
-        static readonly Dictionary<DOTweenAnimation,TweenInfo> _AnimationToTween = new Dictionary<DOTweenAnimation,TweenInfo>();
-        static readonly List<DOTweenAnimation> _TmpKeys = new List<DOTweenAnimation>();
+        private static bool _previewOnlyIfSetToAutoPlay = true;
+        private static readonly Dictionary<DOTweenAnimation,TweenInfo> _AnimationToTween = new Dictionary<DOTweenAnimation,TweenInfo>();
+        private static readonly List<DOTweenAnimation> _TmpKeys = new List<DOTweenAnimation>();
 
         #region Public Methods & GUI
 
@@ -140,7 +140,7 @@ namespace DG.DOTweenEditor
 
 #region Methods
 
-        static void StartupGlobalPreview()
+private static void StartupGlobalPreview()
         {
             DOTweenEditorPreview.Start();
 #if UNITY_4_3 || UNITY_4_4 || UNITY_4_5 || UNITY_4_6 || UNITY_5
@@ -151,7 +151,7 @@ namespace DG.DOTweenEditor
 //            EditorApplication.playmodeStateChanged += StopAllPreviews;
         }
 
-        static void AddAnimationToGlobalPreview(DOTweenAnimation src)
+private static void AddAnimationToGlobalPreview(DOTweenAnimation src)
         {
             if (!src.isActive) return; // Ignore sources whose tweens have been set to inactive
             if (_previewOnlyIfSetToAutoPlay && !src.autoPlay) return;
@@ -163,7 +163,7 @@ namespace DG.DOTweenEditor
             DOTweenEditorPreview.PrepareTweenForPreview(t);
         }
 
-        static void StopPreview(GameObject go)
+private static void StopPreview(GameObject go)
         {
             _TmpKeys.Clear();
             foreach (KeyValuePair<DOTweenAnimation,TweenInfo> kvp in _AnimationToTween) {
@@ -177,7 +177,7 @@ namespace DG.DOTweenEditor
             else InternalEditorUtility.RepaintAllViews();
         }
 
-        static void StopPreview(Tween t)
+private static void StopPreview(Tween t)
         {
             TweenInfo tInfo = null;
             foreach (KeyValuePair<DOTweenAnimation,TweenInfo> kvp in _AnimationToTween) {
@@ -204,7 +204,7 @@ namespace DG.DOTweenEditor
         }
 
         // Stops while iterating inversely, which deals better with tweens that overwrite each other
-        static void StopPreview(List<DOTweenAnimation> keys)
+        private static void StopPreview(List<DOTweenAnimation> keys)
         {
             for (int i = keys.Count - 1; i > -1; --i) {
                 DOTweenAnimation anim = keys[i];
@@ -227,7 +227,7 @@ namespace DG.DOTweenEditor
         // ███ INTERNAL CLASSES ████████████████████████████████████████████████████████████████████████████████████████████████
         // █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
-        class TweenInfo
+        private class TweenInfo
         {
             public DOTweenAnimation animation;
             public Tween tween;
@@ -240,9 +240,9 @@ namespace DG.DOTweenEditor
             }
         }
 
-        static class Styles
+        private static class Styles
         {
-            static bool _initialized;
+            private static bool _initialized;
 
             public static GUIStyle previewBox, previewLabel, btOption, btPreview, previewStatusLabel;
 

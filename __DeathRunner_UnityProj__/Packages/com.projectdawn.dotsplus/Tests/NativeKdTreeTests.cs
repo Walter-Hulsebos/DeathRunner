@@ -7,7 +7,7 @@ namespace ProjectDawn.Collections.Tests
 {
     internal class NativeKdTreeTests
     {
-        struct TreeComparer : IKdTreeComparer<int>
+        private struct TreeComparer : IKdTreeComparer<int>
         {
             public int Compare(int x, int y, int depth) => x.CompareTo(y);
 
@@ -22,7 +22,7 @@ namespace ProjectDawn.Collections.Tests
             }
         }
 
-        struct ReadJob : IJob
+        private struct ReadJob : IJob
         {
             [ReadOnly]
             public NativeKdTree<int, TreeComparer> Tree;

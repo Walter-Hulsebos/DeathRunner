@@ -9,7 +9,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace FastScriptReload.Editor.Compilation.CodeRewriting
 {
-	class CreateNewFieldInitMethodRewriter: FastScriptReloadCodeRewriterBase {
+	internal class CreateNewFieldInitMethodRewriter: FastScriptReloadCodeRewriterBase {
 		private readonly Dictionary<string, List<string>> _typeToNewFieldDeclarations;
 		private static readonly string NewFieldsToCreateValueFnDictionaryFieldName = "__Patched_NewFieldNameToInitialValueFn";
 		private static readonly string NewFieldsToGetTypeFnDictionaryFieldName = "__Patched_NewFieldsToGetTypeFnDictionaryFieldName";

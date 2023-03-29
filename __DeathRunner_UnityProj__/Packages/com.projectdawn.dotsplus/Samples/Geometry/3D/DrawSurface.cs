@@ -22,7 +22,7 @@ public class DrawSurface : MonoBehaviour
 
     public TriangularSurface<Transformer> Surface => Mesh.ToTriangularSurface<Transformer>(Allocator.Temp, new Transformer { Matrix = transform.localToWorldMatrix });
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (Mesh == null)
             return;
@@ -54,7 +54,7 @@ public class DrawSurface : MonoBehaviour
         }
     }
 
-    void DrawSurfaceGizmo(TriangularSurface<Transformer> surface, Color color)
+    private void DrawSurfaceGizmo(TriangularSurface<Transformer> surface, Color color)
     {
         for (int i = 0; i < surface.NumTriangles; i++)
         {
@@ -62,7 +62,7 @@ public class DrawSurface : MonoBehaviour
         }
     }
 
-    void DrawWireSurface(TriangularSurface<Transformer> surface, Color color)
+    private void DrawWireSurface(TriangularSurface<Transformer> surface, Color color)
     {
         for (int i = 0; i < surface.NumTriangles; i++)
         {
@@ -70,7 +70,7 @@ public class DrawSurface : MonoBehaviour
         }
     }
 
-    void DrawTriangleGizmos(Triangle triangle, Color color)
+    private void DrawTriangleGizmos(Triangle triangle, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.zTest = UnityEngine.Rendering.CompareFunction.LessEqual;
@@ -79,7 +79,7 @@ public class DrawSurface : MonoBehaviour
 #endif
     }
 
-    void DrawWireTriangle(Triangle triangle, Color color)
+    private void DrawWireTriangle(Triangle triangle, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.zTest = UnityEngine.Rendering.CompareFunction.LessEqual;
@@ -90,7 +90,7 @@ public class DrawSurface : MonoBehaviour
 #endif
     }
 
-    void DrawDottedLine(Line line, float size, Color color)
+    private void DrawDottedLine(Line line, float size, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.zTest = UnityEngine.Rendering.CompareFunction.Disabled;
@@ -99,7 +99,7 @@ public class DrawSurface : MonoBehaviour
 #endif
     }
 
-    void DrawPoint(float3 point, float3 normal, float size, Color color)
+    private void DrawPoint(float3 point, float3 normal, float size, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.zTest = UnityEngine.Rendering.CompareFunction.Disabled;

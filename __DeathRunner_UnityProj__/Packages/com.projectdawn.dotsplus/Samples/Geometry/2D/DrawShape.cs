@@ -49,7 +49,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    float2 Transform(float2 point)
+    private float2 Transform(float2 point)
     {
         float3 pointWS = transform.TransformPoint(point.asvector3());
         return pointWS.xy;
@@ -68,7 +68,7 @@ public class DrawShape : MonoBehaviour
 
     public TransformFloat2 Tran => new TransformFloat2(transform.localToWorldMatrix);
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (BoundingRectangle)
             DrawBoundingRectangle();
@@ -113,7 +113,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    static float2 ClosestPoint(DrawShape a, float2 point)
+    private static float2 ClosestPoint(DrawShape a, float2 point)
     {
         if (a == null)
             return point;
@@ -128,7 +128,7 @@ public class DrawShape : MonoBehaviour
         return point;
     }
 
-    static bool Overlap(Circle a, DrawShape b)
+    private static bool Overlap(Circle a, DrawShape b)
     {
         if (b == null)
             return false;
@@ -152,7 +152,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    static bool Overlap(Rectangle a, DrawShape b)
+    private static bool Overlap(Rectangle a, DrawShape b)
     {
         if (b == null)
             return false;
@@ -176,7 +176,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    static bool Overlap(Line a, DrawShape b)
+    private static bool Overlap(Line a, DrawShape b)
     {
         if (b == null)
             return false;
@@ -200,7 +200,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    static bool Overlap(Capsule a, DrawShape b)
+    private static bool Overlap(Capsule a, DrawShape b)
     {
         if (b == null)
             return false;
@@ -224,7 +224,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    static bool Intersection(Ray a, DrawShape b, out Line intersection)
+    private static bool Intersection(Ray a, DrawShape b, out Line intersection)
     {
         intersection = new Line();
         if (b == null)
@@ -241,7 +241,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    static bool Overlap(ConvexPolygon<TransformFloat2> a, DrawShape b)
+    private static bool Overlap(ConvexPolygon<TransformFloat2> a, DrawShape b)
     {
         if (b == null)
             return false;
@@ -260,7 +260,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    void DrawBoundingRectangle()
+    private void DrawBoundingRectangle()
     {
         switch (Type)
         {
@@ -277,7 +277,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    void DrawCircumscribedCircle()
+    private void DrawCircumscribedCircle()
     {
         switch (Type)
         {
@@ -290,7 +290,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    void DrawInscribedCircle()
+    private void DrawInscribedCircle()
     {
         switch (Type)
         {

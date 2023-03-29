@@ -105,7 +105,7 @@ namespace kamgam.editor.freeformselection
             return settings;
         }
 
-        static FreeFormSelection_Settings getSettingsFromFile()
+        private static FreeFormSelection_Settings getSettingsFromFile()
         {
             FreeFormSelection_Settings settings = null;
             string[] foundPathGuids = AssetDatabase.FindAssets("t:FreeFormSelection_Settings");
@@ -117,7 +117,7 @@ namespace kamgam.editor.freeformselection
             return settings;
         }
 
-        static FreeFormSelection_Settings createSettingsInstance()
+        private static FreeFormSelection_Settings createSettingsInstance()
         {
             FreeFormSelection_Settings settings = ScriptableObject.CreateInstance<FreeFormSelection_Settings>();
             return settings;
@@ -426,7 +426,7 @@ namespace kamgam.editor.freeformselection
         [SerializeField]
         private bool _hideHandlesWhileSelecting = true;
 
-        void OnValidate()
+        private void OnValidate()
         {
             if( _maxVerticesPerMesh <= 0 )
             {

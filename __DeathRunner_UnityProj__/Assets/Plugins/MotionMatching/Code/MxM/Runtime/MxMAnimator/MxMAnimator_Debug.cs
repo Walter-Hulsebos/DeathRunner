@@ -36,7 +36,7 @@ namespace MxM
         private Quaternion baseRotation;
         private bool m_debugPosesActive;
 
-        TrajectoryPoint[] m_debugDesiredGoal;
+        private TrajectoryPoint[] m_debugDesiredGoal;
 
         private bool m_debugPreview;
         private Mesh m_debugArrowMesh;

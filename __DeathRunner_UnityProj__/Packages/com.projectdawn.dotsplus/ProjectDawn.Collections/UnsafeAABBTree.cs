@@ -23,10 +23,10 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         : IDisposable
         where T : unmanaged, ISurfaceArea<T>, IUnion<T>
     {
-        UnsafeList<Node> m_Nodes;
-        UnsafeStack<int> m_FreeHandles;
-        int m_Length;
-        int m_RootHandle;
+        private UnsafeList<Node> m_Nodes;
+        private UnsafeStack<int> m_FreeHandles;
+        private int m_Length;
+        private int m_RootHandle;
 
         /// <summary>
         /// Whether the tree is empty.
@@ -361,7 +361,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             return result.Length;
         }
 
-        void FindOverlapRecursive<U>(int handle, in U value, ref NativeList<T> result)
+        private void FindOverlapRecursive<U>(int handle, in U value, ref NativeList<T> result)
             where U : unmanaged, IOverlap<T>
         {
             Node* node = m_Nodes.Ptr + handle;
@@ -392,7 +392,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             return cost;
         }
 
-        void CostRecursive(Node* node, ref float cost)
+        private void CostRecursive(Node* node, ref float cost)
         {
             if (node->IsLeaf)
                 return;
@@ -414,7 +414,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             return count;
         }
 
-        void CountLeafsRecursive(Node* node, ref int count)
+        private void CountLeafsRecursive(Node* node, ref int count)
         {
             if (node->IsLeaf)
             {
@@ -437,7 +437,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             return depth;
         }
 
-        void GetDepthRecursive(Node* node, int depth, ref int maxDepth)
+        private void GetDepthRecursive(Node* node, int depth, ref int maxDepth)
         {
             if (node->IsLeaf)
             {
@@ -481,7 +481,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             return 1 - factor;
         }
 
-        static int GetBalancedDepth(int leafCount)
+        private static int GetBalancedDepth(int leafCount)
         {
             float n = UnityEngine.Mathf.Log(leafCount, 2);
             return (int)n + (n != (int)(n) ? 1 : 0);
@@ -552,7 +552,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         /// Returns handle that would be best to insert this new value.
         /// Inserting to this handle will have the lowest <see cref="Cost"/> compared to other leaf nodes.
         /// </summary>
-        int FindBestHandle(T value, ref UnsafeLinkedPriorityQueue<Branch, BranchComparer> branches)
+        private int FindBestHandle(T value, ref UnsafeLinkedPriorityQueue<Branch, BranchComparer> branches)
         {
             // Add as first root
             int bestHandle = m_RootHandle;
@@ -605,7 +605,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        float InheritedCost(int handle, T value)
+        private float InheritedCost(int handle, T value)
         {
             float cost = 0;
             while (handle != Node.Null)
@@ -618,19 +618,19 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        float DeltaSurfaceArea(T a, T b) => a.Union(b).SurfaceArea() - a.SurfaceArea();
+        private float DeltaSurfaceArea(T a, T b) => a.Union(b).SurfaceArea() - a.SurfaceArea();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        float SurfaceArea(T a, T b) => a.Union(b).SurfaceArea();
+        private float SurfaceArea(T a, T b) => a.Union(b).SurfaceArea();
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        T Union(T a, T b) => a.Union(b);
+        private T Union(T a, T b) => a.Union(b);
 
         /// <summary>
         /// Returns new allocated node handle.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        int Allocate(in T value)
+        private int Allocate(in T value)
         {
             int handle;
             if (m_FreeHandles.TryPop(out handle))
@@ -656,7 +656,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         /// Releases node with given handle.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        void Free(int nodeHandle)
+        private void Free(int nodeHandle)
         {
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
             m_Nodes.Ptr[nodeHandle].IsFree = true;
@@ -666,14 +666,14 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
 
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        void CheckLeafHandle(int handle)
+        private void CheckLeafHandle(int handle)
         {
             if (!m_Nodes[handle].IsLeaf)
                 throw new ArgumentException($"Handle referencing {handle} is not leaf. Only leafs can be removed.");
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        void CheckHandle(int handle)
+        private void CheckHandle(int handle)
         {
             if (handle > m_Nodes.Length || handle < 0)
                 throw new ArgumentException($"Handle is not valid with {handle}.");
@@ -690,7 +690,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         [DebuggerDisplay("{m_Handle}")]
         public struct Handle : IEquatable<Handle>
         {
-            int m_Handle;
+            private int m_Handle;
 
             /// <summary>
             /// Returns true if handle is valid.
@@ -717,7 +717,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        unsafe struct Node
+        private unsafe struct Node
         {
             public T Value;
             public int ParentHandle;
@@ -732,7 +732,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             public static int Null => -1;
         }
 
-        struct Branch
+        private struct Branch
         {
             public float Cost;
             public int Handle;
@@ -744,7 +744,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             }
         }
 
-        unsafe struct BranchComparer : IComparer<Branch>
+        private unsafe struct BranchComparer : IComparer<Branch>
         {
             public int Compare(Branch x, Branch y) => x.Cost.CompareTo(y.Cost);
         }

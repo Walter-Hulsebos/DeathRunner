@@ -25,8 +25,7 @@ namespace ProjectDawn.Collections
         : INativeDisposable
         where T : unmanaged, ISurfaceArea<T>, IUnion<T>
     {
-        [NativeDisableUnsafePtrRestriction]
-        UnsafeAABBTree<T>* m_Data;
+        [NativeDisableUnsafePtrRestriction] private UnsafeAABBTree<T>* m_Data;
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
         internal AtomicSafetyHandle m_Safety;
@@ -281,10 +280,9 @@ namespace ProjectDawn.Collections
         [StructLayout(LayoutKind.Sequential)]
         public unsafe struct Iterator
         {
-            [NativeDisableUnsafePtrRestriction]
-            UnsafeAABBTree<T>* m_Data;
+            [NativeDisableUnsafePtrRestriction] private UnsafeAABBTree<T>* m_Data;
 
-            UnsafeAABBTree<T>.Handle m_Handle;
+            private UnsafeAABBTree<T>.Handle m_Handle;
 
             /// <summary>
             /// Iterator referenced value.
@@ -335,7 +333,7 @@ namespace ProjectDawn.Collections
         }
 
         [BurstCompile]
-        unsafe struct DisposeJob : IJob
+        private unsafe struct DisposeJob : IJob
         {
             [NativeDisableUnsafePtrRestriction]
             public UnsafeAABBTree<T>* Data;

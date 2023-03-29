@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace FastScriptReload.Editor.Compilation.CodeRewriting
 {
-    class ThisCallRewriter : ThisRewriterBase
+    internal class ThisCallRewriter : ThisRewriterBase
     {
         public ThisCallRewriter(bool writeRewriteReasonAsComment, bool visitIntoStructuredTrivia = false) 
             : base(writeRewriteReasonAsComment, visitIntoStructuredTrivia)

@@ -11,11 +11,11 @@ namespace BlenderActions
 		/// <summary>The accumulated number the user has entered so far (after processing)</summary>
 		public float EnteredNumber = 0;
 		/// <summary>Has the user pressed the dot key during this number entering session</summary>
-		bool DotKeyWasPressed = false;
+		private bool DotKeyWasPressed = false;
 		/// <summary>How many float digits we curently have after the dot</summary>
-		float FloatDigits = 1;
+		private float FloatDigits = 1;
 		/// <summary>Memorizes if minus was pressed during this session</summary>
-		bool MinusWasPressed = false;
+		private bool MinusWasPressed = false;
 
 		public NumericInput(BlenderActions ba)
 		{

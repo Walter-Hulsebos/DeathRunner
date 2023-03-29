@@ -81,7 +81,7 @@ namespace Drawing {
 	}
 
 	/// <summary>Some static fields that need to be in a separate class because Burst doesn't support them</summary>
-	static class MeshLayouts {
+	internal static class MeshLayouts {
 		internal static readonly VertexAttributeDescriptor[] MeshLayout = {
 			new VertexAttributeDescriptor(VertexAttribute.Position, VertexAttributeFormat.Float32, 3),
 			new VertexAttributeDescriptor(VertexAttribute.Normal, VertexAttributeFormat.Float32, 3),
@@ -97,7 +97,7 @@ namespace Drawing {
 	}
 
 	/// <summary>Some static fields that need to be in a separate class because Burst doesn't support them</summary>
-	static class CommandBuilderSamplers {
+	internal static class CommandBuilderSamplers {
 		internal static readonly CustomSampler samplerConvert = CustomSampler.Create("Convert");
 		internal static readonly CustomSampler samplerLayout = CustomSampler.Create("SetLayout");
 		internal static readonly CustomSampler samplerUpdateVert = CustomSampler.Create("UpdateVertices");
@@ -158,7 +158,7 @@ namespace Drawing {
 			}
 		}
 
-		static int GetSize (UnsafeAppendBuffer buffer) {
+		private static int GetSize (UnsafeAppendBuffer buffer) {
 #if MODULE_COLLECTIONS_0_6_0_OR_NEWER
 			return buffer.Length;
 #else
@@ -433,7 +433,7 @@ namespace Drawing {
 		}
 
 		[BurstDiscard]
-		static void AssertNotRendering () {
+		private static void AssertNotRendering () {
 			// Some checking to see if drawing is being done from inside OnDrawGizmos
 			if (!GizmoContext.drawingGizmos && !JobsUtility.IsExecutingJob) {
 				// Inspect the stack-trace to be able to provide more helpful error messages
@@ -975,8 +975,8 @@ namespace Drawing {
 			Add(new CircleXZData { center = center, radius = radius, startAngle = startAngle, endAngle = endAngle });
 		}
 
-		static readonly float4x4 XZtoXYPlaneMatrix = float4x4.RotateX(-math.PI*0.5f);
-		static readonly float4x4 XZtoYZPlaneMatrix = float4x4.RotateZ(math.PI*0.5f);
+		private static readonly float4x4 XZtoXYPlaneMatrix = float4x4.RotateX(-math.PI*0.5f);
+		private static readonly float4x4 XZtoYZPlaneMatrix = float4x4.RotateZ(math.PI*0.5f);
 
 		/// <summary>
 		/// Draws a circle in the XY plane.
@@ -1442,14 +1442,14 @@ namespace Drawing {
 #if UNITY_2020_1_OR_NEWER
 		/// <summary>Helper job for <see cref="WireMesh"/></summary>
 		[BurstCompile]
-		class JobWireMesh {
+		private class JobWireMesh {
 			public delegate void JobWireMeshDelegate(ref Mesh.MeshData rawMeshData, ref CommandBuilder draw);
 
 			public static readonly JobWireMeshDelegate JobWireMeshFunctionPointer = BurstCompiler.CompileFunctionPointer<JobWireMeshDelegate>(Execute).Invoke;
 
 			[BurstCompile]
 			[AOT.MonoPInvokeCallback(typeof(JobWireMeshDelegate))]
-			static void Execute (ref Mesh.MeshData rawMeshData, ref CommandBuilder draw) {
+			private static void Execute (ref Mesh.MeshData rawMeshData, ref CommandBuilder draw) {
 				var verts = new NativeArray<Vector3>(rawMeshData.vertexCount, Allocator.Temp, NativeArrayOptions.UninitializedMemory);
 
 				rawMeshData.GetVertices(verts);
@@ -1521,14 +1521,14 @@ namespace Drawing {
 			SolidMeshInternal(mesh, false);
 		}
 
-		void SolidMeshInternal (Mesh mesh, bool temporary, Color color) {
+		private void SolidMeshInternal (Mesh mesh, bool temporary, Color color) {
 			PushColor(color);
 			SolidMeshInternal(mesh, temporary);
 			PopColor();
 		}
 
 
-		void SolidMeshInternal (Mesh mesh, bool temporary) {
+		private void SolidMeshInternal (Mesh mesh, bool temporary) {
 			var g = gizmos.Target as DrawingData;
 
 			g.data.Get(uniqueID).meshes.Add(new SubmittedMesh {
@@ -3113,8 +3113,8 @@ namespace Drawing {
 			public Color32 currentColor;
 			public float4x4 currentMatrix;
 			public LineWidthData currentLineWidthData;
-			float3 minBounds;
-			float3 maxBounds;
+			private float3 minBounds;
+			private float3 maxBounds;
 			public float3 cameraPosition;
 			public Quaternion cameraRotation;
 			public float2 cameraDepthToPixelSize;
@@ -3135,7 +3135,7 @@ namespace Drawing {
 				public float2 uv;
 			}
 
-			static unsafe void Add<T>(UnsafeAppendBuffer* buffer, T value) where T : struct {
+			private static unsafe void Add<T>(UnsafeAppendBuffer* buffer, T value) where T : struct {
 				int size = UnsafeUtility.SizeOf<T>();
 				// We know that the buffer has enough capacity, so we can just write to the buffer without
 				// having to add branches for the overflow case (like buffer->Add will do).
@@ -3146,7 +3146,7 @@ namespace Drawing {
 				buffer->SetLength(buffer->GetLength() + size);
 			}
 
-			static unsafe void Reserve (UnsafeAppendBuffer* buffer, int size) {
+			private static unsafe void Reserve (UnsafeAppendBuffer* buffer, int size) {
 				var newSize = buffer->GetLength() + size;
 
 				if (newSize > buffer->Capacity) {
@@ -3154,11 +3154,11 @@ namespace Drawing {
 				}
 			}
 
-			static float3 PerspectiveDivide (float4 p) {
+			private static float3 PerspectiveDivide (float4 p) {
 				return p.xyz / p.w;
 			}
 
-			unsafe void AddText (System.UInt16* text, TextData textData, Color32 color) {
+			private unsafe void AddText (System.UInt16* text, TextData textData, Color32 color) {
 				var pivot = PerspectiveDivide(math.mul(currentMatrix, new float4(textData.center, 1.0f)));
 
 				AddTextInternal(
@@ -3174,7 +3174,7 @@ namespace Drawing {
 					);
 			}
 
-			unsafe void AddText3D (System.UInt16* text, TextData3D textData, Color32 color) {
+			private unsafe void AddText3D (System.UInt16* text, TextData3D textData, Color32 color) {
 				var pivot = PerspectiveDivide(math.mul(currentMatrix, new float4(textData.center, 1.0f)));
 				var m = math.mul(currentMatrix, new float4x4(textData.rotation, float3.zero));
 
@@ -3192,7 +3192,7 @@ namespace Drawing {
 			}
 
 
-			unsafe void AddTextInternal (System.UInt16* text, float3 pivot, float3 right, float3 up, LabelAlignment alignment, float size, bool sizeIsInPixels, int numCharacters, Color32 color) {
+			private unsafe void AddTextInternal (System.UInt16* text, float3 pivot, float3 right, float3 up, LabelAlignment alignment, float size, bool sizeIsInPixels, int numCharacters, Color32 color) {
 				var distance = math.abs(math.dot(pivot - cameraPosition, math.mul(cameraRotation, new float3(0, 0, 1)))); // math.length(pivot - cameraPosition);
 				var pixelSize = cameraDepthToPixelSize.x * distance + cameraDepthToPixelSize.y;
 				float fontWorldSize = size;
@@ -3311,17 +3311,17 @@ namespace Drawing {
 				}
 			}
 
-			float3 lastNormalizedLineDir;
-			float lastLineWidth;
+			private float3 lastNormalizedLineDir;
+			private float lastLineWidth;
 
-			const float MaxCirclePixelError = 0.5f;
+			private const float MaxCirclePixelError = 0.5f;
 
 			/// <summary>
 			/// Joins the end of the last line segment to the start of the line segment at the given byte offset.
 			/// The byte offset refers to the buffers->vertices array. It is assumed that the start of the line segment is given by the
 			/// two vertices that start at the given offset into the array.
 			/// </summary>
-			void Join (int lineByteOffset) {
+			private void Join (int lineByteOffset) {
 				unsafe {
 					var outlineVertices = &buffers->vertices;
 					var nextLineByteOffset = outlineVertices->GetLength() - 4*UnsafeUtility.SizeOf<Vertex>();
@@ -3370,7 +3370,7 @@ namespace Drawing {
 				lastLineWidth = 0;
 			}
 
-			void AddLine (LineData line) {
+			private void AddLine (LineData line) {
 				// Store the line direction in the vertex.
 				// A line consists of 4 vertices. The line direction will be used to
 				// offset the vertices to create a line with a fixed pixel thickness
@@ -3466,7 +3466,7 @@ namespace Drawing {
 			}
 
 			/// <summary>Calculate number of steps to use for drawing a circle at the specified point and radius to get less than the specified pixel error.</summary>
-			int CircleSteps (float3 center, float radius, float maxPixelError) {
+			private int CircleSteps (float3 center, float radius, float maxPixelError) {
 				var centerv4 = math.mul(currentMatrix, new float4(center, 1.0f));
 
 				if (math.abs(centerv4.w) < 0.0000001f) return 3;
@@ -3485,7 +3485,7 @@ namespace Drawing {
 				return steps;
 			}
 
-			void AddCircle (CircleData circle) {
+			private void AddCircle (CircleData circle) {
 				// If the circle has a zero normal then just ignore it
 				if (math.all(circle.normal == 0)) return;
 
@@ -3539,7 +3539,7 @@ namespace Drawing {
 				currentMatrix = oldMatrix;
 			}
 
-			void AddDisc (CircleData circle) {
+			private void AddDisc (CircleData circle) {
 				// If the circle has a zero normal then just ignore it
 				if (math.all(circle.normal == 0)) return;
 
@@ -3600,7 +3600,7 @@ namespace Drawing {
 				}
 			}
 
-			void AddSphereOutline (SphereData circle) {
+			private void AddSphereOutline (SphereData circle) {
 				var centerv4 = math.mul(currentMatrix, new float4(circle.center, 1.0f));
 
 				if (math.abs(centerv4.w) < 0.0000001f) return;
@@ -3638,7 +3638,7 @@ namespace Drawing {
 				}
 			}
 
-			void AddCircle (CircleXZData circle) {
+			private void AddCircle (CircleXZData circle) {
 				var steps = CircleSteps(circle.center, circle.radius, MaxCirclePixelError);
 
 				// Round up to nearest multiple of 3 (required for the SIMD to work)
@@ -3681,7 +3681,7 @@ namespace Drawing {
 				currentMatrix = oldMatrix;
 			}
 
-			void AddDisc (CircleXZData circle) {
+			private void AddDisc (CircleXZData circle) {
 				var steps = CircleSteps(circle.center, circle.radius, MaxCirclePixelError);
 
 				// Round up to nearest multiple of 3 (required for the SIMD to work)
@@ -3741,7 +3741,7 @@ namespace Drawing {
 				}
 			}
 
-			void AddPlane (PlaneData plane) {
+			private void AddPlane (PlaneData plane) {
 				var oldMatrix = currentMatrix;
 
 				currentMatrix = math.mul(currentMatrix, float4x4.TRS(plane.center, plane.rotation, new float3(plane.size.x * 0.5f, 1, plane.size.y * 0.5f)));
@@ -3754,7 +3754,7 @@ namespace Drawing {
 				currentMatrix = oldMatrix;
 			}
 
-			static readonly float4[] BoxVertices = {
+			private static readonly float4[] BoxVertices = {
 				new float4(-1, -1, -1, 1),
 				new float4(-1, -1, +1, 1),
 				new float4(-1, +1, -1, 1),
@@ -3765,7 +3765,7 @@ namespace Drawing {
 				new float4(+1, +1, +1, 1),
 			};
 
-			static readonly int[] BoxTriangles = {
+			private static readonly int[] BoxTriangles = {
 				// Bottom two triangles
 				0, 1, 5,
 				0, 5, 4,
@@ -3791,7 +3791,7 @@ namespace Drawing {
 				0, 6, 4,
 			};
 
-			void AddBox (BoxData box) {
+			private void AddBox (BoxData box) {
 				unsafe {
 					var solidVertices = &buffers->solidVertices;
 					var solidTriangles = &buffers->solidTriangles;
@@ -3970,7 +3970,7 @@ namespace Drawing {
 				}
 			}
 
-			void CreateTriangles () {
+			private void CreateTriangles () {
 				// Create triangles for all lines
 				// A triangle consists of 3 indices
 				// A line (4 vertices) consists of 2 triangles, so 6 triangle indices

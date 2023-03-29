@@ -13,7 +13,7 @@ namespace MxMEditor
     {
         private SerializedObject m_mxmSettings;
 
-        const string k_mxmSettingsPath = "Assets/Plugins/MxMSettings.asset";
+        private const string k_mxmSettingsPath = "Assets/Plugins/MxMSettings.asset";
 
         public MxMSettingsProvider(string a_path, SettingsScope a_scope = SettingsScope.User) : base(a_path, a_scope) { }
 

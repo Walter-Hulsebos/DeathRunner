@@ -56,7 +56,7 @@ namespace MxM
 
         }
 
-        float LerpAngle(float a_angleA, float a_angleB, float a_t)
+        private float LerpAngle(float a_angleA, float a_angleB, float a_t)
         {
             float max = math.PI * 2f;
             float da = (a_angleB - a_angleA) % max;

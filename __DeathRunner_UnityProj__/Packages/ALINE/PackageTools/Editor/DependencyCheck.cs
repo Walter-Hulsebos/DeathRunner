@@ -5,8 +5,8 @@ using System.Linq;
 
 namespace Drawing.Util {
 	[InitializeOnLoad]
-	static class DependencyCheck {
-		struct Dependency {
+	internal static class DependencyCheck {
+		private struct Dependency {
 			public string name;
 			public string version;
 		}

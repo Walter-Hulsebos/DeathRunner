@@ -57,7 +57,7 @@ public class DrawPriorityQueue : MonoBehaviour
         }
     }
 
-    void DrawLine(float2 from, float2 to, Color color)
+    private void DrawLine(float2 from, float2 to, Color color)
     {
         Gizmos.color = color;
         Gizmos.DrawLine(from.asvector3(), to.asvector3());

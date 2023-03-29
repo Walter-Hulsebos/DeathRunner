@@ -58,7 +58,7 @@ namespace BlenderActions
 
 		#region Hide default gizmo
 		/// <summary>Memorize the tool the user used last, so that we can show it if they use the appropriate hotkey</summary>
-		Tool LastUsedTool = Tool.Move;
+		private Tool LastUsedTool = Tool.Move;
 		#endregion
 
 		#region Transformation variables #color(cyan);
@@ -66,11 +66,11 @@ namespace BlenderActions
 		/// action and has not finished it yet. Otherwise - null.</summary>
 		public BaseTransform ActiveTransformAction;
 		/// <summary>Cached instance of the Translation class - is created during asset initialization.</summary>
-		Translate Translation;
+		private Translate Translation;
 		/// <summary>Cached instance of the Rotation class - is created during asset initialization.</summary>
-		Rotate Rotation;
+		private Rotate Rotation;
 		/// <summary>Cached instance of the Scale class - is created during asset initialization.</summary>
-		Scale Scale;
+		private Scale Scale;
 
 		/// <summary>What limiting rules should be applied during the current transform action</summary>
 		public Lock TransformLock = Lock.None;
@@ -1140,7 +1140,7 @@ namespace BlenderActions
 		/// <summary>An inferior solution to let through the delayed events for the hotkey check.</summary>
 		public bool IgnoreEventTypeThisTime = false;
 
-		static void StaticOnSceneGUI(SceneView sceneView)
+		private static void StaticOnSceneGUI(SceneView sceneView)
 		{
 			if (Main == null)
 			{
@@ -1282,7 +1282,7 @@ namespace BlenderActions
 				RMB_Down = true;
 		}
 
-		static void CommonOnGUI()
+		private static void CommonOnGUI()
 		{
 			if (Main == null)
 			{
@@ -1301,13 +1301,13 @@ namespace BlenderActions
 		//	CommonOnGUI();
 		//}
 
-		static void HierarchyOnGUI(int i, Rect r)
+		private static void HierarchyOnGUI(int i, Rect r)
 		{
 			CommonOnGUI();
 		}
 
 
-		static void OnEditorUpdateStatic()
+		private static void OnEditorUpdateStatic()
 		{
 			if (Main == null)
 			{
@@ -1320,7 +1320,7 @@ namespace BlenderActions
 				Main.OnEditorUpdate();
 		}
 
-		void OnEditorUpdate()
+		private void OnEditorUpdate()
 		{
 			// Part of the code that ensures that held right mouse button is not
 			// interfering with Blender Action's hotkeys.
@@ -1333,7 +1333,7 @@ namespace BlenderActions
 		public Event CurrentEvent;
 
 		/// <summary>The "Update" function. WARNING: this is called way more often then MonoBehaviour.Update().</summary>
-		void OnSceneGUI(SceneView sceneView)
+		private void OnSceneGUI(SceneView sceneView)
 		{
 			#region #Color(darkblue);
 			CurrentEvent = Event.current;
@@ -1474,7 +1474,7 @@ namespace BlenderActions
 		//	#colreg(red*0.5);
 		//	#colreg(orange*3);
 		/// <summary>Moves 3D cursor to the vertex, nearest to the mouse cursor.</summary>
-		void HoldToSet3DCursorPosition()
+		private void HoldToSet3DCursorPosition()
 		{
 			Camera sceneCam = SceneView.lastActiveSceneView.camera;
 			Vector2 mousePos = CurrentEvent.mousePosition * EditorGUIUtility.pixelsPerPoint;
@@ -1496,7 +1496,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>Toggles the ability to instantly move the 3D cursor to the last translation vertex snap point.</summary>
-		void ToggleMove3DCursorToLastTranslationVertexSnapPoint()
+		private void ToggleMove3DCursorToLastTranslationVertexSnapPoint()
 		{
 			Position3DCursorToLastSnapPoint = !Position3DCursorToLastSnapPoint;
 			if (CurrentEvent.type != EventType.Layout && CurrentEvent.type != EventType.Layout)
@@ -1504,7 +1504,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>Set 3D cursor position to Vector3.zero.</summary>
-		void Reset3DCursorPosition()
+		private void Reset3DCursorPosition()
 		{
 			The3DCursorPos = Vector3.zero;
 			if (CurrentEvent.type != EventType.Layout && CurrentEvent.type != EventType.Layout)
@@ -1512,7 +1512,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>Orders to use the 3D cursor as pivot for rotation and scale actions.</summary>
-		void Use3DCursorAsPivotForRotationAndScale()
+		private void Use3DCursorAsPivotForRotationAndScale()
 		{
 			Use3DCursor = true;
 			if (CurrentEvent.type != EventType.Layout && CurrentEvent.type != EventType.Layout)
@@ -1520,7 +1520,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>Orders to use the selected GameObjects local pivots as pivots for rotation and scale actions.</summary>
-		void UseModelPivotForRotationAndScale()
+		private void UseModelPivotForRotationAndScale()
 		{
 			Use3DCursor = false;
 			if (CurrentEvent.type != EventType.Layout && CurrentEvent.type != EventType.Layout)
@@ -1533,7 +1533,7 @@ namespace BlenderActions
 		//	#colreg(cyan);
 		#region Translation actions
 		/// <summary>Resets the translations of the selected GameObject-s.</summary>
-		void ResetTranslation()
+		private void ResetTranslation()
 		{
 			if (SavableEditorPrefs.ResetTransformsEnabled)
 			{
@@ -1550,7 +1550,7 @@ namespace BlenderActions
 
 
 		/// <summary>Resets the rotations of the selected GameObject-s.</summary>
-		void ResetRotation()
+		private void ResetRotation()
 		{
 			if (SavableEditorPrefs.ResetTransformsEnabled)
 			{
@@ -1567,7 +1567,7 @@ namespace BlenderActions
 
 
 		/// <summary>Resets the scale values of the selected GameObject-s.</summary>
-		void ResetScale()
+		private void ResetScale()
 		{
 			if (SavableEditorPrefs.ResetTransformsEnabled)
 			{
@@ -1583,7 +1583,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>Rotates the selected GameObject-s 90 degrees around the Y axis in world space.</summary>
-		void Rotate90Degrees()
+		private void Rotate90Degrees()
 		{
 			Undo.RecordObjects(Selection.transforms, "Rotate 90 degrees");
 
@@ -1615,7 +1615,7 @@ namespace BlenderActions
 
 		/// <summary>Check if we need to activate Collider Editing Mode: only one GO must be selected,
 		/// it should not have children and it should only have one component: a supported collider.</summary>
-		void CheckForColliderEditMode()
+		private void CheckForColliderEditMode()
 		{
 			if (Selection.gameObjects.Length == 1 && Selection.gameObjects[0].GetComponent<MeshRenderer>() == null
 				&& Selection.gameObjects[0].GetComponent<SkinnedMeshRenderer>() == null)
@@ -1707,7 +1707,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>Start the translation action.</summary>
-		void StartTranslateActionLogic()
+		private void StartTranslateActionLogic()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 			{
@@ -1732,12 +1732,12 @@ namespace BlenderActions
 			DelayedAction = null;
 		}
 
-		void StartTranslateAction()
+		private void StartTranslateAction()
 		{
 			DelayedAction = StartTranslateActionLogic;
 		}
 
-		void StartRotateActionLogic()
+		private void StartRotateActionLogic()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 			{
@@ -1763,14 +1763,14 @@ namespace BlenderActions
 		}
 
 		/// <summary>Start the rotation action.</summary>
-		void StartRotateAction()
+		private void StartRotateAction()
 		{
 			DelayedAction = StartRotateActionLogic;
 		}
 
 
 		/// <summary>Start the scaling action.</summary>
-		void StartScaleActionLogic()
+		private void StartScaleActionLogic()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 			{
@@ -1794,14 +1794,15 @@ namespace BlenderActions
 
 			DelayedAction = null;
 		}
-		void StartScaleAction()
+
+		private void StartScaleAction()
 		{
 			DelayedAction = StartScaleActionLogic;
 		}
 
 		/// <summary></summary>
 		/// <returns></returns>
-		bool CheckAxisLockForColliders()
+		private bool CheckAxisLockForColliders()
 		{//#colreg(green);
 			bool result = false;
 			if (ColliderBeingEdited != null)
@@ -1836,7 +1837,7 @@ namespace BlenderActions
 		}//#endcolreg
 
 		/// <summary>Limits current transform action to only be performed in X axis (second activation - local X axis).</summary>
-		void TransformSetXAxis()
+		private void TransformSetXAxis()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 			{
@@ -1863,7 +1864,7 @@ namespace BlenderActions
 
 
 		/// <summary>Limits current transform action to only be performed in Y axis (second activation - local Y axis).</summary>
-		void TransformSetYAxis()
+		private void TransformSetYAxis()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 			{
@@ -1890,7 +1891,7 @@ namespace BlenderActions
 
 
 		/// <summary>Limits current transform action to only be performed in Z axis (second activation - local Z axis).</summary>
-		void TransformSetZAxis()
+		private void TransformSetZAxis()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 			{
@@ -1917,7 +1918,7 @@ namespace BlenderActions
 
 
 		/// <summary>Limits current transform action to only be performed in XY plane (second activation - local XY plane).</summary>
-		void TransformSetXYPlane()
+		private void TransformSetXYPlane()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 			{
@@ -1944,7 +1945,7 @@ namespace BlenderActions
 
 
 		/// <summary>Limits current transform action to only be performed in XZ plane (second activation - local XZ plane).</summary>
-		void TransformSetXZPlane()
+		private void TransformSetXZPlane()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 			{
@@ -1971,7 +1972,7 @@ namespace BlenderActions
 
 
 		/// <summary>Limits current transform action to only be performed in YZ plane (second activation - local YZ plane).</summary>
-		void TransformSetYZPlane()
+		private void TransformSetYZPlane()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 			{
@@ -2004,7 +2005,7 @@ namespace BlenderActions
 
 
 		/// <summary>Apply the results of a transform action.</summary>
-		void ApplyTransformations()
+		private void ApplyTransformations()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled && ActiveTransformAction != null)
 			{
@@ -2016,7 +2017,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>Cancel the results of a transform action.</summary>
-		void CancelTransformations()
+		private void CancelTransformations()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled && ActiveTransformAction != null)
 			{
@@ -2029,7 +2030,7 @@ namespace BlenderActions
 
 
 		/// <summary>Turns on vertex snap for translation/rotation/scale if any of the actions is active.</summary>
-		void HoldForVertexSnap()
+		private void HoldForVertexSnap()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled && CurrentEvent.control)
 				VertexSnapON_ThisFrame = true;
@@ -2037,7 +2038,7 @@ namespace BlenderActions
 
 
 		/// <summary>Toggles 'snap to a grid' parameter which is used during transform actions</summary>
-		void ToggleNumericSnap()
+		private void ToggleNumericSnap()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 				NumericSnap = !NumericSnap;
@@ -2045,7 +2046,7 @@ namespace BlenderActions
 
 
 		/// <summary>Sets the transform slowdown parameter to 'true' for this frame.</summary>
-		void HoldToSlowDownTransformations()
+		private void HoldToSlowDownTransformations()
 		{
 			if (SavableEditorPrefs.TransformActionsEnabled)
 				SlowDownTransformsThisFrame = true;
@@ -2054,8 +2055,10 @@ namespace BlenderActions
 		#endregion
 
 		#region Duplicate and/or Reset/Apply all selected prefabs.
-		delegate void ChangePrefab(GameObject go);
-		const int SelectionThresholdForProgressBar = 20;
+
+		private delegate void ChangePrefab(GameObject go);
+
+		private const int SelectionThresholdForProgressBar = 20;
 
 		/// <summary>Checks if we have any prefabs among selected objects and, if true, applies the passed function on them</summary>
 		/// <param name="changePrefabAction"></param>
@@ -2131,7 +2134,7 @@ namespace BlenderActions
 		//}
 
 		/// <summary>Iterates over the children of the given transform and saves their GameOjbect-s in the given list.</summary>
-		void IterateChildren(List<GameObject> listToAddTo, Transform currentTransform)
+		private void IterateChildren(List<GameObject> listToAddTo, Transform currentTransform)
 		{
 			for (int i = 0; i < currentTransform.childCount; i++)
 			{
@@ -2144,7 +2147,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>Helper function that returns a list of all selected GameObject-s (including children).</summary>
-		List<GameObject> GetAllSelectedObjects()
+		private List<GameObject> GetAllSelectedObjects()
 		{
 			if (Selection.gameObjects.Length < 1 || Selection.gameObjects[0] == null)
 				return null;
@@ -2159,7 +2162,7 @@ namespace BlenderActions
 
 		/// <summary>Duplicates selected GOs with Unity's duplication functionality 
 		/// and launches the translation action for the newly cloned GOs</summary>
-		void DuplicateSelectionAndTranslate()
+		private void DuplicateSelectionAndTranslate()
 		{
 			if (Selection.activeGameObject != null)
 			{
@@ -2179,7 +2182,7 @@ namespace BlenderActions
 
 		#region Camera controls
 		/// <summary>Toggle the perspective mode on the editor's camera.</summary>
-		void TogglePerspective()
+		private void TogglePerspective()
 		{
 			SceneView.lastActiveSceneView.in2DMode = false;
 			SceneView.lastActiveSceneView.LookAt(SceneView.lastActiveSceneView.pivot,
@@ -2188,37 +2191,37 @@ namespace BlenderActions
 												 !SceneView.lastActiveSceneView.orthographic);
 		}
 
-		void SetFrontCamera()
+		private void SetFrontCamera()
 		{
 			RotateCamera(Quaternion.Euler(0, 180, 0));
 		}
 
-		void SetBackCamera()
+		private void SetBackCamera()
 		{
 			RotateCamera(Quaternion.Euler(0, 0, 0));
 		}
 
-		void SetRightCamera()
+		private void SetRightCamera()
 		{
 			RotateCamera(Quaternion.Euler(0, 90, 0));
 		}
 
-		void SetLeftCamera()
+		private void SetLeftCamera()
 		{
 			RotateCamera(Quaternion.Euler(0, -90, 0));
 		}
 
-		void SetTopCamera()
+		private void SetTopCamera()
 		{
 			RotateCamera(Quaternion.Euler(90, 180, 0));
 		}
 
-		void SetBottomCamera()
+		private void SetBottomCamera()
 		{
 			RotateCamera(Quaternion.Euler(-90, 180, 0));
 		}
 
-		void RotateCamera(Quaternion rot)
+		private void RotateCamera(Quaternion rot)
 		{
 			SceneView.lastActiveSceneView.in2DMode = false;
 
@@ -2234,22 +2237,22 @@ namespace BlenderActions
 		#region Hide selected GameObject-s
 		/// <summary>A dictionary where every key is a GameObject with a SkinnedMeshRenderer and every value is
 		/// "enabled" state of said SkinnedMeshRenderer BEFORE any of the "Hide..." action has taken place .</summary>
-		Dictionary<SkinnedMeshRenderer, bool> SavedSkinnedMeshRenderers = new Dictionary<SkinnedMeshRenderer, bool>();
+		private Dictionary<SkinnedMeshRenderer, bool> SavedSkinnedMeshRenderers = new Dictionary<SkinnedMeshRenderer, bool>();
 		/// <summary>A dictionary where every key is a GameObject with a MeshRenderer and every value is
 		/// "enabled" state of said MeshRenderer BEFORE any of the "Hide..." action has taken place .</summary>
-		Dictionary<MeshRenderer, bool> SavedMeshRenderers = new Dictionary<MeshRenderer, bool>();
+		private Dictionary<MeshRenderer, bool> SavedMeshRenderers = new Dictionary<MeshRenderer, bool>();
 		/// <summary>An array of all GameObjects (even the ones not seen in the scene).</summary>
-		Object[] AllGOs = null;
+		private Object[] AllGOs = null;
 		/// <summary>A list of all selected GameObject-s (including children).</summary>
-		HashSet<GameObject> SelectedGOs = new HashSet<GameObject>();
+		private HashSet<GameObject> SelectedGOs = new HashSet<GameObject>();
 
 		/// <summary>Has there been a call to "Unhide hidden" after the last "Hide.." call?
 		/// This is needed to preserve sanity in situations, when user hides objects through hotkeys multiple times
 		///	before finally unhiding them all</summary>
-		bool UnhideCallRegistered = false;
+		private bool UnhideCallRegistered = false;
 
 		/// <summary>Saves all children of the given "transform" into the "list". Then launches itself on each child.</summary>
-		void TraverseAndSaveChildren(Transform transform, HashSet<GameObject> list)
+		private void TraverseAndSaveChildren(Transform transform, HashSet<GameObject> list)
 		{
 			for (int i = 0; i < transform.childCount; i++)
 			{
@@ -2263,7 +2266,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>If any of the selected GameObject-s has a MeshRenderer, this sets its "enabled" state to "false".</summary>
-		void HideSelected()
+		private void HideSelected()
 		{
 			if (UnhideCallRegistered)
 			{
@@ -2316,7 +2319,7 @@ namespace BlenderActions
 				CurrentEvent.Use();
 		}
 
-		void HideUnselected()
+		private void HideUnselected()
 		{
 			if (UnhideCallRegistered)
 			{
@@ -2384,7 +2387,7 @@ namespace BlenderActions
 
 		/// <summary>Restore "renderer.enabled" variable of previously hidden objects
 		/// to it's original state (preserves always hidden GameObjects).</summary>
-		void UnhideHidden()
+		private void UnhideHidden()
 		{
 			if (SavedMeshRenderers != null && SavedMeshRenderers.Count > 0)
 			{
@@ -2429,7 +2432,7 @@ namespace BlenderActions
 		#endregion
 
 		/// <summary>Hide default Unity Gizmo.</summary>
-		void ToggleHideGizmo()
+		private void ToggleHideGizmo()
 		{
 			SavableEditorPrefs.HideUnityGizmo = !SavableEditorPrefs.HideUnityGizmo;
 			SavableEditorPrefs.SaveHideUnityGizmoState();
@@ -2446,7 +2449,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>Clear user's selection</summary>
-		void DeselectAll()
+		private void DeselectAll()
 		{
 			if (Selection.activeGameObject != null)
 			{
@@ -2502,7 +2505,7 @@ namespace BlenderActions
 
 		/// <summary>Creates a GO, then a BoxCollider component for that GO, parents the GO
 		/// to active selected GO, sets up Collider Editing mode and starts translation action</summary>
-		void CreateBoxColliderGOStartTranslation()
+		private void CreateBoxColliderGOStartTranslation()
 		{
 			if (SavableEditorPrefs.CreateCollidersEnabled && Selection.activeGameObject != null)
 			{
@@ -2519,7 +2522,7 @@ namespace BlenderActions
 
 		/// <summary>Creates a GO, then a SphereCollider component for that GO, parents the GO
 		/// to active selected GO, sets up Collider Editing mode and starts translation action</summary>
-		void CreateSphereColliderGOStartTranslation()
+		private void CreateSphereColliderGOStartTranslation()
 		{
 			if (SavableEditorPrefs.CreateCollidersEnabled && Selection.activeGameObject != null)
 			{
@@ -2536,7 +2539,7 @@ namespace BlenderActions
 
 		/// <summary>Creates a GO, then a CapsuleCollider component for that GO, parents the GO
 		/// to active selected GO, sets up Collider Editing mode and starts translation action</summary>
-		void CreateCapsuleColliderGOStartTranslation()
+		private void CreateCapsuleColliderGOStartTranslation()
 		{
 			if (SavableEditorPrefs.CreateCollidersEnabled && Selection.activeGameObject != null)
 			{
@@ -2552,11 +2555,11 @@ namespace BlenderActions
 		#endregion
 
 		/// <summary>When to trigger renaming operation</summary>
-		double TargetGameTimeToStartRenameOp = 0;
+		private double TargetGameTimeToStartRenameOp = 0;
 		/// <summary>Which GameObject to expand during the delayed action</summary>
-		GameObject GOToExpand = null;
+		private GameObject GOToExpand = null;
 
-		void DelayedStartRenameOperation()
+		private void DelayedStartRenameOperation()
 		{
 			if (Selection.activeGameObject == null || (EditorApplication.timeSinceStartup - TargetGameTimeToStartRenameOp > 5))
 				DelayedAction = null;
@@ -2583,7 +2586,7 @@ namespace BlenderActions
 		}
 
 		/// <summary>Creates an empty GameObject and parents it to actively selected one. Starts renaming mode afterwards</summary>
-		void CreateEmptyGameObject()
+		private void CreateEmptyGameObject()
 		{
 			GameObject result = new GameObject();
 			Undo.RegisterCreatedObjectUndo(result, "Create an empty GameObject");
@@ -2602,7 +2605,7 @@ namespace BlenderActions
 
 		/// <summary>If there are GameObject-s selected, creates a new empty GameObject in the current scope and parents
 		/// selected GameObject-s to the newly created one. Starts renaming mode afterwards</summary>
-		void ParentSelectedToNewEmptyGameObject()
+		private void ParentSelectedToNewEmptyGameObject()
 		{
 			if (Selection.activeGameObject != null)
 			{
@@ -2653,7 +2656,7 @@ namespace BlenderActions
 		/// the active object's current 'enabled' state will be used as a guide. For instance: 4 objects are selected, 2 are enabled,
 		/// 2 are disabled. If the active object is enabled - all objects get disabled, if the active object is disabled - all
 		/// objects get enabled.</summary>
-		void ToggleEnableDisableGOs()
+		private void ToggleEnableDisableGOs()
 		{
 			if (Selection.activeGameObject != null)
 			{
@@ -2668,14 +2671,14 @@ namespace BlenderActions
 		}
 
 		/// <summary>Performs a "Redo" command.</summary>
-		void PerformRedo()
+		private void PerformRedo()
 		{
 			Undo.PerformRedo();
 		}
 
 		/// <summary>A fail-safe devise. If you saved your scene with a number of objects hidden, you can use this to 
 		/// unhide all MeshRenderers.</summary>
-		void UnhideAllRenderers()
+		private void UnhideAllRenderers()
 		{
 			foreach (var go in Selection.gameObjects)
 			{

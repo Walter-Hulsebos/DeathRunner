@@ -10,7 +10,7 @@ namespace ProjectDawn.Geometry2D.Tests
 {
     internal class VoronoiBenchmarkTests
     {
-        struct DummyVoronoiDiagram : IVoronoiOutput
+        private struct DummyVoronoiDiagram : IVoronoiOutput
         {
             public void ProcessSite(double2 point, int siteIndex)
             {
@@ -52,7 +52,7 @@ namespace ProjectDawn.Geometry2D.Tests
         }
 
         [BurstCompile(CompileSynchronously = true)]
-        unsafe struct Job : IJob
+        private unsafe struct Job : IJob
         {
             public VoronoiBuilder Builder;
             public DummyVoronoiDiagram Diagram;

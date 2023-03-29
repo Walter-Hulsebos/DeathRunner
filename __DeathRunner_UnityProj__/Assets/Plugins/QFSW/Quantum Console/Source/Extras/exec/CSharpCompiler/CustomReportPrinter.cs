@@ -11,8 +11,7 @@ namespace CSharpCompiler
 
     public class CustomReportPrinter : ReportPrinter
     {
-
-        readonly CompilerResults compilerResults;
+        private readonly CompilerResults compilerResults;
         #region Properties
 
         public new int ErrorsCount { get; protected set; }

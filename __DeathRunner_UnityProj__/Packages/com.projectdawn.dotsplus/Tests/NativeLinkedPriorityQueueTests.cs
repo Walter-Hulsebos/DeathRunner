@@ -8,12 +8,12 @@ namespace ProjectDawn.Collections.Tests
 {
     internal class NativeLinkedPriorityQueueTests
     {
-        struct AscendingOrder : IComparer<int>
+        private struct AscendingOrder : IComparer<int>
         {
             public int Compare(int x, int y) => x.CompareTo(y);
         }
 
-        struct DescendingOrder : IComparer<int>
+        private struct DescendingOrder : IComparer<int>
         {
             public int Compare(int x, int y) => y.CompareTo(x);
         }
@@ -191,7 +191,7 @@ namespace ProjectDawn.Collections.Tests
             queue.Dispose();
         }
 
-        struct PriorityQueueJob : IJob
+        private struct PriorityQueueJob : IJob
         {
             [ReadOnly]
             public NativeLinkedPriorityQueue<int, AscendingOrder> Queue;

@@ -22,8 +22,7 @@ namespace ProjectDawn.Collections
         : INativeDisposable
         where T : unmanaged
     {
-        [NativeDisableUnsafePtrRestriction]
-        UnsafeStack<T>* m_Data;
+        [NativeDisableUnsafePtrRestriction] private UnsafeStack<T>* m_Data;
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
         internal AtomicSafetyHandle m_Safety;
@@ -254,11 +253,9 @@ namespace ProjectDawn.Collections
         [NativeContainerIsAtomicWriteOnly]
         public unsafe struct ParallelWriter
         {
-            [NativeDisableUnsafePtrRestriction]
-            readonly void* Ptr;
+            [NativeDisableUnsafePtrRestriction] private readonly void* Ptr;
 
-            [NativeDisableUnsafePtrRestriction]
-            UnsafeStack<T>* Data;
+            [NativeDisableUnsafePtrRestriction] private UnsafeStack<T>* Data;
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
             internal AtomicSafetyHandle m_Safety;
@@ -319,14 +316,14 @@ namespace ProjectDawn.Collections
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        static void CheckSufficientCapacity(int capacity, int length)
+        private static void CheckSufficientCapacity(int capacity, int length)
         {
             if (capacity < length)
                 throw new Exception($"Length {length} exceeds capacity Capacity {capacity}");
         }
 
         [BurstCompile]
-        unsafe struct DisposeJob : IJob
+        private unsafe struct DisposeJob : IJob
         {
             [NativeDisableUnsafePtrRestriction]
             public UnsafeStack<T>* Data;

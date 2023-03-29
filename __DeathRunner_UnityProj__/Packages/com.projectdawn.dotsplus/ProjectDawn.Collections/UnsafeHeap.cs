@@ -36,9 +36,9 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         /// </summary>
         internal AllocatorManager.AllocatorHandle m_Allocator;
 
-        int m_Capacity;
+        private int m_Capacity;
 
-        int m_Length;
+        private int m_Length;
 
         /// <summary>
         /// Whether the heap is empty.
@@ -329,7 +329,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             return result;
         }
 
-        void Realloc(int newCapacity)
+        private void Realloc(int newCapacity)
         {
             CollectionChecks.CheckAllocator(m_Allocator);
             TKey* newKeys = null;
@@ -357,7 +357,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             m_Length = math.min(m_Length, newCapacity);
         }
 
-        void Heapify(int handle)
+        private void Heapify(int handle)
         {
             int l = Left(handle);
             int r = Right(handle);
@@ -380,13 +380,13 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             }
         }
 
-        static int Parent(int handle) => (handle - 1) / 2;
+        private static int Parent(int handle) => (handle - 1) / 2;
 
-        static int Left(int handle) => 2 * handle + 1;
+        private static int Left(int handle) => 2 * handle + 1;
 
-        static int Right(int handle) => 2 * handle + 2;
+        private static int Right(int handle) => 2 * handle + 2;
 
-        static void Swap<T>(ref T lhs, ref T rhs)
+        private static void Swap<T>(ref T lhs, ref T rhs)
         {
             T temp = lhs;
             lhs = rhs;
@@ -394,7 +394,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        static void ThrowHeapEmpty()
+        private static void ThrowHeapEmpty()
         {
             throw new InvalidOperationException("Trying to pop from an empty heap");
         }

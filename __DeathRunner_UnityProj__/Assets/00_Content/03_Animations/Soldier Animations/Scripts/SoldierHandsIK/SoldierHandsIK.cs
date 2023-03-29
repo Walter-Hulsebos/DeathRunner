@@ -23,20 +23,20 @@ namespace KevinIglesias {
 		private Animator animator;
 		private float weight;
 
-		void Awake()
+		private void Awake()
 		{
 			animator = GetComponent<Animator>();
 			weight = 0f;
 		}
 
-		void Update()
+		private void Update()
 		{
 
             weight = Mathf.Lerp(0, 1, 1f - Mathf.Cos(retargeter.localPosition.y * Mathf.PI * 0.5f));
 
 		}
-		
-		void OnAnimatorIK(int layerIndex)
+
+		private void OnAnimatorIK(int layerIndex)
 		{
             if(hand == SoldierIKGoal.LeftHand)
             {

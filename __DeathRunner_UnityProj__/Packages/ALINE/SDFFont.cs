@@ -8,8 +8,8 @@ namespace Drawing {
 		/// <summary>Represents a single character in a font texture</summary>
 		internal struct SDFCharacter {
 			public char codePoint;
-			float2 uvtopleft, uvbottomright;
-			float2 vtopleft, vbottomright;
+			private float2 uvtopleft, uvbottomright;
+			private float2 vtopleft, vbottomright;
 			public float advance;
 
 			public float2 uvTopLeft => uvtopleft;
@@ -52,7 +52,7 @@ namespace Drawing {
 		/// <summary>Optimzed lookup for accessing font data from the unity job system</summary>
 		internal struct SDFLookupData {
 			public NativeArray<SDFCharacter> characters;
-			Dictionary<char, int> lookup;
+			private Dictionary<char, int> lookup;
 			public Material material;
 
 			public const System.UInt16 Newline = System.UInt16.MaxValue;
@@ -109,7 +109,7 @@ namespace Drawing {
 			}
 		}
 
-		static class DefaultFonts {
+		internal static class DefaultFonts {
 			internal static SDFFont LoadDefaultFont () {
 				var font = new SDFFont {
 					name = "Droid Sans Mono",

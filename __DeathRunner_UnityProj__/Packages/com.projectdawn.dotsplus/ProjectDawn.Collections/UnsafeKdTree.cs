@@ -23,11 +23,11 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         where TValue : unmanaged
         where TComparer : unmanaged, IKdTreeComparer<TValue>
     {
-        UnsafeList<Node> m_Nodes;
-        UnsafeStack<int> m_FreeHandles;
-        TComparer m_Comparer;
-        int m_Length;
-        int m_RootHandle;
+        private UnsafeList<Node> m_Nodes;
+        private UnsafeStack<int> m_FreeHandles;
+        private TComparer m_Comparer;
+        private int m_Length;
+        private int m_RootHandle;
 
         /// <summary>
         /// Whether the tree is empty.
@@ -504,7 +504,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         /// Returns new allocated node handle.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        int Allocate(in TValue value, int parentHandle, int leftChildHandle, int rightChildHandle, int height)
+        private int Allocate(in TValue value, int parentHandle, int leftChildHandle, int rightChildHandle, int height)
         {
             int handle;
             if (m_FreeHandles.TryPop(out handle))
@@ -540,7 +540,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         /// Releases node with given handle.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        void Free(int nodeHandle)
+        private void Free(int nodeHandle)
         {
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
             m_Nodes.Ptr[nodeHandle].IsFree = true;
@@ -550,7 +550,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             m_Length--;
         }
 
-        int BuildRecursive(NativeSlice<TValue> values, int parentHandle, int heigth)
+        private int BuildRecursive(NativeSlice<TValue> values, int parentHandle, int heigth)
         {
             heigth++;
 
@@ -582,7 +582,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             return handle;
         }
 
-        void AddHandle(int newHandle)
+        private void AddHandle(int newHandle)
         {
             Node* newNode = m_Nodes.Ptr + newHandle;
 
@@ -633,7 +633,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        void CheckHandle(int handle)
+        private void CheckHandle(int handle)
         {
             if (handle > m_Nodes.Length || handle < 0)
                 throw new ArgumentException($"Handle is not valid with {handle}.");
@@ -650,7 +650,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         [DebuggerDisplay("{m_Handle}")]
         public struct Handle
         {
-            int m_Handle;
+            private int m_Handle;
 
             /// <summary>
             /// Returns true if handle is valid.
@@ -674,7 +674,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         }
 
         [StructLayout(LayoutKind.Sequential)]
-        unsafe struct Node
+        private unsafe struct Node
         {
             public TValue Value;
             public int ParentHandle;
@@ -689,7 +689,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             public static int Null => -1;
         }
 
-        struct Branch
+        private struct Branch
         {
             public int Handle;
             public float DistanceToSplit;
@@ -701,7 +701,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             }
         }
 
-        struct BranchComparer : IComparer<Branch>
+        private struct BranchComparer : IComparer<Branch>
         {
             public int Compare(Branch x, Branch y)
             {
@@ -709,7 +709,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             }
         }
 
-        struct BuildComparer : IComparer<TValue>
+        private struct BuildComparer : IComparer<TValue>
         {
             public TComparer Comparer;
             public int Height;
@@ -726,7 +726,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             }
         }
 
-        struct BranchComparerDescending : IComparer<Branch>
+        private struct BranchComparerDescending : IComparer<Branch>
         {
             public int Compare(Branch x, Branch y)
             {

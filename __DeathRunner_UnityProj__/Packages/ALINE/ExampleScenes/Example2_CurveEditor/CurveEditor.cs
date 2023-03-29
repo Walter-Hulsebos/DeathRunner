@@ -5,19 +5,19 @@ using Drawing;
 namespace Drawing.Examples {
 	/// <summary>Simple bezier curve editor</summary>
 	public class CurveEditor : MonoBehaviour {
-		List<CurvePoint> curves = new List<CurvePoint>();
-		Camera cam;
+		private List<CurvePoint> curves = new List<CurvePoint>();
+		private Camera cam;
 		public Color curveColor;
 
-		class CurvePoint {
+		private class CurvePoint {
 			public Vector2 position, controlPoint0, controlPoint1;
 		}
 
-		void Awake () {
+		private void Awake () {
 			cam = Camera.main;
 		}
 
-		void Update () {
+		private void Update () {
 			// Add a new control point when clicking
 			if (Input.GetKeyDown(KeyCode.Mouse0)) {
 				curves.Add(new CurvePoint {
@@ -37,7 +37,7 @@ namespace Drawing.Examples {
 			Render();
 		}
 
-		void Render () {
+		private void Render () {
 			// Use a custom builder which renders even in standalone games
 			// and in the editor even if gizmos are disabled.
 			// Usually you would use the static Draw class instead.

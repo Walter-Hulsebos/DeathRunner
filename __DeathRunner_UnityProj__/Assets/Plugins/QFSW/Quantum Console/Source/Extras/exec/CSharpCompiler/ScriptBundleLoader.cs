@@ -20,8 +20,8 @@ namespace CSharpCompiler
 
         public TextWriter logWriter = Console.Out;
 
-        ISynchronizeInvoke synchronizedInvoke;
-        List<ScriptBundle> allFilesBundle = new List<ScriptBundle>();
+        private ISynchronizeInvoke synchronizedInvoke;
+        private List<ScriptBundle> allFilesBundle = new List<ScriptBundle>();
 
         public ScriptBundleLoader(ISynchronizeInvoke synchronizedInvoke)
         {
@@ -45,13 +45,13 @@ namespace CSharpCompiler
         /// </summary>
         public class ScriptBundle
         {
-            Assembly assembly;
-            IEnumerable<string> filePaths;
-            List<FileSystemWatcher> fileSystemWatchers = new List<FileSystemWatcher>();
-            List<object> instances = new List<object>();
-            ScriptBundleLoader manager;
+            private Assembly assembly;
+            private IEnumerable<string> filePaths;
+            private List<FileSystemWatcher> fileSystemWatchers = new List<FileSystemWatcher>();
+            private List<object> instances = new List<object>();
+            private ScriptBundleLoader manager;
 
-            string[] assemblyReferences;
+            private string[] assemblyReferences;
             public ScriptBundle(ScriptBundleLoader manager, IEnumerable<string> filePaths)
             {
                 this.filePaths = filePaths.Select(x => Path.GetFullPath(x));
@@ -70,7 +70,7 @@ namespace CSharpCompiler
                 CreateNewInstances();
             }
 
-            void CompileFiles()
+            private void CompileFiles()
             {
                 filePaths = filePaths.Where(x => File.Exists(x)).ToArray();
 
@@ -89,7 +89,8 @@ namespace CSharpCompiler
 
                 this.assembly = result.CompiledAssembly;
             }
-            void CreateFileWatchers()
+
+            private void CreateFileWatchers()
             {
                 foreach (var filePath in filePaths)
                 {
@@ -120,7 +121,8 @@ namespace CSharpCompiler
                     watcher.EnableRaisingEvents = true;
                 }
             }
-            void StopFileWatchers()
+
+            private void StopFileWatchers()
             {
                 foreach (var w in fileSystemWatchers)
                 {
@@ -129,7 +131,8 @@ namespace CSharpCompiler
                 }
                 fileSystemWatchers.Clear();
             }
-            void Reload(bool recreateWatchers = false)
+
+            private void Reload(bool recreateWatchers = false)
             {
                 manager.logWriter.WriteLine("reloading " + string.Join(", ", filePaths.ToArray()));
                 StopInstances();
@@ -141,7 +144,8 @@ namespace CSharpCompiler
                     CreateFileWatchers();
                 }
             }
-            void CreateNewInstances()
+
+            private void CreateNewInstances()
             {
                 if (assembly == null) return;
                 foreach (var type in assembly.GetTypes())
@@ -152,7 +156,8 @@ namespace CSharpCompiler
                     }), null);
                 }
             }
-            void StopInstances()
+
+            private void StopInstances()
             {
                 foreach (var instance in instances)
                 {

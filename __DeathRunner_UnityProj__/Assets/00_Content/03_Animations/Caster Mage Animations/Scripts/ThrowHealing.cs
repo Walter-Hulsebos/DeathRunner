@@ -5,8 +5,7 @@ using UnityEngine;
 namespace KevinIglesias {
 
     public class ThrowHealing : StateMachineBehaviour {
-
-        CastSpells cS;
+        private CastSpells cS;
 
         public CastHand castHand;
         

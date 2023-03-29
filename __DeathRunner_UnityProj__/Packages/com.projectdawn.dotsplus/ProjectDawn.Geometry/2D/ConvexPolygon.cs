@@ -15,8 +15,8 @@ namespace ProjectDawn.Geometry2D
         : IDisposable
         where T : unmanaged, ITransformFloat2
     {
-        NativeArray<float2> m_Points;
-        T m_Transform;
+        private NativeArray<float2> m_Points;
+        private T m_Transform;
 
         /// <summary>
         /// Whether this polygon has been allocated (and not yet deallocated).

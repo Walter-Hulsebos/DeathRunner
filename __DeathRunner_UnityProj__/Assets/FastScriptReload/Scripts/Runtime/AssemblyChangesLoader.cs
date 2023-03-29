@@ -19,13 +19,13 @@ namespace FastScriptReload.Runtime
 #endif
     public class AssemblyChangesLoader: IAssemblyChangesLoader
     {
-        const BindingFlags ALL_BINDING_FLAGS = BindingFlags.Public | BindingFlags.NonPublic |
-                                               BindingFlags.Static | BindingFlags.Instance |
-                                               BindingFlags.FlattenHierarchy;
-            
-        const BindingFlags ALL_DECLARED_METHODS_BINDING_FLAGS = BindingFlags.Public | BindingFlags.NonPublic |
-                                                                BindingFlags.Static | BindingFlags.Instance |
-                                                                BindingFlags.DeclaredOnly; //only declared methods can be redirected, otherwise it'll result in hang
+        private const BindingFlags ALL_BINDING_FLAGS = BindingFlags.Public | BindingFlags.NonPublic |
+                                                       BindingFlags.Static | BindingFlags.Instance |
+                                                       BindingFlags.FlattenHierarchy;
+
+        private const BindingFlags ALL_DECLARED_METHODS_BINDING_FLAGS = BindingFlags.Public | BindingFlags.NonPublic |
+                                                                        BindingFlags.Static | BindingFlags.Instance |
+                                                                        BindingFlags.DeclaredOnly; //only declared methods can be redirected, otherwise it'll result in hang
         
         public const string ClassnamePatchedPostfix = "__Patched_";
         public const string ON_HOT_RELOAD_METHOD_NAME = "OnScriptHotReload";

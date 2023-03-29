@@ -18,8 +18,7 @@ namespace ProjectDawn.Collections
     public unsafe struct NativeStructureList
         : INativeDisposable
     {
-        [NativeDisableUnsafePtrRestriction]
-        UnsafeStructureList* m_Data;
+        [NativeDisableUnsafePtrRestriction] private UnsafeStructureList* m_Data;
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
         internal AtomicSafetyHandle m_Safety;
@@ -248,7 +247,7 @@ namespace ProjectDawn.Collections
         }
 
         [BurstCompile]
-        unsafe struct DisposeJob : IJob
+        private unsafe struct DisposeJob : IJob
         {
             [NativeDisableUnsafePtrRestriction]
             public UnsafeStructureList* List;

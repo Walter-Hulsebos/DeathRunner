@@ -17,7 +17,7 @@ public class DrawDelaunay : MonoBehaviour
     public bool IncludeChildTransforms = true;
     public Rectangle Bounds;
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         using (var builder = new VoronoiBuilder(1, Allocator.Temp))
         {
@@ -60,7 +60,7 @@ public class DrawDelaunay : MonoBehaviour
         }
     }
 
-    static void DrawTriangleGizmos(Triangle triangle, Color color)
+    private static void DrawTriangleGizmos(Triangle triangle, Color color)
     {
     #if UNITY_EDITOR
         UnityEditor.Handles.color = color;
@@ -68,7 +68,7 @@ public class DrawDelaunay : MonoBehaviour
     #endif
     }
 
-    void DrawWireTriangle(Triangle triangle, Color color)
+    private void DrawWireTriangle(Triangle triangle, Color color)
     {
     #if UNITY_EDITOR
         UnityEditor.Handles.color = color;

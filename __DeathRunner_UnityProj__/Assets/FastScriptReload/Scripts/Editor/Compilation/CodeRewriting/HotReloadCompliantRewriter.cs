@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace FastScriptReload.Editor.Compilation.CodeRewriting
 {
-    class HotReloadCompliantRewriter : FastScriptReloadCodeRewriterBase
+    internal class HotReloadCompliantRewriter : FastScriptReloadCodeRewriterBase
     {
         public List<string> StrippedUsingDirectives = new List<string>();
         

@@ -89,8 +89,8 @@ namespace KevinIglesias {
             spinCO = StartSpin();
             StartCoroutine(spinCO);
         }
-        
-        IEnumerator StartSpin()
+
+        private IEnumerator StartSpin()
         {
             
             

@@ -14,7 +14,7 @@ public class DrawVoronoi : MonoBehaviour
     public bool IncludeChildTransforms = true;
     public Rectangle Bounds;
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         var bounds = new Rectangle(Bounds.Position + transform.position.asfloat().xy, Bounds.Size);
         DrawWireRectangle(bounds, Color.white);
@@ -59,7 +59,7 @@ public class DrawVoronoi : MonoBehaviour
         }
     }
 
-    static void DrawVoronoiCell(in VoronoiDiagram voronoiDiagram, VoronoiCell cell, Color color)
+    private static void DrawVoronoiCell(in VoronoiDiagram voronoiDiagram, VoronoiCell cell, Color color)
     {
 #if UNITY_EDITOR
         int count = 0;

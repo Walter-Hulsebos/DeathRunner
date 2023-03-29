@@ -5,8 +5,7 @@ using UnityEngine;
 namespace KevinIglesias {
 
     public class ThrowShockwave : StateMachineBehaviour {
-
-        CastSpells cS;
+        private CastSpells cS;
     
         public CastHand castHand;
         

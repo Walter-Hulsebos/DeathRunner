@@ -11,7 +11,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
 {
     internal sealed class UnsafeLinkedListTDebugView<T> where T : unmanaged
     {
-        UnsafeLinkedList<T> Data;
+        private UnsafeLinkedList<T> Data;
 
         public UnsafeLinkedListTDebugView(UnsafeLinkedList<T> data)
         {
@@ -48,11 +48,11 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         , IEnumerable<T>
         where T : unmanaged
     {
-        int m_BeginHandle;
-        int m_EndHandle;
-        UnsafeList<Node> m_Nodes;
-        UnsafeStack<int> m_FreeHandles;
-        int m_Length;
+        private int m_BeginHandle;
+        private int m_EndHandle;
+        private UnsafeList<Node> m_Nodes;
+        private UnsafeStack<int> m_FreeHandles;
+        private int m_Length;
 
         /// <summary>
         /// The number of elements.
@@ -342,7 +342,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        int InsertHandle(int handle, in T value)
+        private int InsertHandle(int handle, in T value)
         {
             var node = m_Nodes.Ptr + handle;
             var previousHandle = node->PreviousHandle;
@@ -365,7 +365,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         /// Returns new allocated node handle.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        int Allocate(in T value, int nextNodeHandle, int previousNodeHandle)
+        private int Allocate(in T value, int nextNodeHandle, int previousNodeHandle)
         {
             int handle;
             if (m_FreeHandles.TryPop(out handle))
@@ -396,7 +396,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         /// Releases node with given handle.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        void Free(int handle)
+        private void Free(int handle)
         {
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
             m_Nodes.Ptr[handle].IsFree = true;
@@ -406,14 +406,14 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        void CheckNotEndHandle(int handle)
+        private void CheckNotEndHandle(int handle)
         {
             if (handle == m_EndHandle)
                 throw new ArgumentException($"Iterator is not valid with handle {handle}.");
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        void CheckHandle(int handle)
+        private void CheckHandle(int handle)
         {
             if (handle > m_Nodes.Length || handle < 0)
                 throw new ArgumentException($"Handle is not valid with {handle}.");
@@ -430,7 +430,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         [DebuggerDisplay("{m_Handle}")]
         public struct Handle
         {
-            int m_Handle;
+            private int m_Handle;
 
             /// <summary>
             /// Returns true if handle is valid.
@@ -456,10 +456,10 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         [StructLayout(LayoutKind.Sequential)]
         public unsafe struct Enumerator : IEnumerator<T>
         {
-            UnsafeList<Node> m_Nodes;
-            int m_BeginHandle;
-            int m_EndHandle;
-            Node m_Node;
+            private UnsafeList<Node> m_Nodes;
+            private int m_BeginHandle;
+            private int m_EndHandle;
+            private Node m_Node;
 
             internal Enumerator(UnsafeList<Node> nodes, int begin, int end)
             {

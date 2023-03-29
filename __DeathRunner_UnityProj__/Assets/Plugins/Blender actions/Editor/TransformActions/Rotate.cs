@@ -11,9 +11,10 @@ namespace BlenderActions
 		private Vector3[] originalPositions;
 
 		#region Shift slowdown
-		float OldAngle;
-		float OldAngleWithOffset;
-		float AngleOffset;
+
+		private float OldAngle;
+		private float OldAngleWithOffset;
+		private float AngleOffset;
 		#endregion
 
 		public Rotate(BlenderActions blenderActions)

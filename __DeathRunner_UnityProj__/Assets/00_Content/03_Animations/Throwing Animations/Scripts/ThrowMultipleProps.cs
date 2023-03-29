@@ -54,8 +54,8 @@ namespace KevinIglesias {
         private Vector3 zeroPosition2;
         private Quaternion zeroRotation2;
         private Vector3 nextPos;
-        
-        void Start() {
+
+        private void Start() {
             characterRoot = this.transform;
             
             zeroPosition1 = propToThrow1.localPosition;
@@ -65,7 +65,7 @@ namespace KevinIglesias {
         }
         
         //This will make the prop move when launched
-        void Update() 
+        private void Update() 
         {
             //Arc throw prop 1
             if(launched1 && !propLanded1)
@@ -160,8 +160,8 @@ namespace KevinIglesias {
             }
             
         }
-        
-        static Quaternion LookAt2D(Vector3 forward) {
+
+        private static Quaternion LookAt2D(Vector3 forward) {
             return Quaternion.Euler(0, 0, (Mathf.Atan2(forward.y, forward.x) * Mathf.Rad2Deg)-90);
         }   
         

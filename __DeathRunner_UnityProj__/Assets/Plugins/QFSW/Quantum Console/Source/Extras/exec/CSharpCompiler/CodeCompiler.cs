@@ -15,7 +15,7 @@ namespace CSharpCompiler
 {
     public class CodeCompiler : ICodeCompiler
     {
-        static long assemblyCounter = 0;
+        private static long assemblyCounter = 0;
 
         public CompilerResults CompileAssemblyFromDom(CompilerParameters options, CodeCompileUnit compilationUnit)
         {
@@ -87,7 +87,7 @@ namespace CSharpCompiler
         }
 
 
-        CompilerResults CompileFromCompilerSettings(CompilerSettings settings, bool generateInMemory)
+        private CompilerResults CompileFromCompilerSettings(CompilerSettings settings, bool generateInMemory)
         {
             var compilerResults = new CompilerResults(new TempFileCollection(Path.GetTempPath()));
             var driver = new CustomDynamicDriver(new CompilerContext(settings, new CustomReportPrinter(compilerResults)));
@@ -111,7 +111,7 @@ namespace CSharpCompiler
         }
 
 
-        CompilerSettings ParamsToSettings(CompilerParameters parameters)
+        private CompilerSettings ParamsToSettings(CompilerParameters parameters)
         {
             var settings = new CompilerSettings();
 

@@ -55,7 +55,7 @@ namespace kamgam.editor.freeformselection
         /// </summary>
         /// <param name="go"></param>
         /// <returns></returns>
-        static bool IsPrefab(GameObject go)
+        private static bool IsPrefab(GameObject go)
         {
 #if UNITY_2018_3_OR_NEWER
             return PrefabUtility.IsPartOfAnyPrefab(go);

@@ -20,7 +20,7 @@ namespace Drawing.Examples {
 			}
 		}
 
-		void FixedUpdate () {
+		private void FixedUpdate () {
 			foreach (var collider in contactForces.Keys.ToList()) {
 				var c = contactForces[collider];
 				if (c.impulse > 0.1f) {
@@ -33,15 +33,16 @@ namespace Drawing.Examples {
 			}
 		}
 
-		struct Contact {
+		private struct Contact {
 			public float impulse;
 			public float smoothImpulse;
 			public Vector3 lastPoint;
 			public Vector3 lastNormal;
 		}
-		Dictionary<Collider, Contact> contactForces = new Dictionary<Collider, Contact>();
 
-		void OnCollisionStay (Collision collision) {
+		private Dictionary<Collider, Contact> contactForces = new Dictionary<Collider, Contact>();
+
+		private void OnCollisionStay (Collision collision) {
 			foreach (ContactPoint contact in collision.contacts) {
 				if (!contactForces.ContainsKey(collision.collider)) {
 					contactForces.Add(collision.collider, new Contact { impulse = 2f });

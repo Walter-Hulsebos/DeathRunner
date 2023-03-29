@@ -17,7 +17,7 @@ public class DrawKdTree : MonoBehaviour
 
     public int FindNearestSearchCount;
 
-    struct TreeComparer : IKdTreeComparer<float2>
+    private struct TreeComparer : IKdTreeComparer<float2>
     {
         public int Compare(float2 x, float2 y, int depth)
         {
@@ -106,7 +106,7 @@ public class DrawKdTree : MonoBehaviour
         }
     }
 
-    void DrawNode(in NativeKdTree<float2, TreeComparer>.Iterator itr, Rect bounds, int depth)
+    private void DrawNode(in NativeKdTree<float2, TreeComparer>.Iterator itr, Rect bounds, int depth)
     {
         if (!itr.Valid)
             return;
@@ -150,25 +150,25 @@ public class DrawKdTree : MonoBehaviour
 
     }
 
-    void DrawVerticalLine(float2 origin, float size, Color color)
+    private void DrawVerticalLine(float2 origin, float size, Color color)
     {
         Gizmos.color = color;
         Gizmos.DrawLine(new Vector3(origin.x, origin.y - size, 0), new Vector3(origin.x, origin.y + size, 0));
     }
 
-    void DrawHorizontalLine(float2 origin, float size, Color color)
+    private void DrawHorizontalLine(float2 origin, float size, Color color)
     {
         Gizmos.color = color;
         Gizmos.DrawLine(new Vector3(origin.x - size, origin.y, 0), new Vector3(origin.x + size, origin.y, 0));
     }
 
-    void DrawLine(float2 from, float2 to, Color color)
+    private void DrawLine(float2 from, float2 to, Color color)
     {
         Gizmos.color = color;
         Gizmos.DrawLine(from.asvector3(), to.asvector3());
     }
 
-    void DrawRect(Rect rect, Color color)
+    private void DrawRect(Rect rect, Color color)
     {
         Gizmos.color = color;
         var a = new Vector3(rect.xMin, rect.yMin);
@@ -181,7 +181,7 @@ public class DrawKdTree : MonoBehaviour
         Gizmos.DrawLine(d, a);
     }
 
-    void DrawWireCircle(float2 origin, float radius, Color color)
+    private void DrawWireCircle(float2 origin, float radius, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.color = color;

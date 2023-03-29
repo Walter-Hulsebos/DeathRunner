@@ -6,7 +6,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace FastScriptReload.Editor.Compilation.CodeRewriting
 {
-    abstract class ThisRewriterBase : FastScriptReloadCodeRewriterBase
+    internal abstract class ThisRewriterBase : FastScriptReloadCodeRewriterBase
     {
         protected ThisRewriterBase(bool writeRewriteReasonAsComment, bool visitIntoStructuredTrivia = false) 
             : base(writeRewriteReasonAsComment, visitIntoStructuredTrivia)

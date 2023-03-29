@@ -30,7 +30,7 @@ namespace CSharpCompiler
     /// </summary>
     public class CustomDynamicDriver
     {
-        readonly CompilerContext ctx;
+        private readonly CompilerContext ctx;
 
         public CustomDynamicDriver(CompilerContext ctx)
         {
@@ -45,7 +45,7 @@ namespace CSharpCompiler
             }
         }
 
-        void tokenize_file(SourceFile sourceFile, ModuleContainer module, ParserSession session)
+        private void tokenize_file(SourceFile sourceFile, ModuleContainer module, ParserSession session)
         {
             Stream input;
 

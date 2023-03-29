@@ -49,7 +49,7 @@ namespace ProjectDawn.Collections.Tests
             list.Dispose();
         }
 
-        struct ReadJob : IJob
+        private struct ReadJob : IJob
         {
             [ReadOnly]
             public NativeList<int> List;

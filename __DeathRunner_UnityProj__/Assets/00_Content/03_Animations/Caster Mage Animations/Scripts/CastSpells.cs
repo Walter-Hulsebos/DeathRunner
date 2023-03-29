@@ -257,8 +257,8 @@ namespace KevinIglesias{
             
         }
 
-        
-        IEnumerator AppearFireball(Transform t)
+
+        private IEnumerator AppearFireball(Transform t)
         {
             Vector3 startSize = t.localScale;
             
@@ -272,7 +272,7 @@ namespace KevinIglesias{
 
         }
 
-        IEnumerator MoveFireball(Transform t)
+        private IEnumerator MoveFireball(Transform t)
         {
 
             Vector3 initPosition = t.localPosition;

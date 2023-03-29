@@ -280,7 +280,7 @@ namespace ProjectDawn.Geometry3D
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        static void CheckMask(VertexAttributes mask)
+        private static void CheckMask(VertexAttributes mask)
         {
             if (mask != VertexAttributes.Position)
                 throw new InvalidOperationException("Currently mesh surface requires to have only position attribute!");
@@ -288,7 +288,7 @@ namespace ProjectDawn.Geometry3D
     }
 
     [BurstCompile(CompileSynchronously = true)]
-    unsafe struct IcocapsuleJob : IJob
+    internal unsafe struct IcocapsuleJob : IJob
     {
         public MeshSurface MeshSurface;
         public Capsule Capsule;
@@ -298,7 +298,7 @@ namespace ProjectDawn.Geometry3D
     }
 
     [BurstCompile(CompileSynchronously = true)]
-    unsafe struct IcosphereJob : IJob
+    internal unsafe struct IcosphereJob : IJob
     {
         public MeshSurface MeshSurface;
         public Sphere Sphere;
@@ -308,7 +308,7 @@ namespace ProjectDawn.Geometry3D
     }
 
     [BurstCompile(CompileSynchronously = true)]
-    unsafe struct BoxJob : IJob
+    internal unsafe struct BoxJob : IJob
     {
         public MeshSurface MeshSurface;
         public Box Box;

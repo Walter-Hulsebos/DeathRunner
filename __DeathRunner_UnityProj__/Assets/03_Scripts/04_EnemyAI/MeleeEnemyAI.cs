@@ -8,11 +8,12 @@ namespace DeathRunner.EnemyAI
         public class MeleeEnemyAI : MonoBehaviour
         {
             // Define possible states for the enemy AI
-            public enum States
+            [SerializeField] public enum States
             {
                 Attacking,
                 Chasing,
-                Idle
+                Idle,
+                Dead
             }
 
             // Reference to the player GameObject
@@ -38,7 +39,7 @@ namespace DeathRunner.EnemyAI
             [HideInInspector] public bool moveInAttack = false;
 
             // Called once when the object is created
-            void Start()
+            private void Start()
             {
                 // Find the player object in the scene
                 _player = GameObject.FindWithTag("Player");
@@ -115,7 +116,7 @@ namespace DeathRunner.EnemyAI
             }
 
             // Rotate the enemy to face the player
-            void LookAtPlayer()
+            private void LookAtPlayer()
             {
                 Vector3 dir = _player.transform.position - transform.position;
                 dir.y = 0; // keep the direction strictly horizontal
@@ -125,12 +126,33 @@ namespace DeathRunner.EnemyAI
 
             //TODO delete this or do it better, this is managed by animation events now
             // Delay ending the attack
-            public IEnumerator EndAttack()
+            public IEnumerator EndAttack(float waitTime)
             {
-                yield return new WaitForSeconds(attackCooldown);
+                yield return new WaitForSeconds(waitTime);
                 StartChase();
             }
 
+            public void OnTakeDamage()
+            {
+                //TODO move all the stuff from animation events to this script, then you can stop attacks here
+                transform.LookAt(_player.transform.position);
+                animator.SetTrigger("Stun");
+                ExitAttack();
+            }
+            
+            public void ExitAttack()
+            {
+                currentState = States.Idle;
+                //TODO make it have different time if the attack finishes naturally, and if you get stunned mid attack
+                StartCoroutine(EndAttack(1));
+            }
+            
+            public void OnDeath()
+            {
+                currentState = States.Dead;
+                animator.SetTrigger("Death");
+            }
+            
             // Editor-only code for cleaning up the script
 #if UNITY_EDITOR
             private void Reset()
