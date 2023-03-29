@@ -11,12 +11,12 @@ using UltEvents;
 using Sirenix.OdinInspector;
 #endif
 
-using static ProjectDawn.Mathematics.math2;
+using ProjectDawn.Mathematics;
 
 using DeathRunner.Inputs;
 using DeathRunner.Shared;
 using DeathRunner.Utils;
-using ProjectDawn.Mathematics;
+
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;

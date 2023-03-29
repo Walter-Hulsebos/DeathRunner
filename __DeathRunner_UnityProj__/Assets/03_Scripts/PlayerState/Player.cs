@@ -1,3 +1,5 @@
+using DeathRunner.Inputs;
+using EasyCharacterMovement;
 using HFSM;
 using UnityEngine;
 
@@ -6,7 +8,7 @@ namespace DeathRunner.Shared.StateMachine
     public sealed class Player : MonoBehaviour
     {
         //NOTE: [Walter] Make shared states possible??
-        
+
         private State     root;
         
         private State     alive;
@@ -24,6 +26,67 @@ namespace DeathRunner.Shared.StateMachine
         private StateLeaf idleBulletTime;
         private StateLeaf walkBulletTime;
         private StateLeaf primaryBulletTime;
+        
+        #region References
+
+        [Tooltip(tooltip: "The Player following camera.")]
+        [SerializeField] internal Camera playerCamera;
+        
+        /// <summary> Cached InputHandler component. </summary>
+        [SerializeField, HideInInspector] internal InputHandler inputHandler;
+        /// <summary> Cached CharacterMovement component. </summary>
+        [SerializeField, HideInInspector] internal CharacterMotor motor;
+
+        #if UNITY_EDITOR
+        private void Reset()
+        {
+            FindPlayerCamera();
+            
+            FindInputHandler();
+            
+            FindCharacterMotor();
+        }
+
+        private void OnValidate()
+        {
+            if (playerCamera == null)
+            {
+                FindPlayerCamera();
+            }
+            
+            if (inputHandler == null)
+            {
+                FindInputHandler();
+            }
+            
+            if (motor == null)
+            {
+                FindCharacterMotor();
+            }
+        }
+
+        private void FindPlayerCamera()
+        {
+            playerCamera = Camera.main;
+        }
+        
+        private void FindInputHandler()
+        {
+            inputHandler = GetComponent<InputHandler>();
+        }
+        
+        private void FindCharacterMotor()
+        {
+            // Cache CharacterMovement component
+            motor = GetComponent<CharacterMotor>();
+
+            // Enable default physic interactions
+            motor.enablePhysicsInteraction = true;
+        }
+        
+        #endif
+
+        #endregion
 
         private void Awake()
         {

@@ -3,8 +3,15 @@ using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using F32x2 = Unity.Mathematics.float2;
-using F32x3 = Unity.Mathematics.float3;
+using F32    = System.Single;
+using F32x2  = Unity.Mathematics.float2;
+using F32x3  = Unity.Mathematics.float3;
+using F32x4  = Unity.Mathematics.float4;
+
+using Bool   = System.Boolean;
+using Boolx2 = Unity.Mathematics.bool2;
+using Boolx3 = Unity.Mathematics.bool3;
+using Boolx4 = Unity.Mathematics.bool4;
 
 namespace DeathRunner.Inputs
 {
@@ -20,18 +27,22 @@ namespace DeathRunner.Inputs
         [SerializeField] private InputActionReference moveInputActionReference;
         [field:SerializeField] public F32x2           MoveInput          { get; private set; }
         [field:SerializeField] public F32x3           MoveInputFlat      { get; private set; }
-        
+        public event Action<F32x3, F32x3>             OnMoveInputChanged;
+
         [SerializeField] private InputActionReference dashInputActionReference;
-        [field:SerializeField] public Boolean         DashInput          { get; private set; }
+        [field:SerializeField] public Bool            DashInput          { get; private set; }
+        public event Action<Bool>                     OnDashInputChanged;
         
         [SerializeField] private InputActionReference primaryFireInputActionReference;
-        [field:SerializeField] public Boolean         PrimaryFireInput   { get; private set; }
+        [field:SerializeField] public Bool            PrimaryFireInput   { get; private set; }
+        public event Action<Bool>                     OnPrimaryFireInputChanged;
         
         [SerializeField] private InputActionReference secondaryFireInputActionReference;
-        [field:SerializeField] public Boolean         SecondaryFireInput { get; private set; }
+        [field:SerializeField] public Bool            SecondaryFireInput { get; private set; }
+        public event Action<Bool>                     OnSecondaryFireInputChanged;
         
         public Vector2                                MouseScreenPosition => Mouse.current.position.ReadValue();
-        
+
         #endregion
 
         #region Methods
