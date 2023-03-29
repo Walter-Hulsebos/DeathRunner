@@ -1467,7 +1467,6 @@ namespace EasyCharacterMovement
         /// <param name="deceleration">The rate at which the character slows down. This is a constant opposing force that directly lowers velocity by a constant value.</param>
         /// <param name="deltaTime">Simulation deltaTime</param>
         /// <returns>Returns the updated velocity</returns>
-        
         private static Vector3 ApplyVelocityBraking(Vector3 currentVelocity, float friction, float deceleration, float deltaTime)
         {
             // If no friction or no deceleration, return
@@ -1514,82 +1513,6 @@ namespace EasyCharacterMovement
                 return Mathf.Clamp01(desiredVelocity.magnitude / maxSpeed);
 
             return 0.0f;
-        }
-
-        /// <summary>
-        /// Calculates a new velocity for the given state, applying the effects of friction or braking friction and acceleration or deceleration.
-        /// </summary>
-        /// <param name="currentVelocity">Character's current velocity.</param>
-        /// <param name="desiredVelocity">Target velocity</param>
-        /// <param name="maxSpeed">The maximum speed when grounded. Also determines maximum horizontal speed when falling (i.e. not-grounded).</param>
-        /// <param name="acceleration">The rate of change of velocity when accelerating (i.e desiredVelocity != Vector3.zero).</param>
-        /// <param name="deceleration">The rate at which the character slows down when braking (i.e. not accelerating or if character is exceeding max speed).
-        /// This is a constant opposing force that directly lowers velocity by a constant value.</param>
-        /// <param name="friction">Setting that affects movement control. Higher values allow faster changes in direction.</param>
-        /// <param name="brakingFriction">Friction (drag) coefficient applied when braking (whenever desiredVelocity == Vector3.zero, or if character is exceeding max speed).</param>
-        /// <param name="deltaTime">The simulation deltaTime. Defaults to Time.deltaTime.</param>
-        /// <returns>Returns the updated velocity</returns>
-        
-        private static Vector3 CalcVelocity(Vector3 currentVelocity, Vector3 desiredVelocity, float maxSpeed,
-            float acceleration, float deceleration, float friction, float brakingFriction, float deltaTime)
-        {
-            // Compute requested move direction
-
-            float desiredSpeed = desiredVelocity.magnitude;
-            Vector3 desiredMoveDirection = desiredSpeed > 0.0f ? desiredVelocity / desiredSpeed : Vector3.zero;
-
-            // Requested acceleration (factoring analog input)
-
-            float analogInputModifier = ComputeAnalogInputModifier(desiredVelocity, maxSpeed);
-            Vector3 requestedAcceleration = acceleration * analogInputModifier * desiredMoveDirection;
-
-            // Actual max speed (factoring analog input)
-
-            float actualMaxSpeed = Mathf.Max(0.0f, maxSpeed * analogInputModifier);
-
-            // Friction
-            // Only apply braking if there is no input acceleration,
-            // or we are over our max speed and need to slow down to it
-
-            bool isZeroAcceleration = requestedAcceleration.IsZero();
-            bool isVelocityOverMax = currentVelocity.IsExceeding(actualMaxSpeed);
-
-            if (isZeroAcceleration || isVelocityOverMax)
-            {
-                // Pre-braking currentVelocity
-
-                Vector3 oldVelocity = currentVelocity;
-
-                // Apply friction and braking
-
-                currentVelocity = ApplyVelocityBraking(currentVelocity, brakingFriction, deceleration, deltaTime);
-
-                // Don't allow braking to lower us below max speed if we started above it
-
-                if (isVelocityOverMax && currentVelocity.sqrMagnitude < actualMaxSpeed.Square() &&
-                    Vector3.Dot(requestedAcceleration, oldVelocity) > 0.0f)
-                    currentVelocity = oldVelocity.normalized * actualMaxSpeed;
-            }
-            else
-            {
-                // Friction, this affects our ability to change direction
-
-                currentVelocity -= (currentVelocity - desiredMoveDirection * currentVelocity.magnitude) * Mathf.Min(friction * deltaTime, 1.0f);
-            }
-
-            // Apply acceleration
-
-            if (!isZeroAcceleration)
-            {
-                float newMaxSpeed = currentVelocity.IsExceeding(actualMaxSpeed) ? currentVelocity.magnitude : actualMaxSpeed;
-
-                currentVelocity += requestedAcceleration * deltaTime;
-                currentVelocity = currentVelocity.ClampedTo(newMaxSpeed);
-            }
-
-            // Return new velocity
-
-            return currentVelocity;
         }
 
         /// <summary>
@@ -4593,11 +4516,12 @@ namespace EasyCharacterMovement
         /// <param name="newVelocity">The updated velocity for current frame. It is typically a combination of vertical motion due to gravity and lateral motion when your character is moving.</param>
         /// <param name="deltaTime">The simulation deltaTime. If not assigned, it defaults to Time.deltaTime.</param>
         /// <returns>Return CollisionFlags. It indicates the direction of a collision: None, Sides, Above, and Below.</returns>
-        
         public CollisionFlags Move(Vector3 newVelocity, float deltaTime = 0.0f)
         {
             if (deltaTime == 0.0f)
+            {
                 deltaTime = Time.deltaTime;
+            }
 
             UpdateCachedFields();
 
@@ -4644,93 +4568,12 @@ namespace EasyCharacterMovement
         /// </summary>
         /// <param name="deltaTime">The simulation deltaTime. If not assigned, it defaults to Time.deltaTime.</param>
         /// <returns>Return CollisionFlags. It indicates the direction of a collision: None, Sides, Above, and Below.</returns>
-
-        public CollisionFlags Move(float deltaTime = 0.0f)
-        {
-            return Move(_velocity, deltaTime);
-        }
-
-        /// <summary>
-        /// Update the character's velocity using a friction-based physical model and move the character along its updated velocity.
-        /// This performs collision constrained movement resolving any collisions / overlaps found during this movement.
-        /// </summary>
-        /// <param name="desiredVelocity">Target velocity</param>
-        /// <param name="maxSpeed">The maximum speed when grounded. Also determines maximum horizontal speed when falling (i.e. not-grounded).</param>
-        /// <param name="acceleration">The rate of change of velocity when accelerating (i.e desiredVelocity != Vector3.zero).</param>
-        /// <param name="deceleration">The rate at which the character slows down when braking (i.e. not accelerating or if character is exceeding max speed).
-        /// This is a constant opposing force that directly lowers velocity by a constant value.</param>
-        /// <param name="friction">Setting that affects movement control. Higher values allow faster changes in direction.</param>
-        /// <param name="brakingFriction">Friction (drag) coefficient applied when braking (whenever desiredVelocity == Vector3.zero, or if character is exceeding max speed).</param>
-        /// <param name="gravity">The current gravity force. Defaults to zero.</param>
-        /// <param name="onlyHorizontal">Determines if the vertical velocity component should be ignored when falling (i.e. not-grounded) preserving gravity effects. Defaults to true.</param>
-        /// <param name="deltaTime">The simulation deltaTime. Defaults to Time.deltaTime.</param>
-        /// <returns>Return CollisionFlags. It indicates the direction of a collision: None, Sides, Above, and Below.</returns>
-
-        public CollisionFlags SimpleMove(Vector3 desiredVelocity, float maxSpeed, float acceleration,
-            float deceleration, float friction, float brakingFriction, Vector3 gravity = default,
-            bool onlyHorizontal = true, float deltaTime = 0.0f)
-        {
-            if (deltaTime == 0.0f)
-                deltaTime = Time.deltaTime;
-
-            if (isGrounded)
-            {
-                // Calc new velocity
-
-                velocity = CalcVelocity(velocity, desiredVelocity, maxSpeed, acceleration, deceleration, friction,
-                    brakingFriction, deltaTime);
-            }
-            else
-            {
-                // Calc not grounded velocity
-
-                Vector3 worldUp = -1.0f * gravity.normalized;
-                Vector3 v = onlyHorizontal ? velocity.ProjectedOnPlane(worldUp) : velocity;
-
-                if (onlyHorizontal)
-                    desiredVelocity = desiredVelocity.ProjectedOnPlane(worldUp);
-
-                // On not walkable ground ?
-
-                if (isOnGround)
-                {
-                    // If moving into a 'wall', limit contribution.
-                    // Allow movement parallel to the wall, but not into it because that may push us up.
-
-                    Vector3 actualGroundNormal = groundNormal;
-                    if (Vector3.Dot(desiredVelocity, actualGroundNormal) < 0.0f)
-                    {
-                        actualGroundNormal = actualGroundNormal.ProjectedOnPlane(worldUp).normalized;
-                        desiredVelocity = desiredVelocity.ProjectedOnPlane(actualGroundNormal);
-                    }
-                }
-
-                // Calc new velocity
-
-                v = CalcVelocity(v, desiredVelocity, maxSpeed, acceleration, deceleration, friction, brakingFriction, deltaTime);
-
-                // Update character's velocity
-
-                if (onlyHorizontal)
-                    velocity += Vector3.ProjectOnPlane(v - velocity, worldUp);
-                else
-                    velocity += v - velocity;
-
-                // Apply gravity acceleration
-
-                velocity += gravity * deltaTime;
-            }
-
-            // Perform the movement
-
-            return Move(deltaTime);
-        }
+        public CollisionFlags Move(float deltaTime = 0.0f) => Move(_velocity, deltaTime);
 
         /// <summary>
         /// Returns movement simulation state.
         /// i.e. the data needed to ensure proper continuity from tick to tick.
         /// </summary>        
-
         public State GetState()
         {
             return new State(

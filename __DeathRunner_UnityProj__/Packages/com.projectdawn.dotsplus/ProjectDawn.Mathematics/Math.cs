@@ -97,6 +97,17 @@ namespace ProjectDawn.Mathematics
             return __normalized * maxLength;
         }
         
+        // public static F32x3 WithMaxLengthSqr(this F32x3 vector, F32 maxLengthSqr)
+        // {
+        //     F32 __sqrMagnitude = dot(vector, vector);
+        //     if (__sqrMagnitude <= maxLengthSqr) return vector;
+        //
+        //     F32   __magnitude  = sqrt(__sqrMagnitude);
+        //     
+        //     F32x3 __normalized = vector / __magnitude;
+        //     return __normalized * sqrt(maxLengthSqr);
+        // }
+        
         /// <summary> Returns a copy of given vector with its length set to <param name="length"></param>. </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static F32x3 WithLength(ref this F32x3 vector, F32 length)

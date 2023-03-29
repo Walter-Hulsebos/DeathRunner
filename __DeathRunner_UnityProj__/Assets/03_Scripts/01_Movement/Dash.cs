@@ -108,7 +108,7 @@ namespace DeathRunner.Movement
                 : (direction * dashDistance);
             
             
-            Debug.Log(message: "Dash - Begin");
+            //Debug.Log(message: "Dash - Begin");
             onDash.Invoke(direction);
             
             _isDashing = true;
@@ -135,7 +135,7 @@ namespace DeathRunner.Movement
                     _locomotion.enabled  = true;
                     _orientation.enabled = true;
                     
-                    Debug.Log(message: "Dash - End");
+                    //Debug.Log(message: "Dash - End");
                     
                     onEndDash.Invoke();
                     

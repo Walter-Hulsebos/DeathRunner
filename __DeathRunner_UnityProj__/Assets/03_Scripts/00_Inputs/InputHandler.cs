@@ -49,7 +49,7 @@ namespace DeathRunner.Inputs
         [field:FoldoutGroup(groupName: "SlowMo")]
         [field:SerializeField] public Bool            IsSlowMoToggled  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
-        [field:SerializeField] public UltEvent<Bool>  OnSlowMoToggleChange  { get; private set; }
+        [field:SerializeField] public UltEvent<Bool>  OnSlowMoToggleChanged  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
         [field:SerializeField] public UltEvent        OnSlowMoEnabled  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
@@ -200,13 +200,13 @@ namespace DeathRunner.Inputs
 
         private void OnSlowMoInputStarted(InputAction.CallbackContext ctx)
         {
-            Debug.Log(message: "SlowMo Input Started");
+            //Debug.Log(message: "SlowMo Input Started");
         }
 
         private void OnSlowMoInputPerformed(InputAction.CallbackContext ctx)
         {
-            if (!ctx.ReadValueAsButton()) return;
-            
+            //if (!ctx.ReadValueAsButton()) return;
+
             IsSlowMoToggled = !IsSlowMoToggled;
                 
             if (IsSlowMoToggled)
@@ -218,12 +218,12 @@ namespace DeathRunner.Inputs
                 OnSlowMoDisabled.Invoke();
             }
                 
-            OnSlowMoToggleChange.Invoke(IsSlowMoToggled);
+            OnSlowMoToggleChanged.Invoke(IsSlowMoToggled);
         }
 
         private void OnSlowMoInputCanceled(InputAction.CallbackContext ctx)
         {
-            Debug.Log(message: "SlowMo Input Canceled");
+            //Debug.Log(message: "SlowMo Input Canceled");
         }
 
         #endregion

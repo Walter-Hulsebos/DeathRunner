@@ -10,9 +10,9 @@ namespace DeathRunner.Utils
 {
     public static class MathExtensions
     {
-        public static F32x3 SmoothDamp(this F32x3 current, F32x3 target, ref F32x3 currentVelocity, F32 smoothTime, F32 maxSpeed)
+        public static F32x3 SmoothDamp(this F32x3 current, F32x3 target, ref F32x3 currentVelocity, F32 deltaTime, F32 smoothTime, F32 maxSpeed)
         {
-            F32 __deltaTime = Time.deltaTime;
+            //F32 __deltaTime = Time.deltaTime;
             
             // Based on Game Programming Gems 4 Chapter 1.10
             smoothTime = max(0.0001f, smoothTime);
@@ -29,7 +29,7 @@ namespace DeathRunner.Utils
             __change = clamp(__change, -__maxChange, __maxChange);
             target = current - __change;
 
-            F32x3 __temp = (currentVelocity + __omega * __change) * __deltaTime;
+            F32x3 __temp = (currentVelocity + __omega * __change) * deltaTime;
             currentVelocity = (currentVelocity - __omega * __temp) * __exp;
             
             F32x3 __output = target + (__change + __temp) * __exp;
@@ -38,7 +38,7 @@ namespace DeathRunner.Utils
             if (all(__originalTo - current > 0.0f == __output > __originalTo))
             {
                 __output = __originalTo;
-                currentVelocity = (__output - __originalTo) / __deltaTime;
+                currentVelocity = (__output - __originalTo) / deltaTime;
             }
 
             return __output;
