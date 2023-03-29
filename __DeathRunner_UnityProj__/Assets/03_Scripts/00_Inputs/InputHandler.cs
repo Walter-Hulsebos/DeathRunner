@@ -205,8 +205,8 @@ namespace DeathRunner.Inputs
 
         private void OnSlowMoInputPerformed(InputAction.CallbackContext ctx)
         {
-            if (!ctx.ReadValueAsButton()) return;
-            
+            //if (!ctx.ReadValueAsButton()) return;
+
             IsSlowMoToggled = !IsSlowMoToggled;
                 
             if (IsSlowMoToggled)
