@@ -1,25 +1,24 @@
 using System;
-using Drawing;
 using UnityEngine;
+using Ray = UnityEngine.Ray;
 using static Unity.Mathematics.math;
+using quaternion = Unity.Mathematics.quaternion;
 
 using EasyCharacterMovement;
 using ProjectDawn.Geometry3D;
+using Drawing;
 
-using quaternion = Unity.Mathematics.quaternion;
-using Ray = UnityEngine.Ray;
+using DeathRunner.Inputs;
+using DeathRunner.Shared;
+using DeathRunner.Utils;
 
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 
-namespace Game.Movement
+namespace DeathRunner.Movement
 {
-    using Game.Inputs;
-    using Component  = Game.Shared.Component;
-    using Extensions = Game.Utils.Extensions;
-    
-    public sealed class Orientation : Component
+    public sealed class Orientation : Module
     {
         #region Variables
 
@@ -94,7 +93,7 @@ namespace Game.Movement
             Camera __mainCamera = Camera.main;
             if(__mainCamera == null)
             {
-                Boolean __foundUnTaggedCamera = Extensions.TryFindObjectOfType(out __mainCamera);
+                Boolean __foundUnTaggedCamera = WorldExtensions.TryFindObjectOfType(out __mainCamera);
                 if (__foundUnTaggedCamera)
                 {
                     Debug.LogWarning(message: "There was a Camera found in the scene, but it's not tagged as \"MainCamera\", if there is supposed to be one, tag it correctly.", context: this);
@@ -132,7 +131,7 @@ namespace Game.Movement
 
 
         private F32x3 _cachedLookPosition = F32x3.zero;
-        private F32x3 LookPosition
+        public F32x3 LookPosition
         {
             get
             {
@@ -163,6 +162,8 @@ namespace Game.Movement
                 return _cachedLookPosition;
             }
         }
+        
+        public F32x3 LookDirection => normalize(LookPosition - WorldPos);
 
         private void Update()
         {
@@ -213,9 +214,9 @@ namespace Game.Movement
         // }
         public void OrientTowardsPos(F32x3 lookPosition)
         {
-            F32x3 __lookDirection = (lookPosition - WorldPos);
+            F32x3 __lookDirection = normalize(lookPosition - WorldPos);
             
-            OrientTowardsDir(lookDirection: __lookDirection);;
+            OrientTowardsDir(lookDirection: __lookDirection);
         }
         
         public void OrientTowardsDir(F32x3 lookDirection)
