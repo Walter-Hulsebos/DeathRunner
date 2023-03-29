@@ -15,6 +15,7 @@ using DeathRunner.Inputs;
 using DeathRunner.Shared;
 using DeathRunner.Utils;
 using ProjectDawn.Mathematics;
+
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
@@ -219,20 +220,28 @@ namespace DeathRunner.Movement
         private void Move()
         {
             // Create a Movement direction vector in world space. For example: (x: 0, y: 0, z: 1) is forward, (x: 0.7071068f, y: 0f, z: 0.7071068f) is diagonally forward-right.
-            F32x3 __newMoveDirection = inputHandler.MoveInputFlat;
-            //__newMoveDirection.SetMaxLength(1.0f);
-            
-            // Make sure that if it's close to zero, it's zero.
-            // if (lengthsq(__newMoveDirection) < 0.001f)
-            // {
-            //     __newMoveDirection = F32x3.zero;
-            // }
+            F32x3 __targetMoveDir = inputHandler.MoveInputFlat;
 
-            F32x3 __moveDirection = __newMoveDirection;
+            F32x3 __moveDirection = __targetMoveDir;
             
-            if (lengthsq(__newMoveDirection) > 0.001f) //Smoothly interpolate if we're not trying to stand still.
+            //if (lengthsq(__newMoveDirection) > EPSILON) //Smoothly interpolate if we're not trying to stand still.
+
+            if (!Commands.IsSlowMotionEnabled)
             {
-                __moveDirection = _oldMoveDirection.SmoothDamp(target: __newMoveDirection, currentVelocity: ref _moveDirectionVelocity, smoothTime: moveDirectionSmoothingSpeed, maxSpeed: 1000);
+                if (lengthsq(__targetMoveDir) > EPSILON)
+                {
+                    __moveDirection = _oldMoveDirection.SmoothDamp(
+                        target: __targetMoveDir,
+                        currentVelocity: ref _moveDirectionVelocity,
+                        deltaTime: Time.unscaledDeltaTime,
+                        smoothTime: moveDirectionSmoothingSpeed,
+                        maxSpeed: 100);
+
+                    // Set the move direction's length to that of the target.
+                    //__moveDirection = normalize(__moveDirection) * length(__targetMoveDir);
+
+                    Debug.Log(message: $"__moveDirection: {__moveDirection}");
+                }
             }
 
             _oldMoveDirection = __moveDirection;
@@ -255,7 +264,7 @@ namespace DeathRunner.Movement
             OnMove?.Invoke(__moveDirectionRelativeToCamera);
             
             // Perform movement using character's current velocity
-            motor.Move(deltaTime: Time.deltaTime);
+            motor.Move(deltaTime: Time.unscaledDeltaTime);
         }
         
         
@@ -267,7 +276,7 @@ namespace DeathRunner.Movement
             motor.velocity = Vector3.Lerp(
                 a: motor.velocity, 
                 b: desiredVelocity,
-                t: 1f - exp(-groundFriction * Time.deltaTime));
+                t: 1f - exp(-groundFriction * Time.unscaledDeltaTime));
         }
 
         /// <summary>
@@ -275,17 +284,15 @@ namespace DeathRunner.Movement
         /// </summary>
         private void NotGroundedMovement(F32x3 desiredVelocity)
         {
-            // Current character's velocity
-
             F32x3 __velocity = motor.velocity;
 
             // If moving into non-walkable ground, limit its contribution.
             // Allow movement parallel, but not into it because that may push us up.
             if (motor.isOnGround && dot(desiredVelocity, motor.groundNormal) < 0.0f)
             {
-                F32x3 __groundNormal   = motor.groundNormal;
+                F32x3 __groundNormal = motor.groundNormal;
 
-                F32x3 __planeNormal = normalize(new F32x3(x: __groundNormal.x, y: 0, z: __groundNormal.y));
+                F32x3 __planeNormal  = normalize(new F32x3(x: __groundNormal.x, y: 0, z: __groundNormal.y));
 
                 desiredVelocity = math2.ProjectedOnPlane(desiredVelocity, planeNormal: __planeNormal);
             }
@@ -300,17 +307,17 @@ namespace DeathRunner.Movement
                 F32x3 __horizontalVelocity = Vector3.MoveTowards(
                     current: __flatVelocity, 
                     target: desiredVelocity,
-                    maxDistanceDelta: maxAcceleration * airControl * Time.deltaTime);
+                    maxDistanceDelta: maxAcceleration * airControl * Time.unscaledDeltaTime);
 
                 // Update velocity preserving gravity effects (vertical velocity)
                 __velocity = __horizontalVelocity + __verVelocity;
             }
 
             // Apply gravity
-            __velocity += gravity * Time.deltaTime;
+            __velocity += gravity * Time.unscaledDeltaTime;
 
             // Apply Air friction (Drag)
-            __velocity -= __velocity * airFriction * Time.deltaTime;
+            __velocity -= __velocity * airFriction * Time.unscaledDeltaTime;
 
             // Update character's velocity
             motor.velocity = __velocity;

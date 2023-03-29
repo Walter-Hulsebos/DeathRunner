@@ -49,7 +49,7 @@ namespace DeathRunner.Inputs
         [field:FoldoutGroup(groupName: "SlowMo")]
         [field:SerializeField] public Bool            IsSlowMoToggled  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
-        [field:SerializeField] public UltEvent<Bool>  OnSlowMoToggleChange  { get; private set; }
+        [field:SerializeField] public UltEvent<Bool>  OnSlowMoToggleChanged  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
         [field:SerializeField] public UltEvent        OnSlowMoEnabled  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
@@ -218,7 +218,7 @@ namespace DeathRunner.Inputs
                 OnSlowMoDisabled.Invoke();
             }
                 
-            OnSlowMoToggleChange.Invoke(IsSlowMoToggled);
+            OnSlowMoToggleChanged.Invoke(IsSlowMoToggled);
         }
 
         private void OnSlowMoInputCanceled(InputAction.CallbackContext ctx)

@@ -106,13 +106,13 @@ namespace DeathRunner.Animations
             //Draw the moveVector 
             Draw.Arrow(
                 from: __characterPosition,
-                to: __characterPosition + moveVector,
+                to:   __characterPosition + moveVector,
                 color: Color.cyan);
 
             //Draw the facing vector
             Draw.Arrow(
                 from: __characterPosition,
-                to: __characterPosition + __facingDirection,
+                to:   __characterPosition + __facingDirection,
                 color: Color.green);
 
             animator.SetFloat(id: move_x, value: __orthogonalDirection.x);
