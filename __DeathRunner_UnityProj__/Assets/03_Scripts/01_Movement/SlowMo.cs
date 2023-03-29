@@ -11,15 +11,17 @@ using UltEvents;
 using Sirenix.OdinInspector;
 #endif
 
-using static ProjectDawn.Mathematics.math2;
-
 using DeathRunner.Inputs;
 using DeathRunner.Shared;
 using DeathRunner.Utils;
+
 using ProjectDawn.Mathematics;
+
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
+
+using Bool  = System.Boolean;
 
 namespace DeathRunner.Movement
 {
@@ -80,24 +82,6 @@ namespace DeathRunner.Movement
 
         #endregion
 
-        #region EVENT HANDLERS
-        
-        /// <summary>
-        /// FoundGround event handler.
-        /// </summary>
-        private void OnFoundGround(ref FindGroundResult foundGround)
-        {
-            //Debug.Log(message: "Found ground...");
-
-            // Determine if the character has landed
-            if (!motor.wasOnGround && foundGround.isWalkableGround)
-            {
-                OnLanded?.Invoke();
-            }
-        }
-
-        #endregion
-
         #region Methods
 
         #if UNITY_EDITOR
@@ -152,10 +136,6 @@ namespace DeathRunner.Movement
         private void OnEnable()
         {
             EnableLateFixedUpdate();
-
-            // Subscribe to CharacterMovement events
-            motor.FoundGround += OnFoundGround;
-            //motor.Collided    += OnCollided;
         }
 
         private void EnableLateFixedUpdate()
@@ -170,10 +150,6 @@ namespace DeathRunner.Movement
         private void OnDisable()
         {
             DisableLateFixedUpdate();
-
-            // Un-Subscribe from CharacterMovement events
-            motor.FoundGround -= OnFoundGround;
-            //motor.Collided    -= OnCollided;
         }
 
         private void DisableLateFixedUpdate()
@@ -194,15 +170,18 @@ namespace DeathRunner.Movement
                 OnLateFixedUpdate();
             }
         }
+        
         /// <summary>
         /// Post-Physics update, used to sync our character with physics.
         /// </summary>
         private void OnLateFixedUpdate()
         {
-            //UpdateRotation();
-            Move();
+            if (inputHandler.IsSlowMoToggled)
+            {
+                Move();   
+            }
         }
-        
+
         private F32x3 _oldMoveDirection = F32x3.zero;
         private F32x3 _moveDirectionVelocity;
 
@@ -213,14 +192,6 @@ namespace DeathRunner.Movement
         {
             // Create a Movement direction vector in world space. For example: (x: 0, y: 0, z: 1) is forward, (x: 0.7071068f, y: 0f, z: 0.7071068f) is diagonally forward-right.
             F32x3 __newMoveDirection = inputHandler.MoveInputFlat;
-            //__newMoveDirection.SetMaxLength(1.0f);
-            
-            // Make sure that if it's close to zero, it's zero.
-            // if (lengthsq(__newMoveDirection) < 0.001f)
-            // {
-            //     __newMoveDirection = F32x3.zero;
-            // }
-
             F32x3 __moveDirection = __newMoveDirection;
             
             if (lengthsq(__newMoveDirection) > 0.001f) //Smoothly interpolate if we're not trying to stand still.
@@ -276,9 +247,8 @@ namespace DeathRunner.Movement
             // Allow movement parallel, but not into it because that may push us up.
             if (motor.isOnGround && dot(desiredVelocity, motor.groundNormal) < 0.0f)
             {
-                F32x3 __groundNormal   = motor.groundNormal;
-
-                F32x3 __planeNormal = normalize(new F32x3(x: __groundNormal.x, y: 0, z: __groundNormal.y));
+                F32x3 __groundNormal = motor.groundNormal;
+                F32x3 __planeNormal  = normalize(new F32x3(x: __groundNormal.x, y: 0, z: __groundNormal.y));
 
                 desiredVelocity = math2.ProjectedOnPlane(desiredVelocity, planeNormal: __planeNormal);
             }

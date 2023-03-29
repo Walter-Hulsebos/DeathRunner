@@ -32,7 +32,7 @@ namespace DeathRunner.Movement
         [SerializeField, HideInInspector] private CharacterMotor _motor;
         [SerializeField, HideInInspector] private Locomotion     _locomotion;
         [SerializeField, HideInInspector] private Orientation    _orientation;
-        
+
         [SerializeField] private Camera playerCamera;
         
         #if ODIN_INSPECTOR

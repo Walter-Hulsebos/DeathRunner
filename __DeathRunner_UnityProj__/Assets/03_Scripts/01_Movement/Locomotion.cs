@@ -11,8 +11,6 @@ using UltEvents;
 using Sirenix.OdinInspector;
 #endif
 
-using static ProjectDawn.Mathematics.math2;
-
 using DeathRunner.Inputs;
 using DeathRunner.Shared;
 using DeathRunner.Utils;
@@ -208,7 +206,10 @@ namespace DeathRunner.Movement
         private void OnLateFixedUpdate()
         {
             //UpdateRotation();
-            Move();
+            if (!inputHandler.IsSlowMoToggled)
+            {
+                Move();
+            }
         }
         
         private F32x3 _oldMoveDirection = F32x3.zero;
