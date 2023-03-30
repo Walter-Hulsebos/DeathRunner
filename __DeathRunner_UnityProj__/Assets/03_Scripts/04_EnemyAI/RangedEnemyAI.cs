@@ -160,6 +160,9 @@ namespace DeathRunner.EnemyAI
             }
             public void OnDeath()
             {
+                StopAllCoroutines();
+                navMeshAgent.SetDestination(transform.position);
+                navMeshAgent.velocity = Vector3.zero;
                 currentState = States.Dead;
                 navMeshAgent.SetDestination(transform.position);
                 navMeshAgent.velocity = Vector3.zero;

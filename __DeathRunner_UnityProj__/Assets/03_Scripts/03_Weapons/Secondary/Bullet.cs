@@ -9,11 +9,12 @@ namespace Damageable
         public GameObject ball;
 
         [FormerlySerializedAs("launchVelocity")] [SerializeField]
-        private String target = "Player";
         public float launchSpeed;
 
         public float destroyTime;
         private Rigidbody rb;
+
+        [SerializeField] private string target = "Player";
 
         private void Start()
         {
