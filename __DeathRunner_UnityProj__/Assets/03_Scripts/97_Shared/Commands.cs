@@ -18,6 +18,9 @@ namespace DeathRunner.Shared
 
         private static Bool _isSlowMotionEnabled;
         
+        private const F32 SlowMoScale = 0.075f;
+        private const F32 NormalScale = 1.0f;
+        
         [Command]
         public static Bool IsSlowMotionEnabled
         {
@@ -27,7 +30,7 @@ namespace DeathRunner.Shared
                 Debug.Log(message: $"SlowMo: {value}");
                 
                 _isSlowMotionEnabled = value;
-                Time.timeScale = _isSlowMotionEnabled ? 0.025f : 1.0f;
+                Time.timeScale = _isSlowMotionEnabled ? SlowMoScale : NormalScale;
                 Time.fixedDeltaTime = 0.0166667f * Time.timeScale;
                 
                 DOTween.timeScale = Time.timeScale;

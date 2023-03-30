@@ -235,12 +235,12 @@ namespace DeathRunner.Movement
                         currentVelocity: ref _moveDirectionVelocity,
                         deltaTime: Commands.DeltaTime,
                         smoothTime: moveDirectionSmoothingSpeed,
-                        maxSpeed: 100);
+                        maxSpeed: 1000);
 
                     // Set the move direction's length to that of the target.
                     //__moveDirection = normalize(__moveDirection) * length(__targetMoveDir);
 
-            //        Debug.Log(message: $"__moveDirection: {__moveDirection}");
+                    //Debug.Log(message: $"__moveDirection: {__moveDirection}");
                 }
             }
 
