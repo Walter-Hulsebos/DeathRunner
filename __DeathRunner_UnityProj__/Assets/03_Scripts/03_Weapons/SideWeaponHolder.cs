@@ -18,45 +18,48 @@ namespace DeathRunner.Weapons
         // Update is called once per frame
         enum WeaponState
         {
-         ready,
-         active,
-         cooldown
+         Ready,
+         Active,
+         Cooldown
         } 
 
-        private WeaponState state = WeaponState.ready;
+        private WeaponState state = WeaponState.Ready;
 
         private void Update()
         {
             switch (state)
             {
-                case WeaponState.ready:
+                case WeaponState.Ready:
+                    //TODO use input system
                     if (Input.GetKeyDown(KeyCode.Mouse1))
                     {
                         sideWeapon.Activate(gameObject);
-                        state = WeaponState.active; 
-                        activeTime = SideWeapon.activeTime;
+                        state = WeaponState.Active; 
+                        activeTime = sideWeapon.activeTime;
                     }
                     break;
-                case WeaponState.active:
+                case WeaponState.Active:
+                    Debug.Log("Active");
                     if (activeTime > 0)
                     {
                         activeTime -= Time.deltaTime;
                     }
                     else
                     {
-                        state = WeaponState.active;
+                        state = WeaponState.Cooldown;
                         cooldownTime = sideWeapon.cooldownTime;
                     }
                     break;
                 
-                case WeaponState.cooldown:
+                case WeaponState.Cooldown:
+                    Debug.Log("Cooldown");
                     if (cooldownTime > 0)
                     {
                         cooldownTime -= Time.deltaTime;
                     }
                     else
                     {
-                        state = WeaponState.ready;
+                        state = WeaponState.Ready;
                     }
                     break;
             }

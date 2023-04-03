@@ -5,9 +5,10 @@ using UnityEngine;
 
 namespace DeathRunner.Weapons
 {
+    [CreateAssetMenu]
     public class SWExplosion : SideWeapon
     {
-        private GameObject explosion;
+        public GameObject explosion;
         
         void Start()
         {

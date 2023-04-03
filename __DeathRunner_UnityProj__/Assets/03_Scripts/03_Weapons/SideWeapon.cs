@@ -11,18 +11,12 @@ namespace DeathRunner.Weapons
         public float cooldownTime;
 
         //TODO should not be static, what the fuck
-        public static float activeTime;
+        public float activeTime;
         
         // Start is called before the first frame update
         public virtual void Activate(GameObject gameObject) 
         {
             
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
     }
 }
