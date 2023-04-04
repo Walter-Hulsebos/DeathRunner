@@ -10,10 +10,6 @@ namespace DeathRunner.Weapons
     {
         public GameObject explosion;
         
-        void Start()
-        {
-            GameObject.FindWithTag("InstantiatePos");
-        }
 
         public override void Activate(GameObject parent)
         {

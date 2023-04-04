@@ -159,6 +159,9 @@ namespace DeathRunner.EnemyAI
                 navMeshAgent.velocity = Vector3.zero;
                 StopAllCoroutines();
                 animator.SetTrigger("Death");
+                
+                //todo change
+                Destroy(gameObject);
             }
             
             // Editor-only code for cleaning up the script

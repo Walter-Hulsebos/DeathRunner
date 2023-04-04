@@ -9,8 +9,7 @@ namespace DeathRunner.Weapons
         public new string name;
 
         public float cooldownTime;
-
-        //TODO should not be static, what the fuck
+        
         public float activeTime;
         
         // Start is called before the first frame update

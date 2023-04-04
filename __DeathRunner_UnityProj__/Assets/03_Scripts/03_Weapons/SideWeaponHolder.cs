@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+//using DeathRunner.Movement;
 using DG.DemiEditor.DeGUINodeSystem;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace DeathRunner.Weapons
 {
@@ -14,6 +16,8 @@ namespace DeathRunner.Weapons
         private float cooldownTime;
 
         private float activeTime;
+
+        [SerializeField] private Transform shootPos;
         
         // Update is called once per frame
         enum WeaponState
@@ -36,6 +40,7 @@ namespace DeathRunner.Weapons
                         sideWeapon.Activate(gameObject);
                         state = WeaponState.Active; 
                         activeTime = sideWeapon.activeTime;
+                        
                     }
                     break;
                 case WeaponState.Active:
@@ -48,6 +53,7 @@ namespace DeathRunner.Weapons
                     {
                         state = WeaponState.Cooldown;
                         cooldownTime = sideWeapon.cooldownTime;
+                        
                     }
                     break;
                 
