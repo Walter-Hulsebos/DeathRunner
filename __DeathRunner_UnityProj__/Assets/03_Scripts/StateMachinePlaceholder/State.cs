@@ -30,6 +30,11 @@ namespace HFSM
         /// </exception>
         public State(params StateObject[] childStates)
         {
+            if (childStates == null)
+            {
+                throw new ArgumentNullException(paramName: nameof(childStates));
+            }
+            
             if (childStates.Length == 0)
             {
                 throw new StatelessStateMachineException(
@@ -37,7 +42,7 @@ namespace HFSM
                              " State machine of type '" + GetType() + "' does not have any state objects."
                 );
             }
-            
+
             _anyTransitions = new List<Transition>();
             _anyEventTransitions = new List<EventTransitionBase>();
             _anyStateLeaf = new StateLeaf.Any();
@@ -46,6 +51,7 @@ namespace HFSM
             _changedState = false;
 
             DefaultStateObject = childStates[0];
+            
             foreach (StateObject __childState in childStates)
             {
                 __childState.State = this;

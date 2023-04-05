@@ -64,6 +64,30 @@ namespace HFSM
             Transition __transition = new Transition(from: this, to: to, transitionAction: null, conditions: conditions);
             TryRegisterTransition(transition: __transition);
         }
+        
+        public void AddTransitionTo(StateObject to, params Func<Boolean>[] conditions)
+        {
+            AddTransition(to: to, conditions: conditions);
+        }
+        
+        public void AddTransitionFrom(StateObject from, params Func<Boolean>[] conditions)
+        {
+            from.AddTransition(to: this, conditions: conditions);
+        }
+        
+        // //override > operator
+        // public static Boolean operator > (StateObject from, StateObject to)
+        // {
+        //     from.AddTransition(to: to);
+        //     return true;
+        // }
+        //
+        // //override < operator
+        // public static Boolean operator < (StateObject from, StateObject to)
+        // {
+        //     to.AddTransition(to: from);
+        //     return true;
+        // }
 
         /// <summary>
         ///     Adds a <see cref="Transition" /> to <paramref name="to" />.

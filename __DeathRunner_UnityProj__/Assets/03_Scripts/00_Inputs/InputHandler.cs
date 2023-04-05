@@ -34,24 +34,32 @@ namespace DeathRunner.Inputs
         public event Action<F32x2>                    OnMoveInputChanged; 
         public event Action<F32x3>                    OnMoveInputFlatUpdated;
         public event Action<F32x3>                    OnMoveInputFlatChanged;
+        public event Action<F32x3>                    OnMoveInputFlatChangedAndNotZero;
+        public event Action<F32x3>                    OnMoveStarted;
+        public event Action<F32x3>                    OnMoveStopped;
 
         [FoldoutGroup(groupName: "Dash")]
         [SerializeField] private InputActionReference dashInputActionReference;
         [field:FoldoutGroup(groupName: "Dash")]
         [field:SerializeField] public Bool            DashInput          { get; private set; }
         public event Action<Bool>                     OnDashInputChanged;
-        
+        public event Action                           OnDashTriggered;
+
         [FoldoutGroup(groupName: "Primary Fire")]
         [SerializeField] private InputActionReference primaryFireInputActionReference;
         [field:FoldoutGroup(groupName: "Primary Fire")]
         [field:SerializeField] public Bool            PrimaryFireInput   { get; private set; }
         public event Action<Bool>                     OnPrimaryFireInputChanged;
+        public event Action                           OnPrimaryFireStarted;
+        public event Action                           OnPrimaryFireStopped;
 
         [FoldoutGroup(groupName: "Secondary Fire")]
         [SerializeField] private InputActionReference secondaryFireInputActionReference;
         [field:FoldoutGroup(groupName: "Secondary Fire")]
         [field:SerializeField] public Bool            SecondaryFireInput { get; private set; }
         public event Action<Bool>                     OnSecondaryFireInputChanged;
+        public event Action                           OnSecondaryFireStarted;
+        public event Action                           OnSecondaryFireStopped;
         
         //TODO: [Walter] TEMPORARY, REMOVE THIS
         [FoldoutGroup(groupName: "SlowMo")]
@@ -135,54 +143,32 @@ namespace DeathRunner.Inputs
         #region Move Input Callbacks
 
         //NOTE: [Walter] If you want to use `PlayerInputs` components (using Unity Events), you'll want to make these public. With the current setup that isn't required.
-        private void OnMoveInputStarted(InputAction.CallbackContext ctx)
-        {
-            F32x2 __newMoveInput = (F32x2)ctx.ReadValue<Vector2>();
+        private void OnMoveInputStarted(InputAction.CallbackContext ctx)   => HandleMoveInput(newMoveInput: (F32x2)ctx.ReadValue<Vector2>());
+        private void OnMoveInputPerformed(InputAction.CallbackContext ctx) => HandleMoveInput(newMoveInput: (F32x2)ctx.ReadValue<Vector2>());
+        private void OnMoveInputCanceled(InputAction.CallbackContext ctx)  => HandleMoveInput(newMoveInput: F32x2.zero);
 
-            MoveInput     = __newMoveInput;
+        private void HandleMoveInput(F32x2 newMoveInput)
+        {
+            MoveInput     = newMoveInput;
             MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y);
-            
-            Bool __inputHasChanged = all(MoveInput != __newMoveInput);
+
+            Bool __inputHasChanged = all(MoveInput != newMoveInput);
             if (__inputHasChanged)
             {
                 OnMoveInputChanged?.Invoke(MoveInput);
                 OnMoveInputFlatChanged?.Invoke(MoveInputFlat);
-            }
-            
-            OnMoveInputUpdated?.Invoke(MoveInput);
-            OnMoveInputFlatUpdated?.Invoke(MoveInputFlat);
-        }
-        private void OnMoveInputPerformed(InputAction.CallbackContext ctx)
-        {
-            F32x2 __newMoveInput = (F32x2)ctx.ReadValue<Vector2>();
 
-            MoveInput     = __newMoveInput;
-            MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y);
-            
-            Bool __inputHasChanged = all(MoveInput != __newMoveInput);
-            if (__inputHasChanged)
-            {
-                OnMoveInputChanged?.Invoke(MoveInput);
-                OnMoveInputFlatChanged?.Invoke(MoveInputFlat);
+                //TODO: use lengthsq instead?
+                if (all(MoveInputFlat == F32x3.zero))
+                {
+                    OnMoveStopped?.Invoke(MoveInputFlat);
+                }
+                else
+                {
+                    OnMoveStarted?.Invoke(MoveInputFlat);
+                }
             }
-            
-            OnMoveInputUpdated?.Invoke(MoveInput);
-            OnMoveInputFlatUpdated?.Invoke(MoveInputFlat);
-        }
-        private void OnMoveInputCanceled(InputAction.CallbackContext ctx)
-        {
-            F32x2 __newMoveInput = F32x2.zero;
 
-            MoveInput     = __newMoveInput;
-            MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y);
-            
-            Bool __inputHasChanged = all(MoveInput != __newMoveInput);
-            if (__inputHasChanged)
-            {
-                OnMoveInputChanged?.Invoke(MoveInput);
-                OnMoveInputFlatChanged?.Invoke(MoveInputFlat);
-            }
-            
             OnMoveInputUpdated?.Invoke(MoveInput);
             OnMoveInputFlatUpdated?.Invoke(MoveInputFlat);
         }
@@ -190,55 +176,69 @@ namespace DeathRunner.Inputs
 
         #region Dash Input Callbacks
 
-        private void OnDashInputStarted(InputAction.CallbackContext ctx)
+        private void OnDashInputStarted(InputAction.CallbackContext ctx)   => HandleDashInput(newDashInput: ctx.ReadValueAsButton());
+        private void OnDashInputPerformed(InputAction.CallbackContext ctx) => HandleDashInput(newDashInput: ctx.ReadValueAsButton());
+        private void OnDashInputCanceled(InputAction.CallbackContext ctx)  => HandleDashInput(newDashInput: false);
+
+        private void HandleDashInput(Bool newDashInput)
         {
-            DashInput = ctx.ReadValueAsButton();
-        }
-        private void OnDashInputPerformed(InputAction.CallbackContext ctx)
-        {
-            DashInput = ctx.ReadValueAsButton();
-        }
-        private void OnDashInputCanceled(InputAction.CallbackContext ctx)
-        {
-            DashInput = false;
+            DashInput = newDashInput;
+            OnDashInputChanged?.Invoke(DashInput);
+
+            if (DashInput)
+            {
+                OnDashTriggered?.Invoke();
+            }
+            // else
+            // {
+            //     OnDashStopped?.Invoke();
+            // }
         }
         
         #endregion
 
         #region Primary Fire Input Callbacks
 
-        private void OnPrimaryFireInputStarted(InputAction.CallbackContext ctx)
-        {
-            PrimaryFireInput = ctx.ReadValueAsButton();
-        }
+        private void OnPrimaryFireInputStarted(InputAction.CallbackContext ctx)   => HandlePrimaryFireInput(newPrimaryFireInput: ctx.ReadValueAsButton());
+        private void OnPrimaryFireInputPerformed(InputAction.CallbackContext ctx) => HandlePrimaryFireInput(newPrimaryFireInput: ctx.ReadValueAsButton());
+        private void OnPrimaryFireInputCanceled(InputAction.CallbackContext ctx)  => HandlePrimaryFireInput(newPrimaryFireInput: false);
 
-        private void OnPrimaryFireInputPerformed(InputAction.CallbackContext ctx)
+        private void HandlePrimaryFireInput(Bool newPrimaryFireInput)
         {
-            PrimaryFireInput = ctx.ReadValueAsButton();
-        }
-
-        private void OnPrimaryFireInputCanceled(InputAction.CallbackContext ctx)
-        {
-            PrimaryFireInput = false;
+            PrimaryFireInput = newPrimaryFireInput;
+            OnPrimaryFireInputChanged?.Invoke(PrimaryFireInput);
+            
+            if (PrimaryFireInput)
+            {
+                OnPrimaryFireStarted?.Invoke();
+            }
+            else
+            {
+                OnPrimaryFireStopped?.Invoke();
+            }
         }
         
         #endregion
         
         #region Secondary Fire Input Callbacks
-
-        private void OnSecondaryFireInputStarted(InputAction.CallbackContext ctx)
+        
+        private void OnSecondaryFireInputStarted(InputAction.CallbackContext ctx)   => HandleSecondaryFireInput(newSecondaryFireInput: ctx.ReadValueAsButton());
+        private void OnSecondaryFireInputPerformed(InputAction.CallbackContext ctx) => HandleSecondaryFireInput(newSecondaryFireInput: ctx.ReadValueAsButton());
+        private void OnSecondaryFireInputCanceled(InputAction.CallbackContext ctx)  => HandleSecondaryFireInput(newSecondaryFireInput: false);
+        
+        private void HandleSecondaryFireInput(Bool newSecondaryFireInput)
         {
-            SecondaryFireInput = ctx.ReadValueAsButton();
-        }
-
-        private void OnSecondaryFireInputPerformed(InputAction.CallbackContext ctx)
-        {
-            SecondaryFireInput = ctx.ReadValueAsButton();
-        }
-
-        private void OnSecondaryFireInputCanceled(InputAction.CallbackContext ctx)
-        {
-            SecondaryFireInput = false;
+            SecondaryFireInput = newSecondaryFireInput;
+            OnSecondaryFireInputChanged?.Invoke(SecondaryFireInput);
+            
+            if (SecondaryFireInput)
+            {
+                OnSecondaryFireStarted?.Invoke();
+            }
+            else
+            {
+                OnSecondaryFireStopped?.Invoke();
+            }
         }
 
         #endregion
