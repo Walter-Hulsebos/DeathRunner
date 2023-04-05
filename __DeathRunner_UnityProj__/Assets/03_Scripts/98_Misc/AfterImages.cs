@@ -1,3 +1,4 @@
+using DeathRunner.Utils;
 using UnityEngine;
 
 using UnityEngine.Pool;
@@ -30,26 +31,24 @@ namespace Game
         //private bool isActivated = false;
         //private Mesh[] afterImages;
 
-        private ObjectPool<AfterImage> afterImagePool;
+        private ObjectPool<AfterImage> _afterImagePool;
 
         private void OnEnable()
         {
-            afterImagePool = new ObjectPool<AfterImage>
+            _afterImagePool = new ObjectPool<AfterImage>
             (
                 createFunc: () =>
                 {
                     //Instantiate copies of original meshes
                     AfterImage __afterImage = new()
                     {
-                        gameObjects = new GameObject[originalMeshes.Length],
+                        gameObjects = new GameObject[originalMeshes.Length]
                     };
 
                     //Generate a new gameObject, meshRenderer and meshFilter for each original mesh.
                     for (I32 __meshIndex = 0; __meshIndex < originalMeshes.Length; __meshIndex += 1)
                     {
-                        GameObject   __afterImageGameObject   = new();
-                        MeshRenderer __afterImageMeshRenderer = __afterImageGameObject.AddComponent<MeshRenderer>();
-                        MeshFilter   __afterImageMeshFilter   = __afterImageGameObject.AddComponent<MeshFilter>();
+                        GameObject __afterImageGameObject = new GameObject().AddComponents(out MeshRenderer __afterImageMeshRenderer, out MeshFilter __afterImageMeshFilter);
 
                         Mesh __afterImageMesh = new();
                         originalMeshes[__meshIndex].BakeMesh(__afterImageMesh);
@@ -91,7 +90,7 @@ namespace Game
         
         private void OnDisable()
         {
-            afterImagePool.Dispose();
+            _afterImagePool.Dispose();
         }
 
 
