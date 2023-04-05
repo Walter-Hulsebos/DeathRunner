@@ -2,8 +2,11 @@ using System;
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using UltEvents;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
+
+using static Unity.Mathematics.math;
 
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
@@ -27,21 +30,28 @@ namespace DeathRunner.Inputs
         [field:SerializeField] public F32x2           MoveInput          { get; private set; }
         [field:FoldoutGroup(groupName: "Move")]
         [field:SerializeField] public F32x3           MoveInputFlat      { get; private set; }
-        
+        public event Action<F32x2>                    OnMoveInputUpdated; 
+        public event Action<F32x2>                    OnMoveInputChanged; 
+        public event Action<F32x3>                    OnMoveInputFlatUpdated;
+        public event Action<F32x3>                    OnMoveInputFlatChanged;
+
         [FoldoutGroup(groupName: "Dash")]
         [SerializeField] private InputActionReference dashInputActionReference;
         [field:FoldoutGroup(groupName: "Dash")]
-        [field:SerializeField] public Boolean         DashInput          { get; private set; }
+        [field:SerializeField] public Bool            DashInput          { get; private set; }
+        public event Action<Bool>                     OnDashInputChanged;
         
         [FoldoutGroup(groupName: "Primary Fire")]
         [SerializeField] private InputActionReference primaryFireInputActionReference;
         [field:FoldoutGroup(groupName: "Primary Fire")]
-        [field:SerializeField] public Boolean         PrimaryFireInput   { get; private set; }
-        
+        [field:SerializeField] public Bool            PrimaryFireInput   { get; private set; }
+        public event Action<Bool>                     OnPrimaryFireInputChanged;
+
         [FoldoutGroup(groupName: "Secondary Fire")]
         [SerializeField] private InputActionReference secondaryFireInputActionReference;
         [field:FoldoutGroup(groupName: "Secondary Fire")]
-        [field:SerializeField] public Boolean         SecondaryFireInput { get; private set; }
+        [field:SerializeField] public Bool            SecondaryFireInput { get; private set; }
+        public event Action<Bool>                     OnSecondaryFireInputChanged;
         
         //TODO: [Walter] TEMPORARY, REMOVE THIS
         [FoldoutGroup(groupName: "SlowMo")]
@@ -50,6 +60,7 @@ namespace DeathRunner.Inputs
         [field:SerializeField] public Bool            IsSlowMoToggled  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
         [field:SerializeField] public UltEvent<Bool>  OnSlowMoToggleChanged  { get; private set; }
+        
         [field:FoldoutGroup(groupName: "SlowMo")]
         [field:SerializeField] public UltEvent        OnSlowMoEnabled  { get; private set; }
         [field:FoldoutGroup(groupName: "SlowMo")]
@@ -126,18 +137,54 @@ namespace DeathRunner.Inputs
         //NOTE: [Walter] If you want to use `PlayerInputs` components (using Unity Events), you'll want to make these public. With the current setup that isn't required.
         private void OnMoveInputStarted(InputAction.CallbackContext ctx)
         {
-            MoveInput     = ctx.ReadValue<Vector2>();
-            MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y); 
+            F32x2 __newMoveInput = (F32x2)ctx.ReadValue<Vector2>();
+
+            MoveInput     = __newMoveInput;
+            MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y);
+            
+            Bool __inputHasChanged = all(MoveInput != __newMoveInput);
+            if (__inputHasChanged)
+            {
+                OnMoveInputChanged?.Invoke(MoveInput);
+                OnMoveInputFlatChanged?.Invoke(MoveInputFlat);
+            }
+            
+            OnMoveInputUpdated?.Invoke(MoveInput);
+            OnMoveInputFlatUpdated?.Invoke(MoveInputFlat);
         }
         private void OnMoveInputPerformed(InputAction.CallbackContext ctx)
         {
-            MoveInput     = ctx.ReadValue<Vector2>();
-            MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y); 
+            F32x2 __newMoveInput = (F32x2)ctx.ReadValue<Vector2>();
+
+            MoveInput     = __newMoveInput;
+            MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y);
+            
+            Bool __inputHasChanged = all(MoveInput != __newMoveInput);
+            if (__inputHasChanged)
+            {
+                OnMoveInputChanged?.Invoke(MoveInput);
+                OnMoveInputFlatChanged?.Invoke(MoveInputFlat);
+            }
+            
+            OnMoveInputUpdated?.Invoke(MoveInput);
+            OnMoveInputFlatUpdated?.Invoke(MoveInputFlat);
         }
         private void OnMoveInputCanceled(InputAction.CallbackContext ctx)
         {
-            MoveInput     = F32x2.zero;
-            MoveInputFlat = F32x3.zero;
+            F32x2 __newMoveInput = F32x2.zero;
+
+            MoveInput     = __newMoveInput;
+            MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y);
+            
+            Bool __inputHasChanged = all(MoveInput != __newMoveInput);
+            if (__inputHasChanged)
+            {
+                OnMoveInputChanged?.Invoke(MoveInput);
+                OnMoveInputFlatChanged?.Invoke(MoveInputFlat);
+            }
+            
+            OnMoveInputUpdated?.Invoke(MoveInput);
+            OnMoveInputFlatUpdated?.Invoke(MoveInputFlat);
         }
         #endregion
 
