@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Damageable
+namespace DeathRunner.Damageable
 {
     namespace Message
     {

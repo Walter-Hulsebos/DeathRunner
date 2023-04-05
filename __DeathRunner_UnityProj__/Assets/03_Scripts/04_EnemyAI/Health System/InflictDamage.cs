@@ -1,7 +1,7 @@
 using UnityEngine;
 
 //TODO remove damageable namescape make it Deathrunner instead
-namespace Damageable
+namespace DeathRunner.Damageable
 {
     public class InflictDamage : MonoBehaviour
     {
@@ -16,7 +16,7 @@ namespace Damageable
             //Todo make it usable for other things maybe
             if (!other.CompareTag(targetTag)) return;
             
-            Damageable.DamageMessage data;
+            DamageMessage data;
             data.amount = damageInflicted;
             data.damager = this;
 

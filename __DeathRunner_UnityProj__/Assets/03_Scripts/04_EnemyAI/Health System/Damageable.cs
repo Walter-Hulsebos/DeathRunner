@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Damageable.Message;
+using DeathRunner.Damageable.Message;
 using UnityEngine.Serialization;
 
-namespace Damageable
+namespace DeathRunner.Damageable
 {
-    public partial class Damageable : MonoBehaviour
+    public class Damageable : MonoBehaviour
     {
 
         public int maxHitPoints;
