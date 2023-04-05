@@ -12,8 +12,7 @@ namespace Game
         [SerializeField] private GameObject[] doors;
 
         private int deadEnemies = 0;
-
-        private bool isInCombat = false;
+        
         
         // Start is called before the first frame update
         void Start()
@@ -33,8 +32,7 @@ namespace Game
         {
             if (other.CompareTag("Player"))
             {
-                isInCombat = true;
-                
+
                 foreach( GameObject enemy in enemies )
                 {
                     enemy.SetActive(true);
@@ -45,20 +43,10 @@ namespace Game
                 }
             }
         }
-
-        private void Update()
+        public void EnemyDied()
         {
-            //TOdo dont do this in update, call it from the enemy.
-            if (!isInCombat) {return;}
+            deadEnemies++;
             
-            foreach( GameObject enemy in enemies )
-            {
-                if (enemy == null)
-                {
-                    deadEnemies++;
-                }
-            }
-
             if (deadEnemies == enemies.Length)
             {
                 foreach( GameObject door in doors )
@@ -66,8 +54,8 @@ namespace Game
                     door.SetActive(false);
                 }
             }
-            
-            deadEnemies = 0;
         }
     }
+    
+
 }

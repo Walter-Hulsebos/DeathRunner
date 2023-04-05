@@ -6,8 +6,6 @@ namespace DeathRunner.Weapons
 {
     public class SideWeapon : ScriptableObject
     {
-        public new string name;
-
         public float cooldownTime;
         
         public float activeTime;

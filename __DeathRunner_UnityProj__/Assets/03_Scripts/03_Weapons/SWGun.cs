@@ -10,11 +10,8 @@ namespace DeathRunner.Weapons
     {
         [SerializeField] private GameObject bulletPrefab;
         
-        public override void Activate(GameObject parent)
+        public void Shoot(Transform muzzle)
         {
-            //Todo anything but this
-            Transform muzzle = parent.transform.Find("Muzzle");
-            
             Instantiate(bulletPrefab, muzzle.position ,muzzle.rotation);
         }
     }

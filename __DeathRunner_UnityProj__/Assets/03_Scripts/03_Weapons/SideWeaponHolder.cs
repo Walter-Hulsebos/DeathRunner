@@ -4,6 +4,7 @@ using System.Collections.Generic;
 //using DeathRunner.Movement;
 using DG.DemiEditor.DeGUINodeSystem;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
@@ -18,9 +19,11 @@ namespace DeathRunner.Weapons
 
         private float activeTime;
 
-        [SerializeField] private Transform shootPos;
-
         [SerializeField] Image cooldownImage;
+
+        [SerializeField] private Transform muzzle;
+
+        [SerializeField] private InputActionReference secondaryFire;
         
         // Update is called once per frame
         enum WeaponState
@@ -38,9 +41,16 @@ namespace DeathRunner.Weapons
             {
                 case WeaponState.Ready:
                     //TODO use input system
-                    if (Input.GetKeyDown(KeyCode.Mouse1))
+                    if (secondaryFire.action.IsPressed())
                     {
-                        sideWeapon.Activate(gameObject);
+                        if (sideWeapon is SWGun gun)
+                        {
+                            gun.Shoot(muzzle);
+                        }
+                        else
+                        {
+                            sideWeapon.Activate(gameObject);    
+                        }
                         state = WeaponState.Active; 
                         activeTime = sideWeapon.activeTime;
                         
