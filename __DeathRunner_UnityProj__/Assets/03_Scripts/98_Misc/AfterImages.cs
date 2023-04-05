@@ -47,9 +47,9 @@ namespace Game
                     //Generate a new gameObject, meshRenderer and meshFilter for each original mesh.
                     for (I32 __meshIndex = 0; __meshIndex < originalMeshes.Length; __meshIndex += 1)
                     {
-                        GameObject __afterImageGameObject = new();
+                        GameObject   __afterImageGameObject   = new();
                         MeshRenderer __afterImageMeshRenderer = __afterImageGameObject.AddComponent<MeshRenderer>();
-                        MeshFilter __afterImageMeshFilter = __afterImageGameObject.AddComponent<MeshFilter>();
+                        MeshFilter   __afterImageMeshFilter   = __afterImageGameObject.AddComponent<MeshFilter>();
 
                         Mesh __afterImageMesh = new();
                         originalMeshes[__meshIndex].BakeMesh(__afterImageMesh);
