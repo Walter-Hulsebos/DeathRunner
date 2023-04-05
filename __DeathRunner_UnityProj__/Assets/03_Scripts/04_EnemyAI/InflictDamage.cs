@@ -1,7 +1,7 @@
 using UnityEngine;
 
-//TODO remove damageable namescape make it Game instead
-namespace DeathRunner.EnemyAI
+//TODO remove damageable namescape make it Deathrunner instead
+namespace Damageable
 {
     public class InflictDamage : MonoBehaviour
     {
@@ -16,11 +16,11 @@ namespace DeathRunner.EnemyAI
             //Todo make it usable for other things maybe
             if (!other.CompareTag(targetTag)) return;
             
-            Damageable.Damageable.DamageMessage data;
+            Damageable.DamageMessage data;
             data.amount = damageInflicted;
             data.damager = this;
 
-            if (other.TryGetComponent(out Damageable.Damageable damageable))
+            if (other.TryGetComponent(out Damageable damageable))
             {
                 damageable.ApplyDamage(data);
             }

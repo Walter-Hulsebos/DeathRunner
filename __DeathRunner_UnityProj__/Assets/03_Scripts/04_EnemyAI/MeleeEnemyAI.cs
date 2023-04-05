@@ -134,10 +134,11 @@ namespace DeathRunner.EnemyAI
 
             public void OnTakeDamage()
             {
+                animator.SetTrigger("Stun");
                 StopAllCoroutines();
                 navMeshAgent.velocity = Vector3.zero;
+                navMeshAgent.SetDestination(transform.position);
                 transform.LookAt(_player.transform.position);
-                animator.SetTrigger("Stun");
                 ExitAttack();
             }
             
