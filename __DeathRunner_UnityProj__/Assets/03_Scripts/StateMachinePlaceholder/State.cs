@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace HFSM
 {
@@ -134,7 +135,10 @@ namespace HFSM
             // Check current state object's transitions
             __availableTransition ??= CurrentStateObject.AvailableTransition;
 
-            foreach (EventTransitionBase __anyEventTransition in _anyEventTransitions) __anyEventTransition.ConsumeEvent();
+            foreach (EventTransitionBase __anyEventTransition in _anyEventTransitions)
+            {
+                __anyEventTransition.ConsumeEvent();
+            }
             ConsumeTransitionsEvents();
 
             if (__availableTransition != null)
@@ -222,11 +226,13 @@ namespace HFSM
             StateObject __originStateObject = availableTransition.From;
             StateObject __targetStateObject = availableTransition.To;
 
-            State __stateMachine1 = __originStateObject.State;
-            State __stateMachine2 = __targetStateObject.State;
+            State __origin = __originStateObject.State;
+            State __target = __targetStateObject.State;
+            
+            Debug.Log($"Changing state from {__origin} to {__target}");
 
             State __lowestCommonState = FindLowestCommonStateMachine(
-                sm1: __stateMachine1, sm2: __stateMachine2
+                sm1: __origin, sm2: __target
             );
 
             __lowestCommonState.CurrentStateObject.Exit();

@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 
 using static Unity.Mathematics.math;
 
+using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 
@@ -37,6 +38,7 @@ namespace DeathRunner.Inputs
         public event Action<F32x3>                    OnMoveInputFlatChangedAndNotZero;
         public event Action<F32x3>                    OnMoveStarted;
         public event Action<F32x3>                    OnMoveStopped;
+        private Bool                                  _hasMoveInput;
 
         [FoldoutGroup(groupName: "Dash")]
         [SerializeField] private InputActionReference dashInputActionReference;
@@ -157,16 +159,37 @@ namespace DeathRunner.Inputs
             {
                 OnMoveInputChanged?.Invoke(MoveInput);
                 OnMoveInputFlatChanged?.Invoke(MoveInputFlat);
+                
+                Debug.Log("Move Input Changed");
 
-                //TODO: use lengthsq instead?
-                if (all(MoveInputFlat == F32x3.zero))
+                F32 __inputSqrMagnitude = lengthsq(MoveInputFlat);
+                if(__inputSqrMagnitude > 0)
                 {
-                    OnMoveStopped?.Invoke(MoveInputFlat);
+                    if (!_hasMoveInput) //This should be redundant, since we're already checking for input has changed, but just in case.
+                    {
+                        OnMoveStarted?.Invoke(MoveInputFlat);
+                        Debug.Log("Move Started");
+                    }
+                    
+                    _hasMoveInput = true;
                 }
                 else
                 {
-                    OnMoveStarted?.Invoke(MoveInputFlat);
+                    if (_hasMoveInput)
+                    {
+                        OnMoveStopped?.Invoke(MoveInputFlat);
+                        Debug.Log("Move Stopped");
+                    }
                 }
+                
+                //if (all(MoveInputFlat == F32x3.zero))
+                // {
+                //     OnMoveStopped?.Invoke(MoveInputFlat);
+                // }
+                // else
+                // {
+                //     OnMoveStarted?.Invoke(MoveInputFlat);
+                // }
             }
 
             OnMoveInputUpdated?.Invoke(MoveInput);
