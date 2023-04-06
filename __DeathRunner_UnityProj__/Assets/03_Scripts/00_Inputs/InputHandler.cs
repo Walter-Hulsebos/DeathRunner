@@ -151,24 +151,27 @@ namespace DeathRunner.Inputs
 
         private void HandleMoveInput(F32x2 newMoveInput)
         {
+            Bool __inputHasChanged = any(MoveInput != newMoveInput);
+            
+            //Debug.Log($"Move Input: {MoveInput}, New Move Input: {newMoveInput}, Input Has Changed: {__inputHasChanged}");
+            
             MoveInput     = newMoveInput;
             MoveInputFlat = new F32x3(x: MoveInput.x, y: 0, z: MoveInput.y);
 
-            Bool __inputHasChanged = all(MoveInput != newMoveInput);
             if (__inputHasChanged)
             {
                 OnMoveInputChanged?.Invoke(MoveInput);
                 OnMoveInputFlatChanged?.Invoke(MoveInputFlat);
                 
-                Debug.Log("Move Input Changed");
+                //Debug.Log("Move Input Changed");
 
-                F32 __inputSqrMagnitude = lengthsq(MoveInputFlat);
+                F32 __inputSqrMagnitude = lengthsq(MoveInput);
                 if(__inputSqrMagnitude > 0)
                 {
                     if (!_hasMoveInput) //This should be redundant, since we're already checking for input has changed, but just in case.
                     {
                         OnMoveStarted?.Invoke(MoveInputFlat);
-                        Debug.Log("Move Started");
+                        //Debug.Log("Move Started");
                     }
                     
                     _hasMoveInput = true;
@@ -178,7 +181,7 @@ namespace DeathRunner.Inputs
                     if (_hasMoveInput)
                     {
                         OnMoveStopped?.Invoke(MoveInputFlat);
-                        Debug.Log("Move Stopped");
+                        //Debug.Log("Move Stopped");
                     }
                 }
                 
@@ -205,17 +208,17 @@ namespace DeathRunner.Inputs
 
         private void HandleDashInput(Bool newDashInput)
         {
+            Bool __inputHasChanged = (DashInput != newDashInput);
+            
+            if (!__inputHasChanged) return;
             DashInput = newDashInput;
-            OnDashInputChanged?.Invoke(DashInput);
 
+            OnDashInputChanged?.Invoke(DashInput);
+                
             if (DashInput)
             {
                 OnDashTriggered?.Invoke();
             }
-            // else
-            // {
-            //     OnDashStopped?.Invoke();
-            // }
         }
         
         #endregion

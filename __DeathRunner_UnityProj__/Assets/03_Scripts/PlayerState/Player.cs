@@ -24,15 +24,16 @@ namespace DeathRunner.Shared.StateMachine
         private State     _normalTime;
         private State     _bulletTime;
 
-        private StateLeaf _idleNormalTime;
-        private StateLeaf _walkNormalTime;
-        private StateLeaf _dashNormalTime;
-        private StateLeaf _primaryAttackNormalTime;
-        private StateLeaf _secondaryAttackNormalTime;
+        // Suffixed with "NT" (NormalTime) or "BT" (BulletTime) to avoid name conflicts
+        private StateLeaf _idleNT;
+        private StateLeaf _walkNT;
+        private StateLeaf _dashNT;
+        private StateLeaf _primaryAttackNT;
+        private StateLeaf _secondaryAttackNT;
 
-        private StateLeaf _idleBulletTime;
-        private StateLeaf _walkBulletTime;
-        private StateLeaf _primaryAttackBulletTime;
+        private StateLeaf _idleBT;
+        private StateLeaf _walkBT;
+        private StateLeaf _primaryAttackBT;
 
         private void Awake()
         {
@@ -42,69 +43,27 @@ namespace DeathRunner.Shared.StateMachine
 
         private void CreateStateTree()
         {
-            // root = new PlayerState_Root()
-            //     .AddChild(alive                             = new PlayerState_Alive()
-            //         .AddChild(normalTime                    = new PlayerState_NormalTime()
-            //             .AddChild(idleNormalTime            = new PlayerStateLeaf_Idle())
-            //             .AddChild(walkNormalTime            = new PlayerStateLeaf_Walk())
-            //             .AddChild(dashNormalTime            = new PlayerStateLeaf_Dash())
-            //             .AddChild(primaryAttackNormalTime   = new PlayerStateLeaf_Primary())
-            //             .AddChild(secondaryAttackNormalTime = new PlayerStateLeaf_Secondary()))
-            //         .AddChild(bulletTime                    = new PlayerState_BulletTime()
-            //             .AddChild(idleBulletTime            = new PlayerStateLeaf_Idle())
-            //             .AddChild(walkBulletTime            = new PlayerStateLeaf_Walk())
-            //             .AddChild(primaryAttackBulletTime   = new PlayerStateLeaf_Primary())))
-            //     .AddChild(dead = new PlayerStateLeaf_Dead());
-            
-            // _root = new PlayerState_Root(/*params childstates */_alive , _dead);
-            //     _alive = new PlayerState_Alive(/*params childstates */_normalTime, _bulletTime);
-            //         _normalTime = new PlayerState_NormalTime(/*params childstates */_idleNormalTime, _walkNormalTime, _dashNormalTime, _primaryAttackNormalTime, _secondaryAttackNormalTime);
-            //             _idleNormalTime            = new PlayerStateLeaf_Idle();
-            //             _walkNormalTime            = new PlayerStateLeaf_Walk();
-            //             _dashNormalTime            = new PlayerStateLeaf_Dash();
-            //             _primaryAttackNormalTime   = new PlayerStateLeaf_Primary();
-            //             _secondaryAttackNormalTime = new PlayerStateLeaf_Secondary();
-            //         _bulletTime = new PlayerState_BulletTime(/*params childstates */_idleBulletTime, _walkBulletTime, _primaryAttackBulletTime);
-            //             _idleBulletTime          = new PlayerStateLeaf_Idle();
-            //             _walkBulletTime          = new PlayerStateLeaf_Walk();
-            //             _primaryAttackBulletTime = new PlayerStateLeaf_Primary();
-            //     _dead = new PlayerStateLeaf_Dead();
-            
-                    _idleNormalTime            = new PlayerStateLeaf_Idle();
-                    _walkNormalTime            = new PlayerStateLeaf_Walk();
-                    _dashNormalTime            = new PlayerStateLeaf_Dash();
-                    _primaryAttackNormalTime   = new PlayerStateLeaf_Primary();
-                    _secondaryAttackNormalTime = new PlayerStateLeaf_Secondary();
-                _normalTime = new PlayerState_NormalTime(/*params childstates */_idleNormalTime, _walkNormalTime, _dashNormalTime, _primaryAttackNormalTime, _secondaryAttackNormalTime);
-                    _idleBulletTime          = new PlayerStateLeaf_Idle();
-                    _walkBulletTime          = new PlayerStateLeaf_Walk();
-                    _primaryAttackBulletTime = new PlayerStateLeaf_Primary();
-                _bulletTime = new PlayerState_BulletTime(/*params childstates */_idleBulletTime, _walkBulletTime, _primaryAttackBulletTime);
-                _alive = new PlayerState_Alive(/*params childstates */_normalTime, _bulletTime);
-                _dead = new PlayerStateLeaf_Dead();
-            _root = new PlayerState_Root(/*params childstates */_alive , _dead);
-            
-            // _root = new PlayerState_Root(/*params childstates */
-            //     _alive = new PlayerState_Alive(/*params child states */
-            //         _normalTime = new PlayerState_NormalTime(/*params childstates */
-            //             _idleNormalTime = new PlayerStateLeaf_Idle(), 
-            //             _walkNormalTime = new PlayerStateLeaf_Walk(), 
-            //             _dashNormalTime = new PlayerStateLeaf_Dash(), 
-            //             _primaryAttackNormalTime = new PlayerStateLeaf_Primary(), 
-            //             _secondaryAttackNormalTime = new PlayerStateLeaf_Secondary()), 
-            //         _bulletTime = new PlayerState_BulletTime(/*params childstates */
-            //             _idleBulletTime = new PlayerStateLeaf_Idle(), 
-            //             _walkBulletTime = new PlayerStateLeaf_Walk(), 
-            //             _primaryAttackBulletTime = new PlayerStateLeaf_Primary())), 
-            //     _dead = new PlayerStateLeaf_Dead());
+            _root = new PlayerState_Root(/*params childstates */
+                _alive = new PlayerState_Alive(/*params child states */
+                    _normalTime = new PlayerState_NormalTime(/*params childstates */
+                        _idleNT            = new PlayerStateLeaf_Idle(), 
+                        _walkNT            = new PlayerStateLeaf_Walk(), 
+                        _dashNT            = new PlayerStateLeaf_Dash(), 
+                        _primaryAttackNT   = new PlayerStateLeaf_Primary(), 
+                        _secondaryAttackNT = new PlayerStateLeaf_Secondary()), 
+                    _bulletTime = new PlayerState_BulletTime(/*params childstates */
+                        _idleBT            = new PlayerStateLeaf_Idle(), 
+                        _walkBT            = new PlayerStateLeaf_Walk(), 
+                        _primaryAttackBT   = new PlayerStateLeaf_Primary())), 
+                _dead = new PlayerStateLeaf_Dead());
         }
 
         private void CreateStateTransitions()
         {
             #region Alive <-> Dead
             
-            _alive.AddTransitionTo(  _dead);
-            _alive.AddTransitionFrom(_dead);
+            //_alive.AddTransitionTo(  _dead);
+            //_alive.AddTransitionFrom(_dead);
             
             //_alive.AddAnyTransition(_dead);
 
@@ -112,96 +71,72 @@ namespace DeathRunner.Shared.StateMachine
             
             #region Normal Time <-> Bullet Time
 
-            _normalTime.AddTransitionTo(  _bulletTime);
-            _bulletTime.AddTransitionFrom(_normalTime);
-            
-            //_normalTime.AddAnyTransition(_bulletTime);
-            //_bulletTime.AddAnyTransition(_normalTime);
-            
+            //_normalTime.AddTransitionTo(  _bulletTime);
+            //_normalTime.AddTransitionFrom(_bulletTime);
+
             #endregion
 
             #region Idle Normal Time
             
-            //inputHandler.OnMoveInputUpdated += moveInput => idleNormalTime.AddEventTransition(to: walkNormalTime, conditions: () => all(moveInput != F32x2.zero));
+            //inputHandler.OnMoveInputUpdated += moveInput => idleNormalTime.AddEventTransition(to: walkNormalTime, conditions: () => any(moveInput != F32x2.zero));
             
-            //_idleNormalTime.AddTransitionTo(  _walkNormalTime);
-            //_idleNormalTime.AddTransitionFrom(_walkNormalTime);
-            inputHandler.OnMoveStarted += moveInput => _idleNormalTime.AddEventTransition(to: _walkNormalTime);
-            inputHandler.OnMoveStopped += moveInput => _walkNormalTime.AddEventTransition(to: _idleNormalTime);
-
-            //_idleNormalTime.AddTransitionTo(  _dashNormalTime);
-            //_idleNormalTime.AddTransitionFrom(_dashNormalTime);
-            inputHandler.OnDashTriggered += () => _idleNormalTime.AddEventTransition(to: _dashNormalTime);
-
-            //_idleNormalTime.AddTransitionTo(  _primaryAttackNormalTime);
-            //_idleNormalTime.AddTransitionFrom(_primaryAttackNormalTime);
-            inputHandler.OnPrimaryFireStarted += () => _idleNormalTime.AddEventTransition(to: _primaryAttackNormalTime);
-            inputHandler.OnPrimaryFireStopped += () => _primaryAttackNormalTime.AddEventTransition(to: _idleNormalTime);
-
-            //_idleNormalTime.AddTransitionTo(  _secondaryAttackNormalTime);
-            //_idleNormalTime.AddTransitionFrom(_secondaryAttackNormalTime);
-            inputHandler.OnSecondaryFireStarted += () => _idleNormalTime.AddEventTransition(to: _secondaryAttackNormalTime);
-            inputHandler.OnSecondaryFireStopped += () => _secondaryAttackNormalTime.AddEventTransition(to: _idleNormalTime);
+            //inputHandler.OnMoveStarted += moveInput => _idleNT.AddEventTransitionTo(  _walkNT);
+            //inputHandler.OnMoveStopped += moveInput => _idleNT.AddEventTransitionFrom(_walkNT);
+            
+            //Idle <-> Walk
+            _idleNT.AddTransitionTo(  _walkNT, conditions: () => any(inputHandler.MoveInput != F32x2.zero));
+            _idleNT.AddTransitionFrom(_walkNT, conditions: () => all(inputHandler.MoveInput == F32x2.zero));
+            
+            //Idle <-> Dash
+            _idleNT.AddTransitionTo(  _dashNT, conditions: () => inputHandler.DashInput);
+            _idleNT.AddTransitionFrom(_dashNT, conditions: () => all(inputHandler.MoveInput == F32x2.zero));
+            
+            //inputHandler.OnDashTriggered += () => _idleNT.AddEventTransitionTo(_dashNT);
+            //_idleNT.AddTransitionFrom(_dashNT);
+            
+            //inputHandler.OnPrimaryFireStarted += () => _idleNT.AddEventTransitionTo(  _primaryAttackNT);
+            //inputHandler.OnPrimaryFireStopped += () => _idleNT.AddEventTransitionFrom(_primaryAttackNT);
+            
+            //inputHandler.OnSecondaryFireStarted += () => _idleNT.AddEventTransitionTo(  _secondaryAttackNT);
+            //inputHandler.OnSecondaryFireStopped += () => _idleNT.AddEventTransitionFrom(_secondaryAttackNT);
 
             #endregion
 
             #region Walk Normal Time
-
-            //_walkNormalTime.AddTransitionTo(  _idleNormalTime);
-            //_walkNormalTime.AddTransitionFrom(_idleNormalTime);
-            inputHandler.OnMoveStarted += moveInput => _walkNormalTime.AddEventTransition(to: _idleNormalTime);
-            inputHandler.OnMoveStopped += moveInput => _idleNormalTime.AddEventTransition(to: _walkNormalTime);
-
-            //_walkNormalTime.AddTransitionTo(  _dashNormalTime);
-            //_walkNormalTime.AddTransitionFrom(_dashNormalTime);
-            inputHandler.OnDashTriggered += () => _walkNormalTime.AddEventTransition(to: _dashNormalTime);
-
-            //_walkNormalTime.AddTransitionTo(  _primaryAttackNormalTime);
-            //_walkNormalTime.AddTransitionFrom(_primaryAttackNormalTime);
-            inputHandler.OnPrimaryFireStarted += () => _walkNormalTime.AddEventTransition(to: _primaryAttackNormalTime);
-            inputHandler.OnPrimaryFireStopped += () => _primaryAttackNormalTime.AddEventTransition(to: _walkNormalTime);
             
-            //_walkNormalTime.AddTransitionTo(  _secondaryAttackNormalTime);
-            //_walkNormalTime.AddTransitionFrom(_secondaryAttackNormalTime);
-            inputHandler.OnSecondaryFireStarted += () => _walkNormalTime.AddEventTransition(to: _secondaryAttackNormalTime);
-            inputHandler.OnSecondaryFireStopped += () => _secondaryAttackNormalTime.AddEventTransition(to: _walkNormalTime);
+            //inputHandler.OnDashTriggered += () => _walkNT.AddEventTransitionTo(_dashNT);
+            _walkNT.AddTransitionTo(  _dashNT, conditions: () => inputHandler.DashInput);
+            _walkNT.AddTransitionFrom(_dashNT, conditions: () => any(inputHandler.MoveInput != F32x2.zero));
+            
+            inputHandler.OnPrimaryFireStarted += () => _walkNT.AddEventTransitionTo(  _primaryAttackNT);
+            inputHandler.OnPrimaryFireStopped += () => _walkNT.AddEventTransitionFrom(_primaryAttackNT);
+            
+            inputHandler.OnSecondaryFireStarted += () => _walkNT.AddEventTransitionTo(  _secondaryAttackNT);
+            inputHandler.OnSecondaryFireStopped += () => _walkNT.AddEventTransitionFrom(_secondaryAttackNT);
 
             #endregion
             
             #region Primary Normal Time <-> Secondary Normal Time
             
-            //_primaryAttackNormalTime.AddTransitionTo(  _secondaryAttackNormalTime);
-            //_primaryAttackNormalTime.AddTransitionFrom(_secondaryAttackNormalTime);
-            inputHandler.OnSecondaryFireStarted += () => _primaryAttackNormalTime.AddEventTransition(to: _secondaryAttackNormalTime);
-            inputHandler.OnSecondaryFireStopped += () => _secondaryAttackNormalTime.AddEventTransition(to: _primaryAttackNormalTime);
+            inputHandler.OnSecondaryFireStarted += () => _primaryAttackNT.AddEventTransitionTo(  _secondaryAttackNT);
+            inputHandler.OnSecondaryFireStopped += () => _primaryAttackNT.AddEventTransitionFrom(_secondaryAttackNT);
             
             #endregion
             
             #region Idle Bullet Time
             
-            //_idleBulletTime.AddTransitionTo(  _walkBulletTime);
-            //_idleBulletTime.AddTransitionFrom(_walkBulletTime);
-            inputHandler.OnMoveStarted += moveInput => _idleBulletTime.AddEventTransition(to: _walkBulletTime);
-            inputHandler.OnMoveStopped += moveInput => _walkBulletTime.AddEventTransition(to: _idleBulletTime);
-
-            //_idleBulletTime.AddTransitionTo(  _primaryAttackBulletTime);
-            //_idleBulletTime.AddTransitionFrom(_primaryAttackBulletTime);
-            inputHandler.OnPrimaryFireStarted += () => _idleBulletTime.AddEventTransition(to: _primaryAttackBulletTime);
-            inputHandler.OnPrimaryFireStopped += () => _primaryAttackBulletTime.AddEventTransition(to: _idleBulletTime);
+            inputHandler.OnMoveStarted += moveInput => _idleBT.AddEventTransitionTo(  _walkBT);
+            inputHandler.OnMoveStopped += moveInput => _idleBT.AddEventTransitionFrom(_walkBT);
+            
+            inputHandler.OnPrimaryFireStarted += () => _idleBT.AddEventTransitionTo(  _primaryAttackBT);
+            inputHandler.OnPrimaryFireStopped += () => _idleBT.AddEventTransitionFrom(_primaryAttackBT);
 
             #endregion
             
             #region Walk Bullet Time
             
-            //_walkBulletTime.AddTransitionTo(  _idleBulletTime);
-            //_walkBulletTime.AddTransitionFrom(_idleBulletTime);
-            inputHandler.OnMoveStarted += moveInput => _walkBulletTime.AddEventTransition(to: _idleBulletTime);
-            inputHandler.OnMoveStopped += moveInput => _idleBulletTime.AddEventTransition(to: _walkBulletTime);
-            
-            //_walkBulletTime.AddTransitionTo(  _primaryAttackBulletTime);
-            //_walkBulletTime.AddTransitionFrom(_primaryAttackBulletTime);
-            inputHandler.OnPrimaryFireStarted += () => _walkBulletTime.AddEventTransition(to: _primaryAttackBulletTime);
-            inputHandler.OnPrimaryFireStopped += () => _primaryAttackBulletTime.AddEventTransition(to: _walkBulletTime);
+            inputHandler.OnPrimaryFireStarted += () => _walkBT.AddEventTransitionTo(  _primaryAttackBT);
+            inputHandler.OnPrimaryFireStopped += () => _walkBT.AddEventTransitionFrom(_primaryAttackBT);
             
             #endregion
             

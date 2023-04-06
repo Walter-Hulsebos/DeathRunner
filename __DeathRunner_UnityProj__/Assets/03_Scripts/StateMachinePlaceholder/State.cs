@@ -229,11 +229,9 @@ namespace HFSM
             State __origin = __originStateObject.State;
             State __target = __targetStateObject.State;
             
-            Debug.Log($"Changing state from {__origin} to {__target}");
+            //Debug.Log($"Changing state from {__origin} to {__target}");
 
-            State __lowestCommonState = FindLowestCommonStateMachine(
-                sm1: __origin, sm2: __target
-            );
+            State __lowestCommonState = FindLowestCommonStateMachine(sm1: __origin, sm2: __target);
 
             __lowestCommonState.CurrentStateObject.Exit();
 
