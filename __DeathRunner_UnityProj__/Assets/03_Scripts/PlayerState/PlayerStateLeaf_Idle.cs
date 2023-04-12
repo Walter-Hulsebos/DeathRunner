@@ -33,14 +33,14 @@ namespace DeathRunner.PlayerState
         {
             base.OnEnter();
             
-            Debug.Log("Walk.Enter");
+            Debug.Log("Idle.Enter");
         }
         
         protected override void OnExit()
         {
             base.OnExit();
             
-            Debug.Log("Walk.Exit");
+            Debug.Log("Idle.Exit");
         }
         
         private F32x3 _moveDirectionVelocity;

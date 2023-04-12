@@ -92,7 +92,7 @@ namespace DeathRunner.PlayerState
                 NotGroundedMovement(desiredVelocity: __desiredVelocity);
             }
 
-            //OnMove?.Invoke(__moveDirectionRelativeToCamera);
+            _settings.OnMove.Invoke(__moveDirectionRelativeToCamera);
             
             // Perform movement using character's current velocity
             _references.Motor.Move(deltaTime: Commands.DeltaTime);

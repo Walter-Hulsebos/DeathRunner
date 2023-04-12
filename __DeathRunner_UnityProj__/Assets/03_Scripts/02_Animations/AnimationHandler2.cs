@@ -1,4 +1,3 @@
-using System;
 using Drawing;
 using GenericScriptableArchitecture;
 using JetBrains.Annotations;
@@ -23,8 +22,10 @@ namespace DeathRunner.Animations
 
         [SerializeField] private Animator animator;
         
-        [SerializeField] private ScriptableEvent<F32x3> onMoveEvent; 
+        [SerializeField] private ScriptableEvent<F32x3> onMoveEvent;
         
+        [SerializeField] private ScriptableEvent<F32x3> onDashEvent;
+
         private static readonly I32 move_x = Animator.StringToHash(name: "MoveX");
         private static readonly I32 move_y = Animator.StringToHash(name: "MoveY");
         
@@ -89,11 +90,20 @@ namespace DeathRunner.Animations
 
         private void OnEnable()
         {
-            
+            onMoveEvent += OnMoveHandler;
+            onDashEvent += OnDashHandler;
+        }
+        
+        private void OnDisable()
+        {
+            onMoveEvent -= OnMoveHandler;
+            onDashEvent -= OnDashHandler;
         }
 
-        private void SetMoveVector(F32x3 moveVector)
+        private void OnMoveHandler(F32x3 moveVector)
         {
+            //Debug.Log(message: $"MoveVector: {moveVector}");
+            
             if (all(moveVector == F32x3.zero))
             {
                 animator.SetFloat(id: move_x, value: 0);
@@ -136,8 +146,10 @@ namespace DeathRunner.Animations
         }
         
         [PublicAPI]
-        public void TriggerDash(F32x3 dashDir)
+        public void OnDashHandler(F32x3 dashDir)
         {
+            Debug.Log(message: $"DashDir: {dashDir}");
+            
             if (all(dashDir == F32x3.zero))
             {
                 animator.SetFloat(id: dash_x, value: 0);
