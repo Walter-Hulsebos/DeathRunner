@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections;
 using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace DeathRunner.EnemyAI
     {
@@ -44,6 +46,8 @@ namespace DeathRunner.EnemyAI
 
             private Transform currentWalkPos;
             [HideInInspector] public bool hasPickedWalkPos = false;
+
+            [SerializeField] private GameObject HealthDrop;
             // Called once when the object is created
             private void Start()
             {
@@ -166,6 +170,7 @@ namespace DeathRunner.EnemyAI
                 currentState = States.Dead;
                 navMeshAgent.SetDestination(transform.position);
                 navMeshAgent.velocity = Vector3.zero;
+                Instantiate(HealthDrop, transform.position, quaternion.identity);
                 StopAllCoroutines();
                 animator.SetTrigger("Death");
             }

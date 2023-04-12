@@ -26,7 +26,7 @@ namespace DeathRunner.Damageable
         public bool isInvulnerable { get; set; }
         public int currentHitPoints { get; private set; }
 
-        public UnityEvent OnDeath, OnReceiveDamage, OnHitWhileInvulnerable, OnBecomeVulnerable, OnResetDamage;
+        public UnityEvent OnDeath, OnReceiveDamage, OnHitWhileInvulnerable, OnBecomeVulnerable, OnResetDamage, OnHeal;
 
         [Tooltip("When this gameObject is damaged, these other gameObjects are notified.")]
         [EnforceType(typeof(Message.IMessageReceiver))]
@@ -111,9 +111,16 @@ namespace DeathRunner.Damageable
                 receiver.OnReceiveMessage(messageType, this, data);
             }
             
-            Debug.Log(gameObject + "took damage");
+            Debug.Log(currentHitPoints);
         }
 
+        public void HealDamage(int healAmount)
+        {
+            currentHitPoints += healAmount;
+             currentHitPoints = Mathf.Clamp(currentHitPoints, 0, maxHitPoints);
+            print("Healing");
+            OnHeal.Invoke();
+        }
         private void LateUpdate()
         {
             if (schedule != null)
