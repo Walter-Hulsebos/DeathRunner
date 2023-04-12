@@ -1,21 +1,17 @@
 //System libraries first
-using System.Collections;
 
 //Unity-specific libraries next
+using System.Collections;
+using HFSM;
 using UnityEngine;
 using static Unity.Mathematics.math;
 
 //Third-party libraries next
-using HFSM;
 
 //Project-specific libraries last
-using DeathRunner.Inputs;
-using DeathRunner.PlayerState;
-
 using F32x2 = Unity.Mathematics.float2;
-using F32x3 = Unity.Mathematics.float3;
 
-namespace DeathRunner.Shared.StateMachine
+namespace DeathRunner.PlayerState
 {
     public sealed class Player : MonoBehaviour
     {
@@ -23,12 +19,17 @@ namespace DeathRunner.Shared.StateMachine
 
         [SerializeField] private PlayerReferences playerReferences = new();
 
+        [Tooltip("Idle Settings for Normal-Time")]
+        [SerializeField] private IdleSettings idleNTSettings;
         [Tooltip("Walk Settings for Normal-Time")]
         [SerializeField] private WalkSettings walkNTSettings;
         [Tooltip("Dash Settings for Normal-Time")]
         [SerializeField] private DashSettings dashNTSettings;
+        
         //[SerializeField] private AttackSettings
 
+        [Tooltip("Idle Settings for Bullet-Time")]
+        [SerializeField] private IdleSettings idleBTSettings;
         [Tooltip("Walk Settings for Bullet-Time")]
         [SerializeField] private WalkSettings walkBTSettings;
 
@@ -68,13 +69,13 @@ namespace DeathRunner.Shared.StateMachine
             _root = new PlayerState_Root(/*params childstates */
                 _alive = new PlayerState_Alive(/*params child states */
                     _normalTime = new PlayerState_NormalTime(/*params childstates */
-                        _idleNT            = new PlayerStateLeaf_Idle(), 
+                        _idleNT            = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
                         _walkNT            = new PlayerStateLeaf_Walk(settings: walkNTSettings, references: playerReferences), 
                         _dashNT            = new PlayerStateLeaf_Dash(), 
                         _primaryAttackNT   = new PlayerStateLeaf_PrimaryAttack(), 
                         _secondaryAttackNT = new PlayerStateLeaf_SecondaryAttack()), 
                     _bulletTime = new PlayerState_BulletTime(/*params childstates */
-                        _idleBT            = new PlayerStateLeaf_Idle(), 
+                        _idleBT            = new PlayerStateLeaf_Idle(settings: idleBTSettings, references: playerReferences),
                         _walkBT            = new PlayerStateLeaf_Walk(settings: walkBTSettings, references: playerReferences), 
                         _primaryAttackBT   = new PlayerStateLeaf_PrimaryAttack())), 
                 _dead = new PlayerStateLeaf_Dead());

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2159.0562, g: 1380.8047, b: 1017.3457, a: 1}
+  m_IndirectSpecularColor: {r: 2159.5874, g: 1381.1367, b: 1017.5586, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1067,7 +1067,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d2b2d4485ec0c4783c35cad18e810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputHandler: {fileID: 1064062483}
+  playerReferences:
+    <Camera>k__BackingField: {fileID: 1417595675}
+    <Motor>k__BackingField: {fileID: 1064062488}
+    <InputHandler>k__BackingField: {fileID: 1064062483}
+  idleNTSettings:
+    <AirFriction>k__BackingField: {fileID: 11400000, guid: 7d055ba49c931a743b47855e9bc0b223, type: 2}
+    <Gravity>k__BackingField: {fileID: 11400000, guid: 98fd2051f803c5f4e9f2aefb01b1ac35, type: 2}
   walkNTSettings:
     <MaxSpeed>k__BackingField: {fileID: 11400000, guid: 7d1f073788fc8394197bd8e95a681cf0, type: 2}
     <MaxAcceleration>k__BackingField: {fileID: 11400000, guid: 3d086315c1c853148a54f9d588696b6a, type: 2}
@@ -1076,10 +1082,14 @@ MonoBehaviour:
     <AirFriction>k__BackingField: {fileID: 11400000, guid: ca419375cb1e69c4eaa8a9ed455ad8ca, type: 2}
     <AirControlPrimantissa>k__BackingField: {fileID: 11400000, guid: 1ebf75da78109e5449fa84855e0dd6f1, type: 2}
     <Gravity>k__BackingField: {fileID: 11400000, guid: 98fd2051f803c5f4e9f2aefb01b1ac35, type: 2}
+    <OnMove>k__BackingField: {fileID: 11400000, guid: b3b7f4528da983640bbeab6a321dca28, type: 2}
   dashNTSettings:
     <MaxSpeed>k__BackingField: {fileID: 11400000, guid: dd93e0a0d30d22d4a94b3067307a0e1f, type: 2}
     <MaxDistance>k__BackingField: {fileID: 11400000, guid: b05a8c01a23ab6d48a03e87d157e25f3, type: 2}
     <DashCooldown>k__BackingField: {fileID: 11400000, guid: 580234c13a05ca6498c1006c78f78107, type: 2}
+  idleBTSettings:
+    <AirFriction>k__BackingField: {fileID: 11400000, guid: c98c6aab27746e04fb75b8950137c44a, type: 2}
+    <Gravity>k__BackingField: {fileID: 11400000, guid: a89fef6ed384de64586b61b7f0d747b8, type: 2}
   walkBTSettings:
     <MaxSpeed>k__BackingField: {fileID: 11400000, guid: 03b010e846238a745b9c2c95345aaab8, type: 2}
     <MaxAcceleration>k__BackingField: {fileID: 11400000, guid: 01eaf712a32d9e946a0b3433694754c1, type: 2}
@@ -1088,10 +1098,7 @@ MonoBehaviour:
     <AirFriction>k__BackingField: {fileID: 11400000, guid: c98c6aab27746e04fb75b8950137c44a, type: 2}
     <AirControlPrimantissa>k__BackingField: {fileID: 11400000, guid: 1ebf75da78109e5449fa84855e0dd6f1, type: 2}
     <Gravity>k__BackingField: {fileID: 11400000, guid: a89fef6ed384de64586b61b7f0d747b8, type: 2}
-  playerReferences:
-    <Camera>k__BackingField: {fileID: 1417595675}
-    <Motor>k__BackingField: {fileID: 1064062488}
-    <InputHandler>k__BackingField: {fileID: 1064062483}
+    <OnMove>k__BackingField: {fileID: 11400000, guid: b3b7f4528da983640bbeab6a321dca28, type: 2}
 --- !u!4 &1064062485
 Transform:
   m_ObjectHideFlags: 0
@@ -1100,7 +1107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1064062482}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1133,8 +1140,8 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
@@ -1164,7 +1171,7 @@ MonoBehaviour:
   _useFlatBaseForGroundChecks: 0
   _collisionLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 831
   _triggerInteraction: 1
   _advanced:
     minMoveDistance: 0

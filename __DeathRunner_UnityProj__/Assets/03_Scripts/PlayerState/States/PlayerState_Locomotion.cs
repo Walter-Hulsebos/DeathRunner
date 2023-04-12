@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace DeathRunner.PlayerState
+namespace DeathRunner.PlayerState.States
 {
     public class PlayerState_Locomotion : MonoBehaviour
     {

@@ -45,27 +45,6 @@ namespace DeathRunner.PlayerState
             Debug.Log("Walk.Exit");
         }
         
-        protected override void OnUpdate()
-        {
-            base.OnUpdate();
-            
-            // Debug.Log("Walk.Update");
-        }
-        
-        protected override void OnFixedUpdate()
-        {
-            base.OnFixedUpdate();
-            
-            // Debug.Log("Walk.FixedUpdate");
-        }
-        
-        protected override void OnLateUpdate()
-        {
-            base.OnLateUpdate();
-            
-            // Debug.Log("Walk.LateUpdate");
-        }
-        
         private F32x3 _oldMoveDirection = F32x3.zero;
         private F32x3 _moveDirectionVelocity;
         
@@ -118,7 +97,7 @@ namespace DeathRunner.PlayerState
             //OnMove?.Invoke(__moveDirectionRelativeToCamera);
             
             // Perform movement using character's current velocity
-            //motor.Move(deltaTime: Commands.DeltaTime);
+            _references.Motor.Move(deltaTime: Commands.DeltaTime);
         }
         
         /// <summary>
@@ -126,6 +105,8 @@ namespace DeathRunner.PlayerState
         /// </summary>
         private void GroundedMovement(Vector3 desiredVelocity)
         {
+            Debug.Log("GroundedMovement");
+            
             _references.Motor.velocity = Vector3.Lerp(
                 a: _references.Motor.velocity, 
                 b: desiredVelocity,
@@ -137,6 +118,8 @@ namespace DeathRunner.PlayerState
         /// </summary>
         private void NotGroundedMovement(F32x3 desiredVelocity)
         {
+            Debug.Log("NotGroundedMovement");
+            
             F32x3 __velocity = _references.Motor.velocity;
 
             // If moving into non-walkable ground, limit its contribution.
@@ -151,7 +134,7 @@ namespace DeathRunner.PlayerState
             }
 
             // If moving...
-            if (all(desiredVelocity != F32x3.zero))
+            if (any(desiredVelocity != F32x3.zero))
             {
                 F32x3 __flatVelocity = new(x: __velocity.x, y: 0,            z: __velocity.z);
                 F32x3 __verVelocity  = new(x: 0,            y: __velocity.y, z: 0);
@@ -200,5 +183,10 @@ namespace DeathRunner.PlayerState
         
         [field:Tooltip(tooltip: "The character's gravity.")] 
         [field:SerializeField] public Constant<F32x3> Gravity                     { get; [UsedImplicitly] private set; }
+        
+        [field:Space]
+        
+        [field:SerializeField] public ScriptableEvent<F32x3> OnMove               { get; [UsedImplicitly] private set; }
+        
     }
 }

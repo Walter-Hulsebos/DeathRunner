@@ -1,16 +1,11 @@
 using System;
-using DeathRunner.Inputs;
-using EasyCharacterMovement;
 using GenericScriptableArchitecture;
 using HFSM;
 using JetBrains.Annotations;
 using UnityEngine;
-using UnityEngine.Serialization;
 using F32   = System.Single;
-using F32x3 = Unity.Mathematics.float3;
-using Object = UnityEngine.Object;
 
-namespace DeathRunner.Shared.StateMachine
+namespace DeathRunner.PlayerState
 {
     public class PlayerStateLeaf_Dash : StateLeaf
     {
