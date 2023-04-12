@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2159.5874, g: 1381.1367, b: 1017.5586, a: 1}
+  m_IndirectSpecularColor: {r: 2159.4253, g: 1381.0566, b: 1017.5078, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -134,7 +134,6 @@ GameObject:
   - component: {fileID: 94184657}
   - component: {fileID: 94184660}
   - component: {fileID: 94184659}
-  - component: {fileID: 94184658}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -157,20 +156,6 @@ Transform:
   m_Father: {fileID: 1064062485}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &94184658
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 94184656}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &94184659
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1072,6 +1057,7 @@ MonoBehaviour:
     <Motor>k__BackingField: {fileID: 1064062488}
     <InputHandler>k__BackingField: {fileID: 1064062483}
   idleNTSettings:
+    <GroundFriction>k__BackingField: {fileID: 11400000, guid: 7d055ba49c931a743b47855e9bc0b223, type: 2}
     <AirFriction>k__BackingField: {fileID: 11400000, guid: 7d055ba49c931a743b47855e9bc0b223, type: 2}
     <Gravity>k__BackingField: {fileID: 11400000, guid: 98fd2051f803c5f4e9f2aefb01b1ac35, type: 2}
   walkNTSettings:
@@ -1088,6 +1074,7 @@ MonoBehaviour:
     <MaxDistance>k__BackingField: {fileID: 11400000, guid: b05a8c01a23ab6d48a03e87d157e25f3, type: 2}
     <DashCooldown>k__BackingField: {fileID: 11400000, guid: 580234c13a05ca6498c1006c78f78107, type: 2}
   idleBTSettings:
+    <GroundFriction>k__BackingField: {fileID: 11400000, guid: d18bbc8d7041f0b4b97aa6667687d315, type: 2}
     <AirFriction>k__BackingField: {fileID: 11400000, guid: c98c6aab27746e04fb75b8950137c44a, type: 2}
     <Gravity>k__BackingField: {fileID: 11400000, guid: a89fef6ed384de64586b61b7f0d747b8, type: 2}
   walkBTSettings:
@@ -1601,14 +1588,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417595673}
-  m_LocalRotation: {x: -0.3727589, y: 0.29961163, z: -0.12855329, w: -0.868768}
-  m_LocalPosition: {x: 7.0770907, y: 8.913441, z: -8.997012}
+  m_LocalRotation: {x: 0.35355338, y: -0.35355338, z: 0.1464466, w: 0.8535535}
+  m_LocalPosition: {x: 7, y: 7, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: -45, z: 0}
 --- !u!114 &1417595677
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -45,44 +45,42 @@ namespace DeathRunner.PlayerState
             Debug.Log("Walk.Exit");
         }
         
-        private F32x3 _oldMoveDirection = F32x3.zero;
-        private F32x3 _moveDirectionVelocity;
+        //private F32x3 _oldMoveDirection = F32x3.zero;
+        //private F32x3 _moveDirectionVelocity;
         
         protected override void OnLateFixedUpdate()
         {
             base.OnLateFixedUpdate();
             
-            Debug.Log("Walk.LateFixedUpdate");
+            //Debug.Log("Walk.LateFixedUpdate");
             
             F32x3 __targetMoveDir = _references.InputHandler.MoveInputFlat;
             
-            F32x3 __moveDirection = __targetMoveDir;
-
             //TODO: Remove this temporary hack for expected slow-mo player movement.
-            if (!Commands.IsSlowMotionEnabled)
-            {
-                if (lengthsq(__targetMoveDir) > EPSILON)
-                {
-                    __moveDirection = _oldMoveDirection.SmoothDamp(
-                        target: __targetMoveDir,
-                        currentVelocity: ref _moveDirectionVelocity,
-                        deltaTime: Commands.DeltaTime,
-                        smoothTime: _settings.MoveDirectionSmoothingSpeed,
-                        maxSpeed: 100);
-
-                    // Set the move direction's length to that of the target.
-                    //__moveDirection = normalize(__moveDirection) * length(__targetMoveDir);
-
-                    //        Debug.Log(message: $"__moveDirection: {__moveDirection}");
-                }
-            }
-
-            _oldMoveDirection = __moveDirection;
+            //F32x3 __moveDirection = __targetMoveDir;
+            // if (!Commands.IsSlowMotionEnabled)
+            // {
+            //     if (lengthsq(__targetMoveDir) > EPSILON)
+            //     {
+            //         __moveDirection = _oldMoveDirection.SmoothDamp(
+            //             target: __targetMoveDir,
+            //             currentVelocity: ref _moveDirectionVelocity,
+            //             deltaTime: Commands.DeltaTime,
+            //             smoothTime: (F32)_settings.MoveDirectionSmoothingSpeed,
+            //             maxSpeed: 100);
+            //
+            //         // Set the move direction's length to that of the target.
+            //         //__moveDirection = normalize(__moveDirection) * length(__targetMoveDir);
+            //
+            //         //        Debug.Log(message: $"__moveDirection: {__moveDirection}");
+            //     }
+            // }
+            //_oldMoveDirection = __moveDirection;
 
             // Make movementDirection relative to camera view direction
-            F32x3 __moveDirectionRelativeToCamera = __moveDirection.RelativeTo(_references.Camera.transform);
+            F32x3 __moveDirectionRelativeToCamera = __targetMoveDir.RelativeTo(_references.Camera.transform);
             
-            F32x3 __desiredVelocity = (__moveDirectionRelativeToCamera * _settings.MaxSpeed);
+            F32x3 __desiredVelocity = (normalize(__moveDirectionRelativeToCamera) * (F32)_settings.MaxSpeed);
 
             // Update character’s velocity based on its grounding status
             if (_references.Motor.isGrounded)
@@ -105,7 +103,7 @@ namespace DeathRunner.PlayerState
         /// </summary>
         private void GroundedMovement(Vector3 desiredVelocity)
         {
-            Debug.Log("GroundedMovement");
+            //Debug.Log("GroundedMovement");
             
             _references.Motor.velocity = Vector3.Lerp(
                 a: _references.Motor.velocity, 
@@ -118,13 +116,13 @@ namespace DeathRunner.PlayerState
         /// </summary>
         private void NotGroundedMovement(F32x3 desiredVelocity)
         {
-            Debug.Log("NotGroundedMovement");
+            //Debug.Log("NotGroundedMovement");
             
-            F32x3 __velocity = _references.Motor.velocity;
+            F32x3 __velocity = (F32x3)_references.Motor.velocity;
 
             // If moving into non-walkable ground, limit its contribution.
             // Allow movement parallel, but not into it because that may push us up.
-            if (_references.Motor.isOnGround && dot(desiredVelocity, _references.Motor.groundNormal) < 0.0f)
+            if (_references.Motor.isOnGround && dot(desiredVelocity, (F32x3)_references.Motor.groundNormal) < 0.0f)
             {
                 F32x3 __groundNormal = _references.Motor.groundNormal;
 
@@ -134,26 +132,27 @@ namespace DeathRunner.PlayerState
             }
 
             // If moving...
-            if (any(desiredVelocity != F32x3.zero))
-            {
-                F32x3 __flatVelocity = new(x: __velocity.x, y: 0,            z: __velocity.z);
-                F32x3 __verVelocity  = new(x: 0,            y: __velocity.y, z: 0);
+            //if (any(desiredVelocity != F32x3.zero))
+            //{
+            F32x3 __flatVelocity = new(x: __velocity.x, y: 0,            z: __velocity.z);
+            F32x3 __verVelocity  = new(x: 0,            y: __velocity.y, z: 0);
 
-                // Accelerate horizontal velocity towards desired velocity
-                F32x3 __horizontalVelocity = Vector3.MoveTowards(
-                    current: __flatVelocity, 
-                    target: desiredVelocity,
-                    maxDistanceDelta: (F32)_settings.MaxAcceleration * (F32)_settings.AirControlPrimantissa * Commands.DeltaTime);
+            // Accelerate horizontal velocity towards desired velocity
+            F32x3 __horizontalVelocity = Vector3.MoveTowards(
+                current: __flatVelocity, 
+                target: desiredVelocity,
+                maxDistanceDelta: (F32)_settings.MaxAcceleration * (F32)_settings.AirControlPrimantissa * Commands.DeltaTime);
 
-                // Update velocity preserving gravity effects (vertical velocity)
-                __velocity = __horizontalVelocity + __verVelocity;
-            }
+            // Update velocity preserving gravity effects (vertical velocity)
+            __velocity = __horizontalVelocity + __verVelocity;
+            //}
 
             // Apply gravity
             __velocity += (F32x3)_settings.Gravity * Commands.DeltaTime;
 
             // Apply Air friction (Drag)
             __velocity -= __velocity * (F32)_settings.AirFriction * Commands.DeltaTime;
+            //__velocity -= clamp(1.0f - ((F32)_settings.AirFriction * Commands.DeltaTime), 0.0f, 1.0f);
 
             // Update character's velocity
             _references.Motor.velocity = __velocity;

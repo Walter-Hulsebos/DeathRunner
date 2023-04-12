@@ -1,6 +1,8 @@
 //System libraries first
 
 //Unity-specific libraries next
+
+using System;
 using System.Collections;
 using HFSM;
 using UnityEngine;
@@ -58,6 +60,11 @@ namespace DeathRunner.PlayerState
         private void OnValidate() => playerReferences.OnValidate(gameObject);
         #endif
         
+        private Boolean HasMoveInput   => any(playerReferences.InputHandler.MoveInput != F32x2.zero);
+        private Boolean HasNoMoveInput => !HasMoveInput;
+        
+        private Boolean HasDashInput   => playerReferences.InputHandler.DashInput;
+        
         private void Awake()
         {
             CreateStateTree();
@@ -102,12 +109,12 @@ namespace DeathRunner.PlayerState
             #region Idle Normal Time
 
             //IdleNT <-> WalkNT
-            _idleNT.AddTransitionTo(  _walkNT, conditions: () => any(playerReferences.InputHandler.MoveInput != F32x2.zero));
-            _idleNT.AddTransitionFrom(_walkNT, conditions: () => all(playerReferences.InputHandler.MoveInput == F32x2.zero));
+            _idleNT.AddTransitionTo(  _walkNT, conditions: () => HasMoveInput);
+            _idleNT.AddTransitionFrom(_walkNT, conditions: () => HasNoMoveInput);
             
             //IdleNT <-> DashNT
             _idleNT.AddTransitionTo(  _dashNT, conditions: () => playerReferences.InputHandler.DashInput);
-            _idleNT.AddTransitionFrom(_dashNT, conditions: () => all(playerReferences.InputHandler.MoveInput == F32x2.zero));
+            _idleNT.AddTransitionFrom(_dashNT, conditions: () => HasNoMoveInput);
 
             #endregion
 
@@ -115,7 +122,7 @@ namespace DeathRunner.PlayerState
             
             //WalkNT <-> DashNT
             _walkNT.AddTransitionTo(  _dashNT, conditions: () => playerReferences.InputHandler.DashInput);
-            _walkNT.AddTransitionFrom(_dashNT, conditions: () => any(playerReferences.InputHandler.MoveInput != F32x2.zero));
+            _walkNT.AddTransitionFrom(_dashNT, conditions: () => HasMoveInput);
             
             //WalkNT <-> PrimaryAttackNT
             //playerReferences.InputHandler.OnPrimaryFireStarted += () => _walkNT.AddEventTransitionTo(  _primaryAttackNT);
