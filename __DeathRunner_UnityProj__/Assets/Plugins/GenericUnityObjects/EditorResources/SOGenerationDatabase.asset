@@ -15,12 +15,9 @@ MonoBehaviour:
   _genericArgumentKeys:
   - _typeNameAndAssembly: System.Single, mscorlib
     _guid: 
+  - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+    _guid: 
   _genericArgumentValues:
-  - _array: []
-  - _array: []
-  - _array: []
-  - _array: []
-  - _array: []
   - _array: []
   - _array: []
   - _array: []
@@ -28,9 +25,30 @@ MonoBehaviour:
   - _array: []
   - _array:
     - _arguments:
+      - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+        _guid: 
+      _assemblyGUID: 0aa53b8efa140664a8dae3c00febed07
+  - _array: []
+  - _array: []
+  - _array:
+    - _arguments:
+      - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+        _guid: 
+      _assemblyGUID: 4d15fc25e5c02d14b8a7e3752fad90f9
+    - _arguments:
+      - _typeNameAndAssembly: System.Single, mscorlib
+        _guid: 
+      _assemblyGUID: b005a2053f4890b4190e0c62476cf564
+  - _array: []
+  - _array:
+    - _arguments:
       - _typeNameAndAssembly: System.Single, mscorlib
         _guid: 
       _assemblyGUID: 39989c4bf50cc3b46bdb1f1bac1bc1ba
+    - _arguments:
+      - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+        _guid: 
+      _assemblyGUID: 25265e4ca0dfa06448323ba55fc77d0e
   - _array: []
   - _array: []
   - _array: []
@@ -39,6 +57,27 @@ MonoBehaviour:
   - _array:
     - _typeNameAndAssembly: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
       _guid: 35f1f711725d47ef9c32084694a183c9
+      AssemblyGUID: 
+      _argNames:
+      - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.Constant`1, GenericScriptableArchitecture
+      _guid: 05de5ab8a09d41c7adc4000e0b8c9222
+      AssemblyGUID: 
+      _argNames:
+      - T
+  - _array:
+    - _typeNameAndAssembly: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
+      _guid: 35f1f711725d47ef9c32084694a183c9
+      AssemblyGUID: 
+      _argNames:
+      - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.Constant`1, GenericScriptableArchitecture
+      _guid: 05de5ab8a09d41c7adc4000e0b8c9222
+      AssemblyGUID: 
+      _argNames:
+      - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`1, GenericScriptableArchitecture
+      _guid: a7bc4098e6b34b50b334b6c504e7f4f5
       AssemblyGUID: 
       _argNames:
       - T

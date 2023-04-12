@@ -6,6 +6,7 @@ namespace HFSM
     /// <summary>
     ///     Base class for <see cref="StateLeaf" /> and <see cref="State" /> objects.
     /// </summary>
+    [Serializable]
     public abstract class StateObject
     {
         private protected readonly List<EventTransitionBase> eventTransitions;
@@ -247,6 +248,8 @@ namespace HFSM
         ///     frame-rate independece. It should be called from MonoBehaviour.FixedUpdate function.
         /// </summary>
         public abstract void FixedUpdate();
+        
+        public abstract void LateFixedUpdate();
 
         /// <summary>
         ///     Executes the custom logic defined in concrete <see cref="StateObject" />s that needs be executed after
@@ -278,6 +281,8 @@ namespace HFSM
         ///     fixed update cycle.
         /// </summary>
         protected virtual void OnFixedUpdate() { }
+        
+        protected virtual void OnLateFixedUpdate() { }
 
         /// <summary>
         ///     Custom logic defined in concrete <see cref="StateObject" /> classes that gets executed every late update cycle.

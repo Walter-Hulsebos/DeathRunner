@@ -1,8 +1,16 @@
-using DeathRunner.Inputs;
-using HFSM;
-using UnityEngine;
+//System libraries first
+using System.Collections;
 
+//Unity-specific libraries next
+using UnityEngine;
 using static Unity.Mathematics.math;
+
+//Third-party libraries next
+using HFSM;
+
+//Project-specific libraries last
+using DeathRunner.Inputs;
+using DeathRunner.PlayerState;
 
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
@@ -16,10 +24,21 @@ namespace DeathRunner.Shared.StateMachine
         //[SerializeField] private InputActionReference _inputActionReference;
         [SerializeField] private InputHandler inputHandler;
         
+        [Tooltip("Walk Settings for Normal-Time")]
+        [SerializeField] private WalkSettings walkNTSettings;
+        [Tooltip("Dash Settings for Normal-Time")]
+        [SerializeField] private DashSettings dashNTSettings;
+        //[SerializeField] private AttackSettings
+
+        [Tooltip("Walk Settings for Bullet-Time")]
+        [SerializeField] private WalkSettings walkBTSettings;
+        
+        [SerializeField] private PlayerReferences playerReferences = new();
+
         private State     _root;
         
         private State     _alive;
-        private StateLeaf _dead;
+        [SerializeField] private StateLeaf _dead;
 
         private State     _normalTime;
         private State     _bulletTime;
@@ -35,6 +54,32 @@ namespace DeathRunner.Shared.StateMachine
         private StateLeaf _walkBT;
         private StateLeaf _primaryAttackBT;
 
+        #if UNITY_EDITOR
+        private void Reset()
+        {
+            FindInputHandler();
+            
+            playerReferences.Reset(gameObject);
+        }
+        
+        private void OnValidate()
+        {
+            if(inputHandler == null)
+            {
+                FindInputHandler();
+            }
+            
+            playerReferences.OnValidate(gameObject);
+        }
+        
+        private void FindInputHandler()
+        {
+            inputHandler = GetComponent<InputHandler>();
+        }
+        
+        
+        #endif
+        
         private void Awake()
         {
             CreateStateTree();
@@ -47,14 +92,14 @@ namespace DeathRunner.Shared.StateMachine
                 _alive = new PlayerState_Alive(/*params child states */
                     _normalTime = new PlayerState_NormalTime(/*params childstates */
                         _idleNT            = new PlayerStateLeaf_Idle(), 
-                        _walkNT            = new PlayerStateLeaf_Walk(), 
+                        _walkNT            = new PlayerStateLeaf_Walk(settings: walkNTSettings, references: playerReferences), 
                         _dashNT            = new PlayerStateLeaf_Dash(), 
-                        _primaryAttackNT   = new PlayerStateLeaf_Primary(), 
-                        _secondaryAttackNT = new PlayerStateLeaf_Secondary()), 
+                        _primaryAttackNT   = new PlayerStateLeaf_PrimaryAttack(), 
+                        _secondaryAttackNT = new PlayerStateLeaf_SecondaryAttack()), 
                     _bulletTime = new PlayerState_BulletTime(/*params childstates */
                         _idleBT            = new PlayerStateLeaf_Idle(), 
-                        _walkBT            = new PlayerStateLeaf_Walk(), 
-                        _primaryAttackBT   = new PlayerStateLeaf_Primary())), 
+                        _walkBT            = new PlayerStateLeaf_Walk(settings: walkBTSettings, references: playerReferences), 
+                        _primaryAttackBT   = new PlayerStateLeaf_PrimaryAttack())), 
                 _dead = new PlayerStateLeaf_Dead());
         }
 
@@ -77,40 +122,28 @@ namespace DeathRunner.Shared.StateMachine
             #endregion
 
             #region Idle Normal Time
-            
-            //inputHandler.OnMoveInputUpdated += moveInput => idleNormalTime.AddEventTransition(to: walkNormalTime, conditions: () => any(moveInput != F32x2.zero));
-            
-            //inputHandler.OnMoveStarted += moveInput => _idleNT.AddEventTransitionTo(  _walkNT);
-            //inputHandler.OnMoveStopped += moveInput => _idleNT.AddEventTransitionFrom(_walkNT);
-            
-            //Idle <-> Walk
+
+            //IdleNT <-> WalkNT
             _idleNT.AddTransitionTo(  _walkNT, conditions: () => any(inputHandler.MoveInput != F32x2.zero));
             _idleNT.AddTransitionFrom(_walkNT, conditions: () => all(inputHandler.MoveInput == F32x2.zero));
             
-            //Idle <-> Dash
+            //IdleNT <-> DashNT
             _idleNT.AddTransitionTo(  _dashNT, conditions: () => inputHandler.DashInput);
             _idleNT.AddTransitionFrom(_dashNT, conditions: () => all(inputHandler.MoveInput == F32x2.zero));
-            
-            //inputHandler.OnDashTriggered += () => _idleNT.AddEventTransitionTo(_dashNT);
-            //_idleNT.AddTransitionFrom(_dashNT);
-            
-            //inputHandler.OnPrimaryFireStarted += () => _idleNT.AddEventTransitionTo(  _primaryAttackNT);
-            //inputHandler.OnPrimaryFireStopped += () => _idleNT.AddEventTransitionFrom(_primaryAttackNT);
-            
-            //inputHandler.OnSecondaryFireStarted += () => _idleNT.AddEventTransitionTo(  _secondaryAttackNT);
-            //inputHandler.OnSecondaryFireStopped += () => _idleNT.AddEventTransitionFrom(_secondaryAttackNT);
 
             #endregion
 
             #region Walk Normal Time
             
-            //inputHandler.OnDashTriggered += () => _walkNT.AddEventTransitionTo(_dashNT);
+            //WalkNT <-> DashNT
             _walkNT.AddTransitionTo(  _dashNT, conditions: () => inputHandler.DashInput);
             _walkNT.AddTransitionFrom(_dashNT, conditions: () => any(inputHandler.MoveInput != F32x2.zero));
             
+            //WalkNT <-> PrimaryAttackNT
             inputHandler.OnPrimaryFireStarted += () => _walkNT.AddEventTransitionTo(  _primaryAttackNT);
             inputHandler.OnPrimaryFireStopped += () => _walkNT.AddEventTransitionFrom(_primaryAttackNT);
             
+            //WalkNT <-> SecondaryAttackNT
             inputHandler.OnSecondaryFireStarted += () => _walkNT.AddEventTransitionTo(  _secondaryAttackNT);
             inputHandler.OnSecondaryFireStopped += () => _walkNT.AddEventTransitionFrom(_secondaryAttackNT);
 
@@ -125,11 +158,15 @@ namespace DeathRunner.Shared.StateMachine
             
             #region Idle Bullet Time
             
-            inputHandler.OnMoveStarted += moveInput => _idleBT.AddEventTransitionTo(  _walkBT);
-            inputHandler.OnMoveStopped += moveInput => _idleBT.AddEventTransitionFrom(_walkBT);
+            //inputHandler.OnMoveStarted += moveInput => _idleBT.AddEventTransitionTo(  _walkBT);
+            //inputHandler.OnMoveStopped += moveInput => _idleBT.AddEventTransitionFrom(_walkBT);
             
-            inputHandler.OnPrimaryFireStarted += () => _idleBT.AddEventTransitionTo(  _primaryAttackBT);
-            inputHandler.OnPrimaryFireStopped += () => _idleBT.AddEventTransitionFrom(_primaryAttackBT);
+            //Idle <-> Walk
+            _idleBT.AddTransitionTo(  _walkBT, conditions: () => any(inputHandler.MoveInput != F32x2.zero));
+            _idleBT.AddTransitionFrom(_walkBT, conditions: () => all(inputHandler.MoveInput == F32x2.zero));
+            
+            //inputHandler.OnPrimaryFireStarted += () => _idleBT.AddEventTransitionTo(  _primaryAttackBT);
+            //inputHandler.OnPrimaryFireStopped += () => _idleBT.AddEventTransitionFrom(_primaryAttackBT);
 
             #endregion
             
@@ -159,15 +196,40 @@ namespace DeathRunner.Shared.StateMachine
             _root.LateUpdate();
         }
 
-        private void OnEnable()
+        #region LateFixedUpdate
+
+        private void OnEnable()  => EnableLateFixedUpdate();
+        private void OnDisable() => DisableLateFixedUpdate();
+
+        private Coroutine _lateFixedUpdateCoroutine;
+        private void EnableLateFixedUpdate()
         {
-            //root.OnEnable();
+            if (_lateFixedUpdateCoroutine != null)
+            {
+                StopCoroutine(routine: _lateFixedUpdateCoroutine);
+            }
+            _lateFixedUpdateCoroutine = StartCoroutine(LateFixedUpdate());
+        }
+        private void DisableLateFixedUpdate()
+        {
+            if (_lateFixedUpdateCoroutine != null)
+            {
+                StopCoroutine(routine: _lateFixedUpdateCoroutine);
+            }
         }
 
-        private void OnDisable()
+        private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
+        private IEnumerator LateFixedUpdate()
         {
-            //root.OnDisable();
+            while (true)
+            {
+                yield return _waitForFixedUpdate;
+
+                _root.LateFixedUpdate();
+            }
         }
+
+        #endregion
 
         private void OnDestroy()
         {

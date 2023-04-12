@@ -3,20 +3,20 @@ using UnityEngine;
 
 namespace DeathRunner.Shared.StateMachine
 {
-    public class PlayerStateLeaf_Primary : StateLeaf
+    public class PlayerStateLeaf_SecondaryAttack : StateLeaf
     {
         protected override void OnEnter()
         {
             base.OnEnter();
             
-            Debug.Log("Primary.Enter");
+            Debug.Log("SecondaryAttack.Enter");
         }
         
         protected override void OnExit()
         {
             base.OnExit();
             
-            Debug.Log("Primary.Exit");
+            Debug.Log("SecondaryAttack.Exit");
         }
     }
 }

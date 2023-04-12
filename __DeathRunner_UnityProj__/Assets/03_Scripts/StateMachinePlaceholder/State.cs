@@ -7,6 +7,7 @@ namespace HFSM
     /// <summary>
     ///     Hierarchical finite state machine.
     /// </summary>
+    [Serializable]
     public abstract class State : StateObject
     {
         private readonly List<EventTransitionBase> _anyEventTransitions;
@@ -302,6 +303,13 @@ namespace HFSM
             CheckInitialization();
             OnFixedUpdate();
             CurrentStateObject.FixedUpdate();
+        }
+        
+        public sealed override void LateFixedUpdate()
+        {
+            CheckInitialization();
+            OnLateFixedUpdate();
+            CurrentStateObject.LateFixedUpdate();
         }
 
         /// <summary>
