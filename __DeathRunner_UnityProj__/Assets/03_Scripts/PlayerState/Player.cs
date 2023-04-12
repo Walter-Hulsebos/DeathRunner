@@ -20,10 +20,9 @@ namespace DeathRunner.Shared.StateMachine
     public sealed class Player : MonoBehaviour
     {
         //NOTE: [Walter] Make shared states possible??
-        
-        //[SerializeField] private InputActionReference _inputActionReference;
-        [SerializeField] private InputHandler inputHandler;
-        
+
+        [SerializeField] private PlayerReferences playerReferences = new();
+
         [Tooltip("Walk Settings for Normal-Time")]
         [SerializeField] private WalkSettings walkNTSettings;
         [Tooltip("Dash Settings for Normal-Time")]
@@ -32,8 +31,6 @@ namespace DeathRunner.Shared.StateMachine
 
         [Tooltip("Walk Settings for Bullet-Time")]
         [SerializeField] private WalkSettings walkBTSettings;
-        
-        [SerializeField] private PlayerReferences playerReferences = new();
 
         private State     _root;
         
@@ -55,29 +52,9 @@ namespace DeathRunner.Shared.StateMachine
         private StateLeaf _primaryAttackBT;
 
         #if UNITY_EDITOR
-        private void Reset()
-        {
-            FindInputHandler();
-            
-            playerReferences.Reset(gameObject);
-        }
-        
-        private void OnValidate()
-        {
-            if(inputHandler == null)
-            {
-                FindInputHandler();
-            }
-            
-            playerReferences.OnValidate(gameObject);
-        }
-        
-        private void FindInputHandler()
-        {
-            inputHandler = GetComponent<InputHandler>();
-        }
-        
-        
+        private void Reset() => playerReferences.Reset(gameObject);
+
+        private void OnValidate() => playerReferences.OnValidate(gameObject);
         #endif
         
         private void Awake()
@@ -124,35 +101,35 @@ namespace DeathRunner.Shared.StateMachine
             #region Idle Normal Time
 
             //IdleNT <-> WalkNT
-            _idleNT.AddTransitionTo(  _walkNT, conditions: () => any(inputHandler.MoveInput != F32x2.zero));
-            _idleNT.AddTransitionFrom(_walkNT, conditions: () => all(inputHandler.MoveInput == F32x2.zero));
+            _idleNT.AddTransitionTo(  _walkNT, conditions: () => any(playerReferences.InputHandler.MoveInput != F32x2.zero));
+            _idleNT.AddTransitionFrom(_walkNT, conditions: () => all(playerReferences.InputHandler.MoveInput == F32x2.zero));
             
             //IdleNT <-> DashNT
-            _idleNT.AddTransitionTo(  _dashNT, conditions: () => inputHandler.DashInput);
-            _idleNT.AddTransitionFrom(_dashNT, conditions: () => all(inputHandler.MoveInput == F32x2.zero));
+            _idleNT.AddTransitionTo(  _dashNT, conditions: () => playerReferences.InputHandler.DashInput);
+            _idleNT.AddTransitionFrom(_dashNT, conditions: () => all(playerReferences.InputHandler.MoveInput == F32x2.zero));
 
             #endregion
 
             #region Walk Normal Time
             
             //WalkNT <-> DashNT
-            _walkNT.AddTransitionTo(  _dashNT, conditions: () => inputHandler.DashInput);
-            _walkNT.AddTransitionFrom(_dashNT, conditions: () => any(inputHandler.MoveInput != F32x2.zero));
+            _walkNT.AddTransitionTo(  _dashNT, conditions: () => playerReferences.InputHandler.DashInput);
+            _walkNT.AddTransitionFrom(_dashNT, conditions: () => any(playerReferences.InputHandler.MoveInput != F32x2.zero));
             
             //WalkNT <-> PrimaryAttackNT
-            inputHandler.OnPrimaryFireStarted += () => _walkNT.AddEventTransitionTo(  _primaryAttackNT);
-            inputHandler.OnPrimaryFireStopped += () => _walkNT.AddEventTransitionFrom(_primaryAttackNT);
+            //playerReferences.InputHandler.OnPrimaryFireStarted += () => _walkNT.AddEventTransitionTo(  _primaryAttackNT);
+            //playerReferences.InputHandler.OnPrimaryFireStopped += () => _walkNT.AddEventTransitionFrom(_primaryAttackNT);
             
             //WalkNT <-> SecondaryAttackNT
-            inputHandler.OnSecondaryFireStarted += () => _walkNT.AddEventTransitionTo(  _secondaryAttackNT);
-            inputHandler.OnSecondaryFireStopped += () => _walkNT.AddEventTransitionFrom(_secondaryAttackNT);
+            //playerReferences.InputHandler.OnSecondaryFireStarted += () => _walkNT.AddEventTransitionTo(  _secondaryAttackNT);
+            //playerReferences.InputHandler.OnSecondaryFireStopped += () => _walkNT.AddEventTransitionFrom(_secondaryAttackNT);
 
             #endregion
             
             #region Primary Normal Time <-> Secondary Normal Time
             
-            inputHandler.OnSecondaryFireStarted += () => _primaryAttackNT.AddEventTransitionTo(  _secondaryAttackNT);
-            inputHandler.OnSecondaryFireStopped += () => _primaryAttackNT.AddEventTransitionFrom(_secondaryAttackNT);
+            //playerReferences.InputHandler.OnSecondaryFireStarted += () => _primaryAttackNT.AddEventTransitionTo(  _secondaryAttackNT);
+            //playerReferences.InputHandler.OnSecondaryFireStopped += () => _primaryAttackNT.AddEventTransitionFrom(_secondaryAttackNT);
             
             #endregion
             
@@ -162,8 +139,8 @@ namespace DeathRunner.Shared.StateMachine
             //inputHandler.OnMoveStopped += moveInput => _idleBT.AddEventTransitionFrom(_walkBT);
             
             //Idle <-> Walk
-            _idleBT.AddTransitionTo(  _walkBT, conditions: () => any(inputHandler.MoveInput != F32x2.zero));
-            _idleBT.AddTransitionFrom(_walkBT, conditions: () => all(inputHandler.MoveInput == F32x2.zero));
+            _idleBT.AddTransitionTo(  _walkBT, conditions: () => any(playerReferences.InputHandler.MoveInput != F32x2.zero));
+            _idleBT.AddTransitionFrom(_walkBT, conditions: () => all(playerReferences.InputHandler.MoveInput == F32x2.zero));
             
             //inputHandler.OnPrimaryFireStarted += () => _idleBT.AddEventTransitionTo(  _primaryAttackBT);
             //inputHandler.OnPrimaryFireStopped += () => _idleBT.AddEventTransitionFrom(_primaryAttackBT);
@@ -172,8 +149,9 @@ namespace DeathRunner.Shared.StateMachine
             
             #region Walk Bullet Time
             
-            inputHandler.OnPrimaryFireStarted += () => _walkBT.AddEventTransitionTo(  _primaryAttackBT);
-            inputHandler.OnPrimaryFireStopped += () => _walkBT.AddEventTransitionFrom(_primaryAttackBT);
+            //Walk <-> PrimaryAttack
+            //playerReferences.InputHandler.OnPrimaryFireStarted += () => _walkBT.AddEventTransitionTo(  _primaryAttackBT);
+            //playerReferences.InputHandler.OnPrimaryFireStopped += () => _walkBT.AddEventTransitionFrom(_primaryAttackBT);
             
             #endregion
             
