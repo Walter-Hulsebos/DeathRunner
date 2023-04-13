@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections.Generic;
 using DeathRunner.Weapons;
@@ -6,14 +6,14 @@ using UnityEngine;
 
 namespace Game
 {
-    public class GunPickup : MonoBehaviour
+    public class SideWeaponPickup : MonoBehaviour
     {
-        [SerializeField] private SideWeapon gun;
+        [SerializeField] private SideWeapon sideWeapon;
         private void OnTriggerEnter(Collider other)
         {
             if (other.CompareTag("Player"))
             {
-                other.GetComponent<SideWeaponHolder>().sideWeapon = gun;
+                other.GetComponent<SideWeaponHolder>().sideWeapon = sideWeapon;
                 Destroy(gameObject);
             }
         }
