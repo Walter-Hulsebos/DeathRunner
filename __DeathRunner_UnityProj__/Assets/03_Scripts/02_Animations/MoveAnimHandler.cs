@@ -1,4 +1,5 @@
 using UnityEngine;
+using static Unity.Mathematics.math;
 
 using Drawing;
 using GenericScriptableArchitecture;
@@ -9,8 +10,10 @@ using Animancer;
 using Sirenix.OdinInspector;
 #endif
 
-using static Unity.Mathematics.math;
+using DeathRunner.Utils;
+using DeathRunner.Shared;
 
+using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 
@@ -55,17 +58,35 @@ namespace DeathRunner.Animations
             onMoveEvent -= OnMoveHandler;
         }
 
-        private void OnMoveHandler(F32x3 moveVector)
+        private F32x3 _targetMoveVectorLastFrame;
+        private F32x3 _moveVectorLastFrame;
+        private F32x3 _moveVectorVelocity;
+        private void OnMoveHandler(F32x3 targetMoveVector)
         {
-            //Debug.Log($"Move vector: {moveVector}");
+            //Debug.Log($"Move vector: {targetMoveVector}");
             
-            if (all(moveVector == F32x3.zero))
+            if (all(targetMoveVector == F32x3.zero))
             {
                 _orthogonalMoveDirection = F32x2.zero;
                 return;
             }
+            
+            //Smoothly interpolate the move direction
+            F32x3 __moveVector = _moveVectorLastFrame.SmoothDamp(
+                target: targetMoveVector,
+                currentVelocity: ref _moveVectorVelocity,
+                deltaTime: Commands.DeltaTime,
+                smoothTime: 0.2f,
+                maxSpeed: 1000);
+            
+            _moveVectorLastFrame = __moveVector;
+        
+            // Set the move direction's length to that of the target.
+            //__moveDirection = normalize(__moveDirection) * length(__targetMoveDir);
+        
+            //        Debug.Log(message: $"__moveDirection: {__moveDirection}");
 
-            F32x3 __moveDirection = normalize(moveVector);
+            F32x3 __moveDirection = normalize(__moveVector);
             F32x3 __moveDirectionNonRelative   = __moveDirection.InverseRelativeTo(PlayerCamera.transform);
 
             F32x3 __facingDirection = PlayerTransform.forward;
@@ -80,7 +101,7 @@ namespace DeathRunner.Animations
             //Draw the moveVector 
             Draw.Arrow(
                 from: __characterPosition,
-                to:   __characterPosition + moveVector,
+                to:   __characterPosition + targetMoveVector,
                 color: Color.cyan);
 
             //Draw the facing vector
