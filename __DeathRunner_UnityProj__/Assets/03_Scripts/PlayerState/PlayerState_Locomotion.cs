@@ -83,7 +83,7 @@ namespace DeathRunner.PlayerState
                     F32x2 __aimInput = _references.InputHandler.AimInput;
                     
                     F32 __aimInputSqrMagnitude = lengthsq(__aimInput);
-                    
+
                     const F32 MAGNITUDE_THRESHOLD = 0.2f;
                     const F32 SQR_MAGNITUDE_THRESHOLD = MAGNITUDE_THRESHOLD * MAGNITUDE_THRESHOLD;
                     
@@ -93,7 +93,7 @@ namespace DeathRunner.PlayerState
 
                     if (__hasAimInput)
                     {
-                        F32x3 __targetLookDirection = new(x: _references.InputHandler.AimInput.x, y: 0, z: _references.InputHandler.AimInput.y);
+                        F32x3 __targetLookDirection = normalize(new F32x3(x: _references.InputHandler.AimInput.x, y: 0, z: _references.InputHandler.AimInput.y));
                     
                         F32x3 __targetMoveDirectionRelativeToCamera = __targetLookDirection.RelativeTo(_references.Camera.transform);
                     
