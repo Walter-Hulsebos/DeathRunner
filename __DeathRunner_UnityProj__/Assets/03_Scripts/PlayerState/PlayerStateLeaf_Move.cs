@@ -20,12 +20,12 @@ using F32x3 = Unity.Mathematics.float3;
 
 namespace DeathRunner.PlayerState
 {
-    public sealed class PlayerStateLeaf_Walk : StateLeaf
+    public sealed class PlayerStateLeaf_Move : StateLeaf
     {
-        private readonly WalkSettings     _settings;
+        private readonly MoveSettings     _settings;
         private readonly PlayerReferences _references;
 
-        public PlayerStateLeaf_Walk(WalkSettings settings, PlayerReferences references)
+        public PlayerStateLeaf_Move(MoveSettings settings, PlayerReferences references)
         {
             this._settings   = settings;
             this._references = references;
@@ -45,16 +45,23 @@ namespace DeathRunner.PlayerState
             Debug.Log("Walk.Exit");
         }
         
-        //private F32x3 _oldMoveDirection = F32x3.zero;
+        //private F32x3 _moveDirectionLastFrame = F32x3.zero;
         //private F32x3 _moveDirectionVelocity;
-        
         protected override void OnLateFixedUpdate()
         {
             base.OnLateFixedUpdate();
             
             //Debug.Log("Walk.LateFixedUpdate");
             
-            F32x3 __targetMoveDir = _references.InputHandler.MoveInputFlat;
+            F32x3 __targetMoveVector = _references.InputHandler.MoveInputFlat;
+            
+            F32 __targetMoveSpeed = length(__targetMoveVector) * (F32)_settings.MaxSpeed;
+            
+            F32x3 __targetMoveDirection = normalize(__targetMoveVector);
+            F32x3 __targetMoveDirectionRelativeToCamera = __targetMoveDirection.RelativeTo(_references.Camera.transform);
+            
+            // F32x3 __moveDirection = Vector3.Slerp(_moveDirectionLastFrame, __targetMoveDirection, 5 * Time.deltaTime);
+            // _moveDirectionLastFrame = __moveDirection;
             
             //TODO: Remove this temporary hack for expected slow-mo player movement.
             //F32x3 __moveDirection = __targetMoveDir;
@@ -78,9 +85,8 @@ namespace DeathRunner.PlayerState
             //_oldMoveDirection = __moveDirection;
 
             // Make movementDirection relative to camera view direction
-            F32x3 __moveDirectionRelativeToCamera = __targetMoveDir.RelativeTo(_references.Camera.transform);
-            
-            F32x3 __desiredVelocity = (normalize(__moveDirectionRelativeToCamera) * (F32)_settings.MaxSpeed);
+
+            F32x3 __desiredVelocity = (__targetMoveDirectionRelativeToCamera * __targetMoveSpeed);
 
             // Update character’s velocity based on its grounding status
             if (_references.Motor.isGrounded)
@@ -92,7 +98,8 @@ namespace DeathRunner.PlayerState
                 NotGroundedMovement(desiredVelocity: __desiredVelocity);
             }
 
-            _settings.OnMove.Invoke(__moveDirectionRelativeToCamera);
+            //Debug.Log("Should invoke OnMove");
+            _settings.OnMove.Invoke(__targetMoveDirectionRelativeToCamera);
             
             // Perform movement using character's current velocity
             _references.Motor.Move(deltaTime: Commands.DeltaTime);
@@ -138,9 +145,8 @@ namespace DeathRunner.PlayerState
             F32x3 __verVelocity  = new(x: 0,            y: __velocity.y, z: 0);
 
             // Accelerate horizontal velocity towards desired velocity
-            F32x3 __horizontalVelocity = Vector3.MoveTowards(
-                current: __flatVelocity, 
-                target: desiredVelocity,
+            F32x3 __horizontalVelocity = __flatVelocity.MoveTowards(
+                target:  desiredVelocity, 
                 maxDistanceDelta: (F32)_settings.MaxAcceleration * (F32)_settings.AirControlPrimantissa * Commands.DeltaTime);
 
             // Update velocity preserving gravity effects (vertical velocity)
@@ -160,7 +166,7 @@ namespace DeathRunner.PlayerState
     }
     
     [Serializable]
-    public struct WalkSettings 
+    public struct MoveSettings 
     {
         [field:Tooltip(tooltip: "The character's maximum speed. (m/s)")]
         [field:SerializeField] public Constant<F32>   MaxSpeed                    { get; [UsedImplicitly] private set; }
@@ -183,7 +189,7 @@ namespace DeathRunner.PlayerState
         [field:Tooltip(tooltip: "The character's gravity.")] 
         [field:SerializeField] public Constant<F32x3> Gravity                     { get; [UsedImplicitly] private set; }
         
-        [field:Space]
+        //[field:Space]
         
         [field:SerializeField] public ScriptableEvent<F32x3> OnMove               { get; [UsedImplicitly] private set; }
         
