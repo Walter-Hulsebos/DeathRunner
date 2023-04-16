@@ -1,9 +1,14 @@
 using System;
 using DG.Tweening;
 using QFSW.QC;
+
 using UnityEngine;
 using UnityEngine.InputSystem;
-using F32  = System.Single;
+using UnityEngine.InputSystem.Controls;
+using static Unity.Mathematics.math;
+
+using F32   = System.Single;
+using F32x2 = Unity.Mathematics.float2;
 
 using Bool  = System.Boolean;
 
@@ -11,47 +16,81 @@ namespace DeathRunner.Shared
 {
     public static class Commands
     {
-        // static Commands()
-        // {
-        //     InputSystem.onDeviceChange += (device, change) =>
-        //     {
-        //         switch (change)
-        //         {
-        //             case InputDeviceChange.Added:
-        //             case InputDeviceChange.Reconnected:
-        //             case InputDeviceChange.Enabled:
-        //             {
-        //                 if (device is Gamepad)
-        //                 {
-        //                     Debug.Log("PlayerIsUsingAGamepad = TRUE");
-        //                     PlayerIsUsingAGamepad = true;
-        //                 }
-        //
-        //                 break;
-        //             }
-        //             case InputDeviceChange.Removed:
-        //             case InputDeviceChange.Disconnected:
-        //             case InputDeviceChange.Disabled:
-        //             {
-        //                 if(device is Gamepad)
-        //                 {
-        //                     Debug.Log("PlayerIsUsingAGamepad = FALSE");
-        //                     PlayerIsUsingAGamepad = false;
-        //                 }
-        //                 
-        //                 break;
-        //             }
-        //             case InputDeviceChange.UsageChanged:
-        //             case InputDeviceChange.ConfigurationChanged:
-        //             case InputDeviceChange.SoftReset:
-        //             case InputDeviceChange.HardReset:
-        //                 break;
-        //             default:
-        //                 throw new ArgumentOutOfRangeException(nameof(change), change, null);
-        //         }
-        //     };
-        // }
+        static Commands()
+        {
+            //InputSystem.onBeforeUpdate += OnBeforeUpdate;
+            InputSystem.onAfterUpdate  += CheckIfPlayerIsUsingAGamepad;
+        }
         
+        public static Bool PlayerIsUsingAGamepad { get; private set; }
+        //public static Bool HasGamepadConnected => (Gamepad.all.Count > 0);
+
+        private static void CheckIfPlayerIsUsingAGamepad()
+        {
+            //If there's no gamepad, set PlayerIsUsingAGamepad to false
+            if(Gamepad.current == null)
+            {
+                PlayerIsUsingAGamepad = false;
+                return;
+            }
+            
+            //If there's any button input, set PlayerIsUsingAGamepad to true
+            if 
+            (
+                (Gamepad.current.buttonEast.ReadValue()       > 0) ||
+                (Gamepad.current.buttonWest.ReadValue()       > 0) ||
+                (Gamepad.current.buttonNorth.ReadValue()      > 0) ||
+                (Gamepad.current.buttonSouth.ReadValue()      > 0) ||
+                (Gamepad.current.aButton.ReadValue()          > 0) ||
+                (Gamepad.current.bButton.ReadValue()          > 0) ||
+                (Gamepad.current.xButton.ReadValue()          > 0) ||
+                (Gamepad.current.yButton.ReadValue()          > 0) ||
+                (Gamepad.current.crossButton.ReadValue()      > 0) ||
+                (Gamepad.current.circleButton.ReadValue()     > 0) ||
+                (Gamepad.current.squareButton.ReadValue()     > 0) ||
+                (Gamepad.current.triangleButton.ReadValue()   > 0) ||
+                (Gamepad.current.leftShoulder.ReadValue()     > 0) ||
+                (Gamepad.current.rightShoulder.ReadValue()    > 0) ||
+                (Gamepad.current.leftTrigger.ReadValue()      > 0) ||
+                (Gamepad.current.rightTrigger.ReadValue()     > 0) ||
+                (Gamepad.current.leftStickButton.ReadValue()  > 0) ||
+                (Gamepad.current.rightStickButton.ReadValue() > 0) ||
+                (Gamepad.current.selectButton.ReadValue()     > 0) ||
+                (Gamepad.current.startButton.ReadValue()      > 0) ||
+                (Gamepad.current.dpad.left.ReadValue()        > 0) ||
+                (Gamepad.current.dpad.right.ReadValue()       > 0) ||
+                (Gamepad.current.dpad.down.ReadValue()        > 0) ||
+                (Gamepad.current.dpad.up.ReadValue()          > 0)
+            )
+            {
+                PlayerIsUsingAGamepad = true;
+                return;
+            }
+
+            //If there's any left stick input, set PlayerIsUsingAGamepad to true
+            if (Gamepad.current.leftStick.ReadValue() != Vector2.zero)
+            {
+                PlayerIsUsingAGamepad = true;
+                return;
+            }
+            
+            //If there's any right stick input, set PlayerIsUsingAGamepad to true
+            if (Gamepad.current.rightStick.ReadValue() != Vector2.zero)
+            {
+                PlayerIsUsingAGamepad = true;
+                return;
+            }
+
+            //If there's any mouse input, set PlayerIsUsingAGamepad to false, since the player is now using the mouse.
+            if (Mouse.current == null) return;
+            
+            if (Mouse.current.delta.ReadValue() != Vector2.zero)
+            {
+                PlayerIsUsingAGamepad = false;
+            }
+        }
+        
+
         [Command]
         public static void EnableSlowMotion() => IsSlowMotionEnabled = true;
 
@@ -76,13 +115,7 @@ namespace DeathRunner.Shared
                 DOTween.useSmoothDeltaTime = false;
             }
         }
-        
-        
-        
-        //public static Bool PlayerIsUsingAGamepad { get; private set; }
-        
-        public static Bool PlayerIsUsingAGamepad => (Gamepad.all.Count > 0);
-        
+
         public static F32 DeltaTime => IsSlowMotionEnabled ? Time.unscaledDeltaTime : Time.deltaTime;
     }
 }

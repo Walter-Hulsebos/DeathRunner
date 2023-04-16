@@ -80,8 +80,17 @@ namespace DeathRunner.PlayerState
                 //Get Mouse Position Screen-Space
                 if (Commands.PlayerIsUsingAGamepad)
                 {
-                    Bool __hasAimInput = any(_references.InputHandler.AimInput != F32x2.zero);
+                    F32x2 __aimInput = _references.InputHandler.AimInput;
                     
+                    F32 __aimInputSqrMagnitude = lengthsq(__aimInput);
+                    
+                    const F32 MAGNITUDE_THRESHOLD = 0.2f;
+                    const F32 SQR_MAGNITUDE_THRESHOLD = MAGNITUDE_THRESHOLD * MAGNITUDE_THRESHOLD;
+                    
+                    
+                    Bool __hasAimInput = (__aimInputSqrMagnitude > SQR_MAGNITUDE_THRESHOLD); 
+                    //any(_references.InputHandler.AimInput != F32x2.zero);
+
                     if (__hasAimInput)
                     {
                         F32x3 __targetLookDirection = new(x: _references.InputHandler.AimInput.x, y: 0, z: _references.InputHandler.AimInput.y);
