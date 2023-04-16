@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using HFSM;
 using UnityEngine;
+using UnityEngine.Serialization;
 using static Unity.Mathematics.math;
 
 //Third-party libraries next
@@ -21,37 +22,51 @@ namespace DeathRunner.PlayerState
 
         [SerializeField] private PlayerReferences playerReferences = new();
 
+        [Tooltip("Locomotion Settings for Normal-Time")]
+        [SerializeField] private LocomotionSettings locomotionNTSettings;
+        
         [Tooltip("Idle Settings for Normal-Time")]
         [SerializeField] private IdleSettings idleNTSettings;
+        [FormerlySerializedAs("walkNTSettings")]
         [Tooltip("Walk Settings for Normal-Time")]
-        [SerializeField] private WalkSettings walkNTSettings;
+        [SerializeField] private MoveSettings moveNtSettings;
+        
         [Tooltip("Dash Settings for Normal-Time")]
         [SerializeField] private DashSettings dashNTSettings;
         
         //[SerializeField] private AttackSettings
-
+        [Tooltip("Locomotion Settings for Bullet-Time")]
+        [SerializeField] private LocomotionSettings locomotionBTSettings;
+        
         [Tooltip("Idle Settings for Bullet-Time")]
         [SerializeField] private IdleSettings idleBTSettings;
+        [FormerlySerializedAs("walkBTSettings")]
         [Tooltip("Walk Settings for Bullet-Time")]
-        [SerializeField] private WalkSettings walkBTSettings;
+        [SerializeField] private MoveSettings moveBtSettings;
 
         private State     _root;
         
         private State     _alive;
-        [SerializeField] private StateLeaf _dead;
+        private StateLeaf _dead;
 
         private State     _normalTime;
         private State     _bulletTime;
-
+        
         // Suffixed with "NT" (NormalTime) or "BT" (BulletTime) to avoid name conflicts
+        private State     _locomotionNT;
+        
         private StateLeaf _idleNT;
         private StateLeaf _walkNT;
+        
         private StateLeaf _dashNT;
         private StateLeaf _primaryAttackNT;
         private StateLeaf _secondaryAttackNT;
+        
+        private State     _locomotionBT;
 
         private StateLeaf _idleBT;
         private StateLeaf _walkBT;
+        
         private StateLeaf _primaryAttackBT;
 
         #if UNITY_EDITOR
@@ -76,14 +91,16 @@ namespace DeathRunner.PlayerState
             _root = new PlayerState_Root(/*params childstates */
                 _alive = new PlayerState_Alive(/*params child states */
                     _normalTime = new PlayerState_NormalTime(/*params childstates */
-                        _idleNT            = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
-                        _walkNT            = new PlayerStateLeaf_Walk(settings: walkNTSettings, references: playerReferences), 
-                        _dashNT            = new PlayerStateLeaf_Dash(), 
+                        _locomotionNT = new PlayerState_Locomotion(settings: locomotionNTSettings, references: playerReferences, /*params childstates */
+                            _idleNT            = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
+                            _walkNT            = new PlayerStateLeaf_Move(settings: moveNtSettings, references: playerReferences)), 
+                        _dashNT            = new PlayerStateLeaf_Dash(settings: dashNTSettings, references: playerReferences), 
                         _primaryAttackNT   = new PlayerStateLeaf_PrimaryAttack(), 
                         _secondaryAttackNT = new PlayerStateLeaf_SecondaryAttack()), 
                     _bulletTime = new PlayerState_BulletTime(/*params childstates */
-                        _idleBT            = new PlayerStateLeaf_Idle(settings: idleBTSettings, references: playerReferences),
-                        _walkBT            = new PlayerStateLeaf_Walk(settings: walkBTSettings, references: playerReferences), 
+                        _locomotionBT = new PlayerState_Locomotion(settings: locomotionBTSettings, references: playerReferences, /*params childstates */
+                            _idleBT            = new PlayerStateLeaf_Idle(settings: idleBTSettings, references: playerReferences),
+                            _walkBT            = new PlayerStateLeaf_Move(settings: moveBtSettings, references: playerReferences)),
                         _primaryAttackBT   = new PlayerStateLeaf_PrimaryAttack())), 
                 _dead = new PlayerStateLeaf_Dead());
         }
@@ -103,6 +120,13 @@ namespace DeathRunner.PlayerState
 
             //_normalTime.AddTransitionTo(  _bulletTime);
             //_normalTime.AddTransitionFrom(_bulletTime);
+
+            #endregion
+            
+            #region Locomotion Normal Time
+            
+            //LocomotionNT <-> DashNT
+            //_locomotionNT.AddTransitionTo(_dashNT, conditions: () => playerReferences.InputHandler.DashInput);
 
             #endregion
 
