@@ -39,6 +39,17 @@ namespace DeathRunner.Inputs
         public event Action<F32x3>                    OnMoveStarted;
         public event Action<F32x3>                    OnMoveStopped;
         private Bool                                  _hasMoveInput;
+        
+        [FoldoutGroup(groupName: "Aim")]
+        [SerializeField] private InputActionReference aimInputActionReference;
+        [field:FoldoutGroup(groupName: "Aim")]
+        [field:SerializeField] public F32x2           AimInput          { get; private set; }
+        [field:FoldoutGroup(groupName: "Aim")]
+        public event Action<F32x2>                    OnAimInputUpdated; 
+        public event Action<F32x2>                    OnAimInputChanged;
+        public event Action<F32x2>                    OnAimStarted;
+        public event Action<F32x2>                    OnAimStopped;
+        private Bool                                  _hasAimInput;
 
         [FoldoutGroup(groupName: "Dash")]
         [SerializeField] private InputActionReference dashInputActionReference;
@@ -85,6 +96,7 @@ namespace DeathRunner.Inputs
         private void OnEnable()
         {
             moveInputActionReference.action.Enable();
+            aimInputActionReference.action.Enable();
             dashInputActionReference.action.Enable();
             primaryFireInputActionReference.action.Enable();
             secondaryFireInputActionReference.action.Enable();
@@ -94,6 +106,7 @@ namespace DeathRunner.Inputs
         private void OnDisable()
         {
             moveInputActionReference.action.Disable();
+            aimInputActionReference.action.Disable();
             dashInputActionReference.action.Disable();
             primaryFireInputActionReference.action.Disable();
             secondaryFireInputActionReference.action.Disable();
@@ -103,18 +116,21 @@ namespace DeathRunner.Inputs
         private void Awake()
         {
             moveInputActionReference.action.started            += OnMoveInputStarted;
+            aimInputActionReference.action.started             += OnAimInputStarted;
             dashInputActionReference.action.started            += OnDashInputStarted;
             primaryFireInputActionReference.action.started     += OnPrimaryFireInputStarted;
             secondaryFireInputActionReference.action.started   += OnSecondaryFireInputStarted;
             slowMoToggleInputActionReference.action.started    += OnSlowMoInputStarted;
 
             moveInputActionReference.action.performed          += OnMoveInputPerformed;
+            aimInputActionReference.action.performed           += OnAimInputPerformed;
             dashInputActionReference.action.performed          += OnDashInputPerformed;
             primaryFireInputActionReference.action.performed   += OnPrimaryFireInputPerformed;
             secondaryFireInputActionReference.action.performed += OnSecondaryFireInputPerformed;
             slowMoToggleInputActionReference.action.performed  += OnSlowMoInputPerformed;
             
             moveInputActionReference.action.canceled           += OnMoveInputCanceled;
+            aimInputActionReference.action.canceled            += OnAimInputCanceled;
             dashInputActionReference.action.canceled           += OnDashInputCanceled;
             primaryFireInputActionReference.action.canceled    += OnPrimaryFireInputCanceled;
             secondaryFireInputActionReference.action.canceled  += OnSecondaryFireInputCanceled;
@@ -124,18 +140,21 @@ namespace DeathRunner.Inputs
         private void OnDestroy()
         {
             moveInputActionReference.action.started            -= OnMoveInputStarted;
+            aimInputActionReference.action.started             -= OnAimInputStarted;
             dashInputActionReference.action.started            -= OnDashInputStarted;
             primaryFireInputActionReference.action.started     -= OnPrimaryFireInputStarted;
             secondaryFireInputActionReference.action.started   -= OnSecondaryFireInputStarted;
             slowMoToggleInputActionReference.action.started    -= OnSlowMoInputStarted;
 
             moveInputActionReference.action.performed          -= OnMoveInputPerformed;
+            aimInputActionReference.action.performed           -= OnAimInputPerformed;
             dashInputActionReference.action.performed          -= OnDashInputPerformed;
             primaryFireInputActionReference.action.performed   -= OnPrimaryFireInputPerformed;
             secondaryFireInputActionReference.action.performed -= OnSecondaryFireInputPerformed;
             slowMoToggleInputActionReference.action.performed  -= OnSlowMoInputPerformed;
                                                     
             moveInputActionReference.action.canceled           -= OnMoveInputCanceled;
+            aimInputActionReference.action.canceled            -= OnAimInputCanceled;
             dashInputActionReference.action.canceled           -= OnDashInputCanceled;
             primaryFireInputActionReference.action.canceled    -= OnPrimaryFireInputCanceled;
             secondaryFireInputActionReference.action.canceled  -= OnSecondaryFireInputCanceled;
@@ -181,6 +200,7 @@ namespace DeathRunner.Inputs
                     if (_hasMoveInput)
                     {
                         OnMoveStopped?.Invoke(MoveInputFlat);
+                        _hasMoveInput = false;
                         //Debug.Log("Move Stopped");
                     }
                 }
@@ -198,6 +218,49 @@ namespace DeathRunner.Inputs
             OnMoveInputUpdated?.Invoke(MoveInput);
             OnMoveInputFlatUpdated?.Invoke(MoveInputFlat);
         }
+        #endregion
+
+        #region Aim Input Callbacks
+
+        private void OnAimInputStarted(InputAction.CallbackContext ctx)   => HandleAimInput(newAimInput: (F32x2)ctx.ReadValue<Vector2>());
+        private void OnAimInputPerformed(InputAction.CallbackContext ctx) => HandleAimInput(newAimInput: (F32x2)ctx.ReadValue<Vector2>());
+        private void OnAimInputCanceled(InputAction.CallbackContext ctx)  => HandleAimInput(newAimInput: F32x2.zero);
+
+        private void HandleAimInput(F32x2 newAimInput)
+        {
+            Bool __inputHasChanged = any(AimInput != newAimInput);
+            AimInput = newAimInput;
+
+            if (__inputHasChanged)
+            {
+                OnAimInputChanged?.Invoke(AimInput);
+
+                //Debug.Log("Aim Input Changed");
+
+                F32 __inputSqrMagnitude = lengthsq(AimInput);
+                if(__inputSqrMagnitude > 0)
+                {
+                    if (!_hasAimInput) //This should be redundant, since we're already checking for input has changed, but just in case.
+                    {
+                        OnAimStarted?.Invoke(AimInput);
+                    }
+                    
+                    _hasAimInput = true;
+                }
+                else
+                {
+                    if (_hasAimInput)
+                    {
+                        OnAimStopped?.Invoke(AimInput);
+                        
+                        _hasAimInput = false;
+                    }
+                }
+            }
+
+            OnAimInputUpdated?.Invoke(AimInput);
+        }
+
         #endregion
 
         #region Dash Input Callbacks

@@ -350,24 +350,24 @@ namespace EasyCharacterMovement
         /// Transforms a vector to be relative to given transform.
         /// If isPlanar == true, the transform will be applied on the plane defined by world up axis.
         /// </summary>
-        public static F32x3 RelativeTo(this F32x3 vec, Transform relativeToThis, Bool isPlanar = true)
-        {
-            F32x3 __forward = relativeToThis.forward;
-
-            if (isPlanar)
-            {
-                F32x3 __upAxis = up();
-                __forward = __forward.ProjectedOnPlane(__upAxis);
-
-                if (__forward.IsZero())
-                {
-                    __forward = ((F32x3)relativeToThis.up).ProjectedOnPlane(__upAxis);
-                }
-            }
-            
-            Rotor __q = Rotor.LookRotation(forward: __forward, up: up());
-            return mul(__q, vec);
-        }
+        // public static F32x3 RelativeTo(this F32x3 vec, Transform relativeToThis, Bool isPlanar = true)
+        // {
+        //     F32x3 __forward = relativeToThis.forward;
+        //
+        //     if (isPlanar)
+        //     {
+        //         F32x3 __upAxis = up();
+        //         __forward = __forward.ProjectedOnPlane(__upAxis);
+        //
+        //         if (__forward.IsZero())
+        //         {
+        //             __forward = ((F32x3)relativeToThis.up).ProjectedOnPlane(__upAxis);
+        //         }
+        //     }
+        //     
+        //     Rotor __q = Rotor.LookRotation(forward: __forward, up: up());
+        //     return mul(__q, vec);
+        // }
         /// <summary>
         /// Transforms a vector to be relative to given transform.
         /// If isPlanar == true, the transform will be applied on the plane defined by world up axis.

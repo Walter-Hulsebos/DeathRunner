@@ -34,6 +34,8 @@ namespace DeathRunner.PlayerState
             base.OnEnter();
             
             Debug.Log("Idle.Enter");
+            
+            _settings.OnEnterIdle.Invoke();
         }
         
         protected override void OnExit()
@@ -42,9 +44,8 @@ namespace DeathRunner.PlayerState
             
             Debug.Log("Idle.Exit");
         }
-        
+
         private F32x3 _moveDirectionVelocity;
-        
         protected override void OnLateFixedUpdate()
         {
             base.OnLateFixedUpdate();
@@ -64,7 +65,7 @@ namespace DeathRunner.PlayerState
             _references.Motor.Move(deltaTime: Commands.DeltaTime);
         }
         
-                /// <summary>
+        /// <summary>
         /// Move the character when on walkable ground.
         /// </summary>
         private void GroundedMovement()
@@ -109,5 +110,7 @@ namespace DeathRunner.PlayerState
 
         [field:Tooltip(tooltip: "The character's gravity.")] 
         [field:SerializeField] public Constant<F32x3> Gravity        { get; [UsedImplicitly] private set; }
+        
+        [field:SerializeField] public ScriptableEvent OnEnterIdle    { get; [UsedImplicitly] private set; }
     }
 }
