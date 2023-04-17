@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.243, z: 0.524}
   m_LocalScale: {x: 0.24689, y: 1.24551, z: 0.7104884}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1980206455}
   m_RootOrder: 0
@@ -85,6 +86,7 @@ Transform:
   m_LocalRotation: {x: -0.00084096176, y: 0.07497832, z: -0.16551429, w: 0.9833527}
   m_LocalPosition: {x: -0.08, y: 0.344, z: 0.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1980206455}
   m_RootOrder: 1
@@ -115,6 +117,7 @@ Transform:
   m_LocalRotation: {x: -0.00084096176, y: 0.07497832, z: -0.16551429, w: 0.9833527}
   m_LocalPosition: {x: -0.08, y: 0.344, z: 0.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1980206455}
   m_RootOrder: 2
@@ -148,6 +151,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.011, y: 1.183, z: -0.09}
   m_LocalScale: {x: 2.0946, y: 2.0946, z: 2.0946}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4196992699514208928}
   m_Father: {fileID: 1844868483793226358}
@@ -172,6 +176,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -241,6 +246,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.4, z: 0.347}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1844868483793226358}
   m_RootOrder: 3
@@ -273,6 +279,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.927982, y: -24.621325, z: 33.399498}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2006315906}
   m_RootOrder: 1
@@ -437,15 +444,16 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - id: 0
-  - id: 1
-  - id: 2
+  - rid: 0
+  - rid: 1
+  - rid: 2
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: MMF_CinemachineImpulse, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.Cinemachine}
       data:
         Active: 1
@@ -555,7 +563,7 @@ MonoBehaviour:
           m_PropagationSpeed: 343
         Velocity: {x: 0, y: 0.07, z: 0}
         ClearImpulseOnStop: 0
-    00000001:
+    - rid: 1
       type: {class: MMF_FreezeFrame, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -625,7 +633,7 @@ MonoBehaviour:
         DebugActive: 0
         FreezeFrameDuration: 0.05
         MinimumTimescaleThreshold: 0.1
-    00000002:
+    - rid: 2
       type: {class: MMF_Flicker, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -728,6 +736,7 @@ Transform:
   m_LocalRotation: {x: -0.00084096176, y: 0.07497832, z: -0.16551429, w: 0.9833527}
   m_LocalPosition: {x: -0.08, y: 0.344, z: 0.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7836591963816944111}
   m_RootOrder: 1
@@ -760,6 +769,7 @@ Transform:
   m_LocalRotation: {x: 0.060688645, y: 0.64720845, z: 0.24039306, w: -0.72086704}
   m_LocalPosition: {x: -0.027, y: 0.139, z: 0.046}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 22359318}
   - {fileID: 36744019}
@@ -786,6 +796,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -842,6 +853,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2059878654}
   - {fileID: 1271047119}
@@ -876,6 +888,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.927982, y: -24.621325, z: 33.399498}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2006315906}
   m_RootOrder: 0
@@ -1040,16 +1053,17 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
+  - rid: 0
+  - rid: 1
+  - rid: 2
+  - rid: 3
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: MMF_CinemachineImpulse, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.Cinemachine}
       data:
         Active: 1
@@ -1159,7 +1173,7 @@ MonoBehaviour:
           m_PropagationSpeed: 343
         Velocity: {x: 0, y: 0.1, z: 0}
         ClearImpulseOnStop: 0
-    00000001:
+    - rid: 1
       type: {class: MMF_Flicker, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -1236,7 +1250,7 @@ MonoBehaviour:
         MaterialIndexes: 0000000001000000
         UseMaterialPropertyBlocks: 0
         SpriteRendererTextureProperty: _MainTex
-    00000002:
+    - rid: 2
       type: {class: MMF_FreezeFrame, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -1306,7 +1320,7 @@ MonoBehaviour:
         DebugActive: 0
         FreezeFrameDuration: 0.05
         MinimumTimescaleThreshold: 0.1
-    00000003:
+    - rid: 3
       type: {class: MMF_TimescaleModifier, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -1466,6 +1480,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.00392, z: 0.01282}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1311365261206371998}
   m_RootOrder: 0
@@ -1496,6 +1511,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1311365261206371998}
   m_Father: {fileID: 1844868483793226358}
@@ -1529,6 +1545,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.243, z: 0.524}
   m_LocalScale: {x: 0.24689, y: 1.24551, z: 0.7104884}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7836591963816944111}
   m_RootOrder: 0
@@ -1599,6 +1616,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2166499022268899646}
   - {fileID: 1844868484592713033}
@@ -2121,7 +2139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ec5de01b0ff26b48a1dc326c3b5a93e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 5255946734997896004}
+  _animator: {fileID: 1331941212}
 --- !u!1 &1844868484592713032
 GameObject:
   m_ObjectHideFlags: 0
@@ -2148,6 +2166,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1844868483793226358}
   m_RootOrder: 1
@@ -2178,6 +2197,7 @@ Transform:
   m_LocalRotation: {x: -0.00084096176, y: 0.07497832, z: -0.16551429, w: 0.9833527}
   m_LocalPosition: {x: -0.08, y: 0.344, z: 0.68}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7836591963816944111}
   m_RootOrder: 2
@@ -2208,6 +2228,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3250327507294243545}
   - {fileID: 2463687344610519079}
@@ -2242,6 +2263,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.927982, y: -24.621325, z: 33.399498}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4338961855879900450}
   m_RootOrder: 1
@@ -2406,15 +2428,16 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - id: 0
-  - id: 1
-  - id: 2
+  - rid: 0
+  - rid: 1
+  - rid: 2
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: MMF_CinemachineImpulse, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.Cinemachine}
       data:
         Active: 1
@@ -2524,7 +2547,7 @@ MonoBehaviour:
           m_PropagationSpeed: 343
         Velocity: {x: 0, y: 0.07, z: 0}
         ClearImpulseOnStop: 0
-    00000001:
+    - rid: 1
       type: {class: MMF_FreezeFrame, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -2594,7 +2617,7 @@ MonoBehaviour:
         DebugActive: 0
         FreezeFrameDuration: 0.05
         MinimumTimescaleThreshold: 0.1
-    00000002:
+    - rid: 2
       type: {class: MMF_Flicker, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -2700,6 +2723,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.011, y: 1.183, z: -0.09}
   m_LocalScale: {x: 2.0946, y: 2.0946, z: 2.0946}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9107030363731890495}
   m_Father: {fileID: 1844868483793226358}
@@ -2724,6 +2748,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -2793,6 +2818,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.4, z: 0.347}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1844868483793226358}
   m_RootOrder: 6
@@ -2825,6 +2851,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -6.927982, y: -24.621325, z: 33.399498}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4338961855879900450}
   m_RootOrder: 0
@@ -2989,16 +3016,17 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - id: 0
-  - id: 1
-  - id: 2
-  - id: 3
+  - rid: 0
+  - rid: 1
+  - rid: 2
+  - rid: 3
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: MMF_CinemachineImpulse, ns: MoreMountains.FeedbacksForThirdParty, asm: MoreMountains.Feedbacks.Cinemachine}
       data:
         Active: 1
@@ -3108,7 +3136,7 @@ MonoBehaviour:
           m_PropagationSpeed: 343
         Velocity: {x: 0, y: 0.1, z: 0}
         ClearImpulseOnStop: 0
-    00000001:
+    - rid: 1
       type: {class: MMF_Flicker, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -3185,7 +3213,7 @@ MonoBehaviour:
         MaterialIndexes: 0000000001000000
         UseMaterialPropertyBlocks: 0
         SpriteRendererTextureProperty: _MainTex
-    00000002:
+    - rid: 2
       type: {class: MMF_FreezeFrame, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -3255,7 +3283,7 @@ MonoBehaviour:
         DebugActive: 0
         FreezeFrameDuration: 0.05
         MinimumTimescaleThreshold: 0.1
-    00000003:
+    - rid: 3
       type: {class: MMF_TimescaleModifier, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -3470,11 +3498,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 967ceb3b102eaf4449bf97528f31444d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a812875c504fe54885166292ba580be, type: 3}
---- !u!4 &1311365261206371998 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: 9a812875c504fe54885166292ba580be, type: 3}
-  m_PrefabInstance: {fileID: 1311365261205971998}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1311365261206069950 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 9a812875c504fe54885166292ba580be, type: 3}
@@ -3497,6 +3520,11 @@ MonoBehaviour:
   attackInput: {fileID: -533271173522944404, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7, type: 3}
   onAttack:
     _PersistentCalls: []
+--- !u!4 &1311365261206371998 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400000, guid: 9a812875c504fe54885166292ba580be, type: 3}
+  m_PrefabInstance: {fileID: 1311365261205971998}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1770186823628856388
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3638,19 +3666,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 26aea163ab80d324ab93cc0dd66885a1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cfd544f408de584a8802004421dbed5, type: 3}
---- !u!1 &1464125456486015253 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2cfd544f408de584a8802004421dbed5, type: 3}
-  m_PrefabInstance: {fileID: 1770186823628856388}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2241190578589334447 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2cfd544f408de584a8802004421dbed5, type: 3}
-  m_PrefabInstance: {fileID: 1770186823628856388}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &82572514736366476 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1852576806548013000, guid: 2cfd544f408de584a8802004421dbed5, type: 3}
+  m_PrefabInstance: {fileID: 1770186823628856388}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1464125456486015253 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 2cfd544f408de584a8802004421dbed5, type: 3}
   m_PrefabInstance: {fileID: 1770186823628856388}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &1331941212
@@ -3673,6 +3696,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &1331941210
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3708,6 +3732,11 @@ MonoBehaviour:
   dashDistance: 2
   dashSpeed: 7
   _locomotion: {fileID: 1844868483793226365}
+--- !u!4 &2241190578589334447 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2cfd544f408de584a8802004421dbed5, type: 3}
+  m_PrefabInstance: {fileID: 1770186823628856388}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1770186825559529673
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3867,29 +3896,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
---- !u!95 &5255946734997896004 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
-  m_PrefabInstance: {fileID: 1844868484336240341}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2166499022268899646 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
-  m_PrefabInstance: {fileID: 1844868484336240341}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1538863062363274116 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
-  m_PrefabInstance: {fileID: 1844868484336240341}
-  m_PrefabAsset: {fileID: 0}
---- !u!137 &5523007506330670385 stripped
-SkinnedMeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -3080497277139479580, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
-  m_PrefabInstance: {fileID: 1844868484336240341}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7836591963816944111 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -766912923740035270, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
   m_PrefabInstance: {fileID: 1844868484336240341}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1311365261472770337
@@ -3927,6 +3936,26 @@ MonoBehaviour:
   characterTransform: {fileID: 1844868483793226358}
   playerCamera: {fileID: 0}
   animator: {fileID: 5255946734997896004}
+--- !u!4 &2166499022268899646 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
+  m_PrefabInstance: {fileID: 1844868484336240341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &5255946734997896004 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
+  m_PrefabInstance: {fileID: 1844868484336240341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5523007506330670385 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -3080497277139479580, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
+  m_PrefabInstance: {fileID: 1844868484336240341}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7836591963816944111 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -766912923740035270, guid: db3f8bbeda7092046838557cc105b19e, type: 3}
+  m_PrefabInstance: {fileID: 1844868484336240341}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6686977704405830486
 PrefabInstance:
   m_ObjectHideFlags: 0

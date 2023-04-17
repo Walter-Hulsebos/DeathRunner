@@ -53,7 +53,7 @@ namespace DeathRunner.EnemyAI
             {
                 // Find the player object in the scene
                 _player = GameObject.FindWithTag("Player");
-
+                navMeshAgent = GetComponent<NavMeshAgent>();
                 // Start chasing the player
                 StartChase();
             }

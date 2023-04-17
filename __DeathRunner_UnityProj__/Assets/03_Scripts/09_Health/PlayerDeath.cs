@@ -19,11 +19,17 @@ namespace DeathRunner
             _orientation = GetComponent<Orientation>();
         }
 
+        private void Update()
+        {
+        }
+
         public void OnPlayerDeath()
         {
-            _animator.SetTrigger("Death");
+            print("dead");
             _locomotion.enabled = false;
             _orientation.enabled = false;
+            _animator.SetTrigger("Death");
+            
         }
     }
 }
