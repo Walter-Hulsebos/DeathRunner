@@ -30,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0.2999713, y: 0.23762071, z: 0.5736679, w: 0.7241953}
   m_LocalPosition: {x: -5.694809, y: 0.042761162, z: -0.57850933}
   m_LocalScale: {x: 31.234, y: 31.234, z: 31.234}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -108,4 +110,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb911fa1f178dd54bb3bb69f25b886da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun: {fileID: 11400000, guid: 64dd8278c932f284eb754464b8f58502, type: 2}
+  sideWeapon: {fileID: 11400000, guid: 64dd8278c932f284eb754464b8f58502, type: 2}

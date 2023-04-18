@@ -371,7 +371,6 @@ namespace MoreMountains.Feedbacks
 		/// <param name="status"></param>
 		protected virtual void Turn(bool status)
 		{
-			BoundLight.gameObject.SetActive(status);
 			BoundLight.enabled = status;
 		}
 		

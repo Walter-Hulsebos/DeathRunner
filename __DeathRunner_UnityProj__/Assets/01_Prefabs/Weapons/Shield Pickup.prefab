@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0.2999713, y: 0.23762071, z: 0.5736679, w: 0.7241953}
   m_LocalPosition: {x: -5.749, y: 0.055, z: -1.841}
   m_LocalScale: {x: 31.234, y: 31.234, z: 31.234}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8750411689183649823}
   m_Father: {fileID: 0}
@@ -58,7 +59,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb911fa1f178dd54bb3bb69f25b886da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sideWeapon: {fileID: 0}
+  sideWeapon: {fileID: 11400000, guid: ab339998f8f72334b9fc83cd85f31f90, type: 2}
 --- !u!1001 &6611834041220545142
 PrefabInstance:
   m_ObjectHideFlags: 0

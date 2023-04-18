@@ -454,6 +454,7 @@ namespace MoreMountains.Feedbacks
 			}
 
 			AutomateTargetAcquisition();
+			CacheRequiresSetup();
 		}
 
 		/// <summary>
@@ -462,6 +463,7 @@ namespace MoreMountains.Feedbacks
 		public virtual void ForceAutomateTargetAcquisition()
 		{
 			AutomateTargetAcquisition();
+			CacheRequiresSetup();
 		}
 
 		/// <summary>
@@ -610,7 +612,7 @@ namespace MoreMountains.Feedbacks
 				{
 					CustomPlayFeedback(position, feedbacksIntensity);
 					_lastPlayTimestamp = FeedbackTime;
-					yield return WaitFor(Timing.DelayBetweenRepeats);
+					yield return WaitFor(Timing.DelayBetweenRepeats + FeedbackDuration);
 				}
 				else
 				{
@@ -637,14 +639,15 @@ namespace MoreMountains.Feedbacks
 				{
 					CustomPlayFeedback(position, feedbacksIntensity);
 					_lastPlayTimestamp = FeedbackTime;
-					yield return WaitFor(Timing.DelayBetweenRepeats);
+					yield return WaitFor(Timing.DelayBetweenRepeats + FeedbackDuration);
+					yield return MMCoroutine.WaitForFrames(1);
 				}
 				else
 				{
 					_sequenceCoroutine = Owner.StartCoroutine(SequenceCoroutine(position, feedbacksIntensity));
-
 					float delay = ApplyTimeMultiplier(Timing.DelayBetweenRepeats) + Timing.Sequence.Length;
 					yield return WaitFor(delay);
+					yield return MMCoroutine.WaitForFrames(1);
 				}
 			}
 
@@ -1057,7 +1060,7 @@ namespace MoreMountains.Feedbacks
 		/// <summary>
 		/// Triggered when the host MMF Player gets selected, can be used to draw gizmos
 		/// </summary>
-		public virtual void OnDrawGizmosSelected() { }
+		public virtual void OnDrawGizmosSelectedHandler() { }
 
 		#endregion
 	}

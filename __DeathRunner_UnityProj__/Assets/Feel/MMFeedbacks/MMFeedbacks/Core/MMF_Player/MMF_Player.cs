@@ -29,6 +29,9 @@ namespace MoreMountains.Feedbacks
 		public bool PerformanceMode = false;
 		[Tooltip("if this is true, StopFeedbacks will be called on all feedbacks on Disable")]
 		public bool ForceStopFeedbacksOnDisable = true;
+		[Tooltip("how many times this player has started playing")]
+		[MMReadOnly]
+		public int PlayCount = 0;
 
 		public bool SkippingToTheEnd { get; protected set; }
         
@@ -120,9 +123,15 @@ namespace MoreMountains.Feedbacks
 			}
 			if (AutoPlayOnEnable && Application.isPlaying)
 			{
+				if (_lastOnEnableFrame == Time.frameCount)
+				{
+					return;
+				}
+				
 				// if we're in the very first frames, we delay our play for 2 frames to avoid Unity bugs
 				if (Time.frameCount < 2)
 				{
+					_lastOnEnableFrame = 2;
 					StartCoroutine(PlayFeedbacksAfterFrames(2));
 				}
 				else
@@ -306,6 +315,7 @@ namespace MoreMountains.Feedbacks
 			_lastStartAt = _startTime;
 			this.enabled = true;
 			IsPlaying = true;
+			PlayCount++;
 			ComputeNewRandomDurationMultipliers();
 			_totalDuration = TotalDuration;
 			CheckForPauses();
@@ -326,14 +336,6 @@ namespace MoreMountains.Feedbacks
 				PreparePlay(position, feedbacksIntensity, forceRevert);
 			}
 		}
-		
-		/// <summary>
-		/// Use this method before every PlayFeedbacks() call ONLY if you ever need to play the same MMF Player multiple times a frame
-		/// </summary>
-		public virtual void AllowSameFramePlay()
-		{
-			_lastStartFrame = -1;
-		}
 
 		/// <summary>
 		/// Returns true if this feedback is allowed to play, false otherwise
@@ -347,14 +349,14 @@ namespace MoreMountains.Feedbacks
 			{
 				return false;
 			}
-
-			if (Time.frameCount == _lastStartFrame)
-			{
-				return false;
-			}
 			
 			// if we're already playing and can't play while already playing, we're not allowed to play 
 			if (IsPlaying && !CanPlayWhileAlreadyPlaying)
+			{
+				return false;
+			}
+
+			if (AutoPlayOnEnable && (_lastStartFrame == Time.frameCount))
 			{
 				return false;
 			}
@@ -676,7 +678,7 @@ namespace MoreMountains.Feedbacks
 				yield return null;
 			}
 			SkippingToTheEnd = true;
-			Events.TriggerOnSkip(this);
+			Events.TriggerOnSkipToTheEnd(this);
 			int count = FeedbacksList.Count;
 			for (int i = 0; i < count; i++)
 			{
@@ -760,6 +762,30 @@ namespace MoreMountains.Feedbacks
 		}
 
 		/// <summary>
+		/// Sets the direction of the player to the one specified in parameters
+		/// </summary>
+		public virtual void SetDirection(Directions newDirection)
+		{
+			Direction = newDirection;
+		}
+		
+		/// <summary>
+		/// Sets the direction to top to bottom
+		/// </summary>
+		public void SetDirectionTopToBottom()
+		{
+			Direction = Directions.TopToBottom;
+		}
+
+		/// <summary>
+		/// Sets the direction to bottom to top
+		/// </summary>
+		public void SetDirectionBottomToTop()
+		{
+			Direction = Directions.BottomToTop;
+		}
+
+		/// <summary>
 		/// Pauses execution of a sequence, which can then be resumed by calling ResumeFeedbacks()
 		/// </summary>
 		public override void PauseFeedbacks()
@@ -774,14 +800,21 @@ namespace MoreMountains.Feedbacks
 		/// </summary>
 		public virtual void RestoreInitialValues()
 		{
+			if (PlayCount <= 0)
+			{
+				return;
+			}
+			
 			int count = FeedbacksList.Count;
-			for (int i = 0; i < count; i++)
+			for (int i = count - 1; i >= 0; i--)
 			{
 				if ((FeedbacksList[i] != null) && (FeedbacksList[i].Active))
 				{
 					FeedbacksList[i].RestoreInitialValues();    
 				}
 			}
+
+			Events.TriggerOnRestoreInitialValues(this);
 		}
 
 		/// <summary>
@@ -1296,10 +1329,7 @@ namespace MoreMountains.Feedbacks
 			{
 				foreach (MMF_Feedback feedback in FeedbacksList)
 				{
-					if (feedback.TotalDuration == 0f)
-					{
-						feedback.ComputeTotalDuration();
-					}
+					feedback.ComputeTotalDuration();
 					if ((feedback != null) && (feedback.Active) && feedback.ShouldPlayInThisSequenceDirection)
 					{
 						if (total < feedback.TotalDuration)
@@ -1326,10 +1356,7 @@ namespace MoreMountains.Feedbacks
 					
 					if ((FeedbacksList[i] != null) && FeedbacksList[i].Active && FeedbacksList[i].ShouldPlayInThisSequenceDirection)
 					{
-						if (FeedbacksList[i].TotalDuration == 0f)
-						{
-							FeedbacksList[i].ComputeTotalDuration();
-						}
+						FeedbacksList[i].ComputeTotalDuration();
 						if (FeedbacksList[i].Pause != null)
 						{
 							// pause
@@ -1446,7 +1473,7 @@ namespace MoreMountains.Feedbacks
             
 			for (int i = FeedbacksList.Count - 1; i >= 0; i--)
 			{
-				FeedbacksList[i].OnDrawGizmosSelected();
+				FeedbacksList[i].OnDrawGizmosSelectedHandler();
 			}
 		}
 

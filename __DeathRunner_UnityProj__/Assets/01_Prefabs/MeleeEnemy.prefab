@@ -191,6 +191,12 @@ MonoBehaviour:
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    OnRestoreInitialValues:
+      m_PersistentCalls:
+        m_Calls: []
+    OnSkipToTheEnd:
+      m_PersistentCalls:
+        m_Calls: []
   DebugActive: 0
   FeedbacksList:
   - rid: 0
@@ -200,6 +206,7 @@ MonoBehaviour:
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
+  PlayCount: 0
   references:
     version: 2
     RefIds:
@@ -785,6 +792,12 @@ MonoBehaviour:
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    OnRestoreInitialValues:
+      m_PersistentCalls:
+        m_Calls: []
+    OnSkipToTheEnd:
+      m_PersistentCalls:
+        m_Calls: []
   DebugActive: 0
   FeedbacksList:
   - rid: 0
@@ -795,6 +808,7 @@ MonoBehaviour:
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
+  PlayCount: 0
   references:
     version: 2
     RefIds:
@@ -1266,6 +1280,7 @@ MonoBehaviour:
         ParticlesPrefab: {fileID: 19860734, guid: c2aebf243eef74a488f4ddc6851ecba4, type: 3}
         RandomParticlePrefabs: []
         ForceSetActiveOnPlay: 0
+        StopOnReset: 0
         PositionMode: 1
         InstantiateParticlesPosition: {fileID: 8025951267902494265}
         TargetWorldPosition: {x: 0, y: 0, z: 0}
@@ -1385,6 +1400,12 @@ MonoBehaviour:
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    OnRestoreInitialValues:
+      m_PersistentCalls:
+        m_Calls: []
+    OnSkipToTheEnd:
+      m_PersistentCalls:
+        m_Calls: []
   DebugActive: 0
   FeedbacksList:
   - rid: 0
@@ -1394,6 +1415,7 @@ MonoBehaviour:
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
+  PlayCount: 0
   references:
     version: 2
     RefIds:
@@ -1731,6 +1753,7 @@ MonoBehaviour:
         ParticlesPrefab: {fileID: 19874822, guid: 577af436092783e448b60646ae9c1da6, type: 3}
         RandomParticlePrefabs: []
         ForceSetActiveOnPlay: 0
+        StopOnReset: 0
         PositionMode: 1
         InstantiateParticlesPosition: {fileID: 8025951267902494265}
         TargetWorldPosition: {x: 0, y: 0, z: 0}
@@ -1828,7 +1851,7 @@ Transform:
   m_GameObject: {fileID: 8025951268374177580}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.07, y: 0.019, z: 0}
-  m_LocalScale: {x: 1.25, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8025951267902494269}

@@ -41,6 +41,7 @@ namespace DeathRunner.Damageable
         {
             ResetDamage();
             m_Collider = GetComponent<Collider>();
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         private void Update()
@@ -118,7 +119,7 @@ namespace DeathRunner.Damageable
         {
             currentHitPoints += healAmount;
              currentHitPoints = Mathf.Clamp(currentHitPoints, 0, maxHitPoints);
-            print("Healing");
+            Debug.Log("Healing");
             OnHeal.Invoke();
         }
         private void LateUpdate()

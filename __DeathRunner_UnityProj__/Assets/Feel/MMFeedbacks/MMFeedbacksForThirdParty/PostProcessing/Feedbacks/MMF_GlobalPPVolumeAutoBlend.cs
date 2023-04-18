@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using MoreMountains.Feedbacks;
+using MoreMountains.Tools;
 
 namespace MoreMountains.FeedbacksForThirdParty
 {
@@ -39,7 +40,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 			{
 				if (Mode == Modes.Override)
 				{
-					return BlendDuration;
+					return ApplyTimeMultiplier(BlendDuration);
 				}
 				else
 				{
@@ -49,7 +50,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 					}
 					else
 					{
-						return TargetAutoBlend.BlendDuration;
+						return ApplyTimeMultiplier(TargetAutoBlend.BlendDuration);
 					}
 				}
 			}
@@ -137,8 +138,9 @@ namespace MoreMountains.FeedbacksForThirdParty
 			}
 			else
 			{
-				TargetAutoBlend.BlendDuration = BlendDuration;
+				TargetAutoBlend.BlendDuration = ApplyTimeMultiplier(BlendDuration);
 				TargetAutoBlend.Curve = BlendCurve;
+				TargetAutoBlend.TimeScale = (ComputedTimescaleMode == TimescaleModes.Scaled) ? MMGlobalPostProcessingVolumeAutoBlend.TimeScales.Scaled : MMGlobalPostProcessingVolumeAutoBlend.TimeScales.Unscaled;
 				if (!NormalPlayDirection)
 				{
 					TargetAutoBlend.InitialWeight = FinalWeight;

@@ -112,6 +112,12 @@ MonoBehaviour:
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    OnRestoreInitialValues:
+      m_PersistentCalls:
+        m_Calls: []
+    OnSkipToTheEnd:
+      m_PersistentCalls:
+        m_Calls: []
   DebugActive: 0
   FeedbacksList:
   - rid: 0
@@ -121,6 +127,7 @@ MonoBehaviour:
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
+  PlayCount: 0
   references:
     version: 2
     RefIds:
@@ -376,8 +383,8 @@ MonoBehaviour:
         Mode: 0
         PropertyName: _Tint
         FlickerDuration: 0.05
-        FlickerOctave: 0.05
-        FlickerColor: {r: 1.4980392, g: 0.30588236, b: 0, a: 1}
+        FlickerOctave: 0.1
+        FlickerColor: {r: 5.992157, g: 1.2235295, b: 0, a: 1}
         MaterialIndexes: 0000000001000000
         UseMaterialPropertyBlocks: 0
         SpriteRendererTextureProperty: _MainTex
@@ -458,6 +465,7 @@ MonoBehaviour:
         ParticlesPrefab: {fileID: 19874822, guid: 577af436092783e448b60646ae9c1da6, type: 3}
         RandomParticlePrefabs: []
         ForceSetActiveOnPlay: 0
+        StopOnReset: 0
         PositionMode: 1
         InstantiateParticlesPosition: {fileID: 7964583363371903106}
         TargetWorldPosition: {x: 0, y: 0, z: 0}
@@ -656,6 +664,12 @@ MonoBehaviour:
     OnComplete:
       m_PersistentCalls:
         m_Calls: []
+    OnRestoreInitialValues:
+      m_PersistentCalls:
+        m_Calls: []
+    OnSkipToTheEnd:
+      m_PersistentCalls:
+        m_Calls: []
   DebugActive: 0
   FeedbacksList:
   - rid: 0
@@ -666,6 +680,7 @@ MonoBehaviour:
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
+  PlayCount: 0
   references:
     version: 2
     RefIds:
@@ -850,9 +865,9 @@ MonoBehaviour:
         BoundRenderer: {fileID: 7964583363360307660}
         Mode: 0
         PropertyName: _Tint
-        FlickerDuration: 0.05
-        FlickerOctave: 0.05
-        FlickerColor: {r: 1, g: 0.009995077, b: 0, a: 1}
+        FlickerDuration: 0.1
+        FlickerOctave: 0.1
+        FlickerColor: {r: 8, g: 0.09411765, b: 0, a: 1}
         MaterialIndexes: 0000000001000000
         UseMaterialPropertyBlocks: 0
         SpriteRendererTextureProperty: _MainTex
@@ -1137,6 +1152,7 @@ MonoBehaviour:
         ParticlesPrefab: {fileID: 19860734, guid: c2aebf243eef74a488f4ddc6851ecba4, type: 3}
         RandomParticlePrefabs: []
         ForceSetActiveOnPlay: 0
+        StopOnReset: 0
         PositionMode: 1
         InstantiateParticlesPosition: {fileID: 7964583363371903106}
         TargetWorldPosition: {x: 0, y: 0, z: 0}

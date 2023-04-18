@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MoreMountains.Tools;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -80,6 +81,11 @@ namespace MoreMountains.Feedbacks
 		protected override void CustomInitialization(MMF_Player owner)
 		{
 			base.CustomInitialization(owner);
+			InitializeMaterials();
+		}
+
+		protected virtual void InitializeMaterials()
+		{
 			if (TargetRenderer == null)
 			{
 				return;
@@ -87,7 +93,11 @@ namespace MoreMountains.Feedbacks
 			_currentIndex = InitialIndex;
 			_tempMaterials = new Material[TargetRenderer.materials.Length];
 			_initialMaterials = new Material[TargetRenderer.materials.Length];
-			_initialMaterials = TargetRenderer.materials;
+			for (int i = 0; i < _initialMaterials.Length; i++)
+			{
+				_initialMaterials[i] = new Material(TargetRenderer.materials[i]);
+			}
+			
 			if (RendererMaterialIndexes == null)
 			{
 				RendererMaterialIndexes = new int[1];
@@ -257,6 +267,7 @@ namespace MoreMountains.Feedbacks
 			}
 
 			TargetRenderer.materials = _initialMaterials;
+			InitializeMaterials();
 		}
 	}
 }
