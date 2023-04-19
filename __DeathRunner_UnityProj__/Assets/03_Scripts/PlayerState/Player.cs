@@ -1,15 +1,13 @@
 //System libraries first
-
-//Unity-specific libraries next
-
 using System;
 using System.Collections;
-using HFSM;
+
+//Unity-specific libraries next
 using UnityEngine;
-using UnityEngine.Serialization;
 using static Unity.Mathematics.math;
 
 //Third-party libraries next
+using HFSM;
 
 //Project-specific libraries last
 using F32x2 = Unity.Mathematics.float2;
@@ -27,27 +25,21 @@ namespace DeathRunner.PlayerState
         
         [Tooltip("Idle Settings for Normal-Time")]
         [SerializeField] private IdleSettings idleNTSettings;
-        [FormerlySerializedAs("walkNTSettings")]
         [Tooltip("Walk Settings for Normal-Time")]
         [SerializeField] private MoveSettings moveNtSettings;
         
         [Tooltip("Dash Settings for Normal-Time")]
         [SerializeField] private DashSettings dashNTSettings;
         
-        [FormerlySerializedAs("primaryAttack01NTSettings")] [SerializeField] private PrimaryAttackSettings primaryAttack00NTSettings;
-        [FormerlySerializedAs("primaryAttack02NTSettings")] [SerializeField] private PrimaryAttackSettings primaryAttack01NTSettings;
-        [FormerlySerializedAs("primaryAttack03NTSettings")] [SerializeField] private PrimaryAttackSettings primaryAttack02NTSettings;
+        [SerializeField] private PrimaryAttackSettings primaryAttack00NTSettings;
+        [SerializeField] private PrimaryAttackSettings primaryAttack01NTSettings;
+        [SerializeField] private PrimaryAttackSettings primaryAttack02NTSettings;
         
-        //[SerializeField] private SecondaryAttackSettings secondaryAttack01NTSettings;
-        
-        
-        //[SerializeField] private AttackSettings
         [Tooltip("Locomotion Settings for Bullet-Time")]
         [SerializeField] private LocomotionSettings locomotionBTSettings;
         
         [Tooltip("Idle Settings for Bullet-Time")]
         [SerializeField] private IdleSettings idleBTSettings;
-        [FormerlySerializedAs("walkBTSettings")]
         [Tooltip("Walk Settings for Bullet-Time")]
         [SerializeField] private MoveSettings moveBtSettings;
 
@@ -177,9 +169,9 @@ namespace DeathRunner.PlayerState
             
             //PrimaryAttack00 -> Walk
             _primaryAttackNT00.AddTransition(to: _walkNT, conditions: () => _primaryAttackNT00.IsDoneAttacking && HasMoveInput);
-            //PrimaryAttack01 <- walk
+            //PrimaryAttack01 -> walk
             _primaryAttackNT01.AddTransition(to: _walkNT, conditions: () => _primaryAttackNT01.IsDoneAttacking && HasMoveInput);
-            //PrimaryAttack02 <- walk
+            //PrimaryAttack02 -> walk
             _primaryAttackNT02.AddTransition(to: _walkNT, conditions: () => _primaryAttackNT02.IsDoneAttacking && HasMoveInput);
             
             //PrimaryAttack00 -> PrimaryAttack01

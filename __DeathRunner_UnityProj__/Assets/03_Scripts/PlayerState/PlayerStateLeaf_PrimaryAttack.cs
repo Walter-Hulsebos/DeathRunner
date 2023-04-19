@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Threading;
 
 using UnityEngine;
@@ -10,7 +9,6 @@ using GenericScriptableArchitecture;
 using HFSM;
 using JetBrains.Annotations;
 
-using DeathRunner.Shared;
 using Sirenix.OdinInspector;
 using F32  = System.Single;
 using Bool = System.Boolean;
@@ -24,8 +22,8 @@ namespace DeathRunner.PlayerState
         private readonly PrimaryAttackSettings _settings;
         private readonly PlayerReferences      _references;
 
-        private readonly CancellationTokenSource _cancellationTokenSource = new();
-        private readonly CancellationToken       _cancellationToken;
+        private CancellationTokenSource _cancellationTokenSource = new();
+        private CancellationToken       _cancellationToken;
         
         private readonly F32                     _secondsToAllowNextAttack;
         
@@ -42,17 +40,10 @@ namespace DeathRunner.PlayerState
             this._settings   = settings;
             this._references = references;
             
+            _cancellationTokenSource = new CancellationTokenSource();
             _cancellationToken = _cancellationTokenSource.Token;
             
             _secondsToAllowNextAttack = clamp(_settings.AttackAnimation.length - _settings.SecondsFromEndToAllowNextAttack, 0.0001f, _settings.AttackAnimation.length);
-
-            // if (_settings.OnAttackStopped != null)
-            // {
-            //     _settings.OnAttackStopped.AddListener(OnAttackStoppedHandler);
-            // }
-
-            //_waitForSecondsToAllowNextAttack = new WaitForSeconds(_settings.AttackAnimation.length - _settings.SecondsFromEndToAllowNextAttack);
-            //_attackData = new AttackData(attackAnimation: _settings.AttackAnimation,secondsToAllowNextAttack: _settings.AttackAnimation.length - _settings.SecondsFromEndToAllowNextAttack);
         }
         
         #endregion
@@ -60,8 +51,9 @@ namespace DeathRunner.PlayerState
         protected override void OnEnter()
         {
             base.OnEnter();
-            
             Debug.Log("PrimaryAttack.Enter");
+            
+            RefreshCancellationToken();
 
             if (_settings.OnAttackStarted != null)
             {
@@ -74,24 +66,10 @@ namespace DeathRunner.PlayerState
             StopAttackAfterFinishTime().Forget();
         }
 
-        // private F32 _timeSpentInAttack = 0;
-        // private IEnumerator CheckIfCanGoIntoNextAttack(F32 secondsToAllowNextAttack)
-        // {
-        //     _timeSpentInAttack = 0;
-        //    
-        //     while (_timeSpentInAttack < secondsToAllowNextAttack)
-        //     {
-        //         _timeSpentInAttack += Time.deltaTime;
-        //         yield return null;
-        //     }
-        //     
-        //     CanGoIntoNextAttack = true;
-        // }
-        
         protected override void OnExit()
         {
             base.OnExit();
-            
+
             _cancellationTokenSource.Cancel();
 
             if (IsAttacking)
@@ -105,29 +83,19 @@ namespace DeathRunner.PlayerState
             {
                 _settings.OnAttackStopped.Invoke();
             }
-
-
-            //CanGoIntoNextAttack = true;
             
             Debug.Log("PrimaryAttack.Exit");
-        }
-        
-        private void OnAttackStoppedHandler()
-        {
-            Debug.Log("PrimaryAttack.OnAttackStoppedHandler");
-            
-            IsAttacking = false;
         }
         
         private async UniTask EnableCanGoIntoNextAttackAfterTime()
         {
             CanGoIntoNextAttack = false;
             
-            //Debug.Log("Can't go into next attack yet " + Time.time);
-            await UniTask.Delay(TimeSpan.FromSeconds(_secondsToAllowNextAttack), ignoreTimeScale: true, cancellationToken: _cancellationToken);
-            //Debug.Log("Can go into next attack now " + Time.time);
+            Debug.Log("Waiting for " + _secondsToAllowNextAttack + " seconds to allow next attack, time: " + Time.time);
             
-            Debug.Log("Can go into next attack now " + Time.time);
+            await UniTask.Delay(TimeSpan.FromSeconds(_secondsToAllowNextAttack), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+
+            Debug.Log("Can go into next attack now, time: " + Time.time);
             
             CanGoIntoNextAttack = true;
         }
@@ -136,11 +104,20 @@ namespace DeathRunner.PlayerState
         {
             IsAttacking = true;
             
+            Debug.Log("Waiting for " + _settings.AttackAnimation.length + " seconds to finish attack, time: " + Time.time);
+            
             await UniTask.Delay(TimeSpan.FromSeconds(_settings.AttackAnimation.length), ignoreTimeScale: true, cancellationToken: _cancellationToken);
             
-            Debug.Log("Attack finished " + Time.time);
+            Debug.Log("Attack finished, time: " + Time.time);
             
             IsAttacking = false;
+        }
+        
+        private void RefreshCancellationToken()
+        {
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource = new CancellationTokenSource();
+            _cancellationToken = _cancellationTokenSource.Token;
         }
     }
     
