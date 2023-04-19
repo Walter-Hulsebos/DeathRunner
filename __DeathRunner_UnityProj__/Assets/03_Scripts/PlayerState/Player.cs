@@ -58,9 +58,9 @@ namespace DeathRunner.PlayerState
         private StateLeaf _idleNT;
         private StateLeaf _walkNT;
         
-        private StateLeaf _dashNT;
-        private StateLeaf _primaryAttackNT;
-        private StateLeaf _secondaryAttackNT;
+        private PlayerStateLeaf_Dash _dashNT;
+        private StateLeaf            _primaryAttackNT;
+        private StateLeaf            _secondaryAttackNT;
         
         private State     _locomotionBT;
 
@@ -138,7 +138,7 @@ namespace DeathRunner.PlayerState
             
             //IdleNT <-> DashNT
             _idleNT.AddTransitionTo(  _dashNT, conditions: () => playerReferences.InputHandler.DashInput);
-            _idleNT.AddTransitionFrom(_dashNT, conditions: () => HasNoMoveInput);
+            _idleNT.AddTransitionFrom(_dashNT, () => HasNoMoveInput, () => !_dashNT.IsDashing);
 
             #endregion
 
@@ -146,7 +146,7 @@ namespace DeathRunner.PlayerState
             
             //WalkNT <-> DashNT
             _walkNT.AddTransitionTo(  _dashNT, conditions: () => playerReferences.InputHandler.DashInput);
-            _walkNT.AddTransitionFrom(_dashNT, conditions: () => HasMoveInput);
+            _walkNT.AddTransitionFrom(_dashNT, () => HasMoveInput, () => !_dashNT.IsDashing);
             
             //WalkNT <-> PrimaryAttackNT
             //playerReferences.InputHandler.OnPrimaryFireStarted += () => _walkNT.AddEventTransitionTo(  _primaryAttackNT);
@@ -190,6 +190,9 @@ namespace DeathRunner.PlayerState
             //Initialize root state
             _root.Init();
         }
+        
+        private void OnEnable()  => EnableLateFixedUpdate();
+        private void OnDisable() => DisableLateFixedUpdate();
 
         private void Update()
         {
@@ -207,10 +210,18 @@ namespace DeathRunner.PlayerState
         }
 
         #region LateFixedUpdate
+        
+        private IEnumerator LateFixedUpdate()
+        {
+            while (true)
+            {
+                yield return _waitForFixedUpdate;
 
-        private void OnEnable()  => EnableLateFixedUpdate();
-        private void OnDisable() => DisableLateFixedUpdate();
+                _root.LateFixedUpdate();
+            }
+        }
 
+        private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
         private Coroutine _lateFixedUpdateCoroutine;
         private void EnableLateFixedUpdate()
         {
@@ -227,23 +238,7 @@ namespace DeathRunner.PlayerState
                 StopCoroutine(routine: _lateFixedUpdateCoroutine);
             }
         }
-
-        private readonly WaitForFixedUpdate _waitForFixedUpdate = new();
-        private IEnumerator LateFixedUpdate()
-        {
-            while (true)
-            {
-                yield return _waitForFixedUpdate;
-
-                _root.LateFixedUpdate();
-            }
-        }
-
+        
         #endregion
-
-        private void OnDestroy()
-        {
-            //root.OnDestroy();
-        }
     }
 }

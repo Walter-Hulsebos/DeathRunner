@@ -10,12 +10,11 @@ using JetBrains.Annotations;
 using HFSM;
 using ProjectDawn.Mathematics;
 using GenericScriptableArchitecture;
+using Drawing;
 
 //Project-specific libraries last
 using DeathRunner.Shared;
-using Drawing;
-using ProjectDawn.Geometry3D;
-
+using UnityEngine.InputSystem;
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
@@ -61,14 +60,43 @@ namespace DeathRunner.PlayerState
             Debug.Log("Locomotion.Exit");
         }
 
-        protected override void OnUpdate()
+        // protected override void OnUpdate()
+        // {
+        //     base.OnUpdate();
+        //
+        //     UpdateLookDirection();
+        // }
+        //
+        // protected override void OnLateUpdate()
+        // {
+        //     base.OnLateUpdate();
+        //     
+        //     UpdateLookDirection();
+        // }
+        //
+        // protected override void OnFixedUpdate()
+        // {
+        //     base.OnFixedUpdate();
+        //     
+        //     UpdateLookDirection();
+        // }
+        
+        protected override void OnLateFixedUpdate()
         {
-            base.OnUpdate();
+            base.OnLateFixedUpdate();
 
-            F32x3 __lookPosition = LookPosition;
+            UpdateLookDirection();
+        }
+
+        private void UpdateLookDirection()
+        {
+            F32x3 __lookPositionRelativeToPlayer = LookPositionRelativeToPlayer;
+
+            _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer); 
+            //normalize(__lookPosition - _references.WorldPos);
             
-            OrientTowardsPos(lookPosition: __lookPosition);
-            _references.LookAt.position = __lookPosition;
+            //OrientTowardsPos(lookPosition: __lookPosition);
+            _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
         }
 
         private const F32 LOOK_DISTANCE = 5;
@@ -103,8 +131,9 @@ namespace DeathRunner.PlayerState
                 //if (all(_references.InputHandler.AimInput == F32x2.zero))
                 else
                 {
-                    Vector3 __mouseScreenPosition = _references.InputHandler.MouseScreenPosition;
-                
+                    F32x3 __mouseScreenPosition = new(xy: _references.InputHandler.MouseScreenPosition, z: 0);
+
+                    //Check if __mouseScreenPosition.xy is the same as Mouse.current.position.ReadValue()
                     //Create ray from the camera to the mouse position
                     Ray __ray = _references.Camera.ScreenPointToRay(pos: __mouseScreenPosition);
                 
@@ -146,29 +175,9 @@ namespace DeathRunner.PlayerState
             }
         }
         
-        public F32x3 LookPosition => _references.WorldPos + LookPositionRelativeToPlayer;
+        //public F32x3 LookPosition => _references.WorldPos + LookPositionRelativeToPlayer;
         
         //public F32x3 LookDirection => normalize(LookPosition - _references.WorldPos);
-
-        private void OrientTowardsPos(F32x3 lookPosition)
-        {
-            _settings.OrientationLookDirection.Value = normalize(lookPosition - _references.WorldPos);
-            
-            OrientTowardsDir(lookDirection: _settings.OrientationLookDirection.Value);
-        }
-        
-        public void OrientTowardsDir(F32x3 lookDirection)
-        {
-            Plane3D __plane3D = new(normal: up(), distance: 0);
-            
-            F32x3 __projectedLookDirection = normalize(__plane3D.Projection(point: lookDirection));
-            
-            if (lengthsq(__projectedLookDirection) == 0) return;
-
-            Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
-
-            _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: (F32)_settings.OrientationSpeed * Commands.DeltaTime);
-        }
 
         #endregion
     }
@@ -176,8 +185,7 @@ namespace DeathRunner.PlayerState
     [Serializable]
     public struct LocomotionSettings 
     {
-        [field:SerializeField] public Constant<F32>   OrientationSpeed         { get; [UsedImplicitly] private set; }
-        
+        //[field:SerializeField] public Constant<F32>   OrientationSpeed         { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Variable<F32x3> OrientationLookDirection { get; [UsedImplicitly] private set; }
     }
 }

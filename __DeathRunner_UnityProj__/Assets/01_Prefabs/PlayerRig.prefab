@@ -1,5 +1,151 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &209246021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 209246022}
+  - component: {fileID: 209246025}
+  - component: {fileID: 209246024}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &209246022
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209246021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 1037352631}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &209246025
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209246021}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &209246024
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209246021}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1037352630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1037352631}
+  m_Layer: 0
+  m_Name: PlayerLookAt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1037352631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037352630}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.9009428, y: -3.6468658, z: 4.857872}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 209246022}
+  m_Father: {fileID: 2410215513735583749}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2143693634
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2143693635}
+  m_Layer: 0
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2143693635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2143693634}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2808125486383550071}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &41194566079009247
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +674,7 @@ MonoBehaviour:
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_CameraDistance: 15
-  m_DeadZoneWidth: 0.025
+  m_DeadZoneWidth: 0
   m_DeadZoneHeight: 0.05
   m_DeadZoneDepth: 0
   m_UnlimitedSoftZone: 0
@@ -987,7 +1133,7 @@ MonoBehaviour:
   m_ShowCameraFrustum: 1
   m_IgnoreTimeScale: 1
   m_WorldUpOverride: {fileID: 0}
-  m_UpdateMethod: 2
+  m_UpdateMethod: 0
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
     m_Style: 1
@@ -1083,6 +1229,8 @@ GameObject:
   - component: {fileID: 2410215513429711725}
   - component: {fileID: 2410215513429711724}
   - component: {fileID: 2410215513429711727}
+  - component: {fileID: 371291464}
+  - component: {fileID: 371291465}
   m_Layer: 0
   m_Name: '[Player]'
   m_TagString: Untagged
@@ -1105,7 +1253,7 @@ Transform:
   - {fileID: 2808125486383550071}
   - {fileID: 5898839069180947905}
   m_Father: {fileID: 2410215513735583749}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2410215513429711713
 Rigidbody:
@@ -1229,8 +1377,8 @@ MonoBehaviour:
     <Camera>k__BackingField: {fileID: 2410215513009397357}
     <Motor>k__BackingField: {fileID: 2410215513429711726}
     <InputHandler>k__BackingField: {fileID: 2410215513429711717}
+    <LookAt>k__BackingField: {fileID: 1037352631}
   locomotionNTSettings:
-    <OrientationSpeed>k__BackingField: {fileID: 11400000, guid: 933d272622ca12e4abfaeecf7a929ea6, type: 2}
     <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 04d7e556767d8a440ad7ae300a57e9f9, type: 2}
   idleNTSettings:
     <GroundFriction>k__BackingField: {fileID: 11400000, guid: 7d055ba49c931a743b47855e9bc0b223, type: 2}
@@ -1240,11 +1388,12 @@ MonoBehaviour:
   moveNtSettings:
     <MaxSpeed>k__BackingField: {fileID: 11400000, guid: 7d1f073788fc8394197bd8e95a681cf0, type: 2}
     <MaxAcceleration>k__BackingField: {fileID: 11400000, guid: 3d086315c1c853148a54f9d588696b6a, type: 2}
-    <MoveDirectionSmoothingSpeed>k__BackingField: {fileID: 11400000, guid: 97fdc197e92c80646bf4a3d39ab05bd2, type: 2}
     <GroundFriction>k__BackingField: {fileID: 11400000, guid: 7d055ba49c931a743b47855e9bc0b223, type: 2}
     <AirFriction>k__BackingField: {fileID: 11400000, guid: ca419375cb1e69c4eaa8a9ed455ad8ca, type: 2}
     <AirControlPrimantissa>k__BackingField: {fileID: 11400000, guid: 1ebf75da78109e5449fa84855e0dd6f1, type: 2}
     <Gravity>k__BackingField: {fileID: 11400000, guid: 98fd2051f803c5f4e9f2aefb01b1ac35, type: 2}
+    <OrientationSpeed>k__BackingField: {fileID: 11400000, guid: 933d272622ca12e4abfaeecf7a929ea6, type: 2}
+    <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 04d7e556767d8a440ad7ae300a57e9f9, type: 2}
     <OnMove>k__BackingField: {fileID: 11400000, guid: b3b7f4528da983640bbeab6a321dca28, type: 2}
   dashNTSettings:
     <MaxSpeed>k__BackingField: {fileID: 11400000, guid: dd93e0a0d30d22d4a94b3067307a0e1f, type: 2}
@@ -1255,7 +1404,6 @@ MonoBehaviour:
     <OnDashEnd>k__BackingField: {fileID: 11400000, guid: b0aafc805cb1fef4b96e1d3347224adb, type: 2}
     <OnDashInterrupted>k__BackingField: {fileID: 11400000, guid: f323a8bcc330d4d4780541da683e0f5a, type: 2}
   locomotionBTSettings:
-    <OrientationSpeed>k__BackingField: {fileID: 11400000, guid: 933d272622ca12e4abfaeecf7a929ea6, type: 2}
     <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 04d7e556767d8a440ad7ae300a57e9f9, type: 2}
   idleBTSettings:
     <GroundFriction>k__BackingField: {fileID: 11400000, guid: d18bbc8d7041f0b4b97aa6667687d315, type: 2}
@@ -1265,11 +1413,12 @@ MonoBehaviour:
   moveBtSettings:
     <MaxSpeed>k__BackingField: {fileID: 11400000, guid: 03b010e846238a745b9c2c95345aaab8, type: 2}
     <MaxAcceleration>k__BackingField: {fileID: 11400000, guid: 01eaf712a32d9e946a0b3433694754c1, type: 2}
-    <MoveDirectionSmoothingSpeed>k__BackingField: {fileID: 11400000, guid: caa1a1fd1f6786344a833733f6115676, type: 2}
     <GroundFriction>k__BackingField: {fileID: 11400000, guid: d18bbc8d7041f0b4b97aa6667687d315, type: 2}
     <AirFriction>k__BackingField: {fileID: 11400000, guid: c98c6aab27746e04fb75b8950137c44a, type: 2}
     <AirControlPrimantissa>k__BackingField: {fileID: 11400000, guid: 1ebf75da78109e5449fa84855e0dd6f1, type: 2}
     <Gravity>k__BackingField: {fileID: 11400000, guid: a89fef6ed384de64586b61b7f0d747b8, type: 2}
+    <OrientationSpeed>k__BackingField: {fileID: 11400000, guid: 933d272622ca12e4abfaeecf7a929ea6, type: 2}
+    <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 04d7e556767d8a440ad7ae300a57e9f9, type: 2}
     <OnMove>k__BackingField: {fileID: 11400000, guid: b3b7f4528da983640bbeab6a321dca28, type: 2}
 --- !u!114 &2410215513429711722
 MonoBehaviour:
@@ -1315,6 +1464,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationReferences: {fileID: 2410215513429711722}
   onMoveEvent: {fileID: 11400000, guid: b3b7f4528da983640bbeab6a321dca28, type: 2}
+  smoothTurnInSeconds: 0.2
+  deltaRadiansPerSecond: 31.415928
   moveAnimations:
     rid: 1921082447513780289
   references:
@@ -1367,6 +1518,408 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationReferences: {fileID: 2410215513429711722}
   onDashEvent: {fileID: 11400000, guid: 1a91db98df1b41041b042491439b9b9d, type: 2}
+  dashAnimations:
+    rid: 1921082509976403990
+  references:
+    version: 2
+    RefIds:
+    - rid: 1921082509976403990
+      type: {class: MixerTransition2D, ns: Animancer, asm: Animancer}
+      data:
+        _FadeDuration: 0.25
+        _Events:
+          _NormalizedTimes: []
+          _Callbacks: []
+          _Names: []
+        _Speed: 1
+        _Animations:
+        - {fileID: 1981881108250731258, guid: 56523051df06d50439c85ebf5c9a7b04, type: 3}
+        - {fileID: 7400000, guid: 3636469d5f8a08c40a70845b7b49c2f4, type: 3}
+        - {fileID: 7400000, guid: 7d778fa7f45e3fc418df3adaa891e00c, type: 3}
+        - {fileID: 7400000, guid: dba5748ed04c9d84f80bf52437a0b4e1, type: 3}
+        - {fileID: 7400000, guid: 93d5d31e7bf85864ba2681a044a735ca, type: 3}
+        - {fileID: 7400000, guid: 2a2c4c3256ac379409591528342315e2, type: 3}
+        - {fileID: 7400000, guid: 54164a1918ec2c94fa6875488144ab55, type: 3}
+        - {fileID: 7400000, guid: a08b76a08048bbb42b6035ae3e0b58a6, type: 3}
+        - {fileID: 7400000, guid: 1cb287e1315b2fb49acf4130000c7739, type: 3}
+        _Speeds:
+        - 1
+        - 1.25
+        - 1.25
+        - 1.25
+        - 1.25
+        - 1.25
+        - 1.25
+        - 1.25
+        - 1.25
+        _SynchronizeChildren: 
+        _Thresholds:
+        - {x: 0, y: 0}
+        - {x: 0, y: 1}
+        - {x: 1, y: 1}
+        - {x: 1, y: 0}
+        - {x: 1, y: -1}
+        - {x: 0, y: -1}
+        - {x: -1, y: -1}
+        - {x: -1, y: 0}
+        - {x: -1, y: 1}
+        _DefaultParameter: {x: 0, y: 0}
+        _Type: 1
+--- !u!114 &371291464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410215513429711716}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 163d2c8446aa6ae42a718abaa805b8f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _EditorDrawSetup: 1
+  Leaning:
+    UpdateMode: 2
+    Calibrate: 1
+    SideSwayPower: 1
+    ClampSideSway: 25
+    ForwardSwayPower: 0.897
+    BrakeRapidity: 1.25
+    RootBlend: 1
+    FootsOrigin: {fileID: 2143693635}
+    RootRapidity: 0.425
+    RootSideSway: 1
+    RootForwardSway: 0.5
+    RootStrafeSway: 0.75
+    RootBrakeSway: 0.5
+    RootBackwardSway: 0.5
+    SpineBlend: 1
+    ClampSpineSway: 40
+    SpineRapidity: 0.5
+    SpineForwardSway: {x: 5, y: 0, z: 0}
+    SpineSideLean: -0.125
+    SpineRightSway: {x: 0, y: -0.75, z: 1.25}
+    SpineBrakeSway: 0.85
+    StartRunPush: 1.5
+    NeckCompensation: 0.75
+    ConstantAddRotation: {x: 0, y: 0, z: 0}
+    ArmsBlend: 0.5
+    ArmsSideSway: 0.5
+    ArmsForwardSway: -0.225
+    ObjSpeedWhenBraking: 0.2
+    ObjSpeedWhenRunning: 3
+    AccelerationDetection: 0
+    TryAutoDetectGround: 1
+    UseMuscles: 0
+    MuscleSettings:
+      DesiredPosition: {x: 0, y: 0, z: 0}
+      Acceleration: 10000
+      AccelerationLimit: 5000
+      Damping: 10
+      BrakePower: 0.2
+    AllEffectsBlend: 1
+    IsMovingAnimatorParam: 
+    IsGroundedAnimatorParam: 
+    GroundAlignBlend: 0
+    GroundAlignRapidity: 0.6
+    AlignOnlyWhenMoving: 0
+    ClampGroundAlign: 25
+    MutiplyGroundAxisRotation: {x: 1, y: 1}
+    AlignAmountOnSpeed:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0.1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.3
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    GroundMask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    GroundCastLength: 0.2
+    BoxCastSize: 0
+    _UserUseCustomRaycast: 0
+    BaseTransform: {fileID: 2808125486383550071}
+    SpineStart: {fileID: 3307919037294842127}
+    SpineMiddle: {fileID: 2373400626279938124}
+    Chest: {fileID: 5457425894101766714}
+    Neck: {fileID: 7821189544522190937}
+    LeftUpperArm: {fileID: 0}
+    LeftForearm: {fileID: 0}
+    RightUpperArm: {fileID: 0}
+    RightForearm: {fileID: 0}
+    SpineGroundAlign: 0
+    SpineGrAdjustDuration: 0.15
+    SlopeSpineLean:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 10
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 75
+        value: 1.25
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    AdjustForwAndSide: {x: 1, y: 0.75}
+--- !u!114 &371291465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410215513429711716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e83668c454b4396488081147cb5c9176, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BirdMode: 0
+  LagRotation: 0.85
+  LagEvery: 0.285
+  DelayPosition: 0
+  DelayMaxDistance: 0.25111
+  DelayGoSpeed: 0.6
+  BirdTargetPosition: {x: 0, y: 0, z: 1}
+  UseEyes: 0
+  EyesTarget: {fileID: 0}
+  LeftEye: {fileID: 0}
+  InvertLeftEye: 0
+  RightEye: {fileID: 0}
+  InvertRightEye: 0
+  HeadReference: {fileID: 0}
+  EyesOffsetRotation: {x: 0, y: 0, z: 0}
+  LeftEyeOffsetRotation: {x: 0, y: 0, z: 0}
+  RightEyeOffsetRotation: {x: 0, y: 0, z: 0}
+  EyesSpeed: 0.5
+  EyesBlend: 1
+  EyesXRange: {x: -60, y: 60}
+  EyesYRange: {x: -50, y: 50}
+  EyesNoKeyframes: 1
+  CustomEyesLogics: 0
+  NoddingTransitions: 0
+  NodAxis: {x: 1, y: 0, z: 0}
+  BackBonesNod: 0.15
+  ParentalOffsetsV: 2
+  ParentalReferenceBone: {fileID: 0}
+  DestroyMomentTargetOnMaxDistance: 1
+  OverrideRotations: 0
+  BackBonesCount: 3
+  _preBackBonesCount: 0
+  LookBones:
+  - Transform: {fileID: 3180713044728365229}
+    animatedStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    targetStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    localStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    animatedTargetRotation: {x: 0, y: 0, z: 0, w: 0}
+    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+    correctionOffset: {x: 0, y: 0, z: 0}
+    finalRotation: {x: 0, y: 0, z: 0, w: 0}
+    lastKeyframeRotation: {x: 0, y: 0, z: 0, w: 0}
+    lastFinalLocalRotation: {x: 0, y: 0, z: 0, w: 0}
+    forward: {x: -0.000000031839594, y: -1.0000001, z: 0.0000013709068}
+    right: {x: 0.0000013709044, y: -0.0000015377947, z: 1.0000001}
+    up: {x: 1.0000001, y: -0.00000011921121, z: 0.0000013868057}
+    initLocalPos: {x: -0.09284149, y: 0.003515482, z: 0.000000061880726}
+    initLocalRot: {x: -7.265599e-14, y: -0.0000000011042733, z: 0.00039883057, w: 0.99999994}
+    targetDelayPosition: {x: 0, y: 0, z: 0}
+    animatedDelayPosition: {x: 0, y: 0, z: 0}
+    lookWeight: 1
+    lookWeightB: 1
+    motionWeight: 1
+  - Transform: {fileID: 7821189544522190937}
+    animatedStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    targetStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    localStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    animatedTargetRotation: {x: 0, y: 0, z: 0, w: 0}
+    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+    correctionOffset: {x: 0, y: 0, z: 0}
+    finalRotation: {x: 0, y: 0, z: 0, w: 0}
+    lastKeyframeRotation: {x: 0, y: 0, z: 0, w: 0}
+    lastFinalLocalRotation: {x: 0, y: 0, z: 0, w: 0}
+    forward: {x: 0.00079762936, y: -0.9999998, z: 0.000001449951}
+    right: {x: 0.0000013709044, y: -0.0000015389012, z: 1.0000001}
+    up: {x: 0.9999998, y: -0.00079774857, z: 0.0000013890143}
+    initLocalPos: {x: -0.16889267, y: -0.057361573, z: -0.00000023723649}
+    initLocalRot: {x: -3.0117673e-14, y: 0, z: -0, w: 1}
+    targetDelayPosition: {x: 0, y: 0, z: 0}
+    animatedDelayPosition: {x: 0, y: 0, z: 0}
+    lookWeight: 0.42005208
+    lookWeightB: 1
+    motionWeight: 0.42005208
+  - Transform: {fileID: 5457425894101766714}
+    animatedStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    targetStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    localStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    animatedTargetRotation: {x: 0, y: 0, z: 0, w: 0}
+    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+    correctionOffset: {x: 0, y: 0, z: 0}
+    finalRotation: {x: 0, y: 0, z: 0, w: 0}
+    lastKeyframeRotation: {x: 0, y: 0, z: 0, w: 0}
+    lastFinalLocalRotation: {x: 0, y: 0, z: 0, w: 0}
+    forward: {x: 0.00079762936, y: -0.9999998, z: 0.000001449951}
+    right: {x: 0.0000013709044, y: -0.000001538901, z: 1.0000001}
+    up: {x: 0.9999998, y: -0.00079774857, z: 0.0000013890143}
+    initLocalPos: {x: -0.1282611, y: -0.00011923462, z: -3.3070818e-10}
+    initLocalRot: {x: -3.0117673e-14, y: 0, z: -0, w: 1}
+    targetDelayPosition: {x: 0, y: 0, z: 0}
+    animatedDelayPosition: {x: 0, y: 0, z: 0}
+    lookWeight: 0.31880212
+    lookWeightB: 1
+    motionWeight: 0.31880212
+  - Transform: {fileID: 2373400626279938124}
+    animatedStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    targetStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    localStaticRotation: {x: 0, y: 0, z: 0, w: 0}
+    animatedTargetRotation: {x: 0, y: 0, z: 0, w: 0}
+    targetRotation: {x: 0, y: 0, z: 0, w: 0}
+    correctionOffset: {x: 0, y: 0, z: 0}
+    finalRotation: {x: 0, y: 0, z: 0, w: 0}
+    lastKeyframeRotation: {x: 0, y: 0, z: 0, w: 0}
+    lastFinalLocalRotation: {x: 0, y: 0, z: 0, w: 0}
+    forward: {x: 0.00079762936, y: -0.9999998, z: 0.000001449951}
+    right: {x: 0.0000013709044, y: -0.0000015389008, z: 1.0000001}
+    up: {x: 0.9999998, y: -0.00079774857, z: 0.0000013890143}
+    initLocalPos: {x: -0.1914592, y: -0.00010213077, z: -2.8327066e-10}
+    initLocalRot: {x: -3.0117673e-14, y: 0, z: -0, w: 1}
+    targetDelayPosition: {x: 0, y: 0, z: 0}
+    animatedDelayPosition: {x: 0, y: 0, z: 0}
+    lookWeight: 0.21502085
+    lookWeightB: 1
+    motionWeight: 0.21502085
+  NoTargetHeadStops: 0
+  _editor_hideEyes: 0
+  _editor_displayName: Look Animator 2
+  _Editor_Category: 4
+  _gizmosDrawMaxDist: 1
+  gizmosAlpha: 0.85
+  drawGizmos: 1
+  _gizmosDrawingGuides: 1
+  LeadBone: {fileID: 3180713044728365229}
+  BaseTransform: {fileID: 2808125486383550071}
+  FaloffValue: 0.35
+  FaloffValueB: 1.1
+  BigAngleAutomation: 0
+  BigAngleAutomationCompensation: 0
+  AutoBackbonesWeights: 1
+  CurveSpread: 0
+  BackBonesFalloff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: -0.9
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.1
+      inSlope: -0.9
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  CompensationBones: []
+  CompensationWeight: 0.5
+  CompensationWeightB: 0.5
+  CompensatePositions: 0
+  CompensatePositionsB: 0
+  StartAfterTPose: 1
+  AnimatePhysics: 0
+  OptimizeWithMesh: {fileID: 0}
+  ObjectToFollow: {fileID: 1037352631}
+  FollowOffset: {x: 0, y: 0, z: 0}
+  FollowMode: 0
+  RotationSpeed: 0.65
+  UltraSmoother: 0
+  StopLookingAbove: 180
+  StopLookingAboveFactor: 1
+  ChangeTargetSmoothing: 0
+  AdvancedFalloff: 0
+  MaximumDistance: 0
+  HoldRotateToOppositeUntil: 0
+  MaxOutDistanceFactor: 0
+  Distance2D: 0
+  DistanceMeasurePoint: {x: 0, y: 0, z: 0}
+  LookWhenAbove: 0
+  LookWhenAboveVertical: 0
+  WhenAboveGoBackAfter: 0
+  WhenAboveGoBackAfterVertical: 0
+  WhenAboveGoBackDuration: 0.2
+  StartLookElasticRangeX: 0
+  StartLookElasticRangeY: 0
+  XRotationLimits: {x: -80, y: 80}
+  XElasticRange: 20
+  LimitHolder: 1
+  YRotationLimits: {x: -50, y: 50}
+  YElasticRange: 15
+  LookAnimatorAmount: 1
+  StartLookPointOffset: {x: 0, y: 0, z: 0}
+  AnchorStartLookPoint: 1
+  RefreshStartLookPoint: 1
+  SyncWithAnimator: 1
+  MonitorAnimator: 0
+  WeightsMultiplier: 1
+  MaxRotationSpeed: 2.5
+  BaseRotationCompensation: 0
+  DetectZeroKeyframes: 1
+  LookAtPositionSmoother: 0
+  DeltaType: 0
+  SimulationSpeed: 1
+  OverrideHeadForPerfectLookDirection: 0
+  FixingPreset: 0
+  ModelForwardAxis: {x: 0, y: 0, z: 1}
+  ModelUpAxis: {x: 0, y: 1, z: 0}
+  ManualFromAxis: {x: 0, y: 0, z: 1}
+  ManualToAxis: {x: 0, y: 0, z: 1}
+  FromAuto: {x: 0, y: 0, z: 0}
+  OffsetAuto: {x: 0, y: 0, z: 0}
+  parentalReferenceLookForward: {x: 0, y: 0, z: 0}
+  parentalReferenceUp: {x: 0, y: 0, z: 0}
+  DynamicReferenceUp: {x: 0, y: 0, z: 0}
+  RotationOffset: {x: 0, y: 0, z: 0}
+  BackBonesAddOffset: {x: 0, y: 0, z: 0}
+  RotCorrectionMultiplier: {x: 1, y: 1, z: 1}
+  DebugRays: 0
+  AnimationStyle: 0
+  ConstantParentalAxisUpdate: 0
 --- !u!1 &2410215513735583748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,6 +1950,7 @@ Transform:
   m_Children:
   - {fileID: 2410215513009397354}
   - {fileID: 3644243820756923822}
+  - {fileID: 1037352631}
   - {fileID: 2410215513429711715}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -1753,6 +2307,7 @@ Transform:
   m_Children:
   - {fileID: 3029734131530169153}
   - {fileID: 3945615687753871702}
+  - {fileID: 2143693635}
   m_Father: {fileID: 2410215513429711715}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -136,7 +136,7 @@ namespace DeathRunner.Movement
             get
             {
                 //Get Mouse Position Screen-Space
-                Vector3 __mouseScreenPosition = inputHandler.MouseScreenPosition;
+                F32x3 __mouseScreenPosition = new(xy: inputHandler.MouseScreenPosition, z: 0);
                 
                 //Create ray from the camera to the mouse position
                 Ray __ray = camera.ScreenPointToRay(pos: __mouseScreenPosition);

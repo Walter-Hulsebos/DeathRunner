@@ -5,6 +5,10 @@ using F32   = System.Single;
 using F32x3 = Unity.Mathematics.float3;
 using F32x4 = Unity.Mathematics.float4;
 
+using F64   = System.Double;
+using F64x2 = Unity.Mathematics.double2;
+using F64x3 = Unity.Mathematics.double3;
+
 using Rotor = Unity.Mathematics.quaternion;
 
 using Bool = System.Boolean;
@@ -13,6 +17,9 @@ namespace DeathRunner.Utils
 {
     public static class MathExtensions
     {
+        public const F32 TAU_F32 = 2f * PI;
+        public const F64 TAU_F64 = 2d * PI_DBL;
+        
         public static F32x3 SmoothDamp(this F32x3 current, F32x3 target, ref F32x3 currentVelocity, F32 deltaTime, F32 smoothTime, F32 maxSpeed)
         {
             // Based on Game Programming Gems 4 Chapter 1.10
@@ -77,7 +84,21 @@ namespace DeathRunner.Utils
             return __output;
         }
         
-        public static Rotor SmoothDamp(this Rotor current, Rotor target, ref Rotor deriv, float smoothTime) 
+        
+        //NOTE: [Walter] 
+        //Derivative is a measure of how a function changes as its input changes. It's used to determine the rate of change of the rotation, which is needed to smoothly interpolate between the current rotation and the target rotation.
+        //Specifically, the SmoothDamp function uses the derivative to calculate the current velocity of the rotation, which is then used to update the current rotation in a way that smoothly approaches the target rotation.
+        //The SmoothDamp function also updates the derivative to ensure that it remains tangent to the interpolated rotation, which helps to maintain smooth and continuous motion.
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="current">The current rotation.</param>
+        /// <param name="target">The target rotation.</param>
+        /// <param name="derivative">The current derivative of the rotation.</param>
+        /// <param name="smoothTime">Approximately the time it will take to reach the target. A smaller value will reach the target faster.</param>
+        /// <returns></returns>
+        public static Rotor SmoothDamp(this Rotor current, Rotor target, ref Rotor derivative, F32 smoothTime) 
         {
             // account for double-cover
             F32 __dot = dot(current, target);
@@ -87,13 +108,55 @@ namespace DeathRunner.Utils
             target.value *= __multi;
 
             // smooth damp (nlerp approx)
-            F32x4 __result = normalize(SmoothDamp(current: current.value, target: target.value, currentVelocity: ref deriv.value, smoothTime: smoothTime, maxSpeed: 1f));
+            F32x4 __result = normalize(SmoothDamp(current: current.value, target: target.value, currentVelocity: ref derivative.value, smoothTime: smoothTime, maxSpeed: 1f));
 		
-            // ensure deriv is tangent
-            F32x4 __derivError = project(deriv.value, __result);
-            deriv.value -= __derivError;
+            // ensure derivative is tangent
+            F32x4 __derivativeError = project(derivative.value, __result);
+            derivative.value -= __derivativeError;
 
             return new Rotor(__result);
+        }
+        
+        public static F32 AngleRadiansF32(this Rotor a, Rotor b)
+        {
+            //float num = Mathf.Min(Mathf.Abs(Quaternion.Dot(a, b)), 1f);
+            //return Quaternion.IsEqualUsingDot(num) ? 0.0f : (float) ((double) Mathf.Acos(num) * 2.0 * 57.295780181884766);
+            
+            F32 __dot = dot(a, b);
+            
+            return acos(__dot) * 2.0f;
+        }
+        
+        public static F64 AngleRadiansF64(this Rotor a, Rotor b)
+        {
+            F64 __dot = dot(a, b);
+            
+            return acos(__dot) * 2.0;
+        }
+        
+        public static F32 AngleDegreesF32(this Rotor a, Rotor b)
+        {
+            return degrees(AngleRadiansF32(a, b));
+        }
+        
+        public static F64 AngleDegreesF64(this Rotor a, Rotor b)
+        {
+            return degrees(AngleRadiansF64(a, b));
+        }
+        
+        public static Rotor RotateTowards(this Rotor current, Rotor target, F32 maxRadiansDelta)
+        {
+            F32 __angleRadians = AngleRadiansF32(current, target);
+            
+            return (__angleRadians <= EPSILON) ? target : slerp(current, target, t: min(maxRadiansDelta / __angleRadians, 1.0f));
+            
+            // F32 __angle = angle(current, target);
+            //
+            // if (__angle == 0.0f) return target;
+            //
+            // F32 __magnitude = min(__angle / Time.deltaTime, maxMagnitudeDelta);
+            //
+            // return slerp(current, target, __magnitude / __angle);
         }
         
         public static F32x3 MoveTowards(this F32x3 current, F32x3 target, F32 maxDistanceDelta)

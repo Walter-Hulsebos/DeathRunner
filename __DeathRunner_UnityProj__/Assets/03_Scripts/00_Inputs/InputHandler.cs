@@ -87,7 +87,7 @@ namespace DeathRunner.Inputs
         [field:FoldoutGroup(groupName: "SlowMo")]
         [field:SerializeField] public UltEvent        OnSlowMoDisabled { get; private set; }
         
-        public Vector2                                MouseScreenPosition => Mouse.current.position.ReadValue();
+        public F32x2                                  MouseScreenPosition => (F32x2)Mouse.current.position.ReadValue();
         
         #endregion
 
