@@ -92,8 +92,7 @@ namespace DeathRunner.Shared
         
 
         [Command]
-        public static void EnableSlowMotion() => IsSlowMotionEnabled = true;
-
+        public static void EnableSlowMotion()  => IsSlowMotionEnabled = true;
         [Command]
         public static void DisableSlowMotion() => IsSlowMotionEnabled = false;
 
@@ -105,7 +104,7 @@ namespace DeathRunner.Shared
             get => _isSlowMotionEnabled;
             set
             {
-                Debug.Log(message: $"SlowMo: {value}");
+                //Debug.Log(message: $"SlowMo: {value}");
                 
                 _isSlowMotionEnabled = value;
                 Time.timeScale = _isSlowMotionEnabled ? 0.025f : 1.0f;

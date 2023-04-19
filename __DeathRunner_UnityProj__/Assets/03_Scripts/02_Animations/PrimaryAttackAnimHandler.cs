@@ -1,3 +1,4 @@
+using Animancer;
 using UnityEngine;
 
 using GenericScriptableArchitecture;
@@ -17,7 +18,7 @@ namespace DeathRunner.Animations
         #if ODIN_INSPECTOR
         [FoldoutGroup("Events")]
         #endif
-        [SerializeField] private ScriptableEvent<AnimationClip> onAttackStarted;
+        [SerializeField] private ScriptableEvent<AnimationClip, F32> onAttackStarted;
         
         #endregion
         
@@ -32,9 +33,10 @@ namespace DeathRunner.Animations
             onAttackStarted -= OnAttackStartedHandler;
         }
         
-        private void OnAttackStartedHandler(AnimationClip attackAnimation)
+        private void OnAttackStartedHandler(AnimationClip attackAnimation, F32 attackSpeedMultiplier)
         {
-            Animancer.Play(attackAnimation);
+            AnimancerState __state = Animancer.Play(attackAnimation);
+            __state.Speed = attackSpeedMultiplier;
         }
 
         #endregion

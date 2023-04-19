@@ -16,6 +16,8 @@ using DeathRunner.Shared;
 using F32   = System.Single;
 using F32x3 = Unity.Mathematics.float3;
 
+using Bool  = System.Boolean;
+
 namespace DeathRunner.PlayerState
 {
     public sealed class PlayerStateLeaf_Idle : StateLeaf
@@ -33,7 +35,7 @@ namespace DeathRunner.PlayerState
         {
             base.OnEnter();
             
-            Debug.Log("Idle.Enter");
+            //Debug.Log("Idle.Enter");
             
             _settings.OnEnterIdle.Invoke();
         }
@@ -42,7 +44,7 @@ namespace DeathRunner.PlayerState
         {
             base.OnExit();
             
-            Debug.Log("Idle.Exit");
+            //Debug.Log("Idle.Exit");
         }
 
         private F32x3 _moveDirectionVelocity;
@@ -105,6 +107,9 @@ namespace DeathRunner.PlayerState
         [field:Tooltip(tooltip: "Setting that affects movement control. Higher values allow faster changes in direction.")]
         [field:SerializeField] public Constant<F32>   GroundFriction { get; [UsedImplicitly] private set; }
         
+        
+        //[field:SerializeField] public Constant<Bool>  UseRootMotion  { get; [UsedImplicitly] private set; }
+
         [field:Tooltip(tooltip: "Friction to apply when falling.")]
         [field:SerializeField] public Constant<F32>   AirFriction    { get; [UsedImplicitly] private set; }
 

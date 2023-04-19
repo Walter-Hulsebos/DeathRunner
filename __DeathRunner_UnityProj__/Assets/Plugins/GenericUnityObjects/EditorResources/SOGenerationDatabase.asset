@@ -40,7 +40,13 @@ MonoBehaviour:
       - _typeNameAndAssembly: UnityEngine.AnimationClip, UnityEngine.AnimationModule
         _guid: 
       _assemblyGUID: d068db293029cfa46a94e92df6380f62
-  - _array: []
+  - _array:
+    - _arguments:
+      - _typeNameAndAssembly: UnityEngine.AnimationClip, UnityEngine.AnimationModule
+        _guid: 
+      - _typeNameAndAssembly: System.Single, mscorlib
+        _guid: 
+      _assemblyGUID: 8c0695b3b6df59e4e8b74aa6b3fe6a01
   - _array: []
   - _array:
     - _arguments:
@@ -65,7 +71,6 @@ MonoBehaviour:
   - _array: []
   - _array: []
   - _array: []
-  - _array: []
   _genericTypeValues:
   - _array:
     - _typeNameAndAssembly: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
@@ -78,6 +83,12 @@ MonoBehaviour:
       AssemblyGUID: 
       _argNames:
       - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`2, GenericScriptableArchitecture
+      _guid: 6686166ec8d545cd81c7b3a35c553c8e
+      AssemblyGUID: 
+      _argNames:
+      - T1
+      - T2
   - _array:
     - _typeNameAndAssembly: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
       _guid: 35f1f711725d47ef9c32084694a183c9
@@ -106,6 +117,12 @@ MonoBehaviour:
       AssemblyGUID: 
       _argNames:
       - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`2, GenericScriptableArchitecture
+      _guid: 6686166ec8d545cd81c7b3a35c553c8e
+      AssemblyGUID: 
+      _argNames:
+      - T1
+      - T2
   _genericTypeKeys:
   - _typeNameAndAssembly: MoreMountains.Tools.MMReferencedScriptableObject`1, MoreMountains.Tools
     _guid: cfb03c2bcbc7bd64fbf6cc6081b9c441
@@ -166,12 +183,6 @@ MonoBehaviour:
     AssemblyGUID: 
     _argNames:
     - T
-  - _typeNameAndAssembly: DungeonArchitect.UI.Impl.UnityEditor.UnityEditorUIWindow`1,
-      DungeonArchitect.Editor
-    _guid: db2594a281c640f5aacf37697fe2d648
-    AssemblyGUID: 
-    _argNames:
-    - TImpl
   - _typeNameAndAssembly: Cinemachine.Editor.CinemachineVirtualCameraBaseEditor`1,
       com.unity.cinemachine.editor
     _guid: 211d719bb25901043833928f50e9d0ea

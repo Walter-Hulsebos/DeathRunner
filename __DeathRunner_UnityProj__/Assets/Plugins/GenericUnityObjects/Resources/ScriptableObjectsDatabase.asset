@@ -25,8 +25,6 @@ MonoBehaviour:
   - _typeNameAndAssembly: GenericScriptableArchitecture.Constant`1, GenericScriptableArchitecture
   - _typeNameAndAssembly: GenericScriptableArchitecture.VariableWithHistory`1, GenericScriptableArchitecture
   - _typeNameAndAssembly: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
-  - _typeNameAndAssembly: DungeonArchitect.UI.Impl.UnityEditor.UnityEditorUIWindow`1,
-      DungeonArchitect.Editor
   - _typeNameAndAssembly: Cinemachine.Editor.CinemachineVirtualCameraBaseEditor`1,
       com.unity.cinemachine.editor
   - _typeNameAndAssembly: Cinemachine.Editor.BaseEditor`1, com.unity.cinemachine.editor
@@ -57,8 +55,13 @@ MonoBehaviour:
         z_ScriptableEvent_AnimationWrapper
     - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_d068db293029cfa46a94e92df6380f62,
         z_ScriptableEvent_AnimationClip
-  - _keys: []
-    _values: []
+  - _keys:
+    - _collection:
+      - _typeNameAndAssembly: UnityEngine.AnimationClip, UnityEngine.AnimationModule
+      - _typeNameAndAssembly: System.Single, mscorlib
+    _values:
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_8c0695b3b6df59e4e8b74aa6b3fe6a01,
+        z_ScriptableEvent_AnimationClip_Single
   - _keys: []
     _values: []
   - _keys:
@@ -83,8 +86,6 @@ MonoBehaviour:
         z_Variable_Single
     - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_25265e4ca0dfa06448323ba55fc77d0e,
         z_Variable_float3
-  - _keys: []
-    _values: []
   - _keys: []
     _values: []
   - _keys: []

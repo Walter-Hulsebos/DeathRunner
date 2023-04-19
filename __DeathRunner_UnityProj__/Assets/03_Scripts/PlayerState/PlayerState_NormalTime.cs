@@ -1,5 +1,8 @@
-using HFSM;
 using UnityEngine;
+
+using HFSM;
+
+using DeathRunner.Shared;
 
 namespace DeathRunner.PlayerState
 {
@@ -12,13 +15,16 @@ namespace DeathRunner.PlayerState
             base.OnEnter();
             
             Debug.Log("NormalTime.Enter");
+            
+            Commands.IsSlowMotionEnabled = false;
         }
         
         protected override void OnExit()
         {
             base.OnExit();
             
-            Debug.Log("NormalTime.Exit");
+            //Debug.Log("NormalTime.Exit");
+            
         }
     }
 }

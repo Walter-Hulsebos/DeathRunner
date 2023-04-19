@@ -1,5 +1,8 @@
-using HFSM;
 using UnityEngine;
+
+using HFSM;
+
+using DeathRunner.Shared;
 
 namespace DeathRunner.PlayerState
 {
@@ -12,6 +15,8 @@ namespace DeathRunner.PlayerState
             base.OnEnter();
             
             Debug.Log("BulletTime.Enter");
+            
+            //Commands.IsSlowMotionEnabled = true;
         }
         
         protected override void OnExit()

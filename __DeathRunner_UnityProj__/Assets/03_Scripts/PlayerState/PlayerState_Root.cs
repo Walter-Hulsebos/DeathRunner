@@ -14,7 +14,7 @@ namespace DeathRunner.PlayerState
         {
             base.OnEnter();
             
-            Debug.Log("Root.Enter");
+            //Debug.Log("Root.Enter");
         }
     }
 }

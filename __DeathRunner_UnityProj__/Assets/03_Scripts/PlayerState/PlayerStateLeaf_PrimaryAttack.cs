@@ -21,12 +21,13 @@ namespace DeathRunner.PlayerState
 
         private readonly PrimaryAttackSettings _settings;
         private readonly PlayerReferences      _references;
+        
+        private CancellationTokenSource        _cancellationTokenSource = new();
+        private CancellationToken              _cancellationToken;
+        
+        private readonly F32                   _secondsToAllowNextAttack;
+        private readonly F32                   _scaledDuration;
 
-        private CancellationTokenSource _cancellationTokenSource = new();
-        private CancellationToken       _cancellationToken;
-        
-        private readonly F32                     _secondsToAllowNextAttack;
-        
         public Bool IsAttacking         { get; private set; } = false;
         public Bool IsDoneAttacking     => !IsAttacking;
         public Bool CanGoIntoNextAttack { get; private set; } = false;
@@ -43,7 +44,9 @@ namespace DeathRunner.PlayerState
             _cancellationTokenSource = new CancellationTokenSource();
             _cancellationToken = _cancellationTokenSource.Token;
             
-            _secondsToAllowNextAttack = clamp(_settings.AttackAnimation.length - _settings.SecondsFromEndToAllowNextAttack, 0.0001f, _settings.AttackAnimation.length);
+            //_secondsToAllowNextAttack = clamp(_settings.AttackAnimation.length - _settings.SecondsFromEndToAllowNextAttack, 0.0001f, _settings.AttackAnimation.length);
+            _secondsToAllowNextAttack = clamp((_settings.AttackAnimation.length / _settings.AttackSpeedMultiplier.Value) - _settings.SecondsFromEndToAllowNextAttack, 0.0001f, _settings.AttackAnimation.length);
+            _scaledDuration           = _settings.AttackAnimation.length / _settings.AttackSpeedMultiplier.Value;
         }
         
         #endregion
@@ -51,13 +54,13 @@ namespace DeathRunner.PlayerState
         protected override void OnEnter()
         {
             base.OnEnter();
-            Debug.Log("PrimaryAttack.Enter");
+            //Debug.Log("PrimaryAttack.Enter");
             
             RefreshCancellationToken();
 
             if (_settings.OnAttackStarted != null)
             {
-                _settings.OnAttackStarted.Invoke(_settings.AttackAnimation);
+                _settings.OnAttackStarted.Invoke(_settings.AttackAnimation, _settings.AttackSpeedMultiplier);
             }
             
             IsAttacking = true;
@@ -76,7 +79,7 @@ namespace DeathRunner.PlayerState
             {
                 IsAttacking = false;
                 
-                Debug.Log("PrimaryAttack.OnExit: Attack was still going on");
+                //Debug.Log("PrimaryAttack.OnExit: Attack was still going on");
             }
             
             if (_settings.OnAttackStopped != null)
@@ -84,18 +87,18 @@ namespace DeathRunner.PlayerState
                 _settings.OnAttackStopped.Invoke();
             }
             
-            Debug.Log("PrimaryAttack.Exit");
+            //Debug.Log("PrimaryAttack.Exit");
         }
         
         private async UniTask EnableCanGoIntoNextAttackAfterTime()
         {
             CanGoIntoNextAttack = false;
             
-            Debug.Log("Waiting for " + _secondsToAllowNextAttack + " seconds to allow next attack, time: " + Time.time);
+            //Debug.Log("Waiting for " + _secondsToAllowNextAttack + " seconds to allow next attack, time: " + Time.time);
             
             await UniTask.Delay(TimeSpan.FromSeconds(_secondsToAllowNextAttack), ignoreTimeScale: true, cancellationToken: _cancellationToken);
 
-            Debug.Log("Can go into next attack now, time: " + Time.time);
+            //Debug.Log("Can go into next attack now, time: " + Time.time);
             
             CanGoIntoNextAttack = true;
         }
@@ -104,11 +107,11 @@ namespace DeathRunner.PlayerState
         {
             IsAttacking = true;
             
-            Debug.Log("Waiting for " + _settings.AttackAnimation.length + " seconds to finish attack, time: " + Time.time);
+            //Debug.Log("Waiting for " + _scaledDuration + " seconds to finish attack, time: " + Time.time);
             
-            await UniTask.Delay(TimeSpan.FromSeconds(_settings.AttackAnimation.length), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            await UniTask.Delay(TimeSpan.FromSeconds(_scaledDuration), ignoreTimeScale: true, cancellationToken: _cancellationToken);
             
-            Debug.Log("Attack finished, time: " + Time.time);
+            //Debug.Log("Attack finished, time: " + Time.time);
             
             IsAttacking = false;
         }
@@ -125,10 +128,11 @@ namespace DeathRunner.PlayerState
     public struct PrimaryAttackSettings
     {
         [field:BoxGroup(group: "Attack Settings", showLabel: false)]
-        [field:SerializeField] public AnimationClip                  AttackAnimation                 { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public Constant<F32>                  SecondsFromEndToAllowNextAttack { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public AnimationClip                       AttackAnimation                 { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<F32>                       AttackSpeedMultiplier           { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<F32>                       SecondsFromEndToAllowNextAttack { get; [UsedImplicitly] private set; }
         
-        [field:SerializeField] public ScriptableEvent<AnimationClip> OnAttackStarted                 { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public ScriptableEvent                OnAttackStopped                 { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public ScriptableEvent<AnimationClip, F32> OnAttackStarted                 { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public ScriptableEvent                     OnAttackStopped                 { get; [UsedImplicitly] private set; }
     }
 }

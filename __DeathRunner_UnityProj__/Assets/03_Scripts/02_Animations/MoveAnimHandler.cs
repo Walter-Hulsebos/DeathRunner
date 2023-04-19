@@ -45,6 +45,7 @@ namespace DeathRunner.Animations
         
         #region Methods
 
+        #if UNITY_EDITOR
         protected override void Reset()
         {
             base.Reset();
@@ -58,6 +59,7 @@ namespace DeathRunner.Animations
             
             deltaRadiansPerSecond = (TAU_F32 / smoothTurnInSeconds);
         }
+        #endif
 
         private void Awake()
         {

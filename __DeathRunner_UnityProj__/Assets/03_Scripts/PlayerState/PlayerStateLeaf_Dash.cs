@@ -48,7 +48,7 @@ namespace DeathRunner.PlayerState
         {
             base.OnEnter();
             
-            Debug.Log("Dash.Enter");
+            //Debug.Log("Dash.Enter");
             
             // Move the player in the dash direction
             DashMovement(DashDirection);
@@ -58,14 +58,14 @@ namespace DeathRunner.PlayerState
         {
             base.OnExit();
             
-            Debug.Log("Dash.Exit");
+            //Debug.Log("Dash.Exit");
         }
         
         protected override void OnUpdate()
         {
             base.OnUpdate();
             
-            Debug.Log("Dash.Update");
+            //Debug.Log("Dash.Update");
         }
 
         private F32x3 DashDirection

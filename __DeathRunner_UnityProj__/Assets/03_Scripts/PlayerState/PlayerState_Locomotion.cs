@@ -50,14 +50,14 @@ namespace DeathRunner.PlayerState
         {
             base.OnEnter();
             
-            Debug.Log("Locomotion.Enter");
+            //Debug.Log("Locomotion.Enter");
         }
         
         protected override void OnExit()
         {
             base.OnExit();
             
-            Debug.Log("Locomotion.Exit");
+            //Debug.Log("Locomotion.Exit");
         }
 
         // protected override void OnUpdate()
