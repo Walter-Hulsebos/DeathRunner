@@ -18,7 +18,7 @@ namespace DeathRunner.Animations
         [field:FoldoutGroup("References")]
         #endif
         [field:SerializeField] public AnimancerComponent Animancer { get; [UsedImplicitly] private set; }
-        
+
         #if ODIN_INSPECTOR
         [field:FoldoutGroup("References")]
         #endif

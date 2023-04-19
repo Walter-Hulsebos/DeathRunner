@@ -37,7 +37,7 @@ namespace DeathRunner.Animations
         
         private void OnEnterIdleHandler()
         {
-            Animancer.Play(idleClip);
+            MyAnimancer.Play(idleClip);
         }
         
         #endregion

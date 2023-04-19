@@ -37,7 +37,7 @@ namespace DeathRunner.Animations
 
         private void Awake()
         {
-            AnimancerState __state = Animancer.States.GetOrCreate(dashAnimations);
+            AnimancerState __state = MyAnimancer.States.GetOrCreate(dashAnimations);
             _dashState = (MixerState<Vector2>)__state;
         }
         
@@ -75,7 +75,7 @@ namespace DeathRunner.Animations
             _dashState.Parameter = __orthogonalDashDirection;
             _dashState.Speed = 1;
             
-            Animancer.Play(_dashState);
+            MyAnimancer.Play(_dashState);
         }
         
         #endregion

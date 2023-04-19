@@ -67,7 +67,7 @@ namespace DeathRunner.Animations
             // So we need to create its state, type cast it to MixerState<F32x2>, and store it in a field.
             // Then we will be able to control that field's Parameter in Update.
             //AnimancerState __state = Animancer.States.GetOrCreate(animationReferences.Move);
-            AnimancerState __state = Animancer.States.GetOrCreate(moveAnimations);
+            AnimancerState __state = MyAnimancer.States.GetOrCreate(moveAnimations);
             _moveState = (MixerState<Vector2>)__state;
         }
 
@@ -216,17 +216,17 @@ namespace DeathRunner.Animations
             //        Debug.Log(message: $"__moveDirection: {__moveDirection}");
 
             
-            F32x3 __moveDirectionNonRelative   = __moveDirection.InverseRelativeTo(PlayerCamera.transform);
+            F32x3 __moveDirectionNonRelative   = __moveDirection.InverseRelativeTo(MyPlayerCamera.transform);
 
-            F32x3 __facingDirection = PlayerTransform.forward;
-            F32x3 __facingDirectionNonRelative = __facingDirection.InverseRelativeTo(PlayerCamera.transform);
+            F32x3 __facingDirection = MyPlayerTransform.forward;
+            F32x3 __facingDirectionNonRelative = __facingDirection.InverseRelativeTo(MyPlayerCamera.transform);
 
             _orthogonalMoveDirection = normalize(new F32x2(
                 x: -dot(__moveDirectionNonRelative, cross(__facingDirectionNonRelative, up())),
                 y: +dot(__moveDirectionNonRelative, __facingDirectionNonRelative)));
 
             #if UNITY_EDITOR
-            F32x3 __characterPosition = PlayerTransform.position;
+            F32x3 __characterPosition = MyPlayerTransform.position;
             //Draw the moveVector 
             Draw.Arrow(
                 from: __characterPosition,
@@ -254,7 +254,7 @@ namespace DeathRunner.Animations
             _moveState.Parameter = _orthogonalMoveDirection;
             _moveState.Speed = 1;
             
-            Animancer.Play(_moveState);
+            MyAnimancer.Play(_moveState);
         }
         
         #endregion

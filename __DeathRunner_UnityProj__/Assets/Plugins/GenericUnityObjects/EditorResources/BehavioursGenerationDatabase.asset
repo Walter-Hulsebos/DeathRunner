@@ -12,11 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34fec35c2bb4f2880a04272d23fbc31, type: 3}
   m_Name: BehavioursGenerationDatabase
   m_EditorClassIdentifier: 
-  _genericArgumentKeys: []
+  _genericArgumentKeys:
+  - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+    _guid: 
   _genericArgumentValues:
   - _array: []
   - _array: []
   - _array: []
+  - _array:
+    - _arguments:
+      - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+        _guid: 
+      _assemblyGUID: e4dc43dd75457d54cadc422af3e3505d
   - _array: []
   - _array: []
   - _array: []
@@ -24,8 +31,16 @@ MonoBehaviour:
   - _array: []
   - _array: []
   - _array: []
-  - _array: []
-  _genericTypeValues: []
+  _genericTypeValues:
+  - _array:
+    - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEventListener`1,
+        GenericScriptableArchitecture
+      _guid: 3fbbe1937fc54db082643a440c4e256d
+      AssemblyGUID: 12e6c86ef769d4349975827282c9d6b8
+      _argNames:
+      - T
+      _componentName: 
+      _order: 0
   _genericTypeKeys:
   - _typeNameAndAssembly: MoreMountains.Tools.MMPersistentHumbleSingleton`1, MoreMountains.Tools
     _guid: 1069bbd270ccb95489ac88d734abbf9e

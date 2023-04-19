@@ -16,9 +16,9 @@ namespace DeathRunner.Animations
         [BoxGroup(group: "References", showLabel: false)]
         [SerializeField] protected PlayerAnimationReferences animationReferences;
 
-        public AnimancerComponent Animancer       => animationReferences.Animancer;
-        public Transform          PlayerTransform => animationReferences.PlayerTransform;
-        public Camera             PlayerCamera    => animationReferences.PlayerCamera;
+        public AnimancerComponent MyAnimancer       => animationReferences.Animancer;
+        public Transform          MyPlayerTransform => animationReferences.PlayerTransform;
+        public Camera             MyPlayerCamera    => animationReferences.PlayerCamera;
 
         #endregion
         
