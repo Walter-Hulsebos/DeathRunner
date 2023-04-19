@@ -38,8 +38,6 @@ namespace DeathRunner.Animations
         private void OnEnterIdleHandler()
         {
             Animancer.Play(idleClip);
-            
-            //TODO: Set the animator parameters
         }
         
         #endregion

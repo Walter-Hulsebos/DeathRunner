@@ -28,6 +28,7 @@ namespace DeathRunner.PlayerState
         private readonly PlayerReferences _references;
         
         public Bool IsDashing { get; private set; } = false;
+        public Bool IsDoneDashing => !IsDashing;
         
         //TODO: Cache all constant settings?
 

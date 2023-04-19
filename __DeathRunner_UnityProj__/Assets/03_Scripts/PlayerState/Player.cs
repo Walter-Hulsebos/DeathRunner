@@ -34,6 +34,13 @@ namespace DeathRunner.PlayerState
         [Tooltip("Dash Settings for Normal-Time")]
         [SerializeField] private DashSettings dashNTSettings;
         
+        [FormerlySerializedAs("primaryAttack01NTSettings")] [SerializeField] private PrimaryAttackSettings primaryAttack00NTSettings;
+        [FormerlySerializedAs("primaryAttack02NTSettings")] [SerializeField] private PrimaryAttackSettings primaryAttack01NTSettings;
+        [FormerlySerializedAs("primaryAttack03NTSettings")] [SerializeField] private PrimaryAttackSettings primaryAttack02NTSettings;
+        
+        //[SerializeField] private SecondaryAttackSettings secondaryAttack01NTSettings;
+        
+        
         //[SerializeField] private AttackSettings
         [Tooltip("Locomotion Settings for Bullet-Time")]
         [SerializeField] private LocomotionSettings locomotionBTSettings;
@@ -58,9 +65,12 @@ namespace DeathRunner.PlayerState
         private StateLeaf _idleNT;
         private StateLeaf _walkNT;
         
-        private PlayerStateLeaf_Dash _dashNT;
-        private StateLeaf            _primaryAttackNT;
-        private StateLeaf            _secondaryAttackNT;
+        private PlayerStateLeaf_Dash            _dashNT;
+        private PlayerStateLeaf_PrimaryAttack   _primaryAttackNT00;
+        private PlayerStateLeaf_PrimaryAttack   _primaryAttackNT01;
+        private PlayerStateLeaf_PrimaryAttack   _primaryAttackNT02;
+        
+        private PlayerStateLeaf_SecondaryAttack _secondaryAttackNT;
         
         private State     _locomotionBT;
 
@@ -84,113 +94,101 @@ namespace DeathRunner.PlayerState
         {
             CreateStateTree();
             CreateStateTransitions();
-        }
-
-        private void CreateStateTree()
-        {
-            _root = new PlayerState_Root(/*params childstates */
-                _alive = new PlayerState_Alive(/*params child states */
-                    _normalTime = new PlayerState_NormalTime(/*params childstates */
-                        _locomotionNT = new PlayerState_Locomotion(settings: locomotionNTSettings, references: playerReferences, /*params childstates */
-                            _idleNT            = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
-                            _walkNT            = new PlayerStateLeaf_Move(settings: moveNtSettings, references: playerReferences)), 
-                        _dashNT            = new PlayerStateLeaf_Dash(settings: dashNTSettings, references: playerReferences), 
-                        _primaryAttackNT   = new PlayerStateLeaf_PrimaryAttack(), 
-                        _secondaryAttackNT = new PlayerStateLeaf_SecondaryAttack()), 
-                    _bulletTime = new PlayerState_BulletTime(/*params childstates */
-                        _locomotionBT = new PlayerState_Locomotion(settings: locomotionBTSettings, references: playerReferences, /*params childstates */
-                            _idleBT            = new PlayerStateLeaf_Idle(settings: idleBTSettings, references: playerReferences),
-                            _walkBT            = new PlayerStateLeaf_Move(settings: moveBtSettings, references: playerReferences)),
-                        _primaryAttackBT   = new PlayerStateLeaf_PrimaryAttack())), 
-                _dead = new PlayerStateLeaf_Dead());
-        }
-
-        private void CreateStateTransitions()
-        {
-            #region Alive <-> Dead
-            
-            //_alive.AddTransitionTo(  _dead);
-            //_alive.AddTransitionFrom(_dead);
-            
-            //_alive.AddAnyTransition(_dead);
-
-            #endregion
-            
-            #region Normal Time <-> Bullet Time
-
-            //_normalTime.AddTransitionTo(  _bulletTime);
-            //_normalTime.AddTransitionFrom(_bulletTime);
-
-            #endregion
-            
-            #region Locomotion Normal Time
-            
-            //LocomotionNT <-> DashNT
-            //_locomotionNT.AddTransitionTo(_dashNT, conditions: () => playerReferences.InputHandler.DashInput);
-
-            #endregion
-
-            #region Idle Normal Time
-
-            //IdleNT <-> WalkNT
-            _idleNT.AddTransitionTo(  _walkNT, conditions: () => HasMoveInput);
-            _idleNT.AddTransitionFrom(_walkNT, conditions: () => HasNoMoveInput);
-            
-            //IdleNT <-> DashNT
-            _idleNT.AddTransitionTo(  _dashNT, conditions: () => playerReferences.InputHandler.DashInput);
-            _idleNT.AddTransitionFrom(_dashNT, () => HasNoMoveInput, () => !_dashNT.IsDashing);
-
-            #endregion
-
-            #region Walk Normal Time
-            
-            //WalkNT <-> DashNT
-            _walkNT.AddTransitionTo(  _dashNT, conditions: () => playerReferences.InputHandler.DashInput);
-            _walkNT.AddTransitionFrom(_dashNT, () => HasMoveInput, () => !_dashNT.IsDashing);
-            
-            //WalkNT <-> PrimaryAttackNT
-            //playerReferences.InputHandler.OnPrimaryFireStarted += () => _walkNT.AddEventTransitionTo(  _primaryAttackNT);
-            //playerReferences.InputHandler.OnPrimaryFireStopped += () => _walkNT.AddEventTransitionFrom(_primaryAttackNT);
-            
-            //WalkNT <-> SecondaryAttackNT
-            //playerReferences.InputHandler.OnSecondaryFireStarted += () => _walkNT.AddEventTransitionTo(  _secondaryAttackNT);
-            //playerReferences.InputHandler.OnSecondaryFireStopped += () => _walkNT.AddEventTransitionFrom(_secondaryAttackNT);
-
-            #endregion
-            
-            #region Primary Normal Time <-> Secondary Normal Time
-            
-            //playerReferences.InputHandler.OnSecondaryFireStarted += () => _primaryAttackNT.AddEventTransitionTo(  _secondaryAttackNT);
-            //playerReferences.InputHandler.OnSecondaryFireStopped += () => _primaryAttackNT.AddEventTransitionFrom(_secondaryAttackNT);
-            
-            #endregion
-            
-            #region Idle Bullet Time
-            
-            //inputHandler.OnMoveStarted += moveInput => _idleBT.AddEventTransitionTo(  _walkBT);
-            //inputHandler.OnMoveStopped += moveInput => _idleBT.AddEventTransitionFrom(_walkBT);
-            
-            //Idle <-> Walk
-            _idleBT.AddTransitionTo(  _walkBT, conditions: () => any(playerReferences.InputHandler.MoveInput != F32x2.zero));
-            _idleBT.AddTransitionFrom(_walkBT, conditions: () => all(playerReferences.InputHandler.MoveInput == F32x2.zero));
-            
-            //inputHandler.OnPrimaryFireStarted += () => _idleBT.AddEventTransitionTo(  _primaryAttackBT);
-            //inputHandler.OnPrimaryFireStopped += () => _idleBT.AddEventTransitionFrom(_primaryAttackBT);
-
-            #endregion
-            
-            #region Walk Bullet Time
-            
-            //Walk <-> PrimaryAttack
-            //playerReferences.InputHandler.OnPrimaryFireStarted += () => _walkBT.AddEventTransitionTo(  _primaryAttackBT);
-            //playerReferences.InputHandler.OnPrimaryFireStopped += () => _walkBT.AddEventTransitionFrom(_primaryAttackBT);
-            
-            #endregion
             
             //Initialize root state
             _root.Init();
         }
+
+        private void CreateStateTree()
+        {
+            _root = new PlayerState_Root
+            (/*params child states */
+                _alive = new PlayerState_Alive
+                (/*params child states */
+                    _normalTime = new PlayerState_NormalTime
+                    (/*params child states */
+                        _locomotionNT = new PlayerState_Locomotion
+                        (settings: locomotionNTSettings, references: playerReferences, /*params child states */
+                            _idleNT            = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
+                            _walkNT            = new PlayerStateLeaf_Move(settings: moveNtSettings, references: playerReferences)
+                        ), 
+                        _dashNT            = new PlayerStateLeaf_Dash(settings: dashNTSettings, references: playerReferences), 
+                        _primaryAttackNT00 = new PlayerStateLeaf_PrimaryAttack(settings: primaryAttack00NTSettings, references: playerReferences),
+                        _primaryAttackNT01 = new PlayerStateLeaf_PrimaryAttack(settings: primaryAttack01NTSettings, references: playerReferences),
+                        _primaryAttackNT02 = new PlayerStateLeaf_PrimaryAttack(settings: primaryAttack02NTSettings, references: playerReferences),
+                        
+                        _secondaryAttackNT = new PlayerStateLeaf_SecondaryAttack()
+                    ), 
+                    _bulletTime = new PlayerState_BulletTime
+                    (/*params child states */
+                        _locomotionBT = new PlayerState_Locomotion
+                        (settings: locomotionBTSettings, references: playerReferences, /*params child states */
+                            _idleBT            = new PlayerStateLeaf_Idle(settings: idleBTSettings, references: playerReferences),
+                            _walkBT            = new PlayerStateLeaf_Move(settings: moveBtSettings, references: playerReferences)
+                        )
+                        //_primaryAttackBT   = new PlayerStateLeaf_PrimaryAttack(settings: primaryAttack00NTSettings, references: playerReferences))
+                    )
+                ),
+                _dead = new PlayerStateLeaf_Dead()
+            );
+        }
         
+        //TODO: [Walter] InputBuffer/Queue for attacks, if you click the attack button within the timeslot of the previous attack, it will queue the next attack, and execute it after the previous one is finished.
+        //Currently, if you click the attack button while the previous attack is still executing, it will cancel the previous attack and execute the new one.
+
+        private void CreateStateTransitions()
+        {
+            //Alive <-> Dead
+            
+            //Normal Time <-> Bullet Time
+
+            //IdleNT -> WalkNT
+            _idleNT.AddTransition(to: _walkNT, conditions: () => HasMoveInput);
+            //WalkNT -> IdleNT
+            _walkNT.AddTransition(to: _idleNT, conditions: () => HasNoMoveInput);
+            
+            //IdleNT -> DashNT
+            _idleNT.AddTransition(to: _dashNT, conditions: () => HasDashInput);
+            //DashNT -> IdleNT
+            _dashNT.AddTransition(to: _idleNT, conditions: () => HasNoMoveInput && _dashNT.IsDoneDashing);
+
+            //WalkNT -> DashNT
+            _walkNT.AddTransition(to: _dashNT, conditions: () => HasDashInput);
+            //DashNT -> WalkNT
+            _dashNT.AddTransition(to: _walkNT, conditions: () => HasMoveInput && _dashNT.IsDoneDashing);
+
+            //Idle -> Walk
+            _idleBT.AddTransition(to: _walkBT, conditions: () => HasMoveInput);
+            //Walk -> Idle
+            _walkBT.AddTransition(to: _idleBT, conditions: () => HasNoMoveInput);
+
+            //Idle -> PrimaryAttack00
+            _idleNT.AddTransition(to: _primaryAttackNT00, conditions: () => playerReferences.InputHandler.PrimaryFireInput);
+            
+            //PrimaryAttack00 -> Idle
+            _primaryAttackNT00.AddTransition(to: _idleNT, conditions: () => _primaryAttackNT00.IsDoneAttacking && HasNoMoveInput);
+            //PrimaryAttack01 -> idle
+            _primaryAttackNT01.AddTransition(to: _idleNT, conditions: () => _primaryAttackNT01.IsDoneAttacking && HasNoMoveInput);
+            //PrimaryAttack02 -> idle
+            _primaryAttackNT02.AddTransition(to: _idleNT, conditions: () => _primaryAttackNT02.IsDoneAttacking && HasNoMoveInput);
+
+            //Walk -> PrimaryAttack00
+            _walkNT.AddTransition(to: _primaryAttackNT00, conditions: () => playerReferences.InputHandler.PrimaryFireInput);
+            
+            //PrimaryAttack00 -> Walk
+            _primaryAttackNT00.AddTransition(to: _walkNT, conditions: () => _primaryAttackNT00.IsDoneAttacking && HasMoveInput);
+            //PrimaryAttack01 <- walk
+            _primaryAttackNT01.AddTransition(to: _walkNT, conditions: () => _primaryAttackNT01.IsDoneAttacking && HasMoveInput);
+            //PrimaryAttack02 <- walk
+            _primaryAttackNT02.AddTransition(to: _walkNT, conditions: () => _primaryAttackNT02.IsDoneAttacking && HasMoveInput);
+            
+            //PrimaryAttack00 -> PrimaryAttack01
+            _primaryAttackNT00.AddTransition(to: _primaryAttackNT01, conditions: () => playerReferences.InputHandler.PrimaryFireInput && _primaryAttackNT00.CanGoIntoNextAttack);
+            
+            //PrimaryAttack01 -> PrimaryAttack02
+            _primaryAttackNT01.AddTransition(to: _primaryAttackNT02, conditions: () => playerReferences.InputHandler.PrimaryFireInput && _primaryAttackNT01.CanGoIntoNextAttack);
+        }
+
         private void OnEnable()  => EnableLateFixedUpdate();
         private void OnDisable() => DisableLateFixedUpdate();
 
