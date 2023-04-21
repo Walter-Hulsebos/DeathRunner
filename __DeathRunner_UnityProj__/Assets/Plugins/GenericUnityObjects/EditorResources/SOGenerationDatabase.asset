@@ -1,0 +1,206 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04e00c890644cc9adb05d0c17f5ee62, type: 3}
+  m_Name: SOGenerationDatabase
+  m_EditorClassIdentifier: 
+  _genericArgumentKeys:
+  - _typeNameAndAssembly: System.Single, mscorlib
+    _guid: 
+  - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+    _guid: 
+  - _typeNameAndAssembly: DeathRunner.Shared.AnimationWrapper, DeathRunner.Shared
+    _guid: 
+  - _typeNameAndAssembly: UnityEngine.AnimationClip, UnityEngine.AnimationModule
+    _guid: 
+  _genericArgumentValues:
+  - _array: []
+  - _array: []
+  - _array: []
+  - _array: []
+  - _array: []
+  - _array:
+    - _arguments:
+      - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+        _guid: 
+      _assemblyGUID: 0aa53b8efa140664a8dae3c00febed07
+    - _arguments:
+      - _typeNameAndAssembly: DeathRunner.Shared.AnimationWrapper, DeathRunner.Shared
+        _guid: 
+      _assemblyGUID: 95963728eaaec86438d960086dc681be
+    - _arguments:
+      - _typeNameAndAssembly: UnityEngine.AnimationClip, UnityEngine.AnimationModule
+        _guid: 
+      _assemblyGUID: d068db293029cfa46a94e92df6380f62
+  - _array:
+    - _arguments:
+      - _typeNameAndAssembly: UnityEngine.AnimationClip, UnityEngine.AnimationModule
+        _guid: 
+      - _typeNameAndAssembly: System.Single, mscorlib
+        _guid: 
+      _assemblyGUID: 8c0695b3b6df59e4e8b74aa6b3fe6a01
+  - _array: []
+  - _array:
+    - _arguments:
+      - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+        _guid: 
+      _assemblyGUID: 4d15fc25e5c02d14b8a7e3752fad90f9
+    - _arguments:
+      - _typeNameAndAssembly: System.Single, mscorlib
+        _guid: 
+      _assemblyGUID: b005a2053f4890b4190e0c62476cf564
+  - _array: []
+  - _array:
+    - _arguments:
+      - _typeNameAndAssembly: System.Single, mscorlib
+        _guid: 
+      _assemblyGUID: 39989c4bf50cc3b46bdb1f1bac1bc1ba
+    - _arguments:
+      - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+        _guid: 
+      _assemblyGUID: 25265e4ca0dfa06448323ba55fc77d0e
+  - _array: []
+  - _array: []
+  - _array: []
+  - _array: []
+  _genericTypeValues:
+  - _array:
+    - _typeNameAndAssembly: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
+      _guid: 35f1f711725d47ef9c32084694a183c9
+      AssemblyGUID: 
+      _argNames:
+      - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.Constant`1, GenericScriptableArchitecture
+      _guid: 05de5ab8a09d41c7adc4000e0b8c9222
+      AssemblyGUID: 
+      _argNames:
+      - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`2, GenericScriptableArchitecture
+      _guid: 6686166ec8d545cd81c7b3a35c553c8e
+      AssemblyGUID: 
+      _argNames:
+      - T1
+      - T2
+  - _array:
+    - _typeNameAndAssembly: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
+      _guid: 35f1f711725d47ef9c32084694a183c9
+      AssemblyGUID: 
+      _argNames:
+      - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.Constant`1, GenericScriptableArchitecture
+      _guid: 05de5ab8a09d41c7adc4000e0b8c9222
+      AssemblyGUID: 
+      _argNames:
+      - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`1, GenericScriptableArchitecture
+      _guid: a7bc4098e6b34b50b334b6c504e7f4f5
+      AssemblyGUID: 
+      _argNames:
+      - T
+  - _array:
+    - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`1, GenericScriptableArchitecture
+      _guid: a7bc4098e6b34b50b334b6c504e7f4f5
+      AssemblyGUID: 
+      _argNames:
+      - T
+  - _array:
+    - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`1, GenericScriptableArchitecture
+      _guid: a7bc4098e6b34b50b334b6c504e7f4f5
+      AssemblyGUID: 
+      _argNames:
+      - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`2, GenericScriptableArchitecture
+      _guid: 6686166ec8d545cd81c7b3a35c553c8e
+      AssemblyGUID: 
+      _argNames:
+      - T1
+      - T2
+  _genericTypeKeys:
+  - _typeNameAndAssembly: MoreMountains.Tools.MMReferencedScriptableObject`1, MoreMountains.Tools
+    _guid: cfb03c2bcbc7bd64fbf6cc6081b9c441
+    AssemblyGUID: 
+    _argNames:
+    - T
+  - _typeNameAndAssembly: UnityEditor.Rendering.DebugState`1, Unity.RenderPipelines.Core.Editor
+    _guid: 
+    AssemblyGUID: 
+    _argNames:
+    - T
+  - _typeNameAndAssembly: UnityEditor.Rendering.HighDefinition.HDBaseEditor`1, Unity.RenderPipelines.HighDefinition.Editor
+    _guid: 
+    AssemblyGUID: 
+    _argNames:
+    - T
+  - _typeNameAndAssembly: UnityEditor.Rendering.HighDefinition.HDRenderPipelineMenuItems+DoCreateNewAsset`1,
+      Unity.RenderPipelines.HighDefinition.Editor
+    _guid: 
+    AssemblyGUID: 
+    _argNames:
+    - TAssetType
+  - _typeNameAndAssembly: GenericScriptableArchitecture.RuntimeSet`1, GenericScriptableArchitecture
+    _guid: c310ebaa7e1d4da39f89d2340c56c267
+    AssemblyGUID: 
+    _argNames:
+    - TUnityObject
+  - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`1, GenericScriptableArchitecture
+    _guid: a7bc4098e6b34b50b334b6c504e7f4f5
+    AssemblyGUID: 
+    _argNames:
+    - T
+  - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`2, GenericScriptableArchitecture
+    _guid: 6686166ec8d545cd81c7b3a35c553c8e
+    AssemblyGUID: 
+    _argNames:
+    - T1
+    - T2
+  - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`3, GenericScriptableArchitecture
+    _guid: fc6999967d504ffabf620e99c917c55f
+    AssemblyGUID: 
+    _argNames:
+    - T1
+    - T2
+    - T3
+  - _typeNameAndAssembly: GenericScriptableArchitecture.Constant`1, GenericScriptableArchitecture
+    _guid: 05de5ab8a09d41c7adc4000e0b8c9222
+    AssemblyGUID: 
+    _argNames:
+    - T
+  - _typeNameAndAssembly: GenericScriptableArchitecture.VariableWithHistory`1, GenericScriptableArchitecture
+    _guid: dd7b35f1939e4c4f8bde9e3f3017e68d
+    AssemblyGUID: 
+    _argNames:
+    - T
+  - _typeNameAndAssembly: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
+    _guid: 35f1f711725d47ef9c32084694a183c9
+    AssemblyGUID: 
+    _argNames:
+    - T
+  - _typeNameAndAssembly: Cinemachine.Editor.CinemachineVirtualCameraBaseEditor`1,
+      com.unity.cinemachine.editor
+    _guid: 211d719bb25901043833928f50e9d0ea
+    AssemblyGUID: 
+    _argNames:
+    - T
+  - _typeNameAndAssembly: Cinemachine.Editor.BaseEditor`1, com.unity.cinemachine.editor
+    _guid: 15ef94834d9e4aa44ac8fe619843346b
+    AssemblyGUID: 
+    _argNames:
+    - T
+  - _typeNameAndAssembly: UnityEditor.ScriptableSingleton`1, UnityEditor.CoreModule
+    _guid: 
+    AssemblyGUID: 
+    _argNames:
+    - T
+  - _typeNameAndAssembly: Animancer.AnimancerTransitionAsset`1, Animancer
+    _guid: 6855b77e046ea2045ac187ab02afcdad
+    AssemblyGUID: 
+    _argNames:
+    - TTransition

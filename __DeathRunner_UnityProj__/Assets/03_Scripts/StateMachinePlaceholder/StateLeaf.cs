@@ -5,6 +5,7 @@ namespace HFSM
     /// <summary>
     ///     State behaviour of a hierarchical finite state machine pattern.
     /// </summary>
+    [Serializable]
     public abstract class StateLeaf : StateObject
     {
         /// <summary>
@@ -68,6 +69,11 @@ namespace HFSM
         public sealed override void FixedUpdate()
         {
             OnFixedUpdate();
+        }
+
+        public sealed override void LateFixedUpdate()
+        {
+            OnLateFixedUpdate();
         }
 
         /// <summary>

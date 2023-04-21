@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d75b2e71a864ef9b6262b87c89b28d0, type: 3}
+  m_Name: PersistentStorage
+  m_EditorClassIdentifier: 
+  _menuItemMethods:
+  - _typeName: GenericScriptableArchitecture.RuntimeSet`1, GenericScriptableArchitecture
+    _fileName: New Runtime Set
+    _menuName: Scriptable Architecture/Runtime Set
+    _order: 0
+  - _typeName: GenericScriptableArchitecture.ScriptableEvent`1, GenericScriptableArchitecture
+    _fileName: New ScriptableEvent`1
+    _menuName: Scriptable Architecture/Events/ScriptableEvent<T>
+    _order: 0
+  - _typeName: GenericScriptableArchitecture.ScriptableEvent`2, GenericScriptableArchitecture
+    _fileName: New ScriptableEvent`2
+    _menuName: Scriptable Architecture/Events/ScriptableEvent<T1,T2>
+    _order: 0
+  - _typeName: GenericScriptableArchitecture.ScriptableEvent`3, GenericScriptableArchitecture
+    _fileName: New ScriptableEvent`3
+    _menuName: Scriptable Architecture/Events/ScriptableEvent<T1,T2,T3>
+    _order: 0
+  - _typeName: GenericScriptableArchitecture.Constant`1, GenericScriptableArchitecture
+    _fileName: New Constant
+    _menuName: Scriptable Architecture/Constant
+    _order: 0
+  - _typeName: GenericScriptableArchitecture.VariableWithHistory`1, GenericScriptableArchitecture
+    _fileName: New Variable With History
+    _menuName: Scriptable Architecture/Variable With History
+    _order: 0
+  - _typeName: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
+    _fileName: New Variable
+    _menuName: Scriptable Architecture/Variable
+    _order: 0
+  _afterReloadEvent:
+    _persistentListeners: []
+    Expanded: 1
+  _savedData:
+    _keys: []
+    _values: []

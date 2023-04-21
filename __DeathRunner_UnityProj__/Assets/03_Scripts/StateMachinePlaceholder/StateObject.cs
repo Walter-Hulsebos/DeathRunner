@@ -6,6 +6,7 @@ namespace HFSM
     /// <summary>
     ///     Base class for <see cref="StateLeaf" /> and <see cref="State" /> objects.
     /// </summary>
+    [Serializable]
     public abstract class StateObject
     {
         private protected readonly List<EventTransitionBase> eventTransitions;
@@ -64,6 +65,30 @@ namespace HFSM
             Transition __transition = new Transition(from: this, to: to, transitionAction: null, conditions: conditions);
             TryRegisterTransition(transition: __transition);
         }
+        
+        public void AddTransitionTo(StateObject to, params Func<Boolean>[] conditions)
+        {
+            AddTransition(to: to, conditions: conditions);
+        }
+        
+        public void AddTransitionFrom(StateObject from, params Func<Boolean>[] conditions)
+        {
+            from.AddTransition(to: this, conditions: conditions);
+        }
+        
+        // //override > operator
+        // public static Boolean operator > (StateObject from, StateObject to)
+        // {
+        //     from.AddTransition(to: to);
+        //     return true;
+        // }
+        //
+        // //override < operator
+        // public static Boolean operator < (StateObject from, StateObject to)
+        // {
+        //     to.AddTransition(to: from);
+        //     return true;
+        // }
 
         /// <summary>
         ///     Adds a <see cref="Transition" /> to <paramref name="to" />.
@@ -223,6 +248,8 @@ namespace HFSM
         ///     frame-rate independece. It should be called from MonoBehaviour.FixedUpdate function.
         /// </summary>
         public abstract void FixedUpdate();
+        
+        public abstract void LateFixedUpdate();
 
         /// <summary>
         ///     Executes the custom logic defined in concrete <see cref="StateObject" />s that needs be executed after
@@ -254,6 +281,8 @@ namespace HFSM
         ///     fixed update cycle.
         /// </summary>
         protected virtual void OnFixedUpdate() { }
+        
+        protected virtual void OnLateFixedUpdate() { }
 
         /// <summary>
         ///     Custom logic defined in concrete <see cref="StateObject" /> classes that gets executed every late update cycle.
@@ -275,97 +304,6 @@ namespace HFSM
         #region Add Event Transition Methods
 
         /// <summary>
-        ///     Adds an <see cref="EventTransition" /> to the <see cref="StateObject" /> <paramref name="to" />
-        ///     .
-        ///     In order to change to <paramref name="to" />, the event must have been fired and
-        ///     all <paramref name="conditions" /> (if any) must return <see langword="true" />. Transitions added first have
-        ///     higher priority.
-        ///     All <see cref="EventTransition" />s are processed together with polling transitions at the same time in the
-        ///     execution flow.
-        ///     Set <paramref name="processInstantly" /> parameter to <see langword="true" /> if you want to process transition
-        ///     events as soon as
-        ///     the event is listened. Events are only listened if the origin <see cref="StateObject" /> is active.
-        /// </summary>
-        /// <param name="to">
-        ///     The next <see cref="StateObject" /> to be executed after the transition is completed.
-        /// </param>
-        /// <param name="conditions">
-        ///     The list of conditions that must be met in order to change to a new <see cref="StateObject" />.
-        /// </param>
-        /// <returns>
-        ///     An event listener function that must be subscribed to an event.
-        /// </returns>
-        public Action AddEventTransition(StateObject to, params Func<Boolean>[] conditions)
-        {
-            EventTransition __transition = new EventTransition(from: this, to: to, transitionAction: null, processInstantly: false, conditions: conditions);
-            TryRegisterEventTransition(eventTransition: __transition);
-            return __transition.ListenEvent;
-        }
-
-        /// <summary>
-        ///     Adds an <see cref="EventTransition" /> to <paramref name="to" />.
-        ///     In order to change to <paramref name="to" />, the event must have been fired and
-        ///     all <paramref name="conditions" /> (if any) must return <see langword="true" />. Transitions added first have
-        ///     higher priority.
-        ///     All <see cref="EventTransition" />s are processed together with polling transitions at the same time in the
-        ///     execution flow.
-        ///     Set <paramref name="processInstantly" /> parameter to <see langword="true" /> if you want to process transition
-        ///     events as soon as
-        ///     the event is listened. Events are only listened if the origin <see cref="StateObject" /> is active.
-        /// </summary>
-        /// <param name="to">
-        ///     The next <see cref="StateObject" /> to be executed after the transition is completed.
-        /// </param>
-        /// <param name="processInstantly">
-        ///     Indicates whether <see cref="Transition" />s should be evaluated as soon as the event is listened or not.
-        /// </param>
-        /// <param name="conditions">
-        ///     The list of conditions that must be met in order to change to a new <see cref="StateObject" />.
-        /// </param>
-        /// <returns>
-        ///     An event listener function that must be subscribed to an event.
-        /// </returns>
-        public Action AddEventTransition(StateObject to, Boolean processInstantly, params Func<Boolean>[] conditions)
-        {
-            EventTransition __transition = new EventTransition(from: this, to: to, transitionAction: null, processInstantly: processInstantly, conditions: conditions);
-            TryRegisterEventTransition(eventTransition: __transition);
-            return __transition.ListenEvent;
-        }
-
-        /// <summary>
-        ///     Adds an <see cref="EventTransition" /> to <paramref name="to" />.
-        ///     In order to change to <paramref name="to" />, the event must have been fired and
-        ///     all <paramref name="conditions" /> (if any) must return <see langword="true" />. Transitions added first have
-        ///     higher priority.
-        ///     All <see cref="EventTransition" />s are processed together with polling transitions at the same time in the
-        ///     execution flow.
-        ///     Set <paramref name="processInstantly" /> parameter to <see langword="true" /> if you want to process transition
-        ///     events as soon as
-        ///     the event is listened. Events are only listened if the origin <see cref="StateObject" /> is active.
-        ///     <paramref name="transitionAction" />
-        ///     is executed after the transition occurs.
-        /// </summary>
-        /// <param name="to">
-        ///     The next <see cref="StateObject" /> to be executed after the transition is completed.
-        /// </param>
-        /// <param name="transitionAction">
-        ///     Function to be executed if the transition occurs. It is executed after current <see cref="StateObject" />
-        ///     is exited and before the new one is entered.
-        /// </param>
-        /// <param name="conditions">
-        ///     The list of conditions that must be met in order to change to a new <see cref="StateObject" />.
-        /// </param>
-        /// <returns>
-        ///     An event listener function that must be subscribed to an event.
-        /// </returns>
-        public Action AddEventTransition(StateObject to, Action transitionAction, params Func<Boolean>[] conditions)
-        {
-            EventTransition __transition = new EventTransition(from: this, to: to, transitionAction: transitionAction, processInstantly: false, conditions: conditions);
-            TryRegisterEventTransition(eventTransition: __transition);
-            return __transition.ListenEvent;
-        }
-
-        /// <summary>
         ///     Adds an <see cref="EventTransition" /> to <paramref name="to" />.
         ///     In order to change to <paramref name="to" />, the event must have been fired and
         ///     all <paramref name="conditions" /> (if any) must return <see langword="true" />. Transitions added first have
@@ -394,9 +332,16 @@ namespace HFSM
         /// <returns>
         ///     An event listener function that must be subscribed to an event.
         /// </returns>
-        public Action AddEventTransition(StateObject to, Action transitionAction, Boolean processInstantly, params Func<Boolean>[] conditions)
+        public Action AddEventTransitionTo(StateObject to, Action transitionAction = null, Boolean processInstantly = false, params Func<Boolean>[] conditions)
         {
             EventTransition __transition = new EventTransition(from: this, to: to, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
+            TryRegisterEventTransition(eventTransition: __transition);
+            return __transition.ListenEvent;
+        }
+        
+        public Action AddEventTransitionFrom(StateObject from, Action transitionAction = null, Boolean processInstantly = false, params Func<Boolean>[] conditions)
+        {
+            EventTransition __transition = new EventTransition(from: from, to: this, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }

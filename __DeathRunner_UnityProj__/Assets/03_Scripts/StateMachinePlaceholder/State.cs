@@ -1,11 +1,13 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace HFSM
 {
     /// <summary>
     ///     Hierarchical finite state machine.
     /// </summary>
+    [Serializable]
     public abstract class State : StateObject
     {
         private readonly List<EventTransitionBase> _anyEventTransitions;
@@ -30,6 +32,11 @@ namespace HFSM
         /// </exception>
         public State(params StateObject[] childStates)
         {
+            if (childStates == null)
+            {
+                throw new ArgumentNullException(paramName: nameof(childStates));
+            }
+            
             if (childStates.Length == 0)
             {
                 throw new StatelessStateMachineException(
@@ -37,7 +44,7 @@ namespace HFSM
                              " State machine of type '" + GetType() + "' does not have any state objects."
                 );
             }
-            
+
             _anyTransitions = new List<Transition>();
             _anyEventTransitions = new List<EventTransitionBase>();
             _anyStateLeaf = new StateLeaf.Any();
@@ -46,6 +53,7 @@ namespace HFSM
             _changedState = false;
 
             DefaultStateObject = childStates[0];
+            
             foreach (StateObject __childState in childStates)
             {
                 __childState.State = this;
@@ -128,7 +136,10 @@ namespace HFSM
             // Check current state object's transitions
             __availableTransition ??= CurrentStateObject.AvailableTransition;
 
-            foreach (EventTransitionBase __anyEventTransition in _anyEventTransitions) __anyEventTransition.ConsumeEvent();
+            foreach (EventTransitionBase __anyEventTransition in _anyEventTransitions)
+            {
+                __anyEventTransition.ConsumeEvent();
+            }
             ConsumeTransitionsEvents();
 
             if (__availableTransition != null)
@@ -216,12 +227,12 @@ namespace HFSM
             StateObject __originStateObject = availableTransition.From;
             StateObject __targetStateObject = availableTransition.To;
 
-            State __stateMachine1 = __originStateObject.State;
-            State __stateMachine2 = __targetStateObject.State;
+            State __origin = __originStateObject.State;
+            State __target = __targetStateObject.State;
+            
+            //Debug.Log($"Changing state from {__origin} to {__target}");
 
-            State __lowestCommonState = FindLowestCommonStateMachine(
-                sm1: __stateMachine1, sm2: __stateMachine2
-            );
+            State __lowestCommonState = FindLowestCommonStateMachine(sm1: __origin, sm2: __target);
 
             __lowestCommonState.CurrentStateObject.Exit();
 
@@ -292,6 +303,13 @@ namespace HFSM
             CheckInitialization();
             OnFixedUpdate();
             CurrentStateObject.FixedUpdate();
+        }
+        
+        public sealed override void LateFixedUpdate()
+        {
+            CheckInitialization();
+            OnLateFixedUpdate();
+            CurrentStateObject.LateFixedUpdate();
         }
 
         /// <summary>

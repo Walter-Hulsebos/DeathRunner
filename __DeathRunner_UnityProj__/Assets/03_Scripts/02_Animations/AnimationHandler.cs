@@ -17,7 +17,7 @@ namespace DeathRunner.Animations
         
         [SerializeField] private Camera playerCamera;
 
-        [SerializeField, HideInInspector] private Animator animator;
+        [SerializeField] private Animator animator;
         
         private static readonly I32 move_x = Animator.StringToHash(name: "MoveX");
         private static readonly I32 move_y = Animator.StringToHash(name: "MoveY");

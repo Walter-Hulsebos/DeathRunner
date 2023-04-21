@@ -16,7 +16,7 @@
       }
     },
     "com.boundfoxstudios.fluentassertions": {
-      "version": "5.10.3-r5",
+      "version": "6.8.0",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
@@ -31,6 +31,19 @@
         "com.unity.collections": "1.4.0",
         "com.unity.burst": "1.6.6"
       }
+    },
+    "com.common-games.utils.pluggables": {
+      "version": "https://github.com/Walter-Hulsebos/GenericScriptableArchitecture.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.solidalloy.util": "1.40.0",
+        "com.solidalloy.generic-unity-objects": "2.17.1",
+        "com.solidalloy.type-references": "2.16.0",
+        "com.solidalloy.extevents": "1.7.0",
+        "com.unity.settings-manager": "1.0.3"
+      },
+      "hash": "85dde8be02039f3be09af7557bd0cf0f12d85b93"
     },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
@@ -67,12 +80,64 @@
         "com.unity.burst": "1.6.6"
       }
     },
+    "com.solidalloy.extevents": {
+      "version": "1.7.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.solidalloy.util": "1.40.0",
+        "com.unity.settings-manager": "1.0.3",
+        "com.solidalloy.type-references": "2.16.0",
+        "com.solidalloy.unity-dropdown": "1.2.0"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.solidalloy.generic-unity-objects": {
+      "version": "2.17.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.solidalloy.util": "1.40.0",
+        "com.solidalloy.type-references": "2.16.0",
+        "com.unity.settings-manager": "1.0.3",
+        "com.solidalloy.extevents": "1.7.0"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.solidalloy.type-references": {
+      "version": "2.16.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.solidalloy.util": "1.40.0",
+        "com.unity.settings-manager": "1.0.3",
+        "com.solidalloy.unity-dropdown": "1.2.0"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.solidalloy.unity-dropdown": {
+      "version": "1.2.0",
+      "depth": 2,
+      "source": "registry",
+      "dependencies": {
+        "com.solidalloy.util": "1.40.0",
+        "org.nuget.system.memory": "4.5.4"
+      },
+      "url": "https://package.openupm.com"
+    },
+    "com.solidalloy.util": {
+      "version": "1.40.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.unity.addressables": {
-      "version": "1.18.19",
+      "version": "1.19.19",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.scriptablebuildpipeline": "1.19.2",
+        "com.unity.scriptablebuildpipeline": "1.19.6",
         "com.unity.modules.assetbundle": "1.0.0",
         "com.unity.modules.imageconversion": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0",
@@ -82,8 +147,8 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.burst": {
-      "version": "1.7.4",
-      "depth": 0,
+      "version": "1.8.2",
+      "depth": 1,
       "source": "registry",
       "dependencies": {
         "com.unity.mathematics": "1.2.1"
@@ -182,60 +247,69 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.render-pipelines.core": {
-      "version": "10.10.1",
+      "version": "12.1.10",
       "depth": 1,
-      "source": "registry",
+      "source": "builtin",
       "dependencies": {
         "com.unity.ugui": "1.0.0",
         "com.unity.modules.physics": "1.0.0",
         "com.unity.modules.jsonserialize": "1.0.0"
-      },
-      "url": "https://packages.unity.com"
+      }
     },
     "com.unity.render-pipelines.high-definition": {
-      "version": "10.10.1",
+      "version": "12.1.10",
       "depth": 0,
-      "source": "registry",
+      "source": "builtin",
       "dependencies": {
-        "com.unity.render-pipelines.core": "10.10.1",
-        "com.unity.shadergraph": "10.10.1",
-        "com.unity.visualeffectgraph": "10.10.1",
-        "com.unity.render-pipelines.high-definition-config": "10.10.1"
-      },
-      "url": "https://packages.unity.com"
+        "com.unity.mathematics": "1.2.4",
+        "com.unity.burst": "1.8.2",
+        "com.unity.modules.video": "1.0.0",
+        "com.unity.modules.animation": "1.0.0",
+        "com.unity.modules.imageconversion": "1.0.0",
+        "com.unity.modules.terrain": "1.0.0",
+        "com.unity.render-pipelines.core": "12.1.10",
+        "com.unity.shadergraph": "12.1.10",
+        "com.unity.visualeffectgraph": "12.1.10",
+        "com.unity.render-pipelines.high-definition-config": "12.1.10"
+      }
     },
     "com.unity.render-pipelines.high-definition-config": {
-      "version": "10.10.1",
+      "version": "12.1.10",
       "depth": 1,
-      "source": "registry",
+      "source": "builtin",
       "dependencies": {
-        "com.unity.render-pipelines.core": "10.10.1"
-      },
-      "url": "https://packages.unity.com"
+        "com.unity.render-pipelines.core": "12.1.10"
+      }
     },
     "com.unity.scriptablebuildpipeline": {
-      "version": "1.19.2",
+      "version": "1.20.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
     "com.unity.searcher": {
-      "version": "4.3.2",
+      "version": "4.9.1",
       "depth": 2,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.unity.com"
     },
-    "com.unity.shadergraph": {
-      "version": "10.10.1",
+    "com.unity.settings-manager": {
+      "version": "1.0.3",
       "depth": 1,
       "source": "registry",
-      "dependencies": {
-        "com.unity.render-pipelines.core": "10.10.1",
-        "com.unity.searcher": "4.3.2"
-      },
+      "dependencies": {},
       "url": "https://packages.unity.com"
+    },
+    "com.unity.shadergraph": {
+      "version": "12.1.10",
+      "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "12.1.10",
+        "com.unity.searcher": "4.9.1"
+      }
     },
     "com.unity.test-framework": {
       "version": "1.1.33",
@@ -249,11 +323,11 @@
       "url": "https://packages.unity.com"
     },
     "com.unity.test-framework.performance": {
-      "version": "2.8.1-preview",
+      "version": "3.0.0-pre.2",
       "depth": 0,
       "source": "registry",
       "dependencies": {
-        "com.unity.test-framework": "1.1.0",
+        "com.unity.test-framework": "1.1.31",
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
@@ -277,14 +351,45 @@
       }
     },
     "com.unity.visualeffectgraph": {
-      "version": "10.10.1",
+      "version": "12.1.10",
       "depth": 1,
+      "source": "builtin",
+      "dependencies": {
+        "com.unity.shadergraph": "12.1.10",
+        "com.unity.render-pipelines.core": "12.1.10"
+      }
+    },
+    "org.nuget.system.buffers": {
+      "version": "4.5.1",
+      "depth": 4,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
+    "org.nuget.system.memory": {
+      "version": "4.5.4",
+      "depth": 3,
       "source": "registry",
       "dependencies": {
-        "com.unity.shadergraph": "10.10.1",
-        "com.unity.render-pipelines.core": "10.10.1"
+        "org.nuget.system.buffers": "4.5.1",
+        "org.nuget.system.numerics.vectors": "4.4.0",
+        "org.nuget.system.runtime.compilerservices.unsafe": "4.5.3"
       },
-      "url": "https://packages.unity.com"
+      "url": "https://package.openupm.com"
+    },
+    "org.nuget.system.numerics.vectors": {
+      "version": "4.4.0",
+      "depth": 4,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
+    "org.nuget.system.runtime.compilerservices.unsafe": {
+      "version": "4.5.3",
+      "depth": 4,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
@@ -346,6 +451,12 @@
       "dependencies": {}
     },
     "com.unity.modules.jsonserialize": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "builtin",
+      "dependencies": {}
+    },
+    "com.unity.modules.nvidia": {
       "version": "1.0.0",
       "depth": 0,
       "source": "builtin",
