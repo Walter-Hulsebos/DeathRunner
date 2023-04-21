@@ -10,8 +10,10 @@ using HFSM;
 using JetBrains.Annotations;
 
 using Sirenix.OdinInspector;
-using F32  = System.Single;
-using Bool = System.Boolean;
+
+using F32   = System.Single;
+using F32x3 = Unity.Mathematics.float3;
+using Bool  = System.Boolean;
 
 namespace DeathRunner.PlayerState
 {
@@ -55,6 +57,13 @@ namespace DeathRunner.PlayerState
             base.OnEnter();
 
             RefreshCancellationToken();
+
+            F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references);
+            F32x3 __direction = normalize(__lookPositionRelativeToPlayer);
+            _settings.OrientationLookDirection.Value = __direction;
+            _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
+            
+            PlayerHelpers.OrientTowardsDir(references: _references, direction: __direction, orientationSpeed: _settings.OrientationSpeed);
 
             if (_settings.OnAttackStarted != null)
             {
@@ -109,6 +118,9 @@ namespace DeathRunner.PlayerState
         [field:SerializeField] public Constant<F32>                       AttackSpeedMultiplier           { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Constant<F32>                       SecondsFromEndToAllowNextAttack { get; [UsedImplicitly] private set; }
         
+        [field:SerializeField] public Variable<F32x3>                     OrientationLookDirection        { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<F32>                       OrientationSpeed                { get; [UsedImplicitly] private set; }
+
         [field:SerializeField] public ScriptableEvent<AnimationClip, F32> OnAttackStarted                 { get; [UsedImplicitly] private set; }
         [field:SerializeField] public ScriptableEvent                     OnAttackStopped                 { get; [UsedImplicitly] private set; }
     }
