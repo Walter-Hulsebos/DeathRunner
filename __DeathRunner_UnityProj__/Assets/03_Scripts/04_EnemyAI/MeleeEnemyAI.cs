@@ -1,5 +1,6 @@
 using System.Collections;
 using Cysharp.Threading.Tasks;
+using Mono.CSharp;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
@@ -155,6 +156,12 @@ namespace DeathRunner.EnemyAI
             
             public void OnDeath()
             {
+                
+                foreach(Transform child in transform.GetComponentsInChildren<Transform>() )
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer("Pickup");
+                    print("changin layer");
+                }
                 StopAllCoroutines();
                 navMeshAgent.SetDestination(transform.position);
                 navMeshAgent.velocity = Vector3.zero;
