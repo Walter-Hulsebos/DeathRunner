@@ -144,7 +144,7 @@ PlayerSettings:
   vrSettings:
     enable360StereoCapture: 0
   isWsaHolographicRemotingEnabled: 0
-  enableFrameTimingStats: 1
+  enableFrameTimingStats: 0
   enableOpenGLProfilerGPURecorders: 1
   useHDRDisplay: 0
   D3DHDRBitDepth: 0
@@ -641,6 +641,7 @@ PlayerSettings:
     PS4: 1
     PS5: 1
     Stadia: 1
+    Standalone: 2
     WebGL: 1
     Windows Store Apps: 1
     XboxOne: 1
@@ -658,7 +659,7 @@ PlayerSettings:
   assemblyVersionValidation: 1
   gcWBarrierValidation: 0
   apiCompatibilityLevelPerPlatform:
-    Standalone: 3
+    Standalone: 6
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
   metroPackageName: Template_HD
@@ -741,4 +742,4 @@ PlayerSettings:
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
   forceSRGBBlit: 1
-  virtualTexturingSupportEnabled: 0
+  virtualTexturingSupportEnabled: 1
