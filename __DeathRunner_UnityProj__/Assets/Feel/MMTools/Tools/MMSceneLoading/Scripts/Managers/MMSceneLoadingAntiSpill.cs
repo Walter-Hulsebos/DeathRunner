@@ -17,6 +17,7 @@ namespace MoreMountains.Tools
 		protected string _sceneToLoadName;
 		protected string _antiSpillSceneName;
 		protected List<GameObject> _spillSceneRoots = new List<GameObject>(50);
+		protected static List<string> _scenesInBuild;
 		
 		/// <summary>
 		/// Creates the temporary scene
@@ -35,6 +36,14 @@ namespace MoreMountains.Tools
 			}
 			else
 			{
+				_scenesInBuild = MMScene.GetScenesInBuild();
+				if (!_scenesInBuild.Contains(antiSpillSceneName))
+				{
+					Debug.LogError("MMSceneLoadingAntiSpill : impossible to load the '"+antiSpillSceneName+"' scene, " +
+					               "there is no such scene in the project's build settings.");
+					return;
+				}
+				
 				SceneManager.LoadScene(antiSpillSceneName, LoadSceneMode.Additive);
 				_antiSpillScene = SceneManager.GetSceneByName(antiSpillSceneName);
 				_antiSpillSceneName = _antiSpillScene.name;

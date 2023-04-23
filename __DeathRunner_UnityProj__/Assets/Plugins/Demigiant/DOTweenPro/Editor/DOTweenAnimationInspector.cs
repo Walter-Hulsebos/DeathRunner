@@ -24,19 +24,19 @@ namespace DG.DOTweenEditor
     [CustomEditor(typeof(DOTweenAnimation))]
     public class DOTweenAnimationInspector : ABSAnimationInspector
     {
-        private enum FadeTargetType
+        enum FadeTargetType
         {
             CanvasGroup,
             Image
         }
 
-        private enum ChooseTargetMode
+        enum ChooseTargetMode
         {
             None,
             BetweenCanvasGroupAndImage
         }
 
-        private static readonly Dictionary<DOTweenAnimation.AnimationType, Type[]> _AnimationTypeToComponent = new Dictionary<DOTweenAnimation.AnimationType, Type[]>() {
+        static readonly Dictionary<DOTweenAnimation.AnimationType, Type[]> _AnimationTypeToComponent = new Dictionary<DOTweenAnimation.AnimationType, Type[]>() {
             { DOTweenAnimation.AnimationType.Move, new[] {
 #if true // PHYSICS_MARKER
                 typeof(Rigidbody),
@@ -120,14 +120,14 @@ namespace DG.DOTweenEditor
         };
 #endif
 #if true // TEXTMESHPRO_MARKER
-        private static readonly Dictionary<DOTweenAnimation.AnimationType, Type[]> _TMPAnimationTypeToComponent = new Dictionary<DOTweenAnimation.AnimationType, Type[]>() {
+        static readonly Dictionary<DOTweenAnimation.AnimationType, Type[]> _TMPAnimationTypeToComponent = new Dictionary<DOTweenAnimation.AnimationType, Type[]>() {
             { DOTweenAnimation.AnimationType.Color, new[] { typeof(TextMeshPro), typeof(TextMeshProUGUI) } },
             { DOTweenAnimation.AnimationType.Fade, new[] { typeof(TextMeshPro), typeof(TextMeshProUGUI) } },
             { DOTweenAnimation.AnimationType.Text, new[] { typeof(TextMeshPro), typeof(TextMeshProUGUI) } }
         };
 #endif
 
-        private static readonly string[] _AnimationType = new[] {
+        static readonly string[] _AnimationType = new[] {
             "None",
             "Move", "LocalMove",
             "Rotate", "LocalRotate",
@@ -149,39 +149,35 @@ namespace DG.DOTweenEditor
             "Shake/Position", "Shake/Rotation", "Shake/Scale",
             "Camera/Aspect", "Camera/BackgroundColor", "Camera/FieldOfView", "Camera/OrthoSize", "Camera/PixelRect", "Camera/Rect"
         };
+        static string[] _animationTypeNoSlashes; // _AnimationType list without slashes in values
+        static string[] _datString; // String representation of DOTweenAnimation enum (here for caching reasons)
 
-        private static string[] _animationTypeNoSlashes; // _AnimationType list without slashes in values
-        private static string[] _datString; // String representation of DOTweenAnimation enum (here for caching reasons)
-
-        private DOTweenAnimation _src;
-        private DOTweenSettings _settings;
-        private bool _runtimeEditMode; // If TRUE allows to change and save stuff at runtime
-        private bool _refreshRequired; // If TRUE refreshes components data
-        private int _totComponentsOnSrc; // Used to determine if a Component is added or removed from the source
-        private bool _isLightSrc; // Used to determine if we're tweening a Light, to set the max Fade value to more than 1
+        DOTweenAnimation _src;
+        DOTweenSettings _settings;
+        bool _runtimeEditMode; // If TRUE allows to change and save stuff at runtime
+        bool _refreshRequired; // If TRUE refreshes components data
+        int _totComponentsOnSrc; // Used to determine if a Component is added or removed from the source
+        bool _isLightSrc; // Used to determine if we're tweening a Light, to set the max Fade value to more than 1
 #pragma warning disable 414
-        private ChooseTargetMode _chooseTargetMode = ChooseTargetMode.None;
+        ChooseTargetMode _chooseTargetMode = ChooseTargetMode.None;
 #pragma warning restore 414
 
-        private static readonly GUIContent _GuiC_selfTarget_true = new GUIContent(
+        static readonly GUIContent _GuiC_selfTarget_true = new GUIContent(
             "SELF", "Will animate components on this gameObject"
         );
-
-        private static readonly GUIContent _GuiC_selfTarget_false = new GUIContent(
+        static readonly GUIContent _GuiC_selfTarget_false = new GUIContent(
             "OTHER", "Will animate components on the given gameObject instead than on this one"
         );
-
-        private static readonly GUIContent _GuiC_tweenTargetIsTargetGO_true = new GUIContent(
+        static readonly GUIContent _GuiC_tweenTargetIsTargetGO_true = new GUIContent(
             "Use As Tween Target", "Will set the tween target (via SetTarget, used to control a tween directly from a target) to the \"OTHER\" gameObject"
         );
-
-        private static readonly GUIContent _GuiC_tweenTargetIsTargetGO_false = new GUIContent(
+        static readonly GUIContent _GuiC_tweenTargetIsTargetGO_false = new GUIContent(
             "Use As Tween Target", "Will set the tween target (via SetTarget, used to control a tween directly from a target) to the gameObject containing this animation, not the \"OTHER\" one"
         );
 
         #region MonoBehaviour Methods
 
-        private void OnEnable()
+        void OnEnable()
         {
             _src = target as DOTweenAnimation;
             _settings = DOTweenUtilityWindow.GetDOTweenSettings();
@@ -204,7 +200,7 @@ namespace DG.DOTweenEditor
             }
         }
 
-        private void OnDisable()
+        void OnDisable()
         {
             DOTweenPreviewManager.StopAllPreviews();
         }
@@ -580,7 +576,7 @@ namespace DG.DOTweenEditor
         #region Methods
 
         // Returns TRUE if the Component layout on the src gameObject changed (a Component was added or removed)
-        private bool ComponentsChanged()
+        bool ComponentsChanged()
         {
             int prevTotComponentsOnSrc = _totComponentsOnSrc;
             _totComponentsOnSrc = _src.gameObject.GetComponents<Component>().Length;
@@ -588,7 +584,7 @@ namespace DG.DOTweenEditor
         }
 
         // Checks if a Component that can be animated with the given animationType is attached to the src
-        private bool Validate(GameObject targetGO)
+        bool Validate(GameObject targetGO)
         {
             if (_src.animationType == DOTweenAnimation.AnimationType.None) return false;
 
@@ -632,14 +628,13 @@ namespace DG.DOTweenEditor
             return false;
         }
 
-        private DOTweenAnimation.AnimationType AnimationToDOTweenAnimationType(string animation)
+        DOTweenAnimation.AnimationType AnimationToDOTweenAnimationType(string animation)
         {
             if (_datString == null) _datString = Enum.GetNames(typeof(DOTweenAnimation.AnimationType));
             animation = animation.Replace("/", "");
             return (DOTweenAnimation.AnimationType)(Array.IndexOf(_datString, animation));
         }
-
-        private int DOTweenAnimationTypeToPopupId(DOTweenAnimation.AnimationType animation)
+        int DOTweenAnimationTypeToPopupId(DOTweenAnimation.AnimationType animation)
         {
             return Array.IndexOf(_animationTypeNoSlashes, animation.ToString());
         }
@@ -648,7 +643,7 @@ namespace DG.DOTweenEditor
 
         #region GUI Draw Methods
 
-        private void GUIEndValueFloat()
+        void GUIEndValueFloat()
         {
             GUILayout.BeginHorizontal();
             GUIToFromButton();
@@ -656,7 +651,7 @@ namespace DG.DOTweenEditor
             GUILayout.EndHorizontal();
         }
 
-        private void GUIEndValueColor()
+        void GUIEndValueColor()
         {
             GUILayout.BeginHorizontal();
             GUIToFromButton();
@@ -664,7 +659,7 @@ namespace DG.DOTweenEditor
             GUILayout.EndHorizontal();
         }
 
-        private void GUIEndValueV3(GameObject targetGO, bool optionalTransform = false)
+        void GUIEndValueV3(GameObject targetGO, bool optionalTransform = false)
         {
             GUILayout.BeginHorizontal();
             GUIToFromButton();
@@ -699,7 +694,7 @@ namespace DG.DOTweenEditor
 #endif
         }
 
-        private void GUIEndValueV2()
+        void GUIEndValueV2()
         {
             GUILayout.BeginHorizontal();
             GUIToFromButton();
@@ -707,7 +702,7 @@ namespace DG.DOTweenEditor
             GUILayout.EndHorizontal();
         }
 
-        private void GUIEndValueString()
+        void GUIEndValueString()
         {
             GUILayout.BeginHorizontal();
             GUIToFromButton();
@@ -715,7 +710,7 @@ namespace DG.DOTweenEditor
             GUILayout.EndHorizontal();
         }
 
-        private void GUIEndValueRect()
+        void GUIEndValueRect()
         {
             GUILayout.BeginHorizontal();
             GUIToFromButton();
@@ -723,7 +718,7 @@ namespace DG.DOTweenEditor
             GUILayout.EndHorizontal();
         }
 
-        private void GUIToFromButton()
+        void GUIToFromButton()
         {
             if (GUILayout.Button(_src.isFrom ? "FROM" : "TO", EditorGUIUtils.sideBtStyle, GUILayout.Width(90))) _src.isFrom = !_src.isFrom;
             GUILayout.Space(16);
@@ -737,14 +732,14 @@ namespace DG.DOTweenEditor
     // █████████████████████████████████████████████████████████████████████████████████████████████████████████████████████
 
     [InitializeOnLoad]
-    internal static class Initializer
+    static class Initializer
     {
         static Initializer()
         {
             DOTweenAnimation.OnReset += OnReset;
         }
 
-        private static void OnReset(DOTweenAnimation src)
+        static void OnReset(DOTweenAnimation src)
         {
             DOTweenSettings settings = DOTweenUtilityWindow.GetDOTweenSettings();
             if (settings == null) return;

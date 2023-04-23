@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 //using DeathRunner.Movement;
-using DG.DemiEditor.DeGUINodeSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Tilemaps;
@@ -15,6 +14,7 @@ namespace DeathRunner.Weapons
 
         public SideWeapon sideWeapon;
 
+        [Space]
         private float cooldownTime;
 
         private float activeTime;
@@ -22,6 +22,8 @@ namespace DeathRunner.Weapons
         [SerializeField] Image cooldownImage;
 
         [SerializeField] private Transform muzzle;
+        
+        [SerializeField] GameObject shieldObj;
 
         [SerializeField] private InputActionReference secondaryFire;
         
@@ -31,7 +33,12 @@ namespace DeathRunner.Weapons
          Ready,
          Active,
          Cooldown
-        } 
+        }
+
+        private void Start()
+        {
+            shieldObj.SetActive(false);
+        }
 
         private WeaponState state = WeaponState.Ready;
 
@@ -47,9 +54,9 @@ namespace DeathRunner.Weapons
                         {
                             gun.Shoot(muzzle);
                         }
-                        else
+                        else if (sideWeapon is SWShield shield)
                         {
-                            sideWeapon.Activate(gameObject);    
+                            shield.Shield(gameObject, shieldObj);    
                         }
                         state = WeaponState.Active; 
                         activeTime = sideWeapon.activeTime;

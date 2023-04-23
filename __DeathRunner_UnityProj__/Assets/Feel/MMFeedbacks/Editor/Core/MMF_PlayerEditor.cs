@@ -41,6 +41,7 @@ namespace MoreMountains.Feedbacks
 		protected SerializedProperty _mmfeedbacksCanPlayWhileAlreadyPlaying;
 		protected SerializedProperty _mmfeedbacksPerformanceMode;
 		protected SerializedProperty _mmfeedbacksForceStopFeedbacksOnDisable;
+		protected SerializedProperty _mmfeedbacksPlayCount;
 		protected SerializedProperty _mmfeedbacksEvents;
 		protected SerializedProperty _keepPlayModeChanges;
 		protected SerializedProperty _mmfeedbacksChanceToPlay;
@@ -197,6 +198,7 @@ namespace MoreMountains.Feedbacks
 			_keepPlayModeChanges = serializedObject.FindProperty("KeepPlayModeChanges");
 			_mmfeedbacksPerformanceMode = serializedObject.FindProperty("PerformanceMode");
 			_mmfeedbacksForceStopFeedbacksOnDisable = serializedObject.FindProperty("ForceStopFeedbacksOnDisable");
+			_mmfeedbacksPlayCount = serializedObject.FindProperty("PlayCount");
 			_mmfeedbacksChanceToPlay = serializedObject.FindProperty("ChanceToPlay");
 			
 			_mmfeedbacksOnlyPlayIfWithinRange = serializedObject.FindProperty("OnlyPlayIfWithinRange");
@@ -415,6 +417,10 @@ namespace MoreMountains.Feedbacks
 				EditorGUILayout.PropertyField(_mmfeedbacksCanPlayWhileAlreadyPlaying);
 				EditorGUILayout.PropertyField(_mmfeedbacksPerformanceMode);
 				EditorGUILayout.PropertyField(_mmfeedbacksForceStopFeedbacksOnDisable);
+				if (Application.isPlaying)
+				{
+					EditorGUILayout.PropertyField(_mmfeedbacksPlayCount);	
+				}
 
 				EditorGUILayout.Space(10);
 				EditorGUILayout.LabelField(_eventsText, EditorStyles.boldLabel);

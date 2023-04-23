@@ -187,6 +187,7 @@ namespace MoreMountains.Feedbacks
 		protected bool _shouldStop = false;
 		protected const float _smallValue = 0.001f;
 		protected float _randomDurationMultiplier = 1f;
+		protected float _lastOnEnableFrame = -1;
 
 		#region INITIALIZATION
 

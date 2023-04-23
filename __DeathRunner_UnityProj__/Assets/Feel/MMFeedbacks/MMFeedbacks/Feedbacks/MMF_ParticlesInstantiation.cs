@@ -69,6 +69,9 @@ namespace MoreMountains.Feedbacks
 		/// if this is true, the particle system game object will be activated on Play, useful if you've somehow disabled it in a past Play
 		[Tooltip("if this is true, the particle system game object will be activated on Play, useful if you've somehow disabled it in a past Play")]
 		public bool ForceSetActiveOnPlay = false;
+		/// if this is true, the particle system will be stopped every time the feedback is reset - usually before play
+		[Tooltip("if this is true, the particle system will be stopped every time the feedback is reset - usually before play")]
+		public bool StopOnReset = false;
 
 		[MMFInspectorGroup("Position", true, 29)]
 		/// the selected position mode
@@ -453,9 +456,9 @@ namespace MoreMountains.Feedbacks
 				return;
 			}
 
-			if (_instantiatedParticleSystem != null)
+			if (StopOnReset && (_instantiatedParticleSystem != null))
 			{
-				_instantiatedParticleSystem?.Stop();
+				_instantiatedParticleSystem.Stop();
 			}
 			if ((_instantiatedRandomParticleSystems != null) && (_instantiatedRandomParticleSystems.Count > 0))
 			{

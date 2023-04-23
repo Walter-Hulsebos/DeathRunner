@@ -20,6 +20,7 @@ namespace MoreMountains.Feedbacks
 		/// sets the inspector color for this feedback
 		#if UNITY_EDITOR
 		public override Color FeedbackColor { get { return MMFeedbacksInspectorColors.FeedbacksColor; } }
+		public override string RequiredTargetText => GameObjectReference != null ? GameObjectReference.name : "";  
 		#endif
 		/// the duration of this feedback is the duration of the light, or 0 if instant
 		public override float FeedbackDuration => 0f;

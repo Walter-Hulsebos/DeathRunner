@@ -95,9 +95,16 @@ namespace MoreMountains.Feedbacks
 				case Modes.ChildAtIndex:
 					return owner.transform.GetChild(settings.ChildIndex).gameObject.GetComponent<T>();
 				case Modes.AnyChild:
+					for (int i = 0; i < owner.transform.childCount; i++) 
+					{
+						if (owner.transform.GetChild(i).GetComponent<T>() != null)
+						{
+							return owner.transform.GetChild(i).GetComponent<T>();
+						}
+					}
 					return owner.GetComponentInChildren<T>();
 				case Modes.Parent:
-					return owner.GetComponentInParent<T>();
+					return owner.transform.parent.GetComponentInParent<T>();
 				case Modes.FirstReferenceHolder: 
 				case Modes.PreviousReferenceHolder:
 				case Modes.ClosestReferenceHolder:

@@ -11,6 +11,7 @@ namespace Game
         [SerializeField] private GameObject[] enemies;
         [SerializeField] private GameObject[] doors;
 
+        private BoxCollider _collider;
         private int deadEnemies = 0;
         
         
@@ -25,6 +26,8 @@ namespace Game
             {
                 door.SetActive(false);
             }
+
+            _collider = GetComponent<BoxCollider>();
         }
 
         // Update is called once per frame
@@ -41,6 +44,8 @@ namespace Game
                 {
                     door.SetActive(true);
                 }
+
+                _collider.enabled = false;
             }
         }
         public void EnemyDied()

@@ -1,5 +1,7 @@
 using System.Collections;
 using Cysharp.Threading.Tasks;
+using Mono.CSharp;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -20,7 +22,7 @@ namespace DeathRunner.EnemyAI
             private GameObject _player;
 
             // Reference to the NavMeshAgent component
-            private NavMeshAgent navMeshAgent;
+            [SerializeField] private NavMeshAgent navMeshAgent;
 
             private Rigidbody rigidbody;
 
@@ -32,6 +34,7 @@ namespace DeathRunner.EnemyAI
 
             // Animator component for the enemy
             [SerializeField] private Animator animator;
+            
 
             // Cooldown between enemy attacks
             public float attackCooldown = 1;
@@ -48,6 +51,8 @@ namespace DeathRunner.EnemyAI
                 StartChase();
             }
 
+            [SerializeField] private GameObject healthDrop;
+            
             // Start chasing the player
             public void StartChase()
             {
@@ -151,12 +156,19 @@ namespace DeathRunner.EnemyAI
             
             public void OnDeath()
             {
+                
+                foreach(Transform child in transform.GetComponentsInChildren<Transform>() )
+                {
+                    child.gameObject.layer = LayerMask.NameToLayer("Pickup");
+                    print("changin layer");
+                }
                 StopAllCoroutines();
                 navMeshAgent.SetDestination(transform.position);
                 navMeshAgent.velocity = Vector3.zero;
                 currentState = States.Dead;
                 navMeshAgent.SetDestination(transform.position);
                 navMeshAgent.velocity = Vector3.zero;
+                Instantiate(healthDrop, transform.position, quaternion.identity);
                 StopAllCoroutines();
                 animator.SetTrigger("Death");
             }

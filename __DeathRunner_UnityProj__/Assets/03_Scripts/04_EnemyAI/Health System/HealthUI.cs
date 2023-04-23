@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Damageable
+namespace DeathRunner.Damageable
 {
     public class HealthUI : MonoBehaviour
     {

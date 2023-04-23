@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using Damageable.Message;
+using DeathRunner.Damageable.Message;
 using UnityEngine.Serialization;
 
-namespace Damageable
+namespace DeathRunner.Damageable
 {
-    public partial class Damageable : MonoBehaviour
+    public class Damageable : MonoBehaviour
     {
 
         public int maxHitPoints;
@@ -26,7 +26,7 @@ namespace Damageable
         public bool isInvulnerable { get; set; }
         public int currentHitPoints { get; private set; }
 
-        public UnityEvent OnDeath, OnReceiveDamage, OnHitWhileInvulnerable, OnBecomeVulnerable, OnResetDamage;
+        public UnityEvent OnDeath, OnReceiveDamage, OnHitWhileInvulnerable, OnBecomeVulnerable, OnResetDamage, OnHeal;
 
         [Tooltip("When this gameObject is damaged, these other gameObjects are notified.")]
         [EnforceType(typeof(Message.IMessageReceiver))]
@@ -41,6 +41,7 @@ namespace Damageable
         {
             ResetDamage();
             m_Collider = GetComponent<Collider>();
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         private void Update()
@@ -111,9 +112,16 @@ namespace Damageable
                 receiver.OnReceiveMessage(messageType, this, data);
             }
             
-            Debug.Log(gameObject + "took damage");
+            Debug.Log(currentHitPoints);
         }
 
+        public void HealDamage(int healAmount)
+        {
+            currentHitPoints += healAmount;
+             currentHitPoints = Mathf.Clamp(currentHitPoints, 0, maxHitPoints);
+            Debug.Log("Healing");
+            OnHeal.Invoke();
+        }
         private void LateUpdate()
         {
             if (schedule != null)

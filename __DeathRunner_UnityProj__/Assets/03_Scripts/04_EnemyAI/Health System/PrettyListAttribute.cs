@@ -6,7 +6,7 @@ using UnityEditor;
 using UnityEditorInternal;
 #endif
 
-namespace Damageable
+namespace DeathRunner.Damageable.Message
 {
     public class EnforceTypeAttribute : PropertyAttribute
     {
