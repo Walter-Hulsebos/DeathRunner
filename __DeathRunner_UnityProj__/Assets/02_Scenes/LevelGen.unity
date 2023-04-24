@@ -1890,8 +1890,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680118796}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0.7071058, y: -7.1054274e-15, z: -0.00000023841822, w: 0.70710784}
+  m_LocalPosition: {x: -0, y: 0.5, z: 0.019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1910,12 +1910,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 40000
+  m_Intensity: 1190.678
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
   m_SpotIESCutoffPercent: 100
-  m_LightDimmer: 0
+  m_LightDimmer: 1
   m_VolumetricDimmer: 1
   m_LightUnit: 0
   m_FadeDistance: 10000
@@ -1923,7 +1923,7 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 10
+  m_ShapeWidth: 8.42
   m_ShapeHeight: 2.55
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
@@ -2032,13 +2032,13 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.97647065, g: 0.9450981, b: 0.7568628, a: 1}
-  m_Intensity: 499.30963
-  m_Range: 10
+  m_Intensity: 17.651928
+  m_Range: 486.7
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -2073,11 +2073,11 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 10, y: 2.55}
+  m_AreaSize: {x: 8.42, y: 2.55}
   m_BounceIntensity: 0
-  m_ColorTemperature: 6570
+  m_ColorTemperature: 4250
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 10}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 486.7}
   m_UseBoundingSphereOverride: 1
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2099,7 +2099,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &702234982
 Light:
   m_ObjectHideFlags: 0
@@ -2107,7 +2107,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702234981}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
@@ -2365,7 +2365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &752520927
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3259,6 +3259,10 @@ PrefabInstance:
       propertyPath: managedReferences[2].BoundRenderer
       value: 
       objectReference: {fileID: 1128115344}
+    - target: {fileID: 1844868483793226354, guid: 11c95a1905a9f2843b02d9d95565bc59, type: 3}
+      propertyPath: aimInputActionReference
+      value: 
+      objectReference: {fileID: -7197029550092750775, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7, type: 3}
     - target: {fileID: 1844868483793226358, guid: 11c95a1905a9f2843b02d9d95565bc59, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -11638,7 +11642,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4058492985289719954, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.26
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 4058492985289719954, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11678,35 +11682,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4058492985289719957, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
       propertyPath: parameters.size.y
-      value: 87.7
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4058492985289719957, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
       propertyPath: parameters.negativeFade.x
-      value: 0.038200002
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4058492985289719957, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
       propertyPath: parameters.negativeFade.y
-      value: 0.43557584
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4058492985289719957, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
       propertyPath: parameters.negativeFade.z
-      value: 0.038200002
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4058492985289719957, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
       propertyPath: parameters.positiveFade.x
-      value: 0.038200002
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4058492985289719957, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
       propertyPath: parameters.positiveFade.y
-      value: 0.43557584
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4058492985289719957, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
       propertyPath: parameters.positiveFade.z
-      value: 0.038200002
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 4058492985289719957, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
       propertyPath: parameters.m_EditorUniformFade
-      value: 38.2
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8dcbf03a0448bc744acd9934d65e4f6c, type: 3}
