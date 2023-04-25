@@ -14,7 +14,7 @@ namespace DeathRunner.PlayerState
         {
             base.OnEnter();
             
-            Debug.Log("NormalTime.Enter");
+            //Debug.Log("NormalTime.Enter");
             
             Commands.IsSlowMotionEnabled = false;
         }

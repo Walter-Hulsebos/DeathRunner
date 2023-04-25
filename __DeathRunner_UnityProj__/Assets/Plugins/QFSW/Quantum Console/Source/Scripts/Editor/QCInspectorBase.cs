@@ -8,7 +8,7 @@ namespace QFSW.QC.Editor
 {
     public class QCInspectorBase : UnityEditor.Editor
     {
-        private const string ROOT_PATH = "Source";
+        const string ROOT_PATH = "Source";
         protected string BannerName => "Banner.png";
         protected Texture2D Banner { get; private set; }
 

@@ -56,7 +56,7 @@ namespace Drawing {
 		/// </summary>
 		internal int id;
 
-		private static int idCounter = 1;
+		static int idCounter = 1;
 
 		public RedrawScope (DrawingData gizmos) {
 			this.gizmos = gizmos;
@@ -115,7 +115,7 @@ namespace Drawing {
 	public class DrawingData {
 		/// <summary>Combines hashes into a single hash value</summary>
 		public struct Hasher : IEquatable<Hasher> {
-			private ulong hash;
+			ulong hash;
 
 			public static Hasher NotSupplied => new Hasher { hash = ulong.MaxValue };
 
@@ -157,13 +157,13 @@ namespace Drawing {
 
 			public Type type;
 			public BuilderData.Meta meta;
-			private bool submitted;
+			bool submitted;
 
 			// A single instance of a MeshBuffers struct.
 			// This needs to be stored in a NativeArray because we will use it as a pointer
 			// and it needs to be guaranteed to stay in the same position in memory.
 			public NativeArray<MeshBuffers> temporaryMeshBuffers;
-			private JobHandle buildJob, splitterJob;
+			JobHandle buildJob, splitterJob;
 			public List<MeshWithType> meshes;
 
 			public bool isValid => type != Type.Invalid;
@@ -215,7 +215,7 @@ namespace Drawing {
 				}
 			}
 
-			private static int SubmittedJobs = 0;
+			static int SubmittedJobs = 0;
 
 			public void SetSplitterJob (DrawingData gizmos, JobHandle splitterJob) {
 				this.splitterJob = splitterJob;
@@ -336,7 +336,7 @@ namespace Drawing {
 				}
 			}
 
-			private void PoolMeshes (DrawingData gizmos, bool includeCustom) {
+			void PoolMeshes (DrawingData gizmos, bool includeCustom) {
 				if (!isValid) throw new System.InvalidOperationException();
 				var outIndex = 0;
 				for (int i = 0; i < meshes.Count; i++) {
@@ -407,12 +407,12 @@ namespace Drawing {
 			}
 
 			public struct BitPackedMeta {
-				private uint flags;
+				uint flags;
 
-				private const int UniqueIDBitshift = 17;
-				private const int IsBuiltInFlagIndex = 16;
-				private const int IndexMask = (1 << IsBuiltInFlagIndex) - 1;
-				private const int MaxDataIndex = IndexMask;
+				const int UniqueIDBitshift = 17;
+				const int IsBuiltInFlagIndex = 16;
+				const int IndexMask = (1 << IsBuiltInFlagIndex) - 1;
+				const int MaxDataIndex = IndexMask;
 				public const int UniqueIdMask = (1 << (32 - UniqueIDBitshift)) - 1;
 
 
@@ -468,10 +468,10 @@ namespace Drawing {
 			public State state { get; private set; }
 			// TODO?
 			public bool preventDispose;
-			private JobHandle splitterJob;
-			private JobHandle disposeDependency;
-			private AllowedDelay disposeDependencyDelay;
-			private System.Runtime.InteropServices.GCHandle disposeGCHandle;
+			JobHandle splitterJob;
+			JobHandle disposeDependency;
+			AllowedDelay disposeDependencyDelay;
+			System.Runtime.InteropServices.GCHandle disposeGCHandle;
 			public Meta meta;
 
 			public void Reserve (int dataIndex, bool isBuiltInCommandBuilder) {
@@ -480,7 +480,7 @@ namespace Drawing {
 				packedMeta = new BitPackedMeta(dataIndex, (UniqueIDCounter++) & BitPackedMeta.UniqueIdMask, isBuiltInCommandBuilder);
 			}
 
-			private static int UniqueIDCounter = 0;
+			static int UniqueIDCounter = 0;
 
 			public void Init (Hasher hasher, RedrawScope frameRedrawScope, RedrawScope customRedrawScope, bool isGizmos, int drawOrderIndex, int sceneModeVersion) {
 				if (state != State.Reserved) throw new System.InvalidOperationException();
@@ -513,7 +513,7 @@ namespace Drawing {
 
 			[BurstCompile]
 			[AOT.MonoPInvokeCallback(typeof(AnyBuffersWrittenToDelegate))]
-			private unsafe static bool AnyBuffersWrittenTo (UnsafeAppendBuffer* buffers, int numBuffers) {
+			unsafe static bool AnyBuffersWrittenTo (UnsafeAppendBuffer* buffers, int numBuffers) {
 				bool any = false;
 
 				for (int i = 0; i < numBuffers; i++) {
@@ -524,16 +524,15 @@ namespace Drawing {
 
 			[BurstCompile]
 			[AOT.MonoPInvokeCallback(typeof(AnyBuffersWrittenToDelegate))]
-			private unsafe static void ResetAllBuffers (UnsafeAppendBuffer* buffers, int numBuffers) {
+			unsafe static void ResetAllBuffers (UnsafeAppendBuffer* buffers, int numBuffers) {
 				for (int i = 0; i < numBuffers; i++) {
 					buffers[i].Reset();
 				}
 			}
 
-			private unsafe delegate bool AnyBuffersWrittenToDelegate(UnsafeAppendBuffer* buffers, int numBuffers);
+			unsafe delegate bool AnyBuffersWrittenToDelegate(UnsafeAppendBuffer* buffers, int numBuffers);
 			private readonly unsafe static AnyBuffersWrittenToDelegate AnyBuffersWrittenToInvoke = BurstCompiler.CompileFunctionPointer<AnyBuffersWrittenToDelegate>(AnyBuffersWrittenTo).Invoke;
-
-			private unsafe delegate void ResetAllBuffersToDelegate(UnsafeAppendBuffer* buffers, int numBuffers);
+			unsafe delegate void ResetAllBuffersToDelegate(UnsafeAppendBuffer* buffers, int numBuffers);
 			private readonly unsafe static ResetAllBuffersToDelegate ResetAllBuffersToInvoke = BurstCompiler.CompileFunctionPointer<ResetAllBuffersToDelegate>(ResetAllBuffers).Invoke;
 
 			public void SubmitWithDependency (System.Runtime.InteropServices.GCHandle gcHandle, JobHandle dependency, AllowedDelay allowedDelay) {
@@ -630,7 +629,7 @@ namespace Drawing {
 				ClearData();
 			}
 
-			private void ClearData () {
+			void ClearData () {
 				// Wait for any jobs that might be running
 				// This is important to avoid memory corruption bugs
 				disposeDependency.Complete();
@@ -669,7 +668,7 @@ namespace Drawing {
 		}
 
 		internal struct BuilderDataContainer : IDisposable {
-			private BuilderData[] data;
+			BuilderData[] data;
 
 
 			public BuilderData.BitPackedMeta Reserve (bool isBuiltInCommandBuilder) {
@@ -733,10 +732,10 @@ namespace Drawing {
 		}
 
 		internal struct ProcessedBuilderDataContainer {
-			private ProcessedBuilderData[] data;
-			private Dictionary<ulong, List<int> > hash2index;
-			private Stack<int> freeSlots;
-			private Stack<List<int> > freeLists;
+			ProcessedBuilderData[] data;
+			Dictionary<ulong, List<int> > hash2index;
+			Stack<int> freeSlots;
+			Stack<List<int> > freeLists;
 
 			public int Reserve (ProcessedBuilderData.Type type, BuilderData.Meta meta) {
 				if (data == null) {
@@ -769,7 +768,7 @@ namespace Drawing {
 				return ref data[index];
 			}
 
-			private void Release (DrawingData gizmos, int i) {
+			void Release (DrawingData gizmos, int i) {
 				var h = data[i].meta.hasher.Hash;
 
 				if (!data[i].meta.hasher.Equals(Hasher.NotSupplied)) {
@@ -947,15 +946,15 @@ namespace Drawing {
 
 		internal BuilderDataContainer data;
 		internal ProcessedBuilderDataContainer processedData;
-		private List<RenderedMeshWithType> meshes = new List<RenderedMeshWithType>();
-		private List<Mesh> cachedMeshes = new List<Mesh>();
-		private List<Mesh> stagingCachedMeshes = new List<Mesh>();
+		List<RenderedMeshWithType> meshes = new List<RenderedMeshWithType>();
+		List<Mesh> cachedMeshes = new List<Mesh>();
+		List<Mesh> stagingCachedMeshes = new List<Mesh>();
 #if USE_RAW_GRAPHICS_BUFFERS
 		List<Mesh> stagingCachedMeshesDelay = new List<Mesh>();
 #endif
-		private int lastTimeLargestCachedMeshWasUsed = 0;
+		int lastTimeLargestCachedMeshWasUsed = 0;
 		internal SDFLookupData fontData;
-		private int currentDrawOrderIndex = 0;
+		int currentDrawOrderIndex = 0;
 
 		/// <summary>
 		/// Incremented every time the editor goes from play mode -> edit mode, or edit mode -> play mode.
@@ -981,7 +980,7 @@ namespace Drawing {
 		/// We cannot increment sceneModeVersion on PlayModeStateChange.ExitedPlayMode (not Exiting) instead, because some gizmos which we want to keep may
 		/// be drawn before that event fires. Yay, Unity is so helpful.
 		/// </summary>
-		private int adjustedSceneModeVersion {
+		int adjustedSceneModeVersion {
 			get {
 				return sceneModeVersion + (Application.isPlaying ? 1000 : 0);
 			}
@@ -999,7 +998,7 @@ namespace Drawing {
 			stagingCachedMeshes.Add(mesh);
 		}
 
-		private void SortPooledMeshes () {
+		void SortPooledMeshes () {
 			// TODO: Is accessing the vertex count slow?
 			cachedMeshes.Sort((a, b) => b.vertexCount - a.vertexCount);
 		}
@@ -1041,13 +1040,13 @@ namespace Drawing {
 			}
 		}
 
-		private static float CurrentTime {
+		static float CurrentTime {
 			get {
 				return Application.isPlaying ? Time.time : Time.realtimeSinceStartup;
 			}
 		}
 
-		private static void UpdateTime () {
+		static void UpdateTime () {
 			// Time.time cannot be accessed in the job system, so create a global variable which *can* be accessed.
 			// It's not updated as frequently, but it's only used for the WithDuration method, so it should be ok
 			SharedDrawingData.BurstTime.Data = CurrentTime;
@@ -1115,19 +1114,19 @@ namespace Drawing {
 		public DrawingSettings settingsAsset;
 
 		public int version { get; private set; } = 1;
-		private int lastTickVersion;
-		private int lastTickVersion2;
+		int lastTickVersion;
+		int lastTickVersion2;
 
 		public RedrawScope frameRedrawScope;
 
-		private struct Range {
+		struct Range {
 			public int start;
 			public int end;
 		}
 
-		private Dictionary<Camera, Range> cameraVersions = new Dictionary<Camera, Range>();
+		Dictionary<Camera, Range> cameraVersions = new Dictionary<Camera, Range>();
 
-		private void DiscardData (Hasher hasher) {
+		void DiscardData (Hasher hasher) {
 			processedData.ReleaseAllWithHash(this, hasher);
 		}
 
@@ -1207,19 +1206,19 @@ namespace Drawing {
 			// TODO: Filter cameraVersions to avoid memory leak
 		}
 
-		private class MeshCompareByDrawingOrder : IComparer<RenderedMeshWithType> {
+		class MeshCompareByDrawingOrder : IComparer<RenderedMeshWithType> {
 			public int Compare (RenderedMeshWithType a, RenderedMeshWithType b) {
 				return a.drawingOrderIndex - b.drawingOrderIndex;
 			}
 		}
 
-		private static readonly MeshCompareByDrawingOrder meshSorter = new MeshCompareByDrawingOrder();
+		static readonly MeshCompareByDrawingOrder meshSorter = new MeshCompareByDrawingOrder();
 		// Temporary array, cached to avoid allocations
-		private Plane[] frustrumPlanes = new Plane[6];
+		Plane[] frustrumPlanes = new Plane[6];
 		// Temporary block, cached to avoid allocations
-		private MaterialPropertyBlock customMaterialProperties = new MaterialPropertyBlock();
+		MaterialPropertyBlock customMaterialProperties = new MaterialPropertyBlock();
 
-		private void LoadMaterials () {
+		void LoadMaterials () {
 			// Make sure the material references are correct
 
 			// Note: When importing the package for the first time the asset database may not be up to date and Resources.Load may return null.
@@ -1241,7 +1240,7 @@ namespace Drawing {
 			LoadMaterials();
 		}
 
-		private static int CeilLog2 (int x) {
+		static int CeilLog2 (int x) {
 			// Should use `math.ceillog2` whenever we next raise the minimum compatible version of the mathematics package.
 			// This variant is prone to floating point errors.
 			return (int)math.ceil(math.log2(x));
@@ -1376,7 +1375,7 @@ namespace Drawing {
 		}
 
 		/// <summary>Returns a new axis aligned bounding box that contains the given bounding box after being transformed by the matrix</summary>
-		private static Bounds TransformBoundingBox (Matrix4x4 matrix, Bounds bounds) {
+		static Bounds TransformBoundingBox (Matrix4x4 matrix, Bounds bounds) {
 			var mn = bounds.min;
 			var mx = bounds.max;
 			// Create the bounding box from the bounding box of the transformed
