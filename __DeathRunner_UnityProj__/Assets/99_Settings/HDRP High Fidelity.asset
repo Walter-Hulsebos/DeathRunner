@@ -53,7 +53,7 @@ MonoBehaviour:
     supportRayTracing: 0
     supportedRayTracingMode: 3
     lightLoopSettings:
-      cookieAtlasSize: 512
+      cookieAtlasSize: 2048
       cookieFormat: 74
       cookieAtlasLastValidMip: 0
       cookieTexArraySize: 16
@@ -110,8 +110,8 @@ MonoBehaviour:
       screenSpaceShadowBufferFormat: 48
     decalSettings:
       drawDistance: 1000
-      atlasWidth: 2048
-      atlasHeight: 2048
+      atlasWidth: 4096
+      atlasHeight: 4096
       perChannelMask: 1
     postProcessSettings:
       m_LutSize: 32
