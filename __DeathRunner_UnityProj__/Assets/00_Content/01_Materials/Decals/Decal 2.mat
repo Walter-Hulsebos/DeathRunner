@@ -21,11 +21,9 @@ Material:
   disabledShaderPasses:
   - DistortionVectors
   - MOTIONVECTORS
-  - DecalMeshForwardEmissive
+  - TransparentDepthPostpass
   - TransparentDepthPrepass
   - TransparentBackface
-  - DecalProjectorForwardEmissive
-  - TransparentDepthPostpass
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
