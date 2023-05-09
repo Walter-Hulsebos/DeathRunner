@@ -1,9 +1,8 @@
 ﻿using System;
 using GenericScriptableArchitecture;
-
 using Bool = System.Boolean;
 
-namespace DeathRunner.Health
+namespace DeathRunner.Attributes
 {
     public interface IChangeable<T> where T : struct, IConvertible, IComparable, IFormattable
     {

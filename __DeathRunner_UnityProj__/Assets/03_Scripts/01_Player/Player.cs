@@ -11,6 +11,8 @@ using HFSM;
 using UnityEngine.Serialization;
 
 //Project-specific libraries last
+using DeathRunner.Health;
+
 using F32x2 = Unity.Mathematics.float2;
 
 namespace DeathRunner.PlayerState
@@ -20,6 +22,8 @@ namespace DeathRunner.PlayerState
         //NOTE: [Walter] Make shared states possible??
 
         [SerializeField] private PlayerReferences playerReferences = new();
+        
+        [SerializeField] private Health.Health health;
 
         [Tooltip("Locomotion Settings for Normal-Time")]
         [SerializeField] private LocomotionSettings locomotionNTSettings;

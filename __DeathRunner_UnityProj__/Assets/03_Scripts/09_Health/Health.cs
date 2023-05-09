@@ -1,18 +1,17 @@
 using System;
-using UnityEngine;
-using JetBrains.Annotations;
 using GenericScriptableArchitecture;
+using JetBrains.Annotations;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
-
+using UnityEngine;
 using static ProjectDawn.Mathematics.math2;
 
 using U16  = System.UInt16; //max 65,535
 using Bool = System.Boolean;
 
-namespace DeathRunner.Health
+namespace DeathRunner.Attributes
 {
     [Serializable]
     public struct Health : IChangeable<U16>, IDamageable

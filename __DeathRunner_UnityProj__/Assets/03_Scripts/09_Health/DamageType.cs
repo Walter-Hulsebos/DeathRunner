@@ -1,4 +1,4 @@
-namespace DeathRunner.Health
+namespace DeathRunner.Attributes
 {
     public enum DamageType
     {

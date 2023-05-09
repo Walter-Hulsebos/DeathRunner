@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace DeathRunner.Health
+namespace DeathRunner.Attributes
 {
     public class HealthUsageSample : MonoBehaviour
     {
