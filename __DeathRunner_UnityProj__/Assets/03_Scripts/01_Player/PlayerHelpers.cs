@@ -1,13 +1,11 @@
-using DeathRunner.Shared;
+using UnityEngine;
+using static Unity.Mathematics.math;
+
 using Drawing;
 using ProjectDawn.Mathematics;
 using ProjectDawn.Geometry3D;
-using UnityEngine;
-
-using static Unity.Mathematics.math;
 
 using DeathRunner.Shared;
-using DeathRunner.Utils;
 
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
@@ -19,7 +17,7 @@ using Bool  = System.Boolean;
 
 using Ray   = UnityEngine.Ray;
 
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     public static class PlayerHelpers
     {

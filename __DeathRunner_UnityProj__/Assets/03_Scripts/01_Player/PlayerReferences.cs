@@ -4,12 +4,10 @@ using EasyCharacterMovement;
 using JetBrains.Annotations;
 using UnityEngine;
 using Object = UnityEngine.Object;
-
-using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
 using Rotor = Unity.Mathematics.quaternion;
 
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     [Serializable]
     public class PlayerReferences

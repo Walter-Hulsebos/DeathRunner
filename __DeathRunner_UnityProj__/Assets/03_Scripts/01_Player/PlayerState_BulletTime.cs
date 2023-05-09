@@ -1,10 +1,7 @@
+using HFSM;
 using UnityEngine;
 
-using HFSM;
-
-using DeathRunner.Shared;
-
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     public class PlayerState_BulletTime : State
     {

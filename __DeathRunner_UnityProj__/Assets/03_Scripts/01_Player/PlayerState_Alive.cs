@@ -1,7 +1,6 @@
 using HFSM;
-using UnityEngine;
 
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     public sealed class PlayerState_Alive : State
     {

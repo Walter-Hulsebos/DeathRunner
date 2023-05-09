@@ -1,10 +1,7 @@
-using UnityEngine;
-
+using DeathRunner.Shared;
 using HFSM;
 
-using DeathRunner.Shared;
-
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     public sealed class PlayerState_NormalTime : State
     {

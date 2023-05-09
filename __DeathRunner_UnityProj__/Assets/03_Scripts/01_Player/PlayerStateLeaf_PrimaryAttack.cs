@@ -1,21 +1,17 @@
 using System;
 using System.Threading;
-
-using UnityEngine;
-using static Unity.Mathematics.math;
-
 using Cysharp.Threading.Tasks;
 using GenericScriptableArchitecture;
 using HFSM;
 using JetBrains.Annotations;
-
 using Sirenix.OdinInspector;
-
+using UnityEngine;
+using static Unity.Mathematics.math;
 using F32   = System.Single;
 using F32x3 = Unity.Mathematics.float3;
 using Bool  = System.Boolean;
 
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     public class PlayerStateLeaf_PrimaryAttack : StateLeaf
     {

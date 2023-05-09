@@ -1,24 +1,20 @@
 //System libraries first
-using System;
 
 //Unity-specific libraries next
+using System;
+using DeathRunner.Shared;
+using GenericScriptableArchitecture;
+using HFSM;
+using JetBrains.Annotations;
 using UnityEngine;
-using static Unity.Mathematics.math;
 
 //Third-party libraries next
-using JetBrains.Annotations;
-using HFSM;
-using GenericScriptableArchitecture;
 
 //Project-specific libraries last
-using DeathRunner.Shared;
-
 using F32   = System.Single;
 using F32x3 = Unity.Mathematics.float3;
 
-using Bool  = System.Boolean;
-
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     public sealed class PlayerStateLeaf_Idle : StateLeaf
     {

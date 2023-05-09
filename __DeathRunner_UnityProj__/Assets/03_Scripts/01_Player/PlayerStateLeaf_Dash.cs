@@ -6,19 +6,20 @@ using UnityEngine;
 using static Unity.Mathematics.math;
 
 //Third-party libraries next
-using JetBrains.Annotations;
-using HFSM;
-using ProjectDawn.Mathematics;
-using GenericScriptableArchitecture;
 using DG.Tweening;
 using EasyCharacterMovement;
+using GenericScriptableArchitecture;
+using HFSM;
+using JetBrains.Annotations;
+using ProjectDawn.Mathematics;
+
 
 using F32   = System.Single;
 using F32x3 = Unity.Mathematics.float3;
 
 using Bool  = System.Boolean;
 
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     public class PlayerStateLeaf_Dash : StateLeaf
     {

@@ -1,12 +1,8 @@
 using Animancer;
-
+using EasyCharacterMovement;
 using UnityEngine;
 
-using EasyCharacterMovement;
-
-using Bool = System.Boolean;
-
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     public class RedirectRootMotionToMotor : RedirectRootMotion<CharacterMotor>
     {

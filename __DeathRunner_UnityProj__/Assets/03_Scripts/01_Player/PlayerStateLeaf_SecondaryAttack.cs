@@ -1,7 +1,7 @@
 using HFSM;
 using UnityEngine;
 
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     public class PlayerStateLeaf_SecondaryAttack : StateLeaf
     {

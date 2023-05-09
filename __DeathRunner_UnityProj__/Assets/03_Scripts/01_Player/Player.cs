@@ -1,21 +1,20 @@
 //System libraries first
-using System;
-using System.Collections;
 
 //Unity-specific libraries next
+using System;
+using System.Collections;
+using DeathRunner.Attributes;
+using HFSM;
 using UnityEngine;
+using UnityEngine.Serialization;
 using static Unity.Mathematics.math;
 
 //Third-party libraries next
-using HFSM;
-using UnityEngine.Serialization;
 
 //Project-specific libraries last
-using DeathRunner.Health;
-
 using F32x2 = Unity.Mathematics.float2;
 
-namespace DeathRunner.PlayerState
+namespace DeathRunner.Player
 {
     public sealed class Player : MonoBehaviour
     {
@@ -23,7 +22,7 @@ namespace DeathRunner.PlayerState
 
         [SerializeField] private PlayerReferences playerReferences = new();
         
-        [SerializeField] private Health.Health health;
+        [SerializeField] private Health health;
 
         [Tooltip("Locomotion Settings for Normal-Time")]
         [SerializeField] private LocomotionSettings locomotionNTSettings;
