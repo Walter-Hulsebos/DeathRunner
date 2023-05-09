@@ -1,4 +1,6 @@
 using System.Runtime.CompilerServices;
+using static System.Runtime.CompilerServices.MethodImplOptions;
+
 using Unity.Mathematics;
 using UnityEngine;
 using static Unity.Mathematics.math;
@@ -51,7 +53,7 @@ namespace ProjectDawn.Mathematics
         
         /// <summary> Clamps the given vector's with its length clamped to <param name="maxLength"></param>. </summary>
         /// <summary> Returns a copy of given vector with its length clamped to <param name="maxLength"></param>. </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static F32x3 SetMaxLength(ref this F32x3 vector, F32 maxLength)
         {
             // F32 __sqrMagnitude = lengthsq(vector);
@@ -71,7 +73,7 @@ namespace ProjectDawn.Mathematics
         }
 
         /// <summary> Sets the given vector's length to <param name="length"></param>. </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static F32x3 SetLength(ref this F32x3 vector, F32 length)
         {
             vector = normalize(vector);
@@ -79,7 +81,7 @@ namespace ProjectDawn.Mathematics
         }
         
         /// <summary> Returns a copy of given vector with its length clamped to <param name="maxLength"></param>. </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static F32x3 WithMaxLength(this F32x3 vector, F32 maxLength)
         {
             // F32 __sqrMagnitude = lengthsq(vector);
@@ -109,7 +111,7 @@ namespace ProjectDawn.Mathematics
         // }
         
         /// <summary> Returns a copy of given vector with its length set to <param name="length"></param>. </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static F32x3 WithLength(ref this F32x3 vector, F32 length)
         {
             F32x3 __normalized = normalize(vector);
@@ -242,32 +244,32 @@ namespace ProjectDawn.Mathematics
         /// <summary>
         /// Returns cross product of two vectors.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static F32x2 cross(F32x2 a, F32x2 b) => new F32x2(a.x * b.y,  -(a.y * b.x));
         /// <summary>
         /// Returns cross product of two vectors.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static F64x2 cross(F64x2 a, F64x2 b) => new F64x2(a.x * b.y,  -(a.y * b.x));
 
         /// <summary>
         /// Returns determinant of two vectors.
         /// Sum of cross product elements.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static F32 determinant(F32x2 a, F32x2 b) => a.x * b.y - a.y * b.x;
         /// <summary>
         /// Returns determinant of two vectors.
         /// Sum of cross product elements.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static F64 determinant(F64x2 a, F64x2 b) => a.x * b.y - a.y * b.x;
 
         /// <summary>
         /// Returns determinant of two vectors.
         /// Sum of cross product elements.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static F32 determinant(F32x3 a, F32x3 b)
         {
             return ((a.y * b.z) - (a.z * b.y)) - ((a.z * b.x) - (a.x * b.z)) + ((a.x * b.y) - (a.y * b.x));
@@ -276,7 +278,7 @@ namespace ProjectDawn.Mathematics
         /// Returns determinant of two vectors.
         /// Sum of cross product elements.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static F64 determinant(F64x3 a, F64x3 b)
         {
             return ((a.y * b.z) - (a.z * b.y)) - ((a.z * b.x) - (a.x * b.z)) + ((a.x * b.y) - (a.y * b.x));
@@ -285,52 +287,52 @@ namespace ProjectDawn.Mathematics
         /// <summary>
         /// Returns true if points ordered counter clockwise.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool iscclockwise(F32x2 a, F32x2 b, F32x2 c) => determinant(c - a, b - a) < 0;
         /// <summary>
         /// Returns true if points ordered counter clockwise.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool iscclockwise(F32x3 a, F32x3 b, F32x3 c) => determinant(c - a, b - a) < 0;
         
         /// <summary>
         /// Returns true if points ordered counter clockwise.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool iscclockwise(F64x2 a, F64x2 b, F64x2 c) => determinant(c - a, b - a) < 0;
         /// <summary>
         /// Returns true if points ordered counter clockwise.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool iscclockwise(F64x3 a, F64x3 b, F64x3 c) => determinant(c - a, b - a) < 0;
         
         /// <summary>
         /// Returns true if points ordered clockwise.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool isclockwise(F32x2 a, F32x2 b, F32x2 c) => determinant(c - a, b - a) > 0;
         /// <summary>
         /// Returns true if points ordered clockwise.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool isclockwise(F32x3 a, F32x3 b, F32x3 c) => determinant(c - a, b - a) > 0;
         
         /// <summary>
         /// Returns true if points ordered clockwise.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool isclockwise(F64x2 a, F64x2 b, F64x2 c) => determinant(c - a, b - a) > 0;
         /// <summary>
         /// Returns true if points ordered clockwise.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool isclockwise(F64x3 a, F64x3 b, F64x3 c) => determinant(c - a, b - a) > 0;
 
 
         /// <summary>
         /// Returns true if valid triangle exists knowing three edge lengths.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool istriangle(F32 a, F32 b, F32 c)
         {
             // Sum of two triangle edge is always lower than third
@@ -342,7 +344,7 @@ namespace ProjectDawn.Mathematics
         /// <summary>
         /// Returns true if valid triangle exists knowing three edge lengths.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool istriangle(F64 a, F64 b, F64 c)
         {
             // Sum of two triangle edge is always lower than third
@@ -356,7 +358,7 @@ namespace ProjectDawn.Mathematics
         /// Returns if quad meets the Delaunay condition. Where a, b, c forms clockwise sorted triangle.
         /// Based on https://en.wikipedia.org/wiki/Delaunay_triangulation.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool isdelaunay(F32x2 a, F32x2 b, F32x2 c, F32x2 d)
         {
             F32x2 ad = a - d;
@@ -381,7 +383,7 @@ namespace ProjectDawn.Mathematics
         /// Returns if quad meets the Delaunay condition. Where a, b, c forms clockwise sorted triangle.
         /// Based on https://en.wikipedia.org/wiki/Delaunay_triangulation.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static Bool isdelaunay(F64x2 a, F64x2 b, F64x2 c, F64x2 d)
         {
             F64x2 ad = a - d;
@@ -407,7 +409,7 @@ namespace ProjectDawn.Mathematics
         /// Returns factorial of the value (etc 0! = 1, 1! = 1, 2! = 2, 3! = 6, 4! = 24 ...)
         /// Based on https://en.wikipedia.org/wiki/Factorial.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static I32 factorial(I32 value)
         {
             I32 factorial = 1;
@@ -420,7 +422,7 @@ namespace ProjectDawn.Mathematics
         /// <summary>
         /// Exchanges the values of a and b.
         /// </summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static void swap<T>(ref T a, ref T b)
         {
             T temp = a;
@@ -428,7 +430,23 @@ namespace ProjectDawn.Mathematics
             b = temp;
         }
         
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        [MethodImpl(AggressiveInlining)]
         public static U08 min(U08 a, U08 b) => a < b ? a : b;
+        [MethodImpl(AggressiveInlining)]
+        public static U16 min(U16 a, U16 b) => a < b ? a : b;
+        
+        [MethodImpl(AggressiveInlining)]
+        public static U08 max(U08 a, U08 b) => a > b ? a : b;
+        [MethodImpl(AggressiveInlining)]
+        public static U16 max(U16 a, U16 b) => a > b ? a : b;
+        
+        [MethodImpl(AggressiveInlining)]
+        public static U08 clamp(U08 target, U08 a, U08 b) => max(a, min(b, target));
+        [MethodImpl(AggressiveInlining)]
+        public static U16 clamp(U16 target, U16 a, U16 b) => max(a, min(b, target));
+    
+
+        
+        
     }
 }
