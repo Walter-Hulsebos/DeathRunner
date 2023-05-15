@@ -478,8 +478,13 @@ namespace CodeStage.AdvancedFPSCounter.CountersData
 			{
 				if (hasContent) text.Append(screenDataNewLine ? AFPSCounter.NewLine : ' ');
 				var res = Screen.currentResolution;
-
-				text.Append("SCR: ").Append(res.width).Append("x").Append(res.height).Append("@").Append(res.refreshRate).Append("Hz [window size: ").Append(Screen.width).Append("x").Append(Screen.height);
+#if UNITY_2022_2_OR_NEWER
+				var refreshRate = res.refreshRateRatio.ToString();
+#else
+				var refreshRate = res.refreshRate.ToString();
+#endif
+				text.Append("SCR: ").Append(res.width).Append("x").Append(res.height).Append("@").Append(refreshRate).Append("Hz [window size: ").Append(Screen.width).Append("x").Append(Screen.height);
+				
 				var dpi = Screen.dpi;
 				if (dpi > 0)
 				{

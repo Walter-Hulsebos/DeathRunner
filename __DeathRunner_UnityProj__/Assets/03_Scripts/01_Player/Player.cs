@@ -7,6 +7,7 @@ using DeathRunner.Attributes;
 using HFSM;
 using JetBrains.Annotations;
 using QFSW.QC;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Serialization;
 using static Unity.Mathematics.math;
@@ -48,8 +49,17 @@ namespace DeathRunner.Player
         [Tooltip("Walk Settings for Bullet-Time")]
         [SerializeField] private MoveSettings          moveBTSettings;
         
+        #if ODIN_INSPECTOR
+        [FoldoutGroup("Combat")]
+        #endif
         [SerializeField] private PrimaryAttackSettings primaryAttack00BTSettings;
+        #if ODIN_INSPECTOR
+        [FoldoutGroup("Combat")]
+        #endif
         [SerializeField] private PrimaryAttackSettings primaryAttack01BTSettings;
+        #if ODIN_INSPECTOR
+        [FoldoutGroup("Combat")]
+        #endif
         [SerializeField] private PrimaryAttackSettings primaryAttack02BTSettings;
 
         private State                           _root;

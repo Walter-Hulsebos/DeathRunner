@@ -707,7 +707,13 @@ namespace CodeStage.AdvancedFPSCounter
 		{
 			if (Instance != null) return Instance;
 
+#if UNITY_2023_1_OR_NEWER
+			var counter = FindFirstObjectByType<AFPSCounter>(FindObjectsInactive.Include);
+#elif UNITY_2020_1_OR_NEWER
+			var counter = FindObjectOfType<AFPSCounter>(true);
+#else
 			var counter = FindObjectOfType<AFPSCounter>();
+#endif
 			if (counter != null)
 			{
 				Instance = counter;
@@ -1258,7 +1264,13 @@ namespace CodeStage.AdvancedFPSCounter
 		[UnityEditor.MenuItem(GameObjectMenuPath, false)]
 		private static void AddToSceneInEditor()
 		{
+#if UNITY_2023_1_OR_NEWER
+			var counter = FindFirstObjectByType<AFPSCounter>(FindObjectsInactive.Include);
+#elif UNITY_2020_1_OR_NEWER
+			var counter = FindObjectOfType<AFPSCounter>(true);
+#else
 			var counter = FindObjectOfType<AFPSCounter>();
+#endif
 			if (counter != null)
 			{
 				if (counter.IsPlacedCorrectly())

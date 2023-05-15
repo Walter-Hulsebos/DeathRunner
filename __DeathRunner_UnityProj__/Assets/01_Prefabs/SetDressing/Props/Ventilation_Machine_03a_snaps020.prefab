@@ -10,9 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2224747500036147366}
   - component: {fileID: 2224747500036917384}
-  - component: {fileID: 7183971886286879439}
   - component: {fileID: 2224747500037917256}
-  - component: {fileID: 4152475636941803608}
   m_Layer: 0
   m_Name: Ventilation_Machine_03a_snaps020_LOD3
   m_TagString: Untagged
@@ -43,20 +41,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2224747500035658886}
   m_Mesh: {fileID: 4300006, guid: 4d09ce0eaac3e2b4fad3682e6c75ceb4, type: 3}
---- !u!64 &7183971886286879439
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224747500035658886}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300006, guid: 4d09ce0eaac3e2b4fad3682e6c75ceb4, type: 3}
 --- !u!23 &2224747500037917256
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -70,7 +54,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -99,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4152475636941803608
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224747500035658886}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8442974, y: 0.10420644, z: 0.8443408}
-  m_Center: {x: 0, y: 0.0015484691, z: -0.00002169609}
 --- !u!1 &2224747500035658888
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,9 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2224747500036147368}
   - component: {fileID: 2224747500036917386}
-  - component: {fileID: 6756746951668585523}
   - component: {fileID: 2224747500037917258}
-  - component: {fileID: 4210907078216379580}
   m_Layer: 0
   m_Name: Ventilation_Machine_03a_snaps020_LOD2
   m_TagString: Untagged
@@ -155,20 +124,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2224747500035658888}
   m_Mesh: {fileID: 4300004, guid: 4d09ce0eaac3e2b4fad3682e6c75ceb4, type: 3}
---- !u!64 &6756746951668585523
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224747500035658888}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300004, guid: 4d09ce0eaac3e2b4fad3682e6c75ceb4, type: 3}
 --- !u!23 &2224747500037917258
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -182,7 +137,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -211,19 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4210907078216379580
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224747500035658888}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8449917, y: 0.10730302, z: 0.8450296}
-  m_Center: {x: 0, y: 0.00000017881393, z: -0.000018954277}
 --- !u!1 &2224747500035658890
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,9 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2224747500036147370}
   - component: {fileID: 2224747500036917388}
-  - component: {fileID: 6777880803695195211}
   - component: {fileID: 2224747500037917260}
-  - component: {fileID: 6161477432668774148}
   m_Layer: 0
   m_Name: Ventilation_Machine_03a_snaps020_LOD1
   m_TagString: Untagged
@@ -267,20 +207,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2224747500035658890}
   m_Mesh: {fileID: 4300002, guid: 4d09ce0eaac3e2b4fad3682e6c75ceb4, type: 3}
---- !u!64 &6777880803695195211
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224747500035658890}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300002, guid: 4d09ce0eaac3e2b4fad3682e6c75ceb4, type: 3}
 --- !u!23 &2224747500037917260
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -294,7 +220,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -323,19 +249,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &6161477432668774148
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224747500035658890}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8449917, y: 0.10730302, z: 0.8450296}
-  m_Center: {x: 0, y: 0.00000017881393, z: -0.000018954277}
 --- !u!1 &2224747500035658892
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,9 +259,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2224747500036147372}
   - component: {fileID: 2224747500036917390}
-  - component: {fileID: 729199077880177842}
   - component: {fileID: 2224747500037917262}
-  - component: {fileID: 8014885610790153323}
   m_Layer: 0
   m_Name: Ventilation_Machine_03a_snaps020_LOD0
   m_TagString: Untagged
@@ -379,20 +290,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2224747500035658892}
   m_Mesh: {fileID: 4300000, guid: 4d09ce0eaac3e2b4fad3682e6c75ceb4, type: 3}
---- !u!64 &729199077880177842
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224747500035658892}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 4d09ce0eaac3e2b4fad3682e6c75ceb4, type: 3}
 --- !u!23 &2224747500037917262
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -406,7 +303,7 @@ MeshRenderer:
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
-  m_LightProbeUsage: 1
+  m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
@@ -435,19 +332,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8014885610790153323
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2224747500035658892}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.8449917, y: 0.10730302, z: 0.8450296}
-  m_Center: {x: 0, y: 0.00000017881393, z: -0.000018954277}
 --- !u!1 &2224747500035658894
 GameObject:
   m_ObjectHideFlags: 0
