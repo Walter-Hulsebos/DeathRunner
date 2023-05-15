@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59b50f3f3c408124284e825f38174dcf, type: 3}
+  m_Name: PlayerAttributes
+  m_EditorClassIdentifier: 
+  health:
+    <Max>k__BackingField: {fileID: 11400000, guid: 2ff66b555bd8e45489aaa1c71839822f,
+      type: 2}
+    currentHealthBackingField: {fileID: 11400000, guid: 65c94b9513319ea4e91c332f8e401e2a,
+      type: 2}
+    <OnChanged>k__BackingField: {fileID: 11400000, guid: e3d32e645a171fb4db1d064a022e23d5,
+      type: 2}
+    <OnDecreased>k__BackingField: {fileID: 11400000, guid: 8d31515b9de6d0140ac23c79b0244b3f,
+      type: 2}
+    <OnIncreased>k__BackingField: {fileID: 11400000, guid: 90b21fd356ae87348b9edb5558c8a674,
+      type: 2}
+    <OnDepleted>k__BackingField: {fileID: 11400000, guid: 6f837921cb312b64eb1379e8a8ee6b9a,
+      type: 2}

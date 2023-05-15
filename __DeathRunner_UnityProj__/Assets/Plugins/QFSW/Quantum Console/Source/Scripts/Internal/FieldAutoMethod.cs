@@ -18,14 +18,18 @@ namespace QFSW.QC.Internal
             _accessType = accessType;
             if (_accessType == AccessType.Read)
             {
-                if (_fieldInfo.IsStatic) { _internalDelegate = (Func<FieldInfo, object>)_StaticReader; }
-                else { _internalDelegate = (Func<object, object>)_fieldInfo.GetValue; }
+                _internalDelegate = _fieldInfo.IsStatic
+                    ? (Func<FieldInfo, object>)_StaticReader
+                    : (Func<object, object>)_fieldInfo.GetValue;
+
                 _parameters = Array.Empty<ParameterInfo>();
             }
             else
             {
-                if (_fieldInfo.IsStatic) { _internalDelegate = (Action<FieldInfo, object>)_StaticWriter; }
-                else { _internalDelegate = (Action<object, object>)_fieldInfo.SetValue; }
+                _internalDelegate = _fieldInfo.IsStatic
+                    ? (Action<FieldInfo, object>)_StaticWriter
+                    : (Action<object, object>)_fieldInfo.SetValue;
+
                 _parameters = new ParameterInfo[] { new CustomParameter(_internalDelegate.Method.GetParameters()[1], _fieldInfo.FieldType, "value") };
             }
         }

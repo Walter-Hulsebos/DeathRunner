@@ -27,13 +27,23 @@
         Singleton = 3,
 
         /// <summary>
-        /// Targets the first instance found of the MonoBehaviour. Includes inactive objects in its search
+        /// Targets the first instance found of the MonoBehaviour. Includes inactive objects in its search.
         /// </summary>
         SingleInactive = 4,
 
         /// <summary>
-        /// Targets all instances found of the MonoBehaviour. Includes inactive objects in its search
+        /// Targets all instances found of the MonoBehaviour. Includes inactive objects in its search.
         /// </summary>
-        AllInactive = 5
+        AllInactive = 5,
+
+        /// <summary>
+        /// The instance targeted will be specified as the first argument in the command invocation.
+        /// </summary>
+        Argument = 6,
+
+        /// <summary>
+        /// The instances targeted will be specified by an array as the first argument in the command invocation.
+        /// </summary>
+        ArgumentMulti = 7
     }
 }

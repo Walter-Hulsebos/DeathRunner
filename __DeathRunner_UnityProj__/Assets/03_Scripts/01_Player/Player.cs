@@ -5,6 +5,8 @@ using System;
 using System.Collections;
 using DeathRunner.Attributes;
 using HFSM;
+using JetBrains.Annotations;
+using QFSW.QC;
 using UnityEngine;
 using UnityEngine.Serialization;
 using static Unity.Mathematics.math;
@@ -20,33 +22,31 @@ namespace DeathRunner.Player
     {
         //NOTE: [Walter] Make shared states possible??
 
-        [SerializeField] private PlayerReferences playerReferences = new();
-        
-        [SerializeField] private Health health;
+        [SerializeField] private PlayerReferences      playerReferences = new();
+        [SerializeField] private PlayerAttributes      playerAttributes = new();
 
         [Tooltip("Locomotion Settings for Normal-Time")]
-        [SerializeField] private LocomotionSettings locomotionNTSettings;
+        [SerializeField] private LocomotionSettings    locomotionNTSettings;
         
         [Tooltip("Idle Settings for Normal-Time")]
-        [SerializeField] private IdleSettings idleNTSettings;
+        [SerializeField] private IdleSettings          idleNTSettings;
         [Tooltip("Walk Settings for Normal-Time")]
-        [SerializeField] private MoveSettings moveNtSettings;
+        [SerializeField] private MoveSettings          moveNtSettings;
         
         [Tooltip("Dash Settings for Normal-Time")]
-        [SerializeField] private DashSettings dashNTSettings;
+        [SerializeField] private DashSettings          dashNTSettings;
         
         [SerializeField] private PrimaryAttackSettings primaryAttack00NTSettings;
         [SerializeField] private PrimaryAttackSettings primaryAttack01NTSettings;
         [SerializeField] private PrimaryAttackSettings primaryAttack02NTSettings;
         
         [Tooltip("Locomotion Settings for Bullet-Time")]
-        [SerializeField] private LocomotionSettings locomotionBTSettings;
+        [SerializeField] private LocomotionSettings    locomotionBTSettings;
         
         [Tooltip("Idle Settings for Bullet-Time")]
-        [SerializeField] private IdleSettings idleBTSettings;
-        [FormerlySerializedAs("moveBtSettings")]
+        [SerializeField] private IdleSettings          idleBTSettings;
         [Tooltip("Walk Settings for Bullet-Time")]
-        [SerializeField] private MoveSettings moveBTSettings;
+        [SerializeField] private MoveSettings          moveBTSettings;
         
         [SerializeField] private PrimaryAttackSettings primaryAttack00BTSettings;
         [SerializeField] private PrimaryAttackSettings primaryAttack01BTSettings;
@@ -74,10 +74,10 @@ namespace DeathRunner.Player
         
         private PlayerStateLeaf_SecondaryAttack _secondaryAttackNT;
         
-        private State     _locomotionBT;
+        private State                           _locomotionBT;
 
-        private StateLeaf _idleBT;
-        private StateLeaf _walkBT;
+        private StateLeaf                       _idleBT;
+        private StateLeaf                       _walkBT;
         
         private PlayerStateLeaf_PrimaryAttack   _primaryAttackBT00;
         private PlayerStateLeaf_PrimaryAttack   _primaryAttackBT01;
@@ -148,6 +148,8 @@ namespace DeathRunner.Player
         private void CreateStateTransitions()
         {
             //Alive <-> Dead
+            _alive.AddTransition(to: _dead,  conditions: () => playerAttributes.health.IsZero == true);
+             _dead.AddTransition(to: _alive, conditions: () => playerAttributes.health.IsZero == false);
             
             //Normal Time <-> Bullet Time
             //For now just use a button press to switch between the two
@@ -281,6 +283,31 @@ namespace DeathRunner.Player
             }
         }
         
+        #endregion
+
+        #region Commands
+
+        [Command(aliasOverride: "Player.Health.Kill")]
+        [UsedImplicitly]
+        public void KillPlayer()
+        {
+            playerAttributes.health.Value = 0;
+        }
+        
+        [Command(aliasOverride: "Player.Health.Add")]
+        [UsedImplicitly]
+        public void AddHealth(UInt16 amount)
+        {
+            playerAttributes.health.Value += amount;
+        }
+        
+        [Command(aliasOverride: "Player.Health.Sub")]
+        [UsedImplicitly]
+        public void SubHealth(UInt16 amount)
+        {
+            playerAttributes.health.Value -= amount;
+        }
+
         #endregion
     }
 }

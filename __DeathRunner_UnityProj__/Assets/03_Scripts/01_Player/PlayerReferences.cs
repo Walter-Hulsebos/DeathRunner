@@ -1,16 +1,20 @@
 using System;
-using DeathRunner.Inputs;
-using EasyCharacterMovement;
-using JetBrains.Annotations;
 using UnityEngine;
+
+using JetBrains.Annotations;
+
+using EasyCharacterMovement;
+
+using DeathRunner.Inputs;
+
 using Object = UnityEngine.Object;
-using F32x3 = Unity.Mathematics.float3;
-using Rotor = Unity.Mathematics.quaternion;
+using F32x3  = Unity.Mathematics.float3;
+using Rotor  = Unity.Mathematics.quaternion;
 
 namespace DeathRunner.Player
 {
     [Serializable]
-    public class PlayerReferences
+    public sealed class PlayerReferences
     {
         [field:SerializeField] public Camera         Camera       { get; [UsedImplicitly] private set; }
         [field:SerializeField] public CharacterMotor Motor        { get; [UsedImplicitly] private set; }

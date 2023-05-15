@@ -7,7 +7,7 @@ namespace DeathRunner.Attributes
     public interface IChangeable<T> where T : struct, IConvertible, IComparable, IFormattable
     {
         public Constant<T>           Max     { get; }
-        public T                     Current { get; }
+        public T                     Value   { get; set; }
         
         public ScriptableEvent<T, T> OnChanged   { get; }
         public ScriptableEvent       OnDecreased { get; }

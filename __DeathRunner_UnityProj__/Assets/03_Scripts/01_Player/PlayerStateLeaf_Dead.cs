@@ -1,4 +1,5 @@
 using HFSM;
+using UnityEngine;
 
 namespace DeathRunner.Player
 {
@@ -8,14 +9,14 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
-            //Debug.Log("Dead.Enter");
+            Debug.Log("Dead.Enter");
         }
         
         protected override void OnExit()
         {
             base.OnExit();
             
-            //Debug.Log("Dead.Exit");
+            Debug.Log("Dead.Exit");
         }
     }
 }

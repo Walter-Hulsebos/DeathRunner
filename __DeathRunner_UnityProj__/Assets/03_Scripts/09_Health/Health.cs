@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 #endif
 using UnityEngine;
+using UnityEngine.Serialization;
 using static ProjectDawn.Mathematics.math2;
 
 using U16  = System.UInt16; //max 65,535
@@ -22,34 +23,34 @@ namespace DeathRunner.Attributes
         #if ODIN_INSPECTOR
         [LabelText("Current Health")]
         #endif
-        [field:SerializeField] private Variable<U16> _currentHealthBackingField;
-        public U16 Current 
+        [field:SerializeField] private Variable<U16> currentHealthBackingField;
+        public U16 Value 
         {
-            get => _currentHealthBackingField.Value;
-            private set
+            get => currentHealthBackingField.Value;
+            set
             {
-                if(value == _currentHealthBackingField.Value) return;
+                if(value == currentHealthBackingField.Value) return;
                 
                 value = min(value, Max.Value); //Make sure we don't go over the max
                 
-                if (value == _currentHealthBackingField.Value) return;
+                if (value == currentHealthBackingField.Value) return;
                 
-                U16 __previous = _currentHealthBackingField.Value;
-                _currentHealthBackingField.Value = value;
+                U16 __previous = currentHealthBackingField.Value;
+                currentHealthBackingField.Value = value;
                 
                 if (OnChanged != null)
                 {
-                    OnChanged.Invoke(__previous, _currentHealthBackingField.Value);   
+                    OnChanged.Invoke(__previous, currentHealthBackingField.Value);   
                 }
 
-                if (_currentHealthBackingField.Value > __previous)
+                if (currentHealthBackingField.Value > __previous)
                 {
                     if (OnIncreased != null)
                     {
                         OnIncreased.Invoke();
                     }
                 }
-                else if (_currentHealthBackingField.Value < __previous)
+                else if (currentHealthBackingField.Value < __previous)
                 {
                     if (OnDecreased != null)
                     {
@@ -57,7 +58,7 @@ namespace DeathRunner.Attributes
                     }
                 }
                 
-                if (_currentHealthBackingField == 0)
+                if (currentHealthBackingField == 0)
                 {
                     if (OnDepleted != null)
                     {
@@ -76,6 +77,6 @@ namespace DeathRunner.Attributes
         [field:SerializeField]
         public ScriptableEvent                 OnDepleted  { get; [UsedImplicitly] private set; }
 
-        public Bool IsZero => Current == 0;
+        public Bool IsZero => Value == 0;
     }
 }

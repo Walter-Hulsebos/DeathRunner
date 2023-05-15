@@ -17,7 +17,8 @@ namespace QFSW.QC
         /// <param name="lambda">The lambda to create a command from. To work around type system limitation you may need to first store the lambda in a strong delegate type like Action or Func.</param>
         /// <param name="commandName">The name to use for the command.</param>
         /// <param name="commandDescription">The description, if any, for the command.</param>
-        public LambdaCommandData(Delegate lambda, string commandName, string commandDescription = "") : base(lambda.Method, new CommandAttribute(commandName, commandDescription, MonoTargetType.Registry))
+        public LambdaCommandData(Delegate lambda, string commandName, string commandDescription = "")
+            : base(lambda.Method, new CommandAttribute(commandName, commandDescription, MonoTargetType.Registry))
         {
             _lambdaTarget = lambda.Target;
         }

@@ -1,7 +1,6 @@
 using UnityEngine;
 using static Unity.Mathematics.math;
 
-using Drawing;
 using GenericScriptableArchitecture;
 using ProjectDawn.Mathematics;
 using Animancer;
