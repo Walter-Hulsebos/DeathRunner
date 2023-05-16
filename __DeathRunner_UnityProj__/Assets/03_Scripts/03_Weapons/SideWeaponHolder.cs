@@ -26,6 +26,8 @@ namespace DeathRunner.Weapons
         [SerializeField] GameObject shieldObj;
 
         [SerializeField] private InputActionReference secondaryFire;
+
+        [SerializeField] private Camera _mainCamera;
         
         // Update is called once per frame
         enum WeaponState
@@ -52,7 +54,7 @@ namespace DeathRunner.Weapons
                     {
                         if (sideWeapon is SWGun gun)
                         {
-                            gun.Shoot(muzzle);
+                            gun.Shoot(muzzle, _mainCamera);
                         }
                         else if (sideWeapon is SWShield shield)
                         {

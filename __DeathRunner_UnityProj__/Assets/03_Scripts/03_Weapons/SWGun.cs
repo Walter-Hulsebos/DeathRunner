@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.Serialization;
 using Unity.Mathematics;
+using UnityEditor;
 using UnityEngine;
 
 namespace DeathRunner.Weapons
@@ -9,10 +11,13 @@ namespace DeathRunner.Weapons
     public class SWGun : SideWeapon
     {
         [SerializeField] private GameObject bulletPrefab;
-        
-        public void Shoot(Transform muzzle)
+        private Camera mainCamera;
+
+
+        public void Shoot(Transform muzzle, Camera camera)
         {
-            Instantiate(bulletPrefab, muzzle.position ,muzzle.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
         }
+        
     }
 }

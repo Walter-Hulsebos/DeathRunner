@@ -1,9 +1,12 @@
 using System.Collections;
+using System.Numerics;
 using Cysharp.Threading.Tasks;
 using Mono.CSharp;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace DeathRunner.EnemyAI
     {
@@ -34,13 +37,17 @@ namespace DeathRunner.EnemyAI
 
             // Animator component for the enemy
             [SerializeField] private Animator animator;
-            
+
+            [HideInInspector] public bool canAttack;
 
             // Cooldown between enemy attacks
             public float attackCooldown = 1;
 
             [HideInInspector] public bool moveInAttack = false;
 
+
+            private Vector3 chasePos = Vector3.zero;
+            
             // Called once when the object is created
             private void Start()
             {
@@ -64,8 +71,10 @@ namespace DeathRunner.EnemyAI
 
                 // Enable NavMeshAgent component
                 navMeshAgent.enabled = true;
-            }
 
+                canAttack = false;
+            }
+            
             // Called once per frame
             private async UniTask Update()
             {
@@ -74,13 +83,15 @@ namespace DeathRunner.EnemyAI
                 {
                     case States.Chasing:
                         // Set the destination for the NavMeshAgent to the player's position
-                        navMeshAgent.SetDestination(_player.transform.position);
+                      //  navMeshAgent.SetDestination(_player.transform.position);
+
+                        navMeshAgent.SetDestination(chasePos);
 
                         // Look at the player
                         LookAtPlayer();
 
                         // If the enemy is within attack distance, start attacking
-                        if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance)
+                        if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance && canAttack)
                         {
                             // Change the state to attacking
                             currentState = States.Attacking;
@@ -96,13 +107,10 @@ namespace DeathRunner.EnemyAI
 
                             // Delay ending the attack
                          //   StartCoroutine(EndAttack());
-
-
+                            
+                           
                             navMeshAgent.enabled = false;
-                            //TODO make it delay endAttack if the enemy gets attacked.
-                            //TODO figure out how to make attacking state only while actually attacking, then go to idle for some time
                         }
-
                         break;
 
                     case States.Attacking:
@@ -166,11 +174,15 @@ namespace DeathRunner.EnemyAI
                 navMeshAgent.SetDestination(transform.position);
                 navMeshAgent.velocity = Vector3.zero;
                 currentState = States.Dead;
-                navMeshAgent.SetDestination(transform.position);
                 navMeshAgent.velocity = Vector3.zero;
                 Instantiate(healthDrop, transform.position, quaternion.identity);
                 StopAllCoroutines();
                 animator.SetTrigger("Death");
+            }
+
+            public void GetTargetPos(Vector3 targetPos)
+            {
+                chasePos = targetPos;
             }
             
             // Editor-only code for cleaning up the script

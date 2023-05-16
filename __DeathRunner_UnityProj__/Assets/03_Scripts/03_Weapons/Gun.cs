@@ -14,6 +14,8 @@ public class Gun : MonoBehaviour
         
     [SerializeField] private UltEvent onAttack;
 
+    [SerializeField] private Camera mainCamera;
+
     //This code is for the new InputSystem
     /*
     private LookAround actions;
@@ -90,7 +92,7 @@ public class Gun : MonoBehaviour
             rotation: origin.rotation,
             parent:   null
         );
-        
+        print("Lookin");
         _nextTimeToFire = time + (1f / weaponSettings.fireRate);
         
         return __projectile;

@@ -175,7 +175,12 @@ namespace DeathRunner.EnemyAI
                 currentState = States.Dead;
                 navMeshAgent.SetDestination(transform.position);
                 navMeshAgent.velocity = Vector3.zero;
-                Instantiate(HealthDrop, transform.position, quaternion.identity);
+
+                if (Random.Range(0, 3) == 1)
+                {
+                    Instantiate(HealthDrop, transform.position, quaternion.identity);
+                }
+
                 StopAllCoroutines();
                 animator.SetTrigger("Death");
             }
