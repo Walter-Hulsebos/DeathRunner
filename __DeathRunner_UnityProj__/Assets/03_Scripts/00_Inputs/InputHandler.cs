@@ -1,11 +1,13 @@
 using System;
+using System.Threading;
+using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using ExtEvents;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.Serialization;
 using static Unity.Mathematics.math;
 
 using F32   = System.Single;
@@ -53,10 +55,97 @@ namespace DeathRunner.Inputs
 
         [FoldoutGroup(groupName: "Dash")]
         [SerializeField] private InputActionReference dashInputActionReference;
+        [FoldoutGroup(groupName: "Dash")]
+        private Bool                                  dashInputIsHeldBackingField;
+        public Bool                                   DashInputIsHeld
+        {
+            get => dashInputIsHeldBackingField;
+            set
+            {
+                Bool __inputHasNotChanged = (value == dashInputIsHeldBackingField);
+                
+                if (__inputHasNotChanged) return;
+                
+                dashInputIsHeldBackingField = value;
+                
+                // Dash input has changed
+                OnDashInputChanged?.Invoke(dashInputIsHeldBackingField);
+                
+                // Changed from "not held" to "held"
+                if (dashInputIsHeldBackingField)
+                {
+                    DashInputStartedHandler().Forget();
+                }
+                // Changed from "held" to "not held"
+                else
+                {
+                    DashInputStoppedHandler().Forget();
+                }
+            }
+        }
+
+        private async UniTask DashInputStartedHandler()
+        {
+            _timeOfLastDashInputStart = Time.time;
+            
+            OnDashStarted?.Invoke();
+            
+            DashInputStartedThisFrame = true;
+            Debug.Log($"[{Time.time}] DashInputStartedThisFrame = true");
+            //await UniTask.Yield(); //Wait one frame.
+            await UniTask.DelayFrame(delayFrameCount: 1, delayTiming: PlayerLoopTiming.Update);
+            Debug.Log($"[{Time.time}] DashInputStartedThisFrame = false");
+            DashInputStartedThisFrame = false;
+        }
+        
+        private async UniTask DashInputStoppedHandler()
+        {
+            _timeOfLastDashInputStop = Time.time;
+            
+            OnDashStopped?.Invoke();
+            
+            DashInputStoppedThisFrame = true;
+            Debug.Log($"[{Time.time}] DashInputStoppedThisFrame = true");
+            //await UniTask.Yield(); //Wait one frame.
+
+            await UniTask.DelayFrame(delayFrameCount: 1, delayTiming: PlayerLoopTiming.Update);
+            
+            Debug.Log($"[{Time.time}] DashInputStoppedThisFrame = false");
+            DashInputStoppedThisFrame = false;
+        }
+
         [field:FoldoutGroup(groupName: "Dash")]
-        [field:SerializeField] public Bool            DashInput          { get; private set; }
+        [field:SerializeField] public Bool            DashInputStartedThisFrame   { get; private set; }
+        [field:FoldoutGroup(groupName: "Dash")]
+        [field:SerializeField] public Bool            DashInputStoppedThisFrame   { get; private set; }
+        
+        private F32 _timeOfLastDashInputStart;
+        private F32 _timeOfLastDashInputStop;
+
+        public F32 DashHoldTime
+        {
+            get
+            {
+                Bool __stopIsAfterStart = _timeOfLastDashInputStop > _timeOfLastDashInputStart;
+
+                if (__stopIsAfterStart) //If the stop is after the start, return the difference.
+                {
+                    return (_timeOfLastDashInputStop - _timeOfLastDashInputStart);
+                }
+
+                if (DashInputIsHeld) //If the stop is before the start, compare with current time.
+                {
+                    return (Time.time - _timeOfLastDashInputStart);   
+                }
+
+                //If the stop is before the start, and the input is not held, return 0.
+                return 0f;
+            }
+        }
+        //public F32                                    DashHoldTime       { get; private set; }
         public event Action<Bool>                     OnDashInputChanged;
-        public event Action                           OnDashTriggered;
+        public event Action                           OnDashStarted;
+        public event Action                           OnDashStopped;
 
         [FoldoutGroup(groupName: "Primary Fire")]
         [SerializeField] private InputActionReference primaryFireInputActionReference;
@@ -89,6 +178,9 @@ namespace DeathRunner.Inputs
         
         public F32x2                                  MouseScreenPosition => (F32x2)Mouse.current.position.ReadValue();
         
+        private CancellationTokenSource _holdTimeCounterCancellationTokenSource;
+        private CancellationToken       _holdTimeCounterCancellationToken;
+
         #endregion
 
         #region Methods
@@ -101,6 +193,9 @@ namespace DeathRunner.Inputs
             primaryFireInputActionReference.action.Enable();
             secondaryFireInputActionReference.action.Enable();
             slowMoToggleInputActionReference.action.Enable();
+            
+            _holdTimeCounterCancellationTokenSource = new CancellationTokenSource();
+            _holdTimeCounterCancellationToken       = _holdTimeCounterCancellationTokenSource.Token;
         }
         
         private void OnDisable()
@@ -111,6 +206,8 @@ namespace DeathRunner.Inputs
             primaryFireInputActionReference.action.Disable();
             secondaryFireInputActionReference.action.Disable();
             slowMoToggleInputActionReference.action.Disable();
+            
+            _holdTimeCounterCancellationTokenSource.Cancel();
         }
         
         private void Awake()
@@ -265,24 +362,68 @@ namespace DeathRunner.Inputs
 
         #region Dash Input Callbacks
 
-        private void OnDashInputStarted(InputAction.CallbackContext ctx)   => HandleDashInput(newDashInput: ctx.ReadValueAsButton());
-        private void OnDashInputPerformed(InputAction.CallbackContext ctx) => HandleDashInput(newDashInput: ctx.ReadValueAsButton());
-        private void OnDashInputCanceled(InputAction.CallbackContext ctx)  => HandleDashInput(newDashInput: false);
+        private void OnDashInputStarted(InputAction.CallbackContext ctx)   => DashInputIsHeld = ctx.ReadValueAsButton();
+        private void OnDashInputPerformed(InputAction.CallbackContext ctx) => DashInputIsHeld = ctx.ReadValueAsButton();
+        private void OnDashInputCanceled(InputAction.CallbackContext ctx)  => DashInputIsHeld = false;
+        
+        // private void HandleDashInput(Bool newDashInputIsHeld)
+        // {
+        //     Bool __inputHasNotChanged = (newDashInputIsHeld == DashInputIsHeld);
+        //     
+        //     if (__inputHasNotChanged) return;
+        //     
+        //     DashInputIsHeld = newDashInputIsHeld;
+        //
+        //     OnDashInputChanged?.Invoke(DashInputIsHeld);
+        //     
+        //     // Just started holding the dash input
+        //     if (DashInputIsHeld)
+        //     {
+        //         OnDashStarted?.Invoke();
+        //         DashInputStarted = true;
+        //         
+        //         _timeOfLastStartDashInput = Time.time;
+        //         
+        //         //HoldTimeCounter().Forget();
+        //     }
+        //     // Just released the dash input
+        //     else
+        //     {
+        //         OnDashStopped?.Invoke();
+        //         DashInputStopped = true;
+        //         
+        //         _timeOfLastStopDashInput = Time.time;
+        //     }
+        // }
+        
+        //TODO: [Walter] Instead just save the times when the input started and stopped, and calculate the hold time when needed. (on poll or on stop)
 
-        private void HandleDashInput(Bool newDashInput)
-        {
-            Bool __inputHasChanged = (DashInput != newDashInput);
-            
-            if (!__inputHasChanged) return;
-            DashInput = newDashInput;
-
-            OnDashInputChanged?.Invoke(DashInput);
-                
-            if (DashInput)
-            {
-                OnDashTriggered?.Invoke();
-            }
-        }
+        // private async UniTask HoldTimeCounter()
+        // {
+        //     while(DashInputIsHeld)
+        //     {
+        //         DashInputStarted = false;
+        //         
+        //         await UniTask.Yield();
+        //         
+        //         if (_holdTimeCounterCancellationToken.IsCancellationRequested)
+        //         {
+        //             DashHoldTime = 0;
+        //             return;
+        //         }
+        //         
+        //         DashHoldTime += Time.deltaTime;
+        //     }
+        //     
+        //     DashInputStopped = true;
+        //     
+        //     await UniTask.Yield();
+        //     
+        //     DashInputStopped = false;
+        //     
+        //     //Clear the hold time counter a frame after the dash input is released, so that things that rely on the dash hold time can still get the value.
+        //     DashHoldTime = 0;
+        // } 
         
         #endregion
 
