@@ -33,6 +33,10 @@ MonoBehaviour:
       - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
         _guid: 
       _assemblyGUID: bae9d2d85328fb34ba52b3284978171b
+    - _arguments:
+      - _typeNameAndAssembly: System.UInt16, mscorlib
+        _guid: 
+      _assemblyGUID: 8ec4e4573bb90644ebdb344086c84153
   - _array:
     - _arguments:
       - _typeNameAndAssembly: UnityEngine.AnimationClip, UnityEngine.AnimationModule
@@ -87,6 +91,10 @@ MonoBehaviour:
       - _typeNameAndAssembly: System.Single, mscorlib
         _guid: 
       _assemblyGUID: ddb9f259c710d84478e643c1c04f1f53
+    - _arguments:
+      - _typeNameAndAssembly: System.UInt16, mscorlib
+        _guid: 
+      _assemblyGUID: 21c25912784e16743a7557b410a51912
   - _array: []
   - _array: []
   _genericTypeValues:
@@ -164,6 +172,17 @@ MonoBehaviour:
       _argNames:
       - T1
       - T2
+    - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`1, GenericScriptableArchitecture
+      _guid: a7bc4098e6b34b50b334b6c504e7f4f5
+      AssemblyGUID: 
+      _argNames:
+      - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.Timeline.ScriptableEventEmitter`1,
+        GenericScriptableArchitecture.Timeline
+      _guid: 935ecf86bcab4cb3b1dc812da9f3c2b8
+      AssemblyGUID: 
+      _argNames:
+      - T
   _genericTypeKeys:
   - _typeNameAndAssembly: DungeonArchitect.UI.Impl.UnityEditor.UnityEditorUIWindow`1,
       DungeonArchitect.Editor

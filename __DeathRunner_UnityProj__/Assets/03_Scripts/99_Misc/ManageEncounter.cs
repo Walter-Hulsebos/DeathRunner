@@ -1,4 +1,10 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using DeathRunner.EnemyAI;
 using UnityEngine;
+using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 namespace Game
 {
@@ -7,9 +13,15 @@ namespace Game
         [SerializeField] private GameObject[] enemies;
         [SerializeField] private GameObject[] doors;
 
+
+        private Transform player;
+        private List<MeleeEnemyAI> meleeEnemies = new();
         private BoxCollider _collider;
         private int deadEnemies = 0;
-        
+
+        private bool canMeleeAttack = true;
+            
+        [SerializeField] private int attackCooldown;
         
         // Start is called before the first frame update
         void Start()
@@ -24,6 +36,16 @@ namespace Game
             }
 
             _collider = GetComponent<BoxCollider>();
+
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy.TryGetComponent(out MeleeEnemyAI _meleeEnemyAI))
+                {
+                    meleeEnemies.Add(_meleeEnemyAI);
+                }
+            }
+
+            player = GameObject.FindWithTag("Player").transform;
         }
 
         // Update is called once per frame
@@ -42,8 +64,48 @@ namespace Game
                 }
 
                 _collider.enabled = false;
+                
             }
         }
+
+        private void Update()
+        {
+            for (int i = 0; i < meleeEnemies.Count; i++)
+            {
+                meleeEnemies[i].GetTargetPos(new Vector3(
+                    player.position.x + 2f * Mathf.Cos(2 * Mathf.PI * i / meleeEnemies.Count),
+                    player.position.y,
+                    player.position.z + 2f * Mathf.Sin(2 * Mathf.PI * i / meleeEnemies.Count)
+                ));
+            }
+
+
+            if (canMeleeAttack)
+            {
+                meleeEnemies[Random.Range(0, meleeEnemies.Count)].canAttack = true;
+                canMeleeAttack = false;
+                StartCoroutine(EnableAttacking());
+            }
+
+            if (canMeleeAttack == false)
+            {
+                for (int i = 0; i < meleeEnemies.Count; i++)
+                {
+                  //  meleeEnemies[i].canAttack = false;
+                }
+            }
+            
+            
+            //also handle attacking here go through all the enemies that can attack and tell one of them to attack
+        }
+
+        private IEnumerator EnableAttacking()
+        {
+            yield return new WaitForSeconds(2f);
+            canMeleeAttack = true;
+        }
+        
+
         public void EnemyDied()
         {
             deadEnemies++;

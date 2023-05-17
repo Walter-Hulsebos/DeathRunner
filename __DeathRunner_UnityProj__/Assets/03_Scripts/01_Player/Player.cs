@@ -34,8 +34,10 @@ namespace DeathRunner.Player
         [Tooltip("Walk Settings for Normal-Time")]
         [SerializeField] private MoveSettings          moveNtSettings;
         
-        [Tooltip("Dash Settings for Normal-Time")]
-        [SerializeField] private DashSettings          dashNTSettings;
+        [Tooltip("Short Dash Settings for Normal-Time")]
+        [SerializeField] private DashShortSettings     dashShortNTSettings;
+        [Tooltip("Long Dash Settings for Normal-Time")]
+        [SerializeField] private DashLongSettings      dashLongNTSettings;
         
         #if ODIN_INSPECTOR
         [FoldoutGroup("Combat NT")]
@@ -85,11 +87,12 @@ namespace DeathRunner.Player
         private PlayerStateLeaf_Idle            _idleNT;
         private PlayerStateLeaf_Move            _walkNT;
         
-        private PlayerStateLeaf_Dash            _dashNT;
+        private PlayerStateLeaf_DashShort       _dashShortNT;
+        private PlayerStateLeaf_DashLong        _dashLongNT;
         
-        private PlayerStateLeaf_MeleeAttack   _meleeAttackNt00;
-        private PlayerStateLeaf_MeleeAttack   _meleeAttackNt01;
-        private PlayerStateLeaf_MeleeAttack   _meleeAttackNt02;
+        private PlayerStateLeaf_AttackMelee     _lightAttackNt00;
+        private PlayerStateLeaf_AttackMelee     _lightAttackNt01;
+        private PlayerStateLeaf_AttackMelee     _lightAttackNt02;
         
         private PlayerStateLeaf_SecondaryAttack _secondaryAttackNT;
         
@@ -138,10 +141,12 @@ namespace DeathRunner.Player
                             _idleNT            = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
                             _walkNT            = new PlayerStateLeaf_Move(settings: moveNtSettings, references: playerReferences)
                         ), 
-                        _dashNT            = new PlayerStateLeaf_Dash(settings: dashNTSettings, references: playerReferences), 
-                        _meleeAttackNt00 = new PlayerStateLeaf_MeleeAttack(settings: primaryAttack00NT.Settings, references: playerReferences),
-                        _meleeAttackNt01 = new PlayerStateLeaf_MeleeAttack(settings: primaryAttack01NT.Settings, references: playerReferences),
-                        _meleeAttackNt02 = new PlayerStateLeaf_MeleeAttack(settings: primaryAttack02NT.Settings, references: playerReferences),
+                        _dashShortNT     = new PlayerStateLeaf_DashShort(settings: dashShortNTSettings, references: playerReferences), 
+                        _dashLongNT      = new PlayerStateLeaf_DashLong( settings: dashLongNTSettings,  references: playerReferences),
+                        
+                        _lightAttackNt00 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack00NT.Settings, references: playerReferences),
+                        _lightAttackNt01 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack01NT.Settings, references: playerReferences),
+                        _lightAttackNt02 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack02NT.Settings, references: playerReferences),
                         
                         _secondaryAttackNT = new PlayerStateLeaf_SecondaryAttack()
                     )
@@ -172,39 +177,41 @@ namespace DeathRunner.Player
             _walkNT.AddTransition(to: _idleNT, conditions: () => HasNoMoveInput);
             
             //IdleNT -> DashNT
-            _idleNT.AddTransition(to: _dashNT, conditions: () => HasDashInput);
+            _idleNT.AddTransition(to: _dashShortNT, conditions: () => HasDashInput);
             //DashNT -> IdleNT
-            _dashNT.AddTransition(to: _idleNT, conditions: () => HasNoMoveInput && _dashNT.IsDoneDashing);
+            _dashShortNT.AddTransition(to: _idleNT, conditions: () => HasNoMoveInput && _dashShortNT.IsDoneDashing);
 
             //WalkNT -> DashNT
-            _walkNT.AddTransition(to: _dashNT, conditions: () => HasDashInput);
+            _walkNT.AddTransition(to: _dashShortNT, conditions: () => HasDashInput);
             //DashNT -> WalkNT
-            _dashNT.AddTransition(to: _walkNT, conditions: () => HasMoveInput && _dashNT.IsDoneDashing);
+            _dashShortNT.AddTransition(to: _walkNT, conditions: () => HasMoveInput && _dashShortNT.IsDoneDashing);
             
-            //PrimaryAttack00 -> Idle
-            _meleeAttackNt00.AddTransition(to: _idleNT, conditions: () => _meleeAttackNt00.IsDoneAttacking && HasNoMoveInput);
-            //PrimaryAttack01 -> idle
-            _meleeAttackNt01.AddTransition(to: _idleNT, conditions: () => _meleeAttackNt01.IsDoneAttacking && HasNoMoveInput);
-            //PrimaryAttack02 -> idle
-            _meleeAttackNt02.AddTransition(to: _idleNT, conditions: () => _meleeAttackNt02.IsDoneAttacking && HasNoMoveInput);
+            //lightAttackNt00 -> idle
+            _lightAttackNt00.AddTransition(to: _idleNT, conditions: () => _lightAttackNt00.IsDoneAttacking && HasNoMoveInput);
+            //lightAttackNt00 -> idle
+            _lightAttackNt01.AddTransition(to: _idleNT, conditions: () => _lightAttackNt01.IsDoneAttacking && HasNoMoveInput);
+            //lightAttackNt00 -> idle
+            _lightAttackNt02.AddTransition(to: _idleNT, conditions: () => _lightAttackNt02.IsDoneAttacking && HasNoMoveInput);
             
-            //PrimaryAttack00 -> Walk
-            _meleeAttackNt00.AddTransition(to: _walkNT, conditions: () => _meleeAttackNt00.IsDoneAttacking && HasMoveInput);
-            //PrimaryAttack01 -> walk
-            _meleeAttackNt01.AddTransition(to: _walkNT, conditions: () => _meleeAttackNt01.IsDoneAttacking && HasMoveInput);
-            //PrimaryAttack02 -> walk
-            _meleeAttackNt02.AddTransition(to: _walkNT, conditions: () => _meleeAttackNt02.IsDoneAttacking && HasMoveInput);
+            //TODO: Add post transitions after attacks when back to walk/idle in which you can still follow up with another attack.
+            
+            //lightAttackNt00 -> walk
+            _lightAttackNt00.AddTransition(to: _walkNT, conditions: () => _lightAttackNt00.IsDoneAttacking && HasMoveInput);
+            //lightAttackNt00 -> walk
+            _lightAttackNt01.AddTransition(to: _walkNT, conditions: () => _lightAttackNt01.IsDoneAttacking && HasMoveInput);
+            //lightAttackNt00 -> walk
+            _lightAttackNt02.AddTransition(to: _walkNT, conditions: () => _lightAttackNt02.IsDoneAttacking && HasMoveInput);
             
             //Idle -> PrimaryAttack00
-            _idleNT.AddTransition(to: _meleeAttackNt00, conditions: () => playerReferences.InputHandler.PrimaryFireInput);
+            _idleNT.AddTransition(to: _lightAttackNt00, conditions: () => playerReferences.InputHandler.PrimaryFireInput);
             //Walk -> PrimaryAttack00
-            _walkNT.AddTransition(to: _meleeAttackNt00, conditions: () => playerReferences.InputHandler.PrimaryFireInput);
+            _walkNT.AddTransition(to: _lightAttackNt00, conditions: () => playerReferences.InputHandler.PrimaryFireInput);
             
             //PrimaryAttack00 -> PrimaryAttack01
-            _meleeAttackNt00.AddTransition(to: _meleeAttackNt01, conditions: () => playerReferences.InputHandler.PrimaryFireInput && _meleeAttackNt00.CanGoIntoNextAttack);
+            _lightAttackNt00.AddTransition(to: _lightAttackNt01, conditions: () => playerReferences.InputHandler.PrimaryFireInput && _lightAttackNt00.CanGoIntoNextAttack);
             
             //PrimaryAttack01 -> PrimaryAttack02
-            _meleeAttackNt01.AddTransition(to: _meleeAttackNt02, conditions: () => playerReferences.InputHandler.PrimaryFireInput && _meleeAttackNt01.CanGoIntoNextAttack);
+            _lightAttackNt01.AddTransition(to: _lightAttackNt02, conditions: () => playerReferences.InputHandler.PrimaryFireInput && _lightAttackNt01.CanGoIntoNextAttack);
             
             #endregion
 
