@@ -299,6 +299,7 @@ namespace DeathRunner.Player
         [UsedImplicitly]
         public void KillPlayer()
         {
+            Debug.Log("Killing player");
             playerAttributes.health.Value = 0;
         }
         
@@ -306,6 +307,7 @@ namespace DeathRunner.Player
         [UsedImplicitly]
         public void AddHealth(UInt16 amount)
         {
+            Debug.Log("Adding health " + amount);
             playerAttributes.health.Value += amount;
         }
         
@@ -313,6 +315,7 @@ namespace DeathRunner.Player
         [UsedImplicitly]
         public void SubHealth(UInt16 amount)
         {
+            Debug.Log("Subtracting health " + amount);
             playerAttributes.health.Value -= amount;
         }
 
