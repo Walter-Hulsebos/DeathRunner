@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
-using UltEvents;
+using ExtEvents;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -79,13 +79,13 @@ namespace DeathRunner.Inputs
         [SerializeField] private InputActionReference slowMoToggleInputActionReference;
         [field:FoldoutGroup(groupName: "SlowMo")]
         [field:SerializeField] public Bool            IsSlowMoToggled  { get; private set; }
-        [field:FoldoutGroup(groupName: "SlowMo")]
-        [field:SerializeField] public UltEvent<Bool>  OnSlowMoToggleChanged  { get; private set; }
+        //[field:FoldoutGroup(groupName: "SlowMo")]
+        //[field:SerializeField] public UltEvent<Bool>  OnSlowMoToggleChanged  { get; private set; }
         
-        [field:FoldoutGroup(groupName: "SlowMo")]
-        [field:SerializeField] public UltEvent        OnSlowMoEnabled  { get; private set; }
-        [field:FoldoutGroup(groupName: "SlowMo")]
-        [field:SerializeField] public UltEvent        OnSlowMoDisabled { get; private set; }
+        //[field:FoldoutGroup(groupName: "SlowMo")]
+        //[field:SerializeField] public UltEvent        OnSlowMoEnabled  { get; private set; }
+        //[field:FoldoutGroup(groupName: "SlowMo")]
+        //[field:SerializeField] public UltEvent        OnSlowMoDisabled { get; private set; }
         
         public F32x2                                  MouseScreenPosition => (F32x2)Mouse.current.position.ReadValue();
         
@@ -344,17 +344,17 @@ namespace DeathRunner.Inputs
             //if (!ctx.ReadValueAsButton()) return;
 
             IsSlowMoToggled = !IsSlowMoToggled;
-                
-            if (IsSlowMoToggled)
-            {
-                OnSlowMoEnabled.Invoke();
-            }
-            else
-            {
-                OnSlowMoDisabled.Invoke();
-            }
-                
-            OnSlowMoToggleChanged.Invoke(IsSlowMoToggled);
+            //     
+            // if (IsSlowMoToggled)
+            // {
+            //     OnSlowMoEnabled.Invoke();
+            // }
+            // else
+            // {
+            //     OnSlowMoDisabled.Invoke();
+            // }
+            //     
+            // OnSlowMoToggleChanged.Invoke(IsSlowMoToggled);
         }
 
         private void OnSlowMoInputCanceled(InputAction.CallbackContext ctx)

@@ -6,14 +6,14 @@ namespace Drawing {
 	[CustomEditor(typeof(DrawingManager))]
 	public class DrawingManagerEditor : Editor {
 		// Use this for initialization
-		private void Start () {
+		void Start () {
 		}
 
 		// Update is called once per frame
-		private void Update () {
+		void Update () {
 		}
 
-		private void OnSceneGUI () {
+		void OnSceneGUI () {
 		}
 	}
 }

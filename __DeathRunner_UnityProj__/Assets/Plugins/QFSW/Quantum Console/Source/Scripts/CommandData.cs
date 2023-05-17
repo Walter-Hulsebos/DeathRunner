@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using QFSW.QC.Internal;
 
 namespace QFSW.QC
 {
@@ -82,19 +83,40 @@ namespace QFSW.QC
 
         public object Invoke(object[] paramData, Type[] genericTypeArguments)
         {
-            object[] data = new object[paramData.Length + _defaultParameters.Length];
-            Array.Copy(paramData, 0, data, 0, paramData.Length);
-            Array.Copy(_defaultParameters, 0, data, paramData.Length, _defaultParameters.Length);
+            // For MonoTargetType.Argument, need to use the first argument as the invocation target
+            // and then forward the rest as normal
+            int paramDataStart = 0;
+            int paramDataLength = paramData.Length;
+            if (MonoTarget == MonoTargetType.Argument || MonoTarget == MonoTargetType.ArgumentMulti)
+            {
+                paramDataStart++;
+                paramDataLength--;
+            }
+
+            int numArguments = paramDataLength + _defaultParameters.Length;
+            object[] arguments = new object[numArguments];
+
+            // Copy supplied argument data and default arguments to create final argument set to forward to method
+            Array.Copy(paramData, paramDataStart, arguments, 0, paramDataLength);
+            Array.Copy(_defaultParameters, 0, arguments, paramDataLength, _defaultParameters.Length);
 
             MethodInfo invokingMethod = GetInvokingMethod(genericTypeArguments);
 
             if (IsStatic)
             {
-                return invokingMethod.Invoke(null, data);
+                return invokingMethod.Invoke(null, arguments);
             }
 
-            IEnumerable<object> targets = GetInvocationTargets(invokingMethod);
-            return InvocationTargetFactory.InvokeOnTargets(invokingMethod, targets, data);
+            // For MonoTargetType.Argument, use the first argument as the target
+            // Otherwise, get invocation targets like normal
+            IEnumerable<object> targets = MonoTarget switch
+            {
+                MonoTargetType.Argument => paramData[0].Yield(),
+                MonoTargetType.ArgumentMulti => paramData[0] as IEnumerable<object>,
+                _ => GetInvocationTargets(invokingMethod)
+            };
+
+            return InvocationTargetFactory.InvokeOnTargets(invokingMethod, targets, arguments);
         }
 
         protected virtual IEnumerable<object> GetInvocationTargets(MethodInfo invokingMethod)
@@ -217,11 +239,11 @@ namespace QFSW.QC
             return types.ToArray();
         }
 
-        public CommandData(MethodInfo methodData, int defaultParameterCount = 0) : this(methodData, methodData.Name, defaultParameterCount) { }
-        public CommandData(MethodInfo methodData, string commandName, int defaultParameterCount = 0)
+        public CommandData(MethodInfo methodData, string commandName, MonoTargetType monoTarget, int defaultParameterCount = 0)
         {
             CommandName = commandName;
             MethodData = methodData;
+            MonoTarget = monoTarget;
 
             if (string.IsNullOrWhiteSpace(commandName))
             {
@@ -233,7 +255,18 @@ namespace QFSW.QC
             string prefix = BuildPrefix(declaringType);
             CommandName = $"{prefix}{CommandName}";
 
-            MethodParamData = methodData.GetParameters();
+            // Add a dummy parameter used for parsing the invoking target if required
+            List<ParameterInfo> parameters = methodData.GetParameters().ToList();
+            if (MonoTarget == MonoTargetType.Argument)
+            {
+                parameters.Insert(0, new DummyParameter(methodData.DeclaringType, "target", 0));
+            }
+            else if (MonoTarget == MonoTargetType.ArgumentMulti)
+            {
+                parameters.Insert(0, new DummyParameter(methodData.DeclaringType.MakeArrayType(), "targets", 0));
+            }
+
+            MethodParamData = parameters.ToArray();
             ParamTypes = MethodParamData
                 .Select(x => x.ParameterType)
                 .ToArray();
@@ -254,10 +287,14 @@ namespace QFSW.QC
                 : $"{CommandName}{GenericSignature}";
         }
 
-        public CommandData(MethodInfo methodData, CommandAttribute commandAttribute, int defaultParameterCount = 0) : this(methodData, commandAttribute.Alias, defaultParameterCount)
+        public CommandData(MethodInfo methodData, MonoTargetType monoTarget, int defaultParameterCount = 0)
+            : this(methodData, methodData.Name, monoTarget, defaultParameterCount)
+        { }
+
+        public CommandData(MethodInfo methodData, CommandAttribute commandAttribute, int defaultParameterCount = 0)
+            : this(methodData, commandAttribute.Alias, commandAttribute.MonoTarget, defaultParameterCount)
         {
             CommandDescription = commandAttribute.Description;
-            MonoTarget = commandAttribute.MonoTarget;
         }
 
         public CommandData(MethodInfo methodData, CommandAttribute commandAttribute, CommandDescriptionAttribute descriptionAttribute, int defaultParameterCount = 0)

@@ -75,7 +75,7 @@ namespace QFSW.QC
             return target == null ? Enumerable.Empty<object>() : target.Yield();
         }
 
-        public static object InvokeOnTargets(MethodInfo invokingMethod, IEnumerable<object> targets, object[] data)
+        public static object InvokeOnTargets(MethodInfo invokingMethod, IEnumerable<object> targets, object[] arguments)
         {
             int returnCount = 0;
             int invokeCount = 0;
@@ -84,7 +84,7 @@ namespace QFSW.QC
             foreach (object target in targets)
             {
                 invokeCount++;
-                object result = invokingMethod.Invoke(target, data);
+                object result = invokingMethod.Invoke(target, arguments);
 
                 if (result != null)
                 {

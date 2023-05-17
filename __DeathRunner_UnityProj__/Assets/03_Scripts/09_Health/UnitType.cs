@@ -1,6 +1,6 @@
 using System;
 
-namespace DeathRunner.Health
+namespace DeathRunner.Attributes
 {
     [Flags]
     public enum UnitType
