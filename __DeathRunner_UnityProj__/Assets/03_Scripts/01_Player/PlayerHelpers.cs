@@ -87,11 +87,26 @@ namespace DeathRunner.Player
             
             F32x3 __projectedLookDirection = normalize(__plane3D.Projection(point: direction));
             
+            // Early out if the direction is invalid
             if (lengthsq(__projectedLookDirection) == 0) return;
 
             Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
 
             references.Rot = slerp(q1: references.Rot, q2: __targetRotation, t: orientationSpeed * Commands.DeltaTime);
+        }
+
+        public static void OrientTowardsDirInstant(PlayerReferences references, F32x3 direction)
+        {
+            Plane3D __plane3D = new(normal: up(), distance: 0);
+            
+            F32x3 __projectedLookDirection = normalize(__plane3D.Projection(point: direction));
+            
+            // Early out if the direction is invalid
+            if (lengthsq(__projectedLookDirection) == 0) return;
+
+            Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
+
+            references.Rot = __targetRotation;
         }
     }
 }
