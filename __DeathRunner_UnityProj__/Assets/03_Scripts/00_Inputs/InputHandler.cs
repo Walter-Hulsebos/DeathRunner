@@ -107,9 +107,7 @@ namespace DeathRunner.Inputs
             DashInputStoppedThisFrame = true;
             Debug.Log($"[{Time.time}] DashInputStoppedThisFrame = true");
             //await UniTask.Yield(); //Wait one frame.
-
             await UniTask.DelayFrame(delayFrameCount: 1, delayTiming: PlayerLoopTiming.Update);
-            
             Debug.Log($"[{Time.time}] DashInputStoppedThisFrame = false");
             DashInputStoppedThisFrame = false;
         }
