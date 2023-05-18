@@ -27,10 +27,7 @@ namespace DeathRunner.Player
 
         private readonly DashLongSettings _settings;
         private readonly PlayerReferences _references;
-        
-        public Bool IsDashing { get; private set; } = false;
-        public Bool IsDoneDashing => !IsDashing;
-        
+
         //TODO: Cache all constant settings?
 
         #endregion
@@ -49,7 +46,7 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
-            //Debug.Log("Dash.Enter");
+            Debug.Log("DashLong.Enter");
             
             // Move the player in the dash direction
             DashMovement(DashDirection);
@@ -59,7 +56,7 @@ namespace DeathRunner.Player
         {
             base.OnExit();
             
-            //Debug.Log("Dash.Exit");
+            Debug.Log("DashLong.Exit");
         }
         
         protected override void OnUpdate()
