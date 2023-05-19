@@ -104,6 +104,11 @@ namespace DeathRunner.Player
         {
             CanGoIntoNextAttack = false;
             await UniTask.Delay(TimeSpan.FromSeconds(_secondsFromBeginningToAllowNextAttack), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            if (_settings.OnAllowNextAttack != null)
+            {
+                _settings.OnAllowNextAttack.Invoke();
+            }
+
             CanGoIntoNextAttack = true;
         }
 
@@ -144,5 +149,7 @@ namespace DeathRunner.Player
 
         [field:SerializeField] public ScriptableEvent<AnimationClip, F32> OnAttackStarted                 { get; [UsedImplicitly] private set; }
         [field:SerializeField] public ScriptableEvent                     OnAttackStopped                 { get; [UsedImplicitly] private set; }
+        
+        [field:SerializeField] public ScriptableEvent                     OnAllowNextAttack               { get; [UsedImplicitly] private set; }
     }
 }
