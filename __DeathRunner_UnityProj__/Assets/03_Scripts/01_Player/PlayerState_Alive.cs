@@ -10,16 +10,16 @@ namespace DeathRunner.Player
             
         }
         
-        protected override void OnEnter()
+        protected override void EnterState()
         {
-            base.OnEnter();
+            base.EnterState();
             
             Debug.Log("Alive.Enter");
         }
         
-        protected override void OnExit()
+        protected override void ExitState()
         {
-            base.OnExit();
+            base.ExitState();
             
             Debug.Log("Alive.Exit");
         }

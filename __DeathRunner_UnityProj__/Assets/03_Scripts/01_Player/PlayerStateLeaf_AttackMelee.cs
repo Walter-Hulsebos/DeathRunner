@@ -48,9 +48,9 @@ namespace DeathRunner.Player
         
         #endregion
         
-        protected override void OnEnter()
+        protected override void EnterState()
         {
-            base.OnEnter();
+            base.EnterState();
 
             RefreshCancellationToken();
 
@@ -62,9 +62,9 @@ namespace DeathRunner.Player
             StopAttackAfterFinishTime().Forget();
         }
 
-        protected override void OnExit()
+        protected override void ExitState()
         {
-            base.OnExit();
+            base.ExitState();
 
             _cancellationTokenSource.Cancel();
             

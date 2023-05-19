@@ -8,6 +8,9 @@ namespace HFSM
     [Serializable]
     public abstract class StateLeaf : StateObject
     {
+        public event Action OnEnter;
+        public event Action OnExit;
+        
         /// <summary>
         ///     Consumes all the events listened by <see cref="EventTransition" />s that have
         ///     this <see cref="StateLeaf" /> as their <see cref="Transition.From" />.
@@ -48,7 +51,7 @@ namespace HFSM
         /// </summary>
         internal sealed override void UpdateInternal()
         {
-            OnUpdate();
+            UpdateState();
         }
 
         /// <summary>
@@ -68,12 +71,12 @@ namespace HFSM
         /// </summary>
         public sealed override void FixedUpdate()
         {
-            OnFixedUpdate();
+            FixedUpdateState();
         }
 
         public sealed override void LateFixedUpdate()
         {
-            OnLateFixedUpdate();
+            LateFixedUpdateState();
         }
 
         /// <summary>
@@ -83,7 +86,7 @@ namespace HFSM
         /// </summary>
         public sealed override void LateUpdate()
         {
-            OnLateUpdate();
+            LateUpdateState();
         }
 
         /// <summary>
@@ -94,7 +97,8 @@ namespace HFSM
         internal sealed override void Enter()
         {
             IsActive = true;
-            OnEnter();
+            OnEnter?.Invoke();
+            EnterState();
         }
 
         /// <summary>
@@ -104,8 +108,9 @@ namespace HFSM
         /// </summary>
         internal sealed override void Exit()
         {
+            ExitState();
+            OnExit?.Invoke();
             IsActive = false;
-            OnExit();
         }
 
         /// <summary>

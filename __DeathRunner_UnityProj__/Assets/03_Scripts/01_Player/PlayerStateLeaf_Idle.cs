@@ -27,26 +27,26 @@ namespace DeathRunner.Player
             this._references = references;
         }
 
-        protected override void OnEnter()
+        protected override void EnterState()
         {
-            base.OnEnter();
+            base.EnterState();
             
             Debug.Log("Idle.Enter");
             
             _settings.OnEnterIdle.Invoke();
         }
         
-        protected override void OnExit()
+        protected override void ExitState()
         {
-            base.OnExit();
+            base.ExitState();
             
             Debug.Log("Idle.Exit");
         }
 
         private F32x3 _moveDirectionVelocity;
-        protected override void OnLateFixedUpdate()
+        protected override void LateFixedUpdateState()
         {
-            base.OnLateFixedUpdate();
+            base.LateFixedUpdateState();
             
             //Debug.Log("Idle.LateFixedUpdate");
             

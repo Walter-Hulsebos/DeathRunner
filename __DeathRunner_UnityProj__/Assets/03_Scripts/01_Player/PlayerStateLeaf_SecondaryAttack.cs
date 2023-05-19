@@ -5,16 +5,16 @@ namespace DeathRunner.Player
 {
     public class PlayerStateLeaf_SecondaryAttack : StateLeaf
     {
-        protected override void OnEnter()
+        protected override void EnterState()
         {
-            base.OnEnter();
+            base.EnterState();
             
             Debug.Log("SecondaryAttack.Enter");
         }
         
-        protected override void OnExit()
+        protected override void ExitState()
         {
-            base.OnExit();
+            base.ExitState();
             
             Debug.Log("SecondaryAttack.Exit");
         }

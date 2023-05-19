@@ -42,28 +42,25 @@ namespace DeathRunner.Player
         
         #endregion
         
-        protected override void OnEnter()
+        protected override void EnterState()
         {
-            base.OnEnter();
+            base.EnterState();
             
             Debug.Log("DashLong.Enter");
-            
-            // Move the player in the dash direction
-            DashMovement(DashDirection);
         }
 
-        protected override void OnExit()
+        protected override void ExitState()
         {
-            base.OnExit();
+            base.ExitState();
             
             Debug.Log("DashLong.Exit");
         }
         
-        protected override void OnUpdate()
+        protected override void UpdateState()
         {
-            base.OnUpdate();
+            base.UpdateState();
             
-            //Debug.Log("Dash.Update");
+            
         }
 
         private F32x3 DashDirection
@@ -95,6 +92,7 @@ namespace DeathRunner.Player
         [field:Tooltip(tooltip: "The max dash speed (m/s)")]
         [field:SerializeField] public Constant<F32>   MaxSpeed                 { get; [UsedImplicitly] private set; }
 
+        [field:Tooltip(tooltip: "The stamina cost per second of dashing (s)")]
         [field:SerializeField] public Constant<U16>   ConsumptionPerSecond     { get; [UsedImplicitly] private set; }
         
         [field:Tooltip(tooltip: "The duration between possible dashes (s)")]
@@ -102,8 +100,8 @@ namespace DeathRunner.Player
         
         [field:SerializeField] public Variable<F32x3> OrientationLookDirection { get; [UsedImplicitly] private set; }
         
-        [field:SerializeField] public ScriptableEvent<F32x3> OnDashBegin       { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public ScriptableEvent        OnDashEnd         { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public ScriptableEvent        OnDashInterrupted { get; [UsedImplicitly] private set; }
+        // [field:SerializeField] public ScriptableEvent<F32x3> OnEnter           { get; [UsedImplicitly] private set; }
+        // [field:SerializeField] public ScriptableEvent        OnExit            { get; [UsedImplicitly] private set; }
+        // [field:SerializeField] public ScriptableEvent        OnDashInterrupted { get; [UsedImplicitly] private set; }
     }
 }

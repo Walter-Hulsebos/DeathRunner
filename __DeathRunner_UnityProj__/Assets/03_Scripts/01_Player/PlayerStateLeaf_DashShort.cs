@@ -47,9 +47,9 @@ namespace DeathRunner.Player
         
         #endregion
         
-        protected override void OnEnter()
+        protected override void EnterState()
         {
-            base.OnEnter();
+            base.EnterState();
             
             Debug.Log("DashShort.Enter");
             
@@ -57,16 +57,16 @@ namespace DeathRunner.Player
             DashMovement(DashDirection);
         }
 
-        protected override void OnExit()
+        protected override void ExitState()
         {
-            base.OnExit();
+            base.ExitState();
             
             Debug.Log("DashShort.Exit");
         }
         
-        protected override void OnUpdate()
+        protected override void UpdateState()
         {
-            base.OnUpdate();
+            base.UpdateState();
             
             //Debug.Log("Dash.Update");
         }

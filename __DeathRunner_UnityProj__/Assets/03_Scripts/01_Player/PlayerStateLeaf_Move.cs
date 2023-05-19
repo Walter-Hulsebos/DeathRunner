@@ -32,23 +32,23 @@ namespace DeathRunner.Player
             this._references = references;
         }
 
-        protected override void OnEnter()
+        protected override void EnterState()
         {
-            base.OnEnter();
+            base.EnterState();
             
             //Debug.Log("Walk.Enter");
         }
         
-        protected override void OnExit()
+        protected override void ExitState()
         {
-            base.OnExit();
+            base.ExitState();
             
             //Debug.Log("Walk.Exit");
         }
 
-        protected override void OnLateUpdate()
+        protected override void LateUpdateState()
         {
-            base.OnLateUpdate();
+            base.LateUpdateState();
             
             OrientTowardsDir();
         }
@@ -66,9 +66,9 @@ namespace DeathRunner.Player
             _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: (F32)_settings.OrientationSpeed * Commands.DeltaTime);
         }
 
-        protected override void OnFixedUpdate()
+        protected override void FixedUpdateState()
         {
-            base.OnFixedUpdate();
+            base.FixedUpdateState();
 
             F32x3 __targetMoveVector = _references.InputHandler.MoveInputFlat;
             
@@ -97,14 +97,14 @@ namespace DeathRunner.Player
         /// <summary>
         /// Move the character when on walkable ground.
         /// </summary>
-        private void GroundedMovement(Vector3 desiredVelocity)
+        private void GroundedMovement(F32x3 desiredVelocity)
         {
             //Debug.Log("GroundedMovement");
             
-            _references.Motor.velocity = Vector3.Lerp(
-                a: _references.Motor.velocity, 
-                b: desiredVelocity,
-                t: 1f - exp(-_settings.GroundFriction * Commands.DeltaTime));
+            _references.Motor.velocity = lerp(
+                _references.Motor.velocity, 
+                desiredVelocity,
+                1f - exp(-_settings.GroundFriction * Commands.DeltaTime));
         }
 
         /// <summary>

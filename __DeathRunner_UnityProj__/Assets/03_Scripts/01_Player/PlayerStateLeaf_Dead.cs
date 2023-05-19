@@ -5,16 +5,16 @@ namespace DeathRunner.Player
 {
     public class PlayerStateLeaf_Dead : StateLeaf
     {
-        protected override void OnEnter()
+        protected override void EnterState()
         {
-            base.OnEnter();
+            base.EnterState();
             
             Debug.Log("Dead.Enter");
         }
         
-        protected override void OnExit()
+        protected override void ExitState()
         {
-            base.OnExit();
+            base.ExitState();
             
             Debug.Log("Dead.Exit");
         }

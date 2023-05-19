@@ -279,7 +279,7 @@ namespace HFSM
             
             if (_changedState) return;
             
-            OnUpdate();
+            UpdateState();
             CurrentStateObject.UpdateInternal();
         }
 
@@ -289,7 +289,7 @@ namespace HFSM
         /// </summary>
         internal sealed override void UpdateInternal()
         {
-            OnUpdate();
+            UpdateState();
             CurrentStateObject.UpdateInternal();
         }
 
@@ -301,14 +301,14 @@ namespace HFSM
         public sealed override void FixedUpdate()
         {
             CheckInitialization();
-            OnFixedUpdate();
+            FixedUpdateState();
             CurrentStateObject.FixedUpdate();
         }
         
         public sealed override void LateFixedUpdate()
         {
             CheckInitialization();
-            OnLateFixedUpdate();
+            LateFixedUpdateState();
             CurrentStateObject.LateFixedUpdate();
         }
 
@@ -322,7 +322,7 @@ namespace HFSM
             CheckInitialization();
             if (!_changedState)
             {
-                OnLateUpdate();
+                LateUpdateState();
                 CurrentStateObject.LateUpdate();
             }
         }
@@ -338,7 +338,7 @@ namespace HFSM
             IsActive = true;
             CurrentStateObject ??= DefaultStateObject;
 
-            OnEnter();
+            EnterState();
             CurrentStateObject.Enter();
         }
 
@@ -351,7 +351,7 @@ namespace HFSM
         internal sealed override void Exit()
         {
             CurrentStateObject.Exit();
-            OnExit();
+            ExitState();
             
             IsActive = false;
             CurrentStateObject = null;

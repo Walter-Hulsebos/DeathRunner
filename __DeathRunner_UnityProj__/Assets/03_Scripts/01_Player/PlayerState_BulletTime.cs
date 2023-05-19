@@ -7,18 +7,18 @@ namespace DeathRunner.Player
     {
         public PlayerState_BulletTime(params StateObject[] childStates) : base(childStates: childStates) { }
         
-        protected override void OnEnter()
+        protected override void EnterState()
         {
-            base.OnEnter();
+            base.EnterState();
             
             Debug.Log("BulletTime.Enter");
             
             //Commands.IsSlowMotionEnabled = true;
         }
         
-        protected override void OnExit()
+        protected override void ExitState()
         {
-            base.OnExit();
+            base.ExitState();
             
             Debug.Log("BulletTime.Exit");
         }

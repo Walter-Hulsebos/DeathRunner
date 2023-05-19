@@ -8,18 +8,18 @@ namespace DeathRunner.Player
     {
         public PlayerState_NormalTime(params StateObject[] childStates) : base(childStates: childStates) { }
         
-        protected override void OnEnter()
+        protected override void EnterState()
         {
-            base.OnEnter();
+            base.EnterState();
             
             Debug.Log("NormalTime.Enter");
             
             Commands.IsSlowMotionEnabled = false;
         }
         
-        protected override void OnExit()
+        protected override void ExitState()
         {
-            base.OnExit();
+            base.ExitState();
             
             Debug.Log("NormalTime.Exit");
         }

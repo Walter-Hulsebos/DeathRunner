@@ -274,32 +274,31 @@ namespace HFSM
         /// <summary>
         ///     Custom logic defined in concrete <see cref="StateObject" /> classes that gets executed every update cycle.
         /// </summary>
-        protected virtual void OnUpdate() { }
+        protected virtual void UpdateState() { }
+        /// <summary>
+        ///     Custom logic defined in concrete <see cref="StateObject" /> classes that gets executed every late update cycle.
+        /// </summary>
+        protected virtual void LateUpdateState() { }
 
         /// <summary>
         ///     Custom logic defined in concrete <see cref="StateObject" /> <see cref="StateObject" />s that gets executed every
         ///     fixed update cycle.
         /// </summary>
-        protected virtual void OnFixedUpdate() { }
+        protected virtual void FixedUpdateState() { }
+        protected virtual void LateFixedUpdateState() { }
         
-        protected virtual void OnLateFixedUpdate() { }
-
-        /// <summary>
-        ///     Custom logic defined in concrete <see cref="StateObject" /> classes that gets executed every late update cycle.
-        /// </summary>
-        protected virtual void OnLateUpdate() { }
 
         /// <summary>
         ///     Custom logic defined in concrete <see cref="StateObject" /> classes that gets executed when a new
         ///     <see cref="StateObject" /> is entered.
         /// </summary>
-        protected virtual void OnEnter() { }
+        protected virtual void EnterState() { }
 
         /// <summary>
         ///     Custom logic defined in concrete <see cref="StateObject" />s that gets executed when the current
         ///     <see cref="StateObject" /> is exited.
         /// </summary>
-        protected virtual void OnExit() { }
+        protected virtual void ExitState() { }
 
         #region Add Event Transition Methods
 
