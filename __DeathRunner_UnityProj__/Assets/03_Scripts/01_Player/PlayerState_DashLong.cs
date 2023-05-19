@@ -21,7 +21,7 @@ using Bool  = System.Boolean;
 
 namespace DeathRunner.Player
 {
-    public class PlayerStateLeaf_DashLong : StateLeaf
+    public class PlayerState_DashLong : State
     {
         #region Variables
 
@@ -34,12 +34,13 @@ namespace DeathRunner.Player
 
         #region Constructors
         
-        public PlayerStateLeaf_DashLong(DashLongSettings settings, PlayerReferences references)
+        public PlayerState_DashLong(DashLongSettings settings, PlayerReferences references,
+            params StateObject[] childStates) : base(childStates: childStates)
         {
             this._settings   = settings;
             this._references = references;
         }
-        
+
         #endregion
         
         protected override void EnterState()

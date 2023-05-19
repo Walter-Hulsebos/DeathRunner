@@ -41,6 +41,8 @@ namespace DeathRunner.Player
         [SerializeField] private DashShortSettings     dashShortNTSettings;
         [Tooltip("Long Dash Settings for Normal-Time")]
         [SerializeField] private DashLongSettings      dashLongNTSettings;
+        [Tooltip("Walk Settings for Normal-Time")]
+        [SerializeField] private MoveSettings          dashLongMoveNTSettings;
         
         #if ODIN_INSPECTOR
         [FoldoutGroup("Combat NT")]
@@ -91,7 +93,8 @@ namespace DeathRunner.Player
         private PlayerStateLeaf_Move            _walkNT;
         
         private PlayerStateLeaf_DashShort       _dashShortNT;
-        private PlayerStateLeaf_DashLong        _dashLongNT;
+        private PlayerState_DashLong            _dashLongNT;
+        private PlayerStateLeaf_Move            _dashLongMoveNT;
         
         private PlayerStateLeaf_AttackMelee     _lightAttackNt00;
         private PlayerStateLeaf_AttackMelee     _lightAttackNt01;
@@ -145,11 +148,15 @@ namespace DeathRunner.Player
                     (/*params child states */
                         _locomotionNT = new PlayerState_Locomotion
                         (settings: locomotionNTSettings, references: playerReferences, /*params child states */
-                            _idleNT            = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
-                            _walkNT            = new PlayerStateLeaf_Move(settings: moveNtSettings, references: playerReferences)
+                            _idleNT = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
+                            _walkNT = new PlayerStateLeaf_Move(settings: moveNtSettings, references: playerReferences)
                         ), 
                         _dashShortNT     = new PlayerStateLeaf_DashShort(settings: dashShortNTSettings, references: playerReferences), 
-                        _dashLongNT      = new PlayerStateLeaf_DashLong( settings: dashLongNTSettings,  references: playerReferences),
+                        _dashLongNT      = new PlayerState_DashLong
+                        (settings: dashLongNTSettings, references: playerReferences, /*params child states */
+                            _dashLongMoveNT = new PlayerStateLeaf_Move(settings: dashLongMoveNTSettings, references: playerReferences)
+                        ),
+                        
                         
                         _lightAttackNt00 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack00NT.Settings, references: playerReferences),
                         _lightAttackNt01 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack01NT.Settings, references: playerReferences),
