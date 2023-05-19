@@ -22,7 +22,7 @@ namespace DeathRunner.Animations
         #region Variables
         
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Events")]
+        [FoldoutGroup(groupName: "Events")]
         #endif
         [SerializeField] private ScriptableEvent<F32x3> onDashEvent;
         
@@ -36,7 +36,7 @@ namespace DeathRunner.Animations
 
         private void Awake()
         {
-            AnimancerState __state = MyAnimancer.States.GetOrCreate(dashAnimations);
+            AnimancerState __state = MyAnimancer.States.GetOrCreate(transition: dashAnimations);
             _dashState = (MixerState<Vector2>)__state;
         }
         
@@ -54,17 +54,17 @@ namespace DeathRunner.Animations
         {
             Debug.Log(message: $"DashDir: {dashDir}");
             
-            if (all(dashDir == F32x3.zero)) return;
+            if (all(x: dashDir == F32x3.zero)) return;
 
-            F32x3 __dashDirection = normalize(dashDir);
-            F32x3 __dashDirectionNonRelative   = __dashDirection.InverseRelativeTo(animationReferences.PlayerCamera.transform);
+            F32x3 __dashDirection = normalize(x: dashDir);
+            F32x3 __dashDirectionNonRelative   = __dashDirection.InverseRelativeTo(relativeToThis: animationReferences.PlayerCamera.transform);
 
             F32x3 __facingDirection = animationReferences.PlayerTransform.forward;
-            F32x3 __facingDirectionNonRelative = __facingDirection.InverseRelativeTo(animationReferences.PlayerCamera.transform);
+            F32x3 __facingDirectionNonRelative = __facingDirection.InverseRelativeTo(relativeToThis: animationReferences.PlayerCamera.transform);
 
-            F32x2 __orthogonalDashDirection = normalize(new F32x2(
-                x: -dot(__dashDirectionNonRelative, cross(__facingDirectionNonRelative, up())),
-                y: +dot(__dashDirectionNonRelative, __facingDirectionNonRelative)));
+            F32x2 __orthogonalDashDirection = normalize(x: new F32x2(
+                x: -dot(x: __dashDirectionNonRelative, y: cross(x: __facingDirectionNonRelative, y: up())),
+                y: +dot(x: __dashDirectionNonRelative, y: __facingDirectionNonRelative)));
 
             //animator.SetFloat(id: dash_x, value: __orthogonalDirection.x);
             //animator.SetFloat(id: dash_y, value: __orthogonalDirection.z);
@@ -74,7 +74,7 @@ namespace DeathRunner.Animations
             _dashState.Parameter = __orthogonalDashDirection;
             _dashState.Speed = 1;
             
-            MyAnimancer.Play(_dashState);
+            MyAnimancer.Play(state: _dashState);
         }
         
         #endregion

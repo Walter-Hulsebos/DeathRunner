@@ -12,7 +12,7 @@ namespace DeathRunner.Animations
     {
         #region Variables
         
-        [FormerlySerializedAs("animationController")]
+        [FormerlySerializedAs(oldName: "animationController")]
         [BoxGroup(group: "References", showLabel: false)]
         [SerializeField] protected PlayerAnimationReferences animationReferences;
 

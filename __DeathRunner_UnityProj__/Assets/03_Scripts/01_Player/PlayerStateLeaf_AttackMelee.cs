@@ -18,17 +18,24 @@ namespace DeathRunner.Player
         #region Variables
 
         private readonly MeleeAttackSettings _settings;
-        private readonly PlayerReferences      _references;
+        private readonly PlayerReferences    _references;
         
-        private CancellationTokenSource        _cancellationTokenSource;
-        private CancellationToken              _cancellationToken;
+        private CancellationTokenSource      _cancellationTokenSource;
+        private CancellationToken            _cancellationToken;
         
-        private readonly F32                   _secondsToAllowNextAttack;
-        private readonly F32                   _scaledDuration;
+        private readonly F32                 _secondsFromBeginningToAllowNextAttack;
+        private readonly F32                 _scaledAttackAnimationDuration;
+        
+        private readonly F32                 _secondsFromBeginningToFadeOut;
 
-        public Bool IsAttacking         { get; private set; } = false;
-        public Bool IsDoneAttacking     => !IsAttacking;
-        public Bool CanGoIntoNextAttack { get; private set; } = false;
+        public Bool IsAttacking            { get; private set; } = false;
+        public Bool IsDoneAttacking        => !IsAttacking;
+        
+        public Bool CanGoIntoNextAttack    { get; private set; } = false;
+        public Bool CanNotGoIntoNextAttack => !CanGoIntoNextAttack;
+        
+        public Bool CanFadeOut             { get; private set; } = false;
+        public Bool CanNotFadeOut          => !CanFadeOut;
 
         #endregion
         
@@ -42,8 +49,10 @@ namespace DeathRunner.Player
             _cancellationTokenSource = new CancellationTokenSource();
             _cancellationToken = _cancellationTokenSource.Token;
             
-            _secondsToAllowNextAttack = clamp((_settings.AttackAnimation.length / _settings.AttackSpeedMultiplier.Value) - _settings.SecondsFromEndToAllowNextAttack, 0.0001f, _settings.AttackAnimation.length);
-            _scaledDuration           = _settings.AttackAnimation.length / _settings.AttackSpeedMultiplier.Value;
+            _scaledAttackAnimationDuration = (_settings.AttackAnimation.length / _settings.AttackSpeedMultiplier.Value);
+            
+            _secondsFromBeginningToAllowNextAttack = clamp(_scaledAttackAnimationDuration - _settings.SecondsFromEndToAllowNextAttack.Value, 0.0001f, _settings.AttackAnimation.length);
+            _secondsFromBeginningToFadeOut         = clamp(_scaledAttackAnimationDuration - _settings.SecondsFromEndToFadeOut.Value,         0.0001f, _settings.AttackAnimation.length);   
         }
         
         #endregion
@@ -60,6 +69,7 @@ namespace DeathRunner.Player
             
             EnableCanGoIntoNextAttackAfterTime().Forget();
             StopAttackAfterFinishTime().Forget();
+            FadeOutAfterFinishTime().Forget();
         }
 
         protected override void OnExit()
@@ -93,15 +103,22 @@ namespace DeathRunner.Player
         private async UniTask EnableCanGoIntoNextAttackAfterTime()
         {
             CanGoIntoNextAttack = false;
-            await UniTask.Delay(TimeSpan.FromSeconds(_secondsToAllowNextAttack), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            await UniTask.Delay(TimeSpan.FromSeconds(_secondsFromBeginningToAllowNextAttack), ignoreTimeScale: true, cancellationToken: _cancellationToken);
             CanGoIntoNextAttack = true;
         }
 
         private async UniTask StopAttackAfterFinishTime()
         {
             IsAttacking = true;
-            await UniTask.Delay(TimeSpan.FromSeconds(_scaledDuration), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            await UniTask.Delay(TimeSpan.FromSeconds(_scaledAttackAnimationDuration), ignoreTimeScale: true, cancellationToken: _cancellationToken);
             IsAttacking = false;
+        }
+        
+        private async UniTask FadeOutAfterFinishTime()
+        {
+            CanFadeOut = false;
+            await UniTask.Delay(TimeSpan.FromSeconds(_secondsFromBeginningToFadeOut), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            CanFadeOut = true;
         }
         
         private void RefreshCancellationToken()
@@ -119,6 +136,8 @@ namespace DeathRunner.Player
         //[field:SerializeField] public Constant<F32>                       AttackDamage                    { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Constant<F32>                       AttackSpeedMultiplier           { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Constant<F32>                       SecondsFromEndToAllowNextAttack { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<F32>                       SecondsFromEndToFadeOut         { get; [UsedImplicitly] private set; }
+        
         
         [field:SerializeField] public Variable<F32x3>                     OrientationLookDirection        { get; [UsedImplicitly] private set; }
         //[field:SerializeField] public Constant<F32>                       OrientationSpeed                { get; [UsedImplicitly] private set; }

@@ -15,17 +15,17 @@ namespace DeathRunner.Animations
         #region Variables
         
         #if ODIN_INSPECTOR
-        [field:FoldoutGroup("References")]
+        [field:FoldoutGroup(groupName: "References")]
         #endif
         [field:SerializeField] public AnimancerComponent Animancer { get; [UsedImplicitly] private set; }
 
         #if ODIN_INSPECTOR
-        [field:FoldoutGroup("References")]
+        [field:FoldoutGroup(groupName: "References")]
         #endif
         [field:SerializeField] public Transform PlayerTransform { get; [UsedImplicitly] private set; }
       
         #if ODIN_INSPECTOR
-        [field:FoldoutGroup("References")]
+        [field:FoldoutGroup(groupName: "References")]
         #endif
         [field:SerializeField] public Camera PlayerCamera { get; [UsedImplicitly] private set; }
         
