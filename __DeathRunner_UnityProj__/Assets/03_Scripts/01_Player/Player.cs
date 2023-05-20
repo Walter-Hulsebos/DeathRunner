@@ -8,6 +8,10 @@ using HFSM;
 using JetBrains.Annotations;
 using QFSW.QC;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
+
+using MonoBehaviour = Sirenix.OdinInspector.SerializedMonoBehaviour;
+
 using UnityEngine;
 
 using static Unity.Mathematics.math;
@@ -25,7 +29,8 @@ namespace DeathRunner.Player
         //NOTE: [Walter] Make shared states possible??
 
         [SerializeField] private PlayerReferences      playerReferences = new();
-        [SerializeField] private PlayerAttributes      playerAttributes = new();
+        [OdinSerialize]
+        private PlayerAttributes      playerAttributes = new();
 
         [Tooltip("Locomotion Settings for Normal-Time")]
         [SerializeField] private LocomotionSettings    locomotionNTSettings;

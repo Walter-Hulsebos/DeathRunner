@@ -254,7 +254,7 @@ namespace DeathRunner.Animations
             _moveState.Parameter = _orthogonalMoveDirection;
             _moveState.Speed = 1;
             
-            MyAnimancer.Play(state: _moveState);
+            MyAnimancer.Play(state: _moveState, fadeDuration: AnimancerPlayable.DefaultFadeDuration);
         }
         
         #endregion
