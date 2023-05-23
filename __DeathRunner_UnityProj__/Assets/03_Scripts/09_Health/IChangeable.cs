@@ -12,7 +12,7 @@ namespace DeathRunner.Attributes
         public T                     Value   { get; set; }
         
                 
-        public IMod<T>[]             Modifiers   { get; }
+        //public IMod<T>[]             Modifiers   { get; }
         
         public ScriptableEvent<T, T> OnChanged   { get; }
         public ScriptableEvent       OnDecreased { get; }

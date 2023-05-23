@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 780803037}
   - component: {fileID: 780803039}
   - component: {fileID: 780803038}
+  - component: {fileID: 780803040}
   m_Layer: 0
   m_Name: -AllowNextAttack-
   m_TagString: Untagged
@@ -151,7 +152,7 @@ MonoBehaviour:
   _response:
     _persistentListeners:
     - _persistentArguments: []
-      _target: {fileID: 0}
+      _target: {fileID: 780803040}
       _isStatic: 0
       CallState: 2
       _staticType:
@@ -161,6 +162,220 @@ MonoBehaviour:
         _suppressLogs: 0
       _methodName: PlayFeedbacks
     Expanded: 1
+--- !u!114 &780803040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 780803035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da43522623d4704e979466dc7650b65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Feedbacks: []
+  InitializationMode: 2
+  SafeMode: 3
+  Direction: 0
+  AutoChangeDirectionOnEnd: 0
+  AutoPlayOnStart: 0
+  AutoPlayOnEnable: 0
+  ForceTimescaleMode: 0
+  ForcedTimescaleMode: 1
+  DurationMultiplier: 1
+  RandomizeDuration: 0
+  RandomDurationMultiplier: {x: 0.5, y: 1.5}
+  DisplayFullDurationDetails: 0
+  PlayerTimescaleMode: 1
+  OnlyPlayIfWithinRange: 0
+  RangeCenter: {fileID: 0}
+  RangeDistance: 5
+  UseRangeFalloff: 0
+  RangeFalloff:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  RemapRangeFalloff: {x: 0, y: 1}
+  IgnoreRangeEvents: 0
+  CooldownDuration: 0
+  InitialDelay: 0
+  CanPlay: 1
+  CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
+  FeedbacksIntensity: 1
+  Events:
+    TriggerMMFeedbacksEvents: 0
+    TriggerUnityEvents: 1
+    OnPlay:
+      m_PersistentCalls:
+        m_Calls: []
+    OnPause:
+      m_PersistentCalls:
+        m_Calls: []
+    OnResume:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRevert:
+      m_PersistentCalls:
+        m_Calls: []
+    OnComplete:
+      m_PersistentCalls:
+        m_Calls: []
+    OnRestoreInitialValues:
+      m_PersistentCalls:
+        m_Calls: []
+    OnSkipToTheEnd:
+      m_PersistentCalls:
+        m_Calls: []
+  DebugActive: 0
+  FeedbacksList:
+  - rid: 6832162380803735556
+  KeepPlayModeChanges: 0
+  PerformanceMode: 0
+  ForceStopFeedbacksOnDisable: 1
+  PlayCount: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 6832162380803735556
+      type: {class: MMF_Sound, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks.MMTools}
+      data:
+        Active: 1
+        UniqueID: -295618768
+        Label: Sound
+        ChannelMode: 0
+        Channel: 0
+        MMChannelDefinition: {fileID: 0}
+        Chance: 100
+        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
+        Timing:
+          TimescaleMode: 0
+          ExcludeFromHoldingPauses: 0
+          ContributeToTotalDuration: 1
+          InitialDelay: 0
+          CooldownDuration: 0
+          InterruptsOnStop: 1
+          NumberOfRepeats: 0
+          RepeatForever: 0
+          DelayBetweenRepeats: 1
+          MMFeedbacksDirectionCondition: 0
+          PlayDirection: 0
+          ConstantIntensity: 0
+          UseIntensityInterval: 0
+          IntensityIntervalMin: 0
+          IntensityIntervalMax: 0
+          Sequence: {fileID: 0}
+          TrackID: 0
+          Quantized: 0
+          TargetBPM: 120
+        AutomatedTargetAcquisition:
+          Mode: 0
+          ChildIndex: 0
+        RandomizeOutput: 0
+        RandomMultiplier: {x: 0.8, y: 1}
+        RandomizeDuration: 0
+        RandomDurationMultiplier: {x: 0.5, y: 2}
+        UseRange: 0
+        RangeDistance: 5
+        UseRangeFalloff: 0
+        RangeFalloff:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 1
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 0
+            inSlope: 0
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        RemapRangeFalloff: {x: 0, y: 1}
+        Owner: {fileID: 780803040}
+        DebugActive: 0
+        Sfx: {fileID: 8300000, guid: 7336cd5e6e4f74693ac6c4b607b671ef, type: 3}
+        RandomSfx: []
+        TestPlayButton:
+          ButtonText: Debug Play Sound
+        TestStopButton:
+          ButtonText: Debug Stop Sound
+        PlayMethod: 1
+        PoolSize: 10
+        StopSoundOnFeedbackStop: 1
+        MinVolume: 1
+        MaxVolume: 1
+        MinPitch: 1
+        MaxPitch: 1
+        SfxAudioMixerGroup: {fileID: 0}
+        Priority: 128
+        PanStereo: 0
+        SpatialBlend: 0
+        DopplerLevel: 1
+        Spread: 0
+        RolloffMode: 0
+        MinDistance: 1
+        MaxDistance: 500
+        UseCustomRolloffCurve: 0
+        CustomRolloffCurve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        UseSpatialBlendCurve: 0
+        SpatialBlendCurve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        UseReverbZoneMixCurve: 0
+        ReverbZoneMixCurve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        UseSpreadCurve: 0
+        SpreadCurve:
+          serializedVersion: 2
+          m_Curve: []
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!1 &1037352630
 GameObject:
   m_ObjectHideFlags: 0
@@ -1849,38 +2064,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d2b2d4485ec0c4783c35cad18e810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 2ff66b555bd8e45489aaa1c71839822f, type: 2}
+    - {fileID: 11400000, guid: 65c94b9513319ea4e91c332f8e401e2a, type: 2}
+    - {fileID: 11400000, guid: e3d32e645a171fb4db1d064a022e23d5, type: 2}
+    - {fileID: 11400000, guid: 8d31515b9de6d0140ac23c79b0244b3f, type: 2}
+    - {fileID: 11400000, guid: 90b21fd356ae87348b9edb5558c8a674, type: 2}
+    - {fileID: 11400000, guid: 6f837921cb312b64eb1379e8a8ee6b9a, type: 2}
+    - {fileID: 11400000, guid: 5cfd7d5d4f846bd4d97c84ced9b5401b, type: 2}
+    - {fileID: 11400000, guid: 9c909c55390d5f847ae47039cda197cf, type: 2}
+    - {fileID: 11400000, guid: e7e38ff6f4bb3204ea8bbb6adabd688d, type: 2}
+    - {fileID: 11400000, guid: db0a1d2c9c33f7e43870cb6b4b978060, type: 2}
+    - {fileID: 11400000, guid: 9a2b399be49a1bb4ca03929ff32378e3, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: playerAttributes
+      Entry: 7
+      Data: 0|DeathRunner.Player.PlayerAttributes, DeathRunner.Player
+    - Name: health
+      Entry: 7
+      Data: DeathRunner.Attributes.Health, DeathRunner.Attributes
+    - Name: <Max>k__BackingField
+      Entry: 10
+      Data: 0
+    - Name: currentHealthBackingField
+      Entry: 10
+      Data: 1
+    - Name: <OnChanged>k__BackingField
+      Entry: 10
+      Data: 2
+    - Name: <OnDecreased>k__BackingField
+      Entry: 10
+      Data: 3
+    - Name: <OnIncreased>k__BackingField
+      Entry: 10
+      Data: 4
+    - Name: <OnDepleted>k__BackingField
+      Entry: 10
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: stamina
+      Entry: 7
+      Data: DeathRunner.Attributes.Stamina, DeathRunner.Attributes
+    - Name: <Max>k__BackingField
+      Entry: 10
+      Data: 0
+    - Name: currentStaminaBackingField
+      Entry: 10
+      Data: 6
+    - Name: <OnChanged>k__BackingField
+      Entry: 10
+      Data: 7
+    - Name: <OnDecreased>k__BackingField
+      Entry: 10
+      Data: 8
+    - Name: <OnIncreased>k__BackingField
+      Entry: 10
+      Data: 9
+    - Name: <OnDepleted>k__BackingField
+      Entry: 10
+      Data: 10
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   playerReferences:
     <Camera>k__BackingField: {fileID: 2410215513009397357}
     <Motor>k__BackingField: {fileID: 2410215513429711726}
     <InputHandler>k__BackingField: {fileID: 2410215513429711717}
     <LookAt>k__BackingField: {fileID: 1037352631}
-  playerAttributes:
-    health:
-      <Max>k__BackingField: {fileID: 11400000, guid: 2ff66b555bd8e45489aaa1c71839822f,
-        type: 2}
-      currentHealthBackingField: {fileID: 11400000, guid: 65c94b9513319ea4e91c332f8e401e2a,
-        type: 2}
-      <OnChanged>k__BackingField: {fileID: 11400000, guid: e3d32e645a171fb4db1d064a022e23d5,
-        type: 2}
-      <OnDecreased>k__BackingField: {fileID: 11400000, guid: 8d31515b9de6d0140ac23c79b0244b3f,
-        type: 2}
-      <OnIncreased>k__BackingField: {fileID: 11400000, guid: 90b21fd356ae87348b9edb5558c8a674,
-        type: 2}
-      <OnDepleted>k__BackingField: {fileID: 11400000, guid: 6f837921cb312b64eb1379e8a8ee6b9a,
-        type: 2}
-    stamina:
-      <Max>k__BackingField: {fileID: 11400000, guid: 8af2c425a9d743c45a541bb67b2a00d7,
-        type: 2}
-      currentStaminaBackingField: {fileID: 11400000, guid: 5cfd7d5d4f846bd4d97c84ced9b5401b,
-        type: 2}
-      <OnChanged>k__BackingField: {fileID: 11400000, guid: 9c909c55390d5f847ae47039cda197cf,
-        type: 2}
-      <OnDecreased>k__BackingField: {fileID: 11400000, guid: e7e38ff6f4bb3204ea8bbb6adabd688d,
-        type: 2}
-      <OnIncreased>k__BackingField: {fileID: 11400000, guid: db0a1d2c9c33f7e43870cb6b4b978060,
-        type: 2}
-      <OnDepleted>k__BackingField: {fileID: 11400000, guid: 9a2b399be49a1bb4ca03929ff32378e3,
-        type: 2}
   locomotionNTSettings:
     <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 134c6d3d34951474d8deabf213eb103b,
       type: 2}
