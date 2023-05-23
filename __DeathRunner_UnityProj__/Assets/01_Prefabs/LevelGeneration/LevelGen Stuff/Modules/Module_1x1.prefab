@@ -124,8 +124,8 @@ GameObject:
   - component: {fileID: 1852362089279104319}
   - component: {fileID: 1443294308540176604}
   - component: {fileID: 7505067773578760966}
-  m_Layer: 20
-  m_Name: Cube
+  m_Layer: 13
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -220,7 +220,6 @@ GameObject:
   - component: {fileID: 3064180643469519109}
   - component: {fileID: 1555715429186589170}
   - component: {fileID: 2566858985865833746}
-  - component: {fileID: 8403844728717829734}
   m_Layer: 20
   m_Name: Mapcube
   m_TagString: Untagged
@@ -293,19 +292,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8403844728717829734
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5729963537530646921}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 6.7764907, z: 1}
-  m_Center: {x: 0, y: -3.418938, z: 0}
 --- !u!1001 &1411520962
 PrefabInstance:
   m_ObjectHideFlags: 0
