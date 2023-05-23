@@ -18,11 +18,11 @@ namespace DeathRunner.Animations
         #region Variables
 
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Events")]
+        [FoldoutGroup(groupName: "Events")]
         #endif
         [SerializeField] private ScriptableEvent<AnimationClip, F32> onAttackStarted;
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Events")]
+        [FoldoutGroup(groupName: "Events")]
         #endif
         [SerializeField] private ScriptableEvent onAttackStopped;
         
@@ -46,7 +46,7 @@ namespace DeathRunner.Animations
         
         private void OnAttackStartedHandler(AnimationClip attackAnimation, F32 attackSpeedMultiplier)
         {
-            AnimancerState __state = MyAnimancer.Play(attackAnimation);
+            AnimancerState __state = MyAnimancer.Play(clip: attackAnimation);
             __state.Speed = attackSpeedMultiplier;
             
             EnableRootMotion();

@@ -13,22 +13,29 @@ using Bool  = System.Boolean;
 
 namespace DeathRunner.Player
 {
-    public class PlayerStateLeaf_AttackMelee : StateLeaf
+    public sealed class PlayerStateLeaf_AttackMelee : StateLeaf
     {
         #region Variables
 
         private readonly MeleeAttackSettings _settings;
-        private readonly PlayerReferences      _references;
+        private readonly PlayerReferences    _references;
         
-        private CancellationTokenSource        _cancellationTokenSource;
-        private CancellationToken              _cancellationToken;
+        private CancellationTokenSource      _cancellationTokenSource;
+        private CancellationToken            _cancellationToken;
         
-        private readonly F32                   _secondsToAllowNextAttack;
-        private readonly F32                   _scaledDuration;
+        private readonly F32                 _scaledSecondsFromBeginningToAllowNextAttack;
+        private readonly F32                 _scaledAttackAnimationDuration;
+        
+        private readonly F32                 _scaledSecondsFromBeginningToFadeOut;
 
-        public Bool IsAttacking         { get; private set; } = false;
-        public Bool IsDoneAttacking     => !IsAttacking;
-        public Bool CanGoIntoNextAttack { get; private set; } = false;
+        public Bool IsAttacking            { get; private set; } = false;
+        public Bool IsDoneAttacking        => !IsAttacking;
+        
+        public Bool CanGoIntoNextAttack    { get; private set; } = false;
+        public Bool CanNotGoIntoNextAttack => !CanGoIntoNextAttack;
+        
+        public Bool CanFadeOut             { get; private set; } = false;
+        public Bool CanNotFadeOut          => !CanFadeOut;
 
         #endregion
         
@@ -42,8 +49,26 @@ namespace DeathRunner.Player
             _cancellationTokenSource = new CancellationTokenSource();
             _cancellationToken = _cancellationTokenSource.Token;
             
-            _secondsToAllowNextAttack = clamp((_settings.AttackAnimation.length / _settings.AttackSpeedMultiplier.Value) - _settings.SecondsFromEndToAllowNextAttack, 0.0001f, _settings.AttackAnimation.length);
-            _scaledDuration           = _settings.AttackAnimation.length / _settings.AttackSpeedMultiplier.Value;
+            _scaledAttackAnimationDuration = (_settings.AttackAnimation.length / _settings.AttackSpeedMultiplier.Value);
+            
+            _scaledSecondsFromBeginningToAllowNextAttack = clamp(_scaledAttackAnimationDuration - _settings.SecondsFromEndToAllowNextAttack.Value, 0.0001f, _settings.AttackAnimation.length);
+            _scaledSecondsFromBeginningToFadeOut         = clamp(_scaledAttackAnimationDuration - _settings.SecondsFromEndToFadeOut.Value,         0.0001f, _settings.AttackAnimation.length);
+            
+            //Debug everything.
+            Debug.Log
+            (message:
+                "<b>--- Melee Attack Settings ---</b>\n" +
+                $"Attack Animation Duration: {_settings.AttackAnimation.length}\n" +
+                $"Attack Speed Multiplier: {_settings.AttackSpeedMultiplier.Value}\n" +
+                $"Attack Animation Duration Scaled: {_scaledAttackAnimationDuration}\n" +
+                "\n" +
+                $"Seconds From End To Allow Next Attack: {_settings.SecondsFromEndToAllowNextAttack.Value}\n" +
+                $"Seconds From End To Fade Out: {_settings.SecondsFromEndToFadeOut.Value}\n" +
+                "\n" +
+                $"Scaled Seconds From Beginning To Allow Next Attack: {_scaledSecondsFromBeginningToAllowNextAttack}\n" +
+                $"Scaled Seconds From Beginning To Fade Out: {_scaledSecondsFromBeginningToFadeOut}\n" +
+                "<b>----------------------------</b>\n"
+            );
         }
         
         #endregion
@@ -60,6 +85,7 @@ namespace DeathRunner.Player
             
             EnableCanGoIntoNextAttackAfterTime().Forget();
             StopAttackAfterFinishTime().Forget();
+            FadeOutAfterFinishTime().Forget();
         }
 
         protected override void OnExit()
@@ -93,15 +119,26 @@ namespace DeathRunner.Player
         private async UniTask EnableCanGoIntoNextAttackAfterTime()
         {
             CanGoIntoNextAttack = false;
-            await UniTask.Delay(TimeSpan.FromSeconds(_secondsToAllowNextAttack), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            await UniTask.Delay(TimeSpan.FromSeconds(_scaledSecondsFromBeginningToAllowNextAttack), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            if (_settings.OnAllowNextAttack != null)
+            {
+                _settings.OnAllowNextAttack.Invoke();
+            }
             CanGoIntoNextAttack = true;
         }
 
         private async UniTask StopAttackAfterFinishTime()
         {
             IsAttacking = true;
-            await UniTask.Delay(TimeSpan.FromSeconds(_scaledDuration), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            await UniTask.Delay(TimeSpan.FromSeconds(_scaledAttackAnimationDuration), ignoreTimeScale: true, cancellationToken: _cancellationToken);
             IsAttacking = false;
+        }
+        
+        private async UniTask FadeOutAfterFinishTime()
+        {
+            CanFadeOut = false;
+            await UniTask.Delay(TimeSpan.FromSeconds(_scaledSecondsFromBeginningToFadeOut), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            CanFadeOut = true;
         }
         
         private void RefreshCancellationToken()
@@ -119,11 +156,15 @@ namespace DeathRunner.Player
         //[field:SerializeField] public Constant<F32>                       AttackDamage                    { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Constant<F32>                       AttackSpeedMultiplier           { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Constant<F32>                       SecondsFromEndToAllowNextAttack { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<F32>                       SecondsFromEndToFadeOut         { get; [UsedImplicitly] private set; }
+        
         
         [field:SerializeField] public Variable<F32x3>                     OrientationLookDirection        { get; [UsedImplicitly] private set; }
         //[field:SerializeField] public Constant<F32>                       OrientationSpeed                { get; [UsedImplicitly] private set; }
 
         [field:SerializeField] public ScriptableEvent<AnimationClip, F32> OnAttackStarted                 { get; [UsedImplicitly] private set; }
         [field:SerializeField] public ScriptableEvent                     OnAttackStopped                 { get; [UsedImplicitly] private set; }
+        
+        [field:SerializeField] public ScriptableEvent                     OnAllowNextAttack               { get; [UsedImplicitly] private set; }
     }
 }

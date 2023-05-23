@@ -19,7 +19,7 @@ namespace DeathRunner.Animations
         [SerializeField] private AnimationClip deathAnimation;
         
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Events")]
+        [FoldoutGroup(groupName: "Events")]
         #endif
         [SerializeField] private ScriptableEvent onDeath;
         
@@ -38,7 +38,7 @@ namespace DeathRunner.Animations
         
         private void OnDeathHandler()
         {
-            MyAnimancer.Play(deathAnimation);
+            MyAnimancer.Play(clip: deathAnimation);
         }
         
         #endregion

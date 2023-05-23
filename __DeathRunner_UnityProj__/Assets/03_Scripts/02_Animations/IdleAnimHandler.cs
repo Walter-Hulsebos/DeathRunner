@@ -1,3 +1,4 @@
+ using Animancer;
  using UnityEngine;
 
 using GenericScriptableArchitecture;
@@ -18,7 +19,7 @@ namespace DeathRunner.Animations
         [SerializeField] private AnimationClip idleClip;
         
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Events")]
+        [FoldoutGroup(groupName: "Events")]
         #endif
         [SerializeField] private ScriptableEvent onEnterIdle;
         
@@ -37,7 +38,9 @@ namespace DeathRunner.Animations
         
         private void OnEnterIdleHandler()
         {
-            MyAnimancer.Play(idleClip);
+            //TODO: Look into normalized fade mode?
+            AnimancerState __state = MyAnimancer.Play(clip: idleClip, fadeDuration: AnimancerPlayable.DefaultFadeDuration);
+            //  __state.Stop();
         }
         
         #endregion

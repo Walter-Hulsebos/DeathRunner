@@ -27,7 +27,7 @@ namespace DeathRunner.Animations
         #region Variables
         
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Events")]
+        [FoldoutGroup(groupName: "Events")]
         #endif
         [SerializeField] private ScriptableEvent<F32x3> onMoveEvent;
 
@@ -67,7 +67,7 @@ namespace DeathRunner.Animations
             // So we need to create its state, type cast it to MixerState<F32x2>, and store it in a field.
             // Then we will be able to control that field's Parameter in Update.
             //AnimancerState __state = Animancer.States.GetOrCreate(animationReferences.Move);
-            AnimancerState __state = MyAnimancer.States.GetOrCreate(moveAnimations);
+            AnimancerState __state = MyAnimancer.States.GetOrCreate(transition: moveAnimations);
             _moveState = (MixerState<Vector2>)__state;
         }
 
@@ -89,7 +89,7 @@ namespace DeathRunner.Animations
 
         private Rotor _derivative;
 
-        [ContextMenu("LogAngles")]
+        [ContextMenu(itemName: "LogAngles")]
         private void LogAngles()
         {
             //Radians to float2
@@ -171,7 +171,7 @@ namespace DeathRunner.Animations
         {
             //Debug.Log($"Move vector: {targetMoveVector}");
             
-            if (all(targetMoveVector == F32x3.zero))
+            if (all(x: targetMoveVector == F32x3.zero))
             {
                 _orthogonalMoveDirection = F32x2.zero;
                 return;
@@ -185,7 +185,7 @@ namespace DeathRunner.Animations
                 smoothTime: 0.2f,
                 maxSpeed: 1000);
             _moveVectorLastFrame = __moveVector;
-            F32x3 __moveDirection = normalize(__moveVector);
+            F32x3 __moveDirection = normalize(x: __moveVector);
             
             //TODO: Walter, the speed of this slerp will vary based on the distance between the two quaternions.
             //      I think you want to use a constant speed, so you'll need to calculate the time based on the distance.
@@ -216,14 +216,14 @@ namespace DeathRunner.Animations
             //        Debug.Log(message: $"__moveDirection: {__moveDirection}");
 
             
-            F32x3 __moveDirectionNonRelative   = __moveDirection.InverseRelativeTo(MyPlayerCamera.transform);
+            F32x3 __moveDirectionNonRelative   = __moveDirection.InverseRelativeTo(relativeToThis: MyPlayerCamera.transform);
 
             F32x3 __facingDirection = MyPlayerTransform.forward;
-            F32x3 __facingDirectionNonRelative = __facingDirection.InverseRelativeTo(MyPlayerCamera.transform);
+            F32x3 __facingDirectionNonRelative = __facingDirection.InverseRelativeTo(relativeToThis: MyPlayerCamera.transform);
 
-            _orthogonalMoveDirection = normalize(new F32x2(
-                x: -dot(__moveDirectionNonRelative, cross(__facingDirectionNonRelative, up())),
-                y: +dot(__moveDirectionNonRelative, __facingDirectionNonRelative)));
+            _orthogonalMoveDirection = normalize(x: new F32x2(
+                x: -dot(x: __moveDirectionNonRelative, y: cross(x: __facingDirectionNonRelative, y: up())),
+                y: +dot(x: __moveDirectionNonRelative, y: __facingDirectionNonRelative)));
 
             #if UNITY_EDITOR
             F32x3 __characterPosition = MyPlayerTransform.position;
@@ -254,7 +254,7 @@ namespace DeathRunner.Animations
             _moveState.Parameter = _orthogonalMoveDirection;
             _moveState.Speed = 1;
             
-            MyAnimancer.Play(_moveState);
+            MyAnimancer.Play(state: _moveState, fadeDuration: AnimancerPlayable.DefaultFadeDuration);
         }
         
         #endregion

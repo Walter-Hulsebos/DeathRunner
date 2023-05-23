@@ -5,7 +5,7 @@ namespace DeathRunner.Player
 {
     [Serializable]
     public sealed class PlayerAttributes
-    { 
+    {
         public Health  health;
         public Stamina stamina;
     }

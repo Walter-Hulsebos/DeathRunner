@@ -1,6 +1,8 @@
 ﻿using System;
+using DeathRunner.Attributes.Modifiers;
 using GenericScriptableArchitecture;
 using JetBrains.Annotations;
+using Sirenix.Serialization;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -68,6 +70,9 @@ namespace DeathRunner.Attributes
                 }
             }
         }
+        
+        //[OdinSerialize]
+        //public IMod<U16>[] Modifiers { get; [UsedImplicitly] private set; }
 
         [field:SerializeField]
         public ScriptableEvent<UInt16, UInt16> OnChanged   { get; [UsedImplicitly] private set; }
