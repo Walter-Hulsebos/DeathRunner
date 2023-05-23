@@ -13,7 +13,7 @@ using Bool  = System.Boolean;
 
 namespace DeathRunner.Player
 {
-    public class PlayerStateLeaf_AttackMelee : StateLeaf
+    public sealed class PlayerStateLeaf_AttackMelee : StateLeaf
     {
         #region Variables
 
@@ -23,10 +23,10 @@ namespace DeathRunner.Player
         private CancellationTokenSource      _cancellationTokenSource;
         private CancellationToken            _cancellationToken;
         
-        private readonly F32                 _secondsFromBeginningToAllowNextAttack;
+        private readonly F32                 _scaledSecondsFromBeginningToAllowNextAttack;
         private readonly F32                 _scaledAttackAnimationDuration;
         
-        private readonly F32                 _secondsFromBeginningToFadeOut;
+        private readonly F32                 _scaledSecondsFromBeginningToFadeOut;
 
         public Bool IsAttacking            { get; private set; } = false;
         public Bool IsDoneAttacking        => !IsAttacking;
@@ -51,8 +51,24 @@ namespace DeathRunner.Player
             
             _scaledAttackAnimationDuration = (_settings.AttackAnimation.length / _settings.AttackSpeedMultiplier.Value);
             
-            _secondsFromBeginningToAllowNextAttack = clamp(_scaledAttackAnimationDuration - _settings.SecondsFromEndToAllowNextAttack.Value, 0.0001f, _settings.AttackAnimation.length);
-            _secondsFromBeginningToFadeOut         = clamp(_scaledAttackAnimationDuration - _settings.SecondsFromEndToFadeOut.Value,         0.0001f, _settings.AttackAnimation.length);   
+            _scaledSecondsFromBeginningToAllowNextAttack = clamp(_scaledAttackAnimationDuration - _settings.SecondsFromEndToAllowNextAttack.Value, 0.0001f, _settings.AttackAnimation.length);
+            _scaledSecondsFromBeginningToFadeOut         = clamp(_scaledAttackAnimationDuration - _settings.SecondsFromEndToFadeOut.Value,         0.0001f, _settings.AttackAnimation.length);
+            
+            //Debug everything.
+            Debug.Log
+            (message:
+                "<b>--- Melee Attack Settings ---</b>\n" +
+                $"Attack Animation Duration: {_settings.AttackAnimation.length}\n" +
+                $"Attack Speed Multiplier: {_settings.AttackSpeedMultiplier.Value}\n" +
+                $"Attack Animation Duration Scaled: {_scaledAttackAnimationDuration}\n" +
+                "\n" +
+                $"Seconds From End To Allow Next Attack: {_settings.SecondsFromEndToAllowNextAttack.Value}\n" +
+                $"Seconds From End To Fade Out: {_settings.SecondsFromEndToFadeOut.Value}\n" +
+                "\n" +
+                $"Scaled Seconds From Beginning To Allow Next Attack: {_scaledSecondsFromBeginningToAllowNextAttack}\n" +
+                $"Scaled Seconds From Beginning To Fade Out: {_scaledSecondsFromBeginningToFadeOut}\n" +
+                "<b>----------------------------</b>\n"
+            );
         }
         
         #endregion
@@ -103,12 +119,11 @@ namespace DeathRunner.Player
         private async UniTask EnableCanGoIntoNextAttackAfterTime()
         {
             CanGoIntoNextAttack = false;
-            await UniTask.Delay(TimeSpan.FromSeconds(_secondsFromBeginningToAllowNextAttack), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            await UniTask.Delay(TimeSpan.FromSeconds(_scaledSecondsFromBeginningToAllowNextAttack), ignoreTimeScale: true, cancellationToken: _cancellationToken);
             if (_settings.OnAllowNextAttack != null)
             {
                 _settings.OnAllowNextAttack.Invoke();
             }
-
             CanGoIntoNextAttack = true;
         }
 
@@ -122,7 +137,7 @@ namespace DeathRunner.Player
         private async UniTask FadeOutAfterFinishTime()
         {
             CanFadeOut = false;
-            await UniTask.Delay(TimeSpan.FromSeconds(_secondsFromBeginningToFadeOut), ignoreTimeScale: true, cancellationToken: _cancellationToken);
+            await UniTask.Delay(TimeSpan.FromSeconds(_scaledSecondsFromBeginningToFadeOut), ignoreTimeScale: true, cancellationToken: _cancellationToken);
             CanFadeOut = true;
         }
         
