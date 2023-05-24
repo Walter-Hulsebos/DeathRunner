@@ -1,3 +1,4 @@
+using System;
 using Animancer;
 using EasyCharacterMovement;
 using UnityEngine;
@@ -46,11 +47,28 @@ namespace DeathRunner.Player
             // {
             //     Debug.Log("Animator.deltaRotation: " + Animator.deltaRotation.eulerAngles);
             // }
+            
+            Vector3 __deltaPosition  = Animator.deltaPosition;
+            Vector3 __sweepDirection = __deltaPosition.normalized;
 
             Target.rigidbody.interpolation = RigidbodyInterpolation.None;
             //Target.SetPosition(Target.position + Animator.deltaPosition);
             //Target.SetRotation(Target.rotation * Animator.deltaRotation);
-            Target.SetPositionAndRotation(newPosition: Target.position + Animator.deltaPosition, newRotation: Target.rotation * Animator.deltaRotation, updateGround: true);
+            
+            Boolean __hitSomethingInSweep = Target.MovementSweepTest
+            (
+                characterPosition: Target.position, 
+                sweepDirection:    __sweepDirection, 
+                sweepDistance:     __deltaPosition.magnitude, 
+                collisionResult:   out CollisionResult __collisionResult
+            );
+            
+            Vector3 __displacement = (__hitSomethingInSweep) 
+                ? __collisionResult.displacementToHit 
+                : __deltaPosition;
+            
+            
+            Target.SetPositionAndRotation(newPosition: Target.position + __displacement, newRotation: Target.rotation * Animator.deltaRotation, updateGround: true);
             Target.rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
 
             // if (!ApplyRootMotion)

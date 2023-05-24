@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using DeathRunner.Damageable.Message;
+using ExtEvents;
 using UnityEngine.Serialization;
 
 namespace DeathRunner.Damageable
@@ -27,6 +28,13 @@ namespace DeathRunner.Damageable
         public int currentHitPoints { get; private set; }
 
         public UnityEvent OnDeath, OnReceiveDamage, OnHitWhileInvulnerable, OnBecomeVulnerable, OnResetDamage, OnHeal;
+
+        // public ExtEvent OnDeathExt;
+        // public ExtEvent OnReceiveDamageExt;
+        // public ExtEvent OnHitWhileInvulnerableExt;
+        // public ExtEvent OnBecomeVulnerableExt;
+        // public ExtEvent OnResetDamageExt;
+        // public ExtEvent OnHealExt;
 
         [Tooltip("When this gameObject is damaged, these other gameObjects are notified.")]
         [EnforceType(typeof(Message.IMessageReceiver))]

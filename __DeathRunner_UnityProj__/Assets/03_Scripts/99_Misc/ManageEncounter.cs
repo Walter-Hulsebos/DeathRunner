@@ -23,9 +23,15 @@ namespace Game
             
         [SerializeField] private int attackCooldown;
         
+        
+        
         // Start is called before the first frame update
         void Start()
         {
+            // foreach (GameObject enemy in enemies)
+            // {
+            //     enemy.
+            // }
             foreach( GameObject enemy in enemies )
             {
                 enemy.SetActive(false);
@@ -36,12 +42,14 @@ namespace Game
             }
 
             _collider = GetComponent<BoxCollider>();
-
+            
             foreach (GameObject enemy in enemies)
             {
                 if (enemy.TryGetComponent(out MeleeEnemyAI _meleeEnemyAI))
                 {
                     meleeEnemies.Add(_meleeEnemyAI);
+                    
+                    //_meleeEnemyAI.OnDeath += 
                 }
             }
 
