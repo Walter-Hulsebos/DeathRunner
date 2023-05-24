@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34e2076c00ed43f989504b7ba1dbd404, type: 3}
+  m_Script: {fileID: -1021156001, guid: baa2c7e613d48db48b8754d601c69a20, type: 3}
   m_Name: Player_Stamina-OnIncreased
   m_EditorClassIdentifier: 
   _description: 
-  _argNames: []
+  _argNames:
+  - OldStamina
+  - NewStamina
   _scriptableEventHelper:
     ListenersExpanded: 0
     StackTrace:

@@ -604,7 +604,6 @@ GameObject:
   - component: {fileID: 939591606388758874}
   - component: {fileID: 3509297825157596848}
   - component: {fileID: 4182337163124120623}
-  - component: {fileID: 489972115118840101}
   m_Layer: 6
   m_Name: MiniMapPlayer
   m_TagString: Untagged
@@ -643,7 +642,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619415757098822227}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -677,19 +676,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &489972115118840101
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 619415757098822227}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &694370369325398921
 GameObject:
   m_ObjectHideFlags: 0
@@ -700,6 +686,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1635734182930347289}
   - component: {fileID: 3894476383814958808}
+  - component: {fileID: 1863071824}
+  - component: {fileID: 1863071827}
   m_Layer: 6
   m_Name: ScytheHitbox
   m_TagString: Untagged
@@ -735,6 +723,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1863071824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694370369325398921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7da0d385c8d03284bb9147985a13c59f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Enemy
+  damageInflicted: 1
+--- !u!114 &1863071827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 694370369325398921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f40c90471a42c8a5cac30f8224936c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToDamage: Enemy
+  damageInflicted: 1
 --- !u!1 &762215014701460122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1360,85 +1376,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31d2b2d4485ec0c4783c35cad18e810f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  serializationData:
-    SerializedFormat: 2
-    SerializedBytes: 
-    ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 2ff66b555bd8e45489aaa1c71839822f, type: 2}
-    - {fileID: 11400000, guid: 65c94b9513319ea4e91c332f8e401e2a, type: 2}
-    - {fileID: 11400000, guid: e3d32e645a171fb4db1d064a022e23d5, type: 2}
-    - {fileID: 11400000, guid: 8d31515b9de6d0140ac23c79b0244b3f, type: 2}
-    - {fileID: 11400000, guid: 90b21fd356ae87348b9edb5558c8a674, type: 2}
-    - {fileID: 11400000, guid: 6f837921cb312b64eb1379e8a8ee6b9a, type: 2}
-    - {fileID: 11400000, guid: 5cfd7d5d4f846bd4d97c84ced9b5401b, type: 2}
-    - {fileID: 11400000, guid: 9c909c55390d5f847ae47039cda197cf, type: 2}
-    - {fileID: 11400000, guid: e7e38ff6f4bb3204ea8bbb6adabd688d, type: 2}
-    - {fileID: 11400000, guid: db0a1d2c9c33f7e43870cb6b4b978060, type: 2}
-    - {fileID: 11400000, guid: 9a2b399be49a1bb4ca03929ff32378e3, type: 2}
-    SerializedBytesString: 
-    Prefab: {fileID: 0}
-    PrefabModificationsReferencedUnityObjects: []
-    PrefabModifications: []
-    SerializationNodes:
-    - Name: playerAttributes
-      Entry: 7
-      Data: 0|DeathRunner.Player.PlayerAttributes, DeathRunner.Player
-    - Name: health
-      Entry: 7
-      Data: DeathRunner.Attributes.Health, DeathRunner.Attributes
-    - Name: <Max>k__BackingField
-      Entry: 10
-      Data: 0
-    - Name: currentHealthBackingField
-      Entry: 10
-      Data: 1
-    - Name: <OnChanged>k__BackingField
-      Entry: 10
-      Data: 2
-    - Name: <OnDecreased>k__BackingField
-      Entry: 10
-      Data: 3
-    - Name: <OnIncreased>k__BackingField
-      Entry: 10
-      Data: 4
-    - Name: <OnDepleted>k__BackingField
-      Entry: 10
-      Data: 5
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: stamina
-      Entry: 7
-      Data: DeathRunner.Attributes.Stamina, DeathRunner.Attributes
-    - Name: <Max>k__BackingField
-      Entry: 10
-      Data: 0
-    - Name: currentStaminaBackingField
-      Entry: 10
-      Data: 6
-    - Name: <OnChanged>k__BackingField
-      Entry: 10
-      Data: 7
-    - Name: <OnDecreased>k__BackingField
-      Entry: 10
-      Data: 8
-    - Name: <OnIncreased>k__BackingField
-      Entry: 10
-      Data: 9
-    - Name: <OnDepleted>k__BackingField
-      Entry: 10
-      Data: 10
-    - Name: 
-      Entry: 8
-      Data: 
-    - Name: 
-      Entry: 8
-      Data: 
   playerReferences:
     <Camera>k__BackingField: {fileID: 2410215513009397357}
     <Motor>k__BackingField: {fileID: 2410215513429711726}
     <InputHandler>k__BackingField: {fileID: 2410215513429711717}
     <LookAt>k__BackingField: {fileID: 1037352631}
+  playerAttributes:
+    health:
+      <Max>k__BackingField: {fileID: 11400000, guid: 2ff66b555bd8e45489aaa1c71839822f,
+        type: 2}
+      <UseInfinity>k__BackingField: 0
+      currentHealthBackingField:
+        _valueType: 2
+        _value: 0
+        _variable: {fileID: 11400000, guid: 65c94b9513319ea4e91c332f8e401e2a, type: 2}
+        _constant: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      <OnChanged>k__BackingField:
+        _eventType: 0
+        _event: {fileID: 0}
+        _eventInstancer: {fileID: 0}
+      <OnDecreased>k__BackingField:
+        _eventType: 0
+        _event: {fileID: 0}
+        _eventInstancer: {fileID: 0}
+      <OnDepleted>k__BackingField:
+        _eventType: 0
+        _event: {fileID: 0}
+        _eventInstancer: {fileID: 0}
+      <OnIncreased>k__BackingField:
+        _eventType: 0
+        _event: {fileID: 0}
+        _eventInstancer: {fileID: 0}
+    stamina:
+      <Max>k__BackingField: {fileID: 11400000, guid: 8af2c425a9d743c45a541bb67b2a00d7,
+        type: 2}
+      <UseInfinity>k__BackingField: 0
+      currentStaminaBackingField:
+        _valueType: 2
+        _value: 0
+        _variable: {fileID: 11400000, guid: 65c94b9513319ea4e91c332f8e401e2a, type: 2}
+        _constant: {fileID: 0}
+        _variableInstancer: {fileID: 0}
+      <OnChanged>k__BackingField:
+        _eventType: 0
+        _event: {fileID: 0}
+        _eventInstancer: {fileID: 0}
+      <OnDecreased>k__BackingField:
+        _eventType: 0
+        _event: {fileID: 0}
+        _eventInstancer: {fileID: 0}
+      <OnDepleted>k__BackingField:
+        _eventType: 0
+        _event: {fileID: 0}
+        _eventInstancer: {fileID: 0}
+      <OnIncreased>k__BackingField:
+        _eventType: 0
+        _event: {fileID: 0}
+        _eventInstancer: {fileID: 0}
   locomotionNTSettings:
     <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 134c6d3d34951474d8deabf213eb103b,
       type: 2}
@@ -1690,7 +1685,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dfff50492f792fc4a8d893f63e44114d, type: 3}
   m_Name: 
@@ -1698,7 +1693,7 @@ MonoBehaviour:
   animationReferences: {fileID: 2410215513753998714}
   idleClip: {fileID: 2827323647375144621, guid: b30717f1b3b77694fb3d61206fb7ef26,
     type: 3}
-  onEnterIdle: {fileID: 11400000, guid: 118bd7aaf24377442969a0ca9d93fa74, type: 2}
+  onEnterIdle: {fileID: 11400000, guid: 74635907ceb978846a56c6d2a2250c3b, type: 2}
 --- !u!114 &610366622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1706,13 +1701,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bc161dfaacda3642b19f33b8b99fb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animationReferences: {fileID: 2410215513753998714}
-  onMoveEvent: {fileID: 11400000, guid: ba444c61a55c95b4d8fb6960045adaaa, type: 2}
+  onMoveEvent: {fileID: 11400000, guid: e782135d5170b6043a9b9df91021d35e, type: 2}
   smoothTurnInSeconds: 0.2
   deltaRadiansPerSecond: 31.415928
   moveAnimations:
@@ -1782,8 +1777,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationReferences: {fileID: 2410215513753998714}
-  onAttackStarted: {fileID: 11400000, guid: 3798b7f3daa43a747ab71620f503cd1a, type: 2}
-  onAttackStopped: {fileID: 11400000, guid: 52df77d76700a6b4a95e10a486fa1873, type: 2}
+  onAttackStarted: {fileID: 11400000, guid: 6bd7c2f9af8051c4387cfa6c8f437870, type: 2}
+  onAttackStopped: {fileID: 11400000, guid: 3467a095d0149b646b5073547ad6d884, type: 2}
 --- !u!114 &388316143
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,17 +8,18 @@ namespace DeathRunner.Attributes
     
     public interface IChangeable<T> where T : struct, IConvertible, IComparable, IFormattable
     {
-        public Constant<T>           Max     { get; }
-        public T                     Value   { get; set; }
-        
-                
+        public Constant<T>           Max         { get; }
+        public Bool                  UseInfinity { get; }
+        public T                     Value       { get; set; }
+
+
         //public IMod<T>[]             Modifiers   { get; }
         
-        public ScriptableEvent<T, T> OnChanged   { get; }
-        public ScriptableEvent       OnDecreased { get; }
-        public ScriptableEvent       OnIncreased { get; }
-        public ScriptableEvent       OnDepleted  { get; }
-        
-        public Bool                  IsZero      { get; }
+        public EventReference<T, T> OnChanged   { get; }
+        public EventReference<T, T> OnDecreased { get; }
+        public EventReference       OnDepleted  { get; }
+        public EventReference<T, T> OnIncreased { get; }
+
+        public Bool                 IsZero      { get; }
     }
 }

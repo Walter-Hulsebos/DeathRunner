@@ -12,7 +12,7 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
-            Debug.Log("NormalTime.Enter");
+            //Debug.Log("NormalTime.Enter");
             
             Commands.IsSlowMotionEnabled = false;
         }
@@ -21,7 +21,7 @@ namespace DeathRunner.Player
         {
             base.OnExit();
             
-            Debug.Log("NormalTime.Exit");
+            //Debug.Log("NormalTime.Exit");
         }
     }
 }

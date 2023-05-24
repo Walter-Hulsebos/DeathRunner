@@ -61,7 +61,6 @@ namespace Game
         {
             if (other.CompareTag("Player"))
             {
-
                 foreach( GameObject enemy in enemies )
                 {
                     enemy.SetActive(true);
@@ -72,7 +71,6 @@ namespace Game
                 }
 
                 _collider.enabled = false;
-                
             }
         }
 
