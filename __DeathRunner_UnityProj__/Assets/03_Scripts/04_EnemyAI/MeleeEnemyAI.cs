@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
-using System.Numerics;
 using Cysharp.Threading.Tasks;
-
+using GenericScriptableArchitecture;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,13 +13,15 @@ namespace DeathRunner.EnemyAI
         public class MeleeEnemyAI : MonoBehaviour
         {
             // Define possible states for the enemy AI
-            [SerializeField] public enum States
+            public enum States
             {
                 Attacking,
                 Chasing,
                 Idle,
                 Dead
             }
+            
+            
 
             // Reference to the player GameObject
             private GameObject _player;
@@ -48,7 +50,24 @@ namespace DeathRunner.EnemyAI
 
             private Vector3 chasePos = Vector3.zero;
             
-            // Called once when the object is created
+            [SerializeField] private GameObject healthDrop;
+
+            [SerializeField] private EventReference OnHealthDepleted;
+            
+            [SerializeField] private EventReference<ushort, ushort> OnHealthDecreased;
+
+            private void OnEnable()
+            {
+                OnHealthDepleted.AddListener(OnHealthDepletedHandler);
+                OnHealthDecreased.AddListener(OnHealthDecreasedHandler);
+            }
+
+            private void OnDisable()
+            {
+                OnHealthDepleted.RemoveListener(OnHealthDepletedHandler);
+                OnHealthDecreased.RemoveListener(OnHealthDecreasedHandler);
+            }
+
             private void Start()
             {
                 // Find the player object in the scene
@@ -58,8 +77,6 @@ namespace DeathRunner.EnemyAI
                 StartChase();
             }
 
-            [SerializeField] private GameObject healthDrop;
-            
             // Start chasing the player
             public void StartChase()
             {
@@ -151,6 +168,11 @@ namespace DeathRunner.EnemyAI
                 yield return new WaitForSeconds(waitTime);
                 StartChase();
             }
+            
+            private void OnHealthDecreasedHandler(UInt16 arg1, UInt16 arg2)
+            {
+                OnTakeDamage();
+            }
 
             public void OnTakeDamage()
             {
@@ -168,15 +190,21 @@ namespace DeathRunner.EnemyAI
                 //TODO make it have different time if the attack finishes naturally, and if you get stunned mid attack
                 StartCoroutine(EndAttack(1));
             }
+
+            private void OnHealthDepletedHandler()
+            {
+                OnDeath();
+            }
             
             public void OnDeath()
             {
                 
-                foreach(Transform child in transform.GetComponentsInChildren<Transform>() )
-                {
-                    child.gameObject.layer = LayerMask.NameToLayer("Pickup");
-                    print("changin layer");
-                }
+                // foreach(Transform child in transform.GetComponentsInChildren<Transform>() )
+                // {
+                //     child.gameObject.layer = LayerMask.NameToLayer("Pickup");
+                //     print("changin layer");
+                // }
+                
                 StopAllCoroutines();
                 navMeshAgent.SetDestination(transform.position);
                 //navMeshAgent.velocity = Vector3.zero;

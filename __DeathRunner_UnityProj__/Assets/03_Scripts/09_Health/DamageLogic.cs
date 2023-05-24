@@ -4,7 +4,7 @@
     {
         None,
         OverTime,
-        Instant,
-        
+        InstantOnce,
+        InstantRepeat
     }
 }

@@ -14,14 +14,14 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
-            Debug.Log("Root.Enter");
+            //Debug.Log("Root.Enter");
         }
         
         protected override void OnExit()
         {
             base.OnExit();
             
-            Debug.Log("Root.Exit");
+            //Debug.Log("Root.Exit");
         }
     }
 }

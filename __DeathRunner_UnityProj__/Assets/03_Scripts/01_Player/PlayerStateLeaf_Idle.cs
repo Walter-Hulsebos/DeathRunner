@@ -31,7 +31,7 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
-            Debug.Log("Idle.Enter");
+            //Debug.Log("Idle.Enter");
             
             _settings.OnEnterIdle.Invoke();
         }
@@ -40,7 +40,7 @@ namespace DeathRunner.Player
         {
             base.OnExit();
             
-            Debug.Log("Idle.Exit");
+            //Debug.Log("Idle.Exit");
         }
 
         private F32x3 _moveDirectionVelocity;

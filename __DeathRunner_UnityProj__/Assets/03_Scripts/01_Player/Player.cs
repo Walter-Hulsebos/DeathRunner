@@ -10,7 +10,7 @@ using QFSW.QC;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 
-using MonoBehaviour = Sirenix.OdinInspector.SerializedMonoBehaviour;
+//using MonoBehaviour = Sirenix.OdinInspector.SerializedMonoBehaviour;
 
 using UnityEngine;
 
@@ -29,8 +29,7 @@ namespace DeathRunner.Player
         //NOTE: [Walter] Make shared states possible??
 
         [SerializeField] private PlayerReferences      playerReferences = new();
-        [OdinSerialize]
-        private PlayerAttributes      playerAttributes = new();
+        [SerializeField] private PlayerAttributes      playerAttributes = new();
 
         [Tooltip("Locomotion Settings for Normal-Time")]
         [SerializeField] private LocomotionSettings    locomotionNTSettings;
@@ -133,10 +132,12 @@ namespace DeathRunner.Player
         
         private void Awake()
         {
+            playerAttributes.Init();
+            
             CreateStateTree();
             CreateStateTransitions();
-            
-            //Initialize root state
+
+            //Init root state
             _root.Init();
         }
 
@@ -264,6 +265,14 @@ namespace DeathRunner.Player
         #endregion
 
         #region Commands
+
+        [Command(aliasOverride: "Player.Health")]
+        [UsedImplicitly]
+        public UInt16 Health
+        {
+            get => playerAttributes.health.Value;
+            set => playerAttributes.health.Value = value;
+        }
 
         [Command(aliasOverride: "Player.Health.Kill")]
         [UsedImplicitly]

@@ -20,13 +20,18 @@ namespace DeathRunner.Attributes
     [Serializable]
     public struct Stamina : IChangeable<U16>
     {
-        [field:SerializeField]
-        public Constant<U16> Max { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<U16> Max         { get; [UsedImplicitly] private set; }
+        
+        #if ODIN_INSPECTOR
+        [field:BoxGroup("Current", showLabel: false)]
+        #endif  
+        [field:SerializeField] public Bool          UseInfinity { get; [UsedImplicitly] private set; }
         
         #if ODIN_INSPECTOR
         [LabelText("Current Health")]
+        [BoxGroup("Current", showLabel: false)]
         #endif
-        [field:SerializeField] private Variable<U16> currentStaminaBackingField;
+        [field:SerializeField] private Reference<U16> currentStaminaBackingField;
         public U16 Value 
         {
             get => currentStaminaBackingField.Value;
@@ -50,18 +55,18 @@ namespace DeathRunner.Attributes
                 {
                     if (OnIncreased != null)
                     {
-                        OnIncreased.Invoke();
+                        OnIncreased.Invoke(__previous, currentStaminaBackingField.Value);
                     }
                 }
                 else if (currentStaminaBackingField.Value < __previous)
                 {
                     if (OnDecreased != null)
                     {
-                        OnDecreased.Invoke();
+                        OnDecreased.Invoke(__previous, currentStaminaBackingField.Value);
                     }
                 }
                 
-                if (currentStaminaBackingField == 0)
+                if (currentStaminaBackingField.Value == 0)
                 {
                     if (OnDepleted != null)
                     {
@@ -74,14 +79,10 @@ namespace DeathRunner.Attributes
         //[OdinSerialize]
         //public IMod<U16>[] Modifiers { get; [UsedImplicitly] private set; }
 
-        [field:SerializeField]
-        public ScriptableEvent<UInt16, UInt16> OnChanged   { get; [UsedImplicitly] private set; }
-        [field:SerializeField]
-        public ScriptableEvent                 OnDecreased { get; [UsedImplicitly] private set; }
-        [field:SerializeField]
-        public ScriptableEvent                 OnIncreased { get; [UsedImplicitly] private set; }
-        [field:SerializeField]
-        public ScriptableEvent                 OnDepleted  { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference<UInt16, UInt16> OnChanged   { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference<UInt16, UInt16> OnDecreased { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference                 OnDepleted  { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference<UInt16, UInt16> OnIncreased { get; [UsedImplicitly] private set; }
 
         public Bool IsZero => Value == 0;
     }
