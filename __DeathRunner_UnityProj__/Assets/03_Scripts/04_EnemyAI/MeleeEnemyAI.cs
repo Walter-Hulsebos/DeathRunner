@@ -179,7 +179,7 @@ namespace DeathRunner.EnemyAI
                 }
                 StopAllCoroutines();
                 navMeshAgent.SetDestination(transform.position);
-                navMeshAgent.velocity = Vector3.zero;
+                //navMeshAgent.velocity = Vector3.zero;
                 currentState = States.Dead;
                 navMeshAgent.velocity = Vector3.zero;
                 Instantiate(healthDrop, transform.position, quaternion.identity);
