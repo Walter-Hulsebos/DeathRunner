@@ -131,10 +131,17 @@ namespace DeathRunner.EnemyAI
             // Rotate the enemy to face the player
             private void LookAtPlayer()
             {
-                Vector3 dir = _player.transform.position - transform.position;
-                dir.y = 0; // keep the direction strictly horizontal
-                Quaternion rot = Quaternion.LookRotation(dir);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rot, 5 * Time.deltaTime);
+                Vector3 vectorToPlayer = (_player.transform.position - transform.position);
+                
+                if(vectorToPlayer == Vector3.zero) return;
+                
+                Vector3 vectorToPlayerFlattened = new Vector3(vectorToPlayer.x, 0, vectorToPlayer.z);
+                Vector3 directionToPlayer = vectorToPlayerFlattened.normalized;
+                
+                if(directionToPlayer == Vector3.zero) return;
+                
+                Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
             }
 
             //TODO delete this or do it better, this is managed by animation events now
