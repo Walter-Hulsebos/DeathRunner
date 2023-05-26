@@ -114,7 +114,7 @@ namespace DeathRunner.Player
                         _references.Motor.SetPosition(pos, updateGround: true);
                         _references.Motor.interpolation = RigidbodyInterpolation.Interpolate;
                     },
-                    endValue: _references.Motor.position + (Vector3)__displacement, 
+                    endValue: _references.Motor.position + __displacement, 
                     duration: __dashTime)
                 .OnComplete(() =>
                 {

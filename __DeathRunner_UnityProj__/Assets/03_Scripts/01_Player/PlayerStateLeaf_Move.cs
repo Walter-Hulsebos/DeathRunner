@@ -97,14 +97,14 @@ namespace DeathRunner.Player
         /// <summary>
         /// Move the character when on walkable ground.
         /// </summary>
-        private void GroundedMovement(Vector3 desiredVelocity)
+        private void GroundedMovement(F32x3 desiredVelocity)
         {
             //Debug.Log("GroundedMovement");
             
-            _references.Motor.velocity = Vector3.Lerp(
-                a: _references.Motor.velocity, 
-                b: desiredVelocity,
-                t: 1f - exp(-_settings.GroundFriction * Commands.DeltaTime));
+            _references.Motor.velocity = lerp(
+                _references.Motor.velocity, 
+                desiredVelocity,
+                1f - exp(-_settings.GroundFriction * Commands.DeltaTime));
         }
 
         /// <summary>

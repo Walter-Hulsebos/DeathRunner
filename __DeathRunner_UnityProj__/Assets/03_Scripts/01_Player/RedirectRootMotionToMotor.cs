@@ -3,6 +3,9 @@ using Animancer;
 using EasyCharacterMovement;
 using UnityEngine;
 
+using F32x2 = Unity.Mathematics.float2;
+using F32x3 = Unity.Mathematics.float3;
+
 namespace DeathRunner.Player
 {
     public class RedirectRootMotionToMotor : RedirectRootMotion<CharacterMotor>
@@ -63,7 +66,7 @@ namespace DeathRunner.Player
                 collisionResult:   out CollisionResult __collisionResult
             );
             
-            Vector3 __displacement = (__hitSomethingInSweep) 
+            F32x3 __displacement = (__hitSomethingInSweep) 
                 ? __collisionResult.displacementToHit 
                 : __deltaPosition;
             

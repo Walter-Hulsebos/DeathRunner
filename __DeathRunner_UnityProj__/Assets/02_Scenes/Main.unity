@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 52.131653, g: 46.953003, b: 56.552277, a: 1}
+  m_IndirectSpecularColor: {r: 52.1391, g: 46.957764, b: 56.558228, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2728,14 +2728,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parameters:
     albedo: {r: 1, g: 1, b: 1, a: 1}
-    meanFreePath: 30
+    meanFreePath: 40
     anisotropy: 0
     volumeMask: {fileID: 11700000, guid: 0b72b3b7a07cbc347b99c85f6bda8747, type: 2}
     textureScrollingSpeed: {x: 0.2, y: 0, z: 0.2}
     textureTiling: {x: 30, y: 2.49, z: 50.94}
-    positiveFade: {x: 0, y: 0, z: 0}
-    negativeFade: {x: 0, y: 0, z: 0}
-    m_EditorUniformFade: 0
+    positiveFade: {x: 0.03, y: 0.24146695, z: 0.03}
+    negativeFade: {x: 0.03, y: 0.24146695, z: 0.03}
+    m_EditorUniformFade: 15
     m_EditorPositiveFade: {x: 0, y: 0, z: 0}
     m_EditorNegativeFade: {x: 0, y: 0, z: 0}
     m_EditorAdvancedFade: 0
