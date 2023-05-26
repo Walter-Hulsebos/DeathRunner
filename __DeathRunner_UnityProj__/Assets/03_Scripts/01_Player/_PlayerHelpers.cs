@@ -6,7 +6,7 @@ using ProjectDawn.Mathematics;
 using ProjectDawn.Geometry3D;
 
 using DeathRunner.Shared;
-
+using DeathRunner.Utils;
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
@@ -107,6 +107,41 @@ namespace DeathRunner.Player
             Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
 
             references.Rot = __targetRotation;
+        }
+        
+        /// <summary>
+        /// Move the character when falling or on not-walkable ground.
+        /// </summary>
+        public static F32x3 NotGroundedMovement(F32x3 velocity, F32x3 desiredVelocity, Bool isOnGround, F32x3 groundNormal, F32 maxAcceleration, F32 airControlPrimantissa, F32 airFriction, F32x3 gravity)
+        {
+            // If moving into non-walkable ground, limit its contribution.
+            // Allow movement parallel, but not into it because that may push us up.
+            if (isOnGround && dot(desiredVelocity, groundNormal) < 0.0f)
+            {
+                F32x3 __planeNormal  = normalize(new F32x3(x: groundNormal.x, y: 0, z: groundNormal.y));
+
+                desiredVelocity = desiredVelocity.ProjectedOnPlane(planeNormal: __planeNormal);
+            }
+            
+            F32x3 __flatVelocity = new(x: velocity.x, y: 0,          z: velocity.z);
+            F32x3 __verVelocity  = new(x: 0,          y: velocity.y, z: 0);
+
+            // Accelerate horizontal velocity towards desired velocity
+            F32x3 __horizontalVelocity = __flatVelocity.MoveTowards(
+                target:  desiredVelocity, 
+                maxDistanceDelta: maxAcceleration * airControlPrimantissa * Commands.DeltaTime);
+
+            // Update velocity preserving gravity effects (vertical velocity)
+            velocity = __horizontalVelocity + __verVelocity;
+
+            // Apply gravity
+            velocity += gravity * Commands.DeltaTime;
+
+            // Apply Air friction (Drag)
+            velocity -= velocity * airFriction * Commands.DeltaTime;
+            //__velocity -= clamp(1.0f - ((F32)_settings.AirFriction * Commands.DeltaTime), 0.0f, 1.0f);
+
+            return velocity;
         }
     }
 }

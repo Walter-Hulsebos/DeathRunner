@@ -86,7 +86,15 @@ namespace DeathRunner.Player
             }
             else
             {
-                NotGroundedMovement(desiredVelocity: __desiredVelocity);
+                _references.Motor.velocity = PlayerHelpers.NotGroundedMovement(
+                    velocity: _references.Motor.velocity,
+                    desiredVelocity: __desiredVelocity, 
+                    isOnGround: _references.Motor.isOnGround,
+                    groundNormal: _references.Motor.groundNormal, 
+                    maxAcceleration: _settings.MaxAcceleration.Value,
+                    airControlPrimantissa: _settings.AirControlPrimantissa.Value,
+                    airFriction: _settings.AirFriction.Value, 
+                    gravity: _settings.Gravity.Value);
             }
             
             _settings.OnMove.Invoke(__targetMoveDirectionRelativeToCamera);
@@ -107,45 +115,45 @@ namespace DeathRunner.Player
                 1f - exp(-_settings.GroundFriction * Commands.DeltaTime));
         }
 
-        /// <summary>
-        /// Move the character when falling or on not-walkable ground.
-        /// </summary>
-        private void NotGroundedMovement(F32x3 desiredVelocity)
-        {
-            F32x3 __velocity = (F32x3)_references.Motor.velocity;
-
-            // If moving into non-walkable ground, limit its contribution.
-            // Allow movement parallel, but not into it because that may push us up.
-            if (_references.Motor.isOnGround && dot(desiredVelocity, (F32x3)_references.Motor.groundNormal) < 0.0f)
-            {
-                F32x3 __groundNormal = _references.Motor.groundNormal;
-
-                F32x3 __planeNormal  = normalize(new F32x3(x: __groundNormal.x, y: 0, z: __groundNormal.y));
-
-                desiredVelocity = desiredVelocity.ProjectedOnPlane(planeNormal: __planeNormal);
-            }
-            
-            F32x3 __flatVelocity = new(x: __velocity.x, y: 0,            z: __velocity.z);
-            F32x3 __verVelocity  = new(x: 0,            y: __velocity.y, z: 0);
-
-            // Accelerate horizontal velocity towards desired velocity
-            F32x3 __horizontalVelocity = __flatVelocity.MoveTowards(
-                target:  desiredVelocity, 
-                maxDistanceDelta: (F32)_settings.MaxAcceleration * (F32)_settings.AirControlPrimantissa * Commands.DeltaTime);
-
-            // Update velocity preserving gravity effects (vertical velocity)
-            __velocity = __horizontalVelocity + __verVelocity;
-
-            // Apply gravity
-            __velocity += (F32x3)_settings.Gravity * Commands.DeltaTime;
-
-            // Apply Air friction (Drag)
-            __velocity -= __velocity * (F32)_settings.AirFriction * Commands.DeltaTime;
-            //__velocity -= clamp(1.0f - ((F32)_settings.AirFriction * Commands.DeltaTime), 0.0f, 1.0f);
-
-            // Update character's velocity
-            _references.Motor.velocity = __velocity;
-        }
+        // /// <summary>
+        // /// Move the character when falling or on not-walkable ground.
+        // /// </summary>
+        // private void NotGroundedMovement(F32x3 desiredVelocity)
+        // {
+        //     F32x3 __velocity = (F32x3)_references.Motor.velocity;
+        //
+        //     // If moving into non-walkable ground, limit its contribution.
+        //     // Allow movement parallel, but not into it because that may push us up.
+        //     if (_references.Motor.isOnGround && dot(desiredVelocity, (F32x3)_references.Motor.groundNormal) < 0.0f)
+        //     {
+        //         F32x3 __groundNormal = _references.Motor.groundNormal;
+        //
+        //         F32x3 __planeNormal  = normalize(new F32x3(x: __groundNormal.x, y: 0, z: __groundNormal.y));
+        //
+        //         desiredVelocity = desiredVelocity.ProjectedOnPlane(planeNormal: __planeNormal);
+        //     }
+        //     
+        //     F32x3 __flatVelocity = new(x: __velocity.x, y: 0,            z: __velocity.z);
+        //     F32x3 __verVelocity  = new(x: 0,            y: __velocity.y, z: 0);
+        //
+        //     // Accelerate horizontal velocity towards desired velocity
+        //     F32x3 __horizontalVelocity = __flatVelocity.MoveTowards(
+        //         target:  desiredVelocity, 
+        //         maxDistanceDelta: (F32)_settings.MaxAcceleration * (F32)_settings.AirControlPrimantissa * Commands.DeltaTime);
+        //
+        //     // Update velocity preserving gravity effects (vertical velocity)
+        //     __velocity = __horizontalVelocity + __verVelocity;
+        //
+        //     // Apply gravity
+        //     __velocity += (F32x3)_settings.Gravity * Commands.DeltaTime;
+        //
+        //     // Apply Air friction (Drag)
+        //     __velocity -= __velocity * (F32)_settings.AirFriction * Commands.DeltaTime;
+        //     //__velocity -= clamp(1.0f - ((F32)_settings.AirFriction * Commands.DeltaTime), 0.0f, 1.0f);
+        //
+        //     // Update character's velocity
+        //     _references.Motor.velocity = __velocity;
+        // }
     }
     
     [Serializable]
