@@ -46,6 +46,7 @@ namespace DeathRunner.Attributes
                 // Set the new value.
                 currentHealthBackingField.Value = value;
                 
+                Debug.Log($"Health Changed {__previous} {currentHealthBackingField.Value}");
                 if (OnChanged != null)
                 {
                     OnChanged.Invoke(__previous, currentHealthBackingField.Value);   

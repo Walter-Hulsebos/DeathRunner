@@ -103,7 +103,6 @@ namespace DeathRunner.EnemyAI
                       //  navMeshAgent.SetDestination(_player.transform.position);
 
                         navMeshAgent.SetDestination(chasePos);
-
                         // Look at the player
                         LookAtPlayer();
 

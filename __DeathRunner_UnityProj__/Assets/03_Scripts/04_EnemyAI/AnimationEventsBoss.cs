@@ -72,6 +72,7 @@ namespace DeathRunner.EnemyAI
         
         public void FinishAttack()
         {
+            print("EndingAttack");
             boss.ExitAttack();
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
@@ -9,7 +10,11 @@ namespace DeathRunner.Animations
     {
         [SerializeField] private Collider colliderToEnable;
         
-        [UsedImplicitly]
+        private void Start()
+        {
+            colliderToEnable.enabled = false;   
+        }
+        [UsedImplicitly] // its used somewhere, source: Trust me bro
         public void EnableHitBox()
         {
             colliderToEnable.enabled = true;
