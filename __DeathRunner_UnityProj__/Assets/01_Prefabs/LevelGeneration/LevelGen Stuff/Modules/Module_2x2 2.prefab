@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4682901894274447680}
   - component: {fileID: 4879881232091610370}
   - component: {fileID: 1201377924749507831}
-  m_Layer: 20
+  m_Layer: 13
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2058,6 +2058,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MeleeEnemy.001
       objectReference: {fileID: 0}
+    - target: {fileID: 8025951268374177581, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: OnHealthDecreased._eventInstancer
+      value: 
+      objectReference: {fileID: 5721362492399209407}
     - target: {fileID: 8692085297231568919, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
       propertyPath: m_RayTracingMode
@@ -2879,6 +2884,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5721362491906134678}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5721362492399209407 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1073600809, guid: e602e2f6340987c499f4bc5545d4ef1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 5721362491906134678}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2308012312659162554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5896556911594557666
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4616,6 +4633,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticShadowCaster
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 451230720446858203, guid: 25ee5a3deca8b134d85e3f5c1db5739f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 451230720446858203, guid: 25ee5a3deca8b134d85e3f5c1db5739f,
         type: 3}

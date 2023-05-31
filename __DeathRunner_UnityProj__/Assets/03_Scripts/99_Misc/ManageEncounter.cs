@@ -65,10 +65,10 @@ namespace Game
                 {
                     enemy.SetActive(true);
                 }
-                foreach( GameObject door in doors )
-                {
-                    door.SetActive(true);
-                }
+                // foreach( GameObject door in doors )
+                // {
+                //     door.SetActive(true);
+                // }
 
                 _collider.enabled = false;
             }
