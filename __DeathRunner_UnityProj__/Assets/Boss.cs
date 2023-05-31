@@ -215,7 +215,7 @@ namespace DeathRunner
             {
                 currentState = States.Idle;
                 //TODO make it have different time if the attack finishes naturally, and if you get stunned mid attack
-                StartCoroutine(EndAttack(1));
+                StartCoroutine(EndAttack(0.25f));
             }
             
             public void OnDeath()
