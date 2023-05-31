@@ -2048,7 +2048,8 @@ GameObject:
   - component: {fileID: 8025951267324572942}
   - component: {fileID: 8025951267324572940}
   - component: {fileID: 1354134798}
-  m_Layer: 12
+  - component: {fileID: 196924449529405864}
+  m_Layer: 13
   m_Name: SwordHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2097,6 +2098,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.011332142, y: 0.0029363255, z: 0.02525637}
   m_Center: {x: 0.0000063209695, y: 0.0000026399703, z: -0.0029261145}
+--- !u!114 &196924449529405864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025951267324572937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9f40c90471a42c8a5cac30f8224936c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToDamage: Player
+  damageInflicted: 1
 --- !u!1 &8025951268374177580
 GameObject:
   m_ObjectHideFlags: 0
