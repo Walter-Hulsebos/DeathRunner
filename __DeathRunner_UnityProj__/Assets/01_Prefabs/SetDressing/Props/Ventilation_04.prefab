@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6072705767327633142}
   - component: {fileID: 8332331049645734460}
   - component: {fileID: 3813410100669065415}
+  - component: {fileID: 196146409751799474}
   m_Layer: 0
   m_Name: Ventilation_04
   m_TagString: Untagged
@@ -103,3 +104,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8332331049645734460}
   m_Enabled: 1
+--- !u!114 &196146409751799474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7539763004598442985}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: d26835ab13327aa4eb291b6b2a53de3c, type: 2}

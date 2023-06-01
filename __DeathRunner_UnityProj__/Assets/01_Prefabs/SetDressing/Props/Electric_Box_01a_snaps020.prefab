@@ -230,6 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7938270698903899412}
   - component: {fileID: 7938270698889402804}
+  - component: {fileID: 2673670139512387882}
   m_Layer: 0
   m_Name: Electric_Box_01a_snaps020
   m_TagString: Untagged
@@ -282,6 +283,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7938270698905669616}
   m_Enabled: 1
+--- !u!114 &2673670139512387882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7938270698903474484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: a9082a51bb8ca994c8477cd5e96a6a77, type: 2}
 --- !u!1 &7938270698903474486
 GameObject:
   m_ObjectHideFlags: 0

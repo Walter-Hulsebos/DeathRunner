@@ -1,5 +1,5 @@
 using System;
-
+using Cysharp.Threading.Tasks;
 using GenericScriptableArchitecture;
 using JetBrains.Annotations;
 
@@ -10,6 +10,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using static ProjectDawn.Mathematics.math2;
 
+using F32  = System.Single; //max 3.402823E+38
 using U16  = System.UInt16; //max 65,535
 using Bool = System.Boolean;
 
@@ -18,13 +19,18 @@ namespace DeathRunner.Attributes
     [Serializable]
     public struct Health : IChangeable<U16>, IDamageable
     {
-        [field:SerializeField] public Constant<U16> Max         { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<U16> Max { get; [UsedImplicitly] private set; }
         
+        #if ODIN_INSPECTOR
+        [field:BoxGroup("IFrames", showLabel: false)]
+        #endif        
+        [field:SerializeField] public Reference<F32> InvincibilityFrameDuration { get; [UsedImplicitly] private set; }
+
         #if ODIN_INSPECTOR
         [field:BoxGroup("Current", showLabel: false)]
         #endif
-        [field:SerializeField] public Bool          UseInfinity { get; [UsedImplicitly] private set; }
-        
+        [field:SerializeField] public Reference<Bool> UseInfinity { get; [UsedImplicitly] private set; }
+
         #if ODIN_INSPECTOR
         [LabelText("Current Health")]
         [BoxGroup("Current", showLabel: false)]
@@ -45,6 +51,9 @@ namespace DeathRunner.Attributes
                 U16 __previous = currentHealthBackingField.Value;
                 // Set the new value.
                 currentHealthBackingField.Value = value;
+                
+                // IFrames
+                InvincibilityFrames().Forget();
                 
                 if (OnChanged != null)
                 {
@@ -76,13 +85,25 @@ namespace DeathRunner.Attributes
             }
         }
         
+        public async UniTask InvincibilityFrames()
+        {
+            if (InvincibilityFrameDuration == 0f) return;
+            
+            UseInfinity.Value = true;
+            await UniTask.Delay(TimeSpan.FromSeconds(InvincibilityFrameDuration.Value));
+            UseInfinity.Value = false;
+        }
+        
         //[OdinSerialize]
         //public IMod<U16>[] Modifiers { get; [UsedImplicitly] private set; }
 
-        [field:SerializeField] public EventReference<UInt16, UInt16> OnChanged   { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public EventReference<UInt16, UInt16> OnDecreased { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public EventReference                 OnDepleted  { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public EventReference<UInt16, UInt16> OnIncreased { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference<UInt16, UInt16> OnChanged               { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference<UInt16, UInt16> OnDecreased             { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference                 OnDepleted              { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference<UInt16, UInt16> OnIncreased             { get; [UsedImplicitly] private set; }
+        
+        [field:SerializeField] public EventReference                 OnInvincibilityEnabled  { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference                 OnInvincibilityDisabled { get; [UsedImplicitly] private set; }
 
         public Bool IsZero => Value == 0;
     }

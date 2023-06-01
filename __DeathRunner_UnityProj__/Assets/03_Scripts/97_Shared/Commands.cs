@@ -104,14 +104,15 @@ namespace DeathRunner.Shared
             get => _isSlowMotionEnabled;
             set
             {
-                //Debug.Log(message: $"SlowMo: {value}");
-                
                 _isSlowMotionEnabled = value;
+                
                 Time.timeScale = _isSlowMotionEnabled ? 0.025f : 1.0f;
                 Time.fixedDeltaTime = 0.0166667f * Time.timeScale;
                 
-                DOTween.timeScale = Time.timeScale;
-                DOTween.useSmoothDeltaTime = false;
+                //DOTween.timeScale = Time.timeScale;
+                //DOTween.useSmoothDeltaTime = false;
+                
+                Debug.Log(message: (_isSlowMotionEnabled ? "<b><color=green>SlowMo Enabled!</color></b>" : "<b><color=red>SnowMo Disabled!</color></b>") + $" TimeScale: {Time.timeScale}");
             }
         }
 

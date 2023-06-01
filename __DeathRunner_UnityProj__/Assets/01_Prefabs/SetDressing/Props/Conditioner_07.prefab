@@ -273,6 +273,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5659464582742470615}
   - component: {fileID: 635124803598702758}
+  - component: {fileID: 1375859713859584151}
   m_Layer: 0
   m_Name: Conditioner_07
   m_TagString: Untagged
@@ -325,3 +326,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6699899894524575282}
   m_Enabled: 1
+--- !u!114 &1375859713859584151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5026480770365306221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: cbb3ac51aa77df54fb6cc6c811930fb1, type: 2}

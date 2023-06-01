@@ -91,10 +91,10 @@ namespace DeathRunner.Inputs
             OnDashStarted?.Invoke();
             
             DashInputStartedThisFrame = true;
-            Debug.Log($"[{Time.time}] DashInputStartedThisFrame = true");
+            //Debug.Log($"[{Time.time}] DashInputStartedThisFrame = true");
             //await UniTask.Yield(); //Wait one frame.
-            await UniTask.DelayFrame(delayFrameCount: 1, delayTiming: PlayerLoopTiming.Update);
-            Debug.Log($"[{Time.time}] DashInputStartedThisFrame = false");
+            await UniTask.DelayFrame(delayFrameCount: 1, delayTiming: PlayerLoopTiming.Update, cancellationToken: _dashInputCancellationToken);
+            //Debug.Log($"[{Time.time}] DashInputStartedThisFrame = false");
             DashInputStartedThisFrame = false;
         }
         
@@ -105,10 +105,10 @@ namespace DeathRunner.Inputs
             OnDashStopped?.Invoke();
             
             DashInputStoppedThisFrame = true;
-            Debug.Log($"[{Time.time}] DashInputStoppedThisFrame = true");
+            //Debug.Log($"[{Time.time}] DashInputStoppedThisFrame = true");
             //await UniTask.Yield(); //Wait one frame.
-            await UniTask.DelayFrame(delayFrameCount: 1, delayTiming: PlayerLoopTiming.Update);
-            Debug.Log($"[{Time.time}] DashInputStoppedThisFrame = false");
+            await UniTask.DelayFrame(delayFrameCount: 1, delayTiming: PlayerLoopTiming.Update, cancellationToken: _dashInputCancellationToken);
+            //Debug.Log($"[{Time.time}] DashInputStoppedThisFrame = false");
             DashInputStoppedThisFrame = false;
         }
 
@@ -176,8 +176,8 @@ namespace DeathRunner.Inputs
         
         public F32x2                                  MouseScreenPosition => (F32x2)Mouse.current.position.ReadValue();
         
-        private CancellationTokenSource _holdTimeCounterCancellationTokenSource;
-        private CancellationToken       _holdTimeCounterCancellationToken;
+        private CancellationTokenSource _dashInputCancellationTokenSource;
+        private CancellationToken       _dashInputCancellationToken;
 
         #endregion
 
@@ -192,8 +192,8 @@ namespace DeathRunner.Inputs
             secondaryFireInputActionReference.action.Enable();
             slowMoToggleInputActionReference.action.Enable();
             
-            _holdTimeCounterCancellationTokenSource = new CancellationTokenSource();
-            _holdTimeCounterCancellationToken       = _holdTimeCounterCancellationTokenSource.Token;
+            _dashInputCancellationTokenSource = new CancellationTokenSource();
+            _dashInputCancellationToken       = _dashInputCancellationTokenSource.Token;
         }
         
         private void OnDisable()
@@ -205,7 +205,7 @@ namespace DeathRunner.Inputs
             secondaryFireInputActionReference.action.Disable();
             slowMoToggleInputActionReference.action.Disable();
             
-            _holdTimeCounterCancellationTokenSource.Cancel();
+            _dashInputCancellationTokenSource.Cancel();
         }
         
         private void Awake()

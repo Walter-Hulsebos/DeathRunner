@@ -9,7 +9,7 @@ namespace DeathRunner.Attributes
     public interface IChangeable<T> where T : struct, IConvertible, IComparable, IFormattable
     {
         public Constant<T>           Max         { get; }
-        public Bool                  UseInfinity { get; }
+        public Reference<Bool>       UseInfinity { get; }
         public T                     Value       { get; set; }
 
 

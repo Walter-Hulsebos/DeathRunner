@@ -333,6 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1173623544553549918}
   - component: {fileID: 1173623544535901438}
+  - component: {fileID: 6585406997402077639}
   m_Layer: 0
   m_Name: Ventilating_Duct_01c_snaps020
   m_TagString: Untagged
@@ -385,3 +386,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1173623544551256760}
   m_Enabled: 1
+--- !u!114 &6585406997402077639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1173623544553254014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 82370fcb3a7f8bd4f9d18708dc5c5681, type: 2}

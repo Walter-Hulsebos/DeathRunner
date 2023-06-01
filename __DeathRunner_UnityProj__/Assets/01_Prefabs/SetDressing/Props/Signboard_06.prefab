@@ -107,6 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3219623438620239022}
   - component: {fileID: 7706918851672642527}
+  - component: {fileID: 5038338300704849249}
   m_Layer: 0
   m_Name: Signboard_06
   m_TagString: Untagged
@@ -154,6 +155,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1572170736620325801}
   m_Enabled: 1
+--- !u!114 &5038338300704849249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2874904980602191380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: f2dd38d092275dc47987840d84d79612, type: 2}
 --- !u!1 &3502845134756360177
 GameObject:
   m_ObjectHideFlags: 0

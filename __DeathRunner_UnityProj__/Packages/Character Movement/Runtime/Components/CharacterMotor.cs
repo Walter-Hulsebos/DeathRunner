@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.Mathematics.math;
+using F32x3 = Unity.Mathematics.float3;
 
 namespace EasyCharacterMovement
 {
@@ -117,19 +119,19 @@ namespace EasyCharacterMovement
         /// The Character's position, in case of a raycast result this equals to point.
         /// </summary>
 
-        public Vector3 position;
+        public F32x3 position;
 
         /// <summary>
         /// The impact point in world space.
         /// </summary>
 
-        public Vector3 point => hitResult.point;
+        public F32x3 point => hitResult.point;
 
         /// <summary>
         /// The normal of the hit surface.
         /// </summary>
 
-        public Vector3 normal => hitResult.normal;
+        public F32x3 normal => hitResult.normal;
 
         /// <summary>
         /// Normal of the hit in world space, for the object that was hit by the sweep, if any.
@@ -137,7 +139,7 @@ namespace EasyCharacterMovement
         /// In the case of impact with a corner or edge of a surface, usually the "most opposing" normal (opposed to the query direction) is chosen.
         /// </summary>
 
-        public Vector3 surfaceNormal;
+        public F32x3 surfaceNormal;
 
         /// <summary>
         /// The collider of the hit object.
@@ -204,8 +206,8 @@ namespace EasyCharacterMovement
         /// Initialize this with a sweep test result.
         /// </summary>
 
-        public void SetFromSweepResult(bool hitGround, bool isWalkable, Vector3 position, float sweepDistance,
-            ref RaycastHit inHit, Vector3 surfaceNormal)
+        public void SetFromSweepResult(bool hitGround, bool isWalkable, F32x3 position, float sweepDistance,
+            ref RaycastHit inHit, F32x3 surfaceNormal)
         {
             this.hitGround = hitGround;
             this.isWalkable = isWalkable;
@@ -224,8 +226,8 @@ namespace EasyCharacterMovement
             this.surfaceNormal = surfaceNormal;
         }
 
-        public void SetFromSweepResult(bool hitGround, bool isWalkable, Vector3 position, Vector3 point, Vector3 normal,
-            Vector3 surfaceNormal, Collider collider, float sweepDistance)
+        public void SetFromSweepResult(bool hitGround, bool isWalkable, F32x3 position, F32x3 point, F32x3 normal,
+            F32x3 surfaceNormal, Collider collider, float sweepDistance)
         {
             this.hitGround = hitGround;
             this.isWalkable = isWalkable;
@@ -254,7 +256,7 @@ namespace EasyCharacterMovement
         /// Initialize this with a raycast result.
         /// </summary>
 
-        public void SetFromRaycastResult(bool hitGround, bool isWalkable, Vector3 position, float sweepDistance,
+        public void SetFromRaycastResult(bool hitGround, bool isWalkable, F32x3 position, float sweepDistance,
             float castDistance, ref RaycastHit inHit)
         {
             this.hitGround = hitGround;
@@ -306,25 +308,25 @@ namespace EasyCharacterMovement
         /// The character position at this collision.
         /// </summary>
 
-        public Vector3 position;
+        public F32x3 position;
 
         /// <summary>
         /// The character's velocity at this collision.
         /// </summary>
 
-        public Vector3 velocity;
+        public F32x3 velocity;
 
         /// <summary>
         /// The collided object's velocity.
         /// </summary>
 
-        public Vector3 otherVelocity;
+        public F32x3 otherVelocity;
 
         /// <summary>
         /// The impact point in world space.
         /// </summary>
 
-        public Vector3 point;
+        public F32x3 point;
 
         /// <summary>
         /// The impact normal in world space.
@@ -338,19 +340,19 @@ namespace EasyCharacterMovement
         /// In the case of impact with a corner or edge of a surface, usually the "most opposing" normal (opposed to the query direction) is chosen.
         /// </summary>
 
-        public Vector3 surfaceNormal;
+        public F32x3 surfaceNormal;
 
         /// <summary>
         /// The character's displacement up to this hit.
         /// </summary>
 
-        public Vector3 displacementToHit;
+        public F32x3 displacementToHit;
 
         /// <summary>
         /// Remaining displacement after hit.
         /// </summary>
 
-        public Vector3 remainingDisplacement;
+        public F32x3 remainingDisplacement;
 
         /// <summary>
         /// The collider of the hit object.
@@ -490,13 +492,13 @@ namespace EasyCharacterMovement
             /// The character's last position on active platform.
             /// </summary>
 
-            public Vector3 position;
+            public F32x3 position;
 
             /// <summary>
             /// The character's last position on active platform in platform's local space.
             /// </summary>
 
-            public Vector3 localPosition;
+            public F32x3 localPosition;
 
             /// <summary>
             /// The character's last rotation on active platform.
@@ -514,7 +516,7 @@ namespace EasyCharacterMovement
             /// The current active platform velocity.
             /// </summary>
 
-            public Vector3 platformVelocity;
+            public F32x3 platformVelocity;
         }
 
         /// <summary>
@@ -524,8 +526,8 @@ namespace EasyCharacterMovement
 
         readonly public struct State
         {
-            public State(Vector3 position, Quaternion rotation, Vector3 velocity, bool isConstrainedToGround,
-                float unconstrainedTimer, bool hitGround, bool isWalkable, Vector3 groundNormal)
+            public State(F32x3 position, Quaternion rotation, F32x3 velocity, bool isConstrainedToGround,
+                float unconstrainedTimer, bool hitGround, bool isWalkable, F32x3 groundNormal)
             {
                 this.position = position;
                 this.rotation = rotation;
@@ -537,10 +539,10 @@ namespace EasyCharacterMovement
                 this.groundNormal = groundNormal;
             }
 
-            public Vector3 position { get; }
+            public F32x3 position { get; }
             public Quaternion rotation { get; }
 
-            public Vector3 velocity { get; }
+            public F32x3 velocity { get; }
 
             public bool isConstrainedToGround { get; }
             public float unconstrainedTimer { get; }
@@ -548,7 +550,7 @@ namespace EasyCharacterMovement
             public bool hitGround { get; }
             public bool isWalkable { get; }
 
-            public Vector3 groundNormal { get; }
+            public F32x3 groundNormal { get; }
         }
 
         #endregion
@@ -589,7 +591,7 @@ namespace EasyCharacterMovement
         private Transform _rootTransform;
 
         [SerializeField, Tooltip("The root transform will be positioned at this offset from foot position.")]
-        private Vector3 _rootTransformOffset = new Vector3(0, 0, 0);
+        private F32x3 _rootTransformOffset = new F32x3(0, 0, 0);
 
         [Space(15f)]
         [Tooltip("The Character's capsule collider radius.")]
@@ -657,9 +659,9 @@ namespace EasyCharacterMovement
 
         private CapsuleCollider _capsuleCollider;
 
-        private Vector3 _capsuleCenter;
-        private Vector3 _capsuleTopCenter;
-        private Vector3 _capsuleBottomCenter;
+        private F32x3 _capsuleCenter;
+        private F32x3 _capsuleTopCenter;
+        private F32x3 _capsuleBottomCenter;
 
         private readonly HashSet<Rigidbody> _ignoredRigidbodies = new HashSet<Rigidbody>();
         private readonly HashSet<Collider> _ignoredColliders = new HashSet<Collider>();
@@ -680,19 +682,19 @@ namespace EasyCharacterMovement
         private bool _isConstrainedToGround = true;
         private float _unconstrainedTimer;
 
-        private Vector3 _constraintPlaneNormal;
+        private F32x3 _constraintPlaneNormal;
 
-        private Vector3 _characterUp;
+        private F32x3 _characterUp;
 
-        private Vector3 _transformedCapsuleCenter;
-        private Vector3 _transformedCapsuleTopCenter;
-        private Vector3 _transformedCapsuleBottomCenter;
+        private F32x3 _transformedCapsuleCenter;
+        private F32x3 _transformedCapsuleTopCenter;
+        private F32x3 _transformedCapsuleBottomCenter;
 
-        private Vector3 _velocity;
+        private F32x3 _velocity;
         
-        private Vector3 _pendingForces;
-        private Vector3 _pendingImpulses;
-        private Vector3 _pendingLaunchVelocity;
+        private F32x3 _pendingForces;
+        private F32x3 _pendingImpulses;
+        private F32x3 _pendingLaunchVelocity;
 
         private float _pushForceScale = 1.0f;
 
@@ -783,7 +785,7 @@ namespace EasyCharacterMovement
         /// The root transform will be positioned at this offset.
         /// </summary>
 
-        public Vector3 rootTransformOffset
+        public F32x3 rootTransformOffset
         {
             get => _rootTransformOffset;
             set => _rootTransformOffset = value;
@@ -793,7 +795,7 @@ namespace EasyCharacterMovement
         /// The character's current position.
         /// </summary>
 
-        public Vector3 position
+        public F32x3 position
         {
             get => GetPosition();
             set => SetPosition(value);
@@ -813,13 +815,13 @@ namespace EasyCharacterMovement
         /// The character's center in world space.
         /// </summary>
 
-        public Vector3 worldCenter => position + rotation * _capsuleCenter;
+        public F32x3 worldCenter => (Vector3)position + (Quaternion)rotation * (Vector3)_capsuleCenter;
 
         /// <summary>
         /// The character's updated position.
         /// </summary>
 
-        public Vector3 updatedPosition { get; private set; }
+        public F32x3 updatedPosition { get; private set; }
 
 
         /// <summary>
@@ -834,7 +836,7 @@ namespace EasyCharacterMovement
         /// e.g. character parented under another moving Transform, such as a moving vehicle.
         /// </summary>
 
-        public Vector3 velocity
+        public F32x3 velocity
         {
             get => _velocity;
             set => _velocity = value;
@@ -844,19 +846,19 @@ namespace EasyCharacterMovement
         /// The character's speed.
         /// </summary>
 
-        public float speed => _velocity.magnitude;
+        public float speed => length(_velocity);
 
         /// <summary>
         /// The character's speed along its forward vector (e.g: in local space).
         /// </summary>
 
-        public float forwardSpeed => Vector3.Dot(_velocity, transform.forward);
+        public float forwardSpeed => dot(_velocity, transform.forward);
 
         /// <summary>
         /// The character's speed along its right vector (e.g: in local space).
         /// </summary>
 
-        public float sidewaysSpeed => Vector3.Dot(_velocity, transform.right);
+        public float sidewaysSpeed => dot(_velocity, transform.right);
 
         /// <summary>
         /// The Character's capsule collider radius.
@@ -1069,19 +1071,19 @@ namespace EasyCharacterMovement
         /// The current ground impact point.
         /// </summary>
 
-        public Vector3 groundPoint => _currentGround.point;
+        public F32x3 groundPoint => _currentGround.point;
 
         /// <summary>
         /// The current ground normal.
         /// </summary>
 
-        public Vector3 groundNormal => _currentGround.normal;
+        public F32x3 groundNormal => _currentGround.normal;
 
         /// <summary>
         /// The current ground surface normal.
         /// </summary>
 
-        public Vector3 groundSurfaceNormal => _currentGround.surfaceNormal;
+        public F32x3 groundSurfaceNormal => _currentGround.surfaceNormal;
 
         /// <summary>
         /// The current ground collider.
@@ -1117,7 +1119,7 @@ namespace EasyCharacterMovement
         /// The terminal velocity when landed (eg: isGrounded).
         /// </summary>
 
-        public Vector3 landedVelocity { get; private set; }
+        public F32x3 landedVelocity { get; private set; }
 
         /// <summary>
         /// Set this to true if riding on a moving platform that you know is clear from non-moving world obstructions.
@@ -1213,7 +1215,7 @@ namespace EasyCharacterMovement
         /// eg: compute resultant impulse and / or application point (CollisionResult.point).
         /// </summary>
 
-        public delegate void CollisionResponseCallback(ref CollisionResult inCollisionResult, ref Vector3 characterImpulse, ref Vector3 otherImpulse);
+        public delegate void CollisionResponseCallback(ref CollisionResult inCollisionResult, ref F32x3 characterImpulse, ref F32x3 otherImpulse);
 
         /// <summary>
         /// Let you define if the character should collide with given collider.
@@ -1281,16 +1283,16 @@ namespace EasyCharacterMovement
 
         #region GEOM_NOMRAL_METHODS
 
-        private Vector3 FindOpposingNormal(Vector3 sweepDirDenorm, ref RaycastHit inHit)
+        private F32x3 FindOpposingNormal(F32x3 sweepDirDenorm, ref RaycastHit inHit)
         {
             const float kThickness = (kContactOffset - kSweepEdgeRejectDistance) * 0.5f;
 
-            Vector3 result = inHit.normal;
+            F32x3 result = (F32x3)inHit.normal;
             
-            Vector3 rayOrigin = inHit.point - sweepDirDenorm;
+            F32x3 rayOrigin = (F32x3)inHit.point - sweepDirDenorm;
             
-            float rayLength = sweepDirDenorm.magnitude * 2f;
-            Vector3 rayDirection = sweepDirDenorm / sweepDirDenorm.magnitude;
+            float rayLength = length(sweepDirDenorm) * 2f;
+            F32x3 rayDirection = sweepDirDenorm / length(sweepDirDenorm);
 
             if (Raycast(rayOrigin, rayDirection, rayLength, _collisionLayers, out RaycastHit hitResult, kThickness))
                 result = hitResult.normal;
@@ -1298,14 +1300,14 @@ namespace EasyCharacterMovement
             return result;
         }
 
-        private static Vector3 FindBoxOpposingNormal(Vector3 sweepDirDenorm, ref RaycastHit inHit)
+        private static F32x3 FindBoxOpposingNormal(F32x3 sweepDirDenorm, ref RaycastHit inHit)
         {
             Transform localToWorld = inHit.transform;
 
-            Vector3 localContactNormal = localToWorld.InverseTransformDirection(inHit.normal);
-            Vector3 localTraceDirDenorm = localToWorld.InverseTransformDirection(sweepDirDenorm);
+            F32x3 localContactNormal = localToWorld.InverseTransformDirection(inHit.normal);
+            F32x3 localTraceDirDenorm = localToWorld.InverseTransformDirection(sweepDirDenorm);
 
-            Vector3 bestLocalNormal = localContactNormal;
+            F32x3 bestLocalNormal = localContactNormal;
             float bestOpposingDot = float.MaxValue;
 
             for (int i = 0; i < 3; i++)
@@ -1316,7 +1318,7 @@ namespace EasyCharacterMovement
                     if (traceDotFaceNormal < bestOpposingDot)
                     {
                         bestOpposingDot = traceDotFaceNormal;
-                        bestLocalNormal = Vector3.zero;
+                        bestLocalNormal = F32x3.zero;
                         bestLocalNormal[i] = 1.0f;
                     }
                 }
@@ -1326,7 +1328,7 @@ namespace EasyCharacterMovement
                     if (traceDotFaceNormal < bestOpposingDot)
                     {
                         bestOpposingDot = traceDotFaceNormal;
-                        bestLocalNormal = Vector3.zero;
+                        bestLocalNormal = F32x3.zero;
                         bestLocalNormal[i] = -1.0f;
                     }
                 }
@@ -1335,14 +1337,14 @@ namespace EasyCharacterMovement
             return localToWorld.TransformDirection(bestLocalNormal);
         }
 
-        private static Vector3 FindBoxOpposingNormal(Vector3 displacement, Vector3 hitNormal, Transform hitTransform)
+        private static F32x3 FindBoxOpposingNormal(F32x3 displacement, F32x3 hitNormal, Transform hitTransform)
         {
             Transform localToWorld = hitTransform;
 
-            Vector3 localContactNormal = localToWorld.InverseTransformDirection(hitNormal);
-            Vector3 localTraceDirDenorm = localToWorld.InverseTransformDirection(displacement);
+            F32x3 localContactNormal = localToWorld.InverseTransformDirection(hitNormal);
+            F32x3 localTraceDirDenorm = localToWorld.InverseTransformDirection(displacement);
 
-            Vector3 bestLocalNormal = localContactNormal;
+            F32x3 bestLocalNormal = localContactNormal;
             float bestOpposingDot = float.MaxValue;
 
             for (int i = 0; i < 3; i++)
@@ -1353,7 +1355,7 @@ namespace EasyCharacterMovement
                     if (traceDotFaceNormal < bestOpposingDot)
                     {
                         bestOpposingDot = traceDotFaceNormal;
-                        bestLocalNormal = Vector3.zero;
+                        bestLocalNormal = F32x3.zero;
                         bestLocalNormal[i] = 1.0f;
                     }
                 }
@@ -1363,7 +1365,7 @@ namespace EasyCharacterMovement
                     if (traceDotFaceNormal < bestOpposingDot)
                     {
                         bestOpposingDot = traceDotFaceNormal;
-                        bestLocalNormal = Vector3.zero;
+                        bestLocalNormal = F32x3.zero;
                         bestLocalNormal[i] = -1.0f;
                     }
                 }
@@ -1372,17 +1374,17 @@ namespace EasyCharacterMovement
             return localToWorld.TransformDirection(bestLocalNormal);
         }
 
-        private static Vector3 FindTerrainOpposingNormal(ref RaycastHit inHit)
+        private static F32x3 FindTerrainOpposingNormal(ref RaycastHit inHit)
         {
             TerrainCollider terrainCollider = inHit.collider as TerrainCollider;
 
             if (terrainCollider)
             {
-                Vector3 localPoint = terrainCollider.transform.InverseTransformPoint(inHit.point);
+                F32x3 localPoint = terrainCollider.transform.InverseTransformPoint(inHit.point);
 
                 TerrainData terrainData = terrainCollider.terrainData;
 
-                Vector3 interpolatedNormal = terrainData.GetInterpolatedNormal(localPoint.x / terrainData.size.x,
+                F32x3 interpolatedNormal = terrainData.GetInterpolatedNormal(localPoint.x / terrainData.size.x,
                     localPoint.z / terrainData.size.z);
 
                 return interpolatedNormal;
@@ -1395,7 +1397,7 @@ namespace EasyCharacterMovement
         /// Helper method to retrieve real surface normal, usually the most 'opposing' to sweep direction.
         /// </summary>
         
-        private Vector3 FindGeomOpposingNormal(Vector3 sweepDirDenorm, ref RaycastHit inHit)
+        private F32x3 FindGeomOpposingNormal(F32x3 sweepDirDenorm, ref RaycastHit inHit)
         {
             // SphereCollider or CapsuleCollider
 
@@ -1454,7 +1456,7 @@ namespace EasyCharacterMovement
             return !float.IsNaN(value) && !float.IsInfinity(value);
         }
 
-        public static bool IsFinite(Vector3 value)
+        public static bool IsFinite(F32x3 value)
         {
             return IsFinite(value.x) && IsFinite(value.y) && IsFinite(value.z);
         }
@@ -1467,7 +1469,7 @@ namespace EasyCharacterMovement
         /// <param name="deceleration">The rate at which the character slows down. This is a constant opposing force that directly lowers velocity by a constant value.</param>
         /// <param name="deltaTime">Simulation deltaTime</param>
         /// <returns>Returns the updated velocity</returns>
-        private static Vector3 ApplyVelocityBraking(Vector3 currentVelocity, float friction, float deceleration, float deltaTime)
+        private static F32x3 ApplyVelocityBraking(F32x3 currentVelocity, float friction, float deceleration, float deltaTime)
         {
             // If no friction or no deceleration, return
 
@@ -1479,8 +1481,8 @@ namespace EasyCharacterMovement
             
             // Decelerate to brake to a stop
 
-            Vector3 oldVel = currentVelocity;
-            Vector3 revAcceleration = isZeroBraking ? Vector3.zero : -deceleration * currentVelocity.normalized;
+            F32x3 oldVel = currentVelocity;
+            F32x3 revAcceleration = isZeroBraking ? F32x3.zero : -deceleration * normalizesafe(currentVelocity);
 
             // Apply friction and braking
 
@@ -1488,14 +1490,14 @@ namespace EasyCharacterMovement
 
             // Don't reverse direction
 
-            if (Vector3.Dot(currentVelocity, oldVel) <= 0.0f)
-                return Vector3.zero;
+            if (dot(currentVelocity, oldVel) <= 0.0f)
+                return F32x3.zero;
 
             // Clamp to zero if nearly zero, or if below min threshold and braking
 
-            float sqrSpeed = currentVelocity.sqrMagnitude;
+            float sqrSpeed = lengthsq(currentVelocity);
             if (sqrSpeed <= 0.00001f || !isZeroBraking && sqrSpeed <= 0.01f)
-                return Vector3.zero;
+                return F32x3.zero;
 
             return currentVelocity;
         }
@@ -1507,10 +1509,10 @@ namespace EasyCharacterMovement
         /// <param name="maxSpeed">The maximum allowed speed.</param>
         /// <returns>Returns the analog input modifier in the 0 - 1 range.</returns>
 
-        private static float ComputeAnalogInputModifier(Vector3 desiredVelocity, float maxSpeed)
+        private static float ComputeAnalogInputModifier(F32x3 desiredVelocity, float maxSpeed)
         {
-            if (maxSpeed > 0.0f && desiredVelocity.sqrMagnitude > 0.0f)
-                return Mathf.Clamp01(desiredVelocity.magnitude / maxSpeed);
+            if (maxSpeed > 0.0f && lengthsq(desiredVelocity) > 0.0f)
+                return Mathf.Clamp01(length(desiredVelocity) / maxSpeed);
 
             return 0.0f;
         }
@@ -1521,10 +1523,10 @@ namespace EasyCharacterMovement
         /// If the given Rigidbody is a character, will return character's velocity.
         /// </summary>
 
-        private static Vector3 GetRigidbodyVelocity(Rigidbody rigidbody, Vector3 worldPoint)
+        private static F32x3 GetRigidbodyVelocity(Rigidbody rigidbody, F32x3 worldPoint)
         {
             if (rigidbody == null)
-                return Vector3.zero;
+                return F32x3.zero;
 
             return rigidbody.TryGetComponent(out CharacterMotor controller)
                 ? controller.velocity
@@ -1612,17 +1614,17 @@ namespace EasyCharacterMovement
         /// <param name="bottomCenter">Output capsule bottom sphere center in local space.</param>
         /// <param name="topCenter">Output capsule top sphere center in local space.</param>
 
-        private static void MakeCapsule(float radius, float height, out Vector3 center, out Vector3 bottomCenter, out Vector3 topCenter)
+        private static void MakeCapsule(float radius, float height, out F32x3 center, out F32x3 bottomCenter, out F32x3 topCenter)
         {
-            radius = Mathf.Max(radius, 0.0f);
-            height = Mathf.Max(height, radius * 2.0f);
+            radius = max(radius, 0.0f);
+            height = max(height, radius * 2.0f);
 
-            center = height * 0.5f * Vector3.up;
+            center = height * 0.5f * up();
 
             float sideHeight = height - radius * 2.0f;
 
-            bottomCenter = center - sideHeight * 0.5f * Vector3.up;
-            topCenter = center + sideHeight * 0.5f * Vector3.up;
+            bottomCenter = center - sideHeight * 0.5f * up();
+            topCenter = center + sideHeight * 0.5f * up();
         }
 
         /// <summary>
@@ -1699,7 +1701,7 @@ namespace EasyCharacterMovement
         /// Defines the axis that constraints movement, so movement along the given axis is not possible.
         /// </summary>
 
-        public void SetPlaneConstraint(PlaneConstraint constrainAxis, Vector3 planeNormal)
+        public void SetPlaneConstraint(PlaneConstraint constrainAxis, F32x3 planeNormal)
         {
             _planeConstraint = constrainAxis;
 
@@ -1707,7 +1709,7 @@ namespace EasyCharacterMovement
             {
                 case PlaneConstraint.None:
                     {
-                        _constraintPlaneNormal = Vector3.zero;
+                        _constraintPlaneNormal = F32x3.zero;
 
                         if (_rigidbody)
                             _rigidbody.constraints = RigidbodyConstraints.None;
@@ -1717,7 +1719,7 @@ namespace EasyCharacterMovement
 
                 case PlaneConstraint.ConstrainXAxis:
                     {
-                        _constraintPlaneNormal = Vector3.right;
+                        _constraintPlaneNormal = right();
 
                         if (_rigidbody)
                             _rigidbody.constraints = RigidbodyConstraints.FreezePositionX;
@@ -1727,7 +1729,7 @@ namespace EasyCharacterMovement
 
                 case PlaneConstraint.ConstrainYAxis:
                     {
-                        _constraintPlaneNormal = Vector3.up;
+                        _constraintPlaneNormal = up();
 
                         if (_rigidbody)
                             _rigidbody.constraints = RigidbodyConstraints.FreezePositionY;
@@ -1737,7 +1739,7 @@ namespace EasyCharacterMovement
 
                 case PlaneConstraint.ConstrainZAxis:
                     {
-                        _constraintPlaneNormal = Vector3.forward;
+                        _constraintPlaneNormal = forward();
 
                         if (_rigidbody)
                             _rigidbody.constraints = RigidbodyConstraints.FreezePositionZ;
@@ -1765,16 +1767,16 @@ namespace EasyCharacterMovement
         /// or given vector (if _constrainToPlane == None).
         /// </summary>
 
-        public Vector3 ConstrainDirectionToPlane(Vector3 direction)
+        public F32x3 ConstrainDirectionToPlane(F32x3 direction)
         {
-            return ConstrainVectorToPlane(direction).normalized;
+            return normalizesafe(ConstrainVectorToPlane(direction));
         }
 
         /// <summary>
         /// Constrain the given vector to current PlaneConstraint (if any).
         /// </summary>
 
-        public Vector3 ConstrainVectorToPlane(Vector3 vector)
+        public F32x3 ConstrainVectorToPlane(F32x3 vector)
         {
             return isConstrainedToPlane ? vector.ProjectedOnPlane(_constraintPlaneNormal) : vector;
         }
@@ -1801,9 +1803,9 @@ namespace EasyCharacterMovement
         /// Determines the hit location WRT capsule for the given normal.
         /// </summary>
 
-        private HitLocation ComputeHitLocation(Vector3 inNormal)
+        private HitLocation ComputeHitLocation(F32x3 inNormal)
         {
-            float verticalComponent = Vector3.Dot(inNormal, _characterUp);
+            float verticalComponent = dot(inNormal, _characterUp);
 
             if (verticalComponent > kHemisphereLimit)
                 return HitLocation.Below;
@@ -1815,7 +1817,7 @@ namespace EasyCharacterMovement
         /// Determines if the given collider and impact normal should be considered as walkable ground.
         /// </summary>
         
-        private bool IsWalkable(Collider inCollider, Vector3 inNormal)
+        private bool IsWalkable(Collider inCollider, F32x3 inNormal)
         {
             // Do not bother if hit is not in capsule bottom sphere
 
@@ -1829,10 +1831,10 @@ namespace EasyCharacterMovement
                 CollisionBehavior collisionBehavior = collisionBehaviorCallback.Invoke(inCollider);
 
                 if (IsWalkable(collisionBehavior))
-                    return Vector3.Dot(inNormal, _characterUp) > kMaxWalkableSlopeLimit;
+                    return dot(inNormal, _characterUp) > kMaxWalkableSlopeLimit;
 
                 if (IsNotWalkable(collisionBehavior))
-                    return Vector3.Dot(inNormal, _characterUp) > kMinWalkableSlopeLimit;
+                    return dot(inNormal, _characterUp) > kMinWalkableSlopeLimit;
             }
 
             // If slopeLimitOverride enable, check for SlopeLimitBehavior component
@@ -1862,7 +1864,7 @@ namespace EasyCharacterMovement
 
             // Determine if the given normal is walkable
 
-            return Vector3.Dot(inNormal, _characterUp) > actualSlopeLimit;
+            return dot(inNormal, _characterUp) > actualSlopeLimit;
         }
 
         /// <summary>
@@ -1871,16 +1873,16 @@ namespace EasyCharacterMovement
         /// or be pushed down into the ground when the impact is on the upper portion of the capsule.
         /// </summary>
 
-        private Vector3 ComputeBlockingNormal(Vector3 inNormal, bool isWalkable)
+        private F32x3 ComputeBlockingNormal(F32x3 inNormal, bool isWalkable)
         {
             if ((isGrounded || _hasLanded) && !isWalkable)
             {
-                Vector3 actualGroundNormal = _hasLanded ? _foundGround.normal : _currentGround.normal;
+                F32x3 actualGroundNormal = _hasLanded ? _foundGround.normal : _currentGround.normal;
 
-                Vector3 forward = actualGroundNormal.PerpendicularTo(inNormal);
-                Vector3 blockingNormal = forward.PerpendicularTo(_characterUp);
+                F32x3 forward = actualGroundNormal.PerpendicularTo(inNormal);
+                F32x3 blockingNormal = forward.PerpendicularTo(_characterUp);
 
-                if (Vector3.Dot(blockingNormal, inNormal) < 0.0f)
+                if (dot(blockingNormal, inNormal) < 0.0f)
                     blockingNormal = -blockingNormal;
 
                 if (!blockingNormal.IsZero())
@@ -2017,10 +2019,10 @@ namespace EasyCharacterMovement
         /// Uses an inflated capsule for better results.
         /// </summary>
 
-        private bool ComputeInflatedMTD(Vector3 characterPosition, Quaternion characterRotation, float mtdInflation,
-            Collider hitCollider, Transform hitTransform, out Vector3 mtdDirection, out float mtdDistance)
+        private bool ComputeInflatedMTD(F32x3 characterPosition, Quaternion characterRotation, float mtdInflation,
+            Collider hitCollider, Transform hitTransform, out F32x3 mtdDirection, out float mtdDistance)
         {
-            mtdDirection = Vector3.zero;
+            mtdDirection = F32x3.zero;
             mtdDistance = 0.0f;
 
             _capsuleCollider.radius = _radius + mtdInflation * 1.0f;
@@ -2053,7 +2055,7 @@ namespace EasyCharacterMovement
         /// Uses an inflated capsule for better results, try MTD with a small inflation for better accuracy, then a larger one in case the first one fails due to precision issues.
         /// </summary>
 
-        private bool ComputeMTD(Vector3 characterPosition, Quaternion characterRotation, Collider hitCollider, Transform hitTransform, out Vector3 mtdDirection, out float mtdDistance)
+        private bool ComputeMTD(F32x3 characterPosition, Quaternion characterRotation, Collider hitCollider, Transform hitTransform, out F32x3 mtdDirection, out float mtdDistance)
         {
             const float kSmallMTDInflation = 0.0025f;
             const float kLargeMTDInflation = 0.0175f;
@@ -2086,8 +2088,8 @@ namespace EasyCharacterMovement
 
             for (int i = 0; i < _advanced.maxDepenetrationIterations; i++)
             {
-                Vector3 top = updatedPosition + _transformedCapsuleTopCenter;
-                Vector3 bottom = updatedPosition + _transformedCapsuleBottomCenter;
+                F32x3 top = updatedPosition + _transformedCapsuleTopCenter;
+                F32x3 bottom = updatedPosition + _transformedCapsuleBottomCenter;
 
                 int overlapCount = Physics.OverlapCapsuleNonAlloc(bottom, top, _radius, _overlaps, _collisionLayers, triggerInteraction);
                 if (overlapCount == 0)
@@ -2116,7 +2118,7 @@ namespace EasyCharacterMovement
                             continue;
                     }
 
-                    if (ComputeMTD(updatedPosition, updatedRotation, overlappedCollider, overlappedCollider.transform, out Vector3 recoverDirection, out float recoverDistance))
+                    if (ComputeMTD(updatedPosition, updatedRotation, overlappedCollider, overlappedCollider.transform, out F32x3 recoverDirection, out float recoverDistance))
                     {
                         recoverDirection = ConstrainDirectionToPlane(recoverDirection);
 
@@ -2124,13 +2126,13 @@ namespace EasyCharacterMovement
 
                         bool isWalkable = IsWalkable(overlappedCollider, recoverDirection);
 
-                        Vector3 impactNormal = ComputeBlockingNormal(recoverDirection, isWalkable);
+                        F32x3 impactNormal = ComputeBlockingNormal(recoverDirection, isWalkable);
 
                         updatedPosition += impactNormal * (recoverDistance + kPenetrationOffset);
 
                         if (_collisionCount < kMaxCollisionCount)
                         {
-                            Vector3 point;
+                            F32x3 point;
 
                             if (hitLocation == HitLocation.Above)
                                 point = updatedPosition + _transformedCapsuleTopCenter - recoverDirection * _radius;
@@ -2171,13 +2173,13 @@ namespace EasyCharacterMovement
         /// Return overlapped colliders count.
         /// </summary>
 
-        public int OverlapTest(Vector3 characterPosition, Quaternion characterRotation, float testRadius,
+        public int OverlapTest(F32x3 characterPosition, Quaternion characterRotation, float testRadius,
             float testHeight, int layerMask, Collider[] results, QueryTriggerInteraction queryTriggerInteraction)
         {
-            MakeCapsule(testRadius, testHeight, out Vector3 _, out Vector3 bottomCenter, out Vector3 topCenter);
+            MakeCapsule(testRadius, testHeight, out F32x3 _, out F32x3 bottomCenter, out F32x3 topCenter);
 
-            Vector3 top = characterPosition + characterRotation * topCenter;
-            Vector3 bottom = characterPosition + characterRotation * bottomCenter;
+            F32x3 top = (Vector3)characterPosition + (Quaternion)characterRotation * (Vector3)topCenter;
+            F32x3 bottom = (Vector3)characterPosition + (Quaternion)characterRotation * (Vector3)bottomCenter;
 
             int rawOverlapCount =
                 Physics.OverlapCapsuleNonAlloc(bottom, top, testRadius, results, layerMask, queryTriggerInteraction);
@@ -2206,7 +2208,7 @@ namespace EasyCharacterMovement
         /// Return an array of overlapped colliders.
         /// </summary>
 
-        public Collider[] OverlapTest(Vector3 characterPosition, Quaternion characterRotation, float testRadius,
+        public Collider[] OverlapTest(F32x3 characterPosition, Quaternion characterRotation, float testRadius,
             float testHeight, int layerMask, QueryTriggerInteraction queryTriggerInteraction, out int overlapCount)
         {
             overlapCount = OverlapTest(characterPosition, characterRotation, testRadius, testHeight, layerMask,
@@ -2237,9 +2239,9 @@ namespace EasyCharacterMovement
         /// Useful for rejecting adjacent hits when finding a ground or landing spot.
         /// </summary>
         
-        public bool IsWithinEdgeTolerance(Vector3 characterPosition, Vector3 inPoint, float testRadius)
+        public bool IsWithinEdgeTolerance(F32x3 characterPosition, F32x3 inPoint, float testRadius)
         {
-            float distFromCenterSq = (inPoint - characterPosition).ProjectedOnPlane(_characterUp).sqrMagnitude;
+            float distFromCenterSq = lengthsq((inPoint - characterPosition).ProjectedOnPlane(_characterUp));
 
             float reducedRadius = Mathf.Max(kSweepEdgeRejectDistance + kKindaSmallNumber,
                 testRadius - kSweepEdgeRejectDistance);
@@ -2257,7 +2259,7 @@ namespace EasyCharacterMovement
             // See if we hit an edge of a surface on the lower portion of the capsule.
             // In this case the normal will not equal the surface normal, and a downward sweep may find a walkable surface on top of the edge.
 
-            if (inCollision.hitLocation == HitLocation.Below && inCollision.normal != inCollision.surfaceNormal)
+            if (inCollision.hitLocation == HitLocation.Below && any((F32x3)inCollision.normal != inCollision.surfaceNormal))
             {
                 if (IsWithinEdgeTolerance(updatedPosition, inCollision.point, _radius))
                     return true;
@@ -2270,7 +2272,7 @@ namespace EasyCharacterMovement
         /// Verify that the supplied CollisionResult is a valid landing spot when falling.
         /// </summary>
 
-        private bool IsValidLandingSpot(Vector3 characterPosition, ref CollisionResult inCollision)
+        private bool IsValidLandingSpot(F32x3 characterPosition, ref CollisionResult inCollision)
         {
             // Reject unwalkable ground normals.
 
@@ -2310,7 +2312,7 @@ namespace EasyCharacterMovement
         /// Casts a ray, from point origin, in direction direction, of length distance, against specified colliders (by layerMask) in the Scene.
         /// </summary>
         
-        public bool Raycast(Vector3 origin, Vector3 direction, float distance, int layerMask, out RaycastHit hitResult,
+        public bool Raycast(F32x3 origin, F32x3 direction, float distance, int layerMask, out RaycastHit hitResult,
             float thickness = 0.0f)
         {
             hitResult = default;
@@ -2352,14 +2354,14 @@ namespace EasyCharacterMovement
         /// Returns True when the capsule sweep intersects any collider, otherwise false. 
         /// </summary>
         
-        private bool CapsuleCast(Vector3 characterPosition, float castRadius, Vector3 castDirection, float castDistance,
+        private bool CapsuleCast(F32x3 characterPosition, float castRadius, F32x3 castDirection, float castDistance,
             int layerMask, out RaycastHit hitResult, out bool startPenetrating)
         {
             hitResult = default;
             startPenetrating = false;
 
-            Vector3 top = characterPosition + _transformedCapsuleTopCenter;
-            Vector3 bottom = characterPosition + _transformedCapsuleBottomCenter;
+            F32x3 top = characterPosition + _transformedCapsuleTopCenter;
+            F32x3 bottom = characterPosition + _transformedCapsuleBottomCenter;
 
             int rawHitCount = Physics.CapsuleCastNonAlloc(bottom, top, castRadius, castDirection, _hits, castDistance,
                 layerMask, triggerInteraction);
@@ -2400,8 +2402,8 @@ namespace EasyCharacterMovement
         /// Unlike previous version this correctly restun (if deried) valid hits for blocking overlaps along with MTD to resolve penetration.
         /// </summary>
 
-        private bool CapsuleCastEx(Vector3 characterPosition, float castRadius, Vector3 castDirection, float castDistance, int layerMask,
-            out RaycastHit hitResult, out bool startPenetrating, out Vector3 recoverDirection, out float recoverDistance, bool ignoreNonBlockingOverlaps = false)
+        private bool CapsuleCastEx(F32x3 characterPosition, float castRadius, F32x3 castDirection, float castDistance, int layerMask,
+            out RaycastHit hitResult, out bool startPenetrating, out F32x3 recoverDirection, out float recoverDistance, bool ignoreNonBlockingOverlaps = false)
         {
             hitResult = default;
 
@@ -2409,8 +2411,8 @@ namespace EasyCharacterMovement
             recoverDirection = default;
             recoverDistance = default;
 
-            Vector3 top = characterPosition + _transformedCapsuleTopCenter;
-            Vector3 bottom = characterPosition + _transformedCapsuleBottomCenter;
+            F32x3 top = characterPosition + _transformedCapsuleTopCenter;
+            F32x3 bottom = characterPosition + _transformedCapsuleBottomCenter;
 
             int rawHitCount =
                 Physics.CapsuleCastNonAlloc(bottom, top, castRadius, castDirection, _hits, castDistance, layerMask, triggerInteraction);
@@ -2427,13 +2429,13 @@ namespace EasyCharacterMovement
                 bool isOverlapping = hit.distance <= 0.0f;
                 if (isOverlapping)
                 {
-                    if (ComputeMTD(characterPosition, updatedRotation, hit.collider, hit.collider.transform, out Vector3 mtdDirection, out float mtdDistance))
+                    if (ComputeMTD(characterPosition, updatedRotation, hit.collider, hit.collider.transform, out F32x3 mtdDirection, out float mtdDistance))
                     {
                         mtdDirection = ConstrainDirectionToPlane(mtdDirection);
 
                         HitLocation hitLocation = ComputeHitLocation(mtdDirection);
 
-                        Vector3 point;
+                        F32x3 point;
                         if (hitLocation == HitLocation.Above)
                             point = characterPosition + _transformedCapsuleTopCenter - mtdDirection * _radius;
                         else if (hitLocation == HitLocation.Below)
@@ -2441,7 +2443,7 @@ namespace EasyCharacterMovement
                         else
                             point = characterPosition + _transformedCapsuleCenter - mtdDirection * _radius;
 
-                        Vector3 impactNormal = ComputeBlockingNormal(mtdDirection, IsWalkable(hit.collider, mtdDirection));
+                        F32x3 impactNormal = ComputeBlockingNormal(mtdDirection, IsWalkable(hit.collider, mtdDirection));
 
                         hit.point = point;
                         hit.normal = impactNormal;
@@ -2466,7 +2468,7 @@ namespace EasyCharacterMovement
                 {
                     // Overlaps
 
-                    float movementDotNormal = Vector3.Dot(castDirection, hit.normal);
+                    float movementDotNormal = dot(castDirection, hit.normal);
 
                     if (ignoreNonBlockingOverlaps)
                     {
@@ -2516,7 +2518,7 @@ namespace EasyCharacterMovement
         /// Returns True when the rigidbody sweep intersects any collider, otherwise false.
         /// </summary>
 
-        private bool SweepTest(Vector3 sweepOrigin, float sweepRadius, Vector3 sweepDirection, float sweepDistance,
+        private bool SweepTest(F32x3 sweepOrigin, float sweepRadius, F32x3 sweepDirection, float sweepDistance,
             int sweepLayerMask, out RaycastHit hitResult, out bool startPenetrating)
         {
             // Cast further than the distance we need, to try to take into account small edge cases (e.g. Casts fail 
@@ -2563,8 +2565,8 @@ namespace EasyCharacterMovement
         /// Unlike previous version this correctly restun (if deried) valid hits for blocking overlaps along with MTD to resolve penetration.
         /// </summary>
 
-        private bool SweepTestEx(Vector3 sweepOrigin, float sweepRadius, Vector3 sweepDirection, float sweepDistance, int sweepLayerMask,
-            out RaycastHit hitResult, out bool startPenetrating, out Vector3 recoverDirection, out float recoverDistance, bool ignoreBlockingOverlaps = false)
+        private bool SweepTestEx(F32x3 sweepOrigin, float sweepRadius, F32x3 sweepDirection, float sweepDistance, int sweepLayerMask,
+            out RaycastHit hitResult, out bool startPenetrating, out F32x3 recoverDirection, out float recoverDistance, bool ignoreBlockingOverlaps = false)
         {
             // Cast further than the distance we need, to try to take into account small edge cases (e.g. Casts fail 
             // when moving almost parallel to an obstacle for small distances).
@@ -2612,9 +2614,9 @@ namespace EasyCharacterMovement
             return true;
         }
 
-        private bool ResolvePenetration(Vector3 displacement, Vector3 proposedAdjustment)
+        private bool ResolvePenetration(F32x3 displacement, F32x3 proposedAdjustment)
         {
-            Vector3 adjustment = ConstrainVectorToPlane(proposedAdjustment);
+            F32x3 adjustment = ConstrainVectorToPlane(proposedAdjustment);
             if (adjustment.IsZero())
                 return false;
 
@@ -2633,41 +2635,41 @@ namespace EasyCharacterMovement
             }
             else
             {
-                Vector3 lastPosition = updatedPosition;
+                F32x3 lastPosition = updatedPosition;
 
                 // Try sweeping as far as possible, ignoring non-blocking overlaps, otherwise we wouldn't be able to sweep out of the object to fix the penetration.
 
-                bool hit = CapsuleCastEx(updatedPosition, _radius, adjustment.normalized, adjustment.magnitude, _collisionLayers,
-                    out RaycastHit sweepHitResult, out bool startPenetrating, out Vector3 recoverDirection, out float recoverDistance, true);
+                bool hit = CapsuleCastEx(updatedPosition, _radius, normalizesafe(adjustment), length(adjustment), _collisionLayers,
+                    out RaycastHit sweepHitResult, out bool startPenetrating, out F32x3 recoverDirection, out float recoverDistance, true);
 
                 if (!hit)
                     updatedPosition += adjustment;
                 else
-                    updatedPosition += adjustment.normalized * Mathf.Max(sweepHitResult.distance - kSmallContactOffset, 0.0f);
+                    updatedPosition += normalizesafe(adjustment) * Mathf.Max(sweepHitResult.distance - kSmallContactOffset, 0.0f);
 
                 // Still stuck?
 
-                bool moved = updatedPosition != lastPosition;
+                bool moved = any(updatedPosition != lastPosition);
                 if (!moved && startPenetrating)
                 {
                     // Combine two MTD results to get a new direction that gets out of multiple surfaces.
 
-                    Vector3 secondMTD = recoverDirection * (recoverDistance + kContactOffset + kPenetrationOffset);
-                    Vector3 combinedMTD = adjustment + secondMTD;
+                    F32x3 secondMTD = recoverDirection * (recoverDistance + kContactOffset + kPenetrationOffset);
+                    F32x3 combinedMTD = adjustment + secondMTD;
                     
-                    if (secondMTD != adjustment && !combinedMTD.IsZero())
+                    if (any(secondMTD != adjustment) && !combinedMTD.IsZero())
                     {
                         lastPosition = updatedPosition;
                         
-                        hit = CapsuleCastEx(updatedPosition, _radius, combinedMTD.normalized, combinedMTD.magnitude, 
+                        hit = CapsuleCastEx(updatedPosition, _radius, normalizesafe(combinedMTD), length(combinedMTD), 
                             _collisionLayers, out sweepHitResult, out _, out _, out _, true);
 
                         if (!hit)
                             updatedPosition += combinedMTD;
                         else
-                            updatedPosition += combinedMTD.normalized * Mathf.Max(sweepHitResult.distance - kSmallContactOffset, 0.0f);
+                            updatedPosition += normalizesafe(combinedMTD) * Mathf.Max(sweepHitResult.distance - kSmallContactOffset, 0.0f);
 
-                        moved = updatedPosition != lastPosition;
+                        moved = any(updatedPosition != lastPosition);
                     }
                 }
 
@@ -2678,39 +2680,39 @@ namespace EasyCharacterMovement
                     // Try moving the proposed adjustment plus the attempted move direction.
                     // This can sometimes get out of penetrations with multiple objects.
 
-                    Vector3 moveDelta = ConstrainVectorToPlane(displacement);
+                    F32x3 moveDelta = ConstrainVectorToPlane(displacement);
                     if (!moveDelta.IsZero())
                     {
                         lastPosition = updatedPosition;
 
-                        Vector3 newAdjustment = adjustment + moveDelta;
-                        hit = CapsuleCastEx(updatedPosition, _radius, newAdjustment.normalized, newAdjustment.magnitude, 
+                        F32x3 newAdjustment = adjustment + moveDelta;
+                        hit = CapsuleCastEx(updatedPosition, _radius, normalizesafe(newAdjustment), length(newAdjustment), 
                             _collisionLayers, out sweepHitResult, out _, out _, out _, true);
 
                         if (!hit)
                             updatedPosition += newAdjustment;
                         else
-                            updatedPosition += newAdjustment.normalized * Mathf.Max(sweepHitResult.distance - kSmallContactOffset, 0.0f);
+                            updatedPosition += normalizesafe(newAdjustment) * Mathf.Max(sweepHitResult.distance - kSmallContactOffset, 0.0f);
 
-                        moved = updatedPosition != lastPosition;
+                        moved = any(updatedPosition != lastPosition);
 
                         // Finally, try the original move without MTD adjustments, but allowing depenetration along the MTD normal.
                         // This was blocked because ignoreBlockingOverlaps was false for the original move to try a better depenetration normal, but we might be running in to other geometry in the attempt.
                         // This won't necessarily get us all the way out of penetration, but can in some cases and does make progress in exiting the penetration.
 
-                        if (!moved && Vector3.Dot(moveDelta, adjustment) > 0.0f)
+                        if (!moved && dot(moveDelta, adjustment) > 0.0f)
                         {
                             lastPosition = updatedPosition;
 
-                            hit = CapsuleCastEx(updatedPosition, _radius, moveDelta.normalized, moveDelta.magnitude,
+                            hit = CapsuleCastEx(updatedPosition, _radius, normalizesafe(moveDelta), length(moveDelta),
                                 _collisionLayers, out sweepHitResult, out _, out _, out _, true);
 
                             if (!hit)
                                 updatedPosition += moveDelta;
                             else
-                                updatedPosition += moveDelta.normalized * Mathf.Max(sweepHitResult.distance - kSmallContactOffset, 0.0f);
+                                updatedPosition += normalizesafe(moveDelta) * Mathf.Max(sweepHitResult.distance - kSmallContactOffset, 0.0f);
 
-                            moved = updatedPosition != lastPosition;
+                            moved = any(updatedPosition != lastPosition);
                         }
                     }
                 }
@@ -2724,27 +2726,27 @@ namespace EasyCharacterMovement
         /// Returns True when the rigidbody sweep intersects any collider, otherwise false.
         /// </summary>
 
-        private bool MovementSweepTest(Vector3 characterPosition, Vector3 inVelocity, Vector3 displacement,
+        private bool MovementSweepTest(F32x3 characterPosition, F32x3 inVelocity, F32x3 displacement,
             out CollisionResult collisionResult)
         {
             collisionResult = default;
 
-            Vector3 sweepOrigin = characterPosition;
-            Vector3 sweepDirection = displacement.normalized;
+            F32x3 sweepOrigin = characterPosition;
+            F32x3 sweepDirection = normalizesafe(displacement);
 
             float sweepRadius = _radius;
-            float sweepDistance = displacement.magnitude;
+            float sweepDistance = length(displacement);
 
             int sweepLayerMask = _collisionLayers;
             
             bool hit = SweepTestEx(sweepOrigin, sweepRadius, sweepDirection, sweepDistance, sweepLayerMask, 
-                out RaycastHit hitResult, out bool startPenetrating, out Vector3 recoverDirection, out float recoverDistance);
+                out RaycastHit hitResult, out bool startPenetrating, out F32x3 recoverDirection, out float recoverDistance);
 
             if (startPenetrating)
             {
                 // Handle initial penetrations
 
-                Vector3 requestedAdjustement = recoverDirection * (recoverDistance + kContactOffset + kPenetrationOffset);
+                F32x3 requestedAdjustement = recoverDirection * (recoverDistance + kContactOffset + kPenetrationOffset);
 
                 if (ResolvePenetration(displacement, requestedAdjustement))
                 {
@@ -2761,12 +2763,12 @@ namespace EasyCharacterMovement
 
             HitLocation hitLocation = ComputeHitLocation(hitResult.normal);
 
-            Vector3 displacementToHit = sweepDirection * hitResult.distance;
-            Vector3 remainingDisplacement = displacement - displacementToHit;
+            F32x3 displacementToHit = sweepDirection * hitResult.distance;
+            F32x3 remainingDisplacement = displacement - displacementToHit;
 
-            Vector3 hitPosition = sweepOrigin + displacementToHit;
+            F32x3 hitPosition = sweepOrigin + displacementToHit;
 
-            Vector3 surfaceNormal = hitResult.normal;
+            F32x3 surfaceNormal = hitResult.normal;
 
             bool isWalkable = false;
             bool hitGround = hitLocation == HitLocation.Below;
@@ -2811,7 +2813,7 @@ namespace EasyCharacterMovement
         /// Returns True when the rigidbody sweep intersects any collider, otherwise false.
         /// </summary>
 
-        public bool MovementSweepTest(Vector3 characterPosition, Vector3 sweepDirection, float sweepDistance,
+        public bool MovementSweepTest(F32x3 characterPosition, F32x3 sweepDirection, float sweepDistance,
             out CollisionResult collisionResult)
         {
             return MovementSweepTest(characterPosition, velocity, sweepDirection * sweepDistance, out collisionResult);
@@ -2821,16 +2823,16 @@ namespace EasyCharacterMovement
         /// Limit the slide vector when falling if the resulting slide might boost the character faster upwards.
         /// </summary>
 
-        private Vector3 HandleSlopeBoosting(Vector3 slideResult, Vector3 displacement, Vector3 inNormal)
+        private F32x3 HandleSlopeBoosting(F32x3 slideResult, F32x3 displacement, F32x3 inNormal)
         {
-            Vector3 result = slideResult;
+            F32x3 result = slideResult;
 
-            float yResult = Vector3.Dot(result, _characterUp);
+            float yResult = dot(result, _characterUp);
             if (yResult > 0.0f)
             {
                 // Don't move any higher than we originally intended.
 
-                float yLimit = Vector3.Dot(displacement, _characterUp);
+                float yLimit = dot(displacement, _characterUp);
                 if (yResult - yLimit > kKindaSmallNumber)
                 {
                     if (yLimit > 0.0f)
@@ -2844,14 +2846,14 @@ namespace EasyCharacterMovement
                     {
                         // We were heading down but were going to deflect upwards. Just make the deflection horizontal.
 
-                        result = Vector3.zero;
+                        result = F32x3.zero;
                     }
 
                     // Make remaining portion of original result horizontal and parallel to impact normal.
 
-                    Vector3 lateralRemainder = (slideResult - result).ProjectedOnPlane(_characterUp);
-                    Vector3 lateralNormal = inNormal.ProjectedOnPlane(_characterUp).normalized;
-                    Vector3 adjust = lateralRemainder.ProjectedOnPlane(lateralNormal);
+                    F32x3 lateralRemainder = (slideResult - result).ProjectedOnPlane(_characterUp);
+                    F32x3 lateralNormal = normalizesafe(inNormal.ProjectedOnPlane(_characterUp));
+                    F32x3 adjust = lateralRemainder.ProjectedOnPlane(lateralNormal);
 
                     result += adjust;
                 }
@@ -2864,7 +2866,7 @@ namespace EasyCharacterMovement
         /// Calculate slide vector along a surface.
         /// </summary>
 
-        private Vector3 ComputeSlideVector(Vector3 displacement, Vector3 inNormal, bool isWalkable)
+        private F32x3 ComputeSlideVector(F32x3 displacement, F32x3 inNormal, bool isWalkable)
         {
             if (isGrounded)
             {
@@ -2872,8 +2874,8 @@ namespace EasyCharacterMovement
                     displacement = displacement.TangentTo(inNormal, _characterUp);
                 else
                 {
-                    Vector3 right = inNormal.PerpendicularTo(groundNormal);
-                    Vector3 up = right.PerpendicularTo(inNormal);
+                    F32x3 right = inNormal.PerpendicularTo(groundNormal);
+                    F32x3 up = right.PerpendicularTo(inNormal);
 
                     displacement = displacement.ProjectedOnPlane(inNormal);
                     displacement = displacement.TangentTo(up, _characterUp);
@@ -2890,7 +2892,7 @@ namespace EasyCharacterMovement
                 }
                 else
                 {
-                    Vector3 slideResult = displacement.ProjectedOnPlane(inNormal);
+                    F32x3 slideResult = displacement.ProjectedOnPlane(inNormal);
 
                     if (_isConstrainedToGround)
                         slideResult = HandleSlopeBoosting(slideResult, displacement, inNormal);
@@ -2906,14 +2908,14 @@ namespace EasyCharacterMovement
         /// Resolve collisions of Character's bounding volume during a Move call.
         /// </summary>
 
-        private int SlideAlongSurface(int iteration, Vector3 inputDisplacement, ref Vector3 inVelocity,
-            ref Vector3 displacement, ref CollisionResult inHit, ref Vector3 prevNormal)
+        private int SlideAlongSurface(int iteration, F32x3 inputDisplacement, ref F32x3 inVelocity,
+            ref F32x3 displacement, ref CollisionResult inHit, ref F32x3 prevNormal)
         {
             if (useFlatTop && inHit.hitLocation == HitLocation.Above)
             {
-                Vector3 surfaceNormal = FindBoxOpposingNormal(displacement, inHit.normal, inHit.transform);
+                F32x3 surfaceNormal = FindBoxOpposingNormal(displacement, inHit.normal, inHit.transform);
 
-                if (inHit.normal != surfaceNormal)
+                if (any((F32x3)inHit.normal != surfaceNormal))
                 {
                     inHit.normal = surfaceNormal;
                     inHit.surfaceNormal = surfaceNormal;
@@ -2938,14 +2940,14 @@ namespace EasyCharacterMovement
                 }
                 else if (iteration == 1)
                 {
-                    Vector3 crease = prevNormal.PerpendicularTo(inHit.normal);
+                    F32x3 crease = prevNormal.PerpendicularTo(inHit.normal);
 
-                    Vector3 oVel = inputDisplacement.ProjectedOnPlane(crease);
+                    F32x3 oVel = inputDisplacement.ProjectedOnPlane(crease);
 
-                    Vector3 nVel = ComputeSlideVector(displacement, inHit.normal, inHit.isWalkable);
+                    F32x3 nVel = ComputeSlideVector(displacement, inHit.normal, inHit.isWalkable);
                             nVel = nVel.ProjectedOnPlane(crease);
 
-                    if (Vector3.Dot(oVel, nVel) <= 0.0f || Vector3.Dot(prevNormal, inHit.normal) < 0.0f)
+                    if (dot(oVel, nVel) <= 0.0f || dot(prevNormal, inHit.normal) < 0.0f)
                     {
                         inVelocity   = ConstrainVectorToPlane(inVelocity.ProjectedOn(crease));
                         displacement = ConstrainVectorToPlane(displacement.ProjectedOn(crease));
@@ -2960,8 +2962,8 @@ namespace EasyCharacterMovement
                 }
                 else
                 {
-                    inVelocity = Vector3.zero;
-                    displacement = Vector3.zero;
+                    inVelocity = F32x3.zero;
+                    displacement = F32x3.zero;
                 }
 
                 prevNormal = inHit.normal;
@@ -2994,7 +2996,7 @@ namespace EasyCharacterMovement
 
             // Compute displacement
 
-            Vector3 displacement = _velocity * deltaTime;
+            F32x3 displacement = _velocity * deltaTime;
 
             //
             // If grounded, reorient DISPLACEMENT along current ground normal
@@ -3008,19 +3010,19 @@ namespace EasyCharacterMovement
             //
             // Cache pre movement displacement
 
-            Vector3 inputDisplacement = displacement;
+            F32x3 inputDisplacement = displacement;
 
             //
             // Prevent moving into current BLOCKING overlaps, treat those as collisions and slide along 
 
             int iteration = 0;
-            Vector3 prevNormal = default;
+            F32x3 prevNormal = default;
 
             for (int i = 0; i < _collisionCount; i++)
             {
                 ref CollisionResult collisionResult = ref _collisionResults[i];
 
-                bool opposesMovement = Vector3.Dot(displacement, collisionResult.normal) < 0.0f;
+                bool opposesMovement = dot(displacement, collisionResult.normal) < 0.0f;
                 if (!opposesMovement)
                     continue;
                 
@@ -3073,7 +3075,7 @@ namespace EasyCharacterMovement
             // Perform collision constrained movement (aka: collide and slide)
             
             int maxSlideCount = _advanced.maxMovementIterations;
-            while (detectCollisions && maxSlideCount-- > 0 && displacement.sqrMagnitude > _advanced.minMoveDistanceSqr)
+            while (detectCollisions && maxSlideCount-- > 0 && lengthsq(displacement) > _advanced.minMoveDistanceSqr)
             {
                 bool collided = MovementSweepTest(updatedPosition, _velocity, displacement,
                     out CollisionResult collisionResult);
@@ -3096,7 +3098,7 @@ namespace EasyCharacterMovement
                     {
                         updatedPosition = stepResult.position;
 
-                        displacement = Vector3.zero;
+                        displacement = F32x3.zero;
                         break;
                     }
                 }
@@ -3134,7 +3136,7 @@ namespace EasyCharacterMovement
                     if (!_hasLanded && collisionResult.hitLocation == HitLocation.Below)
                     {
                         float sweepDistance = collisionResult.hitResult.distance;
-                        Vector3 surfaceNormal = collisionResult.surfaceNormal;
+                        F32x3 surfaceNormal = collisionResult.surfaceNormal;
 
                         _foundGround.SetFromSweepResult(true, false, updatedPosition, sweepDistance,
                             ref collisionResult.hitResult, surfaceNormal);
@@ -3156,7 +3158,7 @@ namespace EasyCharacterMovement
             //
             // Apply remaining displacement
 
-            if (displacement.sqrMagnitude > _advanced.minMoveDistanceSqr)
+            if (lengthsq(displacement) > _advanced.minMoveDistanceSqr)
                 updatedPosition += displacement;
 
             //
@@ -3164,7 +3166,7 @@ namespace EasyCharacterMovement
 
             if (isGrounded)
             {
-                _velocity = _velocity.ProjectedOnPlane(_characterUp).normalized * _velocity.magnitude;
+                _velocity = normalizesafe(_velocity.ProjectedOnPlane(_characterUp)) * length(_velocity);
                 _velocity = ConstrainVectorToPlane(_velocity);
             }
         }
@@ -3225,7 +3227,7 @@ namespace EasyCharacterMovement
         /// Check if the result of a sweep test (passed in InHit) might be a valid location to perch, in which case we should use ComputePerchResult to validate the location.
         /// </summary>
 
-        private bool ShouldComputePerchResult(Vector3 characterPosition, ref RaycastHit inHit)
+        private bool ShouldComputePerchResult(F32x3 characterPosition, ref RaycastHit inHit)
         {
             // Don't try to perch if the edge radius is very small.
 	        
@@ -3234,7 +3236,7 @@ namespace EasyCharacterMovement
 		        return false;
 	        }
 
-            float distFromCenterSq = (inHit.point - characterPosition).ProjectedOnPlane(_characterUp).sqrMagnitude;
+            float distFromCenterSq = lengthsq(((F32x3)inHit.point - characterPosition).ProjectedOnPlane(_characterUp));
             float standOnEdgeRadius = GetValidPerchRadius(inHit.collider);
 
             if (distFromCenterSq <= standOnEdgeRadius.Square())
@@ -3251,7 +3253,7 @@ namespace EasyCharacterMovement
         /// Casts a capsule against specified colliders (by layerMask) in the Scene and returns detailed information on what was hit.
         /// </summary>
 
-        private bool CapsuleCast(Vector3 point1, Vector3 point2, float castRadius, Vector3 castDirection,
+        private bool CapsuleCast(F32x3 point1, F32x3 point2, float castRadius, F32x3 castDirection,
             float castDistance, int castLayerMask, out RaycastHit hitResult, out bool startPenetrating)
         {
             hitResult = default;
@@ -3294,7 +3296,7 @@ namespace EasyCharacterMovement
         /// Casts a box along a ray and returns detailed information on what was hit.
         /// </summary>
 
-        private bool BoxCast(Vector3 center, Vector3 halfExtents, Quaternion orientation, Vector3 castDirection,
+        private bool BoxCast(F32x3 center, F32x3 halfExtents, Quaternion orientation, F32x3 castDirection,
             float castDistance, int castLayerMask, out RaycastHit hitResult, out bool startPenetrating)
         {
             hitResult = default;
@@ -3337,19 +3339,19 @@ namespace EasyCharacterMovement
         /// Downwards (along character's up axis) sweep against the world and return the first blocking hit.
         /// </summary>
         
-        private bool GroundSweepTest(Vector3 characterPosition, float capsuleRadius, float capsuleHalfHeight,
+        private bool GroundSweepTest(F32x3 characterPosition, float capsuleRadius, float capsuleHalfHeight,
             float sweepDistance, out RaycastHit hitResult, out bool startPenetrating)
         {
             bool foundBlockingHit;
 
             if (!useFlatBaseForGroundChecks)
             {
-                Vector3 characterCenter = characterPosition + _transformedCapsuleCenter;
+                F32x3 characterCenter = characterPosition + _transformedCapsuleCenter;
 
-                Vector3 point1 = characterCenter - _characterUp * (capsuleHalfHeight - capsuleRadius);
-                Vector3 point2 = characterCenter + _characterUp * (capsuleHalfHeight - capsuleRadius);
+                F32x3 point1 = characterCenter - _characterUp * (capsuleHalfHeight - capsuleRadius);
+                F32x3 point2 = characterCenter + _characterUp * (capsuleHalfHeight - capsuleRadius);
 
-                Vector3 sweepDirection = -1.0f * _characterUp;
+                F32x3 sweepDirection = -1.0f * _characterUp;
 
                 foundBlockingHit = CapsuleCast(point1, point2, capsuleRadius, sweepDirection, sweepDistance,
                     _collisionLayers, out hitResult, out startPenetrating);
@@ -3358,11 +3360,11 @@ namespace EasyCharacterMovement
             {
                 // First test with the box rotated so the corners are along the major axes (ie rotated 45 degrees).
 
-                Vector3 center = characterPosition + _transformedCapsuleCenter;
-                Vector3 halfExtents = new Vector3(capsuleRadius * 0.707f, capsuleHalfHeight, capsuleRadius * 0.707f);
+                F32x3 center = characterPosition + _transformedCapsuleCenter;
+                F32x3 halfExtents = new F32x3(capsuleRadius * 0.707f, capsuleHalfHeight, capsuleRadius * 0.707f);
                 
                 Quaternion sweepOrientation = rotation * Quaternion.Euler(0f, -rotation.eulerAngles.y, 0f);
-                Vector3 sweepDirection = -1.0f * _characterUp;
+                F32x3 sweepDirection = -1.0f * _characterUp;
 
                 LayerMask sweepLayerMask = _collisionLayers;
 
@@ -3387,7 +3389,7 @@ namespace EasyCharacterMovement
         /// or distance from the bottom of the capsule in the case of a raycast.
         /// </summary>
         
-        public void ComputeGroundDistance(Vector3 characterPosition, float sweepRadius, float sweepDistance,
+        public void ComputeGroundDistance(F32x3 characterPosition, float sweepRadius, float sweepDistance,
             float castDistance, out FindGroundResult outGroundResult)
         {
             outGroundResult = default;
@@ -3453,10 +3455,10 @@ namespace EasyCharacterMovement
                         float maxPenetrationAdjust = Mathf.Max(kMaxGroundDistance, characterRadius);
                         float sweepResult = Mathf.Max(-maxPenetrationAdjust, hitResult.distance - shrinkHeight);
 
-                        Vector3 sweepDirection = -1.0f * _characterUp;
-                        Vector3 hitPosition = characterPosition + sweepDirection * sweepResult;
+                        F32x3 sweepDirection = -1.0f * _characterUp;
+                        F32x3 hitPosition = characterPosition + sweepDirection * sweepResult;
 
-                        Vector3 surfaceNormal = hitResult.normal;
+                        F32x3 surfaceNormal = hitResult.normal;
 
                         bool isWalkable = false;
                         bool hitGround = sweepResult <= sweepDistance &&
@@ -3493,8 +3495,8 @@ namespace EasyCharacterMovement
 
             if (castDistance > 0.0f)
             {
-                Vector3 rayOrigin = characterPosition + _transformedCapsuleCenter;
-                Vector3 rayDirection = -1.0f * _characterUp;
+                F32x3 rayOrigin = characterPosition + _transformedCapsuleCenter;
+                F32x3 rayDirection = -1.0f * _characterUp;
 
                 float shrinkHeight = characterHalfHeight;
                 float rayLength = castDistance + shrinkHeight;
@@ -3530,7 +3532,7 @@ namespace EasyCharacterMovement
         /// This may be used to determine if the capsule can or cannot stay at the current location if perched on the edge of a small ledge or unwalkable surface. 
         /// </summary>
 
-        private bool ComputePerchResult(Vector3 characterPosition, float testRadius, float inMaxGroundDistance,
+        private bool ComputePerchResult(F32x3 characterPosition, float testRadius, float inMaxGroundDistance,
             ref RaycastHit inHit, out FindGroundResult perchGroundResult)
         {
             perchGroundResult = default;
@@ -3540,9 +3542,9 @@ namespace EasyCharacterMovement
 
             // Sweep further than actual requested distance, because a reduced capsule radius means we could miss some hits that the normal radius would contact.
 
-            float inHitAboveBase = Mathf.Max(0.0f, Vector3.Dot(inHit.point - characterPosition, _characterUp));
-            float perchCastDist = Mathf.Max(0.0f, inMaxGroundDistance - inHitAboveBase);
-            float perchSweepDist = Mathf.Max(0.0f, inMaxGroundDistance);
+            float inHitAboveBase = max(0.0f, dot((F32x3)inHit.point - characterPosition, _characterUp));
+            float perchCastDist  = max(0.0f, inMaxGroundDistance - inHitAboveBase);
+            float perchSweepDist = max(0.0f, inMaxGroundDistance);
 
             float actualSweepDist = perchSweepDist + _radius;
             ComputeGroundDistance(characterPosition, testRadius, actualSweepDist, perchCastDist, out perchGroundResult);
@@ -3566,7 +3568,7 @@ namespace EasyCharacterMovement
         /// No ground will be found if collision is disabled (eg: detectCollisions == false).
         /// </summary>
 
-        public void FindGround(Vector3 characterPosition, out FindGroundResult outGroundResult)
+        public void FindGround(F32x3 characterPosition, out FindGroundResult outGroundResult)
         {
             // No collision, no ground...
 
@@ -3591,7 +3593,7 @@ namespace EasyCharacterMovement
 
             if (outGroundResult.hitGround && !outGroundResult.isRaycastResult)
             {
-                Vector3 positionOnGround = outGroundResult.position;
+                F32x3 positionOnGround = outGroundResult.position;
 
                 if (ShouldComputePerchResult(positionOnGround, ref outGroundResult.hitResult))
                 {
@@ -3674,16 +3676,16 @@ namespace EasyCharacterMovement
 
             if (lastGroundDistance < kMinGroundDistance || lastGroundDistance > kMaxGroundDistance)
             {
-                float initialY = Vector3.Dot(updatedPosition, _characterUp);
+                float initialY = dot(updatedPosition, _characterUp);
                 float moveDistance = kAvgGroundDistance - lastGroundDistance;
 
-                Vector3 displacement = _characterUp * moveDistance;
+                F32x3 displacement = _characterUp * moveDistance;
 
-                Vector3 sweepOrigin = updatedPosition;
-                Vector3 sweepDirection = displacement.normalized;
+                F32x3 sweepOrigin = updatedPosition;
+                F32x3 sweepDirection = normalizesafe(displacement);
 
                 float sweepRadius = _radius;
-                float sweepDistance = displacement.magnitude;
+                float sweepDistance = length(displacement);
 
                 int sweepLayerMask = _collisionLayers;
 
@@ -3703,7 +3705,7 @@ namespace EasyCharacterMovement
 
                     updatedPosition += sweepDirection * hitResult.distance;
 
-                    float currentY = Vector3.Dot(updatedPosition, _characterUp);
+                    float currentY = dot(updatedPosition, _characterUp);
                     _currentGround.groundDistance += currentY - initialY;
                 }
                 else
@@ -3712,7 +3714,7 @@ namespace EasyCharacterMovement
 
                     updatedPosition += sweepDirection * hitResult.distance;
 
-                    float currentY = Vector3.Dot(updatedPosition, _characterUp);
+                    float currentY = dot(updatedPosition, _characterUp);
                     _currentGround.groundDistance = currentY - initialY;
                 }
             }
@@ -3722,7 +3724,7 @@ namespace EasyCharacterMovement
             if (_rootTransform)
             {
                 _rootTransform.localPosition =
-                    _rootTransformOffset - new Vector3(0.0f, kAvgGroundDistance, 0.0f);
+                    _rootTransformOffset - new F32x3(0.0f, kAvgGroundDistance, 0.0f);
             }
         }
         
@@ -3771,7 +3773,7 @@ namespace EasyCharacterMovement
 
             // We need to enforce max step height off the actual point of impact with the ground.
             
-            float characterInitialGroundPositionY = Vector3.Dot(inCollision.position, _characterUp);
+            float characterInitialGroundPositionY = dot(inCollision.position, _characterUp);
             float groundPointY = characterInitialGroundPositionY;
             
             float actualGroundDistance = Mathf.Max(0.0f, _currentGround.GetDistanceToGround());
@@ -3784,20 +3786,20 @@ namespace EasyCharacterMovement
                 !IsWithinEdgeTolerance(inCollision.position, inCollision.point, _radius + kContactOffset);
 
             if (!_currentGround.isRaycastResult && !hitVerticalFace)
-                groundPointY = Vector3.Dot(groundPoint, _characterUp);
+                groundPointY = dot(groundPoint, _characterUp);
             else
                 groundPointY -= _currentGround.groundDistance;
             
             // Don't step up if the impact is below us, accounting for distance from ground.
 
-            float initialImpactY = Vector3.Dot(inCollision.point, _characterUp);
+            float initialImpactY = dot(inCollision.point, _characterUp);
             if (initialImpactY <= characterInitialGroundPositionY)
                 return false;
             
             // Step up, treat as vertical wall
 
-            Vector3 sweepOrigin = inCollision.position;
-            Vector3 sweepDirection = _characterUp;
+            F32x3 sweepOrigin = inCollision.position;
+            F32x3 sweepDirection = _characterUp;
 
             float sweepRadius = _radius;
             float sweepDistance = stepTravelUpHeight;
@@ -3817,11 +3819,11 @@ namespace EasyCharacterMovement
 
             // Step forward (lateral displacement only)
 
-            Vector3 displacement = inCollision.remainingDisplacement;
-            Vector3 displacement2D = ConstrainVectorToPlane(Vector3.ProjectOnPlane(displacement, _characterUp));
+            F32x3 displacement = inCollision.remainingDisplacement;
+            F32x3 displacement2D = ConstrainVectorToPlane(Vector3.ProjectOnPlane(displacement, _characterUp));
 
-            sweepDistance = displacement.magnitude;
-            sweepDirection = displacement2D.normalized;            
+            sweepDistance = length(displacement);
+            sweepDirection = normalizesafe(displacement2D);            
 
             foundBlockingHit = SweepTest(sweepOrigin, sweepRadius, sweepDirection, sweepDistance, sweepLayerMask,
                 out hitResult, out startPenetrating);
@@ -3851,33 +3853,33 @@ namespace EasyCharacterMovement
 
             // See if this step sequence would have allowed us to travel higher than our max step height allows.
 
-            float deltaY = Vector3.Dot(hitResult.point, _characterUp) - groundPointY;
+            float deltaY = dot(hitResult.point, _characterUp) - groundPointY;
             if (deltaY > stepOffset)
                 return false;
 
             // Is position on step clear ?
 
-            Vector3 positionOnStep = sweepOrigin + sweepDirection * hitResult.distance;
+            F32x3 positionOnStep = sweepOrigin + sweepDirection * hitResult.distance;
 
             if (OverlapTest(positionOnStep, updatedRotation, _radius, _height, _collisionLayers, _overlaps, triggerInteraction) > 0)
                 return false;
             
             // Reject unwalkable surface normals here.
 
-            Vector3 surfaceNormal = FindGeomOpposingNormal(sweepDirection * sweepDistance, ref hitResult);
+            F32x3 surfaceNormal = FindGeomOpposingNormal(sweepDirection * sweepDistance, ref hitResult);
 
             bool isWalkable = IsWalkable(hitResult.collider, surfaceNormal);
             if (!isWalkable)
             {
                 // Reject if normal opposes movement direction.
 
-                bool normalTowardsMe = Vector3.Dot(displacement, surfaceNormal) < 0.0f;
+                bool normalTowardsMe = dot(displacement, surfaceNormal) < 0.0f;
                 if (normalTowardsMe)
                     return false;
 
                 // Also reject if we would end up being higher than our starting location by stepping down.
 
-                if (Vector3.Dot(positionOnStep, _characterUp) > Vector3.Dot(inCollision.position, _characterUp))
+                if (dot(positionOnStep, _characterUp) > dot(inCollision.position, _characterUp))
                     return false;
             }
 
@@ -3932,8 +3934,8 @@ namespace EasyCharacterMovement
         /// Unlike previous, this do not modifies / updates character's velocity.
         /// </summary>
 
-        private int SlideAlongSurface(int iteration, Vector3 inputDisplacement, ref Vector3 displacement,
-            ref CollisionResult inHit, ref Vector3 prevNormal)
+        private int SlideAlongSurface(int iteration, F32x3 inputDisplacement, ref F32x3 displacement,
+            ref CollisionResult inHit, ref F32x3 prevNormal)
         {
             inHit.normal = ComputeBlockingNormal(inHit.normal, inHit.isWalkable);
 
@@ -3948,14 +3950,14 @@ namespace EasyCharacterMovement
                 }
                 else if (iteration == 1)
                 {
-                    Vector3 crease = prevNormal.PerpendicularTo(inHit.normal);
+                    F32x3 crease = prevNormal.PerpendicularTo(inHit.normal);
 
-                    Vector3 oVel = inputDisplacement.ProjectedOnPlane(crease);
+                    F32x3 oVel = inputDisplacement.ProjectedOnPlane(crease);
 
-                    Vector3 nVel = ComputeSlideVector(displacement, inHit.normal, inHit.isWalkable);
+                    F32x3 nVel = ComputeSlideVector(displacement, inHit.normal, inHit.isWalkable);
                             nVel = nVel.ProjectedOnPlane(crease);
 
-                    if (Vector3.Dot(oVel, nVel) <= 0.0f || Vector3.Dot(prevNormal, inHit.normal) < 0.0f)
+                    if (dot(oVel, nVel) <= 0.0f || dot(prevNormal, inHit.normal) < 0.0f)
                     {
                         displacement = ConstrainVectorToPlane(displacement.ProjectedOn(crease));
                         ++iteration;
@@ -3967,7 +3969,7 @@ namespace EasyCharacterMovement
                 }
                 else
                 {
-                    displacement = Vector3.zero;
+                    displacement = F32x3.zero;
                 }
 
                 prevNormal = inHit.normal;
@@ -3981,18 +3983,18 @@ namespace EasyCharacterMovement
         /// This is exclusively used to move the character when standing on a moving platform as this will not update character's state.
         /// </summary>
 
-        private void MoveAndSlide(Vector3 displacement)
+        private void MoveAndSlide(F32x3 displacement)
         {
             //
             // Perform collision constrained movement (aka: collide and slide)
 
-            Vector3 inputDisplacement = displacement;
+            F32x3 inputDisplacement = displacement;
 
             int iteration = default;
-            Vector3 prevNormal = default;
+            F32x3 prevNormal = default;
 
             int maxSlideCount = _advanced.maxMovementIterations;
-            while (maxSlideCount-- > 0 && displacement.sqrMagnitude > _advanced.minMoveDistanceSqr)
+            while (maxSlideCount-- > 0 && lengthsq(displacement) > _advanced.minMoveDistanceSqr)
             {
                 bool collided = MovementSweepTest(updatedPosition, default, displacement, out CollisionResult collisionResult);
                 if (!collided)
@@ -4018,7 +4020,7 @@ namespace EasyCharacterMovement
             //
             // Apply remaining displacement
 
-            if (displacement.sqrMagnitude > _advanced.minMoveDistanceSqr)
+            if (lengthsq(displacement) > _advanced.minMoveDistanceSqr)
                 updatedPosition += displacement;
         }
 
@@ -4102,18 +4104,18 @@ namespace EasyCharacterMovement
 
         private void UpdatePlatformMovement(float deltaTime)
         {
-            Vector3 lastPlatformVelocity = _movingPlatform.platformVelocity;
+            F32x3 lastPlatformVelocity = _movingPlatform.platformVelocity;
 
             if (!_movingPlatform.platform)
-                _movingPlatform.platformVelocity = Vector3.zero;
+                _movingPlatform.platformVelocity = F32x3.zero;
             else
             {
                 Transform platformTransform = _movingPlatform.platform.transform;
 
-                Vector3 newPositionOnPlatform = platformTransform.TransformPoint(_movingPlatform.localPosition);
-                Vector3 deltaPosition = newPositionOnPlatform - _movingPlatform.position;
+                F32x3 newPositionOnPlatform = platformTransform.TransformPoint(_movingPlatform.localPosition);
+                F32x3 deltaPosition = newPositionOnPlatform - _movingPlatform.position;
 
-                _movingPlatform.platformVelocity = deltaTime > 0.0f ? deltaPosition / deltaTime : Vector3.zero;
+                _movingPlatform.platformVelocity = deltaTime > 0.0f ? deltaPosition / deltaTime : F32x3.zero;
 
                 if (impartPlatformRotation)
                 {
@@ -4122,7 +4124,7 @@ namespace EasyCharacterMovement
 
                     if (deltaRotation != Quaternion.identity)
                     {
-                        Vector3 activePlatformAngularVelocity = deltaTime > 0.0f ? deltaRotation.eulerAngles * Mathf.Deg2Rad / deltaTime : Vector3.zero;
+                        F32x3 activePlatformAngularVelocity = deltaTime > 0.0f ? deltaRotation.eulerAngles * Mathf.Deg2Rad / deltaTime : F32x3.zero;
                         Quaternion yawRotation = Quaternion.Euler(Vector3.Project(activePlatformAngularVelocity, _characterUp) * (Mathf.Rad2Deg * deltaTime));
 
                         updatedRotation *= yawRotation;
@@ -4130,7 +4132,7 @@ namespace EasyCharacterMovement
                 }
             }
 
-            if (impartPlatformMovement && _movingPlatform.platformVelocity.sqrMagnitude > 0.0f)
+            if (impartPlatformMovement && lengthsq(_movingPlatform.platformVelocity) > 0.0f)
             {
                 if (fastPlatformMove)
                     updatedPosition += _movingPlatform.platformVelocity * deltaTime;
@@ -4146,7 +4148,7 @@ namespace EasyCharacterMovement
 
             if (impartPlatformVelocity)
             {
-                Vector3 impartedPlatformVelocity = Vector3.zero;
+                F32x3 impartedPlatformVelocity = F32x3.zero;
 
                 if (_movingPlatform.lastPlatform && _movingPlatform.platform != _movingPlatform.lastPlatform)
                 {
@@ -4169,7 +4171,7 @@ namespace EasyCharacterMovement
         /// </summary>
 
         private void ComputeDynamicCollisionResponse(ref CollisionResult inCollisionResult,
-            out Vector3 characterImpulse, out Vector3 otherImpulse)
+            out F32x3 characterImpulse, out F32x3 otherImpulse)
         {
             characterImpulse = default;
             otherImpulse = default;
@@ -4183,17 +4185,17 @@ namespace EasyCharacterMovement
                 massRatio = mass / (mass + inCollisionResult.rigidbody.mass);
             }
 
-            Vector3 normal = inCollisionResult.normal;
+            F32x3 normal = inCollisionResult.normal;
 
-            float velocityDotNormal = Vector3.Dot(inCollisionResult.velocity, normal);
-            float otherVelocityDotNormal = Vector3.Dot(inCollisionResult.otherVelocity, normal);
+            float velocityDotNormal = dot(inCollisionResult.velocity, normal);
+            float otherVelocityDotNormal = dot(inCollisionResult.otherVelocity, normal);
 
             if (velocityDotNormal < 0.0f)
                 characterImpulse += velocityDotNormal * normal;
 
             if (otherVelocityDotNormal > velocityDotNormal)
             {
-                Vector3 relVel = (otherVelocityDotNormal - velocityDotNormal) * normal;
+                F32x3 relVel = (otherVelocityDotNormal - velocityDotNormal) * normal;
 
                 characterImpulse += relVel * (1.0f - massRatio);
                 otherImpulse -= relVel * massRatio;
@@ -4219,7 +4221,7 @@ namespace EasyCharacterMovement
                 if (otherRigidbody == null)
                     continue;
 
-                ComputeDynamicCollisionResponse(ref collisionResult, out Vector3 characterImpulse, out Vector3 otherImpulse);
+                ComputeDynamicCollisionResponse(ref collisionResult, out F32x3 characterImpulse, out F32x3 otherImpulse);
 
                 collisionResponseCallback?.Invoke(ref collisionResult, ref characterImpulse, ref otherImpulse);
 
@@ -4244,7 +4246,7 @@ namespace EasyCharacterMovement
             }
 
             if (isGrounded)
-                _velocity = _velocity.ProjectedOnPlane(_characterUp).normalized * _velocity.magnitude;
+                _velocity = normalizesafe(_velocity.ProjectedOnPlane(_characterUp)) * length(_velocity);
 
             _velocity = ConstrainVectorToPlane(_velocity);
         }
@@ -4254,7 +4256,7 @@ namespace EasyCharacterMovement
         /// If updateGround is true, will find for ground and update character's current ground result.
         /// </summary>
 
-        public void SetPosition(Vector3 newPosition, bool updateGround = false)
+        public void SetPosition(F32x3 newPosition, bool updateGround = false)
         {
             updatedPosition = newPosition;
 
@@ -4278,7 +4280,7 @@ namespace EasyCharacterMovement
         /// Returns the character current position.
         /// </summary>
 
-        public Vector3 GetPosition()
+        public F32x3 GetPosition()
         {
             return transform.position;
         }
@@ -4287,7 +4289,7 @@ namespace EasyCharacterMovement
         /// Returns the character' foot position accounting contact offset.
         /// </summary>
 
-        public Vector3 GetFootPosition()
+        public F32x3 GetFootPosition()
         {
             return transform.position - transform.up * kAvgGroundDistance;
         }
@@ -4318,7 +4320,7 @@ namespace EasyCharacterMovement
         /// If updateGround is true, will find for ground and update character's current ground result.
         /// </summary>
 
-        public void SetPositionAndRotation(Vector3 newPosition, Quaternion newRotation, bool updateGround = false)
+        public void SetPositionAndRotation(F32x3 newPosition, Quaternion newRotation, bool updateGround = false)
         {
             updatedPosition = newPosition;
             updatedRotation = newRotation;
@@ -4348,14 +4350,14 @@ namespace EasyCharacterMovement
         /// <param name="maxDegreesDelta">Change in rotation per second (Deg / s).</param>
         /// <param name="updateYawOnly">If True, the rotation will be performed on the Character's plane (defined by its up-axis).</param>
 
-        public void RotateTowards(Vector3 worldDirection, float maxDegreesDelta, bool updateYawOnly = true)
+        public void RotateTowards(F32x3 worldDirection, float maxDegreesDelta, bool updateYawOnly = true)
         {
-            Vector3 characterUp = transform.up;
+            F32x3 characterUp = transform.up;
 
             if (updateYawOnly)
                 worldDirection = worldDirection.ProjectedOnPlane(characterUp);
 
-            if (worldDirection == Vector3.zero)
+            if (all(worldDirection == F32x3.zero))
                 return;
 
             Quaternion targetRotation = Quaternion.LookRotation(worldDirection, characterUp);
@@ -4375,7 +4377,7 @@ namespace EasyCharacterMovement
             updatedPosition = transform.position;
             updatedRotation = transform.rotation;
 
-            _characterUp = updatedRotation * Vector3.up;
+            _characterUp = updatedRotation * up();
 
             _transformedCapsuleCenter = updatedRotation * _capsuleCenter;
             _transformedCapsuleTopCenter = updatedRotation * _capsuleTopCenter;
@@ -4390,9 +4392,9 @@ namespace EasyCharacterMovement
 
         public void ClearAccumulatedForces()
         {
-            _pendingForces = Vector3.zero;
-            _pendingImpulses = Vector3.zero;
-            _pendingLaunchVelocity = Vector3.zero;
+            _pendingForces = F32x3.zero;
+            _pendingImpulses = F32x3.zero;
+            _pendingLaunchVelocity = F32x3.zero;
         }
 
         /// <summary>
@@ -4400,7 +4402,7 @@ namespace EasyCharacterMovement
         /// This forces will be accumulated and applied during Move method call.
         /// </summary>
 
-        public void AddForce(Vector3 force, ForceMode forceMode = ForceMode.Force)
+        public void AddForce(F32x3 force, ForceMode forceMode = ForceMode.Force)
         {
             switch (forceMode)
             {
@@ -4437,19 +4439,19 @@ namespace EasyCharacterMovement
         /// However, if a value of zero is passed for the radius then the full force will be applied regardless of how far the centre is from the rigidbody.
         /// </summary>
 
-        public void AddExplosionForce(float forceMagnitude, Vector3 origin, float explosionRadius, ForceMode forceMode = ForceMode.Force)
+        public void AddExplosionForce(float forceMagnitude, F32x3 origin, float explosionRadius, ForceMode forceMode = ForceMode.Force)
         {
             // Do nothing if outside radius
 
-            Vector3 delta = transform.TransformPoint(_capsuleCenter) - origin;
+            F32x3 delta = (F32x3)transform.TransformPoint(_capsuleCenter) - origin;
 
-            if (delta.sqrMagnitude > forceMagnitude * forceMagnitude)
+            if (lengthsq(delta) > forceMagnitude * forceMagnitude)
                 return;
 
             if (explosionRadius > 0.0f)
-                forceMagnitude *= 1.0f - delta.magnitude / explosionRadius;
+                forceMagnitude *= 1.0f - length(delta) / explosionRadius;
 
-            AddForce(delta.normalized * forceMagnitude, forceMode);
+            AddForce(normalizesafe(delta) * forceMagnitude, forceMode);
         }
 
         /// <summary>
@@ -4459,15 +4461,15 @@ namespace EasyCharacterMovement
         /// <param name="overrideVerticalVelocity">If true replace the vertical component of the Character's velocity instead of adding to it.</param>
         /// <param name="overrideLateralVelocity">If true replace the XY part of the Character's velocity instead of adding to it.</param>
 
-        public void LaunchCharacter(Vector3 launchVelocity, bool overrideVerticalVelocity = false, bool overrideLateralVelocity = false)
+        public void LaunchCharacter(F32x3 launchVelocity, bool overrideVerticalVelocity = false, bool overrideLateralVelocity = false)
         {
             // Compute final velocity
 
-            Vector3 finalVelocity = launchVelocity;
+            F32x3 finalVelocity = launchVelocity;
 
             // If not override, add lateral velocity to given launch velocity
 
-            Vector3 characterUp = transform.up;
+            F32x3 characterUp = transform.up;
 
             if (!overrideLateralVelocity)
                 finalVelocity += _velocity.ProjectedOnPlane(characterUp);
@@ -4484,7 +4486,7 @@ namespace EasyCharacterMovement
         /// Updates character's velocity, will apply and clear any pending forces and impulses.
         /// </summary>
 
-        private void UpdateVelocity(Vector3 newVelocity, float deltaTime)
+        private void UpdateVelocity(F32x3 newVelocity, float deltaTime)
         {
             // Assign new velocity
 
@@ -4497,7 +4499,7 @@ namespace EasyCharacterMovement
 
             // Apply pending launch velocity
 
-            if (_pendingLaunchVelocity.sqrMagnitude > 0.0f)
+            if (lengthsq(_pendingLaunchVelocity) > 0.0f)
                 _velocity = _pendingLaunchVelocity;
             
             // Clear accumulated forces
@@ -4516,7 +4518,7 @@ namespace EasyCharacterMovement
         /// <param name="newVelocity">The updated velocity for current frame. It is typically a combination of vertical motion due to gravity and lateral motion when your character is moving.</param>
         /// <param name="deltaTime">The simulation deltaTime. If not assigned, it defaults to Time.deltaTime.</param>
         /// <returns>Return CollisionFlags. It indicates the direction of a collision: None, Sides, Above, and Below.</returns>
-        public CollisionFlags Move(Vector3 newVelocity, float deltaTime = 0.0f)
+        public CollisionFlags Move(F32x3 newVelocity, float deltaTime = 0.0f)
         {
             if (deltaTime == 0.0f)
             {
@@ -4630,7 +4632,7 @@ namespace EasyCharacterMovement
         private void Reset()
         {
             SetDimensions(0.5f, 2.0f);
-            SetPlaneConstraint(PlaneConstraint.None, Vector3.zero);
+            SetPlaneConstraint(PlaneConstraint.None, F32x3.zero);
 
             _slopeLimit = 45.0f;
             _stepOffset = 0.45f;
@@ -4675,7 +4677,7 @@ namespace EasyCharacterMovement
 
 #if UNITY_EDITOR
 
-        public static void DrawDisc(Vector3 _pos, Quaternion _rot, float _radius, Color _color = default,
+        public static void DrawDisc(F32x3 _pos, Quaternion _rot, float _radius, Color _color = default,
             bool solid = true)
         {
             if (_color != default)
@@ -4686,9 +4688,9 @@ namespace EasyCharacterMovement
             using (new UnityEditor.Handles.DrawingScope(mtx))
             {
                 if (solid)
-                    UnityEditor.Handles.DrawSolidDisc(Vector3.zero, Vector3.up, _radius);
+                    UnityEditor.Handles.DrawSolidDisc(F32x3.zero, up(), _radius);
                 else
-                    UnityEditor.Handles.DrawWireDisc(Vector3.zero, Vector3.up, _radius);
+                    UnityEditor.Handles.DrawWireDisc(F32x3.zero, up(), _radius);
             }
         }
 
@@ -4697,11 +4699,11 @@ namespace EasyCharacterMovement
             // Draw Foot position
 
             float skinRadius = _radius;
-            Vector3 footPosition = GetFootPosition();
+            F32x3 footPosition = GetFootPosition();
 
             Gizmos.color = new Color(0.569f, 0.957f, 0.545f, 0.5f);
-            Gizmos.DrawLine(footPosition + Vector3.left * skinRadius, footPosition + Vector3.right * skinRadius);
-            Gizmos.DrawLine(footPosition + Vector3.back * skinRadius, footPosition + Vector3.forward * skinRadius);
+            Gizmos.DrawLine(footPosition + -right() * skinRadius, footPosition + right() * skinRadius);
+            Gizmos.DrawLine(footPosition + -forward() * skinRadius, footPosition + forward() * skinRadius);
 
             // Draw perch offset radius
 
@@ -4715,7 +4717,7 @@ namespace EasyCharacterMovement
 
             if (stepOffset > 0.0f)
             {
-                DrawDisc(footPosition + transform.up * stepOffset, rotation, radius * 1.15f,
+                DrawDisc(footPosition + (F32x3)transform.up * stepOffset, rotation, radius * 1.15f,
                     new Color(0.569f, 0.957f, 0.545f, 0.75f), false);
             }
         }

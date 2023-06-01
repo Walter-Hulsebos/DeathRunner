@@ -406,6 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6168575874622417470}
   - component: {fileID: 6168575874637971102}
+  - component: {fileID: 6931614716645974286}
   m_Layer: 0
   m_Name: Fan_01a_With_Fan_snaps020
   m_TagString: Untagged
@@ -464,6 +465,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6168575874620516562}
   m_Enabled: 1
+--- !u!114 &6931614716645974286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6168575874622715422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 0090bca5dcfbf2b4baadf1e56a9b742f, type: 2}
 --- !u!1001 &841759628120194787
 PrefabInstance:
   m_ObjectHideFlags: 0

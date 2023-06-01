@@ -72,9 +72,9 @@ namespace DeathRunner.Player
         //     UpdateLookDirection();
         // }
         
-        protected override void OnLateFixedUpdate()
+        protected override void OnLateUpdate()
         {
-            base.OnLateFixedUpdate();
+            base.OnLateUpdate();
 
             UpdateLookDirection();
         }

@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1875927003382349187}
   - component: {fileID: 6652588519655230194}
+  - component: {fileID: 7719085708106996227}
   m_Layer: 0
   m_Name: Table_Cafe
   m_TagString: Untagged
@@ -237,3 +238,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1794879042177955655}
   m_Enabled: 1
+--- !u!114 &7719085708106996227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243962198030198585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 63c08083310a50d45b34297253473fa5, type: 2}
