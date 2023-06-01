@@ -36,24 +36,24 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
-            //Debug.Log("Walk.Enter");
+            Debug.Log("Walk.Enter");
         }
         
         protected override void OnExit()
         {
             base.OnExit();
             
-            //Debug.Log("Walk.Exit");
+            Debug.Log("Walk.Exit");
         }
 
         protected override void OnLateUpdate()
         {
             base.OnLateUpdate();
             
-            OrientTowardsDir();
+            OrientTowardsLookDirection();
         }
 
-        public void OrientTowardsDir()
+        public void OrientTowardsLookDirection()
         {
             Plane3D __plane3D = new(normal: up(), distance: 0);
             

@@ -253,7 +253,7 @@ MonoBehaviour:
     invertFade: 0
     distanceFadeStart: 10000
     distanceFadeEnd: 10000
-    textureOffset: {x: -0, y: -0, z: -0}
+    textureOffset: {x: 0, y: 0, z: 0}
     falloffMode: 0
   m_Version: 2
 --- !u!1001 &44660434
@@ -501,7 +501,7 @@ PrefabInstance:
     - target: {fileID: 4845276930943762971, guid: 2da3dcc22749e7f4280737786d898334,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4845637959249703711, guid: 2da3dcc22749e7f4280737786d898334,
         type: 3}
@@ -1838,6 +1838,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 610366622, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 610366622, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: onMoveEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 571acd43c0d128446b407e87e0a14bf1,
+        type: 2}
     - target: {fileID: 2410215513735583748, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_Name
@@ -2548,7 +2557,7 @@ MonoBehaviour:
     invertFade: 0
     distanceFadeStart: 10000
     distanceFadeEnd: 10000
-    textureOffset: {x: -0, y: -0, z: -0}
+    textureOffset: {x: 0, y: 0, z: 0}
     falloffMode: 0
   m_Version: 2
 --- !u!1001 &1060892898
@@ -4122,7 +4131,7 @@ PrefabInstance:
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.07
+      value: 3.05
       objectReference: {fileID: 0}
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
@@ -4132,27 +4141,27 @@ PrefabInstance:
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2.06
       objectReference: {fileID: 0}
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.25881916
       objectReference: {fileID: 0}
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.9659258
       objectReference: {fileID: 0}
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
@@ -4162,7 +4171,7 @@ PrefabInstance:
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -150
       objectReference: {fileID: 0}
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}

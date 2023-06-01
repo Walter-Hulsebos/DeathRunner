@@ -1,6 +1,7 @@
 //System libraries first
 using System;
 using DeathRunner.Shared;
+using DG.Tweening;
 
 //Unity-specific libraries next
 using UnityEngine;
@@ -10,6 +11,7 @@ using static Unity.Mathematics.math;
 using GenericScriptableArchitecture;
 using HFSM;
 using JetBrains.Annotations;
+using ProjectDawn.Geometry3D;
 using ProjectDawn.Mathematics;
 
 
@@ -19,6 +21,8 @@ using F32x3 = Unity.Mathematics.float3;
 using U16   = System.UInt16;
 
 using Bool  = System.Boolean;
+
+using Rotor = Unity.Mathematics.quaternion;
 
 namespace DeathRunner.Player
 {
@@ -49,7 +53,8 @@ namespace DeathRunner.Player
             
             Debug.Log("DashLong.Enter");
             
-            Commands.IsSlowMotionEnabled = true;
+            //NOTE: [Walter] For some reason slow-mo doesn't work here.
+            //Commands.IsSlowMotionEnabled = true;
 
             _settings.OnLongDashEnter.Invoke();
         }
@@ -60,30 +65,30 @@ namespace DeathRunner.Player
             
             Debug.Log("DashLong.Exit");
             
-            Commands.IsSlowMotionEnabled = false;
+            //NOTE: [Walter] For some reason slow-mo doesn't work here.
+            //Commands.IsSlowMotionEnabled = false;
             
             _settings.OnLongDashExit.Invoke();
         }
-        
-        protected override void OnUpdate()
-        {
-            base.OnUpdate();
-            
-            //Debug.Log("Dash.Update");
-        }
-        
+
         protected override void OnFixedUpdate()
         {
             base.OnFixedUpdate();
 
             F32x3 __targetMoveVector = _references.InputHandler.MoveInputFlat;
-            
-            F32 __targetMoveSpeed = length(__targetMoveVector) * _settings.MaxSpeed.Value;
-            
-            F32x3 __targetMoveDirection = normalize(__targetMoveVector);
-            F32x3 __targetMoveDirectionRelativeToCamera = __targetMoveDirection.RelativeTo(_references.Camera.transform);
-            
-            F32x3 __desiredVelocity = (__targetMoveDirectionRelativeToCamera * __targetMoveSpeed);
+            F32x3 __desiredVelocity  = F32x3.zero;
+            //F32x3 __targetMoveDirection = F32x3.zero;
+            F32x3 __targetMoveDirectionRelativeToCamera = F32x3.zero;
+
+            if (!all(__targetMoveVector == F32x3.zero))
+            {
+                F32 __targetMoveSpeed = length(__targetMoveVector) * _settings.MaxSpeed.Value;
+                
+                F32x3 __targetMoveDirection = normalize(__targetMoveVector);
+                
+                __targetMoveDirectionRelativeToCamera = __targetMoveDirection.RelativeTo(_references.Camera.transform);
+                __desiredVelocity = (__targetMoveDirectionRelativeToCamera * __targetMoveSpeed);
+            }
 
             // Update character’s velocity based on its grounding status
             if (_references.Motor.isGrounded)
@@ -105,33 +110,81 @@ namespace DeathRunner.Player
                     airFriction:           _settings.FrictionAir.Value, 
                     gravity:               _settings.Gravity.Value);
             }
+
+            if (all(__targetMoveDirectionRelativeToCamera == F32x3.zero)) return;
+            if (any(__targetMoveDirectionRelativeToCamera == F32.NaN)) return;
+            if (any(__targetMoveDirectionRelativeToCamera == F32.PositiveInfinity)) return;
+            //TODO: REMOVE THIS REMOVE THIS REMOVE THIS!!!!!!!
+            if (__targetMoveDirectionRelativeToCamera.ToString() == "float3(NaNf, NaNf, NaNf)") return;
             
-            _settings.OnLongDashMove.Invoke(__targetMoveDirectionRelativeToCamera);
+            Debug.Log($"TargetMoveDirectionRelativeToCamera: {__targetMoveDirectionRelativeToCamera}");
             
             _references.Motor.Move(deltaTime: Commands.DeltaTime);
+            _settings.OnLongDashMove.Invoke(__targetMoveDirectionRelativeToCamera);
         }
 
-        private F32x3 DashDirection
+        protected override void OnUpdate()
         {
-            get
-            {
-                F32x3 __dashDir = new(x: _references.InputHandler.MoveInput.x, y: 0, z: _references.InputHandler.MoveInput.y);
-                
-                // If no input is given, dash in the direction the player is facing
-                if (all(x: __dashDir == F32x3.zero))
-                {
-                    __dashDir = (F32x3)_settings.OrientationLookDirection;
-                }
-                
-                // Convert dash direction to be relative to the player camera
-                return __dashDir.RelativeTo(relativeToThis: _references.Camera.transform);   
-            }
+            base.OnUpdate();
+            
+            UpdateLookDirection();
+            
+            OrientTowardsLookDirection();
         }
         
-        private void DashMovement(F32x3 direction)
+        protected override void OnLateUpdate()
         {
-           
+            base.OnLateUpdate();
+            
+            //UpdateLookDirection();
         }
+
+        private void UpdateLookDirection()
+        {
+            F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references);
+
+            _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer); 
+            //normalize(__lookPosition - _references.WorldPos);
+            
+            //OrientTowardsPos(lookPosition: __lookPosition);
+            _references.LookAt.DOMove(endValue: (_references.WorldPos + __lookPositionRelativeToPlayer), duration: 0.05f);
+        }
+        
+        public void OrientTowardsLookDirection()
+        {
+            Plane3D __plane3D = new(normal: up(), distance: 0);
+            
+            F32x3 __projectedLookDirection = normalize(__plane3D.Projection(point: _settings.OrientationLookDirection));
+            
+            if (lengthsq(__projectedLookDirection) == 0) return;
+
+            Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
+
+            _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: _settings.OrientationSpeed.Value * Commands.DeltaTime);
+        }
+
+
+        // private F32x3 DashDirection
+        // {
+        //     get
+        //     {
+        //         F32x3 __dashDir = new(x: _references.InputHandler.MoveInput.x, y: 0, z: _references.InputHandler.MoveInput.y);
+        //         
+        //         // If no input is given, dash in the direction the player is facing
+        //         if (all(x: __dashDir == F32x3.zero))
+        //         {
+        //             __dashDir = (F32x3)_settings.OrientationLookDirection;
+        //         }
+        //         
+        //         // Convert dash direction to be relative to the player camera
+        //         return __dashDir.RelativeTo(relativeToThis: _references.Camera.transform);   
+        //     }
+        // }
+        
+        // private void DashMovement(F32x3 direction)
+        // {
+        //    
+        // }
     }
     
     [Serializable]

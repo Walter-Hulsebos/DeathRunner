@@ -7,6 +7,7 @@ using ProjectDawn.Geometry3D;
 
 using DeathRunner.Shared;
 using DeathRunner.Utils;
+using UnityEngine.InputSystem;
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
 using F32x3 = Unity.Mathematics.float3;
@@ -51,6 +52,7 @@ namespace DeathRunner.Player
             //if (all(_references.InputHandler.AimInput == F32x2.zero))
             else
             {
+                //InputSystem.Update();
                 F32x3 __mouseScreenPosition = new(xy: references.InputHandler.MouseScreenPosition, z: 0);
 
                 //Check if __mouseScreenPosition.xy is the same as Mouse.current.position.ReadValue()
