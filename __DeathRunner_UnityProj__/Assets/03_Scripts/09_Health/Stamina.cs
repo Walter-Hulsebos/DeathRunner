@@ -20,12 +20,12 @@ namespace DeathRunner.Attributes
     [Serializable]
     public struct Stamina : IChangeable<U16>
     {
-        [field:SerializeField] public Constant<U16> Max         { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<U16>   Max         { get; [UsedImplicitly] private set; }
         
         #if ODIN_INSPECTOR
         [field:BoxGroup("Current", showLabel: false)]
         #endif  
-        [field:SerializeField] public Bool          UseInfinity { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Reference<Bool> UseInfinity { get; [UsedImplicitly] private set; }
         
         #if ODIN_INSPECTOR
         [LabelText("Current Health")]

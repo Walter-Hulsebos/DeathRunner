@@ -63,7 +63,7 @@ namespace DeathRunner.Player
 
             Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
 
-            _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: (F32)_settings.OrientationSpeed * Commands.DeltaTime);
+            _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: _settings.OrientationSpeed.Value * Commands.DeltaTime);
         }
 
         protected override void OnFixedUpdate()
@@ -72,7 +72,7 @@ namespace DeathRunner.Player
 
             F32x3 __targetMoveVector = _references.InputHandler.MoveInputFlat;
             
-            F32 __targetMoveSpeed = length(__targetMoveVector) * (F32)_settings.MaxSpeed;
+            F32 __targetMoveSpeed = length(__targetMoveVector) * _settings.MaxSpeed.Value;
             
             F32x3 __targetMoveDirection = normalize(__targetMoveVector);
             F32x3 __targetMoveDirectionRelativeToCamera = __targetMoveDirection.RelativeTo(_references.Camera.transform);
@@ -87,14 +87,14 @@ namespace DeathRunner.Player
             else
             {
                 _references.Motor.velocity = PlayerHelpers.NotGroundedMovement(
-                    velocity: _references.Motor.velocity,
-                    desiredVelocity: __desiredVelocity, 
-                    isOnGround: _references.Motor.isOnGround,
-                    groundNormal: _references.Motor.groundNormal, 
-                    maxAcceleration: _settings.MaxAcceleration.Value,
+                    velocity:              _references.Motor.velocity,
+                    desiredVelocity:       __desiredVelocity, 
+                    isOnGround:            _references.Motor.isOnGround,
+                    groundNormal:          _references.Motor.groundNormal, 
+                    maxAcceleration:       _settings.MaxAcceleration.Value,
                     airControlPrimantissa: _settings.AirControlPrimantissa.Value,
-                    airFriction: _settings.AirFriction.Value, 
-                    gravity: _settings.Gravity.Value);
+                    airFriction:           _settings.AirFriction.Value, 
+                    gravity:               _settings.Gravity.Value);
             }
             
             _settings.OnMove.Invoke(__targetMoveDirectionRelativeToCamera);

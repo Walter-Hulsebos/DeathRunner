@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4141919560187921193}
   - component: {fileID: 9160623236603507800}
+  - component: {fileID: 6765956937153273693}
   m_Layer: 0
   m_Name: Block_01
   m_TagString: Untagged
@@ -57,6 +58,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1508005066363171063}
   m_Enabled: 1
+--- !u!114 &6765956937153273693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3616633809393293715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: f03cce9901a12e54c9419c9b1545d50e, type: 2}
 --- !u!1 &5897527664022266516
 GameObject:
   m_ObjectHideFlags: 0

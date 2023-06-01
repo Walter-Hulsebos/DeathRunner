@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5875685275464675747}
   - component: {fileID: 8533855004065285481}
   - component: {fileID: 8722853145587137245}
+  - component: {fileID: 8972831853346328277}
   m_Layer: 0
   m_Name: Doorbell_02
   m_TagString: Untagged
@@ -103,3 +104,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8533855004065285481}
   m_Enabled: 1
+--- !u!114 &8972831853346328277
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7885428672343041212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 558adadc3f414194b8766298beb4d067, type: 2}

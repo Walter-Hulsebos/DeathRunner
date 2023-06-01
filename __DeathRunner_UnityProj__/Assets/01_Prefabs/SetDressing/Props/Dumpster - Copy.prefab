@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4239691775257286917}
   - component: {fileID: 2103918235765960143}
   - component: {fileID: 834533798144855275}
+  - component: {fileID: 5446454620271102981}
   m_Layer: 0
   m_Name: Dumpster - Copy
   m_TagString: Untagged
@@ -99,6 +100,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5198267681279241171, guid: ac8ff7589b6aa544db1e49ee91dc144f, type: 3}
+--- !u!114 &5446454620271102981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446527121874242586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 2ffe144914d672448901b99283420196, type: 2}
 --- !u!1 &4584120614578084195
 GameObject:
   m_ObjectHideFlags: 0

@@ -108,6 +108,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5888851662081701901}
   - component: {fileID: 1721352298117435260}
+  - component: {fileID: 7028378105218095575}
   m_Layer: 0
   m_Name: Plastic_Box_04
   m_TagString: Untagged
@@ -160,6 +161,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7842792676403161910}
   m_Enabled: 1
+--- !u!114 &7028378105218095575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6553502504375116471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: aae3fd5b59c24624a9418c27e50e54c5, type: 2}
 --- !u!1 &6732887496303401805
 GameObject:
   m_ObjectHideFlags: 0

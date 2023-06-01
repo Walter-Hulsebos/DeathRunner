@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2514819410946478859}
   - component: {fileID: 4724176882964354714}
   - component: {fileID: 6902133024285543873}
+  - component: {fileID: 6713242671722930375}
   m_Layer: 0
   m_Name: Ashtray
   m_TagString: Untagged
@@ -117,3 +118,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.10775685, y: 0.0318377, z: 0.10775679}
   m_Center: {x: 0.00000006146729, y: 0.01591891, z: -0.00000014901161}
+--- !u!114 &6713242671722930375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4172183312797233886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: fbfbf26022b954045b285cecd8228bd7, type: 2}

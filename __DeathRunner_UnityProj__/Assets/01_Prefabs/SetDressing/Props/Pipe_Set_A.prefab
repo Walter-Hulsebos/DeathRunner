@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2360902}
   - component: {fileID: 3619844905136911374}
   - component: {fileID: 3084590274729082502}
+  - component: {fileID: 8308337559699159244}
   m_Layer: 0
   m_Name: Pipe_Set_A
   m_TagString: Untagged
@@ -30,6 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,6 +55,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -109,3 +112,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.4, y: 2.56, z: 0.37331218}
   m_Center: {x: 0.08, y: -1.17, z: 0.15105772}
+--- !u!114 &8308337559699159244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 4a0cbaec48f4c17448257d9b515306be, type: 2}

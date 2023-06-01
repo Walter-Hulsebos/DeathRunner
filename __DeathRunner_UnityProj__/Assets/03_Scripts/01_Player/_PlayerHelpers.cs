@@ -69,11 +69,13 @@ namespace DeathRunner.Player
 
             #if UNITY_EDITOR
             
+            /*
             F32x3 __lookPosition = references.WorldPos + _cachedLookPositionRelativeToPlayer;
             
             Draw.SolidCircleXZ(center: references.WorldPos, radius: 0.25f, color: Color.yellow);
             Draw.SolidCircleXZ(center: __lookPosition,      radius: 0.25f, color: Color.yellow);
             Draw.Line(a: references.WorldPos, b: __lookPosition, color: Color.yellow);
+            */
             #endif
             
             //Debug.DrawLine(start: );

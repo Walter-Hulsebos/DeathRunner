@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3352896}
   - component: {fileID: 2334450}
   - component: {fileID: 392964259055584968}
+  - component: {fileID: 7884388006213041681}
   m_Layer: 0
   m_Name: PowerLines_ZigZag_A
   m_TagString: Untagged
@@ -29,6 +30,7 @@ Transform:
   m_LocalRotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -52,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -96,3 +99,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.6225279, y: 6.1711545, z: 0.20866105}
   m_Center: {x: -0.22143975, y: 3.0159252, z: 0.05955285}
+--- !u!114 &7884388006213041681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: d0bf1148d4201974b9c654875fcead59, type: 2}

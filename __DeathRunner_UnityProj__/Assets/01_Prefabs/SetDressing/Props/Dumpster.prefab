@@ -190,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5966800506504353999}
   - component: {fileID: 1482892482308911038}
+  - component: {fileID: 668579565601067172}
   m_Layer: 0
   m_Name: Dumpster
   m_TagString: Untagged
@@ -237,3 +238,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2681668209556811011}
   m_Enabled: 1
+--- !u!114 &668579565601067172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6450709233588519541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 333d0d940715ddf449c307fa0eb6b708, type: 2}

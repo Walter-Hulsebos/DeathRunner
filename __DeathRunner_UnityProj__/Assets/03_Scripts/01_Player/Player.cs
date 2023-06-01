@@ -7,10 +7,10 @@ using System.Collections;
 using HFSM;
 using JetBrains.Annotations;
 using QFSW.QC;
-using Sirenix.OdinInspector;
-using Sirenix.Serialization;
 
-//using MonoBehaviour = Sirenix.OdinInspector.SerializedMonoBehaviour;
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
 
 using UnityEngine;
 
@@ -58,27 +58,6 @@ namespace DeathRunner.Player
         [FoldoutGroup("Combat NT")]
         #endif
         [SerializeField] private MeleeAttackData primaryAttack02NT;
-        
-        // [Tooltip("Locomotion Settings for Bullet-Time")]
-        // [SerializeField] private LocomotionSettings    locomotionBTSettings;
-        //
-        // [Tooltip("Idle Settings for Bullet-Time")]
-        // [SerializeField] private IdleSettings          idleBTSettings;
-        // [Tooltip("Walk Settings for Bullet-Time")]
-        // [SerializeField] private MoveSettings          moveBTSettings;
-        //
-        // #if ODIN_INSPECTOR
-        // [FoldoutGroup("Combat BT")]
-        // #endif
-        // [SerializeField] private MeleeAttack primaryAttack00BT;
-        // #if ODIN_INSPECTOR
-        // [FoldoutGroup("Combat BT")]
-        // #endif
-        // [SerializeField] private MeleeAttack primaryAttack01BT;
-        // #if ODIN_INSPECTOR
-        // [FoldoutGroup("Combat BT")]
-        // #endif
-        // [SerializeField] private MeleeAttack primaryAttack02BT;
 
         private State                           _root;
         
@@ -86,9 +65,7 @@ namespace DeathRunner.Player
         private PlayerStateLeaf_Dead            _dead;
 
         private PlayerState_NormalTime          _normalTime;
-        //private PlayerState_BulletTime          _bulletTime;
-        
-        // Suffixed with "NT" (NormalTime) or "BT" (BulletTime) to avoid name conflicts
+
         private PlayerState_Locomotion          _locomotionNT;
         
         private PlayerStateLeaf_Idle            _idleNT;
@@ -175,12 +152,7 @@ namespace DeathRunner.Player
         {
             _alive.AddTransition(to: _dead, conditions: () => playerAttributes.health.IsZero == true);  //Alive -> Dead
             _dead.AddTransition(to: _alive, conditions: () => playerAttributes.health.IsZero == false); //Dead -> Alive
-            
-            //Normal Time <-> Bullet Time
-            //For now just use a button press to switch between the two
-            //_normalTime.AddTransition(to: _bulletTime, conditions: () => playerReferences.InputHandler.IsSlowMoToggled == true);
-            //_bulletTime.AddTransition(to: _normalTime, conditions: () => playerReferences.InputHandler.IsSlowMoToggled == false);
-            
+
             _idleNT.AddTransition(to: _walkNT, conditions: () => HasMoveInput);   //Idle -> Walk
             _walkNT.AddTransition(to: _idleNT, conditions: () => HasNoMoveInput); //Walk -> Idle
             

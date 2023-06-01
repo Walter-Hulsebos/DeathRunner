@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1075861874353283466}
   - component: {fileID: 5238852973902698235}
-  m_Layer: 0
+  - component: {fileID: 2949852716319177654}
+  m_Layer: 14
   m_Name: Antenna_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +27,8 @@ Transform:
   m_GameObject: {fileID: 406988627781286704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.0000002, z: 1.0000002}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1092534698606518561}
   - {fileID: 2233455513092431295}
@@ -56,6 +58,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1739442257361586094}
   m_Enabled: 1
+--- !u!114 &2949852716319177654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406988627781286704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: caa9c2aee05ee4e45afd5a4b3fb44a49, type: 2}
 --- !u!1 &936039086085036181
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,7 +82,7 @@ GameObject:
   - component: {fileID: 2233455513092431295}
   - component: {fileID: 2272812798582953648}
   - component: {fileID: 1739442257361586094}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: "\u0410ntenna_01_LOD1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -84,6 +99,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 0.02328317, y: 0.02328317, z: 0.02328317}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1075861874353283466}
   m_RootOrder: 1
@@ -107,6 +123,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -149,7 +166,7 @@ GameObject:
   - component: {fileID: 7339681770502258222}
   - component: {fileID: 2529398108984886420}
   - component: {fileID: 6518313580769311699}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: "\u0410ntenna_01_LOD0"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,6 +183,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 0.02328317, y: 0.02328317, z: 0.02328317}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1075861874353283466}
   m_RootOrder: 0
@@ -189,6 +207,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

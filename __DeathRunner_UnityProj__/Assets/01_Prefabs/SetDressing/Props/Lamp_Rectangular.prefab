@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5223747950272424524}
   - component: {fileID: 8041894413103357574}
   - component: {fileID: 8722568318805678465}
+  - component: {fileID: 4543295762647862422}
   m_Layer: 0
   m_Name: Lamp_Rectangular
   m_TagString: Untagged
@@ -103,3 +104,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8041894413103357574}
   m_Enabled: 1
+--- !u!114 &4543295762647862422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8402151390446026579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: ee3e69e2ce72fdd4488bfcd9cf90e6c8, type: 2}

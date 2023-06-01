@@ -406,6 +406,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8865739502742500287}
   - component: {fileID: 8865739502759683869}
+  - component: {fileID: 7894462565960132882}
   m_Layer: 0
   m_Name: Road_Sign_01a_snaps020
   m_TagString: Untagged
@@ -463,3 +464,16 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8865739502744269141}
   m_Enabled: 1
+--- !u!114 &7894462565960132882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865739502742335391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 0d582e4db5a12a94299e2b908f1fbce3, type: 2}

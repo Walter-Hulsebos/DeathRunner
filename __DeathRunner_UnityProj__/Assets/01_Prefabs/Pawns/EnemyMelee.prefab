@@ -2119,6 +2119,7 @@ GameObject:
   - component: {fileID: 1073600821}
   - component: {fileID: 1073600823}
   - component: {fileID: 1073600824}
+  - component: {fileID: 6159922866340845836}
   m_Layer: 11
   m_Name: EnemyMelee
   m_TagString: Enemy
@@ -2249,11 +2250,11 @@ MonoBehaviour:
       type: 2}
     <UseInfinity>k__BackingField: 0
     currentHealthBackingField:
-      _valueType: 0
+      _valueType: 3
       _value: 4
       _variable: {fileID: 0}
       _constant: {fileID: 0}
-      _variableInstancer: {fileID: 0}
+      _variableInstancer: {fileID: 6159922866340845836}
     <OnChanged>k__BackingField:
       _eventType: 1
       _event: {fileID: 0}
@@ -2494,6 +2495,24 @@ MonoBehaviour:
         _suppressLogs: 0
       _methodName: PlayFeedbacks
     Expanded: 1
+--- !u!114 &6159922866340845836
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8025951268374177580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1404627133, guid: ee0981fc5dff9fa4694a1182fbc8f142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _variableReference: {fileID: 11400000, guid: 8a18dbde3fc85bd4f9aa272cc69d2229, type: 2}
+  _variableHelper:
+    StackTrace:
+      Enabled: 0
+    Value: 0
+    ListenersExpanded: 0
 --- !u!1 &8678416677443809867
 GameObject:
   m_ObjectHideFlags: 1

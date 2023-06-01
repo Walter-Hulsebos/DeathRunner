@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1230503530689643796}
   - component: {fileID: 6289769290280235621}
+  - component: {fileID: 5564962919520376593}
   m_Layer: 0
   m_Name: Gas_Meter_03
   m_TagString: Untagged
@@ -62,6 +63,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4776469863374390607}
   m_Enabled: 1
+--- !u!114 &5564962919520376593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1898391339761835950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: d1b2ad789f66d91468ae9694b200d6cb, type: 2}
 --- !u!1 &3081578421311298399
 GameObject:
   m_ObjectHideFlags: 0

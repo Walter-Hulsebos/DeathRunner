@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3167397024259497463}
   - component: {fileID: 2043228344611426898}
   - component: {fileID: 4305430332158650008}
+  - component: {fileID: 4301187226054020734}
   m_Layer: 0
   m_Name: GroundWire1
   m_TagString: Untagged
@@ -83,3 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4301187226054020734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2359616151277635405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 8e43bf9c592fe274b966a48ed0fa6b82, type: 2}

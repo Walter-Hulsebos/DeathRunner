@@ -93,6 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4085177393202062316}
   - component: {fileID: 9145518473530397853}
+  - component: {fileID: 6427322546359734880}
   m_Layer: 0
   m_Name: Satellite_Dish
   m_TagString: Untagged
@@ -145,6 +146,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7902935370096314910}
   m_Enabled: 1
+--- !u!114 &6427322546359734880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3745490334960040278}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 0860397e0845fde42b1aa5be26cbbf49, type: 2}
 --- !u!1 &6440790252691530956
 GameObject:
   m_ObjectHideFlags: 0

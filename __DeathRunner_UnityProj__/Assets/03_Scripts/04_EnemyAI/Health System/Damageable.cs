@@ -120,7 +120,7 @@ namespace DeathRunner.Damageable
                 receiver.OnReceiveMessage(messageType, this, data);
             }
             
-            Debug.Log(currentHitPoints);
+            //Debug.Log(currentHitPoints);
         }
 
         public void HealDamage(int healAmount)

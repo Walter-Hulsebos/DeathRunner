@@ -204,6 +204,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3283393972671033581}
   - component: {fileID: 3283393972684842061}
+  - component: {fileID: 2354289935071840030}
   m_Layer: 0
   m_Name: Vending_Machine_Snacks_01d_snaps020
   m_TagString: Untagged
@@ -256,6 +257,19 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3283393972668609033}
   m_Enabled: 1
+--- !u!114 &2354289935071840030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3283393972670606541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabPrototype: {fileID: 11400000, guid: 15823d1f9af7ec14db41d0763b8e435f, type: 2}
 --- !u!1 &3283393972670606543
 GameObject:
   m_ObjectHideFlags: 0
