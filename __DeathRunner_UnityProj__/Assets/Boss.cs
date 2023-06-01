@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
+using GenericScriptableArchitecture;
 using Unity.Mathematics;
 using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+using Random = UnityEngine.Random;
+
 namespace DeathRunner
 {
     public class Boss : MonoBehaviour
@@ -36,7 +41,7 @@ namespace DeathRunner
             [SerializeField] private Animator animator;
 
             [HideInInspector] public bool canAttack;
-
+            
             // Cooldown between enemy attacks
             public float attackCooldown = 1;
 
@@ -44,6 +49,38 @@ namespace DeathRunner
 
 
             private Vector3 chasePos = Vector3.zero;
+            
+            [SerializeField] private EventReference OnHealthDepleted;
+            
+            [SerializeField] private EventReference<ushort, ushort> OnHealthDecreased;
+
+            private int timesHit = 0;
+
+            public Image healthImage;
+
+            private bool canBeStunlocked = true;
+            private void OnEnable()
+            {
+                OnHealthDepleted.AddListener(OnHealthDepletedHandler);
+                OnHealthDecreased.AddListener(OnHealthDecreasedHandler);
+            }
+
+            private void OnDisable()
+            {
+                OnHealthDepleted.RemoveListener(OnHealthDepletedHandler);
+                OnHealthDecreased.RemoveListener(OnHealthDecreasedHandler);
+            }
+
+            private void OnHealthDepletedHandler()
+            {
+                OnDeath();
+            }
+
+            private void OnHealthDecreasedHandler(UInt16 arg1, UInt16 arg2)
+            {
+                OnTakeDamage();
+            }
+
             
             // Called once when the object is created
             private void Start()
@@ -95,10 +132,16 @@ namespace DeathRunner
 
                             // Stop the enemy's movement
                             navMeshAgent.SetDestination(transform.position);
-
+                            
+                             if (Random.Range(0, 2) == 1) 
+                             {
                             // Trigger the attack animation
                             animator.SetTrigger("attack");
-
+                            }
+                             else
+                             {
+                                 animator.SetTrigger("attack2");
+                             }
                             // Set animator bool to indicate that the enemy is no longer chasing
                             animator.SetBool("isChasing", false);
 
@@ -144,19 +187,35 @@ namespace DeathRunner
 
             public void OnTakeDamage()
             {
-                animator.SetTrigger("Stun");
-                StopAllCoroutines();
-                navMeshAgent.velocity = Vector3.zero;
-                navMeshAgent.SetDestination(transform.position);
-                transform.LookAt(_player.transform.position);
-                ExitAttack();
+              //  healthImage.fillAmount =;
+                if (timesHit <= 2)
+                {
+                    timesHit++;
+                    animator.SetTrigger("Stun");
+                    StopAllCoroutines();
+                    navMeshAgent.velocity = Vector3.zero;
+                    navMeshAgent.SetDestination(transform.position);
+                    transform.LookAt(_player.transform.position);
+                    ExitAttack();
+                }
+                else if (canBeStunlocked)
+                {
+                    canBeStunlocked = false;
+                    StartCoroutine(EnableStunlock());
+                }
             }
-            
+
+            IEnumerator EnableStunlock()
+            {
+                yield return new WaitForSeconds(4);
+                timesHit = 0;
+                canBeStunlocked = true;
+            }
             public void ExitAttack()
             {
                 currentState = States.Idle;
                 //TODO make it have different time if the attack finishes naturally, and if you get stunned mid attack
-                StartCoroutine(EndAttack(1));
+                StartCoroutine(EndAttack(0.25f));
             }
             
             public void OnDeath()

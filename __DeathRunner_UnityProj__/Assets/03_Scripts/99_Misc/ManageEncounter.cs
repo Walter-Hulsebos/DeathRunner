@@ -65,10 +65,10 @@ namespace Game
                 {
                     enemy.SetActive(true);
                 }
-                foreach( GameObject door in doors )
-                {
-                    door.SetActive(true);
-                }
+                // foreach( GameObject door in doors )
+                // {
+                //     door.SetActive(true);
+                // }
 
                 _collider.enabled = false;
             }
@@ -86,10 +86,13 @@ namespace Game
             }
 
 
-            if (canMeleeAttack)
+            if (canMeleeAttack && meleeEnemies.Count > 0)
             {
-                meleeEnemies[Random.Range(0, meleeEnemies.Count)].canAttack = true;
-                canMeleeAttack = false;
+                MeleeEnemyAI enemy = meleeEnemies[Random.Range(minInclusive: 0, maxExclusive: meleeEnemies.Count)];
+                if (enemy != null)
+                {
+                    enemy.canAttack = true;   
+                }
                 StartCoroutine(EnableAttacking());
             }
 
@@ -107,6 +110,7 @@ namespace Game
 
         private IEnumerator EnableAttacking()
         {
+            canMeleeAttack = false;
             yield return new WaitForSeconds(2f);
             canMeleeAttack = true;
         }
