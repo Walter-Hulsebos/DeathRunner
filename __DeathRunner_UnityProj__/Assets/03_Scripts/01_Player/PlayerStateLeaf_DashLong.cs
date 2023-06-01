@@ -53,8 +53,8 @@ namespace DeathRunner.Player
             
             Debug.Log("DashLong.Enter");
             
-            //NOTE: [Walter] For some reason slow-mo doesn't work here.
-            //Commands.IsSlowMotionEnabled = true;
+            //TODO: [Walter] Figure out the reason slow-mo doesn't work here.
+            Commands.IsSlowMotionEnabled = true;
 
             _settings.OnLongDashEnter.Invoke();
         }
@@ -65,8 +65,8 @@ namespace DeathRunner.Player
             
             Debug.Log("DashLong.Exit");
             
-            //NOTE: [Walter] For some reason slow-mo doesn't work here.
-            //Commands.IsSlowMotionEnabled = false;
+            //TODO: [Walter] Figure out the reason slow-mo doesn't work here.
+            Commands.IsSlowMotionEnabled = false;
             
             _settings.OnLongDashExit.Invoke();
         }
@@ -77,10 +77,9 @@ namespace DeathRunner.Player
 
             F32x3 __targetMoveVector = _references.InputHandler.MoveInputFlat;
             F32x3 __desiredVelocity  = F32x3.zero;
-            //F32x3 __targetMoveDirection = F32x3.zero;
             F32x3 __targetMoveDirectionRelativeToCamera = F32x3.zero;
 
-            if (!all(__targetMoveVector == F32x3.zero))
+            if (any(__targetMoveVector != F32x3.zero))
             {
                 F32 __targetMoveSpeed = length(__targetMoveVector) * _settings.MaxSpeed.Value;
                 
@@ -117,7 +116,7 @@ namespace DeathRunner.Player
             //TODO: REMOVE THIS REMOVE THIS REMOVE THIS!!!!!!!
             if (__targetMoveDirectionRelativeToCamera.ToString() == "float3(NaNf, NaNf, NaNf)") return;
             
-            Debug.Log($"TargetMoveDirectionRelativeToCamera: {__targetMoveDirectionRelativeToCamera}");
+            //Debug.Log($"TargetMoveDirectionRelativeToCamera: {__targetMoveDirectionRelativeToCamera}");
             
             _references.Motor.Move(deltaTime: Commands.DeltaTime);
             _settings.OnLongDashMove.Invoke(__targetMoveDirectionRelativeToCamera);

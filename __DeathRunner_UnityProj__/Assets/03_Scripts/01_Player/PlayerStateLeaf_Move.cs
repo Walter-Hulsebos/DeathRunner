@@ -36,14 +36,18 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
+            #if UNITY_EDITOR
             Debug.Log("Walk.Enter");
+            #endif
         }
         
         protected override void OnExit()
         {
             base.OnExit();
             
+            #if UNITY_EDITOR
             Debug.Log("Walk.Exit");
+            #endif
         }
 
         protected override void OnLateUpdate()
