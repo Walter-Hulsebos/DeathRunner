@@ -1720,6 +1720,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 252169882971934294}
     m_Modifications:
+    - target: {fileID: 1073600820, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073600820, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 4027785287245008786}
+    - target: {fileID: 1073600820, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1073600820, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
+      objectReference: {fileID: 0}
     - target: {fileID: 7178880700736438722, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
       propertyPath: m_StaticEditorFlags

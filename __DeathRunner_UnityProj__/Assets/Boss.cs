@@ -231,9 +231,10 @@ namespace DeathRunner
                 navMeshAgent.velocity = Vector3.zero;
                 currentState = States.Dead;
                 navMeshAgent.velocity = Vector3.zero;
-                Instantiate(healthDrop, transform.position, quaternion.identity);
-                StopAllCoroutines();
                 animator.SetTrigger("Death");
+                print("Am Dead");
+                enabled = false;
+                navMeshAgent.enabled = false;
             }
 
             public void GetTargetPos(Vector3 targetPos)

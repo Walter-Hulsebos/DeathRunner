@@ -14,13 +14,16 @@ namespace Game
         [SerializeField] private GameObject[] doors;
 
 
+        private GameObject actionCam;
+
         private Transform player;
         private List<MeleeEnemyAI> meleeEnemies = new();
+        private List<RangedEnemyAI> rangedEnemies = new();
         private BoxCollider _collider;
         private int deadEnemies = 0;
 
         private bool canMeleeAttack = true;
-            
+        private bool canRangedAttack = true;
         [SerializeField] private int attackCooldown;
         
         
@@ -51,9 +54,25 @@ namespace Game
                     
                     //_meleeEnemyAI.OnDeath += 
                 }
+                
+                if (enemy.TryGetComponent(out RangedEnemyAI _rangedEnemy))
+                {
+                    rangedEnemies.Add(_rangedEnemy);
+                    
+                    //_meleeEnemyAI.OnDeath += 
+                }
             }
 
             player = GameObject.FindWithTag("Player").transform;
+
+            actionCam = GameObject.FindWithTag("ActionCamera");
+            
+         
+        }
+
+        private void LateUpdate()
+        {
+        //    actionCam.SetActive(false);
         }
 
         // Update is called once per frame
@@ -65,6 +84,7 @@ namespace Game
                 {
                     enemy.SetActive(true);
                 }
+                actionCam.SetActive(true);
                 // foreach( GameObject door in doors )
                 // {
                 //     door.SetActive(true);
@@ -92,6 +112,14 @@ namespace Game
                 canMeleeAttack = false;
                 StartCoroutine(EnableAttacking());
             }
+            
+            
+            if (canRangedAttack)
+            {
+                rangedEnemies[Random.Range(0, meleeEnemies.Count)].canAttack = true;
+                canRangedAttack = false;
+                StartCoroutine(EnableRangedAttacking());
+            }
 
             if (canMeleeAttack == false)
             {
@@ -110,7 +138,12 @@ namespace Game
             yield return new WaitForSeconds(2f);
             canMeleeAttack = true;
         }
-        
+
+        private IEnumerator EnableRangedAttacking()
+        {
+            yield return new WaitForSeconds(1f);
+            canRangedAttack = true;
+        }
 
         public void EnemyDied()
         {
@@ -122,6 +155,7 @@ namespace Game
                 {
                     door.SetActive(false);
                 }
+                actionCam.SetActive(false);
             }
         }
     }
