@@ -387,11 +387,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 32549928}
         DebugActive: 0
-<<<<<<< HEAD
         FreezeFrameDuration: 0.1
-=======
-        FreezeFrameDuration: 0.05
->>>>>>> Boss_n_UI
         MinimumTimescaleThreshold: 0.1
     - rid: 3
       type: {class: MMF_ParticlesInstantiation, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
@@ -493,11 +489,7 @@ GameObject:
   - component: {fileID: 52137615}
   m_Layer: 6
   m_Name: ScytheHitbox
-<<<<<<< HEAD
   m_TagString: PlayerHitbox
-=======
-  m_TagString: Untagged
->>>>>>> Boss_n_UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -511,13 +503,8 @@ Transform:
   m_GameObject: {fileID: 52137612}
   m_LocalRotation: {x: 0.0000001452863, y: -0.00000032782546, z: -0.000000022351736,
     w: 1}
-<<<<<<< HEAD
   m_LocalPosition: {x: -0.022, y: 0.232, z: 0.277}
   m_LocalScale: {x: 0.4581568, y: 1.2455082, z: 1.3128463}
-=======
-  m_LocalPosition: {x: -0.032175932, y: 0.24042897, z: 0.52351546}
-  m_LocalScale: {x: 0.24689163, y: 1.2455082, z: 0.71049154}
->>>>>>> Boss_n_UI
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4118973102930041646}
@@ -1754,11 +1741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-<<<<<<< HEAD
   m_IsActive: 1
-=======
-  m_IsActive: 0
->>>>>>> Boss_n_UI
 --- !u!4 &3644243820756923822
 Transform:
   m_ObjectHideFlags: 0
@@ -2237,13 +2220,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410215513009397359}
-<<<<<<< HEAD
   m_LocalRotation: {x: 0.2366593, y: 0.66633666, z: -0.23667297, w: 0.66631365}
   m_LocalPosition: {x: -11.639352, y: 11.021796, z: 0.00036506355}
-=======
-  m_LocalRotation: {x: 0.29883054, y: 0.6408686, z: -0.29884186, w: 0.6408442}
-  m_LocalPosition: {x: -9.426368, y: 7.114624, z: 0.78514516}
->>>>>>> Boss_n_UI
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2288,11 +2266,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 0
-<<<<<<< HEAD
   m_AllowDynamicResolution: 0
-=======
-  m_AllowDynamicResolution: 1
->>>>>>> Boss_n_UI
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -2348,11 +2322,7 @@ MonoBehaviour:
   flipYMode: 0
   xrRendering: 1
   fullscreenPassthrough: 0
-<<<<<<< HEAD
   allowDynamicResolution: 0
-=======
-  allowDynamicResolution: 1
->>>>>>> Boss_n_UI
   customRenderingSettings: 0
   invertFaceCulling: 0
   probeLayerMask:
@@ -2570,14 +2540,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _planeConstraint: 0
   _rootTransform: {fileID: 0}
-<<<<<<< HEAD
   _rootTransformOffset:
     x: 0
     y: 0
     z: 0
-=======
-  _rootTransformOffset: {x: 0, y: 0, z: 0}
->>>>>>> Boss_n_UI
   _radius: 0.4
   _height: 2
   _slopeLimit: 45
@@ -2661,7 +2627,6 @@ MonoBehaviour:
     health:
       <Max>k__BackingField: {fileID: 11400000, guid: 2ff66b555bd8e45489aaa1c71839822f,
         type: 2}
-<<<<<<< HEAD
       <InvincibilityFrameDuration>k__BackingField:
         _valueType: 0
         _value: 0
@@ -2674,9 +2639,6 @@ MonoBehaviour:
         _variable: {fileID: 0}
         _constant: {fileID: 0}
         _variableInstancer: {fileID: 0}
-=======
-      <UseInfinity>k__BackingField: 0
->>>>>>> Boss_n_UI
       currentHealthBackingField:
         _valueType: 2
         _value: 0
@@ -2699,7 +2661,6 @@ MonoBehaviour:
         _eventType: 0
         _event: {fileID: 11400000, guid: c907bee6664883344a5221f2aa9bbb4c, type: 2}
         _eventInstancer: {fileID: 0}
-<<<<<<< HEAD
       <OnInvincibilityEnabled>k__BackingField:
         _eventType: 0
         _event: {fileID: 11400000, guid: af71f8ffd372cd44987154d7e8128a32, type: 2}
@@ -2717,12 +2678,6 @@ MonoBehaviour:
         _variable: {fileID: 0}
         _constant: {fileID: 0}
         _variableInstancer: {fileID: 0}
-=======
-    stamina:
-      <Max>k__BackingField: {fileID: 11400000, guid: 8af2c425a9d743c45a541bb67b2a00d7,
-        type: 2}
-      <UseInfinity>k__BackingField: 0
->>>>>>> Boss_n_UI
       currentStaminaBackingField:
         _valueType: 2
         _value: 0
@@ -2795,7 +2750,6 @@ MonoBehaviour:
     <OnDashInterrupted>k__BackingField: {fileID: 11400000, guid: f323a8bcc330d4d4780541da683e0f5a,
       type: 2}
   dashLongNTSettings:
-<<<<<<< HEAD
     <StaminaConsumptionPerSecond>k__BackingField: {fileID: 11400000, guid: bdf2e395dd084264d805e8a21a81ab47,
       type: 2}
     <DashCooldown>k__BackingField: {fileID: 11400000, guid: 03a4e581a65ece64e824e67b1a192183,
@@ -2821,21 +2775,6 @@ MonoBehaviour:
     <OnLongDashMove>k__BackingField: {fileID: 11400000, guid: 571acd43c0d128446b407e87e0a14bf1,
       type: 2}
     <OnLongDashExit>k__BackingField: {fileID: 11400000, guid: 3edfa69dce08a034db55411417cb4b00,
-=======
-    <MaxSpeed>k__BackingField: {fileID: 11400000, guid: 4a70cafb91c6e8642bbf4eb2290fa3f4,
-      type: 2}
-    <ConsumptionPerSecond>k__BackingField: {fileID: 11400000, guid: bdf2e395dd084264d805e8a21a81ab47,
-      type: 2}
-    <DashCooldown>k__BackingField: {fileID: 11400000, guid: 7b5cf7fa2da042542a269d0e204af93b,
-      type: 2}
-    <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 134c6d3d34951474d8deabf213eb103b,
-      type: 2}
-    <OnDashBegin>k__BackingField: {fileID: 11400000, guid: 854c117fb9d1a7b4fbecafd893f2e4b7,
-      type: 2}
-    <OnDashEnd>k__BackingField: {fileID: 11400000, guid: b0aafc805cb1fef4b96e1d3347224adb,
-      type: 2}
-    <OnDashInterrupted>k__BackingField: {fileID: 11400000, guid: 3467a095d0149b646b5073547ad6d884,
->>>>>>> Boss_n_UI
       type: 2}
   primaryAttack00NT: {fileID: 11400000, guid: 01c4ba08d4092df4d8259f54ca1361e5, type: 2}
   primaryAttack01NT: {fileID: 11400000, guid: 50f8536373d54ce43a154cd4491149f3, type: 2}
@@ -3168,7 +3107,6 @@ MonoBehaviour:
   health:
     <Max>k__BackingField: {fileID: 11400000, guid: 2ff66b555bd8e45489aaa1c71839822f,
       type: 2}
-<<<<<<< HEAD
     <InvincibilityFrameDuration>k__BackingField:
       _valueType: 0
       _value: 0
@@ -3181,9 +3119,6 @@ MonoBehaviour:
       _variable: {fileID: 0}
       _constant: {fileID: 0}
       _variableInstancer: {fileID: 0}
-=======
-    <UseInfinity>k__BackingField: 0
->>>>>>> Boss_n_UI
     currentHealthBackingField:
       _valueType: 2
       _value: 0
@@ -3206,7 +3141,6 @@ MonoBehaviour:
       _eventType: 0
       _event: {fileID: 11400000, guid: c907bee6664883344a5221f2aa9bbb4c, type: 2}
       _eventInstancer: {fileID: 0}
-<<<<<<< HEAD
     <OnInvincibilityEnabled>k__BackingField:
       _eventType: 0
       _event: {fileID: 0}
@@ -3215,8 +3149,6 @@ MonoBehaviour:
       _eventType: 0
       _event: {fileID: 0}
       _eventInstancer: {fileID: 0}
-=======
->>>>>>> Boss_n_UI
 --- !u!114 &913492937
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3230,15 +3162,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: {fileID: 11400000, guid: 2ff66b555bd8e45489aaa1c71839822f, type: 2}
-<<<<<<< HEAD
-=======
-  currentHealth:
-    _valueType: 0
-    _value: 0
-    _variable: {fileID: 0}
-    _constant: {fileID: 0}
-    _variableInstancer: {fileID: 0}
->>>>>>> Boss_n_UI
   OnHealthChanged:
     _eventType: 0
     _event: {fileID: 11400000, guid: e3d32e645a171fb4db1d064a022e23d5, type: 2}
@@ -3691,13 +3614,8 @@ GameObject:
   - component: {fileID: 8896106087852051826}
   - component: {fileID: 289343335673062866}
   m_Layer: 6
-<<<<<<< HEAD
   m_Name: 'Camera: Action'
   m_TagString: ActionCamera
-=======
-  m_Name: 'Camera: Normal Time.001'
-  m_TagString: Untagged
->>>>>>> Boss_n_UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3709,24 +3627,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4859805230427773813}
-<<<<<<< HEAD
   m_LocalRotation: {x: 0.2366593, y: 0.66633666, z: -0.23667297, w: 0.66631365}
   m_LocalPosition: {x: -11.639352, y: 11.021796, z: 0.00036506355}
-=======
-  m_LocalRotation: {x: 0.29883054, y: 0.6408686, z: -0.29884186, w: 0.6408442}
-  m_LocalPosition: {x: -9.641817, y: 13.050667, z: 0.00036799908}
->>>>>>> Boss_n_UI
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5232460527570470420}
   m_Father: {fileID: 2410215513735583749}
   m_RootOrder: 6
-<<<<<<< HEAD
   m_LocalEulerAnglesHint: {x: 39.108, y: 90.002, z: -0.001}
-=======
-  m_LocalEulerAnglesHint: {x: 50, y: 90.002, z: 0}
->>>>>>> Boss_n_UI
 --- !u!114 &8896106087852051826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3743,11 +3652,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-<<<<<<< HEAD
   m_Priority: 11
-=======
-  m_Priority: 10
->>>>>>> Boss_n_UI
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 5898839069180947905}
@@ -3810,10 +3715,7 @@ GameObject:
   - component: {fileID: 5232460527570470420}
   - component: {fileID: 7706757216144582197}
   - component: {fileID: 4449115205567555824}
-<<<<<<< HEAD
   - component: {fileID: 494054722}
-=======
->>>>>>> Boss_n_UI
   m_Layer: 6
   m_Name: cm
   m_TagString: Untagged
@@ -3891,7 +3793,6 @@ MonoBehaviour:
   m_MaximumFOV: 60
   m_MinimumOrthoSize: 1
   m_MaximumOrthoSize: 5000
-<<<<<<< HEAD
 --- !u!114 &494054722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3919,8 +3820,6 @@ MonoBehaviour:
   m_BiasX: 0
   m_BiasY: 0
   m_CenterOnActivate: 1
-=======
->>>>>>> Boss_n_UI
 --- !u!1 &7847673251686106561
 GameObject:
   m_ObjectHideFlags: 0

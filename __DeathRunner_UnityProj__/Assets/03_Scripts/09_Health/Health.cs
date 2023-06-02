@@ -85,7 +85,7 @@ namespace DeathRunner.Attributes
                 // IFrames
                 InvincibilityFrames().Forget();
                 
-                Debug.Log($"Health Changed {__previous} {currentHealthBackingField.Value}");
+                Debug.Log($"Health Changed [{__previous}] → [{currentHealthBackingField.Value}]");
                 if (OnChanged != null)
                 {
                     OnChanged.Invoke(__previous, currentHealthBackingField.Value);   
