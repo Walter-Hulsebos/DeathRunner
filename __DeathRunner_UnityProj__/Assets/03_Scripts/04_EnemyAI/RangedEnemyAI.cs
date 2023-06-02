@@ -48,6 +48,9 @@ namespace DeathRunner.EnemyAI
             [HideInInspector] public bool hasPickedWalkPos = false;
 
             [SerializeField] private GameObject HealthDrop;
+            
+            [HideInInspector] public bool canAttack;
+            
             // Called once when the object is created
             private void Start()
             {
@@ -69,7 +72,8 @@ namespace DeathRunner.EnemyAI
 
                 // Enable NavMeshAgent component
                 navMeshAgent.enabled = true;
-                
+
+                canAttack = false;
             }
 
             // Called once per frame
@@ -86,7 +90,7 @@ namespace DeathRunner.EnemyAI
                       //  LookAtPlayer();
 
                         // If the enemy is within attack distance, start attacking
-                        if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance)
+                        if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance && canAttack)
                         {
                             // Change the state to attacking
                             currentState = States.Attacking;

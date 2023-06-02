@@ -27,15 +27,45 @@ namespace DeathRunner.Attributes
         [field:SerializeField] public Reference<F32> InvincibilityFrameDuration { get; [UsedImplicitly] private set; }
 
         #if ODIN_INSPECTOR
-        [field:BoxGroup("Current", showLabel: false)]
+        [BoxGroup("Current", showLabel: false)]
+        [LabelText("Is Invincible")]
         #endif
-        [field:SerializeField] public Reference<Bool> UseInfinity { get; [UsedImplicitly] private set; }
+        [SerializeField] private Reference<Bool> useInfinityBackingField;
+        
+        public Bool UseInfinity
+        {
+            get => useInfinityBackingField.Value;
+            set
+            {
+                Bool __valueHasChanged = (useInfinityBackingField.Value != value);
+                
+                if (!__valueHasChanged) return;
+                
+                useInfinityBackingField.Value = value;
+
+                if (value)
+                {
+                    if (OnInvincibilityEnabled != null)
+                    {
+                        OnInvincibilityEnabled.Invoke();
+                    }
+                }
+                else
+                {
+                    if (OnInvincibilityDisabled != null)
+                    {
+                        OnInvincibilityDisabled.Invoke();
+                    }
+                }
+            }
+        }
 
         #if ODIN_INSPECTOR
-        [LabelText("Current Health")]
         [BoxGroup("Current", showLabel: false)]
+        [LabelText("Current Health")]
         #endif
-        [field:SerializeField] private Reference<U16> currentHealthBackingField;
+        [SerializeField] private Reference<U16> currentHealthBackingField;
+        
         public U16 Value 
         {
             get => UseInfinity ? Max.Value : currentHealthBackingField.Value;
@@ -90,9 +120,9 @@ namespace DeathRunner.Attributes
         {
             if (InvincibilityFrameDuration == 0f) return;
             
-            UseInfinity.Value = true;
+            UseInfinity = true;
             await UniTask.Delay(TimeSpan.FromSeconds(InvincibilityFrameDuration.Value));
-            UseInfinity.Value = false;
+            UseInfinity = false;
         }
         
         //[OdinSerialize]

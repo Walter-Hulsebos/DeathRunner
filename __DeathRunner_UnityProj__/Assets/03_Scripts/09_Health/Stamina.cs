@@ -23,9 +23,12 @@ namespace DeathRunner.Attributes
         [field:SerializeField] public Constant<U16>   Max         { get; [UsedImplicitly] private set; }
         
         #if ODIN_INSPECTOR
-        [field:BoxGroup("Current", showLabel: false)]
-        #endif  
-        [field:SerializeField] public Reference<Bool> UseInfinity { get; [UsedImplicitly] private set; }
+        [BoxGroup("Current", showLabel: false)]
+        [SerializeField] 
+        #endif
+        public Reference<Bool> useInfinityBackingField;
+        
+        public Bool UseInfinity { get => useInfinityBackingField.Value; private set => useInfinityBackingField.Value = value; }
         
         #if ODIN_INSPECTOR
         [LabelText("Current Health")]
