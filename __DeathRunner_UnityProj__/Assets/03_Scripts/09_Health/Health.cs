@@ -71,7 +71,19 @@ namespace DeathRunner.Attributes
             get => UseInfinity ? Max.Value : currentHealthBackingField.Value;
             set
             {
-                if (UseInfinity) return; // If UseInfinity is true, exit. We don't want to change the value.
+                if (UseInfinity) 
+                {
+                    if (value < Max.Value)
+                    {
+                        OnDecreasedAttempt?.Invoke();
+                    }
+                    else
+                    {
+                        OnIncreasedAttempt?.Invoke();
+                    }
+
+                    return; // If UseInfinity is true, exit. We don't want to change the value.
+                }  
                 
                 value = min(value, Max.Value); //Make sure we don't go over the max 
                 
@@ -81,10 +93,7 @@ namespace DeathRunner.Attributes
                 U16 __previous = currentHealthBackingField.Value;
                 // Set the new value.
                 currentHealthBackingField.Value = value;
-                
-                // IFrames
-                InvincibilityFrames().Forget();
-                
+
                 Debug.Log($"Health Changed [{__previous}] → [{currentHealthBackingField.Value}]");
                 if (OnChanged != null)
                 {
@@ -100,6 +109,9 @@ namespace DeathRunner.Attributes
                 }
                 else if (currentHealthBackingField.Value < __previous)
                 {
+                    // IFrames
+                    InvincibilityFrames().Forget();
+                    
                     if (OnDecreased != null)
                     {
                         OnDecreased.Invoke(__previous, currentHealthBackingField.Value);
@@ -118,11 +130,13 @@ namespace DeathRunner.Attributes
         
         public async UniTask InvincibilityFrames()
         {
-            if (InvincibilityFrameDuration == 0f) return;
+            if (InvincibilityFrameDuration.Value == 0f) return;
             
+            Debug.Log($"InvincibilityFrames for [{InvincibilityFrameDuration.Value}] seconds");
             UseInfinity = true;
             await UniTask.Delay(TimeSpan.FromSeconds(InvincibilityFrameDuration.Value));
             UseInfinity = false;
+            Debug.Log($"InvincibilityFrames ended");
         }
         
         //[OdinSerialize]
@@ -135,6 +149,9 @@ namespace DeathRunner.Attributes
         
         [field:SerializeField] public EventReference                 OnInvincibilityEnabled  { get; [UsedImplicitly] private set; }
         [field:SerializeField] public EventReference                 OnInvincibilityDisabled { get; [UsedImplicitly] private set; }
+        
+        [field:SerializeField] public EventReference                 OnDecreasedAttempt      { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference                 OnIncreasedAttempt      { get; [UsedImplicitly] private set; }
 
         public Bool IsZero => Value == 0;
     }

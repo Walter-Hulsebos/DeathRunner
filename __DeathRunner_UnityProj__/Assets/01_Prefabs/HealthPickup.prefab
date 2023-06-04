@@ -9,11 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1273188676277678970}
-  - component: {fileID: 1273188676277678969}
   - component: {fileID: 1273188676277678968}
   - component: {fileID: 1273188676277678971}
   - component: {fileID: 5259313580886405379}
-  m_Layer: 12
+  - component: {fileID: 3315173189456524676}
+  m_Layer: 19
   m_Name: HealthPickup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,19 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1273188676277678969
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1273188676277678975}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.5392802, y: 1.2901595, z: 1.5591083}
-  m_Center: {x: -0.04880602, y: 0.58030677, z: 0.09487464}
 --- !u!54 &1273188676277678968
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -91,8 +78,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   logic: 0
+  tagToHeal: Player
   amount: 3
   duration: 1
+--- !u!135 &3315173189456524676
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1273188676277678975}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1273188675615017588
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -106,23 +107,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 111466, guid: ac06de37a22014f47a582046ad5b7432, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 111862, guid: ac06de37a22014f47a582046ad5b7432, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 162908, guid: ac06de37a22014f47a582046ad5b7432, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 164610, guid: ac06de37a22014f47a582046ad5b7432, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 190358, guid: ac06de37a22014f47a582046ad5b7432, type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 455940, guid: ac06de37a22014f47a582046ad5b7432, type: 3}
       propertyPath: m_RootOrder

@@ -33,6 +33,8 @@ namespace DeathRunner.Attributes
         {
             if (!other.CompareTag(tagToHeal)) return;
             
+            Debug.Log($"<b>[HealthPickup.OnTriggerEnter]</b> - {other.name}");
+            
             if (!other.TryGetComponent(out HealthComponent __healthComponent)) return;
                 
             switch (logic)

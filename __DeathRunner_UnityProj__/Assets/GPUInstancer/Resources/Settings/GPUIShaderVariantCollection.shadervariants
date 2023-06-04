@@ -11,6 +11,30 @@ ShaderVariantCollection:
   - first: {fileID: 4800000, guid: 1a6ceac7f4c639b4096c21f11e4e7a56, type: 3}
     second:
       variants: []
+  - first: {fileID: -6465566751694194690, guid: 78f1b5ae9238ef140869bdba4aef19db,
+      type: 3}
+    second:
+      variants:
+      - keywords: _ALPHATEST_ON _DISABLE_SSR_TRANSPARENT _DOUBLESIDED_ON
+        passType: 0
+  - first: {fileID: -6465566751694194690, guid: 13567c7704562ff4188beb583474bbb9,
+      type: 3}
+    second:
+      variants:
+      - keywords: _DISABLE_DECALS _DISABLE_SSR_TRANSPARENT
+        passType: 0
+  - first: {fileID: -6465566751694194690, guid: 7f3807ed6ec3a324aa1f59c67a233ab0,
+      type: 3}
+    second:
+      variants:
+      - keywords: _ALPHATEST_ON _DEPTHOFFSET_ON _DISABLE_SSR_TRANSPARENT
+        passType: 0
+  - first: {fileID: -6465566751694194690, guid: cda94a161105fc448be4bf5fae45232b,
+      type: 3}
+    second:
+      variants:
+      - keywords: _DISABLE_DECALS _DISABLE_SSR _DISABLE_SSR_TRANSPARENT
+        passType: 0
   - first: {fileID: 4800000, guid: 166a0245decf26e42af2e010822c75c4, type: 3}
     second:
       variants:
@@ -66,6 +90,8 @@ ShaderVariantCollection:
         passType: 0
       - keywords: _DISABLE_SSR_TRANSPARENT _MASKMAP _NORMALMAP _NORMALMAP_TANGENT_SPACE
           _REFRACTION_PLANE _SURFACE_TYPE_TRANSPARENT
+        passType: 0
+      - keywords: _DISABLE_SSR_TRANSPARENT _NORMALMAP _NORMALMAP_TANGENT_SPACE
         passType: 0
       - keywords: _DISABLE_SSR_TRANSPARENT _NORMALMAP_TANGENT_SPACE
         passType: 0

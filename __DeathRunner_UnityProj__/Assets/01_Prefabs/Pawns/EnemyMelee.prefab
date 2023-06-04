@@ -2263,7 +2263,18 @@ MonoBehaviour:
   health:
     <Max>k__BackingField: {fileID: 11400000, guid: b997a168476839d4db257d8a3d5adb95,
       type: 2}
-    <UseInfinity>k__BackingField: 0
+    <InvincibilityFrameDuration>k__BackingField:
+      _valueType: 0
+      _value: 0
+      _variable: {fileID: 0}
+      _constant: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    useInfinityBackingField:
+      _valueType: 0
+      _value: 0
+      _variable: {fileID: 0}
+      _constant: {fileID: 0}
+      _variableInstancer: {fileID: 0}
     currentHealthBackingField:
       _valueType: 3
       _value: 4
@@ -2286,6 +2297,14 @@ MonoBehaviour:
       _eventType: 1
       _event: {fileID: 0}
       _eventInstancer: {fileID: 1073600811}
+    <OnInvincibilityEnabled>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+    <OnInvincibilityDisabled>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
 --- !u!114 &1073600812
 MonoBehaviour:
   m_ObjectHideFlags: 0
