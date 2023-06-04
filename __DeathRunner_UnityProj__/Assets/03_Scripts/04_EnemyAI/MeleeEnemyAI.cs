@@ -36,7 +36,7 @@ namespace DeathRunner.EnemyAI
             [HideInInspector] public States currentState;
 
             // Distance at which the enemy will start attacking the player
-            [SerializeField] private float attackDistance = 2;
+            [SerializeField] private float attackDistance = 3;
 
             // Animator component for the enemy
             [SerializeField] private Animator animator;

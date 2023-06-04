@@ -5,6 +5,8 @@ using DeathRunner.EnemyAI;
 using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
+using Cinemachine;
+
 
 namespace Game
 {
@@ -13,7 +15,7 @@ namespace Game
         [SerializeField] private GameObject[] enemies;
         [SerializeField] private GameObject[] doors;
 
-
+        private CinemachineTargetGroup _cinemachineTargetGroup;
         private GameObject actionCam;
 
         private Transform player;
@@ -66,13 +68,8 @@ namespace Game
             player = GameObject.FindWithTag("Player").transform;
 
             actionCam = GameObject.FindWithTag("ActionCamera");
+            _cinemachineTargetGroup = GameObject.FindWithTag("TargetGroup").GetComponent<CinemachineTargetGroup>();
             
-         
-        }
-
-        private void LateUpdate()
-        {
-        //    actionCam.SetActive(false);
         }
 
         // Update is called once per frame
@@ -83,14 +80,18 @@ namespace Game
                 foreach( GameObject enemy in enemies )
                 {
                     enemy.SetActive(true);
+                    _cinemachineTargetGroup.AddMember(enemy.transform, 0.25f, 2);
                 }
-                actionCam.SetActive(true);
-                // foreach( GameObject door in doors )
-                // {
-                //     door.SetActive(true);
-                // }
+                actionCam.SetActive(false);
+                
+                 foreach( GameObject door in doors )
+                 {
+                     door.SetActive(true);
+                 }
 
                 _collider.enabled = false;
+                
+             
             }
         }
 
@@ -117,7 +118,7 @@ namespace Game
             }
             
             
-            if (canRangedAttack)
+            if (canRangedAttack && meleeEnemies.Count > 0)
             {
                 rangedEnemies[Random.Range(0, meleeEnemies.Count)].canAttack = true;
                 canRangedAttack = false;
@@ -159,8 +160,20 @@ namespace Game
                 {
                     door.SetActive(false);
                 }
-                actionCam.SetActive(false);
+
+                foreach (GameObject enemy in enemies)
+                {
+                    _cinemachineTargetGroup.RemoveMember(enemy.transform);
+                }
+
+                StartCoroutine(EnableCamera());
             }
+        }
+
+        private IEnumerator EnableCamera()
+        {
+            yield return new WaitForSeconds(0.5f);
+            actionCam.SetActive(true);
         }
     }
     
