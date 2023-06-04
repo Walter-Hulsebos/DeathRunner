@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator;
 using Cysharp.Threading.Tasks;
 using GenericScriptableArchitecture;
 using Unity.Mathematics;
@@ -99,6 +100,7 @@ namespace DeathRunner.EnemyAI
                 if (navMeshAgent.velocity != Vector3.zero)
                 {
                     animator.SetFloat("Speed", 1);
+                    animator.SetTrigger("isChasing");
                 }
                 else
                 {
