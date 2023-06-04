@@ -434,6 +434,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeerBarrel
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 723bd2b2c8aacd841b9b9fe46b60a391, type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 723bd2b2c8aacd841b9b9fe46b60a391, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2179,9 +2183,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 32549928, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: managedReferences[0].Velocity.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 32549928, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: managedReferences[2].FreezeFrameDuration
+      value: 0.07
     - target: {fileID: 610366622, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 32549928, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: managedReferences[2].MinimumTimescaleThreshold
+      value: 0.07
       objectReference: {fileID: 0}
     - target: {fileID: 610366622, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
       propertyPath: onMoveEvent
@@ -2196,6 +2211,41 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 144911030}
+    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.641817
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 13.050667
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00036799908
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6408442
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.29883054
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.6408686
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.29884186
+      objectReference: {fileID: 0}
     - target: {fileID: 2410215513009397355, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: dithering
@@ -2274,6 +2324,11 @@ PrefabInstance:
     - target: {fileID: 2410215513735583749, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859805230427773813, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
