@@ -45,17 +45,11 @@ namespace DeathRunner.Attributes
 
                 if (value)
                 {
-                    if (OnInvincibilityEnabled != null)
-                    {
-                        OnInvincibilityEnabled.Invoke();
-                    }
+                    OnInvincibilityEnabled?.Invoke();
                 }
                 else
                 {
-                    if (OnInvincibilityDisabled != null)
-                    {
-                        OnInvincibilityDisabled.Invoke();
-                    }
+                    OnInvincibilityDisabled?.Invoke();
                 }
             }
         }
@@ -85,45 +79,46 @@ namespace DeathRunner.Attributes
                     return; // If UseInfinity is true, exit. We don't want to change the value.
                 }  
                 
-                value = min(value, Max.Value); //Make sure we don't go over the max 
+                #if UNITY_EDITOR
+                Debug.Log($"Attempting Health Change [{currentHealthBackingField.Value}] → [{value}]");
+                #endif
+                
+                value = clamp(target: value, a: 0, b: Max.Value); //Make sure we don't go over the max 
                 
                 // Exit if the value hasn't changed.
-                if (value == currentHealthBackingField.Value) return;
+                if (value == currentHealthBackingField.Value)
+                {
+                    #if UNITY_EDITOR
+                    Debug.Log($"Health Change Aborted, is already [{value}]");
+                    #endif
+                    return;
+                }
 
                 U16 __previous = currentHealthBackingField.Value;
                 // Set the new value.
                 currentHealthBackingField.Value = value;
 
+                #if UNITY_EDITOR
                 Debug.Log($"Health Changed [{__previous}] → [{currentHealthBackingField.Value}]");
-                if (OnChanged != null)
-                {
-                    OnChanged.Invoke(__previous, currentHealthBackingField.Value);   
-                }
+                #endif
+
+                OnChanged?.Invoke(__previous, currentHealthBackingField.Value);
 
                 if (currentHealthBackingField.Value > __previous)
                 {
-                    if (OnIncreased != null)
-                    {
-                        OnIncreased.Invoke(__previous, currentHealthBackingField.Value);
-                    }
+                    OnIncreased?.Invoke(__previous, currentHealthBackingField.Value);
                 }
                 else if (currentHealthBackingField.Value < __previous)
                 {
                     // IFrames
                     InvincibilityFrames().Forget();
-                    
-                    if (OnDecreased != null)
-                    {
-                        OnDecreased.Invoke(__previous, currentHealthBackingField.Value);
-                    }
+
+                    OnDecreased?.Invoke(__previous, currentHealthBackingField.Value);
                 }
                 
                 if (currentHealthBackingField.Value == 0)
                 {
-                    if (OnDepleted != null)
-                    {
-                        OnDepleted.Invoke();   
-                    }
+                    OnDepleted?.Invoke();
                 }
             }
         }
@@ -137,6 +132,31 @@ namespace DeathRunner.Attributes
             await UniTask.Delay(TimeSpan.FromSeconds(InvincibilityFrameDuration.Value));
             UseInfinity = false;
             Debug.Log($"InvincibilityFrames ended");
+        }
+
+        public void Init()
+        {
+            currentHealthBackingField.Value = Max.Value;
+            
+            switch (currentHealthBackingField.Type)
+            {
+                case BaseReference.ValueType.Variable:
+                    Debug.Log("Health: Init() - Variable");
+                    currentHealthBackingField.VariableValue.Value = Max.Value;
+                    break;
+                case BaseReference.ValueType.VariableInstancer:
+                    Debug.Log("Health: Init() - VariableInstancer");
+                    currentHealthBackingField.InstancerValue.Value = Max.Value;
+                    break;
+                case BaseReference.ValueType.Value:
+                    Debug.Log("Health: Init() - Value");
+                    currentHealthBackingField.Value = Max.Value;
+                    break;
+                case BaseReference.ValueType.Constant:
+                    Debug.Log("Health: Init() - Constant");
+                    Debug.LogWarning("Cannot set a constant value");
+                    break;
+            }
         }
         
         //[OdinSerialize]

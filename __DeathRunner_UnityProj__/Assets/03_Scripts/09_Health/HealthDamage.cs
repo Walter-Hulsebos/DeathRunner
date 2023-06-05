@@ -24,7 +24,22 @@ namespace DeathRunner.Attributes
 
             if (other.TryGetComponent(out HealthComponent __health))
             {
-                __health.health.Value -= damageInflicted;
+                checked
+                {
+                    //Calculate damage to not go below 0
+                    
+                    Int32 __healthValue     = (Int32)__health.health.Value;
+                    Int32 __damageToInflict = (Int32)damageInflicted;
+                    
+                    Int32 __newHealthValue = __healthValue - __damageToInflict;
+                    
+                    if (__newHealthValue < 0)
+                    {
+                        __newHealthValue = 0;
+                    }
+                    
+                    __health.health.Value = (UInt16)__newHealthValue;
+                }
             }
         }
     }

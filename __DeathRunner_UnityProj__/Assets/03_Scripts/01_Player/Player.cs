@@ -109,13 +109,18 @@ namespace DeathRunner.Player
         
         private void Awake()
         {
-            playerAttributes.Init();
+            //playerAttributes.Init();
             
             CreateStateTree();
             CreateStateTransitions();
 
             //Init root state
             _root.Init();
+        }
+
+        private void Start()
+        {
+            playerAttributes.Init();
         }
 
         private void CreateStateTree()

@@ -48,33 +48,21 @@ namespace DeathRunner.Attributes
                 
                 U16 __previous = currentStaminaBackingField.Value;
                 currentStaminaBackingField.Value = value;
-                
-                if (OnChanged != null)
-                {
-                    OnChanged.Invoke(__previous, currentStaminaBackingField.Value);   
-                }
+
+                OnChanged?.Invoke(__previous, currentStaminaBackingField.Value);
 
                 if (currentStaminaBackingField.Value > __previous)
                 {
-                    if (OnIncreased != null)
-                    {
-                        OnIncreased.Invoke(__previous, currentStaminaBackingField.Value);
-                    }
+                    OnIncreased?.Invoke(__previous, currentStaminaBackingField.Value);
                 }
                 else if (currentStaminaBackingField.Value < __previous)
                 {
-                    if (OnDecreased != null)
-                    {
-                        OnDecreased.Invoke(__previous, currentStaminaBackingField.Value);
-                    }
+                    OnDecreased?.Invoke(__previous, currentStaminaBackingField.Value);
                 }
                 
                 if (currentStaminaBackingField.Value == 0)
                 {
-                    if (OnDepleted != null)
-                    {
-                        OnDepleted.Invoke();   
-                    }
+                    OnDepleted?.Invoke();
                 }
             }
         }
@@ -88,5 +76,30 @@ namespace DeathRunner.Attributes
         [field:SerializeField] public EventReference<UInt16, UInt16> OnIncreased { get; [UsedImplicitly] private set; }
 
         public Bool IsZero => Value == 0;
+        
+        public void Init()
+        {
+            currentStaminaBackingField.Value = Max.Value;
+            
+            switch (currentStaminaBackingField.Type)
+            {
+                case BaseReference.ValueType.Variable:
+                    Debug.Log("Stamina: Init() - Variable");
+                    currentStaminaBackingField.VariableValue.Value = Max.Value;
+                    break;
+                case BaseReference.ValueType.VariableInstancer:
+                    Debug.Log("Stamina: Init() - VariableInstancer");
+                    currentStaminaBackingField.InstancerValue.Value = Max.Value;
+                    break;
+                case BaseReference.ValueType.Value:
+                    Debug.Log("Stamina: Init() - Value");
+                    currentStaminaBackingField.Value = Max.Value;
+                    break;
+                case BaseReference.ValueType.Constant:
+                    Debug.Log("Stamina: Init() - Constant");
+                    Debug.LogWarning("Cannot set a constant value");
+                    break;
+            }
+        }
     }
 }

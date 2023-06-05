@@ -240,7 +240,7 @@ MonoBehaviour:
           m_DissipationMode: 2
           m_DissipationDistance: 100
           m_PropagationSpeed: 343
-        Velocity: {x: 0, y: 0.07, z: 0}
+        Velocity: {x: 0, y: 0.5, z: 0}
         ClearImpulseOnStop: 0
     - rid: 1
       type: {class: MMF_Flicker, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
@@ -387,8 +387,8 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 32549928}
         DebugActive: 0
-        FreezeFrameDuration: 0.1
-        MinimumTimescaleThreshold: 0.1
+        FreezeFrameDuration: 0.07
+        MinimumTimescaleThreshold: 0.07
     - rid: 3
       type: {class: MMF_ParticlesInstantiation, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
@@ -1578,6 +1578,53 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
+--- !u!1 &965624110
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 965624111}
+  - component: {fileID: 965624112}
+  m_Layer: 0
+  m_Name: NameContainer(EditorOnly)
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &965624111
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965624110}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2410215513429711715}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &965624112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 965624110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190d9e9918d0aaf48a103a2bb6995059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOverride: LongDash Move Anim Handler
+  tooltipOverride: 
+  target: {fileID: 610366622}
 --- !u!1 &1037352630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2220,8 +2267,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410215513009397359}
-  m_LocalRotation: {x: 0.2366593, y: 0.66633666, z: -0.23667297, w: 0.66631365}
-  m_LocalPosition: {x: -11.639352, y: 11.021796, z: 0.00036506355}
+  m_LocalRotation: {x: 0.29883054, y: 0.6408686, z: -0.29884186, w: 0.6408442}
+  m_LocalPosition: {x: -9.641817, y: 13.050667, z: 0.00036799908}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2268,7 +2315,7 @@ Camera:
   m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!81 &2410215513009397356
@@ -2300,7 +2347,7 @@ MonoBehaviour:
   volumeAnchorOverride: {fileID: 0}
   antialiasing: 1
   SMAAQuality: 2
-  dithering: 1
+  dithering: 0
   stopNaNs: 0
   taaSharpenStrength: 0.5
   TAAQuality: 1
@@ -2493,6 +2540,7 @@ Transform:
   - {fileID: 32549927}
   - {fileID: 4894426685487545788}
   - {fileID: 797213319}
+  - {fileID: 965624111}
   m_Father: {fileID: 2410215513735583749}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2628,15 +2676,15 @@ MonoBehaviour:
       <Max>k__BackingField: {fileID: 11400000, guid: 2ff66b555bd8e45489aaa1c71839822f,
         type: 2}
       <InvincibilityFrameDuration>k__BackingField:
-        _valueType: 0
+        _valueType: 2
         _value: 0
-        _variable: {fileID: 0}
+        _variable: {fileID: 11400000, guid: a393aabd1caca4d4b97f5589c2d516df, type: 2}
         _constant: {fileID: 0}
         _variableInstancer: {fileID: 0}
-      <UseInfinity>k__BackingField:
-        _valueType: 0
+      useInfinityBackingField:
+        _valueType: 2
         _value: 0
-        _variable: {fileID: 0}
+        _variable: {fileID: 11400000, guid: af916a68bb4bd184a932c73fd6475cbf, type: 2}
         _constant: {fileID: 0}
         _variableInstancer: {fileID: 0}
       currentHealthBackingField:
@@ -2669,10 +2717,18 @@ MonoBehaviour:
         _eventType: 0
         _event: {fileID: 11400000, guid: efba832d91f60fc4e8f4cb3e0cdbcc6a, type: 2}
         _eventInstancer: {fileID: 0}
+      <OnDecreasedAttempt>k__BackingField:
+        _eventType: 0
+        _event: {fileID: 0}
+        _eventInstancer: {fileID: 0}
+      <OnIncreasedAttempt>k__BackingField:
+        _eventType: 0
+        _event: {fileID: 0}
+        _eventInstancer: {fileID: 0}
     stamina:
       <Max>k__BackingField: {fileID: 11400000, guid: 8af2c425a9d743c45a541bb67b2a00d7,
         type: 2}
-      <UseInfinity>k__BackingField:
+      useInfinityBackingField:
         _valueType: 0
         _value: 0
         _variable: {fileID: 0}
@@ -2979,13 +3035,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bc161dfaacda3642b19f33b8b99fb01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animationReferences: {fileID: 2410215513753998714}
-  onMoveEvent: {fileID: 11400000, guid: e782135d5170b6043a9b9df91021d35e, type: 2}
+  onMoveEvent: {fileID: 11400000, guid: 571acd43c0d128446b407e87e0a14bf1, type: 2}
   smoothTurnInSeconds: 0.2
   deltaRadiansPerSecond: 31.415928
   moveAnimations:
@@ -3113,7 +3169,7 @@ MonoBehaviour:
       _variable: {fileID: 0}
       _constant: {fileID: 0}
       _variableInstancer: {fileID: 0}
-    <UseInfinity>k__BackingField:
+    useInfinityBackingField:
       _valueType: 0
       _value: 0
       _variable: {fileID: 0}
@@ -3146,6 +3202,14 @@ MonoBehaviour:
       _event: {fileID: 0}
       _eventInstancer: {fileID: 0}
     <OnInvincibilityDisabled>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+    <OnDecreasedAttempt>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+    <OnIncreasedAttempt>k__BackingField:
       _eventType: 0
       _event: {fileID: 0}
       _eventInstancer: {fileID: 0}
@@ -3619,7 +3683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4582762283594447248
 Transform:
   m_ObjectHideFlags: 0

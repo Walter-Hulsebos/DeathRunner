@@ -12,11 +12,14 @@ namespace DeathRunner.Player
 
         public void Init()
         {
+            health.Init();
+            stamina.Init();
+            
             Debug.Log(message: $"Init PlayerAttributes, setting health and stamina to max \n" +
-                      $"Health:  {health.Max.Value} \n" +
-                      $"Stamina: {stamina.Max.Value}");
-            health.Value  = health.Max.Value;
-            stamina.Value = stamina.Max.Value;
+                               $"Health Max:  {health.Max.Value} \n" +
+                               $"Stamina Max: {stamina.Max.Value} \n" +
+                               $"Health:  {health.Value} \n" +
+                               $"Stamina: {stamina.Value}");
         }
     }
 }

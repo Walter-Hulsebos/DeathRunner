@@ -12,7 +12,6 @@ namespace DeathRunner.Attributes
         public Bool                  UseInfinity { get; }
         public T                     Value       { get; set; }
 
-
         //public IMod<T>[]             Modifiers   { get; }
         
         public EventReference<T, T> OnChanged   { get; }
@@ -21,5 +20,7 @@ namespace DeathRunner.Attributes
         public EventReference<T, T> OnIncreased { get; }
 
         public Bool                 IsZero      { get; }
+        
+        public void Init();
     }
 }
