@@ -15,27 +15,27 @@ namespace Sisus.ComponentNames.EditorOnly
 {
 	internal static class UnityEventDrawerUtility
 	{
-		private const string kNoFunctionString = "No Function";
+		private const String kNoFunctionString = "No Function";
 
-		private const string kInstancePath = "m_Target";
-		private const string kInstanceTypePath = "m_TargetAssemblyTypeName";
-		private const string kArgumentsPath = "m_Arguments";
-		private const string kModePath = "m_Mode";
-		private const string kMethodNamePath = "m_MethodName";
-		private const string kCallsPath = "m_PersistentCalls.m_Calls";
+		private const String kInstancePath = "m_Target";
+		private const String kInstanceTypePath = "m_TargetAssemblyTypeName";
+		private const String kArgumentsPath = "m_Arguments";
+		private const String kModePath = "m_Mode";
+		private const String kMethodNamePath = "m_MethodName";
+		private const String kCallsPath = "m_PersistentCalls.m_Calls";
 
-		internal const string kFloatArgument = "m_FloatArgument";
-		internal const string kIntArgument = "m_IntArgument";
-		internal const string kObjectArgument = "m_ObjectArgument";
-		internal const string kStringArgument = "m_StringArgument";
-		internal const string kBoolArgument = "m_BoolArgument";
-		internal const string kObjectArgumentAssemblyTypeName = "m_ObjectArgumentAssemblyTypeName";
+		internal const String kFloatArgument = "m_FloatArgument";
+		internal const String kIntArgument = "m_IntArgument";
+		internal const String kObjectArgument = "m_ObjectArgument";
+		internal const String kStringArgument = "m_StringArgument";
+		internal const String kBoolArgument = "m_BoolArgument";
+		internal const String kObjectArgumentAssemblyTypeName = "m_ObjectArgumentAssemblyTypeName";
 
-		public static GenericMenu BuildFunctionSelectDropdownMenu(SerializedProperty unityEventProperty, int index)
+		public static GenericMenu BuildFunctionSelectDropdownMenu(SerializedProperty unityEventProperty, Int32 index)
 		{
-			var dummyEvent = GetDummyEvent(unityEventProperty);
-			var propertyRelative = unityEventProperty.FindPropertyRelative(kCallsPath);
-			var listener = propertyRelative.GetArrayElementAtIndex(index);
+			UnityEventBase dummyEvent = GetDummyEvent(unityEventProperty);
+			SerializedProperty propertyRelative = unityEventProperty.FindPropertyRelative(kCallsPath);
+			SerializedProperty listener = propertyRelative.GetArrayElementAtIndex(index);
 			if(listener is null)
 			{
 				#if DEV_MODE
@@ -45,11 +45,11 @@ namespace Sisus.ComponentNames.EditorOnly
 				return null;
 			}
 
-			var listenerTarget = listener.FindPropertyRelative(kInstancePath).objectReferenceValue;
+			Object listenerTarget = listener.FindPropertyRelative(kInstancePath).objectReferenceValue;
 
 			// Use more reflection if possible to call some of Unity's internal methods.
 			// This way if Unity updates those methods, I will automatically also get all the updates.
-			if(!BuildFunctionSelectDropdownMenuUsingInternalMethod(listener, dummyEvent, listenerTarget, out var menu))
+			if(!BuildFunctionSelectDropdownMenuUsingInternalMethod(listener, dummyEvent, listenerTarget, out GenericMenu menu))
 			{
 				menu = BuildFunctionSelectDropdownMenu(listenerTarget, dummyEvent, listener);
 			}
@@ -80,16 +80,16 @@ namespace Sisus.ComponentNames.EditorOnly
 
 			components = gameObject.GetComponents<Component>();
 
-			var menuItemsProperty = typeof(GenericMenu).GetProperty("menuItems", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-			var menuItems = menuItemsProperty.GetValue(menu, null) as IList;
-			int count = menuItems.Count;
+			PropertyInfo menuItemsProperty = typeof(GenericMenu).GetProperty("menuItems", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+			IList menuItems = menuItemsProperty.GetValue(menu, null) as IList;
+			Int32 count = menuItems.Count;
 			if(count == 0)
 			{
 				return;
 			}
 
-			var menuItemType = menuItems[0].GetType();
-			var contentField = menuItemType.GetField("content", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+			Type menuItemType = menuItems[0].GetType();
+			FieldInfo contentField = menuItemType.GetField("content", BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 			if(contentField is null)
 			{
 				#if DEV_MODE
@@ -98,49 +98,49 @@ namespace Sisus.ComponentNames.EditorOnly
 				return;
 			}
 
-			Dictionary<string, string> namesAndOverridesCache = new Dictionary<string, string>();
+			Dictionary<String, String> namesAndOverridesCache = new Dictionary<String, String>();
 
-			for(int i = 0; i < count; i++)
+			for(Int32 i = 0; i < count; i++)
 			{
-				var menuItem = menuItems[i];
-				var label = (GUIContent)contentField.GetValue(menuItem);
-				string originalPath = label.text;
-				string overridePath = GetOverridePath(components, originalPath, namesAndOverridesCache);
+				System.Object menuItem = menuItems[i];
+				GUIContent label = (GUIContent)contentField.GetValue(menuItem);
+				String originalPath = label.text;
+				String overridePath = GetOverridePath(components, originalPath, namesAndOverridesCache);
 				label.text = overridePath;
 			}
 		}
 
-		private static string GetOverridePath(Component[] components, string originalPath, Dictionary<string, string> cache)
+		private static String GetOverridePath(Component[] components, String originalPath, Dictionary<String, String> cache)
 		{
-			int originalNameEnd = originalPath.IndexOf('/');
+			Int32 originalNameEnd = originalPath.IndexOf('/');
 			if(originalNameEnd <= 0)
 			{
 				return originalPath;
 			}
 				
-			string originalName = originalPath.Substring(0, originalNameEnd);
-			if(cache.TryGetValue(originalName, out string overrideName))
+			String originalName = originalPath.Substring(0, originalNameEnd);
+			if(cache.TryGetValue(originalName, out String overrideName))
 			{
-				return overrideName + originalPath.Substring(originalNameEnd);
+				return overrideName + originalPath[originalNameEnd..];
 			}
 
-			int nth = 0;
-			string originalNameWithoutSuffix = originalName;
-			if(originalName.EndsWith(")", StringComparison.Ordinal) && int.TryParse(originalName.Substring(originalName.Length - 2, 1), out int parsedNth))
+			Int32 nth = 0;
+			String originalNameWithoutSuffix = originalName;
+			if(originalName.EndsWith(")", StringComparison.Ordinal) && Int32.TryParse(originalName.Substring(originalName.Length - 2, 1), out Int32 parsedNth))
 			{
 				nth = parsedNth;
 				originalNameWithoutSuffix = originalName.Substring(0, originalName.Length - 4); // For example " (1)";
 			}
 
-			bool isFullName = originalNameWithoutSuffix.IndexOf('.') != -1;
+			Boolean isFullName = originalNameWithoutSuffix.IndexOf('.') != -1;
 			Component target;
 			if(isFullName)
 			{
-				target = components.Where(c => c != null && string.Equals(c.GetType().FullName, originalNameWithoutSuffix)).ElementAtOrDefault(nth);
+				target = components.Where(c => c != null && String.Equals(c.GetType().FullName, originalNameWithoutSuffix)).ElementAtOrDefault(nth);
 			}
 			else
 			{
-				target = components.Where(c => c != null && string.Equals(c.GetType().Name, originalNameWithoutSuffix)).ElementAtOrDefault(nth);
+				target = components.Where(c => c != null && String.Equals(c.GetType().Name, originalNameWithoutSuffix)).ElementAtOrDefault(nth);
 			}
 
 			if(target == null)
@@ -154,8 +154,8 @@ namespace Sisus.ComponentNames.EditorOnly
 				overrideName = overrideName.Substring(0, overrideName.Length - 3);
 			}
 
-			int index = 0;
-			string baseName = overrideName;
+			Int32 index = 0;
+			String baseName = overrideName;
 			while(cache.ContainsValue(overrideName))
 			{
 				index++;
@@ -163,11 +163,11 @@ namespace Sisus.ComponentNames.EditorOnly
 			}
 			cache.Add(originalName, overrideName);
 
-			string overridePath = overrideName + originalPath.Substring(originalNameEnd);
+			String overridePath = overrideName + originalPath.Substring(originalNameEnd);
 			return overridePath;
 		}
 
-		private static bool BuildFunctionSelectDropdownMenuUsingInternalMethod(SerializedProperty listenerProperty, UnityEventBase dummyEvent, Object listenerTarget, out GenericMenu menu)
+		private static Boolean BuildFunctionSelectDropdownMenuUsingInternalMethod(SerializedProperty listenerProperty, UnityEventBase dummyEvent, Object listenerTarget, out GenericMenu menu)
 		{
 			menu = default;
 
@@ -180,7 +180,7 @@ namespace Sisus.ComponentNames.EditorOnly
 				return false;
 			}
 
-			var buildPopupListMethod = typeof(UnityEventDrawer).GetMethod("BuildPopupList", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
+			MethodInfo buildPopupListMethod = typeof(UnityEventDrawer).GetMethod("BuildPopupList", BindingFlags.Static | BindingFlags.NonPublic | BindingFlags.Public);
 			if(buildPopupListMethod == null)
 			{
 				#if DEV_MODE
@@ -190,7 +190,7 @@ namespace Sisus.ComponentNames.EditorOnly
 				return false;
 			}
 
-			var parameters = buildPopupListMethod.GetParameters();
+			ParameterInfo[] parameters = buildPopupListMethod.GetParameters();
 			if(parameters.Length != 3
 				|| parameters[0].ParameterType != typeof(Object)
 				|| parameters[1].ParameterType != typeof(UnityEventBase)
@@ -203,7 +203,7 @@ namespace Sisus.ComponentNames.EditorOnly
 				return false;
 			}
 
-			var args = new object[] { listenerTarget, dummyEvent, listenerProperty };
+			System.Object[] args = new System.Object[] { listenerTarget, dummyEvent, listenerProperty };
 			try
 			{
 				menu = buildPopupListMethod.Invoke(null, args) as GenericMenu;
@@ -239,7 +239,7 @@ namespace Sisus.ComponentNames.EditorOnly
 				return new UnityEvent();
 			}
 
-			var staticType = GetStaticTypeFromProperty(unityEventProperty);
+			Type staticType = GetStaticTypeFromProperty(unityEventProperty);
 			if(staticType.IsSubclassOf(typeof(UnityEventBase)))
 			{
 				return Activator.CreateInstance(staticType) as UnityEventBase;
@@ -249,16 +249,16 @@ namespace Sisus.ComponentNames.EditorOnly
 
 		private static Type GetStaticTypeFromProperty(SerializedProperty property)
 		{
-			var classType = GetScriptTypeFromProperty(property);
+			Type classType = GetScriptTypeFromProperty(property);
 			if(classType == null)
 			{
 				return null;
 			}
 
-			var fieldPath = property.propertyPath;
+			String fieldPath = property.propertyPath;
 			
-			var isReferencingAManagedReferenceFieldProperty = typeof(SerializedProperty).GetProperty("isReferencingAManagedReferenceField", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-			bool isReferencingAManagedReference = (bool)isReferencingAManagedReferenceFieldProperty.GetValue(property, null);
+			PropertyInfo isReferencingAManagedReferenceFieldProperty = typeof(SerializedProperty).GetProperty("isReferencingAManagedReferenceField", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+			Boolean isReferencingAManagedReference = (Boolean)isReferencingAManagedReferenceFieldProperty.GetValue(property, null);
 			if(isReferencingAManagedReference)
 			{
 				// When the field we are trying to access is a dynamic instance, things are a bit more tricky
@@ -272,12 +272,12 @@ namespace Sisus.ComponentNames.EditorOnly
 				// 2. get the path *in the current managed instance* of the field we are pointing to,
 				// 3. foward that to 'GetFieldInfoFromPropertyPath' as if it was a regular field,
 
-				var objectTypenameMethod = typeof(SerializedProperty).GetMethod("GetFullyQualifiedTypenameForCurrentTypeTreeInternal", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-				var objectTypename = objectTypenameMethod.Invoke(property, null) as string;
+				MethodInfo objectTypenameMethod = typeof(SerializedProperty).GetMethod("GetFullyQualifiedTypenameForCurrentTypeTreeInternal", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+				String objectTypename = objectTypenameMethod.Invoke(property, null) as String;
 				GetTypeFromManagedReferenceFullTypeName(objectTypename, out classType);
 
-				var fieldPathMethod = typeof(SerializedProperty).GetMethod("GetPropertyPathInCurrentManagedTypeTreeInternal", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
-				fieldPath = fieldPathMethod.Invoke(property, null) as string;
+				MethodInfo fieldPathMethod = typeof(SerializedProperty).GetMethod("GetPropertyPathInCurrentManagedTypeTreeInternal", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+				fieldPath = fieldPathMethod.Invoke(property, null) as String;
 			}
 
 			if(classType == null)
@@ -288,34 +288,34 @@ namespace Sisus.ComponentNames.EditorOnly
 			return GetStaticTypeFromPropertyPath(classType, fieldPath);
 		}
 
-		private static bool GetTypeFromManagedReferenceFullTypeName(string managedReferenceFullTypename, out Type managedReferenceInstanceType)
+		private static Boolean GetTypeFromManagedReferenceFullTypeName(String managedReferenceFullTypename, out Type managedReferenceInstanceType)
         {
             managedReferenceInstanceType = null;
 
-            var parts = managedReferenceFullTypename.Split(' ');
+            String[] parts = managedReferenceFullTypename.Split(' ');
             if (parts.Length == 2)
             {
-                var assemblyPart = parts[0];
-                var nsClassnamePart = parts[1];
+                String assemblyPart = parts[0];
+                String nsClassnamePart = parts[1];
                 managedReferenceInstanceType = Type.GetType($"{nsClassnamePart}, {assemblyPart}");
             }
 
             return managedReferenceInstanceType != null;
         }
 
-		private static Type GetStaticTypeFromPropertyPath(Type host, string path)
+		private static Type GetStaticTypeFromPropertyPath(Type host, String path)
 		{
-			const string arrayData = @"\.Array\.data\[[0-9]+\]";
+			const String arrayData = @"\.Array\.data\[[0-9]+\]";
 			// we are looking for array element only when the path ends with Array.data[x]
-			var lookingForArrayElement = Regex.IsMatch(path, arrayData + "$");
+			Boolean lookingForArrayElement = Regex.IsMatch(path, arrayData + "$");
 			// remove any Array.data[x] from the path because it is prevents cache searching.
 			path = Regex.Replace(path, arrayData, ".___ArrayElement___");
 
-			var type = host;
-			string[] parts = path.Split('.');
-			for(int i = 0; i < parts.Length; i++)
+			Type type = host;
+			String[] parts = path.Split('.');
+			for(Int32 i = 0; i < parts.Length; i++)
 			{
-				string member = parts[i];
+				String member = parts[i];
 				// GetField on class A will not find private fields in base classes to A,
 				// so we have to iterate through the base classes and look there too.
 				// Private fields are relevant because they can still be shown in the Inspector,
@@ -350,7 +350,7 @@ namespace Sisus.ComponentNames.EditorOnly
 			return type;
 		}
 
-		private static bool IsArrayOrList(this Type listType)
+		private static Boolean IsArrayOrList(this Type listType)
 		{
 			if(listType.IsArray)
 			{
@@ -408,21 +408,21 @@ namespace Sisus.ComponentNames.EditorOnly
 		public static GenericMenu BuildFunctionSelectDropdownMenu(Object target, UnityEventBase dummyEvent, SerializedProperty listener)
 		{
 			//special case for components... we want all the game objects targets there!
-			var targetToUse = target;
+			Object targetToUse = target;
 			if(targetToUse is Component)
 			{
 				targetToUse = (target as Component).gameObject;
 			}
 
 			// find the current event target...
-			var methodName = listener.FindPropertyRelative(kMethodNamePath);
+			SerializedProperty methodName = listener.FindPropertyRelative(kMethodNamePath);
 
-			var menu = new GenericMenu();
+			GenericMenu menu = new GenericMenu();
 
 			menu.AddItem
 			(
 				new GUIContent(kNoFunctionString),
-				string.IsNullOrEmpty(methodName.stringValue),
+				String.IsNullOrEmpty(methodName.stringValue),
 				ClearEventFunction,
 				new UnityEventFunction(listener, null, null, PersistentListenerMode.EventDefined)
 			);
@@ -440,16 +440,16 @@ namespace Sisus.ComponentNames.EditorOnly
 
 			// check out the signature of invoke as this is the callback!
 			MethodInfo delegateMethod = delegateType.GetMethod("Invoke");
-			var delegateArgumentsTypes = delegateMethod.GetParameters().Select(x => x.ParameterType).ToArray();
+			Type[] delegateArgumentsTypes = delegateMethod.GetParameters().Select(x => x.ParameterType).ToArray();
 
-			var duplicateNames = new Dictionary<string, int>();
-			var duplicateFullNames = new Dictionary<string, int>();
+			Dictionary<String, Int32> duplicateNames = new Dictionary<String, Int32>();
+			Dictionary<String, Int32> duplicateFullNames = new Dictionary<String, Int32>();
 
 			GeneratePopUpForType(menu, targetToUse, targetToUse.GetType().Name, listener, delegateArgumentsTypes);
 			duplicateNames[targetToUse.GetType().Name] = 0;
-			if(targetToUse is GameObject)
+			if(targetToUse is GameObject __gameObject)
 			{
-				Component[] comps = (targetToUse as GameObject).GetComponents<Component>();
+				Component[] comps = __gameObject.GetComponents<Component>();
 
 				// Collect all the names and record how many times the same name is used.
 				foreach(Component comp in comps)
@@ -459,9 +459,9 @@ namespace Sisus.ComponentNames.EditorOnly
 						continue;
 					}
 
-					var componentTypeName = comp.GetType().Name;
+					String componentTypeName = comp.GetType().Name;
 
-					var duplicateIndex = 0;
+					Int32 duplicateIndex = 0;
 					if(duplicateNames.TryGetValue(componentTypeName, out duplicateIndex))
 					{
 						duplicateIndex++;
@@ -477,9 +477,9 @@ namespace Sisus.ComponentNames.EditorOnly
 						continue;
 					}
 
-					var compType = comp.GetType();
-					string targetName = compType.Name;
-					int duplicateIndex = 0;
+					Type compType = comp.GetType();
+					String targetName = compType.Name;
+					Int32 duplicateIndex = 0;
 
 					// Is this name used multiple times? If so then use the full name plus an index if there are also duplicates of this. (case 1309997)
 					if(duplicateNames[compType.Name] > 0)
@@ -502,10 +502,10 @@ namespace Sisus.ComponentNames.EditorOnly
 			return menu;
 		}
 
-		private static void GeneratePopUpForType(GenericMenu menu, Object target, string targetName, SerializedProperty listener, Type[] delegateArgumentsTypes)
+		private static void GeneratePopUpForType(GenericMenu menu, Object target, String targetName, SerializedProperty listener, Type[] delegateArgumentsTypes)
 		{
-			var methods = new List<ValidMethodMap>();
-			bool didAddDynamic = false;
+			List<ValidMethodMap> methods = new List<ValidMethodMap>();
+			Boolean didAddDynamic = false;
 
 			// skip 'void' event defined on the GUI as we have a void prebuilt type!
 			if(delegateArgumentsTypes.Length != 0)
@@ -513,17 +513,17 @@ namespace Sisus.ComponentNames.EditorOnly
 				GetMethodsForTargetAndMode(target, delegateArgumentsTypes, methods, PersistentListenerMode.EventDefined);
 				if(methods.Count > 0)
 				{
-					menu.AddDisabledItem(new GUIContent(targetName + "/Dynamic " + string.Join(", ", delegateArgumentsTypes.Select(e => GetTypeName(e)).ToArray())));
+					menu.AddDisabledItem(new GUIContent(targetName + "/Dynamic " + String.Join(", ", delegateArgumentsTypes.Select(e => GetTypeName(e)).ToArray())));
 					AddMethodsToMenu(menu, listener, methods, targetName);
 					didAddDynamic = true;
 				}
 			}
 
 			methods.Clear();
-			GetMethodsForTargetAndMode(target, new[] { typeof(float) }, methods, PersistentListenerMode.Float);
-			GetMethodsForTargetAndMode(target, new[] { typeof(int) }, methods, PersistentListenerMode.Int);
-			GetMethodsForTargetAndMode(target, new[] { typeof(string) }, methods, PersistentListenerMode.String);
-			GetMethodsForTargetAndMode(target, new[] { typeof(bool) }, methods, PersistentListenerMode.Bool);
+			GetMethodsForTargetAndMode(target, new[] { typeof(Single) }, methods, PersistentListenerMode.Float);
+			GetMethodsForTargetAndMode(target, new[] { typeof(Int32) }, methods, PersistentListenerMode.Int);
+			GetMethodsForTargetAndMode(target, new[] { typeof(String) }, methods, PersistentListenerMode.String);
+			GetMethodsForTargetAndMode(target, new[] { typeof(Boolean) }, methods, PersistentListenerMode.Bool);
 			GetMethodsForTargetAndMode(target, new[] { typeof(Object) }, methods, PersistentListenerMode.Object);
 			GetMethodsForTargetAndMode(target, new Type[] { }, methods, PersistentListenerMode.Void);
 			if(methods.Count > 0)
@@ -543,11 +543,11 @@ namespace Sisus.ComponentNames.EditorOnly
 			}
 		}
 
-		private static void AddMethodsToMenu(GenericMenu menu, SerializedProperty listener, List<ValidMethodMap> methods, string targetName)
+		private static void AddMethodsToMenu(GenericMenu menu, SerializedProperty listener, List<ValidMethodMap> methods, String targetName)
 		{
 			// Note: sorting by a bool in OrderBy doesn't seem to work for some reason, so using numbers explicitly.
 			IEnumerable<ValidMethodMap> orderedMethods = methods.OrderBy(e => e.methodInfo.Name.StartsWith("set_") ? 0 : 1).ThenBy(e => e.methodInfo.Name);
-			foreach(var validMethod in orderedMethods)
+			foreach(ValidMethodMap validMethod in orderedMethods)
 			{
 				AddFunctionsForScript(menu, listener, validMethod, targetName);
 			}
@@ -556,17 +556,17 @@ namespace Sisus.ComponentNames.EditorOnly
 		private static void GetMethodsForTargetAndMode(Object target, Type[] delegateArgumentsTypes, List<ValidMethodMap> methods, PersistentListenerMode mode)
 		{
 			IEnumerable<ValidMethodMap> newMethods = CalculateMethodMap(target, delegateArgumentsTypes, mode == PersistentListenerMode.Object);
-			foreach(var m in newMethods)
+			foreach(ValidMethodMap m in newMethods)
 			{
-				var method = m;
+				ValidMethodMap method = m;
 				method.mode = mode;
 				methods.Add(method);
 			}
 		}
 
-		private static IEnumerable<ValidMethodMap> CalculateMethodMap(Object target, Type[] t, bool allowSubclasses)
+		private static IEnumerable<ValidMethodMap> CalculateMethodMap(Object target, Type[] t, Boolean allowSubclasses)
 		{
-			var validMethods = new List<ValidMethodMap>();
+			List<ValidMethodMap> validMethods = new List<ValidMethodMap>();
 			if(target == null || t == null)
 			{
 				return validMethods;
@@ -574,17 +574,17 @@ namespace Sisus.ComponentNames.EditorOnly
 
 			// find the methods on the behaviour that match the signature
 			Type componentType = target.GetType();
-			var componentMethods = componentType.GetMethods().Where(x => !x.IsSpecialName).ToList();
+			List<MethodInfo> componentMethods = componentType.GetMethods().Where(x => !x.IsSpecialName).ToList();
 
-			var wantedProperties = componentType.GetProperties().AsEnumerable();
+			IEnumerable<PropertyInfo> wantedProperties = componentType.GetProperties().AsEnumerable();
 			wantedProperties = wantedProperties.Where(x => x.GetCustomAttributes(typeof(ObsoleteAttribute), true).Length == 0 && x.GetSetMethod() != null);
 			componentMethods.AddRange(wantedProperties.Select(x => x.GetSetMethod()));
 
-			foreach(var componentMethod in componentMethods)
+			foreach(MethodInfo componentMethod in componentMethods)
 			{
 				//Debug.Log ("Method: " + componentMethod);
 				// if the argument length is not the same, no match
-				var componentParamaters = componentMethod.GetParameters();
+				ParameterInfo[] componentParamaters = componentMethod.GetParameters();
 				if(componentParamaters.Length != t.Length)
 				{
 					continue;
@@ -602,8 +602,8 @@ namespace Sisus.ComponentNames.EditorOnly
 				}
 
 				// if the argument types do not match, no match
-				bool paramatersMatch = true;
-				for(int i = 0; i < t.Length; i++)
+				Boolean paramatersMatch = true;
+				for(Int32 i = 0; i < t.Length; i++)
 				{
 					if(!componentParamaters[i].ParameterType.IsAssignableFrom(t[i]))
 					{
@@ -619,7 +619,7 @@ namespace Sisus.ComponentNames.EditorOnly
 				// valid method
 				if(paramatersMatch)
 				{
-					var vmm = new ValidMethodMap
+					ValidMethodMap vmm = new ValidMethodMap
 					{
 						target = target,
 						methodInfo = componentMethod
@@ -631,22 +631,22 @@ namespace Sisus.ComponentNames.EditorOnly
 			return validMethods;
 		}
 
-		private static void AddFunctionsForScript(GenericMenu menu, SerializedProperty listener, ValidMethodMap method, string targetName)
+		private static void AddFunctionsForScript(GenericMenu menu, SerializedProperty listener, ValidMethodMap method, String targetName)
 		{
 			PersistentListenerMode mode = method.mode;
 
 			// find the current event target...
-			var listenerTarget = listener.FindPropertyRelative(kInstancePath).objectReferenceValue;
-			var methodName = listener.FindPropertyRelative(kMethodNamePath).stringValue;
-			var setMode = GetMode(listener.FindPropertyRelative(kModePath));
-			var typeName = listener.FindPropertyRelative(kArgumentsPath).FindPropertyRelative(kObjectArgumentAssemblyTypeName);
+			Object listenerTarget = listener.FindPropertyRelative(kInstancePath).objectReferenceValue;
+			String methodName = listener.FindPropertyRelative(kMethodNamePath).stringValue;
+			PersistentListenerMode setMode = GetMode(listener.FindPropertyRelative(kModePath));
+			SerializedProperty typeName = listener.FindPropertyRelative(kArgumentsPath).FindPropertyRelative(kObjectArgumentAssemblyTypeName);
 
-			var args = new StringBuilder();
-			var count = method.methodInfo.GetParameters().Length;
-			for(int index = 0; index < count; index++)
+			StringBuilder args = new StringBuilder();
+			Int32 count = method.methodInfo.GetParameters().Length;
+			for(Int32 index = 0; index < count; index++)
 			{
-				var methodArg = method.methodInfo.GetParameters()[index];
-				args.Append(string.Format("{0}", GetTypeName(methodArg.ParameterType)));
+				ParameterInfo methodArg = method.methodInfo.GetParameters()[index];
+				args.Append($"{GetTypeName(methodArg.ParameterType)}");
 
 				if(index < count - 1)
 				{
@@ -654,16 +654,16 @@ namespace Sisus.ComponentNames.EditorOnly
 				}
 			}
 
-			var isCurrentlySet = listenerTarget == method.target
-				&& methodName == method.methodInfo.Name
-				&& mode == setMode;
+			Boolean isCurrentlySet = listenerTarget == method.target
+			                         && methodName == method.methodInfo.Name
+			                         && mode == setMode;
 
 			if(isCurrentlySet && mode == PersistentListenerMode.Object && method.methodInfo.GetParameters().Length == 1)
 			{
 				isCurrentlySet &= (method.methodInfo.GetParameters()[0].ParameterType.AssemblyQualifiedName == typeName.stringValue);
 			}
 
-			string path = GetFormattedMethodName(targetName, method.methodInfo.Name, args.ToString(), mode == PersistentListenerMode.EventDefined);
+			String path = GetFormattedMethodName(targetName, method.methodInfo.Name, args.ToString(), mode == PersistentListenerMode.EventDefined);
 			menu.AddItem
 			(
 				new GUIContent(path),
@@ -678,43 +678,43 @@ namespace Sisus.ComponentNames.EditorOnly
 			return (PersistentListenerMode)mode.enumValueIndex;
 		}
 
-		private static string GetTypeName(Type t)
+		private static String GetTypeName(Type t)
 		{
-			if(t == typeof(int))
+			if(t == typeof(Int32))
 				return "int";
-			if(t == typeof(float))
+			if(t == typeof(Single))
 				return "float";
-			if(t == typeof(string))
+			if(t == typeof(String))
 				return "string";
-			if(t == typeof(bool))
+			if(t == typeof(Boolean))
 				return "bool";
 			return t.Name;
 		}
 
-		private static string GetFormattedMethodName(string targetName, string methodName, string args, bool dynamic)
+		private static String GetFormattedMethodName(String targetName, String methodName, String args, Boolean dynamic)
 		{
 			if(dynamic)
 			{
 				if(methodName.StartsWith("set_"))
-					return string.Format("{0}/{1}", targetName, methodName.Substring(4));
+					return $"{targetName}/{methodName.Substring(4)}";
 				else
-					return string.Format("{0}/{1}", targetName, methodName);
+					return $"{targetName}/{methodName}";
 			}
 			else
 			{
 				if(methodName.StartsWith("set_"))
-					return string.Format("{0}/{2} {1}", targetName, methodName.Substring(4), args);
+					return String.Format("{0}/{2} {1}", targetName, methodName.Substring(4), args);
 				else
-					return string.Format("{0}/{1} ({2})", targetName, methodName, args);
+					return $"{targetName}/{methodName} ({args})";
 			}
 		}
 
-		private static void SetEventFunction(object source)
+		private static void SetEventFunction(System.Object source)
 		{
 			((UnityEventFunction)source).Assign();
 		}
 
-		private static void ClearEventFunction(object source)
+		private static void ClearEventFunction(System.Object source)
 		{
 			((UnityEventFunction)source).Clear();
 		}
@@ -737,21 +737,21 @@ namespace Sisus.ComponentNames.EditorOnly
 			public void Assign()
 			{
 				// find the current event target...
-				var listenerTarget = listener.FindPropertyRelative(kInstancePath);
-				var listenerTargetType = listener.FindPropertyRelative(kInstanceTypePath);
-				var methodName = listener.FindPropertyRelative(kMethodNamePath);
-				var mode = listener.FindPropertyRelative(kModePath);
-				var arguments = listener.FindPropertyRelative(kArgumentsPath);
+				SerializedProperty listenerTarget = listener.FindPropertyRelative(kInstancePath);
+				SerializedProperty listenerTargetType = listener.FindPropertyRelative(kInstanceTypePath);
+				SerializedProperty methodName = listener.FindPropertyRelative(kMethodNamePath);
+				SerializedProperty mode = listener.FindPropertyRelative(kModePath);
+				SerializedProperty arguments = listener.FindPropertyRelative(kArgumentsPath);
 
 				listenerTarget.objectReferenceValue = target;
 				listenerTargetType.stringValue = method.DeclaringType.AssemblyQualifiedName;
 				methodName.stringValue = method.Name;
-				mode.enumValueIndex = (int)this.mode;
+				mode.enumValueIndex = (Int32)this.mode;
 
 				if(this.mode == PersistentListenerMode.Object)
 				{
-					var fullArgumentType = arguments.FindPropertyRelative(kObjectArgumentAssemblyTypeName);
-					var argParams = method.GetParameters();
+					SerializedProperty fullArgumentType = arguments.FindPropertyRelative(kObjectArgumentAssemblyTypeName);
+					ParameterInfo[] argParams = method.GetParameters();
 					if(argParams.Length == 1 && typeof(Object).IsAssignableFrom(argParams[0].ParameterType))
 						fullArgumentType.stringValue = argParams[0].ParameterType.AssemblyQualifiedName;
 					else
@@ -765,9 +765,9 @@ namespace Sisus.ComponentNames.EditorOnly
 
 			private void ValidateObjectParamater(SerializedProperty arguments, PersistentListenerMode mode)
 			{
-				var fullArgumentType = arguments.FindPropertyRelative(kObjectArgumentAssemblyTypeName);
-				var argument = arguments.FindPropertyRelative(kObjectArgument);
-				var argumentObj = argument.objectReferenceValue;
+				SerializedProperty fullArgumentType = arguments.FindPropertyRelative(kObjectArgumentAssemblyTypeName);
+				SerializedProperty argument = arguments.FindPropertyRelative(kObjectArgument);
+				Object argumentObj = argument.objectReferenceValue;
 
 				if(mode != PersistentListenerMode.Object)
 				{
@@ -787,11 +787,11 @@ namespace Sisus.ComponentNames.EditorOnly
 			public void Clear()
 			{
 				// find the current event target...
-				var methodName = listener.FindPropertyRelative(kMethodNamePath);
+				SerializedProperty methodName = listener.FindPropertyRelative(kMethodNamePath);
 				methodName.stringValue = null;
 
-				var mode = listener.FindPropertyRelative(kModePath);
-				mode.enumValueIndex = (int)PersistentListenerMode.Void;
+				SerializedProperty mode = listener.FindPropertyRelative(kModePath);
+				mode.enumValueIndex = (Int32)PersistentListenerMode.Void;
 
 				listener.serializedObject.ApplyModifiedProperties();
 			}

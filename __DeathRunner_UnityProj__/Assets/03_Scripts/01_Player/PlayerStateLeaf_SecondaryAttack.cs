@@ -9,14 +9,14 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
-            Debug.Log("SecondaryAttack.Enter");
+            Debug.Log("State.SecondaryAttack.Enter");
         }
         
         protected override void OnExit()
         {
             base.OnExit();
             
-            Debug.Log("SecondaryAttack.Exit");
+            Debug.Log("State.SecondaryAttack.Exit");
         }
     }
 }

@@ -250,7 +250,7 @@ RectTransform:
   m_GameObject: {fileID: 1562144629}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.77903, y: 0.77903, z: 0.77903}
+  m_LocalScale: {x: 0.9787733, y: 0.9787733, z: 0.9787733}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 113500198}
@@ -260,7 +260,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -228, y: -156.9}
+  m_AnchoredPosition: {x: -186.2, y: -165}
   m_SizeDelta: {x: 292.68262, y: 292.68262}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1792531411
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 2977335224038789679}
   - component: {fileID: 2977335224038789678}
   m_Layer: 5
-  m_Name: Cooldown.001
+  m_Name: Cooldown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 2977335225151409958}
   - component: {fileID: 2977335225151409957}
   m_Layer: 5
-  m_Name: Health.001
+  m_Name: HealthBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -884,6 +884,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3661586536970963835}
+  - component: {fileID: 838951240}
   m_Layer: 5
   m_Name: PlayerBars
   m_TagString: Untagged
@@ -915,3 +916,21 @@ RectTransform:
   m_AnchoredPosition: {x: 9.65918, y: -9.657959}
   m_SizeDelta: {x: 483.24146, y: 129.48389}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &838951240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452252948315323430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd829d18ba541842ad18ca49fb011c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: {fileID: 11400000, guid: 327bac14ac71a9f40bc1c4bb41e56093, type: 2}
+  OnHealthChanged:
+    _eventType: 0
+    _event: {fileID: 11400000, guid: e3d32e645a171fb4db1d064a022e23d5, type: 2}
+    _eventInstancer: {fileID: 0}
+  healthSlider: {fileID: 2977335224705263652}

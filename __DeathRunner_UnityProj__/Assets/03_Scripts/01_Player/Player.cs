@@ -1,9 +1,12 @@
 //System libraries first
-
-//Unity-specific libraries next
 using System;
 using System.Collections;
 
+//Unity-specific libraries next
+using UnityEngine;
+using static Unity.Mathematics.math;
+
+//Third-party libraries next
 using HFSM;
 using JetBrains.Annotations;
 using QFSW.QC;
@@ -12,15 +15,10 @@ using QFSW.QC;
 using Sirenix.OdinInspector;
 #endif
 
-using UnityEngine;
-
-using static Unity.Mathematics.math;
-
-//Third-party libraries next
-
-//Project-specific libraries last
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;
+
+using U16   = System.UInt16; //max 65,535
 
 namespace DeathRunner.Player
 {
@@ -29,7 +27,7 @@ namespace DeathRunner.Player
         //NOTE: [Walter] Make shared states possible??
 
         [SerializeField] private PlayerReferences      playerReferences = new();
-        [SerializeField] private PlayerAttributes      playerAttributes = new();
+        //[SerializeField] private PlayerAttributes      playerAttributes = new();
 
         [Tooltip("Locomotion Settings for Normal-Time")]
         [SerializeField] private LocomotionSettings    locomotionNTSettings;
@@ -96,6 +94,12 @@ namespace DeathRunner.Player
         private void Reset() => playerReferences.Reset(gameObject);
 
         private void OnValidate() => playerReferences.OnValidate(gameObject);
+        
+        #if ODIN_INSPECTOR
+        [Button]
+        #endif
+        [ContextMenu("Ensure References")]
+        private void EnsureReferences() => playerReferences.OnValidate(gameObject);
         #endif
         
         private Boolean HasMoveInput   => any(playerReferences.InputHandler.MoveInput != F32x2.zero);
@@ -110,6 +114,8 @@ namespace DeathRunner.Player
         private void Awake()
         {
             //playerAttributes.Init();
+            //playerAttributes.Init(owner: gameObject);
+            playerReferences.Init(gameObject);
             
             CreateStateTree();
             CreateStateTransitions();
@@ -120,7 +126,7 @@ namespace DeathRunner.Player
 
         private void Start()
         {
-            playerAttributes.Init();
+
         }
 
         private void CreateStateTree()
@@ -155,8 +161,8 @@ namespace DeathRunner.Player
 
         private void CreateStateTransitions()
         {
-            _alive.AddTransition(to: _dead, conditions: () => playerAttributes.health.IsZero == true);  //Alive -> Dead
-            _dead.AddTransition(to: _alive, conditions: () => playerAttributes.health.IsZero == false); //Dead -> Alive
+            _alive.AddTransition(to: _dead, conditions: () => playerReferences.Health.health.IsZero == true);  //Alive -> Dead
+            _dead.AddTransition(to: _alive, conditions: () => playerReferences.Health.health.IsZero == false); //Dead -> Alive
 
             _idleNT.AddTransition(to: _walkNT, conditions: () => HasMoveInput);   //Idle -> Walk
             _walkNT.AddTransition(to: _idleNT, conditions: () => HasNoMoveInput); //Walk -> Idle
@@ -169,11 +175,11 @@ namespace DeathRunner.Player
             
             _idleNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld && (DashHoldTime >= holdTimeForLongDash)); //Idle -> DashLong
             _dashLongNT.AddTransition(to: _idleNT, conditions: () => DashInputIsNotHeld              && HasNoMoveInput);        //DashLong -> Idle
-            _dashLongNT.AddTransition(to: _idleNT, conditions: () => playerAttributes.stamina.IsZero && HasNoMoveInput);        //DashLong -> Idle
+            _dashLongNT.AddTransition(to: _idleNT, conditions: () => playerReferences.Stamina.stamina.IsZero && HasNoMoveInput);        //DashLong -> Idle
             
             _walkNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld && (DashHoldTime >= holdTimeForLongDash)); //Walk -> DashLong
             _dashLongNT.AddTransition(to: _walkNT, conditions: () => DashInputIsNotHeld              && HasMoveInput);          //DashLong -> Walk
-            _dashLongNT.AddTransition(to: _walkNT, conditions: () => playerAttributes.stamina.IsZero && HasMoveInput);          //DashLong -> Walk
+            _dashLongNT.AddTransition(to: _walkNT, conditions: () => playerReferences.Stamina.stamina.IsZero && HasMoveInput);          //DashLong -> Walk
             
             //TODO: Add post transitions after attacks when back to walk/idle in which you can still follow up with another attack.
             
@@ -247,32 +253,50 @@ namespace DeathRunner.Player
         [UsedImplicitly]
         public UInt16 Health
         {
-            get => playerAttributes.health.Value;
-            set => playerAttributes.health.Value = value;
+            get
+            {
+                #if UNITY_EDITOR
+                Debug.Log("Getting health", context: this);
+                #endif
+                return playerReferences.Health.health.Value;
+            }
+            set
+            {
+                #if UNITY_EDITOR
+                Debug.Log("Setting health to " + value, context: this);
+                #endif
+                playerReferences.Health.health.Value = value;
+            }
         }
 
         [Command(aliasOverride: "Player.Health.Kill")]
         [UsedImplicitly]
         public void KillPlayer()
         {
-            Debug.Log("Killing player");
-            playerAttributes.health.Value = 0;
+            #if UNITY_EDITOR
+            Debug.Log("Killing player", context: this);
+            #endif
+            playerReferences.Health.health.Value = 0;
         }
         
         [Command(aliasOverride: "Player.Health.Add")]
         [UsedImplicitly]
-        public void AddHealth(UInt16 amount)
+        public void AddHealth(U16 amount)
         {
-            Debug.Log("Adding health " + amount);
-            playerAttributes.health.Value += amount;
+            #if UNITY_EDITOR
+            Debug.Log("Adding health " + amount, context: this);
+            #endif
+            playerReferences.Health.health.Value += amount;
         }
         
         [Command(aliasOverride: "Player.Health.Sub")]
         [UsedImplicitly]
-        public void SubHealth(UInt16 amount)
+        public void SubHealth(U16 amount)
         {
-            Debug.Log("Subtracting health " + amount);
-            playerAttributes.health.Value -= amount;
+            #if UNITY_EDITOR
+            Debug.Log("Subtracting health " + amount, context: this);
+            #endif
+            playerReferences.Health.health.Value -= amount;
         }
 
         #endregion

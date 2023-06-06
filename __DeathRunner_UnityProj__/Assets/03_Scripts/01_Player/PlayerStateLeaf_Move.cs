@@ -37,7 +37,7 @@ namespace DeathRunner.Player
             base.OnEnter();
             
             #if UNITY_EDITOR
-            Debug.Log("Walk.Enter");
+            Debug.Log("State.Walk.Enter");
             #endif
         }
         
@@ -46,7 +46,7 @@ namespace DeathRunner.Player
             base.OnExit();
             
             #if UNITY_EDITOR
-            Debug.Log("Walk.Exit");
+            Debug.Log("State.Walk.Exit");
             #endif
         }
 

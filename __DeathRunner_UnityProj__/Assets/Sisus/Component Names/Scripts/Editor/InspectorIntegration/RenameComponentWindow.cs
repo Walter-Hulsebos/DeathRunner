@@ -15,20 +15,23 @@ namespace Sisus.ComponentNames.EditorOnly
         [NonSerialized]
         private Component component;
         [NonSerialized]
-        private string oldName;
+        private String oldName;
         [NonSerialized]
-        private string newName;
+        private String newName;
 
         public static void Open(Rect position, Component component)
         {
             NameContainer.NowRenaming = true;
 
-            var window = CreateInstance<RenameComponentWindow>();
+            RenameComponentWindow window = CreateInstance<RenameComponentWindow>();
             
             window.component = component;
-            string oldName = NameContainer.TryGet(component, out var nameContainer) && nameContainer.NameOverride is string nameOverride && nameOverride.Length > 0 ? nameOverride : component.GetName();
+            String oldName = NameContainer.TryGet(component, out NameContainer nameContainer) && nameContainer.NameOverride is
+            {
+                Length: > 0
+            } nameOverride ? nameOverride : component.GetName();
             
-            if(nameContainer != null && nameContainer.TooltipOverride is string tooltipOverride && tooltipOverride.Length > 0)
+            if(nameContainer != null && nameContainer.TooltipOverride is { Length: > 0 } tooltipOverride)
 			{
                 oldName += " | " + tooltipOverride;
             }
@@ -36,9 +39,9 @@ namespace Sisus.ComponentNames.EditorOnly
             window.oldName = oldName;
             window.newName = oldName;
 
-            var buttonRect = position;
+            Rect buttonRect = position;
             buttonRect.height = 0f;
-            var windowSize = position.size;
+            Vector2 windowSize = position.size;
 
             window.ShowAsDropDown(buttonRect, windowSize);
         }
@@ -72,7 +75,7 @@ namespace Sisus.ComponentNames.EditorOnly
 
             // Fix for the TextField clipping over the very top line
             // of the component header component below it.
-            var lineRect = new Rect(0f, 0f, Screen.width, 1f);
+            Rect lineRect = new Rect(0f, 0f, Screen.width, 1f);
             EditorGUI.DrawRect(lineRect, LineColor);
         }
 
@@ -80,16 +83,16 @@ namespace Sisus.ComponentNames.EditorOnly
 
 		private void OnDestroy()
         {
-            if(string.Equals(newName, oldName))
+            if(String.Equals(newName, oldName))
 			{
                 NameContainer.NowRenaming = false;
                 return;
             }
 
-            int tooltipSeparator = newName.IndexOf('|');
+            Int32 tooltipSeparator = newName.IndexOf('|');
 			if(tooltipSeparator == -1)
 			{
-                bool hadTooltip = oldName.IndexOf('|') != -1;
+                Boolean hadTooltip = oldName.IndexOf('|') != -1;
                 if(hadTooltip)
 				{
                     component.SetName(new GUIContent(newName, ""));
@@ -101,7 +104,7 @@ namespace Sisus.ComponentNames.EditorOnly
 			}
 			else
 			{
-                string newTooltip = newName.Substring(tooltipSeparator + 1).TrimStart();
+                String newTooltip = newName[(tooltipSeparator + 1)..].TrimStart();
                 newName = newName.Substring(0, tooltipSeparator).TrimEnd();
 				component.SetName(new GUIContent(newName, newTooltip));
 			}

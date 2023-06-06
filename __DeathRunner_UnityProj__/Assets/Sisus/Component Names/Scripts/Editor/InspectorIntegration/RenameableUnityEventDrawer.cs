@@ -1,3 +1,4 @@
+using System;
 using System.Reflection;
 using UnityEditor;
 using UnityEditorInternal;
@@ -57,20 +58,20 @@ namespace Sisus.ComponentNames.EditorOnly
 		{
             Rect functionDropdownRect = propertyRect;
             functionDropdownRect.y += 27f;
-            float indent = EditorGUI.IndentedRect(propertyRect).x;
-            float firstDropdownWidth = (propertyRect.width - indent) * 0.3f;
+            Single indent = EditorGUI.IndentedRect(propertyRect).x;
+            Single firstDropdownWidth = (propertyRect.width - indent) * 0.3f;
             functionDropdownRect.xMin = indent + firstDropdownWidth + 23f;
             functionDropdownRect.width -= 7f;
             functionDropdownRect.height = EditorGUIUtility.singleLineHeight;
             return functionDropdownRect;
         }
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        public override Single GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
 			return WrappedDrawer.GetPropertyHeight(property, label);
         }
 
-		public override bool CanCacheInspectorGUI(SerializedProperty property)
+		public override Boolean CanCacheInspectorGUI(SerializedProperty property)
         {
             return WrappedDrawer.CanCacheInspectorGUI(property);
         }
@@ -84,13 +85,13 @@ namespace Sisus.ComponentNames.EditorOnly
         {
             wrappedDrawer = new UnityEventDrawer();
 
-			var attributeField = typeof(PropertyDrawer).GetField("m_Attribute", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+			FieldInfo attributeField = typeof(PropertyDrawer).GetField("m_Attribute", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
 			if(attributeField != null)
 			{
 				attributeField.SetValue(wrappedDrawer, attribute);
 			}
 
-            var fieldInfoField = typeof(PropertyDrawer).GetField("m_FieldInfo", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
+            FieldInfo fieldInfoField = typeof(PropertyDrawer).GetField("m_FieldInfo", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public);
             if(fieldInfoField != null)
             {
                 fieldInfoField.SetValue(wrappedDrawer, fieldInfo);
@@ -99,17 +100,17 @@ namespace Sisus.ComponentNames.EditorOnly
 
         private void OnLeftMouseDown(Rect propertyRect, SerializedProperty property)
         {
-            float elementHeight = GetElementHeight();
+            Single elementHeight = GetElementHeight();
             Rect functionDropdownRect = GetFirstFunctionDropdownRect(propertyRect);
-            float yMax = propertyRect.yMax - elementHeight;
+            Single yMax = propertyRect.yMax - elementHeight;
 
-            int index = 0;
-            for(float y = functionDropdownRect.y; y < yMax; y += elementHeight)
+            Int32 index = 0;
+            for(Single y = functionDropdownRect.y; y < yMax; y += elementHeight)
             {
                 functionDropdownRect.y = y;
                 if(functionDropdownRect.Contains(Event.current.mousePosition))
                 {
-                    var genericMenu = UnityEventDrawerUtility.BuildFunctionSelectDropdownMenu(property, index);
+                    GenericMenu genericMenu = UnityEventDrawerUtility.BuildFunctionSelectDropdownMenu(property, index);
                     if(genericMenu != null)
                     {
                         Event.current.Use();
@@ -123,9 +124,9 @@ namespace Sisus.ComponentNames.EditorOnly
             }
         }
 
-        private float GetElementHeight()
+        private Single GetElementHeight()
         {
-            const float extraSpacing = 9f;
+            const Single extraSpacing = 9f;
             return EditorGUIUtility.singleLineHeight * 2f + EditorGUIUtility.standardVerticalSpacing + extraSpacing;
         }
 	}

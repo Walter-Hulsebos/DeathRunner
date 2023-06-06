@@ -1,4 +1,5 @@
 ﻿#if UNITY_EDITOR
+using System;
 using JetBrains.Annotations;
 using System.Text;
 using UnityEditor;
@@ -12,14 +13,14 @@ namespace Sisus.ComponentNames.EditorOnly
 
 		public static bool TryParseSummary([NotNull] MonoBehaviour monoBehaviour, out string summary)
 		{
-			if(!(MonoScript.FromMonoBehaviour(monoBehaviour) is MonoScript monoScript) || monoScript == null)
+			if(MonoScript.FromMonoBehaviour(monoBehaviour) is not { } monoScript || monoScript == null)
 			{
 				summary = "";
 				return false;
 			}
 
 			string text = monoScript.text;
-			int summaryStart = text.IndexOf("<summary>");
+			int summaryStart = text.IndexOf("<summary>", StringComparison.Ordinal);
 			if(summaryStart == -1)
 			{
 				summary = "";
@@ -33,7 +34,7 @@ namespace Sisus.ComponentNames.EditorOnly
 				return false;
 			}
 			
-			int summaryEnd = text.IndexOf("</summary>", summaryStart);
+			int summaryEnd = text.IndexOf("</summary>", summaryStart, StringComparison.Ordinal);
 			if(summaryEnd == -1)
 			{
 				summary = "";
@@ -77,7 +78,7 @@ namespace Sisus.ComponentNames.EditorOnly
 					case ' ':
 						if(stringBuilder.Length > 0)
 						{
-							char prev = stringBuilder[stringBuilder.Length - 1];
+							char prev = stringBuilder[^1];
 							if(prev != ' ' && prev != '\n')
 							{
 								stringBuilder.Append(' ');

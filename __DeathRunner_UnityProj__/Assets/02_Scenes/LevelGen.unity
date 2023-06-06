@@ -503,34 +503,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1562144630, guid: abf8d3d5d31c3d24eb83d71d265ea1c5, type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562144630, guid: abf8d3d5d31c3d24eb83d71d265ea1c5, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.9787733
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562144630, guid: abf8d3d5d31c3d24eb83d71d265ea1c5, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.9787733
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562144630, guid: abf8d3d5d31c3d24eb83d71d265ea1c5, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.9787733
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562144630, guid: abf8d3d5d31c3d24eb83d71d265ea1c5, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -186.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1562144630, guid: abf8d3d5d31c3d24eb83d71d265ea1c5, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -165
-      objectReference: {fileID: 0}
-    - target: {fileID: 1799518791, guid: abf8d3d5d31c3d24eb83d71d265ea1c5, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2977335224575537984, guid: abf8d3d5d31c3d24eb83d71d265ea1c5,
         type: 3}
       propertyPath: m_Pivot.x
@@ -827,18 +799,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &144911030 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2977335224705263652, guid: abf8d3d5d31c3d24eb83d71d265ea1c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 80266197}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &288313280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,22 +2036,6 @@ PrefabInstance:
       propertyPath: cooldownImage
       value: 
       objectReference: {fileID: 634529072}
-    - target: {fileID: 913492937, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 144911030}
-    - target: {fileID: 2410215513429711714, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: playerAttributes.health.<Max>k__BackingField
-      value: 
-      objectReference: {fileID: 11400000, guid: 327bac14ac71a9f40bc1c4bb41e56093,
-        type: 2}
-    - target: {fileID: 2410215513429711714, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: playerAttributes.health.currentHealthBackingField._variable
-      value: 
-      objectReference: {fileID: 11400000, guid: 7e0f96badd375b24b964514593b32b9d,
-        type: 2}
     - target: {fileID: 2410215513735583748, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_Name

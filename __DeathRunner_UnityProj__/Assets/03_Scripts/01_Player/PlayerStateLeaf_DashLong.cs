@@ -51,7 +51,7 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
-            Debug.Log("DashLong.Enter");
+            Debug.Log("State.DashLong.Enter");
             
             //TODO: [Walter] Figure out the reason slow-mo doesn't work here.
             Commands.IsSlowMotionEnabled = true;
@@ -63,7 +63,7 @@ namespace DeathRunner.Player
         {
             base.OnExit();
             
-            Debug.Log("DashLong.Exit");
+            Debug.Log("State.DashLong.Exit");
             
             //TODO: [Walter] Figure out the reason slow-mo doesn't work here.
             Commands.IsSlowMotionEnabled = false;

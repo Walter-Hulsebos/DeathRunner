@@ -31,7 +31,7 @@ namespace DeathRunner.Attributes
         public Bool UseInfinity { get => useInfinityBackingField.Value; private set => useInfinityBackingField.Value = value; }
         
         #if ODIN_INSPECTOR
-        [LabelText("Current Health")]
+        [LabelText("Current Stamina")]
         [BoxGroup("Current", showLabel: false)]
         #endif
         [field:SerializeField] private Reference<U16> currentStaminaBackingField;
@@ -77,6 +77,10 @@ namespace DeathRunner.Attributes
 
         public Bool IsZero => Value == 0;
         
+        private Bool _hasOwnerObject;
+        private UnityEngine.Object _ownerObject;
+
+
         public void Init()
         {
             currentStaminaBackingField.Value = Max.Value;
@@ -84,22 +88,103 @@ namespace DeathRunner.Attributes
             switch (currentStaminaBackingField.Type)
             {
                 case BaseReference.ValueType.Variable:
-                    Debug.Log("Stamina: Init() - Variable");
-                    currentStaminaBackingField.VariableValue.Value = Max.Value;
+                    StaminaVariable();
                     break;
                 case BaseReference.ValueType.VariableInstancer:
-                    Debug.Log("Stamina: Init() - VariableInstancer");
-                    currentStaminaBackingField.InstancerValue.Value = Max.Value;
+                    StaminaVariableInstancer();
                     break;
                 case BaseReference.ValueType.Value:
-                    Debug.Log("Stamina: Init() - Value");
-                    currentStaminaBackingField.Value = Max.Value;
+                    StaminaValue();
                     break;
                 case BaseReference.ValueType.Constant:
-                    Debug.Log("Stamina: Init() - Constant");
-                    Debug.LogWarning("Cannot set a constant value");
+                    StaminaConstant();
                     break;
             }
         }
+
+        public void Init(UnityEngine.Object owner)
+        {
+            if (owner != null)
+            {
+                _hasOwnerObject = true;
+                _ownerObject = owner;
+                
+                #if UNITY_EDITOR
+                Debug.Log(message: $"{nameof(Stamina)}: Init <b>with</b> owner object! ({_ownerObject.name})", context: _ownerObject);
+                #endif
+            }
+            else
+            {
+                _hasOwnerObject = false;
+                
+                #if UNITY_EDITOR
+                Debug.LogWarning(message: $"{nameof(Stamina)}: Init with owner object, but owner object is null!");
+                #endif
+            }
+            
+            Init();
+        }
+
+        private void StaminaConstant()
+        {
+            #if UNITY_EDITOR
+            if (_hasOwnerObject)
+            {
+                Debug.Log(message: $"{nameof(Stamina)}: (<i>{currentStaminaBackingField.ConstantValue.name}</i>): Init() - Constant", context: _ownerObject);
+                Debug.LogWarning(message: "Cannot set a constant value!", context: _ownerObject);
+            }
+            else
+            {
+                Debug.Log(message: $"{nameof(Stamina)}: (<i>{currentStaminaBackingField.ConstantValue.name}</i>): Init() - Constant");
+                Debug.LogWarning(message: "Cannot set a constant value!", context: _ownerObject);
+            }
+            #endif
+        }
+
+        private void StaminaValue()
+        {
+            #if UNITY_EDITOR
+            if (_hasOwnerObject)
+            {
+                Debug.Log(message: nameof(Stamina) + ": Init() - Value", context: _ownerObject);
+            }
+            else
+            {
+                Debug.Log(message: nameof(Stamina) + ": Init() - Value");
+            }
+            #endif
+            currentStaminaBackingField.Value = Max.Value;
+        }
+
+        private void StaminaVariableInstancer()
+        {
+            #if UNITY_EDITOR
+            if (_hasOwnerObject)
+            {
+                Debug.Log(message: $"{nameof(Stamina)} (<i>{currentStaminaBackingField.InstancerValue.name}</i>): Init() - VariableInstancer", context: _ownerObject);
+            }
+            else
+            {
+                Debug.Log(message: $"{nameof(Stamina)} (<i>{currentStaminaBackingField.InstancerValue.name}</i>): Init() - VariableInstancer");
+            }
+            #endif
+            currentStaminaBackingField.InstancerValue.Value = Max.Value;
+        }
+
+        private void StaminaVariable()
+        {
+            #if UNITY_EDITOR
+            if (_hasOwnerObject)
+            {
+                Debug.Log(message: $"{nameof(Stamina)} (<i>{currentStaminaBackingField.VariableValue.name}</i>): Init() - Variable", context: _ownerObject);
+            }
+            else
+            {
+                Debug.Log(message: $"{nameof(Stamina)} (<i>{currentStaminaBackingField.VariableValue.name}</i>): Init() - Variable");
+            }
+            #endif
+            currentStaminaBackingField.VariableValue.Value = Max.Value;
+        }
+        
     }
 }

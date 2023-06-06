@@ -22,5 +22,6 @@ namespace DeathRunner.Attributes
         public Bool                 IsZero      { get; }
         
         public void Init();
+        public void Init(UnityEngine.Object owner);
     }
 }

@@ -1,5 +1,7 @@
+using System;
 using UnityEditor;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Sisus.ComponentNames.EditorOnly
 {
@@ -18,9 +20,9 @@ namespace Sisus.ComponentNames.EditorOnly
             }
 
             Component componentWithField = property.serializedObject.targetObject as Component;
-            string textInsideField = GetTextInsideField(objectFieldValue, componentWithField);
+            String textInsideField = GetTextInsideField(objectFieldValue, componentWithField);
 
-            var fieldRect = EditorGUI.PrefixLabel(position, label);
+            Rect fieldRect = EditorGUI.PrefixLabel(position, label);
             DrawDefaultObjectField(fieldRect, property, GUIContent.none);
             fieldRect.x += 16f;
             fieldRect.width -= 35f;
@@ -30,22 +32,22 @@ namespace Sisus.ComponentNames.EditorOnly
             GUI.Label(fieldRect, textInsideField);
         }
 
-        private static string GetTextInsideField(Component objectFieldValue, Component componentWithField)
+        private static String GetTextInsideField(Component objectFieldValue, Component componentWithField)
         {
             if(objectFieldValue == componentWithField)
             {
                 return "This Component";
             }
 
-            string componentName = ComponentName.Get(objectFieldValue);
+            String componentName = ComponentName.Get(objectFieldValue);
 
             if(componentWithField != null && objectFieldValue.gameObject == componentWithField.gameObject)
             {
-                return string.Concat(componentName, " (this GameObject)");
+                return String.Concat(componentName, " (this GameObject)");
             }
 
-            string gameObjectName = objectFieldValue.gameObject.name;
-            return string.Concat(componentName, " (", gameObjectName, ")");
+            String gameObjectName = objectFieldValue.gameObject.name;
+            return String.Concat(componentName, " (", gameObjectName, ")");
         }
 
         protected virtual void DrawDefaultObjectField(Rect position, SerializedProperty property, GUIContent label)
