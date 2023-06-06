@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace DeathRunner
 {
@@ -13,6 +14,9 @@ namespace DeathRunner
         [SerializeField] private GameObject[] doors;
         
         [SerializeField] private GameObject boss;
+
+        [SerializeField] private GameObject bossCutsceneTimeline;
+        
         
         // Start is called before the first frame update
         void Start()
@@ -22,6 +26,8 @@ namespace DeathRunner
             
             
             boss.SetActive(false);
+            
+            bossCutsceneTimeline.SetActive(false);
         }
 
         // Update is called once per frame
@@ -32,6 +38,7 @@ namespace DeathRunner
                 return;
             }
             bossHealthbar.SetActive(true);
+            bossCutsceneTimeline.SetActive(true);
             foreach (GameObject door in doors)
             {
                 door.SetActive(false);

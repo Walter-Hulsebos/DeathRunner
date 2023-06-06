@@ -112,6 +112,16 @@ namespace DeathRunner
             // Called once per frame
             private async UniTask Update()
             {
+                float speed;
+                if (navMeshAgent.velocity != Vector3.zero)
+                {
+                    animator.SetFloat("Speed", 1);
+                    animator.SetTrigger("isChasing");
+                }
+                else
+                {
+                    animator.SetFloat("Speed", 0);
+                }
                 // Switch between different states based on the current state of the enemy
                 switch (currentState)
                 {

@@ -6,6 +6,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using Random = UnityEngine.Random;
 using Cinemachine;
+using DeathRunner;
+using MoreMountains.Feedbacks;
 
 
 namespace Game
@@ -16,7 +18,7 @@ namespace Game
         [SerializeField] private GameObject[] doors;
 
         private CinemachineTargetGroup _cinemachineTargetGroup;
-        private GameObject actionCam;
+        private EncounterManagerMain encounterManagerMain;
 
         private Transform player;
         private List<MeleeEnemyAI> meleeEnemies = new();
@@ -27,7 +29,8 @@ namespace Game
         private bool canMeleeAttack = true;
         private bool canRangedAttack = true;
         [SerializeField] private int attackCooldown;
-        
+
+        [SerializeField] private MMFeedbacks _feedbacks;
         
         
         // Start is called before the first frame update
@@ -67,7 +70,7 @@ namespace Game
 
             player = GameObject.FindWithTag("Player").transform;
 
-            actionCam = GameObject.FindWithTag("ActionCamera");
+            encounterManagerMain = GameObject.FindWithTag("EncounterManagerMain").GetComponent<EncounterManagerMain>();
             _cinemachineTargetGroup = GameObject.FindWithTag("TargetGroup").GetComponent<CinemachineTargetGroup>();
             
         }
@@ -82,7 +85,7 @@ namespace Game
                     enemy.SetActive(true);
                     _cinemachineTargetGroup.AddMember(enemy.transform, 0.25f, 2);
                 }
-                actionCam.SetActive(false);
+                encounterManagerMain.mainCam.SetActive(false);
                 
                  foreach( GameObject door in doors )
                  {
@@ -165,7 +168,8 @@ namespace Game
                 {
                     _cinemachineTargetGroup.RemoveMember(enemy.transform);
                 }
-
+                _feedbacks.PlayFeedbacks();
+                encounterManagerMain.cinematicCam.SetActive(true);
                 StartCoroutine(EnableCamera());
             }
         }
@@ -173,7 +177,8 @@ namespace Game
         private IEnumerator EnableCamera()
         {
             yield return new WaitForSeconds(0.5f);
-            actionCam.SetActive(true);
+            encounterManagerMain.cinematicCam.SetActive(false);
+            encounterManagerMain.mainCam.SetActive(true);
         }
     }
     
