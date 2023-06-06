@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 //using BehaviorDesigner.Runtime.Tasks.Unity.UnityAnimator;
-using Cysharp.Threading.Tasks;
-using GenericScriptableArchitecture;
+
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
+
+using Cysharp.Threading.Tasks;
+using GenericScriptableArchitecture;
+
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -21,8 +24,6 @@ namespace DeathRunner.EnemyAI
                 Idle,
                 Dead
             }
-            
-            
 
             // Reference to the player GameObject
             private GameObject _player;

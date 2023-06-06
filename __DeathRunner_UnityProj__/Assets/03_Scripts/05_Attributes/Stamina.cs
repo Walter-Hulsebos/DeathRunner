@@ -20,10 +20,11 @@ namespace DeathRunner.Attributes
     [Serializable]
     public struct Stamina : IChangeable<U16>
     {
-        [field:SerializeField] public Constant<U16>   Max         { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<U16> Max { get; [UsedImplicitly] private set; }
         
         #if ODIN_INSPECTOR
         [BoxGroup("Current", showLabel: false)]
+        [LabelText(text: "Use Infinite Stamina")]
         [SerializeField] 
         #endif
         public Reference<Bool> useInfinityBackingField;
@@ -31,8 +32,8 @@ namespace DeathRunner.Attributes
         public Bool UseInfinity { get => useInfinityBackingField.Value; private set => useInfinityBackingField.Value = value; }
         
         #if ODIN_INSPECTOR
-        [LabelText("Current Stamina")]
-        [BoxGroup("Current", showLabel: false)]
+        [field:BoxGroup("Current", showLabel: false)]
+        [field:LabelText(text: "Current Stamina")]
         #endif
         [field:SerializeField] private Reference<U16> currentStaminaBackingField;
         public U16 Value 

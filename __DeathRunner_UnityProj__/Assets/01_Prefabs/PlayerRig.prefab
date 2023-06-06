@@ -485,7 +485,6 @@ GameObject:
   m_Component:
   - component: {fileID: 52137613}
   - component: {fileID: 52137617}
-  - component: {fileID: 52137616}
   - component: {fileID: 52137615}
   m_Layer: 6
   m_Name: ScytheHitbox
@@ -523,20 +522,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &52137616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 52137612}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7da0d385c8d03284bb9147985a13c59f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Enemy
-  damageInflicted: 1
 --- !u!114 &52137615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1966,9 +1951,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1635734182930347289}
   - component: {fileID: 3894476383814958808}
-  - component: {fileID: 1863071824}
   - component: {fileID: 1863071827}
-  - component: {fileID: 1060374176}
   m_Layer: 6
   m_Name: ScytheHitbox
   m_TagString: Untagged
@@ -2004,20 +1987,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1863071824
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694370369325398921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7da0d385c8d03284bb9147985a13c59f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Enemy
-  damageInflicted: 1
 --- !u!114 &1863071827
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2031,20 +2000,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagToDamage: Enemy
-  damageInflicted: 1
---- !u!114 &1060374176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 694370369325398921}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7da0d385c8d03284bb9147985a13c59f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetTag: Enemy
   damageInflicted: 1
 --- !u!1 &762215014701460122
 GameObject:
@@ -3193,9 +3148,9 @@ MonoBehaviour:
     <Max>k__BackingField: {fileID: 11400000, guid: 8af2c425a9d743c45a541bb67b2a00d7,
       type: 2}
     useInfinityBackingField:
-      _valueType: 0
+      _valueType: 2
       _value: 0
-      _variable: {fileID: 0}
+      _variable: {fileID: 11400000, guid: 4de4d1ecb4f7f354a8e1e186b2f96fb9, type: 2}
       _constant: {fileID: 0}
       _variableInstancer: {fileID: 0}
     currentStaminaBackingField:
