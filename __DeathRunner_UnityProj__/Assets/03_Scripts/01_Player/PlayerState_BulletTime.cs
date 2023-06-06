@@ -11,7 +11,7 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
-            Debug.Log("BulletTime.Enter");
+            Debug.Log("State.BulletTime.Enter");
             
             //Commands.IsSlowMotionEnabled = true;
         }
@@ -20,7 +20,7 @@ namespace DeathRunner.Player
         {
             base.OnExit();
             
-            Debug.Log("BulletTime.Exit");
+            Debug.Log("State.BulletTime.Exit");
         }
     }
 }

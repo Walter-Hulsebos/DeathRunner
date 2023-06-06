@@ -32,7 +32,7 @@ namespace DeathRunner.Player
             base.OnEnter();
             
             #if UNITY_EDITOR
-            Debug.Log("Idle.Enter");
+            Debug.Log("State.Idle.Enter");
             #endif
             
             _settings.OnEnterIdle.Invoke();
@@ -43,7 +43,7 @@ namespace DeathRunner.Player
             base.OnExit();
             
             #if UNITY_EDITOR
-            Debug.Log("Idle.Exit");
+            Debug.Log("State.Idle.Exit");
             #endif
         }
 

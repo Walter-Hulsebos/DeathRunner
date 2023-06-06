@@ -1,4 +1,5 @@
 using System;
+using DeathRunner.Attributes;
 using UnityEngine;
 
 using JetBrains.Annotations;
@@ -16,15 +17,17 @@ namespace DeathRunner.Player
     [Serializable]
     public sealed class PlayerReferences
     {
-        [field:SerializeField] public Camera         Camera       { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public CharacterMotor Motor        { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public InputHandler   InputHandler { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public Transform      LookAt       { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Camera           Camera       { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public CharacterMotor   Motor        { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public InputHandler     InputHandler { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Transform        LookAt       { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public HealthComponent  Health       { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public StaminaComponent Stamina      { get; [UsedImplicitly] private set; }
 
         public F32x3 WorldPos
         {
             get => (F32x3)Motor.GetPosition();
-            set => Motor.SetPosition(value);
+            set => Motor.SetPosition(newPosition: value);
         }
         // public F32x3 LocalPos
         // {
@@ -35,7 +38,7 @@ namespace DeathRunner.Player
         public Rotor Rot
         {
             get => (Rotor)Motor.rotation;
-            set => Motor.SetRotation(value);
+            set => Motor.SetRotation(newRotation: value);
         }
 
         public F32x3 WorldScale
@@ -59,9 +62,13 @@ namespace DeathRunner.Player
         {
             FindPlayerCamera();
             
-            FindCharacterMotor(gameObject);
+            FindCharacterMotor(gameObject: gameObject);
             
-            FindInputHandler(gameObject);
+            FindInputHandler(gameObject: gameObject);
+            
+            FindHealthComponent(gameObject: gameObject);
+            
+            FindStaminaComponent(gameObject: gameObject);
         }
 
         public void OnValidate(GameObject gameObject)
@@ -73,7 +80,7 @@ namespace DeathRunner.Player
             
             if (Motor == null)
             {
-                FindCharacterMotor(gameObject);
+                FindCharacterMotor(gameObject: gameObject);
             }
             
             if (Motor != null)
@@ -84,8 +91,26 @@ namespace DeathRunner.Player
             
             if (InputHandler == null)
             {
-                FindInputHandler(gameObject);
+                FindInputHandler(gameObject: gameObject);
             }
+        }
+
+        public void Init(GameObject gameObject)
+        {
+            Debug.Log(message: "<b><color=red>Before</color></b> Init Health, setting to <i>Max</i> \n" +
+                               $"Health Max: {Health.health.Max.Value} \n" +
+                               $"Health:     {Health.health.Value}", context: gameObject);
+            Health.health.Init(owner: gameObject);
+            Debug.Log(message: "<b><color=green>After</color></b> Init Health \n" +
+                               $"Health:     {Health.health.Value}", context: gameObject);
+            
+            
+            Debug.Log(message: "<b><color=red>Before</color></b> Init Stamina, setting to <i>Max</i> \n" +
+                               $"Stamina Max: {Stamina.stamina.Max.Value} \n" +
+                               $"Stamina:     {Stamina.stamina.Value}", context: gameObject);
+            Stamina.stamina.Init(owner: gameObject);
+            Debug.Log(message: "<b><color=green>After</color></b> Init Stamina \n" +
+                               $"Stamina:     {Stamina.stamina.Value}", context: gameObject);
         }
 
         private void FindPlayerCamera()
@@ -100,12 +125,53 @@ namespace DeathRunner.Player
 
         private void FindCharacterMotor(GameObject gameObject)
         {
-            Motor = gameObject.GetComponent<CharacterMotor>();
+            if (gameObject.TryGetComponent(component: out CharacterMotor __motor))
+            {
+                Motor = __motor;
+            }
+            else
+            {
+                Debug.LogError(message: $"No CharacterMotor found on {gameObject.name}", context: gameObject);
+            }
         }
         
         private void FindInputHandler(GameObject gameObject)
         {
-            InputHandler = gameObject.GetComponent<InputHandler>();
+            //InputHandler = gameObject.GetComponent<InputHandler>();
+            if (gameObject.TryGetComponent(component: out InputHandler __inputHandler))
+            {
+                InputHandler = __inputHandler;
+            }
+            else
+            {
+                Debug.LogError(message: $"No InputHandler found on {gameObject.name}", context: gameObject);
+            }
+        }
+
+        private void FindHealthComponent(GameObject gameObject)
+        {
+            //Health = gameObject.GetComponent<HealthComponent>();
+            if (gameObject.TryGetComponent(component: out HealthComponent __health))
+            {
+                Health = __health;
+            }
+            else
+            {
+                Debug.LogError(message: $"No HealthComponent found on {gameObject.name}", context: gameObject);
+            }
+        }
+        
+        private void FindStaminaComponent(GameObject gameObject)
+        {
+            //Stamina = gameObject.GetComponent<StaminaComponent>();
+            if (gameObject.TryGetComponent(component: out StaminaComponent __stamina))
+            {
+                Stamina = __stamina;
+            }
+            else
+            {
+                Debug.LogError(message: $"No StaminaComponent found on {gameObject.name}", context: gameObject);
+            }
         }
     }
 }

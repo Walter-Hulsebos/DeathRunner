@@ -7,17 +7,17 @@ namespace Sisus.ComponentNames.EditorOnly
 {
     internal static class ObjectNamesUtility
     {
-        private static Dictionary<Type, string> internalInspectorTitlesCache = null;
+        private static Dictionary<Type, String> internalInspectorTitlesCache = null;
 
-        public static Dictionary<Type, string> InternalInspectorTitlesCache
+        public static Dictionary<Type, String> InternalInspectorTitlesCache
         {
             get
             {
                 if(internalInspectorTitlesCache == null)
                 {
                     Type inspectorTitlesType = typeof(ObjectNames).GetNestedType("InspectorTitles", BindingFlags.Static | BindingFlags.NonPublic);
-                    var inspectorTitlesField = inspectorTitlesType.GetField("s_InspectorTitles", BindingFlags.Static | BindingFlags.NonPublic);
-                    internalInspectorTitlesCache = (Dictionary<Type, string>)inspectorTitlesField.GetValue(null);
+                    FieldInfo inspectorTitlesField = inspectorTitlesType.GetField("s_InspectorTitles", BindingFlags.Static | BindingFlags.NonPublic);
+                    internalInspectorTitlesCache = (Dictionary<Type, String>)inspectorTitlesField.GetValue(null);
                 }
 
                 return internalInspectorTitlesCache;

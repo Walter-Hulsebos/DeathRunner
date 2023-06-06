@@ -21,6 +21,8 @@ MonoBehaviour:
     _guid: 
   - _typeNameAndAssembly: System.UInt16, mscorlib
     _guid: 
+  - _typeNameAndAssembly: System.Boolean, mscorlib
+    _guid: 
   _genericArgumentValues:
   - _array: []
   - _array: []
@@ -64,7 +66,11 @@ MonoBehaviour:
       - _typeNameAndAssembly: System.UInt16, mscorlib
         _guid: 
       _assemblyGUID: a29b7ca54aa4ccf4eae1d3460f8552fb
-  - _array: []
+  - _array:
+    - _arguments:
+      - _typeNameAndAssembly: System.UInt16, mscorlib
+        _guid: 
+      _assemblyGUID: 47a9fa0cc7b648f49a109d921ad516d5
   - _array:
     - _arguments:
       - _typeNameAndAssembly: System.Single, mscorlib
@@ -78,6 +84,10 @@ MonoBehaviour:
       - _typeNameAndAssembly: System.UInt16, mscorlib
         _guid: 
       _assemblyGUID: 4d914dbade1a18545b2ba59c6cd2a9ca
+    - _arguments:
+      - _typeNameAndAssembly: System.Boolean, mscorlib
+        _guid: 
+      _assemblyGUID: 6056fe84cd930e64da4a0cd2c8225414
   - _array: []
   - _array: []
   - _array: []
@@ -180,6 +190,18 @@ MonoBehaviour:
     - _typeNameAndAssembly: GenericScriptableArchitecture.Timeline.ScriptableEventEmitter`1,
         GenericScriptableArchitecture.Timeline
       _guid: 935ecf86bcab4cb3b1dc812da9f3c2b8
+      AssemblyGUID: 
+      _argNames:
+      - T
+    - _typeNameAndAssembly: GenericScriptableArchitecture.VariableWithHistory`1,
+        GenericScriptableArchitecture
+      _guid: dd7b35f1939e4c4f8bde9e3f3017e68d
+      AssemblyGUID: 
+      _argNames:
+      - T
+  - _array:
+    - _typeNameAndAssembly: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
+      _guid: 35f1f711725d47ef9c32084694a183c9
       AssemblyGUID: 
       _argNames:
       - T

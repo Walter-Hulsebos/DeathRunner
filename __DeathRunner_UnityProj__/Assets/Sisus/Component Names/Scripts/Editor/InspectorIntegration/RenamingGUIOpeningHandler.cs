@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 using Sisus.Shared.EditorOnly;
 
@@ -18,7 +19,7 @@ namespace Sisus.ComponentNames.EditorOnly
             ComponentName.Changed += OnComponentNameChanged;
 		}
 
-        internal static float BeginComponentHeader(Component component, Rect headerRect, bool headerIsSelected, bool headerSupportsRichText)
+        internal static Single BeginComponentHeader(Component component, Rect headerRect, Boolean headerIsSelected, Boolean headerSupportsRichText)
 		{
             HandleOpeningRenamingGUI(component, headerRect, headerIsSelected);
 
@@ -31,7 +32,7 @@ namespace Sisus.ComponentNames.EditorOnly
                 UpdateInternalCachedTitleForComponentTypeAsPlainText(component);
             }
 
-            var tooltipRect = headerRect;
+            Rect tooltipRect = headerRect;
             tooltipRect.x += 60f;
             #if POWER_INSPECTOR
             tooltipRect.width -= 185f;
@@ -40,7 +41,7 @@ namespace Sisus.ComponentNames.EditorOnly
             #endif
 
             label.text = ComponentName.GetInspectorTitleAsPlainText(component);
-            float titleWidth = EditorStyles.boldLabel.CalcSize(label).x;
+            Single titleWidth = EditorStyles.boldLabel.CalcSize(label).x;
             if(titleWidth < tooltipRect.width)
 			{
                 tooltipRect.width = titleWidth;
@@ -53,7 +54,7 @@ namespace Sisus.ComponentNames.EditorOnly
             return 0f;
         }
 
-        internal static void HandleOpeningRenamingGUI(Component component, Rect headerRect, bool headerIsSelected)
+        internal static void HandleOpeningRenamingGUI(Component component, Rect headerRect, Boolean headerIsSelected)
         {
             switch(Event.current.rawType)
             {
@@ -91,19 +92,19 @@ namespace Sisus.ComponentNames.EditorOnly
 
         internal static void BeginRenamingComponent(Component component, Rect headerRect)
         {
-            var openAt = InScreenSpace(GetLabelRect(headerRect));
+            Rect openAt = InScreenSpace(GetLabelRect(headerRect));
             RenameComponentWindow.Open(openAt, component);
         }
 
         internal static void UpdateInternalCachedTitleForComponentType(Component component)
 		{
-			string title = ComponentName.GetInspectorTitle(component);
+			String title = ComponentName.GetInspectorTitle(component);
 			ObjectNamesUtility.InternalInspectorTitlesCache[component.GetType()] = title;
 		}
 
         internal static void UpdateInternalCachedTitleForComponentTypeAsPlainText(Component component)
 		{
-			string title = ComponentName.GetInspectorTitleAsPlainText(component);
+			String title = ComponentName.GetInspectorTitleAsPlainText(component);
 			ObjectNamesUtility.InternalInspectorTitlesCache[component.GetType()] = title;
 		}
 
@@ -115,7 +116,7 @@ namespace Sisus.ComponentNames.EditorOnly
 
         private static Rect GetLabelRect(Rect headerRect)
         {
-            var headerLabelRect = headerRect;
+            Rect headerLabelRect = headerRect;
 
             headerLabelRect.x = 54f;
 
@@ -133,6 +134,6 @@ namespace Sisus.ComponentNames.EditorOnly
             return headerLabelRect;
         }
 
-        private static void OnComponentNameChanged(Component component, string newName) => UpdateInternalCachedTitleForComponentType(component);
+        private static void OnComponentNameChanged(Component component, String newName) => UpdateInternalCachedTitleForComponentType(component);
     }
 }

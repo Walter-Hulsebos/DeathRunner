@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using Sisus.ComponentNames.EditorOnly;
 using System.Diagnostics;
 using UnityEngine;
@@ -23,7 +24,7 @@ namespace Sisus.ComponentNames
 		/// </summary>
 		/// <param name="component"> The <see cref="Component"/> whose name to get. </param>
 		/// <returns></returns>
-		public static string GetName([NotNull] this Component component)
+		public static String GetName([NotNull] this Component component)
 		{
 			#if UNITY_EDITOR
 			return ComponentName.Get(component);
@@ -42,7 +43,7 @@ namespace Sisus.ComponentNames
 		/// <param name="component"> The <see cref="Component"/> whose name to set. </param>
 		/// <param name="name"> The new name for the <paramref name="component"/>. </param>
 		[Conditional("UNITY_EDITOR")]
-		public static void SetName([NotNull] this Component component, string name)
+		public static void SetName([NotNull] this Component component, String name)
 		{
 			#if UNITY_EDITOR
 			ComponentName.Set(component, name);
@@ -63,7 +64,7 @@ namespace Sisus.ComponentNames
 		/// of the component class) will be shown in the Inspector as a suffix after the <paramref name="name"/>.
 		/// </param>
 		[Conditional("UNITY_EDITOR")]
-		public static void SetName([NotNull] this Component component, string name, bool classNameSuffix)
+		public static void SetName([NotNull] this Component component, String name, Boolean classNameSuffix)
 		{
 			#if UNITY_EDITOR
 			ComponentName.Set(component, name, classNameSuffix);
@@ -87,7 +88,7 @@ namespace Sisus.ComponentNames
 		/// </para>
 		/// </param>
 		[Conditional("UNITY_EDITOR")]
-		public static void SetName([NotNull] this Component component, string name, [CanBeNull] string suffix)
+		public static void SetName([NotNull] this Component component, String name, [CanBeNull] String suffix)
 		{
 			#if UNITY_EDITOR
 			ComponentName.Set(component, name, suffix);
@@ -126,7 +127,7 @@ namespace Sisus.ComponentNames
 		/// of the component class) will be shown in the Inspector as a suffix after the <paramref name="name"/>.
 		/// </param>
 		[Conditional("UNITY_EDITOR")]
-		public static void SetName([NotNull] this Component component, GUIContent nameAndTooltip, bool classNameSuffix)
+		public static void SetName([NotNull] this Component component, GUIContent nameAndTooltip, Boolean classNameSuffix)
 		{
 			#if UNITY_EDITOR
 			ComponentTooltip.Set(component, nameAndTooltip.tooltip);
@@ -149,7 +150,7 @@ namespace Sisus.ComponentNames
 		/// </param>
 		/// <param name="tooltip"> The new Inspector tooltip for the <paramref name="component"/>. </param>
 		[Conditional("UNITY_EDITOR")]
-		public static void SetName([NotNull] this Component component, string name, bool classNameSuffix, string tooltip)
+		public static void SetName([NotNull] this Component component, String name, Boolean classNameSuffix, String tooltip)
 		{
 			#if UNITY_EDITOR
 			ComponentTooltip.Set(component, tooltip);
@@ -175,7 +176,7 @@ namespace Sisus.ComponentNames
 		/// </param>
 		/// <param name="tooltip"> The new Inspector tooltip for the <paramref name="component"/>. </param>
 		[Conditional("UNITY_EDITOR")]
-		public static void SetName([NotNull] this Component component, string name, [CanBeNull] string suffix, string tooltip)
+		public static void SetName([NotNull] this Component component, String name, [CanBeNull] String suffix, String tooltip)
 		{
 			#if UNITY_EDITOR
 			ComponentTooltip.Set(component, tooltip);

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Sisus.ComponentNames
@@ -20,7 +21,7 @@ namespace Sisus.ComponentNames
 		/// component class and attemps to assign other values for the property are ignored.
 		/// </para>
 		/// </summary>
-		public virtual new string name
+		public new virtual String name
 		{
 			get => this.GetName();
 			set => this.SetName(value);
@@ -30,6 +31,6 @@ namespace Sisus.ComponentNames
 		/// Returns the <see cref="name"/> of this component.
 		/// </summary>
 		/// <returns> The <see cref="name"/> of this component. </returns>
-		public override string ToString() => this.GetName();
+		public override String ToString() => this.GetName();
     }
 }
