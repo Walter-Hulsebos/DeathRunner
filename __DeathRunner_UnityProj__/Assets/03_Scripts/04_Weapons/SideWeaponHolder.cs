@@ -28,6 +28,7 @@ namespace DeathRunner.Weapons
         [SerializeField] private InputActionReference secondaryFire;
 
         [SerializeField] private Camera _mainCamera;
+
         
         // Update is called once per frame
         enum WeaponState
@@ -59,6 +60,10 @@ namespace DeathRunner.Weapons
                         else if (sideWeapon is SWShield shield)
                         {
                             shield.Shield(gameObject, shieldObj);    
+                        }
+                        else if (sideWeapon is SWCut cut)
+                        {
+                            cut.SpawnCut(transform);    
                         }
                         state = WeaponState.Active; 
                         activeTime = sideWeapon.activeTime;

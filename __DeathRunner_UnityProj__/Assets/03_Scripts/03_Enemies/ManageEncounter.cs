@@ -4,7 +4,13 @@ using System.Collections.Generic;
 using DeathRunner.EnemyAI;
 using UnityEngine;
 using UnityEngine.AI;
+
+using Cinemachine;
+
 using Random = UnityEngine.Random;
+
+using DeathRunner;
+using MoreMountains.Feedbacks;
 
 namespace Game
 {
@@ -13,8 +19,8 @@ namespace Game
         [SerializeField] private GameObject[] enemies;
         [SerializeField] private GameObject[] doors;
 
-
-        private GameObject actionCam;
+        private CinemachineTargetGroup _cinemachineTargetGroup;
+        private EncounterManagerMain encounterManagerMain;
 
         private Transform player;
         private List<MeleeEnemyAI> meleeEnemies = new();
@@ -24,8 +30,10 @@ namespace Game
 
         private bool canMeleeAttack = true;
         private bool canRangedAttack = true;
-        [SerializeField] private int attackCooldown;
         
+        [SerializeField] private int attackCooldown;
+
+        [SerializeField] private MMFeedbacks _feedbacks;
         
         
         // Start is called before the first frame update
@@ -65,14 +73,9 @@ namespace Game
 
             player = GameObject.FindWithTag("Player").transform;
 
-            actionCam = GameObject.FindWithTag("ActionCamera");
+            encounterManagerMain = GameObject.FindWithTag("EncounterManagerMain").GetComponent<EncounterManagerMain>();
+            _cinemachineTargetGroup = GameObject.FindWithTag("TargetGroup").GetComponent<CinemachineTargetGroup>();
             
-         
-        }
-
-        private void LateUpdate()
-        {
-        //    actionCam.SetActive(false);
         }
 
         // Update is called once per frame
@@ -83,14 +86,18 @@ namespace Game
                 foreach( GameObject enemy in enemies )
                 {
                     enemy.SetActive(true);
+                    _cinemachineTargetGroup.AddMember(enemy.transform, 0.25f, 2);
                 }
-                actionCam.SetActive(true);
-                // foreach( GameObject door in doors )
-                // {
-                //     door.SetActive(true);
-                // }
+                encounterManagerMain.mainCam.SetActive(false);
+                
+                 foreach( GameObject door in doors )
+                 {
+                     door.SetActive(true);
+                 }
 
                 _collider.enabled = false;
+                
+             
             }
         }
 
@@ -117,7 +124,7 @@ namespace Game
             }
             
             
-            if (canRangedAttack)
+            if (canRangedAttack && meleeEnemies.Count > 0)
             {
                 rangedEnemies[Random.Range(0, meleeEnemies.Count)].canAttack = true;
                 canRangedAttack = false;
@@ -159,8 +166,22 @@ namespace Game
                 {
                     door.SetActive(false);
                 }
-                actionCam.SetActive(false);
+
+                foreach (GameObject enemy in enemies)
+                {
+                    _cinemachineTargetGroup.RemoveMember(enemy.transform);
+                }
+                _feedbacks.PlayFeedbacks();
+                encounterManagerMain.cinematicCam.SetActive(true);
+                StartCoroutine(EnableCamera());
             }
+        }
+
+        private IEnumerator EnableCamera()
+        {
+            yield return new WaitForSeconds(0.5f);
+            encounterManagerMain.cinematicCam.SetActive(false);
+            encounterManagerMain.mainCam.SetActive(true);
         }
     }
     

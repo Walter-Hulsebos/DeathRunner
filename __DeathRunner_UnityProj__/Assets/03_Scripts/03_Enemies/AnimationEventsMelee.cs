@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace DeathRunner.EnemyAI
@@ -62,8 +63,14 @@ namespace DeathRunner.EnemyAI
         {
             meleeEnemyAI.moveInAttack = true;
             swordHitbox.SetActive(true);
+
+            StartCoroutine(DisableHitbox());
         }
-        
+
+        private IEnumerator DisableHitbox()
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
         public void DisableAttackMove()
         {
             meleeEnemyAI.moveInAttack = false;

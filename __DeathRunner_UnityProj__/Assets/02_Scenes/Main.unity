@@ -253,7 +253,7 @@ MonoBehaviour:
     invertFade: 0
     distanceFadeStart: 10000
     distanceFadeEnd: 10000
-    textureOffset: {x: 0, y: 0, z: 0}
+    textureOffset: {x: -0, y: -0, z: -0}
     falloffMode: 0
   m_Version: 2
 --- !u!1001 &44660434
@@ -1847,6 +1847,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 571acd43c0d128446b407e87e0a14bf1,
         type: 2}
+    - target: {fileID: 1187890990, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.7444444
+      objectReference: {fileID: 0}
+    - target: {fileID: 1187890992, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.7444444
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.1786028
+      objectReference: {fileID: 0}
+    - target: {fileID: 2410215513009397357, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: near clip plane
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2410215513735583748, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_Name
@@ -1907,6 +1930,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3644243820756923822, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.00036796054
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443291799372615853, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.5600001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
 --- !u!1 &553263932
@@ -1943,6 +1976,7 @@ MonoBehaviour:
   - {fileID: 0}
   doors: []
   attackCooldown: 0
+  _feedbacks: {fileID: 0}
 --- !u!4 &553263934
 Transform:
   m_ObjectHideFlags: 0
@@ -2557,7 +2591,7 @@ MonoBehaviour:
     invertFade: 0
     distanceFadeStart: 10000
     distanceFadeEnd: 10000
-    textureOffset: {x: 0, y: 0, z: 0}
+    textureOffset: {x: -0, y: -0, z: -0}
     falloffMode: 0
   m_Version: 2
 --- !u!1001 &1060892898
