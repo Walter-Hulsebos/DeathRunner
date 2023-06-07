@@ -461,6 +461,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143829182}
     m_Modifications:
+    - target: {fileID: 1748838881, guid: cfe941d340a0c72448dc89d0e37e9b35, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
+      objectReference: {fileID: 0}
     - target: {fileID: 252169882971934289, guid: cfe941d340a0c72448dc89d0e37e9b35,
         type: 3}
       propertyPath: m_Name
@@ -541,6 +545,11 @@ PrefabInstance:
       propertyPath: connectionState
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2445359520227084137, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3300550909438423680, guid: cfe941d340a0c72448dc89d0e37e9b35,
         type: 3}
       propertyPath: m_IsActive
@@ -576,7 +585,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8294594644551626581, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5957190960035384191, guid: cfe941d340a0c72448dc89d0e37e9b35, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cfe941d340a0c72448dc89d0e37e9b35, type: 3}
 --- !u!4 &86588702 stripped
 Transform:
@@ -601,7 +616,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24dcf6805ba2c44f69a5c394d31a3392, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
   NodeId: NODE-SNAPMOD-0bccf38a-6b79-44bb-b84c-f58afb68bf8b
   dungeon: {fileID: 2131102129}
   affectsNavigation: 1
@@ -674,6 +689,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143829182}
     m_Modifications:
+    - target: {fileID: 1748838881, guid: cfe941d340a0c72448dc89d0e37e9b35, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
+      objectReference: {fileID: 0}
     - target: {fileID: 252169882971934289, guid: cfe941d340a0c72448dc89d0e37e9b35,
         type: 3}
       propertyPath: m_Name
@@ -753,6 +772,11 @@ PrefabInstance:
         type: 3}
       propertyPath: connectionState
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445359520227084137, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3300550909884762994, guid: cfe941d340a0c72448dc89d0e37e9b35,
         type: 3}
@@ -1049,6 +1073,11 @@ PrefabInstance:
       propertyPath: m_VolumetricDimmer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 8294594644551626581, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8759169486329915920, guid: cfe941d340a0c72448dc89d0e37e9b35,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1169,7 +1198,8 @@ PrefabInstance:
       propertyPath: m_Shadows.m_CullingMatrixOverride.e23
       value: -0.20148149
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5957190960035384191, guid: cfe941d340a0c72448dc89d0e37e9b35, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cfe941d340a0c72448dc89d0e37e9b35, type: 3}
 --- !u!4 &186448726 stripped
 Transform:
@@ -1194,7 +1224,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24dcf6805ba2c44f69a5c394d31a3392, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
   NodeId: NODE-SNAPMOD-52cfc394-1e09-4073-9a9d-642610d1fe9e
   dungeon: {fileID: 2131102129}
   affectsNavigation: 1
@@ -2626,6 +2656,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 209246024, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 797213319, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.556
@@ -3323,6 +3357,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6023132309130099996, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888904261212554856, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351691965436786362, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
       propertyPath: m_RootOrder
@@ -3408,7 +3457,9 @@ PrefabInstance:
       propertyPath: connectionState
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8225286577986214198, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
+    - {fileID: 9091128900162380354, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
 --- !u!4 &1033393075 stripped
 Transform:
@@ -3446,6 +3497,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143829182}
     m_Modifications:
+    - target: {fileID: 552031783735267788, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2399907539387750226, guid: a931822fb5279de4ba5fc150d6b9ebbe,
         type: 3}
       propertyPath: m_IsActive
@@ -3470,6 +3526,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703884747770990228, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5079216233940379487, guid: a931822fb5279de4ba5fc150d6b9ebbe,
         type: 3}
@@ -3566,6 +3627,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_ChallengeRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 7874325427749443947, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8254218277928512465, guid: a931822fb5279de4ba5fc150d6b9ebbe,
         type: 3}
       propertyPath: connectionState
@@ -3586,7 +3652,10 @@ PrefabInstance:
       propertyPath: connectionState
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2745319490161784294, guid: a931822fb5279de4ba5fc150d6b9ebbe, type: 3}
+    - {fileID: 5545999587990076737, guid: a931822fb5279de4ba5fc150d6b9ebbe, type: 3}
+    - {fileID: 1357474586629253822, guid: a931822fb5279de4ba5fc150d6b9ebbe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a931822fb5279de4ba5fc150d6b9ebbe, type: 3}
 --- !u!4 &1047590089 stripped
 Transform:
@@ -3729,6 +3798,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5721362492399209402, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721362492399209404, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721362492399209405, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 5721362492399209407, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023132309130099996, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888904261212554856, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351691965436786362, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
       propertyPath: m_RootOrder
@@ -3829,7 +3933,9 @@ PrefabInstance:
       propertyPath: connectionState
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8225286577986214198, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
+    - {fileID: 9091128900162380354, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
 --- !u!4 &1208131998 stripped
 Transform:
@@ -3917,6 +4023,21 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6023132309130099996, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888904261212554856, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351691965436786362, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
       propertyPath: m_RootOrder
@@ -3997,7 +4118,10 @@ PrefabInstance:
       propertyPath: connectionState
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 235823147014514508, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
+    - {fileID: 8225286577986214198, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
+    - {fileID: 9091128900162380354, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
 --- !u!4 &1330638392 stripped
 Transform:
@@ -10646,6 +10770,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143829182}
     m_Modifications:
+    - target: {fileID: 552031783735267788, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2399907539387750226, guid: a931822fb5279de4ba5fc150d6b9ebbe,
         type: 3}
       propertyPath: m_IsActive
@@ -10660,6 +10789,47 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023042451871616576, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023042451871616577, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023042451871616578, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023042451871616582, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.Attributes.HealthComponent, DeathRunner.Attributes
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023042451871616583, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023042451871616595, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.ScriptableEventListener<ushort,ushort>,
+        GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 3023042451871616607, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 3703884747770990228, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5079216233975996338, guid: a931822fb5279de4ba5fc150d6b9ebbe,
         type: 3}
@@ -10695,6 +10865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086227747144986694, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.MeleeEnemyAI, DeathRunner.Enemies
       objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: a931822fb5279de4ba5fc150d6b9ebbe,
         type: 3}
@@ -10756,6 +10931,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_ChallengeRoom
       objectReference: {fileID: 0}
+    - target: {fileID: 7874325427749443947, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8254218278004533574, guid: a931822fb5279de4ba5fc150d6b9ebbe,
         type: 3}
       propertyPath: connectionState
@@ -10776,7 +10956,20 @@ PrefabInstance:
       propertyPath: connectionState
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 8930310615973244188, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 8973545549794594407, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.VariableInstancer<ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2745319490161784294, guid: a931822fb5279de4ba5fc150d6b9ebbe, type: 3}
+    - {fileID: 5545999587990076737, guid: a931822fb5279de4ba5fc150d6b9ebbe, type: 3}
+    - {fileID: 1357474586629253822, guid: a931822fb5279de4ba5fc150d6b9ebbe, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a931822fb5279de4ba5fc150d6b9ebbe, type: 3}
 --- !u!4 &1613002212 stripped
 Transform:
@@ -10801,7 +10994,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24dcf6805ba2c44f69a5c394d31a3392, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
   NodeId: NODE-SNAPMOD-a45b11c7-8c68-431e-b341-245bfe79cddd
   dungeon: {fileID: 2131102129}
   affectsNavigation: 1
@@ -10862,6 +11055,21 @@ PrefabInstance:
     - target: {fileID: 5079216235390402669, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6023132309130099996, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888904261212554856, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7351691965436786362, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: fd75b5c71a681574abe1d745c7222644,
@@ -10944,7 +11152,9 @@ PrefabInstance:
       propertyPath: connectionState
       value: 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8225286577986214198, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
+    - {fileID: 9091128900162380354, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
 --- !u!4 &1742785149 stripped
 Transform:
@@ -17659,6 +17869,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2460587963394489297, guid: c05cf805199b00543826652e11eaf6a4,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460587963394489300, guid: c05cf805199b00543826652e11eaf6a4,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460587963394489302, guid: c05cf805199b00543826652e11eaf6a4,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 2460587963394489303, guid: c05cf805199b00543826652e11eaf6a4,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
     - target: {fileID: 5567622939887453649, guid: c05cf805199b00543826652e11eaf6a4,
         type: 3}
       propertyPath: m_Name
@@ -18010,6 +18240,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2040439659, guid: 20abe00054261724cad4c91a943ea812, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236276129099432848, guid: 20abe00054261724cad4c91a943ea812,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236276129099432849, guid: 20abe00054261724cad4c91a943ea812,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236276129099432850, guid: 20abe00054261724cad4c91a943ea812,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 1236276129099432855, guid: 20abe00054261724cad4c91a943ea812,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
     - target: {fileID: 9100027384185257367, guid: 20abe00054261724cad4c91a943ea812,
         type: 3}
       propertyPath: m_Name
