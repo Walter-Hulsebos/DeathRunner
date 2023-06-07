@@ -14,7 +14,7 @@ namespace DeathRunner.Weapons
         private Camera mainCamera;
 
 
-        public void SpawnCut(GameObject cutPrefab, Transform player)
+        public void SpawnCut(Transform player)
         {
             GameObject cut = Instantiate(cutPrefab, player.position, player.rotation);
         }

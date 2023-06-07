@@ -32,6 +32,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dungeonThemes: []
+  patterns: []
   debugDraw: 0
 --- !u!114 &876904021481137447
 MonoBehaviour:
@@ -63,12 +65,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Seed: 0
-  Mode2D: 0
   Modules: []
-  dungeonFlow: {fileID: 0}
+  snapFlow: {fileID: 0}
   runGraphGenerationScripts: 0
   RotateModulesToFit: 1
   CollisionTestContraction: 1
+  hideDuplicateDoors: 1
   MaxProcessingPower: 1000000
 --- !u!114 &11400674
 MonoBehaviour:
@@ -97,7 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efb7ca94bb2e6e140bdc9938b596d66a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ToolData: {fileID: 0}
   modules: []
   connections: []
 --- !u!114 &11472532
