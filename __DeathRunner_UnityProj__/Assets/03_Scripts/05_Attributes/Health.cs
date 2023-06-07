@@ -82,7 +82,7 @@ namespace DeathRunner.Attributes
                 #if UNITY_EDITOR
                 if (_hasOwnerObject)
                 {
-                    Debug.Log(message: $"Attempting Health Change [{currentHealthBackingField.Value}] → [{value}]", context: _ownerObject);    
+                    Debug.Log(message: $"({_ownerObject.name}) Attempting Health Change [{currentHealthBackingField.Value}] → [{value}]", context: _ownerObject);    
                 }
                 else
                 {
@@ -98,7 +98,7 @@ namespace DeathRunner.Attributes
                     #if UNITY_EDITOR
                     if (_hasOwnerObject)
                     {
-                        Debug.Log(message: $"Health Change Aborted, is already [{value}]", context: _ownerObject);
+                        Debug.Log(message: $"({_ownerObject.name}) Health Change Aborted, is already [{value}]", context: _ownerObject);
                     }
                     else
                     {
@@ -116,7 +116,7 @@ namespace DeathRunner.Attributes
                 #if UNITY_EDITOR
                 if (_hasOwnerObject)
                 {
-                    Debug.Log(message: $"Health Changed [{__previous}] → [{currentHealthBackingField.Value}]", context: _ownerObject);   
+                    Debug.Log(message: $"({_ownerObject.name}) Health Changed [{__previous}] → [{currentHealthBackingField.Value}]", context: _ownerObject);   
                 }
                 else
                 {
@@ -170,7 +170,7 @@ namespace DeathRunner.Attributes
             #if UNITY_EDITOR
             if (_hasOwnerObject)
             {
-                Debug.Log(message: $"InvincibilityFrames for [{InvincibilityFrameDuration.Value}] seconds", context: _ownerObject);
+                Debug.Log(message: $"({_ownerObject.name}) InvincibilityFrames for [{InvincibilityFrameDuration.Value}] seconds", context: _ownerObject);
             }
             else
             {
@@ -185,7 +185,7 @@ namespace DeathRunner.Attributes
             #if UNITY_EDITOR
             if (_hasOwnerObject)
             {
-                Debug.Log(message: $"InvincibilityFrames ended", context: _ownerObject);
+                Debug.Log(message: $"({_ownerObject.name}) InvincibilityFrames ended", context: _ownerObject);
             }
             else
             {
@@ -223,7 +223,7 @@ namespace DeathRunner.Attributes
                 _ownerObject = owner;
                 
                 #if UNITY_EDITOR
-                Debug.Log(message: $"{nameof(Health)}: Init <b>with</b> owner object! ({_ownerObject.name})", context: _ownerObject);
+                Debug.Log(message: $"{nameof(Health)} ({_ownerObject.name}): Init <b>with</b> owner object!", context: _ownerObject);
                 #endif
             }
             else
@@ -231,7 +231,7 @@ namespace DeathRunner.Attributes
                 _hasOwnerObject = false;
                 
                 #if UNITY_EDITOR
-                Debug.LogWarning(message: $"{nameof(Health)}: Init with owner object, but owner object is null!");
+                Debug.LogWarning(message: $"{nameof(Health)} Init with owner object <b>attempted</b>, <color=red>but owner object is NULL!</color>");
                 #endif
             }
             
@@ -243,12 +243,12 @@ namespace DeathRunner.Attributes
             #if UNITY_EDITOR
             if (_hasOwnerObject)
             {
-                Debug.Log(message: $"{nameof(Health)}: (<i>{currentHealthBackingField.ConstantValue.name}</i>): Init() - Constant", context: _ownerObject);
+                Debug.Log(message: $"{nameof(Health)} ({_ownerObject.name}): [<i>{currentHealthBackingField.ConstantValue.name}</i>]: Init() - Constant", context: _ownerObject);
                 Debug.LogWarning(message: "Cannot set a constant value!", context: _ownerObject);
             }
             else
             {
-                Debug.Log(message: $"{nameof(Health)}: (<i>{currentHealthBackingField.ConstantValue.name}</i>): Init() - Constant");
+                Debug.Log(message: $"{nameof(Health)} [<i>{currentHealthBackingField.ConstantValue.name}</i>]: Init() - Constant");
                 Debug.LogWarning(message: "Cannot set a constant value!", context: _ownerObject);
             }
             #endif
@@ -259,11 +259,11 @@ namespace DeathRunner.Attributes
             #if UNITY_EDITOR
             if (_hasOwnerObject)
             {
-                Debug.Log(message: nameof(Health) + ": Init() - Value", context: _ownerObject);
+                Debug.Log(message: $"{nameof(Health)} ({_ownerObject.name}): Init() - Value", context: _ownerObject);
             }
             else
             {
-                Debug.Log(message: nameof(Health) + ": Init() - Value");
+                Debug.Log(message: $"{nameof(Health)}: Init() - Value");
             }
             #endif
             currentHealthBackingField.Value = Max.Value;
@@ -274,11 +274,11 @@ namespace DeathRunner.Attributes
             #if UNITY_EDITOR
             if (_hasOwnerObject)
             {
-                Debug.Log(message: $"{nameof(Health)} (<i>{currentHealthBackingField.InstancerValue.name}</i>): Init() - VariableInstancer", context: _ownerObject);
+                Debug.Log(message: $"{nameof(Health)} ({_ownerObject.name}) [<i>{currentHealthBackingField.InstancerValue.name}</i>]: Init() - VariableInstancer", context: _ownerObject);
             }
             else
             {
-                Debug.Log(message: $"{nameof(Health)} (<i>{currentHealthBackingField.InstancerValue.name}</i>): Init() - VariableInstancer");
+                Debug.Log(message: $"{nameof(Health)} [<i>{currentHealthBackingField.InstancerValue.name}</i>]: Init() - VariableInstancer");
             }
             #endif
             currentHealthBackingField.InstancerValue.Value = Max.Value;
@@ -289,11 +289,11 @@ namespace DeathRunner.Attributes
             #if UNITY_EDITOR
             if (_hasOwnerObject)
             {
-                Debug.Log(message: $"{nameof(Health)} (<i>{currentHealthBackingField.VariableValue.name}</i>): Init() - Variable", context: _ownerObject);
+                Debug.Log(message: $"{nameof(Health)} ({_ownerObject.name}) [<i>{currentHealthBackingField.VariableValue.name}</i>]: Init() - Variable", context: _ownerObject);
             }
             else
             {
-                Debug.Log(message: $"{nameof(Health)} (<i>{currentHealthBackingField.VariableValue.name}</i>): Init() - Variable");
+                Debug.Log(message: $"{nameof(Health)} [<i>{currentHealthBackingField.VariableValue.name}</i>]: Init() - Variable");
             }
             #endif
             currentHealthBackingField.VariableValue.Value = Max.Value;

@@ -1,16 +1,23 @@
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 namespace DeathRunner.EnemyAI
 {
     public class AnimationEventsRanged : MonoBehaviour
     {
         [SerializeField] private RangedEnemyAI rangedEnemyAI;
         
+        #if ODIN_INSPECTOR
+        [AssetsOnly]
+        #endif
         [SerializeField] private GameObject bulletPrefab;
         [SerializeField] private Transform shootPos;
         
-#if UNITY_EDITOR
+        #if UNITY_EDITOR
         private void Reset()
         {
             FindEnemyAI();
@@ -41,7 +48,7 @@ namespace DeathRunner.EnemyAI
             //Find shoot pos in this gameobject's siblings or children
             shootPos = transform.parent.transform.Find("ShootPos");
         }
-#endif
+        #endif
         
         //these can also be used to handle hitboxes
         public void Attack()

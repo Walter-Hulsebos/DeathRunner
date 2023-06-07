@@ -1,10 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections;
 using Cysharp.Threading.Tasks;
+using GenericScriptableArchitecture;
 using Sirenix.OdinInspector;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.AI;
+
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 using Random = UnityEngine.Random;
 
 namespace DeathRunner.EnemyAI
@@ -29,10 +36,13 @@ namespace DeathRunner.EnemyAI
             private Rigidbody rigidbody;
 
             // Current state of the enemy AI
-            [ReadOnly] public States currentState;
+            #if ODIN_INSPECTOR
+            [ReadOnly] 
+            #endif
+            public States currentState;
 
             // Distance at which the enemy will start attacking the player
-            [SerializeField] private float attackDistance = 10;
+            [SerializeField] private float attackDistance = 14;
 
             // Animator component for the enemy
             [SerializeField] private Animator animator;
@@ -50,6 +60,33 @@ namespace DeathRunner.EnemyAI
             [SerializeField] private GameObject HealthDrop;
             
             [HideInInspector] public bool canAttack;
+            
+            
+            [SerializeField] private EventReference OnHealthDepleted;
+            
+            [SerializeField] private EventReference<ushort, ushort> OnHealthDecreased;
+
+            private void OnEnable()
+            {
+                OnHealthDepleted.AddListener(OnHealthDepletedHandler);
+                OnHealthDecreased.AddListener(OnHealthDecreasedHandler);
+            }
+            private void OnDisable()
+            {
+                OnHealthDepleted.RemoveListener(OnHealthDepletedHandler);
+                OnHealthDecreased.RemoveListener(OnHealthDecreasedHandler);
+            }
+            
+            private void OnHealthDecreasedHandler(UInt16 arg1, UInt16 arg2)
+            {
+                OnTakeDamage();
+            }
+
+            private void OnHealthDepletedHandler()
+            {
+                OnDeath();
+            }
+
             
             // Called once when the object is created
             private void Start()
@@ -90,13 +127,14 @@ namespace DeathRunner.EnemyAI
                       //  LookAtPlayer();
 
                         // If the enemy is within attack distance, start attacking
-                        if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance && canAttack)
+                        if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance) //&& canAttack)
                         {
                             // Change the state to attacking
                             currentState = States.Attacking;
 
                             // Stop the enemy's movement
                             navMeshAgent.SetDestination(transform.position);
+                            //navMeshAgent.isStopped = true;
 
                             // Trigger the attack animation
                             animator.SetTrigger("attack");

@@ -9,6 +9,10 @@ using UnityEngine.AI;
 using Cysharp.Threading.Tasks;
 using GenericScriptableArchitecture;
 
+#if ODIN_INSPECTOR
+using Sirenix.OdinInspector;
+#endif
+
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -34,7 +38,10 @@ namespace DeathRunner.EnemyAI
             private Rigidbody rigidbody;
 
             // Current state of the enemy AI
-            [HideInInspector] public States currentState;
+            #if ODIN_INSPECTOR
+            [ReadOnly] 
+            #endif 
+            public States currentState;
 
             // Distance at which the enemy will start attacking the player
             [SerializeField] private float attackDistance = 2;
@@ -201,7 +208,7 @@ namespace DeathRunner.EnemyAI
                 //TODO make it have different time if the attack finishes naturally, and if you get stunned mid attack
                 StartCoroutine(EndAttack(1));
             }
-
+            
             private void OnHealthDepletedHandler()
             {
                 OnDeath();
