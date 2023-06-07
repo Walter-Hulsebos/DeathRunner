@@ -29,6 +29,8 @@ namespace DeathRunner.Weapons
 
         [SerializeField] private Camera _mainCamera;
         
+        [SerializeField] private GameObject cutPrefab;
+        
         // Update is called once per frame
         enum WeaponState
         {
@@ -59,6 +61,10 @@ namespace DeathRunner.Weapons
                         else if (sideWeapon is SWShield shield)
                         {
                             shield.Shield(gameObject, shieldObj);    
+                        }
+                        else if (sideWeapon is SWCut cut)
+                        {
+                            cut.SpawnCut(cutPrefab, muzzle);    
                         }
                         state = WeaponState.Active; 
                         activeTime = sideWeapon.activeTime;
