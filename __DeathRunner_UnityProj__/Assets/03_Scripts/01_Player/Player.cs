@@ -124,11 +124,6 @@ namespace DeathRunner.Player
             _root.Init();
         }
 
-        private void Start()
-        {
-
-        }
-
         private void CreateStateTree()
         {
             _root = new PlayerState_Root
@@ -186,15 +181,15 @@ namespace DeathRunner.Player
             _lightAttackNt00.AddTransition(to: _idleNT, conditions: () => _lightAttackNt00.CanFadeOut && HasNoMoveInput);  //lightAttackNt00 -> idle
             _lightAttackNt01.AddTransition(to: _idleNT, conditions: () => _lightAttackNt01.CanFadeOut && HasNoMoveInput);  //lightAttackNt00 -> idle
             _lightAttackNt02.AddTransition(to: _idleNT, conditions: () => _lightAttackNt02.CanFadeOut && HasNoMoveInput);  //lightAttackNt00 -> idle
-            _idleNT.AddTransition(to: _lightAttackNt00, conditions: () => playerReferences.InputHandler.PrimaryFireInput); //idle -> lightAttackNt00
+            _idleNT.AddTransition(to: _lightAttackNt00, conditions: () => playerReferences.InputHandler.PrimaryFireInputQueue.Peek, transitionAction: () => playerReferences.InputHandler.PrimaryFireInputQueue.Dequeue()); //idle -> lightAttackNt00
             
             _lightAttackNt00.AddTransition(to: _walkNT, conditions: () => _lightAttackNt00.CanFadeOut && HasMoveInput);    //lightAttackNt00 -> walk
             _lightAttackNt01.AddTransition(to: _walkNT, conditions: () => _lightAttackNt01.CanFadeOut && HasMoveInput);    //lightAttackNt00 -> walk
             _lightAttackNt02.AddTransition(to: _walkNT, conditions: () => _lightAttackNt02.CanFadeOut && HasMoveInput);    //lightAttackNt00 -> walk
-            _walkNT.AddTransition(to: _lightAttackNt00, conditions: () => playerReferences.InputHandler.PrimaryFireInput); //walk -> lightAttackNt00
+            _walkNT.AddTransition(to: _lightAttackNt00, conditions: () => playerReferences.InputHandler.PrimaryFireInputQueue.Peek, transitionAction: () => playerReferences.InputHandler.PrimaryFireInputQueue.Dequeue()); //walk -> lightAttackNt00
             
-            _lightAttackNt00.AddTransition(to: _lightAttackNt01, conditions: () => playerReferences.InputHandler.PrimaryFireInput && _lightAttackNt00.CanGoIntoNextAttack); //lightAttackNt00 -> lightAttackNt01
-            _lightAttackNt01.AddTransition(to: _lightAttackNt02, conditions: () => playerReferences.InputHandler.PrimaryFireInput && _lightAttackNt01.CanGoIntoNextAttack); //lightAttackNt01 -> lightAttackNt02
+            _lightAttackNt00.AddTransition(to: _lightAttackNt01, conditions: () => playerReferences.InputHandler.PrimaryFireInputQueue.Peek && _lightAttackNt00.CanGoIntoNextAttack,  transitionAction: () => playerReferences.InputHandler.PrimaryFireInputQueue.Dequeue()); //lightAttackNt00 -> lightAttackNt01
+            _lightAttackNt01.AddTransition(to: _lightAttackNt02, conditions: () => playerReferences.InputHandler.PrimaryFireInputQueue.Peek && _lightAttackNt01.CanGoIntoNextAttack,  transitionAction: () => playerReferences.InputHandler.PrimaryFireInputQueue.Dequeue()); //lightAttackNt01 -> lightAttackNt02
         }
 
         private void OnEnable()  => EnableLateFixedUpdate();

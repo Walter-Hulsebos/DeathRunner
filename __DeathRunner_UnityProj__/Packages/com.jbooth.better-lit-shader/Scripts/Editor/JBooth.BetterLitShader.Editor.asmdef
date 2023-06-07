@@ -2,7 +2,9 @@
     "name": "JBooth.BetterLitShader.Editor",
     "rootNamespace": "",
     "references": [
-        "GUID:a0792b212a555914396dda56372bbfdf"
+        "JBooth.BetterLitShader.Scripts",
+        "Unity.RenderPipelines.HighDefinition.Editor",
+        "Unity.RenderPipelines.HighDefinition.Runtime"
     ],
     "includePlatforms": [
         "Editor"
@@ -18,6 +20,16 @@
             "name": "com.jbooth.better-shaders",
             "expression": "",
             "define": "__BETTERSHADERS__"
+        },
+        {
+            "name": "com.unity.render-pipelines.high-definition",
+            "expression": "",
+            "define": "USING_HDRP"
+        },
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "",
+            "define": "USING_URP"
         }
     ],
     "noEngineReferences": false

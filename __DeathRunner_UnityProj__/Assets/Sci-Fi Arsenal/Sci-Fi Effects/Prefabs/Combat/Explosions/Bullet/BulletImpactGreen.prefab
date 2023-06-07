@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 461740}
   - component: {fileID: 8265654}
+  - component: {fileID: 7004075587918093926}
   - component: {fileID: 19969388}
   - component: {fileID: 19874822}
   - component: {fileID: 11415122}
@@ -134,6 +135,37 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &7004075587918093926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122474}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 0
+      Data2: 0
+      Data3: 0
+      Data4: 0
+    Path: 
+  Event: 
+  PlayEvent: 11
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  AllowNonRigidbodyDoppler: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!199 &19969388
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -4851,7 +4883,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63370acbe4b11f24280fe48a7c5e7dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 8265654}
+  hasAudioSource: 1
   randomPercent: 10
+  randomPrimantissa: 0.1
 --- !u!1 &138686
 GameObject:
   m_ObjectHideFlags: 0

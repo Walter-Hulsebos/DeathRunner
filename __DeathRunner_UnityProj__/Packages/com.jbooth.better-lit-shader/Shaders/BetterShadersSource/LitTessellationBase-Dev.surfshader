@@ -60,15 +60,29 @@ BEGIN_CODE
    void ModifyTessellatedVertex(inout VertexData v, inout ExtraV2F e)
    {
       #undef SAMPLEBARY
+      #undef TEXARGS
+
       #if _STOCHASTIC && _TRIPLANAR
         #define SAMPLEBARY SampleTexBaryLODStochasticTriplanar
+        #define TEXARGS TEXTURE2D_ARGS
+      #elif _STOCHASTIC && _TRIPLANARPROJECTION
+        #define SAMPLEBARY SampleTexBaryLODStochasticTriplanarProjection
+        #define TEXARGS TEXTURE2D_ARGS3
       #elif _STOCHASTIC
         #define SAMPLEBARY SampleTexBaryLODStochastic
+        #define TEXARGS TEXTURE2D_ARGS
       #elif _TRIPLANAR
         #define SAMPLEBARY SampleTexBaryLODTriplanar
+        #define TEXARGS TEXTURE2D_ARGS
+      #elif _TRIPLANARPROJECTION
+        #define SAMPLEBARY SampleTexBaryLODTriplanarProjection
+        #define TEXARGS TEXTURE2D_ARGS3
       #else
         #define SAMPLEBARY SampleTexBaryLOD
+        #define TEXARGS TEXTURE2D_ARGS
       #endif
+
+
       ShaderData d;
       ZERO_INITIALIZE(ShaderData, d);
       d.texcoord0.xy = v.texcoord0.xy;
@@ -78,7 +92,20 @@ BEGIN_CODE
       d.worldSpacePosition = ObjectToWorldSpacePosition(v.vertex.xyz);
       d.worldSpaceNormal = TransformObjectToWorld(v.normal);
 
-      Config c = CreateConfig(d, _AlbedoMap_ST, _TriplanarSpace, _UVSource, _TriplanarContrast);
+      float4 scale0 = _AlbedoMap_ST;
+      float4 scale1 = scale0;
+      float4 scale2 = scale0;
+      #if _TRIPLANARPROJECTION
+         scale1 = _AlbedoMap_P1_ST;
+         scale2 = _AlbedoMap_P2_ST;
+      #endif
+
+      Config c = CreateConfig(d, scale0, scale1, scale2, _TriplanarSpace, _UVSource, _TriplanarContrast);
+
+      #if _TEXTUREROTATION
+        RotateConfig(c, _TextureRotation);
+      #endif
+
 
       #if _STOCHASTIC && !_TRIPLANAR
          PrepareStochasticUVs(_StochasticScale, c.uv, c.uvT);
@@ -88,7 +115,7 @@ BEGIN_CODE
          PrepareStochasticUVs(_StochasticScale, c.uvT.uv2, c.uvZ);
       #endif
 
-      half height = SAMPLEBARY(TEXTURE2D_ARGS(_AlbedoMap, sampler_AlbedoMap), c, _TessellationMipBias, _StochasticContrast).a;
+      half height = SAMPLEBARY(TEXARGS(_AlbedoMap, sampler_AlbedoMap), c, _TessellationMipBias, _StochasticContrast).a;
       height = lerp(_HeightRemap.x, _HeightRemap.y, height);
       height *= _DisplacementStrength;
       e.blackboard.vertexHeightOffset = height;

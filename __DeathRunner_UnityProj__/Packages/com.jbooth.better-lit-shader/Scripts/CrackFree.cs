@@ -9,7 +9,7 @@ namespace JBooth.BetterLit
    {
       public float weldThreshold = 0.001f;
 
-      private void OnEnable()
+      private void OnEnable() 
       {
          StampDampening();
       }

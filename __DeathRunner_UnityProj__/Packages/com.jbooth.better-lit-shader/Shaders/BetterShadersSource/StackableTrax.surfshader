@@ -28,14 +28,16 @@ END_DEFINES
 
 
 BEGIN_CBUFFER
-    half _TraxDisplacementDepth;
-    half _TraxDisplacementStrength;
-    half _TraxMipBias;
-    half _TraxNormalStrength;
-    float4 _TraxAlbedo_ST;
-    half _TraxInterpContrast;
-    half _TraxHeightContrast;
-    half3 _TraxTint;
+    //#if _TRAX_ON
+        half _TraxDisplacementDepth;
+        half _TraxDisplacementStrength;
+        half _TraxMipBias;
+        half _TraxNormalStrength;
+        float4 _TraxAlbedo_ST;
+        half _TraxInterpContrast;
+        half _TraxHeightContrast;
+        half3 _TraxTint;
+    //#endif
 
 END_CBUFFER
 
@@ -47,7 +49,6 @@ BEGIN_CODE
 
    #if _TRAX_ON
    TEXTURE2D(_TraxAlbedo);
-   SAMPLER(sampler_TraxAlbedo);
    TEXTURE2D(_TraxPackedNormal);
    TEXTURE2D(_TraxMask);
 
@@ -65,7 +66,7 @@ BEGIN_CODE
       uv -= _GMSTraxBufferPosition.xz;
       uv /= max(_GMSTraxBufferWorldSize, 1);
       float fade = saturate(distance(uv, float2(0.0, 0.0)));
-      fade = 1 - pow(fade, 8);
+      fade = 1 - pow(abs(fade), 8);
       uv *= 0.5;
       uv += 0.5;
       float vn = saturate(sign(dot(worldNormal, float3(0, 1, 0))));
@@ -81,7 +82,7 @@ BEGIN_CODE
       uv -= _GMSTraxBufferPosition.xz;
       uv /= max(_GMSTraxBufferWorldSize, 1);
       float fade = saturate(distance(uv, float2(0.0, 0.0)));
-      fade = 1 - pow(fade, 3);
+      fade = 1 - pow(abs(fade), 3);
       uv *= 0.5;
       uv += 0.5;
             
@@ -124,7 +125,7 @@ BEGIN_CODE
            float traxBuffer = SampleTraxBufferLOD(worldSpacePosition, worldSpaceNormal);
            d.blackboard.traxBuffer = traxBuffer;
            float2 uv = worldSpacePosition.xz * float2(1, -1) * _TraxAlbedo_ST.xy + _TraxAlbedo_ST.zw;
-           half albedo = SAMPLE_TEXTURE2D_LOD(_TraxAlbedo, sampler_TraxAlbedo, uv, _TraxMipBias).a;
+           half albedo = SAMPLE_TEXTURE2D_LOD(_TraxAlbedo, shared_linear_repeat_sampler, uv, _TraxMipBias).a;
 
            float traxOffset = albedo * _TraxDisplacementStrength;
            traxOffset *= 1 - v.texcoord0.z;
@@ -158,9 +159,9 @@ BEGIN_CODE
         UNITY_BRANCH
         if (traxBuffer > 0)
         {
-            half4 albedo = SAMPLE_TEXTURE2D_GRAD(_TraxAlbedo, sampler_TraxAlbedo, uv, fsdx, fsdy);
+            half4 albedo = SAMPLE_TEXTURE2D_GRAD(_TraxAlbedo, shared_linear_repeat_sampler, uv, fsdx, fsdy);
             albedo.rgb *= _TraxTint.rgb;
-            half4 normalSample = SAMPLE_TEXTURE2D_GRAD(_TraxPackedNormal, sampler_TraxAlbedo, uv, fsdx, fsdy);
+            half4 normalSample = SAMPLE_TEXTURE2D_GRAD(_TraxPackedNormal, shared_linear_repeat_sampler, uv, fsdx, fsdy);
             COUNTSAMPLE
             COUNTSAMPLE
 

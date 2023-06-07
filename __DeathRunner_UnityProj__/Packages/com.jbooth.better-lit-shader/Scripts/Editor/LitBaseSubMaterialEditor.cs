@@ -28,6 +28,56 @@ namespace JBooth.BetterLit
          stub.DoTextureLayerWeights(materialEditor, props);
       }
    }
+   public class StackableHDRPOptions : SubShaderMaterialEditor
+   {
+      LitBaseStub stub = null;
+      public override void OnGUI(MaterialEditor materialEditor,
+         ShaderGUI shaderGUI,
+         MaterialProperty[] props,
+         Material mat)
+      {
+         if (stub == null)
+         {
+            stub = new LitBaseStub(shaderGUI, mat);
+         }
+
+         stub.DoHDRPExtra(materialEditor, props);
+      }
+   }
+
+   public class StackableWireframeEditor : SubShaderMaterialEditor
+   {
+      LitBaseStub stub = null;
+      public override void OnGUI(MaterialEditor materialEditor,
+         ShaderGUI shaderGUI,
+         MaterialProperty[] props,
+         Material mat)
+      {
+         if (stub == null)
+         {
+            stub = new LitBaseStub(shaderGUI, mat);
+         }
+
+         stub.DoWireframe(materialEditor, props);
+      }
+   }
+
+   public class StackableMultiMatCapEditor : SubShaderMaterialEditor
+   {
+      LitBaseStub stub = null;
+      public override void OnGUI(MaterialEditor materialEditor,
+         ShaderGUI shaderGUI,
+         MaterialProperty[] props,
+         Material mat)
+      {
+         if (stub == null)
+         {
+            stub = new LitBaseStub(shaderGUI, mat);
+         }
+
+         stub.DoMatCap(materialEditor, props);
+      }
+   }
 
    public class StackableDissolveEditor : SubShaderMaterialEditor
    {
@@ -43,6 +93,41 @@ namespace JBooth.BetterLit
          }
 
          stub.DoDissolve(materialEditor, props);
+      }
+   }
+
+
+   public class StackableBakeryEditor : SubShaderMaterialEditor
+   {
+      LitBaseStub stub = null;
+      public override void OnGUI(MaterialEditor materialEditor,
+         ShaderGUI shaderGUI,
+         MaterialProperty[] props,
+         Material mat)
+      {
+         if (stub == null)
+         {
+            stub = new LitBaseStub(shaderGUI, mat);
+         }
+
+         stub.DoBakery(materialEditor, props);
+      }
+   }
+
+   public class StackableVertexTintEditor : SubShaderMaterialEditor
+   {
+      LitBaseStub stub = null;
+      public override void OnGUI(MaterialEditor materialEditor,
+         ShaderGUI shaderGUI,
+         MaterialProperty[] props,
+         Material mat)
+      {
+         if (stub == null)
+         {
+            stub = new LitBaseStub(shaderGUI, mat);
+         }
+
+         stub.DoVertexColor(materialEditor, props);
       }
    }
 
@@ -143,6 +228,23 @@ namespace JBooth.BetterLit
             stub = new LitBaseStub(shaderGUI, mat);
          }
          stub.DoCullMode();
+      }
+   }
+
+   public class Stackable6SidedColorEditor : SubShaderMaterialEditor
+   {
+      LitBaseStub stub = null;
+      public override void OnGUI(MaterialEditor materialEditor,
+         ShaderGUI shaderGUI,
+         MaterialProperty[] props,
+         Material mat)
+      {
+         if (stub == null)
+         {
+            stub = new LitBaseStub(shaderGUI, mat);
+         }
+
+         stub.Do6SidedColor(materialEditor, props);
       }
    }
 

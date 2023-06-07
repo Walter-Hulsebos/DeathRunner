@@ -27,6 +27,8 @@ namespace DeathRunner.Inputs
         //For this reason I used methods such as OnThrottleInputStarted, OnThrottleInputPerformed, and OnThrottleInputCanceled to handle the input.
         //This leaves open the possibility of having multiple cars with very few changes, just comment out the Input Actions, add the `PlayerInput` component, and link up the events.
         
+        [SerializeField] private F32                  inputBufferTime = 0.2f;
+
         [FoldoutGroup(groupName: "Move")]
         [SerializeField] private InputActionReference moveInputActionReference;
         [field:FoldoutGroup(groupName: "Move")]
@@ -147,11 +149,11 @@ namespace DeathRunner.Inputs
 
         [FoldoutGroup(groupName: "Primary Fire")]
         [SerializeField] private InputActionReference primaryFireInputActionReference;
-        [field:FoldoutGroup(groupName: "Primary Fire")]
-        [field:SerializeField] public Bool            PrimaryFireInput   { get; private set; }
-        public event Action<Bool>                     OnPrimaryFireInputChanged;
-        public event Action                           OnPrimaryFireStarted;
-        public event Action                           OnPrimaryFireStopped;
+        //[field:FoldoutGroup(groupName: "Primary Fire")]
+        //[field:SerializeField] public Bool            PrimaryFireInput   { get; private set; }
+        //public event Action<Bool>                     OnPrimaryFireInputChanged;
+        //public event Action                           OnPrimaryFire;
+        //public event Action                           OnPrimaryFireStopped;
 
         [FoldoutGroup(groupName: "Secondary Fire")]
         [SerializeField] private InputActionReference secondaryFireInputActionReference;
@@ -185,6 +187,8 @@ namespace DeathRunner.Inputs
 
         private void OnEnable()
         {
+            PrimaryFireInputQueue = new InputQueue<Bool>(bufferTimeInSeconds: primaryFireInputBufferTimeSeconds);
+            
             moveInputActionReference.action.Enable();
             aimInputActionReference.action.Enable();
             dashInputActionReference.action.Enable();
@@ -220,14 +224,14 @@ namespace DeathRunner.Inputs
             moveInputActionReference.action.performed          += OnMoveInputPerformed;
             aimInputActionReference.action.performed           += OnAimInputPerformed;
             dashInputActionReference.action.performed          += OnDashInputPerformed;
-            primaryFireInputActionReference.action.performed   += OnPrimaryFireInputPerformed;
+            //primaryFireInputActionReference.action.performed   += OnPrimaryFireInputPerformed;
             secondaryFireInputActionReference.action.performed += OnSecondaryFireInputPerformed;
             slowMoToggleInputActionReference.action.performed  += OnSlowMoInputPerformed;
             
             moveInputActionReference.action.canceled           += OnMoveInputCanceled;
             aimInputActionReference.action.canceled            += OnAimInputCanceled;
             dashInputActionReference.action.canceled           += OnDashInputCanceled;
-            primaryFireInputActionReference.action.canceled    += OnPrimaryFireInputCanceled;
+            //primaryFireInputActionReference.action.canceled    += OnPrimaryFireInputCanceled;
             secondaryFireInputActionReference.action.canceled  += OnSecondaryFireInputCanceled;
             slowMoToggleInputActionReference.action.canceled   += OnSlowMoInputCanceled;
         }
@@ -244,16 +248,21 @@ namespace DeathRunner.Inputs
             moveInputActionReference.action.performed          -= OnMoveInputPerformed;
             aimInputActionReference.action.performed           -= OnAimInputPerformed;
             dashInputActionReference.action.performed          -= OnDashInputPerformed;
-            primaryFireInputActionReference.action.performed   -= OnPrimaryFireInputPerformed;
+            //primaryFireInputActionReference.action.performed   -= OnPrimaryFireInputPerformed;
             secondaryFireInputActionReference.action.performed -= OnSecondaryFireInputPerformed;
             slowMoToggleInputActionReference.action.performed  -= OnSlowMoInputPerformed;
                                                     
             moveInputActionReference.action.canceled           -= OnMoveInputCanceled;
             aimInputActionReference.action.canceled            -= OnAimInputCanceled;
             dashInputActionReference.action.canceled           -= OnDashInputCanceled;
-            primaryFireInputActionReference.action.canceled    -= OnPrimaryFireInputCanceled;
+            //primaryFireInputActionReference.action.canceled    -= OnPrimaryFireInputCanceled;
             secondaryFireInputActionReference.action.canceled  -= OnSecondaryFireInputCanceled;
             slowMoToggleInputActionReference.action.canceled   -= OnSlowMoInputCanceled;
+        }
+
+        private void Update()
+        {
+            InputSystem.Update();
         }
 
         #region Move Input Callbacks
@@ -427,25 +436,29 @@ namespace DeathRunner.Inputs
 
         #region Primary Fire Input Callbacks
 
-        private void OnPrimaryFireInputStarted(InputAction.CallbackContext ctx)   => HandlePrimaryFireInput(newPrimaryFireInput: ctx.ReadValueAsButton());
-        private void OnPrimaryFireInputPerformed(InputAction.CallbackContext ctx) => HandlePrimaryFireInput(newPrimaryFireInput: ctx.ReadValueAsButton());
-        private void OnPrimaryFireInputCanceled(InputAction.CallbackContext ctx)  => HandlePrimaryFireInput(newPrimaryFireInput: false);
+        [SerializeField] private F32 primaryFireInputBufferTimeSeconds = 0.1f;
+        public InputQueue<Bool>      PrimaryFireInputQueue;
 
-        private void HandlePrimaryFireInput(Bool newPrimaryFireInput)
-        {
-            PrimaryFireInput = newPrimaryFireInput;
-            OnPrimaryFireInputChanged?.Invoke(PrimaryFireInput);
-            
-            if (PrimaryFireInput)
-            {
-                OnPrimaryFireStarted?.Invoke();
-            }
-            else
-            {
-                OnPrimaryFireStopped?.Invoke();
-            }
-        }
-        
+        private void OnPrimaryFireInputStarted(InputAction.CallbackContext ctx) => PrimaryFireInputQueue.Enqueue(input: true).Forget();
+        private void OnPrimaryFireInputPerformed(InputAction.CallbackContext ctx) {} //=> HandlePrimaryFireInput(newPrimaryFireInput: false);
+        private void OnPrimaryFireInputCanceled(InputAction.CallbackContext ctx)  {} //=> HandlePrimaryFireInput(newPrimaryFireInput: false);
+
+        // private void HandlePrimaryFireInput(Bool newPrimaryFireInput)
+        // {
+        //     Bool __inputHasChanged = (newPrimaryFireInput != PrimaryFireInput);
+        //
+        //     if (!__inputHasChanged) return;
+        //
+        //     PrimaryFireInput = newPrimaryFireInput;
+        //     OnPrimaryFireInputChanged?.Invoke(PrimaryFireInput);
+        //
+        //     if (PrimaryFireInput)
+        //     {
+        //         Debug.Log("Primary Fire Started");
+        //         OnPrimaryFire?.Invoke();
+        //     }
+        // }
+
         #endregion
         
         #region Secondary Fire Input Callbacks

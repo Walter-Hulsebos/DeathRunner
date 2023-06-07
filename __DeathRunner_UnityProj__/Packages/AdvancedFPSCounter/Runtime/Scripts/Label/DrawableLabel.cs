@@ -418,7 +418,16 @@ namespace CodeStage.AdvancedFPSCounter.Labels
 		{
 			if (uiText == null) return;
 
-			if (font == null) font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+			if (font == null)
+			{
+#if UNITY_2022_2_OR_NEWER
+				var fontName = "LegacyRuntime.ttf";
+#else
+				var fontName = "Arial.ttf";
+#endif
+				font = Resources.GetBuiltinResource<Font>(fontName);
+			}
+				
 			uiText.font = font;
 		}
 	}
