@@ -66,11 +66,14 @@ namespace DeathRunner.EnemyAI
         [UsedImplicitly]
         public void EndAttack()
         {
-            Debug.Log("EnemyRanged Animation Events - EndAttack");
-            
-            OnAttackFinished?.Invoke();
-            
-        //TODO maybe this stuff should be handled in main script and just called from here
+            if (OnAttackFinished != null)
+            {
+                Debug.Log("EnemyRanged Animation Events - EndAttack, OnAttackFinished.Invoke()");
+                
+                OnAttackFinished.Invoke();   
+            }
+
+            //TODO maybe this stuff should be handled in main script and just called from here
             //rangedEnemyAI.FinishAttack();
             
             // rangedEnemyAI.currentState = RangedEnemyAI.States.Idle; 

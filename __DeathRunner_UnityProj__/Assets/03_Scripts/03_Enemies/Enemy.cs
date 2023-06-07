@@ -40,6 +40,8 @@ namespace DeathRunner.Enemies
         
         [Tooltip("Cooldown between enemy attacks")]
         [SerializeField] protected F32 attackCooldown = 2;
+        protected F32 _timeOfLastAttack = 0;
+        protected F32 TimeOfNextAttack => _timeOfLastAttack + attackCooldown;
         
         [Tooltip("Animator component for the enemy")]
         [SerializeField] protected Animator animator;
@@ -146,6 +148,10 @@ namespace DeathRunner.Enemies
             //     print("changin layer");
             // }
             
+            #if UNITY_EDITOR
+            Debug.Log(message: "Enemy died!", context: this);
+            #endif
+
             StopAllCoroutines();
             navMeshAgent.SetDestination(transform.position);
             navMeshAgent.velocity = Vector3.zero;
@@ -158,7 +164,7 @@ namespace DeathRunner.Enemies
                 Instantiate(healthDrop, transform.position, Quaternion.identity);
             }
 
-            StopAllCoroutines();
+            //StopAllCoroutines();
             animator.SetTrigger(death);
         }
         
@@ -168,7 +174,7 @@ namespace DeathRunner.Enemies
             //TODO make it have different time if the attack finishes naturally, and if you get stunned mid attack
             
             //TODO delete this or do it better, this is managed by animation events now    
-            await UniTask.Delay(TimeSpan.FromSeconds(1));
+            await UniTask.Delay(TimeSpan.FromSeconds(0.3f));
             
             StartChase();
         }

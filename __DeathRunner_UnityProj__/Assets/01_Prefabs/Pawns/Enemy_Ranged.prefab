@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &388553036
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 388553037}
+  - component: {fileID: 388553038}
+  m_Layer: 0
+  m_Name: NameContainer(EditorOnly)
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &388553037
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388553036}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9100027384185257373}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &388553038
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388553036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190d9e9918d0aaf48a103a2bb6995059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOverride: Attack-Finished
+  tooltipOverride: 
+  target: {fileID: 2040439659}
 --- !u!1 &1505952874840008761
 GameObject:
   m_ObjectHideFlags: 0
@@ -331,7 +378,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 9100027384185257369}
   currentState: 0
   attackDistance: 14
-  attackCooldown: 2
+  attackCooldown: 4
   animator: {fileID: 9100027384773731084}
   rigidbody: {fileID: 9100027384185257370}
   healthDrop: {fileID: 1273188676277678975, guid: 8f2e01be22f73164c870b48c47a51a12,
@@ -348,6 +395,27 @@ MonoBehaviour:
   - {fileID: 755014407743963319}
   - {fileID: 8825229343540396180}
   hasPickedWalkPos: 0
+  OnAttackFinished:
+    _eventType: 1
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 2040439659}
+--- !u!114 &2040439659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100027384185257367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6694a34dbdf64e33aa3ca30fba61a580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _base: {fileID: 11400000, guid: f2c52986c57558748bc93e1251d07c2f, type: 2}
+  _scriptableEventHelper:
+    ListenersExpanded: 0
+    StackTrace:
+      Enabled: 0
 --- !u!195 &9100027384185257369 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 8279253648825646248, guid: a086f553e1f30694685571bc41982275,
@@ -384,10 +452,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de086e1aae19bfc4c9edc9e0cb83e3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangedEnemyAI: {fileID: 0}
   bulletPrefab: {fileID: 1170015546580611590, guid: 1eeba3937e9169640b0e08d247f01b7c,
     type: 3}
   shootPos: {fileID: 3483694793217361406}
+  OnAttackFinished:
+    _eventType: 1
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 2040439659}
 --- !u!4 &9100027384766467322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8279253650383998411, guid: a086f553e1f30694685571bc41982275,
