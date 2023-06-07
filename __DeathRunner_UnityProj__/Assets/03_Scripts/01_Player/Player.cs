@@ -124,11 +124,6 @@ namespace DeathRunner.Player
             _root.Init();
         }
 
-        private void Start()
-        {
-
-        }
-
         private void CreateStateTree()
         {
             _root = new PlayerState_Root

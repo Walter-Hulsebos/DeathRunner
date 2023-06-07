@@ -14,6 +14,10 @@ BEGIN_PASS("forward")
    Cull [_CullMode]
 END_PASS
 
+BEGIN_PASS("forwardadd")
+   Cull [_CullMode]
+END_PASS
+
 BEGIN_PASS("gbuffer")
    Cull [_CullMode]
 END_PASS
@@ -29,6 +33,7 @@ END_PASS
 BEGIN_PASS("motion")
    Cull [_CullMode]
 END_PASS
+
 
 // cull mode doesn't have to be in the CBuffer, actually, because it's not
 // used in the HLSL code, rather outside of it.

@@ -150,8 +150,8 @@ namespace DeathRunner.Inputs
         [field:FoldoutGroup(groupName: "Primary Fire")]
         [field:SerializeField] public Bool            PrimaryFireInput   { get; private set; }
         public event Action<Bool>                     OnPrimaryFireInputChanged;
-        public event Action                           OnPrimaryFireStarted;
-        public event Action                           OnPrimaryFireStopped;
+        public event Action                           OnPrimaryFire;
+        //public event Action                           OnPrimaryFireStopped;
 
         [FoldoutGroup(groupName: "Secondary Fire")]
         [SerializeField] private InputActionReference secondaryFireInputActionReference;
@@ -254,6 +254,11 @@ namespace DeathRunner.Inputs
             primaryFireInputActionReference.action.canceled    -= OnPrimaryFireInputCanceled;
             secondaryFireInputActionReference.action.canceled  -= OnSecondaryFireInputCanceled;
             slowMoToggleInputActionReference.action.canceled   -= OnSlowMoInputCanceled;
+        }
+
+        private void Update()
+        {
+            InputSystem.Update();
         }
 
         #region Move Input Callbacks
@@ -427,22 +432,23 @@ namespace DeathRunner.Inputs
 
         #region Primary Fire Input Callbacks
 
-        private void OnPrimaryFireInputStarted(InputAction.CallbackContext ctx)   => HandlePrimaryFireInput(newPrimaryFireInput: ctx.ReadValueAsButton());
-        private void OnPrimaryFireInputPerformed(InputAction.CallbackContext ctx) => HandlePrimaryFireInput(newPrimaryFireInput: ctx.ReadValueAsButton());
+        private void OnPrimaryFireInputStarted(InputAction.CallbackContext ctx)   => HandlePrimaryFireInput(newPrimaryFireInput: true);
+        private void OnPrimaryFireInputPerformed(InputAction.CallbackContext ctx) => HandlePrimaryFireInput(newPrimaryFireInput: false);
         private void OnPrimaryFireInputCanceled(InputAction.CallbackContext ctx)  => HandlePrimaryFireInput(newPrimaryFireInput: false);
 
         private void HandlePrimaryFireInput(Bool newPrimaryFireInput)
         {
+            Bool __inputHasChanged = (newPrimaryFireInput != PrimaryFireInput);
+            
+            if (!__inputHasChanged) return;
+            
             PrimaryFireInput = newPrimaryFireInput;
             OnPrimaryFireInputChanged?.Invoke(PrimaryFireInput);
             
             if (PrimaryFireInput)
             {
-                OnPrimaryFireStarted?.Invoke();
-            }
-            else
-            {
-                OnPrimaryFireStopped?.Invoke();
+                Debug.Log("Primary Fire Started");
+                OnPrimaryFire?.Invoke();
             }
         }
         

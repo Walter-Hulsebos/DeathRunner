@@ -7,20 +7,23 @@ BEGIN_OPTIONS
     ExtraV2F6Modifier "_centroid"
     ExtraV2F7Modifier "_centroid"
     VertexColorModifier "_centroid"
-    VertexColorRequire "_LAYERVERTEXMASK || (USEBAKERY && (defined(_LIGHTMAPMODE_VERTEX) || defined(_LIGHTMAPMODE_VERTEXDIRECTIONAL) || defined(_LIGHTMAPMODE_VERTEXSH)))"
+    VertexColorRequire "(USEBAKERY && (defined(_LIGHTMAPMODE_VERTEX) || defined(_LIGHTMAPMODE_VERTEXDIRECTIONAL) || defined(_LIGHTMAPMODE_VERTEXSH)))"
     VertexTexCoord3Require "USEBAKERY && defined(_LIGHTMAPMODE_VERTEXSH)"
     ExtraV2F4Require "USEBAKERY && defined(BAKERY_VERTEXLMMASK) && (defined(_LIGHTMAPMODE_VERTEX) || defined(_LIGHTMAPMODE_VERTEXDIRECTIONAL) || defined(_LIGHTMAPMODE_VERTEXSH))"
     ExtraV2F5Require "USEBAKERY && defined(_LIGHTMAPMODE_VERTEXSH) || defined(_LIGHTMAPMODE_VERTEXDIRECTIONAL)"
     ExtraV2F6Require "USEBAKERY && defined(_LIGHTMAPMODE_VERTEXSH)"
     ExtraV2F7Require "USEBAKERY && defined(_LIGHTMAPMODE_VERTEXSH)"
     StripV2F { texcoord3 } // only used in vertex
+
+    ShaderName "Hidden/Better Lit/Dev/StackableBakery"
+    CustomEditor "JBooth.BetterShaders.BetterShaderMaterialGUI"
+    SubEditor "StackableBakeryEditor"
+
 END_OPTIONS
 
 BEGIN_PROPERTIES
-	[BetterHeader(Bakery)]
-	[KeywordEnum(Standard, RNM, SH, Vertex, VertexDirectional, VertexSH)] _LightmapMode ("Lightmapping mode", Float) = 0
-    [Toggle(BAKERY_VERTEXLMMASK)] _BAKERY_VERTEXLMMASK ("Enable vertex shadowmask", Float) = 0
-    [Toggle(BAKERY_SHNONLINEAR)] _BAKERY_SHNONLINEAR ("SH non-linear mode", Float) = 1
+	[Toggle(BAKERY_VERTEXLMMASK)] _BAKERY_VERTEXLMMASK ("Enable vertex shadowmask", Float) = 0
+    [Toggle(BAKERY_SHNONLINEAR)] _BAKERY_SHNONLINEAR ("SH non-linear mode", Float) = 0
     [Toggle(BAKERY_LMSPEC)] _BAKERY_LMSPEC ("Enable Lightmap Specular", Float) = 0
     [Toggle(BAKERY_BICUBIC)] _BAKERY_BICUBIC ("Enable Bicubic Filter", Float) = 0
     [Toggle(BAKERY_VOLUME)] _BAKERY_VOLUME ("Use volumes", Float) = 0
@@ -33,16 +36,16 @@ END_PROPERTIES
 // _fragment if the feature is only used in the fragment shader to reduce compile times.
 
 BEGIN_DEFINES
-	#pragma shader_feature _LIGHTMAPMODE_STANDARD _LIGHTMAPMODE_RNM _LIGHTMAPMODE_SH _LIGHTMAPMODE_VERTEX _LIGHTMAPMODE_VERTEXDIRECTIONAL _LIGHTMAPMODE_VERTEXSH
+	#pragma shader_feature _ _LIGHTMAPMODE_STANDARD _LIGHTMAPMODE_RNM _LIGHTMAPMODE_SH _LIGHTMAPMODE_VERTEX _LIGHTMAPMODE_VERTEXDIRECTIONAL _LIGHTMAPMODE_VERTEXSH
 
-    #pragma shader_feature USEBAKERY
-    #pragma shader_feature BAKERY_VERTEXLMMASK
-    #pragma shader_feature BAKERY_SHNONLINEAR
-    #pragma shader_feature BAKERY_LMSPEC
-    #pragma shader_feature BAKERY_BICUBIC
-    #pragma shader_feature BAKERY_VOLUME
-    #pragma shader_feature BAKERY_VOLROTATION
-    #pragma shader_feature BAKERY_COMPRESSED_VOLUME
+    #pragma shader_feature_local _ USEBAKERY
+    #pragma shader_feature_local _ BAKERY_VERTEXLMMASK
+    #pragma shader_feature_local _ BAKERY_SHNONLINEAR
+    #pragma shader_feature_local _ BAKERY_LMSPEC
+    #pragma shader_feature_local _ BAKERY_BICUBIC
+    #pragma shader_feature_local _ BAKERY_VOLUME
+    #pragma shader_feature_local _ BAKERY_VOLROTATION
+    #pragma shader_feature_local _ BAKERY_COMPRESSED_VOLUME
 
     #if USEBAKERY
 	    #define _OVERRIDE_BAKEDGI
@@ -107,7 +110,7 @@ half3 LinearToGamma (half3 linRGB)
 {
     linRGB = max(linRGB, half3(0.h, 0.h, 0.h));
     // An almost-perfect approximation from http://chilliant.blogspot.com.au/2012/08/srgb-approximations-for-hlsl.html?m=1
-    return max(1.055h * pow(linRGB, 0.416666667h) - 0.055h, 0.h);
+    return max(1.055h * pow(abs(linRGB), 0.416666667h) - 0.055h, 0.h);
 }
 
 float shEvaluateDiffuseL1Geomerics(float L0, float3 L1, float3 n)
@@ -134,7 +137,7 @@ float shEvaluateDiffuseL1Geomerics(float L0, float3 L1, float3 n)
     // should vary between 4 (highly directional) and 0 (ambient)
     float a = (1.0f - lenR1 / R0) / (1.0f + lenR1 / R0);
 
-    return R0 * (a + (1.0f - a) * (p + 1.0f) * pow(q, p));
+    return R0 * (a + (1.0f - a) * (p + 1.0f) * pow(abs(q), p));
 }
 
 #ifdef BAKERY_VERTEXLMMASK
@@ -662,7 +665,7 @@ void BakerySH(inout float3 diffuseColor, inout float3 specularColor, float2 lmUV
                     indDif.b = shEvaluateDiffuseL1Geomerics(L0.b, float3(L1x.b, L1y.b, L1z.b), volNormal);
 
                     #ifdef UNITY_COLORSPACE_GAMMA
-                        indDif = pow(indDif, 1.0f / 2.2f);
+                        indDif = pow(abs(indDif), 1.0f / 2.2f);
                     #endif
 
                     #ifdef BAKERY_LMSPEC

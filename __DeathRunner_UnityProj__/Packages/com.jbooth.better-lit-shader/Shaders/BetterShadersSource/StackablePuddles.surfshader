@@ -16,6 +16,7 @@ BEGIN_PROPERTIES
    _WetnessMode("Wetness Mode", Int) = 0
    _PuddleMode("Puddle Mode", Int) = 0
    _RainMode("Rain Mode", Int) = 0
+   _RainUV("Rain UV", Int) = 0
    _WetnessAmount("Wetness Amount", Range(0,1)) = 0
    _Porosity("Porosity", Range(0,1)) = 0.4
    _WetnessMin("Minimum Wetness", Range(0,1)) = 0
@@ -26,13 +27,19 @@ BEGIN_PROPERTIES
    _PuddleFalloff("Puddle Contrast", Range(2, 50)) = 12
    _PuddleAngleMin("Moss Angle Minimum", Range(0,1)) = 0.1
    _PuddleColor("Puddle Color", Color) = (0.2, 0.2, 0.2, 0.7)
+   _PuddleNoiseTex("Noise Texture", 2D) = "black" { }
    _PuddleNoiseFrequency("Noise Frequency", Float) = 1
    _PuddleNoiseAmplitude("Noise Amplitude", Range(0,10)) = 0.5
    _PuddleNoiseCenter("Noise Center", Range(-5, 5)) = 0
    _PuddleNoiseOffset("Noise Offset", Float) = 0
    _RainDropTexture("RainDrop Texture", 2D) = "white" {}
-   _RainIntensityScale("Intensity/Scale/MinWet", Vector) = (1, 25, 0, 0)
+   _RainIntensityScale("Intensity/Scale/MinWet", Vector) = (1, 25, 0, 400)
    _WetnessShoreline("Wetness Shore Height", Float) = -99999
+
+    [Toggle(_WETNESSEFFECTOR)] _WetnessUseEffector("Use Effector", Float) = 0
+    [MaterialToggle]_WetnessEffectorInvert("Invert", Float) = 0
+    [Toggle(_PUDDLEEFFECTOR)] _PuddleUseEffector("Use Effector", Float) = 0
+    [MaterialToggle]_PuddleEffectorInvert("Invert", Float) = 0
 END_PROPERTIES
 
 BEGIN_SUBSHADERS
@@ -40,36 +47,52 @@ BEGIN_SUBSHADERS
 END_SUBSHADERS
 
 BEGIN_DEFINES
-   #pragma shader_feature_local_fragment _ _WETNESS
-   #pragma shader_feature_local_fragment _ _PUDDLES
-   #pragma shader_feature_local_fragment _ _PUDDLENOISE
-   #pragma shader_feature_local_fragment _ _RAINDROPS
+   #pragma shader_feature_local _ _WETNESS
+   #pragma shader_feature_local _ _PUDDLES
+   #pragma shader_feature_local _ _PUDDLENOISE
+   #pragma shader_feature_local _ _PUDDLENOISEWORLD _PUDDLENOISELOCAL
+   #pragma shader_feature_local _ _PUDDLENOISEHQ _PUDDLENOISETEXTURE _PUDDLENOISEWORLEY
+   #pragma shader_feature_local _ _PUDDLEEFFECTOR
+   #pragma shader_feature_local _ _WETNESSEFFECTOR
+   #pragma shader_feature_local _ _RAINDROPS
 END_DEFINES
 
 
 BEGIN_CBUFFER
-    half _Porosity;
-    int _WetnessMode;
-    int _PuddleMode;
+    //#if _WETNESS || _PUDDLES
+        half _Porosity;
+    //#endif
 
-    half  _PuddleAmount;
-    half  _PuddleFalloff;
-    half4 _PuddleColor;
-    half _PuddleNoiseFrequency;
-    half _PuddleNoiseAmplitude;
-    half _PuddleNoiseOffset;
-    half _PuddleNoiseCenter;
-    half _PuddleAngleMin;
+    //#if _WETNESS
+        int _WetnessMode;
+        half _WetnessAmount;
+	    half _WetnessMin;
+        half _WetnessMax;
+        half _WetnessFalloff;
+	    half _WetnessAngleMin;
+        float _WetnessShoreline;
+        int _WetnessEffectorInvert;
+    //#endif
+    //#if _PUDDLES
+        int _PuddleMode;
 
-    half _WetnessAmount;
-	half _WetnessMin;
-    half _WetnessMax;
-    half _WetnessFalloff;
-	half _WetnessAngleMin;
-    float _WetnessShoreline;
+        half  _PuddleAmount;
+        half  _PuddleFalloff;
+        half4 _PuddleColor;
+        half _PuddleNoiseFrequency;
+        half _PuddleNoiseAmplitude;
+        half _PuddleNoiseOffset;
+        half _PuddleNoiseCenter;
+        half _PuddleAngleMin;
+        int _PuddleEffectorInvert;
+    //#endif
 
-    int _RainMode;
-    half4 _RainIntensityScale;
+    
+    //#if _RAINDROPS
+        int _RainMode;
+        int _RainUV;
+        half4 _RainIntensityScale;
+    //#endif
 
 
 END_CBUFFER
@@ -78,9 +101,10 @@ END_CBUFFER
 // All code goes here
 BEGIN_CODE
 
+    TEXTURE2D(_PuddleNoiseTex);
+
     #if _RAINDROPS
        TEXTURE2D(_RainDropTexture);
-       SAMPLER(sampler_RainDropTexture);
        half _Global_RainIntensity;
     #endif
 
@@ -91,7 +115,7 @@ BEGIN_CODE
     #if _RAINDROPS
     half2 ComputeRipple(float2 uv, half time, half weight)
     {
-        half4 ripple = SAMPLE_TEXTURE2D(_RainDropTexture, sampler_RainDropTexture, uv);
+        half4 ripple = SAMPLE_TEXTURE2D(_RainDropTexture, shared_linear_repeat_sampler, uv);
         COUNTSAMPLE
         ripple.yz = ripple.yz * 2 - 1;
 
@@ -112,6 +136,11 @@ BEGIN_CODE
             if (_RainMode > 1)
             {
                 rainIntensity = _Global_RainIntensity;
+            }
+
+            if (_RainUV > 0.5)
+            {
+                uv = worldPos.xz;
             }
 
             float dist = distance(GetCameraWorldPosition(), worldPos);
@@ -153,7 +182,16 @@ BEGIN_CODE
           pudHeight = _PuddleAmount;
           if (_PuddleMode > 0)
              pudHeight = _Global_PuddleParams.x;    
-      
+
+
+          #if _PUDDLEEFFECTOR
+            if (_PuddleEffectorInvert < 0.5)
+                pudHeight += d.blackboard.effectorWeight;
+            else
+                pudHeight -= d.blackboard.effectorWeight;
+
+            pudHeight = saturate(pudHeight);
+          #endif
 
           half dt = dot(d.worldSpaceNormal, float3(0,1,0));
 	      dt -= _PuddleAngleMin;
@@ -165,6 +203,7 @@ BEGIN_CODE
    void ModifyTessellatedVertex(inout VertexData v, inout ExtraV2F e)
    {
       #if _TESSELLATION_ON && _PUDDLES && _HAS_LIT_TESSELLATION
+
          ShaderData d;
          ZERO_INITIALIZE(ShaderData, d);
          d.texcoord0 = v.texcoord0;
@@ -172,21 +211,32 @@ BEGIN_CODE
          d.localSpaceNormal = v.normal;
          d.worldSpacePosition = ObjectToWorldSpacePosition(v.vertex.xyz);
          d.worldSpaceNormal = TransformObjectToWorld(v.normal);
+         #if _PUDDLEEFFECTOR
+            d.blackboard.effectorWeight = e.blackboard.effectorWeight;
+         #endif
          half mask = 1;
          half pudHeight = 1;
 
          // save some ops by doing this in 2d
          #if _PUDDLENOISE
-            #if _NOISEWORLD
-                mask = (FBM2DLOD(d.worldSpacePosition.xz * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
-                mask = saturate(mask);
-            #elif _NOISELOCAL
-                mask = (FBM2DLOD(d.localSpacePosition.xz * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
-                mask = saturate(mask);
-            #else
-                mask = (FBM2DLOD(d.texcoord0.xy * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
-                mask = saturate(mask);
+            float2 nuv = d.texcoord0.xy;
+            #if _PUDDLENOISEWORLD
+                nuv = d.worldSpacePosition.xz;
+            #elif _PUDDLENOISELOCAL
+                nuv = d.localSpacePosition.xz;
             #endif
+
+            #if _PUDDLENOISEHQ
+                mask = (FBM2DHQ(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
+            #elif _PUDDLENOISETEXTURE
+                mask = (FBM2DTextureLOD(_PuddleNoiseTex, nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
+            #elif _PUDDLENOISEWORLEY
+                mask = (FBM2DWorley(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
+            #else
+                mask = (Noise2D(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
+            #endif
+
+            mask = saturate(mask);
          #endif
 
          GetPuddleParams(d, mask, pudHeight);
@@ -214,6 +264,15 @@ BEGIN_CODE
       if (_WetnessMode > 0)
          wetLevel = clamp(wetLevel, _Global_WetnessParams.x, _Global_WetnessParams.y);
 
+      #if _WETNESSEFFECTOR
+        if (_WetnessEffectorInvert < 0.5)
+            wetLevel += d.blackboard.effectorWeight;
+        else
+            wetLevel -= d.blackboard.effectorWeight;
+
+        wetLevel = saturate(wetLevel);
+        #endif
+
       wetLevel = saturate(wetLevel + (1 - saturate(d.worldSpacePosition.y - _WetnessShoreline)));
       float3x3 tbn = float3x3(d.worldSpaceTangent, cross(d.worldSpaceTangent, d.worldSpaceNormal), d.worldSpaceNormal);
       float dt = dot(GetWorldSpaceNormal(d, o.Normal, o.Alpha), float3(0,1,0));
@@ -239,15 +298,21 @@ BEGIN_CODE
           half mask = 1;
           half pudHeight = 1;
           #if _PUDDLENOISE
-            #if _NOISEWORLD
-                mask = (FBM2D(d.worldSpacePosition.xz * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
-                mask = saturate(mask);
-            #elif _NOISELOCAL
-                mask = (FBM2D(d.localSpacePosition.xz * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
-                mask = saturate(mask);      
+            float2 nuv = d.texcoord0.xy;
+            #if _PUDDLENOISEWORLD
+                nuv = d.worldSpacePosition.xz;
+            #elif _PUDDLENOISELOCAL
+                nuv = d.localSpacePosition.xz;
+            #endif
+
+            #if _PUDDLENOISEHQ
+                mask = (FBM2DHQ(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
+            #elif _PUDDLENOISETEXTURE
+                mask = (FBM2DTexture(_PuddleNoiseTex, nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
+            #elif _PUDDLENOISEWORLEY
+                mask = (FBM2DWorley(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
             #else
-                mask = (FBM2D(d.texcoord0.xy * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
-                mask = saturate(mask);
+                mask = (Noise2D(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
             #endif
           #endif
 

@@ -62,14 +62,17 @@ namespace JBooth.BetterLit.ShaderPackager
 #endif
       }
 
+
       public override void OnInspectorGUI()
       {
          extraDataSerializedObject.Update();
+#if __BETTERSHADERS__ && __BETTERLIT_DEVMODE__
+
+
          ShaderPackage sp = extraDataSerializedObject.targetObject as ShaderPackage;
-#if __BETTERSHADERS__
+
          EditorGUILayout.PropertyField(m_betterShader);
          EditorGUILayout.PropertyField(m_optionOverrides);
-#endif
          EditorGUILayout.PropertyField(m_entryProperties);
 
          if ((typeof(ShaderPackage).Namespace == "JBooth.ShaderPackager") ||
@@ -120,12 +123,15 @@ namespace JBooth.BetterLit.ShaderPackager
 
          extraDataSerializedObject.ApplyModifiedProperties();
 
+#endif
          ApplyRevertGUI();
+
       }
 
 
-      //[MenuItem("Assets/Create/Better Lit/Shader Package", priority = 300)]
-      static void CreateMenuItemShaderPackage()
+
+         //[MenuItem("Assets/Create/Better Lit/Shader Package", priority = 300)]
+         static void CreateMenuItemShaderPackage()
       {
          string directoryPath = "Assets";
          foreach (Object obj in Selection.GetFiltered(typeof(Object), SelectionMode.Assets))

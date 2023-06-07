@@ -4,29 +4,31 @@ BEGIN_OPTIONS
    CustomEditor "JBooth.BetterShaders.BetterShaderMaterialGUI"
    SubEditor "StackableTextureLayerWeightEditor"
 
-   VertexColorRequire "_LAYERVERTEXMASK"
+   VertexColorRequire "_LAYERVERTEXMASK || _LAYERVERTEXMASK_DEF_1 || _LAYERVERTEXMASK_DEF2 || _LAYERVERTEXMASK_DEF3"
 
 END_OPTIONS
 
 BEGIN_PROPERTIES
 	_LayerTextureMask("Layer Texture Mask", 2D) = "white" {}
-    _LayerTextureMaskUVMode("Layer Texture Mask UV Mode", Float) = 0
+  _LayerTextureMaskUVMode("Layer Texture Mask UV Mode", Float) = 0
+  _LayerTextureMaskCurveWeights("Curve Weights", Vector) = (0.5, 0.5, 0.5, 0.5)
 END_PROPERTIES
 
 BEGIN_DEFINES
     #pragma shader_feature_local _ _LAYERVERTEXMASK _LAYERTEXTUREMASK
+    #pragma shader_feature_local _ _LAYERCURVEWEIGHTS
 
     #define _HAS_WEIGHTTEXTURE_MASK 1
 END_DEFINES
 
 BEGIN_CBUFFER
 	half _LayerTextureMaskUVMode;
-    float4 _LayerTextureMask_ST;
+  float4 _LayerTextureMask_ST;
+  half4 _LayerTextureMaskCurveWeights;
 END_CBUFFER
 
 BEGIN_BLACKBOARD
    half4 weightTextureMask;
-   
 END_BLACKBOARD
 
 
@@ -53,6 +55,12 @@ BEGIN_CODE
                   layerUV = worldSpacePosition.xy;
 
                e.blackboard.weightTextureMask = SAMPLE_TEXTURE2D_LOD(_LayerTextureMask, sampler_LayerTextureMask, layerUV * _LayerTextureMask_ST.xy + _LayerTextureMask_ST.zw, _TessellationMipBias);
+               #if _LAYERCURVEWEIGHTS
+                 e.blackboard.weightTextureMask = lerp(smoothstep(0.5 - _LayerTextureMaskCurveWeights, 
+                                                                  0.5 + _LayerTextureMaskCurveWeights, 
+                                                                  e.blackboard.weightTextureMask), 
+                                                       e.blackboard.weightTextureMask, _LayerTextureMaskCurveWeights*2);
+               #endif
           #endif
       #endif
     }
@@ -72,6 +80,12 @@ BEGIN_CODE
               layerUV = d.worldSpacePosition.xy;
 
            d.blackboard.weightTextureMask = SAMPLE_TEXTURE2D(_LayerTextureMask, sampler_LayerTextureMask, layerUV * _LayerTextureMask_ST.xy + _LayerTextureMask_ST.zw);
+           #if _LAYERCURVEWEIGHTS
+                 d.blackboard.weightTextureMask = lerp(smoothstep(0.5 - _LayerTextureMaskCurveWeights, 
+                                                                  0.5 + _LayerTextureMaskCurveWeights, 
+                                                                  d.blackboard.weightTextureMask), 
+                                                       d.blackboard.weightTextureMask, _LayerTextureMaskCurveWeights*2);
+           #endif
       #endif
 	}
 

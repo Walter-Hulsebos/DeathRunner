@@ -316,7 +316,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 913135495467991345}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4991704898584203555
+--- !u!114 &2040439658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -325,21 +325,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 9100027384185257367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1091c3be1a2757a46b65724fd4f6f577, type: 3}
+  m_Script: {fileID: 11500000, guid: 8d2c9738dbf7493a860475eebb664e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  navMeshAgent: {fileID: 9100027384185257369}
   currentState: 0
   attackDistance: 14
-  animator: {fileID: 9100027384773731084}
   attackCooldown: 2
-  moveInAttack: 0
-  walkPositions:
-  - {fileID: 755014407743963319}
-  - {fileID: 8825229343540396180}
-  hasPickedWalkPos: 0
-  HealthDrop: {fileID: 1273188676277678975, guid: 8f2e01be22f73164c870b48c47a51a12,
+  animator: {fileID: 9100027384773731084}
+  rigidbody: {fileID: 9100027384185257370}
+  healthDrop: {fileID: 1273188676277678975, guid: 8f2e01be22f73164c870b48c47a51a12,
     type: 3}
-  canAttack: 0
   OnHealthDepleted:
     _eventType: 1
     _event: {fileID: 0}
@@ -348,6 +344,22 @@ MonoBehaviour:
     _eventType: 1
     _event: {fileID: 0}
     _eventInstancer: {fileID: 1236276129099432850}
+  walkPositions:
+  - {fileID: 755014407743963319}
+  - {fileID: 8825229343540396180}
+  hasPickedWalkPos: 0
+--- !u!195 &9100027384185257369 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 8279253648825646248, guid: a086f553e1f30694685571bc41982275,
+    type: 3}
+  m_PrefabInstance: {fileID: 913135495467991345}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &9100027384185257370 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8279253648825646251, guid: a086f553e1f30694685571bc41982275,
+    type: 3}
+  m_PrefabInstance: {fileID: 913135495467991345}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &9100027384185257373 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8279253648825646252, guid: a086f553e1f30694685571bc41982275,
@@ -372,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de086e1aae19bfc4c9edc9e0cb83e3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangedEnemyAI: {fileID: 4991704898584203555}
+  rangedEnemyAI: {fileID: 0}
   bulletPrefab: {fileID: 1170015546580611590, guid: 1eeba3937e9169640b0e08d247f01b7c,
     type: 3}
   shootPos: {fileID: 3483694793217361406}

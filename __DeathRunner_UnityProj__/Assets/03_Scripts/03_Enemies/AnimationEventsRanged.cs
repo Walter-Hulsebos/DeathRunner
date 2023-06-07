@@ -1,5 +1,8 @@
 using Cysharp.Threading.Tasks;
+using GenericScriptableArchitecture;
+using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
@@ -9,38 +12,41 @@ namespace DeathRunner.EnemyAI
 {
     public class AnimationEventsRanged : MonoBehaviour
     {
-        [SerializeField] private RangedEnemyAI rangedEnemyAI;
+        //[SerializeField] private RangedEnemyAI rangedEnemyAI;
         
         #if ODIN_INSPECTOR
         [AssetsOnly]
         #endif
         [SerializeField] private GameObject bulletPrefab;
+        
         [SerializeField] private Transform shootPos;
         
+        [FormerlySerializedAs("OnAttackAnimationFinished")] [SerializeField] protected EventReference OnAttackFinished;
+
         #if UNITY_EDITOR
         private void Reset()
         {
-            FindEnemyAI();
+            //FindEnemyAI();
             FindShootPos();
         }
         
         private void OnValidate()
         {
-            if (rangedEnemyAI == null)
-            {
-                FindEnemyAI();
-            }
+            // if (rangedEnemyAI == null)
+            // {
+            //     FindEnemyAI();
+            // }
             if (shootPos == null)
             {
                 FindShootPos();
             }
         }
-        
-        [ContextMenu("Find Enemy AI")]
-        private void FindEnemyAI()
-        {
-            rangedEnemyAI = transform.parent.GetComponent<RangedEnemyAI>();
-        }
+        //
+        // [ContextMenu("Find Enemy AI")]
+        // private void FindEnemyAI()
+        // {
+        //     rangedEnemyAI = transform.parent.GetComponent<RangedEnemyAI>();
+        // }
         
         [ContextMenu("Find Shoot Pos")]
         private void FindShootPos()
@@ -51,15 +57,22 @@ namespace DeathRunner.EnemyAI
         #endif
         
         //these can also be used to handle hitboxes
+        [UsedImplicitly]
         public void Attack()
         {
-            Instantiate(bulletPrefab,shootPos.position, transform.rotation);
+            Instantiate(bulletPrefab, shootPos.position, transform.rotation);
         }
 
-        public async UniTask EndAttack()
+        [UsedImplicitly]
+        public void EndAttack()
         {
+            Debug.Log("EnemyRanged Animation Events - EndAttack");
+            
+            OnAttackFinished?.Invoke();
+            
         //TODO maybe this stuff should be handled in main script and just called from here
-            rangedEnemyAI.FinishAttack();
+            //rangedEnemyAI.FinishAttack();
+            
             // rangedEnemyAI.currentState = RangedEnemyAI.States.Idle; 
             // await UniTask.Delay(TimeSpan.FromSeconds(1), ignoreTimeScale: false);
             // rangedEnemyAI.StartChase();

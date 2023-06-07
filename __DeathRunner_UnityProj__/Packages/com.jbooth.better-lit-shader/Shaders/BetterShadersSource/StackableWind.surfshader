@@ -27,18 +27,20 @@ BEGIN_DEFINES
 END_DEFINES
 
 BEGIN_CBUFFER
-    half     _WindParticulateSpace;
-    half     _WindParticulateRotation;
-    half      _WindParticulateSpeed;
-    float4     _WindParticulate_ST;
-    half      _WindParticulatePower;
-    half4    _WindParticulateColor;
-    half4    _WindParticulateWorldHeightMask;
-    half4    _WindParticulateAngleMask;
-    half      _WindParticulateOcclusionStrength;
-    half      _WindParticulateStrength;
-    half4    _WindParticulateEmissive;
-    half     _WindParticulateTextureHeight;
+    //#if _WIND_ON
+        half     _WindParticulateSpace;
+        half     _WindParticulateRotation;
+        half      _WindParticulateSpeed;
+        float4     _WindParticulate_ST;
+        half      _WindParticulatePower;
+        half4    _WindParticulateColor;
+        half4    _WindParticulateWorldHeightMask;
+        half4    _WindParticulateAngleMask;
+        half      _WindParticulateOcclusionStrength;
+        half      _WindParticulateStrength;
+        half4    _WindParticulateEmissive;
+        half     _WindParticulateTextureHeight;
+    //#endif
 END_CBUFFER
 
 BEGIN_SUBSHADERS
@@ -49,7 +51,6 @@ END_SUBSHADERS
 BEGIN_CODE
 
    TEXTURE2D(_WindParticulate);
-   SAMPLER(sampler_WindParticulate);
 
 // In case we want to read it more than once..
 
@@ -63,22 +64,6 @@ BEGIN_CODE
       w *= 1.0 - saturate((y - range.z) / max(range.w - range.z, 0.0001));
       return w;
    }
-
-   
-   float2 RotateUV(float2 uv, float amt)
-   {
-      uv -=0.5;
-      float s = sin ( amt);
-      float c = cos ( amt );
-      float2x2 mtx = float2x2( c, -s, s, c);
-      mtx *= 0.5;
-      mtx += 0.5;
-      mtx = mtx * 2-1;
-      uv = mul ( uv, mtx );
-      uv += 0.5;
-      return uv;
-   }
-
 
    half FilterWindParticulateSlope(float4 range, float3 worldNormalVertex, float windRot)
    {
@@ -122,8 +107,8 @@ BEGIN_CODE
          // compute mask
          wuv *= float2(_WindParticulate_ST.x, 1) * _WindParticulate_ST.y + _WindParticulate_ST.zw;
          float speed = _Time.x * _WindParticulateSpeed;
-         half w1 = SAMPLE_TEXTURE2D(_WindParticulate, sampler_WindParticulate, wuv * 3 + speed * float2(1,0)).g;
-         half w2 = SAMPLE_TEXTURE2D(_WindParticulate, sampler_WindParticulate, wuv + speed * float2(1.1,0)).a;
+         half w1 = SAMPLE_TEXTURE2D(_WindParticulate, shared_linear_repeat_sampler, wuv * 3 + speed * float2(1,0)).g;
+         half w2 = SAMPLE_TEXTURE2D(_WindParticulate, shared_linear_repeat_sampler, wuv + speed * float2(1.1,0)).a;
          half windMask = (w1 * w2);
 
          windMask *= windStrength * windBlend * windWorldMask;

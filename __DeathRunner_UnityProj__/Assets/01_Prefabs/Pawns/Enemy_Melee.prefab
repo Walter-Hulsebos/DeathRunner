@@ -210,7 +210,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4585221618327173495}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5157364523552457217
+--- !u!114 &8025951269049680626
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -219,16 +219,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 5567622939887453649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3770d2bab021594b8791a03484cfbdc, type: 3}
+  m_Script: {fileID: 11500000, guid: 2f01e23e75a0e66458a48d08b1d8b8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   navMeshAgent: {fileID: 5567622939887453663}
   currentState: 0
   attackDistance: 2.5
-  animator: {fileID: 5567622940372851530}
-  canAttack: 0
   attackCooldown: 2
-  moveInAttack: 0
+  animator: {fileID: 5567622940372851530}
+  rigidbody: {fileID: 5567622939887453660}
   healthDrop: {fileID: 1273188676277678975, guid: 8f2e01be22f73164c870b48c47a51a12,
     type: 3}
   OnHealthDepleted:
@@ -239,6 +238,15 @@ MonoBehaviour:
     _eventType: 1
     _event: {fileID: 0}
     _eventInstancer: {fileID: 2460587963394489300}
+  canAttack: 0
+  moveInAttack: 0
+  moveSpeed: 5
+--- !u!54 &5567622939887453660 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8279253648825646251, guid: a086f553e1f30694685571bc41982275,
+    type: 3}
+  m_PrefabInstance: {fileID: 4585221618327173495}
+  m_PrefabAsset: {fileID: 0}
 --- !u!195 &5567622939887453663 stripped
 NavMeshAgent:
   m_CorrespondingSourceObject: {fileID: 8279253648825646248, guid: a086f553e1f30694685571bc41982275,
@@ -275,7 +283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6241075a8a072334ab0ada098550eb4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleeEnemyAI: {fileID: 5157364523552457217}
+  meleeEnemyAI: {fileID: 0}
   swordHitbox: {fileID: 8003298930030669114}
 --- !u!1001 &4660997628686836968
 PrefabInstance:

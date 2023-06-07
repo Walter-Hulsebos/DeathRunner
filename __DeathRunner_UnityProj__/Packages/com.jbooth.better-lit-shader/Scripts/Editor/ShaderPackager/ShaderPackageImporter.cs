@@ -37,7 +37,7 @@ namespace JBooth.BetterLit.ShaderPackager
             package.entries = new List<ShaderPackage.Entry>();
          }
 
-#if __BETTERSHADERS__
+#if __BETTERSHADERS__ && __BETTERLIT_DEVMODE__
          if (package.betterShader != null)
          {
             package.betterShaderPath = AssetDatabase.GetAssetPath(package.betterShader);
@@ -46,7 +46,7 @@ namespace JBooth.BetterLit.ShaderPackager
 
          package.Pack(false);
 
-#if __BETTERSHADERS__
+#if __BETTERSHADERS__ && __BETTERLIT_DEVMODE__
          if (package.betterShader != null)
          {
                ctx.DependsOnSourceAsset(package.betterShaderPath);
@@ -69,7 +69,7 @@ namespace JBooth.BetterLit.ShaderPackager
             // maybe make an error shader here?
             return;
          }
-         
+
          Shader shader = ShaderUtil.CreateShaderAsset(ctx, shaderSrc, false);
 
          ctx.AddObjectToAsset("MainAsset", shader);

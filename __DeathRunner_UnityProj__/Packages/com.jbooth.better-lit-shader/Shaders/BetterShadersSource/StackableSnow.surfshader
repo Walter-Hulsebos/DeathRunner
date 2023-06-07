@@ -10,6 +10,7 @@ BEGIN_OPTIONS
    ShaderName "Hidden/Better Lit/Dev/StackableSnow"
    CustomEditor "JBooth.BetterShaders.BetterShaderMaterialGUI"
    SubEditor "StackableSnowMaterialEditor"
+   ScreenPosRequire "_SNOWSPARKLES"
 END_OPTIONS
 
 BEGIN_SUBSHADERS
@@ -22,6 +23,9 @@ BEGIN_DEFINES
    #pragma shader_feature_local _ _SNOWMASKMAP
    #pragma shader_feature_local _ _SNOWNOISE
    #pragma shader_feature_local _ _SNOWSTOCHASTIC
+   #pragma shader_feature_local _ _SNOWFRESNEL _SNOWFRESNELNORMAL
+   #pragma shader_feature_local _ _SNOWSPARKLES
+   #pragma shader_feature_local _ _SNOWEFFECTOR
 END_DEFINES
 
 BEGIN_PROPERTIES
@@ -44,6 +48,15 @@ BEGIN_PROPERTIES
     _SnowNoiseOffset("Snow Noise Offset", Float) = 0
     _SnowStochasticContrast("Snow Stochastic Contrast", Range(0.01, 0.99)) = 0.7
     _SnowStochasticScale("Snow Stochastic Scale", Range(0,2)) = 1
+
+    _SnowFresnelColor("Fresnel Color", Color) = (0,0,0,0)
+	_SnowFresnelBSP("Fresnel Bias Scale Power", Vector) = (0,9,3,0)
+
+    _SnowSparkleNoise("Sparkle Noise", 2D) = "black" {}
+	_SnowSparkleTCI("Sparkle Tiling/Cutoff/Intensity/Emission", Vector) = (1, 0.7, 1, 0)
+
+    [Toggle(_SNOWEFFECTOR)] _SnowUseEffector("Use Effector", Float) = 0
+    [MaterialToggle]_SnowEffectorInvert("Invert", Float) = 0
 END_PROPERTIES
 
 BEGIN_CBUFFER
@@ -55,6 +68,7 @@ BEGIN_CBUFFER
     half _SnowVertexHeight;
     half _SnowMode;
     half3 _SnowWorldFade; // z is on/off
+    
     float4 _SnowTraxAlbedo_ST;
     half3 _SnowTraxTint;
 
@@ -63,25 +77,27 @@ BEGIN_CBUFFER
     half _SnowNoiseOffset;
     half _SnowStochasticContrast;
     half _SnowStochasticScale;
+
+    half4 _SnowFresnelColor;
+    half3 _SnowFresnelBSP;
+    half4 _SnowSparkleTCI;
+    half _SnowEffectorInvert;
 END_CBUFFER
 
 
 BEGIN_CODE
 
-    #if _SNOW
-       TEXTURE2D(_SnowAlbedo);
-       SAMPLER(sampler_SnowAlbedo);
-       TEXTURE2D(_SnowNormal);
-       TEXTURE2D(_SnowMaskMap);
-       #if _TRAX_ON
-          TEXTURE2D(_SnowTraxAlbedo);
-          TEXTURE2D(_SnowTraxNormal);
-          TEXTURE2D(_SnowTraxMaskMap);
-       #endif
-    #endif
+   TEXTURE2D(_SnowAlbedo);
+   TEXTURE2D(_SnowNormal);
+   TEXTURE2D(_SnowMaskMap);
+
+   TEXTURE2D(_SnowTraxAlbedo);
+   TEXTURE2D(_SnowTraxNormal);
+   TEXTURE2D(_SnowTraxMaskMap);
+   TEXTURE2D(_SnowSparkleNoise);
 
    float _Global_SnowLevel;
-
+   float2 _Global_SnowWorldFade;
 
    void ModifyVertex(inout VertexData v, inout ExtraV2F e)
    {
@@ -89,6 +105,15 @@ BEGIN_CODE
         float amount = _SnowAmount;
         if (_SnowMode > 0)
            amount = _Global_SnowLevel;
+
+        #if _SNOWEFFECTOR
+            if (_SnowEffectorInvert < 0.5)
+                amount += e.blackboard.effectorWeight;
+            else
+                amount -= e.blackboard.effectorWeight;
+
+            amount = saturate(amount);
+        #endif
 
         float3 worldNormal = mul((float3x3)unity_ObjectToWorld, v.normal);
         float snowAmount = dot(worldNormal, float3(0,1,0)) + 1;
@@ -98,7 +123,10 @@ BEGIN_CODE
         float3 worldPos = ObjectToWorldSpacePosition(v.vertex.xyz);
         if (_SnowWorldFade.z > 0)
         {
-            float worldFade = saturate((worldPos.y - _SnowWorldFade.x) / max(_SnowWorldFade.y, 1));
+            float2 swf = _SnowWorldFade.xy;
+            if (_SnowWorldFade.z > 1)
+                swf = _Global_SnowWorldFade.xy;
+            float worldFade = saturate((worldPos.y - swf.x) / max(swf.y, 1));
             snowAmount *= worldFade;
         }
         #if _SNOWNOISE
@@ -124,6 +152,15 @@ BEGIN_CODE
          if (_SnowMode > 0)
            amount = _Global_SnowLevel;
 
+         #if _SNOWEFFECTOR
+            if (_SnowEffectorInvert < 0.5)
+                amount += e.blackboard.effectorWeight;
+            else
+                amount -= e.blackboard.effectorWeight;
+
+            amount = saturate(amount);
+         #endif
+
          float3 worldNormal = mul((float3x3)unity_ObjectToWorld, v.normal);
          float snowAmount = dot(worldNormal, float3(0,1,0)) + 1;
          snowAmount -= _SnowAngle;
@@ -131,7 +168,10 @@ BEGIN_CODE
          float3 worldPos = ObjectToWorldSpacePosition(v.vertex.xyz);
          if (_SnowWorldFade.z > 0)
          {
-            float worldFade = saturate((worldPos.y - _SnowWorldFade.x) / max(_SnowWorldFade.y, 1));
+            float2 swf = _SnowWorldFade.xy;
+            if (_SnowWorldFade.z > 1)
+                swf = _Global_SnowWorldFade.xy;
+            float worldFade = saturate((worldPos.y - swf.x) / max(swf.y, 1));
             snowAmount *= worldFade;
          }
 
@@ -149,7 +189,7 @@ BEGIN_CODE
          #endif
 
          float3 displacementVec = mul((float3x3)unity_WorldToObject, float3(0,1,0));
-         half heightMap = SAMPLE_TEXTURE2D_LOD(_SnowAlbedo, sampler_SnowAlbedo, worldPos.xz * float2(1, -1) * _SnowAlbedo_ST.xy + _SnowAlbedo_ST.zw, 2);
+         half heightMap = SAMPLE_TEXTURE2D_LOD(_SnowAlbedo, shared_linear_repeat_sampler, worldPos.xz * float2(1, -1) * _SnowAlbedo_ST.xy + _SnowAlbedo_ST.zw, 2);
 
          float height = max(_SnowVertexHeight * 3 * snowAmount + snowAmount * heightMap, e.blackboard.vertexHeightOffset);
          #if _TRAX_ON
@@ -268,6 +308,15 @@ BEGIN_CODE
           if (_SnowMode > 0)
            amount = _Global_SnowLevel;
 
+          #if _SNOWEFFECTOR
+            if (_SnowEffectorInvert < 0.5)
+                amount += d.blackboard.effectorWeight;
+            else
+                amount -= d.blackboard.effectorWeight;
+
+            amount = saturate(amount);
+          #endif
+
           float snowAmount = lerp(dot(GetWorldSpaceNormal(d, o.Normal, o.Alpha), float3(0,1,0)), dot(d.worldSpaceNormal, float3(0,1,0)), amount * 0.8) + 1;
           snowAmount -= _SnowAngle;
           snowAmount *= _SnowContrast;
@@ -275,7 +324,10 @@ BEGIN_CODE
 
           if (_SnowWorldFade.z > 0)
           {
-             float worldFade = saturate((d.worldSpacePosition.y - _SnowWorldFade.x) / max(_SnowWorldFade.y, 1));
+             float2 swf = _SnowWorldFade.xy;
+             if (_SnowWorldFade.z > 1)
+                swf = _Global_SnowWorldFade.xy;
+             float worldFade = saturate((d.worldSpacePosition.y - swf.x) / max(swf.y, 1));
              snowAmount *= worldFade;
           }
 
@@ -306,8 +358,8 @@ BEGIN_CODE
              half4 snowAlbedo;
              half3 snowNormal;
              half2 snowSmoothAO;
-             SampleSnowSurface(TEXTURE2D_ARGS(_SnowAlbedo, sampler_SnowAlbedo), TEXTURE2D_ARGS(_SnowNormal, sampler_SnowAlbedo),
-                    TEXTURE2D_ARGS(_SnowMaskMap, sampler_SnowAlbedo), d, uv, dx, dy, snowAlbedo, snowNormal, snowSmoothAO);
+             SampleSnowSurface(TEXTURE2D_ARGS(_SnowAlbedo, shared_linear_repeat_sampler), TEXTURE2D_ARGS(_SnowNormal, shared_linear_repeat_sampler),
+                    TEXTURE2D_ARGS(_SnowMaskMap, shared_linear_repeat_sampler), d, uv, dx, dy, snowAlbedo, snowNormal, snowSmoothAO);
 
              snowAlbedo.rgb *= _SnowTint.rgb;
 
@@ -319,8 +371,8 @@ BEGIN_CODE
                     half4 tsnowAlbedo;
                     half3 tsnowNormal;
                     half2 tsnowSmoothAO;
-                    SampleSnowSurface(TEXTURE2D_ARGS(_SnowTraxAlbedo, sampler_SnowAlbedo), TEXTURE2D_ARGS(_SnowTraxNormal, sampler_SnowAlbedo),
-                        TEXTURE2D_ARGS(_SnowTraxMaskMap, sampler_SnowAlbedo), d, tuv, tdx, tdy, tsnowAlbedo, tsnowNormal, tsnowSmoothAO);
+                    SampleSnowSurface(TEXTURE2D_ARGS(_SnowTraxAlbedo, shared_linear_repeat_sampler), TEXTURE2D_ARGS(_SnowTraxNormal, shared_linear_repeat_sampler),
+                        TEXTURE2D_ARGS(_SnowTraxMaskMap, shared_linear_repeat_sampler), d, tuv, tdx, tdy, tsnowAlbedo, tsnowNormal, tsnowSmoothAO);
 
                     tsnowAlbedo.rgb *= _SnowTraxTint;
                     half h = HeightBlend(snowAlbedo.a, tsnowAlbedo.a, traxBuffer, 0.5);
@@ -330,15 +382,33 @@ BEGIN_CODE
                 }
              #endif
 
+             #if _SNOWFRESNEL || _SNOWFRESNELNORMAL
+                half3 wsn = d.worldSpaceNormal;
+                #if _SNOWFRESNELNORMAL
+                    wsn = GetWorldSpaceNormal(d, snowNormal, snowAlbedo.a);
+                #endif
+                half fresnel = Fresnel(d, wsn, _SnowFresnelBSP.x, _SnowFresnelBSP.y, _SnowFresnelBSP.z);
+                snowAlbedo.rgb = lerp(snowAlbedo.rgb, _SnowFresnelColor.rgb, fresnel);
+             #endif
+
+             #if _SNOWSPARKLES
+                float sparkles = Sparkle(d, TEXTURE2D_ARGS(_SnowSparkleNoise, shared_point_repeat_sampler), d.screenUV, d.worldSpacePosition.xz, _SnowSparkleTCI.x, _SnowSparkleTCI.y, _SnowSparkleTCI.z);
+                snowAlbedo = saturate(snowAlbedo + sparkles);
+                snowSmoothAO.x += sparkles;
+                o.Emission += sparkles * _SnowSparkleTCI.w * snowAmount;
+             #endif
+
              #if !_AUTONORMAL
                 o.Normal = lerp(o.Normal, snowNormal, snowAmount);
              #endif
+
              o.Albedo = lerp(o.Albedo, snowAlbedo.rgb, snowAmount);
              o.Alpha = lerp(o.Alpha, snowAlbedo.a, snowAmount);
              o.Smoothness = lerp(o.Smoothness, snowSmoothAO.x, snowAmount);
              o.Occlusion = lerp(o.Occlusion, snowSmoothAO.y, snowAmount);
-             o.Metallic *= (1.0-snowAmount);
              o.Height = o.Alpha;
+             o.Metallic *= (1.0-snowAmount);
+             
 
           }
       #endif
