@@ -79,7 +79,16 @@ namespace DeathRunner.Player
 
             RefreshCancellationToken();
 
-            OrientTowardsMouse();
+            //OrientTowardsCursor();
+            
+            UpdateLookDirection();
+            
+            PlayerHelpers.OrientTowardsDirInstant(references: _references, direction: _settings.OrientationLookDirection.Value);
+            
+            if (_settings.OnAttackStarted != null)
+            {
+                _settings.OnAttackStarted.Invoke(_settings.AttackAnimation, _settings.AttackSpeedMultiplier);
+            }
             
             IsAttacking = true;
             
@@ -100,22 +109,15 @@ namespace DeathRunner.Player
                 _settings.OnAttackStopped.Invoke();
             }
         }
-
-        private void OrientTowardsMouse()
-        {
-            F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references);
-            F32x3 __direction = normalize(__lookPositionRelativeToPlayer);
-            _settings.OrientationLookDirection.Value = __direction;
-            _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
-            
-            PlayerHelpers.OrientTowardsDirInstant(references: _references, direction: __direction);
-
-            if (_settings.OnAttackStarted != null)
-            {
-                _settings.OnAttackStarted.Invoke(_settings.AttackAnimation, _settings.AttackSpeedMultiplier);
-            }
-        }
         
+        private void UpdateLookDirection()
+        {
+            F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references, useCursor: _settings.OrientTowardsCursor.Value);
+            
+            _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer);
+            _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
+        }
+
         private async UniTask EnableCanGoIntoNextAttackAfterTime()
         {
             CanGoIntoNextAttack = false;
@@ -158,7 +160,7 @@ namespace DeathRunner.Player
         [field:SerializeField] public Constant<F32>                       SecondsFromEndToAllowNextAttack { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Constant<F32>                       SecondsFromEndToFadeOut         { get; [UsedImplicitly] private set; }
         
-        
+        [field:SerializeField] public Variable<Bool>                      OrientTowardsCursor             { get; [UsedImplicitly] private set; }        
         [field:SerializeField] public Variable<F32x3>                     OrientationLookDirection        { get; [UsedImplicitly] private set; }
         //[field:SerializeField] public Constant<F32>                       OrientationSpeed                { get; [UsedImplicitly] private set; }
 

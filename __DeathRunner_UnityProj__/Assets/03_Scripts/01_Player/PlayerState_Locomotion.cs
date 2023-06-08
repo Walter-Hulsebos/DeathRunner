@@ -12,6 +12,7 @@ using static Unity.Mathematics.math;
 
 //Project-specific libraries last
 using F32x3 = Unity.Mathematics.float3;
+using Bool  = System.Boolean;
 
 namespace DeathRunner.Player
 {
@@ -51,27 +52,6 @@ namespace DeathRunner.Player
             //Debug.Log("Locomotion.Exit");
         }
 
-        // protected override void OnUpdate()
-        // {
-        //     base.OnUpdate();
-        //
-        //     UpdateLookDirection();
-        // }
-        //
-        // protected override void OnLateUpdate()
-        // {
-        //     base.OnLateUpdate();
-        //     
-        //     UpdateLookDirection();
-        // }
-        //
-        // protected override void OnFixedUpdate()
-        // {
-        //     base.OnFixedUpdate();
-        //     
-        //     UpdateLookDirection();
-        // }
-        
         protected override void OnLateUpdate()
         {
             base.OnLateUpdate();
@@ -81,13 +61,13 @@ namespace DeathRunner.Player
 
         private void UpdateLookDirection()
         {
-            F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references);
-
-            _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer); 
-            //normalize(__lookPosition - _references.WorldPos);
+            //if (_settings.OrientTowardsCursor)
+            //{
+            F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references, useCursor: _settings.OrientTowardsCursor.Value);
             
-            //OrientTowardsPos(lookPosition: __lookPosition);
-            _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
+            _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer);
+            _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);   
+            //}
         }
 
     //     private const F32 LOOK_DISTANCE = 5;
@@ -174,6 +154,7 @@ namespace DeathRunner.Player
     public struct LocomotionSettings 
     {
         //[field:SerializeField] public Constant<F32>   OrientationSpeed         { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Variable<Bool>  OrientTowardsCursor      { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Variable<F32x3> OrientationLookDirection { get; [UsedImplicitly] private set; }
     }
 }
