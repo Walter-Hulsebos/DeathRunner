@@ -128,7 +128,7 @@ namespace DeathRunner.EnemyAI
                   //  LookAtPlayer();
 
                     // If the enemy is within attack distance, start attacking
-                    if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance) //&& canAttack)
+                    if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance && canAttack)
                     {
                         // Change the state to attacking
                         currentState = States.Attacking;
