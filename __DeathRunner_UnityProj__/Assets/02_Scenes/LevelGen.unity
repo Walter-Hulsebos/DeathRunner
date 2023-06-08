@@ -575,6 +575,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5144667868123366804, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
+      objectReference: {fileID: 0}
     - target: {fileID: 5403975270845736975, guid: cfe941d340a0c72448dc89d0e37e9b35,
         type: 3}
       propertyPath: m_IsActive
@@ -670,18 +675,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &144911030 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2977335224705263652, guid: abf8d3d5d31c3d24eb83d71d265ea1c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 80266197}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &186448725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2301,6 +2294,23 @@ PrefabInstance:
       propertyPath: dungeon
       value: 
       objectReference: {fileID: 2131102129}
+    - target: {fileID: 934569902, guid: cbb434dcd22067a4da15dcf3b9000da6, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.Boss, DeathRunner.Enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 934569905, guid: cbb434dcd22067a4da15dcf3b9000da6, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.Attributes.HealthComponent, DeathRunner.Attributes
+      objectReference: {fileID: 0}
+    - target: {fileID: 934569907, guid: cbb434dcd22067a4da15dcf3b9000da6, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.ScriptableEventListener<ushort,ushort>,
+        GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 934569911, guid: cbb434dcd22067a4da15dcf3b9000da6, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.Attributes.HealthUI, DeathRunner.Attributes
+      objectReference: {fileID: 0}
     - target: {fileID: 3801065874512168305, guid: cbb434dcd22067a4da15dcf3b9000da6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2656,98 +2666,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 209246024, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: m_CastShadows
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 797213319, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.556
-      objectReference: {fileID: 0}
-    - target: {fileID: 797213319, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.53
-      objectReference: {fileID: 0}
-    - target: {fileID: 913492907, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: cutPrefab
-      value: 
-      objectReference: {fileID: 6810844234100877735, guid: 88dd9c4a8854b804186fda4318305ba0,
-        type: 3}
-    - target: {fileID: 913492907, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: sideWeapon
-      value: 
-      objectReference: {fileID: 11400000, guid: 4ca3dd698d461594f93d44d7b87f36fa,
-        type: 2}
     - target: {fileID: 913492907, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
       propertyPath: cooldownImage
       value: 
       objectReference: {fileID: 634529072}
-    - target: {fileID: 913492937, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 144911030}
-    - target: {fileID: 1187890990, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 13.411942
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187890990, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.4496946
-      objectReference: {fileID: 0}
-    - target: {fileID: 1187890990, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 111.34689
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 48.472885
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5087138
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 131.89299
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.0000018775463
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -6.2527755e-13
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.00000032782552
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410215513009397357, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: near clip plane
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410215513429711715, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 19.06
-      objectReference: {fileID: 0}
-    - target: {fileID: 2410215513429711715, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 112.75
-      objectReference: {fileID: 0}
     - target: {fileID: 2410215513735583748, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_Name
@@ -2806,56 +2728,6 @@ PrefabInstance:
     - target: {fileID: 2410215513735583749, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3644243820756923822, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.418213
-      objectReference: {fileID: 0}
-    - target: {fileID: 3644243820756923822, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 13.050655
-      objectReference: {fileID: 0}
-    - target: {fileID: 3644243820756923822, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 112.75037
-      objectReference: {fileID: 0}
-    - target: {fileID: 4582762283594447248, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -8.997419
-      objectReference: {fileID: 0}
-    - target: {fileID: 4582762283594447248, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8.859216
-      objectReference: {fileID: 0}
-    - target: {fileID: 4582762283594447248, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.006056994
-      objectReference: {fileID: 0}
-    - target: {fileID: 7443291799372615853, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 19.060013
-      objectReference: {fileID: 0}
-    - target: {fileID: 7443291799372615853, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5600001
-      objectReference: {fileID: 0}
-    - target: {fileID: 7443291799372615853, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 112.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 8454910162451932512, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -3372,6 +3244,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7489397286144301021, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
+      objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
       propertyPath: m_RootOrder
@@ -3497,6 +3374,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143829182}
     m_Modifications:
+    - target: {fileID: 513144581612102741, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
+      objectReference: {fileID: 0}
     - target: {fileID: 552031783735267788, guid: a931822fb5279de4ba5fc150d6b9ebbe,
         type: 3}
       propertyPath: m_CastShadows
@@ -3532,6 +3414,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3733743788045335309, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
+      objectReference: {fileID: 0}
     - target: {fileID: 5079216233940379487, guid: a931822fb5279de4ba5fc150d6b9ebbe,
         type: 3}
       propertyPath: m_IsActive
@@ -3566,6 +3453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6430824206615950250, guid: a931822fb5279de4ba5fc150d6b9ebbe,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
       objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: a931822fb5279de4ba5fc150d6b9ebbe,
         type: 3}
@@ -3833,6 +3725,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7489397286144301021, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
+      objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
       propertyPath: m_RootOrder
@@ -3892,6 +3789,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Module_2x2 GarbageDump
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774220280682556585, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
       objectReference: {fileID: 0}
     - target: {fileID: 7864017330750867632, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
@@ -4038,6 +3940,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7489397286144301021, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
+      objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
       propertyPath: m_RootOrder
@@ -4097,6 +4004,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Module_2x2 GarbageDump
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774220280682556585, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
       objectReference: {fileID: 0}
     - target: {fileID: 8254218278004533574, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
@@ -11072,6 +10984,11 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7489397286144301021, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
+      objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
       propertyPath: m_RootOrder
@@ -11131,6 +11048,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Module_2x2 GarbageDump
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774220280682556585, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
       objectReference: {fileID: 0}
     - target: {fileID: 8254218277928512465, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
