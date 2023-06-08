@@ -3228,6 +3228,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143829182}
     m_Modifications:
+    - target: {fileID: 211512724, guid: fdae9cb30ee2e214ea71ccb4f7e26128, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
+      objectReference: {fileID: 0}
+    - target: {fileID: 1827338351, guid: fdae9cb30ee2e214ea71ccb4f7e26128, type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
+      objectReference: {fileID: 0}
     - target: {fileID: 237972599564520184, guid: fdae9cb30ee2e214ea71ccb4f7e26128,
         type: 3}
       propertyPath: m_IsActive
@@ -3328,7 +3336,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24dcf6805ba2c44f69a5c394d31a3392, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
   NodeId: NODE-SNAPMOD-140d9d71-49aa-491e-bac6-34b29f325446
   dungeon: {fileID: 2131102129}
   affectsNavigation: 1
@@ -3411,6 +3419,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895047191795220761, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 9.359406
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895047191795220761, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.0006390033
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895047191795220761, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.1053449
+      objectReference: {fileID: 0}
+    - target: {fileID: 3895047191795220761, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 4.6367445
       objectReference: {fileID: 0}
     - target: {fileID: 4059694839508427928, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
@@ -3582,6 +3610,11 @@ PrefabInstance:
       propertyPath: connectionState
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8930310615973244188, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8225286577986214198, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
     - {fileID: 9091128900162380354, guid: fd75b5c71a681574abe1d745c7222644, type: 3}
@@ -3609,7 +3642,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24dcf6805ba2c44f69a5c394d31a3392, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
   NodeId: NODE-SNAPMOD-9d084fa7-ed92-4fd0-8307-276ed4cfbadf
   dungeon: {fileID: 2131102129}
   affectsNavigation: 1
