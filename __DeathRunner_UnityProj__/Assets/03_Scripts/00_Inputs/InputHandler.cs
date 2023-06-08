@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using ExtEvents;
-
+using GenericScriptableArchitecture;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -27,7 +27,7 @@ namespace DeathRunner.Inputs
         //For this reason I used methods such as OnThrottleInputStarted, OnThrottleInputPerformed, and OnThrottleInputCanceled to handle the input.
         //This leaves open the possibility of having multiple cars with very few changes, just comment out the Input Actions, add the `PlayerInput` component, and link up the events.
         
-        [SerializeField] private F32                  inputBufferTime = 0.2f;
+        //[SerializeField] private F32                  inputBufferTime = 1.0f;
 
         [FoldoutGroup(groupName: "Move")]
         [SerializeField] private InputActionReference moveInputActionReference;
@@ -149,6 +149,9 @@ namespace DeathRunner.Inputs
 
         [FoldoutGroup(groupName: "Primary Fire")]
         [SerializeField] private InputActionReference primaryFireInputActionReference;
+        
+        [FoldoutGroup(groupName: "Primary Fire")]
+        [SerializeField] private Constant<F32>       primaryFireInputBufferTimeSeconds;// = new(value: 1.0f);
         //[field:FoldoutGroup(groupName: "Primary Fire")]
         //[field:SerializeField] public Bool            PrimaryFireInput   { get; private set; }
         //public event Action<Bool>                     OnPrimaryFireInputChanged;
@@ -435,8 +438,7 @@ namespace DeathRunner.Inputs
         #endregion
 
         #region Primary Fire Input Callbacks
-
-        [SerializeField] private F32 primaryFireInputBufferTimeSeconds = 0.1f;
+        
         public InputQueue<Bool>      PrimaryFireInputQueue;
 
         private void OnPrimaryFireInputStarted(InputAction.CallbackContext ctx) => PrimaryFireInputQueue.Enqueue(input: true).Forget();
