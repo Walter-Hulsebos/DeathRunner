@@ -1,3 +1,4 @@
+using DeathRunner.Utils;
 using UnityEngine;
 
 namespace DeathRunner.Enemies
@@ -7,6 +8,7 @@ namespace DeathRunner.Enemies
     {
         [SerializeField] private Transform[] spawnPoints;
         
-        //[SerializeField] private Enemy
+        [Probability("")]
+        [SerializeField] private Enemy[]
     }
 }
