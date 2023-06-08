@@ -89,7 +89,6 @@ namespace DeathRunner.Shared
                 PlayerIsUsingAGamepad = false;
             }
         }
-        
 
         [Command]
         public static void EnableSlowMotion()  => IsSlowMotionEnabled = true;
