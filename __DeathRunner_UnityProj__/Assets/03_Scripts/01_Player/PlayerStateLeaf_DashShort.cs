@@ -57,7 +57,7 @@ namespace DeathRunner.Player
             DashMovement(DashDirection);
         }
 
-        protected override void OnExit()
+        protected override void OnExit()    
         {
             base.OnExit();
             
@@ -138,6 +138,7 @@ namespace DeathRunner.Player
         [field:Tooltip(tooltip: "The duration between possible dashes (s)")]
         [field:SerializeField] public Constant<F32>   DashCooldown             { get; [UsedImplicitly] private set; }
         
+        //[field:SerializeField] public Variable<Bool>  OrientTowardsCursor      { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Variable<F32x3> OrientationLookDirection { get; [UsedImplicitly] private set; }
         
         [field:SerializeField] public ScriptableEvent<F32x3> OnDashBegin       { get; [UsedImplicitly] private set; }

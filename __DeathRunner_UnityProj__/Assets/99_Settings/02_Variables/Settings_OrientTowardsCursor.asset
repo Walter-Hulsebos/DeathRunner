@@ -9,18 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -421924865, guid: c191b2a11df380a40bb94b21034f5981, type: 3}
-  m_Name: OrientationLookDirection
-  m_EditorClassIdentifier: GenericScriptableArchitecture.Variable<float3>, GenericScriptableArchitecture
-  _initialValue:
-    x: 0
-    y: 0
-    z: 0
+  m_Script: {fileID: 1639154914, guid: 6056fe84cd930e64da4a0cd2c8225414, type: 3}
+  m_Name: Settings_OrientTowardsCursor
+  m_EditorClassIdentifier: GenericScriptableArchitecture.Variable<bool>, GenericScriptableArchitecture
+  _initialValue: 1
   _variableHelper:
     StackTrace:
       Enabled: 0
-    Value:
-      x: -0.000038027767
-      y: 0
-      z: -1
+    Value: 0
     ListenersExpanded: 0

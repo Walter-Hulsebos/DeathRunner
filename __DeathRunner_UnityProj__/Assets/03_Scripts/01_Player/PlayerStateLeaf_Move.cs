@@ -50,25 +50,27 @@ namespace DeathRunner.Player
             #endif
         }
 
-        protected override void OnLateUpdate()
+        protected override void OnUpdate()
         {
-            base.OnLateUpdate();
+            base.OnUpdate();
             
-            OrientTowardsLookDirection();
+            PlayerHelpers.OrientTowardsDir(references: _references, direction: _settings.OrientationLookDirection.Value, orientationSpeed: _settings.OrientationSpeed);
+            //PlayerHelpers.OrientTowardsDirInstant(references: _references, direction: _settings.OrientationLookDirection.Value);
+            //OrientTowardsLookDirection();
         }
 
-        public void OrientTowardsLookDirection()
-        {
-            Plane3D __plane3D = new(normal: up(), distance: 0);
-            
-            F32x3 __projectedLookDirection = normalize(__plane3D.Projection(point: _settings.OrientationLookDirection));
-            
-            if (lengthsq(__projectedLookDirection) == 0) return;
-
-            Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
-
-            _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: _settings.OrientationSpeed.Value * Commands.DeltaTime);
-        }
+        // public void OrientTowardsLookDirection()
+        // {
+        //     Plane3D __plane3D = new(normal: up(), distance: 0);
+        //     
+        //     F32x3 __projectedLookDirection = normalize(__plane3D.Projection(point: _settings.OrientationLookDirection.Value));
+        //     
+        //     if (lengthsq(__projectedLookDirection) == 0) return;
+        //
+        //     Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
+        //
+        //     _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: _settings.OrientationSpeed.Value * Commands.DeltaTime);
+        // }
 
         protected override void OnFixedUpdate()
         {

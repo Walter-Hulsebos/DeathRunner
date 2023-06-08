@@ -24,25 +24,22 @@ namespace DeathRunner.Player
     {
         private const F32 LOOK_DISTANCE = 5;
         private static F32x3 _cachedLookPositionRelativeToPlayer = new(x: 0, y: 0, z: +LOOK_DISTANCE);
-        public static F32x3 LookPositionRelativeToPlayer(PlayerReferences references)
+        public static F32x3 LookPositionRelativeToPlayer(PlayerReferences references, Bool useCursor = true)
         {
-            //Get Mouse Position Screen-Space
-            if (Commands.PlayerIsUsingAGamepad)
+            if (Commands.PlayerIsUsingAGamepad || !useCursor) //Used for gamepads or when the player is not using the cursor
             {
-                F32x2 __aimInput = references.InputHandler.AimInput;
+                F32x2 __aimInput = (useCursor) ? references.InputHandler.AimInput : references.InputHandler.MoveInput;
                 
                 F32 __aimInputSqrMagnitude = lengthsq(__aimInput);
 
                 const F32 MAGNITUDE_THRESHOLD = 0.2f;
                 const F32 SQR_MAGNITUDE_THRESHOLD = MAGNITUDE_THRESHOLD * MAGNITUDE_THRESHOLD;
                 
-                
                 Bool __hasAimInput = (__aimInputSqrMagnitude > SQR_MAGNITUDE_THRESHOLD); 
                 //any(_references.InputHandler.AimInput != F32x2.zero);
-
                 if (__hasAimInput)
                 {
-                    F32x3 __targetLookDirection = normalize(new F32x3(x: references.InputHandler.AimInput.x, y: 0, z: references.InputHandler.AimInput.y));
+                    F32x3 __targetLookDirection = normalize(new F32x3(x: __aimInput.x, y: 0, z: __aimInput.y));
                 
                     F32x3 __targetMoveDirectionRelativeToCamera = __targetLookDirection.RelativeTo(references.Camera.transform);
                 

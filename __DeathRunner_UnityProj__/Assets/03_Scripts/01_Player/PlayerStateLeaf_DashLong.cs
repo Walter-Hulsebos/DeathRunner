@@ -127,8 +127,9 @@ namespace DeathRunner.Player
             base.OnUpdate();
             
             UpdateLookDirection();
-            
-            OrientTowardsLookDirection();
+
+            PlayerHelpers.OrientTowardsDir(references: _references, direction: _settings.OrientationLookDirection.Value, orientationSpeed: _settings.OrientationSpeed);
+            //OrientTowardsLookDirection();
         }
         
         protected override void OnLateUpdate()
@@ -140,7 +141,7 @@ namespace DeathRunner.Player
 
         private void UpdateLookDirection()
         {
-            F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references);
+            F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references, useCursor: _settings.OrientTowardsCursor.Value);
 
             _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer); 
             //normalize(__lookPosition - _references.WorldPos);
@@ -153,7 +154,7 @@ namespace DeathRunner.Player
         {
             Plane3D __plane3D = new(normal: up(), distance: 0);
             
-            F32x3 __projectedLookDirection = normalize(__plane3D.Projection(point: _settings.OrientationLookDirection));
+            F32x3 __projectedLookDirection = normalize(__plane3D.Projection(point: _settings.OrientationLookDirection.Value));
             
             if (lengthsq(__projectedLookDirection) == 0) return;
 
@@ -215,9 +216,10 @@ namespace DeathRunner.Player
         [field:Tooltip(tooltip: "The character's gravity.")] 
         [field:SerializeField] public Constant<F32x3> Gravity                     { get; [UsedImplicitly] private set; }
         
-        [field:SerializeField] public Constant<F32>   OrientationSpeed            { get; [UsedImplicitly] private set; }
         
+        [field:SerializeField] public Variable<Bool>  OrientTowardsCursor         { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Variable<F32x3> OrientationLookDirection    { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<F32>   OrientationSpeed            { get; [UsedImplicitly] private set; }
         
         
         
