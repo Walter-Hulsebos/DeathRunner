@@ -229,6 +229,8 @@ GameObject:
   - component: {fileID: 39016291161391664}
   - component: {fileID: 2841325331530397434}
   - component: {fileID: 8603650414407928517}
+  - component: {fileID: 8012592786869872559}
+  - component: {fileID: 4480741918457653805}
   m_Layer: 0
   m_Name: WasteBinBurning
   m_TagString: Untagged
@@ -315,6 +317,35 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.91415715, y: 0.9925164, z: 0.9141575}
   m_Center: {x: 0.000000014901161, y: 0.49623597, z: 0.0000002682209}
+--- !u!114 &8012592786869872559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4354582979459127087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootStrength: 2
+--- !u!54 &4480741918457653805
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4354582979459127087}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5143353157199596039
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections;
 using Cysharp.Threading.Tasks;
@@ -80,6 +80,7 @@ namespace DeathRunner.EnemyAI
         private void OnHealthDecreasedHandler(UInt16 arg1, UInt16 arg2)
         {
             OnTakeDamage();
+            print("OnTakeDamage");
         }
 
         private void OnHealthDepletedHandler()

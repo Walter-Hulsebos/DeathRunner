@@ -57,6 +57,7 @@ namespace DeathRunner.EnemyAI
             
             [SerializeField] private EventReference<ushort, ushort> OnHealthDecreased;
 
+            [SerializeField] private GameObject hitBox;
             private void OnEnable()
             {
                 OnHealthDepleted.AddListener(OnHealthDepletedHandler);
@@ -191,6 +192,7 @@ namespace DeathRunner.EnemyAI
                 navMeshAgent.velocity = Vector3.zero;
                 navMeshAgent.SetDestination(transform.position);
                 transform.LookAt(_player.transform.position);
+                hitBox.SetActive(false);
                 ExitAttack();
             }
             

@@ -124,9 +124,9 @@ namespace Game
             }
             
             
-            if (canRangedAttack && meleeEnemies.Count > 0)
+            if (canRangedAttack && rangedEnemies.Count > 0)
             {
-                rangedEnemies[Random.Range(0, meleeEnemies.Count)].canAttack = true;
+                rangedEnemies[Random.Range(0, rangedEnemies.Count)].canAttack = true;
                 canRangedAttack = false;
                 StartCoroutine(EnableRangedAttacking());
             }

@@ -17,7 +17,7 @@ namespace DeathRunner
 
         private IEnumerator EnableHitbox()
         {
-            yield return new WaitForSeconds(0.7f);
+            yield return new WaitForSeconds(0.8f);
             hitBox.SetActive(true);
             // yield return new WaitForSeconds(0.1f);
             // hitBox.SetActive(false);

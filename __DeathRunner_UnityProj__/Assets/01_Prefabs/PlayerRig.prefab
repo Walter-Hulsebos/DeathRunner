@@ -1757,7 +1757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187890989}
   m_LocalRotation: {x: 0.2379853, y: 0.585599, z: -0.16800095, w: 0.7564474}
-  m_LocalPosition: {x: -5.6481476, y: 5.449713, z: -1.4030986}
+  m_LocalPosition: {x: -5.648155, y: 5.4497094, z: -1.4031296}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2415,7 +2415,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410215513009397359}
   m_LocalRotation: {x: 0.2379853, y: 0.585599, z: -0.16800095, w: 0.7564474}
-  m_LocalPosition: {x: -5.6481476, y: 5.449713, z: -1.4030986}
+  m_LocalPosition: {x: 13.411852, y: 5.449713, z: 111.3469}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2787,6 +2787,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb17cdfc70b3a8041b0e7620e54ef48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputBufferTime: 0.2
   moveInputActionReference: {fileID: 6740287480885424194, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
   <MoveInput>k__BackingField:
@@ -2807,13 +2808,13 @@ MonoBehaviour:
   <DashInputStoppedThisFrame>k__BackingField: 0
   primaryFireInputActionReference: {fileID: -4813116327349068454, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
-  <PrimaryFireInput>k__BackingField: 0
   secondaryFireInputActionReference: {fileID: -533271173522944404, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
   <SecondaryFireInput>k__BackingField: 0
   slowMoToggleInputActionReference: {fileID: 1147805507886284358, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
   <IsSlowMoToggled>k__BackingField: 0
+  primaryFireInputBufferTimeSeconds: 0.1
 --- !u!114 &2410215513429711714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3787,7 +3788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4582762283594447248
 Transform:
   m_ObjectHideFlags: 0
@@ -3820,7 +3821,7 @@ MonoBehaviour:
   - m_Script
   m_LockStageInInspector: 
   m_StreamingVersion: 20170927
-  m_Priority: 10
+  m_Priority: 8
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 7443291799372615853}
   m_Follow: {fileID: 7443291799372615853}
