@@ -1419,7 +1419,14 @@ GameObject:
   - component: {fileID: 7964583362915883753}
   - component: {fileID: 7964583362915883758}
   - component: {fileID: 7964583362915883759}
-  - component: {fileID: 7964583362915883754}
+  - component: {fileID: 3133437652171485841}
+  - component: {fileID: 4936430507411200280}
+  - component: {fileID: 4536413736485582818}
+  - component: {fileID: 1337577594340283648}
+  - component: {fileID: 6549958296700556909}
+  - component: {fileID: 1033778332994665578}
+  - component: {fileID: 8547592454259938272}
+  - component: {fileID: 7465312571111369173}
   m_Layer: 11
   m_Name: EnemyRanged
   m_TagString: Enemy
@@ -1524,7 +1531,16 @@ MonoBehaviour:
   hasPickedWalkPos: 0
   HealthDrop: {fileID: 1273188676277678975, guid: 8f2e01be22f73164c870b48c47a51a12,
     type: 3}
---- !u!114 &7964583362915883754
+  canAttack: 0
+  OnHealthDepleted:
+    _eventType: 1
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 4536413736485582818}
+  OnHealthDecreased:
+    _eventType: 1
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 4936430507411200280}
+--- !u!114 &3133437652171485841
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1533,128 +1549,269 @@ MonoBehaviour:
   m_GameObject: {fileID: 7964583362915883756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c1fad7b72cbb064aa01f58048b217da, type: 3}
+  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHitPoints: 3
-  invulnerabiltyTime: 0
-  hitAngle: 360
-  hitForwardRotation: 360
-  OnDeath:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7964583362915883759}
-        m_TargetAssemblyTypeName: Game.EnemyAI.RangedEnemyAI, Assembly-CSharp
-        m_MethodName: OnDeath
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7964583362915883753}
-        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1912280482}
-        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Feedbacks
-        m_MethodName: PlayFeedbacks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Game.ManageEncounter, Assembly-CSharp
-        m_MethodName: EnemyDied
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7964583362915883753}
-        m_TargetAssemblyTypeName: UnityEngine.Collider, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7964583363364407052}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnReceiveDamage:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7964583362915883759}
-        m_TargetAssemblyTypeName: Game.EnemyAI.RangedEnemyAI, Assembly-CSharp
-        m_MethodName: OnTakeDamage
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 119742684}
-        m_TargetAssemblyTypeName: MoreMountains.Feedbacks.MMF_Player, MoreMountains.Feedbacks
-        m_MethodName: PlayFeedbacks
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  OnHitWhileInvulnerable:
-    m_PersistentCalls:
-      m_Calls: []
-  OnBecomeVulnerable:
-    m_PersistentCalls:
-      m_Calls: []
-  OnResetDamage:
-    m_PersistentCalls:
-      m_Calls: []
-  OnHeal:
-    m_PersistentCalls:
-      m_Calls: []
-  onDamageMessageReceivers: []
+  _base: {fileID: 11400000, guid: 64eefd93ad2de7c4597715f91dc2e440, type: 2}
+  _scriptableEventHelper:
+    ListenersExpanded: 0
+    StackTrace:
+      Enabled: 0
+--- !u!114 &4936430507411200280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _base: {fileID: 11400000, guid: 604618385de20244cab00fe8c9e76c05, type: 2}
+  _scriptableEventHelper:
+    ListenersExpanded: 0
+    StackTrace:
+      Enabled: 0
+--- !u!114 &4536413736485582818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6694a34dbdf64e33aa3ca30fba61a580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _base: {fileID: 11400000, guid: 29c85cc17cc43364aaf4402b195cf7fb, type: 2}
+  _scriptableEventHelper:
+    ListenersExpanded: 0
+    StackTrace:
+      Enabled: 0
+--- !u!114 &1337577594340283648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d154240c5d2496196ef0485f85d6d36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    <Max>k__BackingField: {fileID: 11400000, guid: ec89db501eaba3643848cc19bf887933,
+      type: 2}
+    <InvincibilityFrameDuration>k__BackingField:
+      _valueType: 0
+      _value: 0
+      _variable: {fileID: 0}
+      _constant: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    useInfinityBackingField:
+      _valueType: 0
+      _value: 0
+      _variable: {fileID: 0}
+      _constant: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    currentHealthBackingField:
+      _valueType: 0
+      _value: 0
+      _variable: {fileID: 0}
+      _constant: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    <OnChanged>k__BackingField:
+      _eventType: 1
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 3133437652171485841}
+    <OnDecreased>k__BackingField:
+      _eventType: 1
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 4936430507411200280}
+    <OnDepleted>k__BackingField:
+      _eventType: 1
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 4536413736485582818}
+    <OnIncreased>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+    <OnInvincibilityEnabled>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+    <OnInvincibilityDisabled>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+    <OnDecreasedAttempt>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+    <OnIncreasedAttempt>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+--- !u!114 &6549958296700556909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component: {fileID: 1033778332994665578}
+--- !u!114 &1033778332994665578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1926729455, guid: e4992c61f8a41b445b38b8f45f00657f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stackTrace:
+    Enabled: 0
+  _eventHolder:
+    _event: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
+    _eventInstancer: {fileID: 4936430507411200280}
+    _type: 3
+    _notifyCurrentValue: 0
+  _response:
+    _persistentListeners:
+    - _persistentArguments: []
+      _target: {fileID: 119742684}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: PlayFeedbacks
+    Expanded: 1
+--- !u!114 &8547592454259938272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component: {fileID: 7465312571111369173}
+--- !u!114 &7465312571111369173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b178bdd9bde14366a896b14319f56a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stackTrace:
+    Enabled: 0
+  _event: {fileID: 0}
+  _eventHolder:
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 4536413736485582818}
+    _type: 3
+  _response:
+    _persistentListeners:
+    - _persistentArguments:
+      - _index: 0
+        _isSerialized: 1
+        _targetType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: System.Boolean, mscorlib
+          _suppressLogs: 1
+        _fromType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: 
+          _suppressLogs: 0
+        _serializationData:
+          DataFormat: 2
+          ReferencedUnityObjects: []
+          SerializationNodes:
+          - Name: 
+            Entry: 5
+            Data: false
+          Bytes: 
+        _canBeDynamic: 0
+        _serializedArg: 
+      _target: {fileID: 7964583362915883753}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: set_enabled
+    - _persistentArguments:
+      - _index: 0
+        _isSerialized: 1
+        _targetType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: System.Boolean, mscorlib
+          _suppressLogs: 1
+        _fromType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: 
+          _suppressLogs: 0
+        _serializationData:
+          DataFormat: 2
+          ReferencedUnityObjects: []
+          SerializationNodes:
+          - Name: 
+            Entry: 5
+            Data: false
+          Bytes: 
+        _canBeDynamic: 0
+        _serializedArg: 
+      _target: {fileID: 7964583363364407052}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: set_enabled
+    - _persistentArguments: []
+      _target: {fileID: 1912280482}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: PlayFeedbacks
+    Expanded: 1
 --- !u!1 &7964583363491463518
 GameObject:
   m_ObjectHideFlags: 0
@@ -3614,7 +3771,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000019297026, y: 0.26198256, z: -0.0000045597667}
+  m_ConnectedAnchor: {x: -0.00000049918947, y: 0.26198307, z: -0.0000042319402}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -3696,7 +3853,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000025238821, y: 0.26198748, z: 0.000000119209275}
+  m_ConnectedAnchor: {x: -0.0000010039649, y: 0.26198584, z: 0.00000026822087}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: -1, z: 0}
   m_TwistLimitSpring:
@@ -3778,7 +3935,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000022047675, y: 0.45922646, z: 0.0000009534367}
+  m_ConnectedAnchor: {x: 0.0000013109428, y: 0.4592276, z: -0.00000026815408}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -3860,7 +4017,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000086403134, y: 0.4592288, z: 0.0000011359226}
+  m_ConnectedAnchor: {x: -0.00000068526623, y: 0.45922813, z: 0.0000006182398}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -3941,7 +4098,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0039694575, y: 0.4663627, z: 0.043588515}
+  m_ConnectedAnchor: {x: 0.003965178, y: 0.4663628, z: 0.043587897}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -4023,7 +4180,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.1856049, y: 0.24038512, z: -0.104942136}
+  m_ConnectedAnchor: {x: 0.18560311, y: 0.24038531, z: -0.10494149}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -4105,7 +4262,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: -1, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.19297238, y: 0.26245657, z: -0.037467793}
+  m_ConnectedAnchor: {x: -0.19297409, y: 0.2624568, z: -0.037466746}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -4186,7 +4343,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.002052974, y: 0.26299092, z: 0.0079094255}
+  m_ConnectedAnchor: {x: 0.0020512976, y: 0.2629911, z: 0.007910322}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -4238,10 +4395,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de086e1aae19bfc4c9edc9e0cb83e3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangedEnemyAI: {fileID: 7964583362915883759}
   bulletPrefab: {fileID: 1170015546580611590, guid: 1eeba3937e9169640b0e08d247f01b7c,
     type: 3}
   shootPos: {fileID: 7964583362328431640}
+  OnAttackFinished:
+    _eventType: 0
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 0}
 --- !u!1 &7964583363371808120 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100116, guid: db0e58d0841b90c478cc919c554c298c,
@@ -4290,7 +4450,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.09041786, y: 0.055325303, z: 0.01153633}
+  m_ConnectedAnchor: {x: 0.09041618, y: 0.055325504, z: 0.011537115}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -4372,7 +4532,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.09041382, y: 0.055325326, z: 0.01153611}
+  m_ConnectedAnchor: {x: -0.09041534, y: 0.055325497, z: 0.011536736}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:

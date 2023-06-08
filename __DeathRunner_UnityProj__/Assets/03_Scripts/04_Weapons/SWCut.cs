@@ -16,7 +16,7 @@ namespace DeathRunner.Weapons
 
         public void SpawnCut(Transform player)
         {
-            GameObject cut = Instantiate(cutPrefab, player.position, player.rotation);
+            GameObject cut = Instantiate(cutPrefab, player.position, quaternion.identity);
         }
         
     }

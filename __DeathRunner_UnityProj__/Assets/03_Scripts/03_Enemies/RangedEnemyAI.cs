@@ -1,4 +1,4 @@
-using System;
+    using System;
 using System.Collections;
 using System.Collections;
 using Cysharp.Threading.Tasks;
@@ -80,6 +80,7 @@ namespace DeathRunner.EnemyAI
         private void OnHealthDecreasedHandler(UInt16 arg1, UInt16 arg2)
         {
             OnTakeDamage();
+            print("OnTakeDamage");
         }
 
         private void OnHealthDepletedHandler()
@@ -127,7 +128,7 @@ namespace DeathRunner.EnemyAI
                   //  LookAtPlayer();
 
                     // If the enemy is within attack distance, start attacking
-                    if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance) //&& canAttack)
+                    if (Vector3.Distance(transform.position, _player.transform.position) <= attackDistance && canAttack)
                     {
                         // Change the state to attacking
                         currentState = States.Attacking;

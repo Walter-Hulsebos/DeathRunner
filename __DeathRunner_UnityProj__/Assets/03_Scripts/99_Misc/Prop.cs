@@ -24,7 +24,6 @@ namespace DeathRunner
                 Vector3 direction = player.position - transform.position;
                 rb.AddForce(-direction * shootStrength);
                 rb.AddTorque(423, 432,323 );
-                print("flying");
             }
         }
     }
