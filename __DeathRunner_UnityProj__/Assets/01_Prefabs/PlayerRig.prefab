@@ -1757,7 +1757,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187890989}
   m_LocalRotation: {x: 0.2379853, y: 0.585599, z: -0.16800095, w: 0.7564474}
-  m_LocalPosition: {x: -5.648155, y: 5.4497094, z: -1.4031296}
+  m_LocalPosition: {x: 13.411852, y: 5.449713, z: 111.3469}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1973,7 +1973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41194566079009247}
   m_LocalRotation: {x: 0.29883054, y: 0.6408686, z: -0.29884186, w: 0.6408442}
-  m_LocalPosition: {x: 9.418213, y: 13.050655, z: 112.75037}
+  m_LocalPosition: {x: 9.418183, y: 13.050666, z: 112.75037}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2414,8 +2414,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410215513009397359}
-  m_LocalRotation: {x: 0.2379853, y: 0.585599, z: -0.16800095, w: 0.7564474}
-  m_LocalPosition: {x: 13.411852, y: 5.449713, z: 111.3469}
+  m_LocalRotation: {x: -6.2527755e-13, y: 1, z: 0.00000032782552, w: 0.0000018775463}
+  m_LocalPosition: {x: 313.2729, y: 1.5087138, z: 71.94299}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2445,7 +2445,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 1
+  near clip plane: 5
   far clip plane: 500
   field of view: 40
   orthographic: 0
@@ -2663,7 +2663,6 @@ GameObject:
   - component: {fileID: 2410215513753998715}
   - component: {fileID: 2410215513753998712}
   - component: {fileID: 2410215513753998713}
-  - component: {fileID: 2410215513753998716}
   - component: {fileID: 610366623}
   - component: {fileID: 610366622}
   - component: {fileID: 610366624}
@@ -2815,7 +2814,6 @@ MonoBehaviour:
   slowMoToggleInputActionReference: {fileID: 1147805507886284358, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
   <IsSlowMoToggled>k__BackingField: 0
-  primaryFireInputBufferTimeSeconds: 0.1
 --- !u!114 &2410215513429711714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2836,6 +2834,8 @@ MonoBehaviour:
     <Health>k__BackingField: {fileID: 1608019605}
     <Stamina>k__BackingField: {fileID: 1608019606}
   locomotionNTSettings:
+    <OrientTowardsCursor>k__BackingField: {fileID: 11400000, guid: f2cc625477ad1d049bf6ba25cd14c777,
+      type: 2}
     <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 134c6d3d34951474d8deabf213eb103b,
       type: 2}
   idleNTSettings:
@@ -2901,9 +2901,11 @@ MonoBehaviour:
       type: 2}
     <Gravity>k__BackingField: {fileID: 11400000, guid: 0236806da691ca346b1e15764933bbfa,
       type: 2}
-    <OrientationSpeed>k__BackingField: {fileID: 11400000, guid: d14814699808763428b838fb9704470d,
+    <OrientTowardsCursor>k__BackingField: {fileID: 11400000, guid: f2cc625477ad1d049bf6ba25cd14c777,
       type: 2}
     <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 134c6d3d34951474d8deabf213eb103b,
+      type: 2}
+    <OrientationSpeed>k__BackingField: {fileID: 11400000, guid: d14814699808763428b838fb9704470d,
       type: 2}
     <OnLongDashEnter>k__BackingField: {fileID: 11400000, guid: d89a5c7c8b816e342b5085d548372d8f,
       type: 2}
@@ -3076,21 +3078,6 @@ MonoBehaviour:
         - {x: -1, y: 1}
         _DefaultParameter: {x: 0, y: 0}
         _Type: 1
---- !u!114 &2410215513753998716
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86711b6f8aed7594688dc8c25e192cbc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DeathRunner.Animations.PrimaryAttackAnimHandler, DeathRunner.Animations
-  animationReferences: {fileID: 2410215513753998714}
-  onAttackStarted: {fileID: 11400000, guid: 6bd7c2f9af8051c4387cfa6c8f437870, type: 2}
-  onAttackStopped: {fileID: 11400000, guid: 3467a095d0149b646b5073547ad6d884, type: 2}
 --- !u!114 &610366623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3191,7 +3178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: DeathRunner.Animations.PrimaryAttackAnimHandler, DeathRunner.Animations
   animationReferences: {fileID: 2410215513753998714}
   onAttackStarted: {fileID: 11400000, guid: 6bd7c2f9af8051c4387cfa6c8f437870, type: 2}
-  onAttackStopped: {fileID: 11400000, guid: 3467a095d0149b646b5073547ad6d884, type: 2}
+  onAttackStopped: {fileID: 11400000, guid: 59fc4644cfefe8a42bf607a35d714ea7, type: 2}
 --- !u!114 &388316143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4205,7 +4192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8052882447145459213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.060013, y: 1.5600001, z: 112.75}
+  m_LocalPosition: {x: 19.06, y: 1.5600001, z: 112.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
