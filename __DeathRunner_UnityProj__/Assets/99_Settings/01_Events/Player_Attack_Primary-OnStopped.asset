@@ -9,11 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34e2076c00ed43f989504b7ba1dbd404, type: 3}
-  m_Name: Player_Stamina-OnDepleted
-  m_EditorClassIdentifier: GenericScriptableArchitecture.ScriptableEvent, GenericScriptableArchitecture
+  m_Script: {fileID: 603648152, guid: 13964160564fe3c4387234c1ab6f413c, type: 3}
+  m_Name: Player_Attack_Primary-OnStopped
+  m_EditorClassIdentifier: GenericScriptableArchitecture.ScriptableEvent<float>,
+    GenericScriptableArchitecture
   _description: 
-  _argNames: []
+  _argNames:
+  - TimeRemainingInAnimation
   _scriptableEventHelper:
     ListenersExpanded: 0
     StackTrace:
