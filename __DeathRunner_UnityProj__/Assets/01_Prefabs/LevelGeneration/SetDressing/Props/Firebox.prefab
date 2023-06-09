@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 658899475211102666}
   - component: {fileID: 658899475211102667}
   - component: {fileID: 1014139646262465309}
-  m_Layer: 0
+  - component: {fileID: 2916525439645271368}
+  - component: {fileID: 8208999842571490755}
+  m_Layer: 13
   m_Name: Firebox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,3 +133,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabPrototype: {fileID: 11400000, guid: a4b1da873c2dbd7448887ef1fee3d6b2, type: 2}
+--- !u!54 &2916525439645271368
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424895570036593823}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8208999842571490755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424895570036593823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1

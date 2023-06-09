@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 2305508}
   - component: {fileID: 6628014671933425427}
   - component: {fileID: 4535793480034410619}
+  - component: {fileID: 2935303928127106707}
+  - component: {fileID: 2971825171959453969}
   m_Layer: 0
   m_Name: GarbageBag_B
   m_TagString: Untagged
@@ -111,3 +113,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabPrototype: {fileID: 11400000, guid: 90d5c13187856d94f9e49d141c73b86c, type: 2}
+--- !u!54 &2935303928127106707
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154748}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2971825171959453969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1

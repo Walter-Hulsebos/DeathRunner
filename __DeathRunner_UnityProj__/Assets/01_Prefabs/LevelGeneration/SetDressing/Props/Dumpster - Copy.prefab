@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 971003602108946080}
   - component: {fileID: 4239691775257286917}
   - component: {fileID: 2103918235765960143}
-  - component: {fileID: 834533798144855275}
   - component: {fileID: 5446454620271102981}
-  m_Layer: 0
+  - component: {fileID: 7726811540590163173}
+  - component: {fileID: 337708426005026948}
+  - component: {fileID: 3160033681097391647}
+  m_Layer: 13
   m_Name: Dumpster - Copy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,20 +88,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &834533798144855275
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446527121874242586}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5198267681279241171, guid: ac8ff7589b6aa544db1e49ee91dc144f, type: 3}
 --- !u!114 &5446454620271102981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,6 +101,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefabPrototype: {fileID: 11400000, guid: 2ffe144914d672448901b99283420196, type: 2}
+--- !u!65 &7726811540590163173
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446527121874242586}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.220617, y: 1.1669805, z: 0.7828428}
+  m_Center: {x: -0.00065124035, y: 0.042046458, z: 0.0022262186}
+--- !u!54 &337708426005026948
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446527121874242586}
+  serializedVersion: 2
+  m_Mass: 15
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &3160033681097391647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446527121874242586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 300
 --- !u!1 &4584120614578084195
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,7 +155,7 @@ GameObject:
   - component: {fileID: 6082465481453655979}
   - component: {fileID: 1355116245830016282}
   - component: {fileID: 5082892724669417638}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Cylinder.006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
