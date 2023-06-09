@@ -24,9 +24,11 @@ namespace DeathRunner.Animations
         #if ODIN_INSPECTOR
         [FoldoutGroup(groupName: "Events")]
         #endif
-        [SerializeField] private ScriptableEvent onAttackStopped;
+        [SerializeField] private ScriptableEvent<F32> onAttackStopped;
         
         private Bool _hasAlreadyDisabledRootMotion = false;
+        
+        private F32 _fadeDuration = AnimancerPlayable.DefaultFadeDuration;
 
         #endregion
         
@@ -35,18 +37,23 @@ namespace DeathRunner.Animations
         private void OnEnable()
         {
             onAttackStarted += OnAttackStartedHandler;
-            onAttackStopped += DisableRootMotion;
-            
+            //onAttackStopped += DisableRootMotion;
+            onAttackStopped += SetFadeDuration;
+
         }
         private void OnDisable()
         {
             onAttackStarted -= OnAttackStartedHandler;
-            onAttackStopped -= DisableRootMotion;
+            //onAttackStopped -= DisableRootMotion;
+            onAttackStopped -= SetFadeDuration;
         }
         
         private void OnAttackStartedHandler(AnimationClip attackAnimation, F32 attackSpeedMultiplier)
         {
-            AnimancerState __state = MyAnimancer.Play(clip: attackAnimation);
+            Debug.Log("OnAttackStartedHandler");
+            
+            //AnimancerState __state = MyAnimancer.Play(clip: attackAnimation);
+            AnimancerState __state = MyAnimancer.Play(clip: attackAnimation, fadeDuration: _fadeDuration);
             __state.Speed = attackSpeedMultiplier;
             
             EnableRootMotion();
@@ -64,6 +71,12 @@ namespace DeathRunner.Animations
             MyAnimancer.Animator.applyRootMotion = false;
 
             _hasAlreadyDisabledRootMotion = true;
+        }
+        
+        private void SetFadeDuration(F32 fadeDuration)
+        {
+            Debug.Log("Set Fade Duration!!");
+            _fadeDuration = fadeDuration;
         }
 
         #endregion

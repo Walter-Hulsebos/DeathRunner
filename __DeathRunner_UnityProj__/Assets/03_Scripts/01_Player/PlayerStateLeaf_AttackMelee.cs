@@ -92,6 +92,8 @@ namespace DeathRunner.Player
             
             IsAttacking = true;
             
+            TrackTimeSpentInAnimation().Forget();
+            
             EnableCanGoIntoNextAttackAfterTime().Forget();
             StopAttackAfterFinishTime().Forget();
             FadeOutAfterFinishTime().Forget();
@@ -106,7 +108,7 @@ namespace DeathRunner.Player
             IsAttacking = false;
             if (_settings.OnAttackStopped != null)
             {
-                _settings.OnAttackStopped.Invoke();
+                _settings.OnAttackStopped.Invoke(/*timeLeft*/ TimeRemainingInAnimation);
             }
         }
         
@@ -116,6 +118,20 @@ namespace DeathRunner.Player
             
             _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer);
             _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
+        }
+        
+        public F32 TimeRemainingInAnimation => (_scaledAttackAnimationDuration - _timeSpentInAnimation);
+
+        private F32 _timeSpentInAnimation = 0;
+
+        private async UniTask TrackTimeSpentInAnimation()
+        {
+            _timeSpentInAnimation = 0;
+            while (IsAttacking)
+            {
+                await UniTask.Yield();
+                _timeSpentInAnimation += Time.deltaTime;
+            }
         }
 
         private async UniTask EnableCanGoIntoNextAttackAfterTime()
@@ -165,7 +181,7 @@ namespace DeathRunner.Player
         //[field:SerializeField] public Constant<F32>                       OrientationSpeed                { get; [UsedImplicitly] private set; }
 
         [field:SerializeField] public ScriptableEvent<AnimationClip, F32> OnAttackStarted                 { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public ScriptableEvent                     OnAttackStopped                 { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public ScriptableEvent<F32>                OnAttackStopped                 { get; [UsedImplicitly] private set; }
         
         [field:SerializeField] public ScriptableEvent                     OnAllowNextAttack               { get; [UsedImplicitly] private set; }
     }
