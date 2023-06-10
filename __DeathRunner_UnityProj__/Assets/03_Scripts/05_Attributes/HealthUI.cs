@@ -1,3 +1,4 @@
+using System;
 using GenericScriptableArchitecture;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +16,13 @@ namespace DeathRunner.Attributes
         [SerializeField] private EventReference</*oldHealth*/U16, /*newHealth*/U16> OnHealthChanged;
         
         [SerializeField] private Image healthSlider;
-        
+
+
+        private void Awake()
+        {
+            healthSlider = GameObject.FindWithTag("HealthSlider").GetComponent<Image>();
+        }
+
         private void OnEnable()
         {
             OnHealthChanged += OnHealthChangedHandler;
