@@ -8473,9 +8473,22 @@ PrefabInstance:
         type: 3}
       propertyPath: OnHealthDecreased._eventInstancer
       value: 
-      objectReference: {fileID: 5721362492399209407}
+      objectReference: {fileID: 3023042451871616578}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
+--- !u!114 &3023042451871616578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1073600809, guid: e602e2f6340987c499f4bc5545d4ef1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3023042451981342571}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5086227747144986695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<ushort,ushort>,
+    GenericScriptableArchitecture
 --- !u!1 &5086227747144986695 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8025951268374177580, guid: e602e2f6340987c499f4bc5545d4ef1d,
@@ -10615,6 +10628,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7552267184089518196}
     m_Modifications:
+    - target: {fileID: 5856877250936634215, guid: ff29451d7e4762a41bbe3482bf406f12,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: MoreMountains.Feedbacks.MMFeedbackTimescaleModifier, MoreMountains.Feedbacks
+      objectReference: {fileID: 0}
     - target: {fileID: 7629051473070145482, guid: ff29451d7e4762a41bbe3482bf406f12,
         type: 3}
       propertyPath: m_Name
@@ -14662,18 +14680,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5721362491906134678}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5721362492399209407 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1073600809, guid: e602e2f6340987c499f4bc5545d4ef1d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5721362491906134678}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2308012312659162554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5732017937450534635
 PrefabInstance:
   m_ObjectHideFlags: 0
