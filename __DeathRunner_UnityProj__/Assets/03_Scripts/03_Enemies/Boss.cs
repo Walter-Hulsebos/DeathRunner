@@ -53,8 +53,6 @@ namespace DeathRunner
 
             private int timesHit = 0;
 
-            public Image healthImage;
-
             private bool canBeStunlocked = true;
             private void OnEnable()
             {

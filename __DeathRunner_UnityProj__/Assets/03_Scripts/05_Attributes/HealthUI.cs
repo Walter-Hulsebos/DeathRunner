@@ -20,7 +20,10 @@ namespace DeathRunner.Attributes
 
         private void Awake()
         {
-            healthSlider = GameObject.FindWithTag("HealthSlider").GetComponent<Image>();
+            if (healthSlider == null)
+            {
+                healthSlider = GameObject.FindWithTag("HealthSlider").GetComponent<Image>();
+            }
         }
 
         private void OnEnable()
