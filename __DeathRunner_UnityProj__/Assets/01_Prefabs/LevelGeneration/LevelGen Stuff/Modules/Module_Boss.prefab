@@ -1480,7 +1480,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be57b5150be2c874f93ca8ea0041da00, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: DeathRunner.ManageBossEncounter, DeathRunner.Enemies
   bossHealthbar: {fileID: 0}
   doors:
   - {fileID: 2399907539365679513}
@@ -1507,7 +1507,6 @@ GameObject:
   - component: {fileID: 934569907}
   - component: {fileID: 934569908}
   - component: {fileID: 934569910}
-  - component: {fileID: 934569911}
   - component: {fileID: 8469491778358882889}
   - component: {fileID: 8881661304185212101}
   m_Layer: 11
@@ -1578,7 +1577,6 @@ MonoBehaviour:
     _eventType: 0
     _event: {fileID: 11400000, guid: fad8c6d03160a3f488d50f5d2ea5af04, type: 2}
     _eventInstancer: {fileID: 0}
-  healthImage: {fileID: 0}
   healthDrop: {fileID: 0}
 --- !u!195 &934569903
 NavMeshAgent:
@@ -1728,24 +1726,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _component: {fileID: 0}
---- !u!114 &934569911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6782662841264111228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dd829d18ba541842ad18ca49fb011c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DeathRunner.Attributes.HealthUI, DeathRunner.Attributes
-  maxHealth: {fileID: 11400000, guid: 24b24983058d7ec43a2e89d6660f77c2, type: 2}
-  OnHealthChanged:
-    _eventType: 0
-    _event: {fileID: 11400000, guid: 8dda9b9bc3acbcf4f90f8560888a2b4d, type: 2}
-    _eventInstancer: {fileID: 0}
-  healthSlider: {fileID: 0}
 --- !u!95 &8469491778358882889
 Animator:
   serializedVersion: 5

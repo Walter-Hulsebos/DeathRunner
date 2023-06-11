@@ -233,10 +233,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 838951240, guid: abf8d3d5d31c3d24eb83d71d265ea1c5, type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: DeathRunner.Attributes.HealthUI, DeathRunner.Attributes
-      objectReference: {fileID: 0}
     - target: {fileID: 2977335224575537984, guid: abf8d3d5d31c3d24eb83d71d265ea1c5,
         type: 3}
       propertyPath: m_Pivot.x
@@ -346,11 +342,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: UI  Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2977335224575538013, guid: abf8d3d5d31c3d24eb83d71d265ea1c5,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: UnityEngine.UI.GraphicRaycaster, UnityEngine.UI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abf8d3d5d31c3d24eb83d71d265ea1c5, type: 3}
@@ -1372,18 +1363,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ceea034148d78cd43960800785861090, type: 3}
---- !u!114 &595529165 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1792531413, guid: abf8d3d5d31c3d24eb83d71d265ea1c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 80266197}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &620666250
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1391,11 +1370,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143829182}
     m_Modifications:
-    - target: {fileID: 1473713797039958623, guid: cbb434dcd22067a4da15dcf3b9000da6,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: DeathRunner.ManageBossEncounter, DeathRunner.Enemies
-      objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: cbb434dcd22067a4da15dcf3b9000da6,
         type: 3}
       propertyPath: m_RootOrder
@@ -1456,8 +1430,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Module_Boss
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 934569911, guid: cbb434dcd22067a4da15dcf3b9000da6, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbb434dcd22067a4da15dcf3b9000da6, type: 3}
 --- !u!114 &634529072 stripped
 MonoBehaviour:
@@ -2465,30 +2438,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16fe5d88c36143a49829c00b7cea648b, type: 3}
---- !u!1 &901385183 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1799518790, guid: abf8d3d5d31c3d24eb83d71d265ea1c5,
-    type: 3}
-  m_PrefabInstance: {fileID: 80266197}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &901385185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 901385183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6dd829d18ba541842ad18ca49fb011c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DeathRunner.Attributes.HealthUI, DeathRunner.Attributes
-  maxHealth: {fileID: 11400000, guid: 24b24983058d7ec43a2e89d6660f77c2, type: 2}
-  OnHealthChanged:
-    _eventType: 0
-    _event: {fileID: 11400000, guid: 8dda9b9bc3acbcf4f90f8560888a2b4d, type: 2}
-    _eventInstancer: {fileID: 0}
-  healthSlider: {fileID: 595529165}
 --- !u!1001 &914290988
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17161,6 +17110,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 505032891824201916, guid: 8e483146e87dbbc4a877bb10961c83f3,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.JudgementCut, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 1130823493571087323, guid: 8e483146e87dbbc4a877bb10961c83f3,
         type: 3}
       propertyPath: m_Name
