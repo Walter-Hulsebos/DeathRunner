@@ -8,8 +8,10 @@ namespace DeathRunner
     public class ManageBossEncounter : MonoBehaviour
     {
 
-        [SerializeField] private GameObject bossHealthbar;
+         private GameObject bossHealthbar;
 
+         [SerializeField] private GameObject introTimeline;
+         
         [SerializeField] private GameObject[] doors;
         
         [SerializeField] private GameObject boss;
@@ -36,9 +38,10 @@ namespace DeathRunner
             {
                 door.SetActive(false);
             }
-
+            introTimeline.SetActive(true);
             boss.SetActive(true);
         }
+        
         }
         
     

@@ -1642,6 +1642,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vent_A.002
       objectReference: {fileID: 0}
+    - target: {fileID: 4436094939135576879, guid: 07d71154739e65d41b859476c2d54481,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07d71154739e65d41b859476c2d54481, type: 3}
 --- !u!4 &1981132545096443155 stripped
@@ -3326,6 +3331,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4016275571677700053}
     m_Modifications:
+    - target: {fileID: -6860895033569716450, guid: 2202bd419f6cb8a4e847c7bed2852ce5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2202bd419f6cb8a4e847c7bed2852ce5,
         type: 3}
       propertyPath: m_RootOrder
@@ -3388,6 +3398,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2202bd419f6cb8a4e847c7bed2852ce5, type: 3}
+--- !u!1 &5792775908051460969 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 2202bd419f6cb8a4e847c7bed2852ce5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2541718942403426912}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &904469183848478776
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5792775908051460969}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.000183, y: 4.133998, z: 0.1001831}
+  m_Center: {x: -1.5000076, y: 2.0669074, z: -0.049996182}
 --- !u!4 &7367690149923115386 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 2202bd419f6cb8a4e847c7bed2852ce5,
@@ -4175,6 +4204,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3300463285059358395}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &3300463285059389467 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 3d9c24fb7a8be2b48815d06c1c6f752f,
+    type: 3}
+  m_PrefabInstance: {fileID: 3300463285059358395}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1193743472746321
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300463285059389467}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.3693955, y: 4.037488, z: 6.239673}
+  m_Center: {x: -0.4783126, y: 1.0026804, z: -3.0448306}
 --- !u!1001 &3314500261301099876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4875,6 +4923,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Vent_A.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 4436094939135576879, guid: 07d71154739e65d41b859476c2d54481,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07d71154739e65d41b859476c2d54481, type: 3}
@@ -6488,6 +6541,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vent_B.001
       objectReference: {fileID: 0}
+    - target: {fileID: 9054131770300124183, guid: 205a373524ae0df47a82caa63e9b4098,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205a373524ae0df47a82caa63e9b4098, type: 3}
 --- !u!4 &599102136384744780 stripped
@@ -7753,6 +7811,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vent_A
       objectReference: {fileID: 0}
+    - target: {fileID: 4436094939135576879, guid: 07d71154739e65d41b859476c2d54481,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07d71154739e65d41b859476c2d54481, type: 3}
 --- !u!4 &6773641508183801315 stripped
@@ -7842,6 +7905,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Vent_B
+      objectReference: {fileID: 0}
+    - target: {fileID: 9054131770300124183, guid: 205a373524ae0df47a82caa63e9b4098,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 205a373524ae0df47a82caa63e9b4098, type: 3}
@@ -10760,6 +10828,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WasteBin_A.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012592786869872559, guid: 1b65db78f16575c439146b5d0d7b774e,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.Prop, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b65db78f16575c439146b5d0d7b774e, type: 3}
