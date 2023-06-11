@@ -99,7 +99,7 @@ namespace MoreMountains.Feedbacks
 		/// the minimum and maximum time stamps at which to play the sound 
 		[Tooltip("the minimum and maximum time stamps at which to play the sound")]
 		[MMVector("Min", "Max")]
-		public Vector2 PlaybackTime = new Vector2(0f, 0f);
+		public Vector2 PlaybackTime = new(0f, 0f);
 		[MMFInspectorGroup("SoundManager Options", true, 28)]
 		/// the track on which to play the sound. Pick the one that matches the nature of your sound
 		[Tooltip("the track on which to play the sound. Pick the one that matches the nature of your sound")]
@@ -141,7 +141,7 @@ namespace MoreMountains.Feedbacks
 		/// if fading, the tween over which to fade the sound 
 		[Tooltip("if fading, the tween over which to fade the sound ")]
 		[MMCondition("Fade", true)]
-		public MMTweenType FadeTween = new MMTweenType(MMTween.MMTweenCurve.EaseInOutQuartic);
+		public MMTweenType FadeTween = new(MMTween.MMTweenCurve.EaseInOutQuartic);
         
 		[MMFInspectorGroup("Solo", true, 32)]
 		/// whether or not this sound should play in solo mode over its destination track. If yes, all other sounds on that track will be muted when this sound starts playing
@@ -473,7 +473,7 @@ namespace MoreMountains.Feedbacks
 			float volume = Random.Range(MinVolume, MaxVolume);
 			float pitch = Random.Range(MinPitch, MaxPitch);
 			_randomPlaybackTime = Random.Range(PlaybackTime.x, PlaybackTime.y);
-			GameObject temporaryAudioHost = new GameObject("EditorTestAS_WillAutoDestroy");
+			GameObject temporaryAudioHost = new("EditorTestAS_WillAutoDestroy");
 			SceneManager.MoveGameObjectToScene(temporaryAudioHost.gameObject, Owner.gameObject.scene);
 			temporaryAudioHost.transform.position = Owner.transform.position;
 			_editorAudioSource = temporaryAudioHost.AddComponent<AudioSource>() as AudioSource;

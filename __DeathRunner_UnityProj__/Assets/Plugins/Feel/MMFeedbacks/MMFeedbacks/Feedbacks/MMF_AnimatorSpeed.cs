@@ -51,7 +51,7 @@ namespace MoreMountains.Feedbacks
 		/// when in over time mode, the curve against which to evaluate the new speed
 		[Tooltip("when in over time mode, the curve against which to evaluate the new speed")]
 		[MMFEnumCondition("Mode", (int)SpeedModes.OverTime)]
-		public AnimationCurve Curve = new AnimationCurve(new Keyframe(0, 0f), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
+		public AnimationCurve Curve = new(new Keyframe(0, 0f), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
 
 		protected Coroutine _coroutine;
 		protected float _initialSpeed;

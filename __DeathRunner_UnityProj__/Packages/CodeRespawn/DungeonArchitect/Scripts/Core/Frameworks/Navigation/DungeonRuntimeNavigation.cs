@@ -33,7 +33,7 @@ namespace DungeonArchitect
         NavMeshData m_NavMesh;
         //AsyncOperation m_Operation;
         NavMeshDataInstance m_Instance;
-        List<NavMeshBuildSource> meshSources = new List<NavMeshBuildSource>();
+        List<NavMeshBuildSource> meshSources = new();
 
         public void BuildNavMesh()
         {

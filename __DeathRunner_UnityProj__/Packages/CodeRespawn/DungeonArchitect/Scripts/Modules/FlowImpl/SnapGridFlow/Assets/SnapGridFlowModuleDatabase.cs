@@ -37,7 +37,7 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow
         [HideInInspector]
         public Bounds ModuleBounds;
         [HideInInspector]
-        public Vector3Int NumChunks = new Vector3Int(1, 1, 1);
+        public Vector3Int NumChunks = new(1, 1, 1);
         [HideInInspector]
         public SgfModuleDatabaseConnectionInfo[] Connections;
         [HideInInspector]

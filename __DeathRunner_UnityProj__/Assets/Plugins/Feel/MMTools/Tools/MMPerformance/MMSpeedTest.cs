@@ -32,7 +32,7 @@ namespace MoreMountains.Tools
 	/// </summary>
 	public static class MMSpeedTest 
 	{
-		private static readonly Dictionary<string, MMSpeedTestItem> _speedTests = new Dictionary<string, MMSpeedTestItem>();
+		private static readonly Dictionary<string, MMSpeedTestItem> _speedTests = new();
 
 		/// <summary>
 		/// Starts a speed test of the specified ID
@@ -45,7 +45,7 @@ namespace MoreMountains.Tools
 				_speedTests.Remove(testID);
 			}
 
-			MMSpeedTestItem item = new MMSpeedTestItem(testID);
+			MMSpeedTestItem item = new(testID);
 			_speedTests.Add(testID, item);
 		}
 

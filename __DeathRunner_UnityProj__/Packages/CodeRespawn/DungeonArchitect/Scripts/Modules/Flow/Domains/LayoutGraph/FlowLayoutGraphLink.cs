@@ -19,7 +19,7 @@ namespace DungeonArchitect.Flow.Domains.Layout
         //public bool Directional = false;
         //public bool OneWay = false;
         public FlowLayoutGraphLinkType type = FlowLayoutGraphLinkType.Unconnected;
-        public List<FlowItem> items = new List<FlowItem>();
+        public List<FlowItem> items = new();
 
         public FlowLayoutGraphLinkState Clone()
         {
@@ -45,7 +45,7 @@ namespace DungeonArchitect.Flow.Domains.Layout
         public DungeonUID linkId;
         public DungeonUID source;
         public DungeonUID destination;
-        public FlowLayoutGraphLinkState state = new FlowLayoutGraphLinkState();
+        public FlowLayoutGraphLinkState state = new();
 
         // If the source node was merged, the original unmerged node id would be here
         public DungeonUID sourceSubNode;

@@ -17,8 +17,8 @@ namespace DG.DOTweenEditor
     public static class DOTweenPreviewManager
     {
         static bool _previewOnlyIfSetToAutoPlay = true;
-        static readonly Dictionary<DOTweenAnimation,TweenInfo> _AnimationToTween = new Dictionary<DOTweenAnimation,TweenInfo>();
-        static readonly List<DOTweenAnimation> _TmpKeys = new List<DOTweenAnimation>();
+        static readonly Dictionary<DOTweenAnimation,TweenInfo> _AnimationToTween = new();
+        static readonly List<DOTweenAnimation> _TmpKeys = new();
 
         #region Public Methods & GUI
 

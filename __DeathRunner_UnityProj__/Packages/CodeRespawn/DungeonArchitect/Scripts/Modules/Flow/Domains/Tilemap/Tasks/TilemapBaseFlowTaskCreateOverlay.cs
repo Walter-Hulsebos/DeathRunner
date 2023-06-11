@@ -81,8 +81,8 @@ namespace DungeonArchitect.Flow.Domains.Tilemap.Tasks
         public Color color = Color.green;
         public bool overlayBlocksTile = true;
         public TilemapFlowNodeHandler_CreateTilemapOverlayGenMethod generationMethod = TilemapFlowNodeHandler_CreateTilemapOverlayGenMethod.Noise;
-        public TilemapFlowNodeOverlayNoiseSettings noiseSettings = new TilemapFlowNodeOverlayNoiseSettings();
-        public FlowTilemapCellOverlayMergeConfig mergeConfig = new FlowTilemapCellOverlayMergeConfig();
+        public TilemapFlowNodeOverlayNoiseSettings noiseSettings = new();
+        public FlowTilemapCellOverlayMergeConfig mergeConfig = new();
         public string generatorScriptClass;
 
         public override FlowTaskExecOutput Execute(FlowTaskExecContext context, FlowTaskExecInput input)

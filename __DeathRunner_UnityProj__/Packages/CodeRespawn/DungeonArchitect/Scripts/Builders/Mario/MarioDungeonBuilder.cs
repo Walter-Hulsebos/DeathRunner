@@ -290,7 +290,7 @@ namespace DungeonArchitect.Builders.Mario
                                 markerName += heightDifference.ToString();
                             }
 
-                            IntVector positionI = new IntVector(x, heights[x], 0);
+                            IntVector positionI = new(x, heights[x], 0);
                             Quaternion rotation = Quaternion.identity;
                             if (heights[x] > heights[x + 1])
                             {

@@ -14,17 +14,17 @@ namespace SharpNav.Geometry
 		/// <summary>
 		/// A vector where both X and Y are <see cref="int.MinValue"/>.
 		/// </summary>
-		public static readonly Vector2i Min = new Vector2i(int.MinValue, int.MinValue);
+		public static readonly Vector2i Min = new(int.MinValue, int.MinValue);
 
 		/// <summary>
 		/// A vector where both X and Y are <see cref="int.MaxValue"/>.
 		/// </summary>
-		public static readonly Vector2i Max = new Vector2i(int.MaxValue, int.MaxValue);
+		public static readonly Vector2i Max = new(int.MaxValue, int.MaxValue);
 
 		/// <summary>
 		/// A vector where both X and Y are 0.
 		/// </summary>
-		public static readonly Vector2i Zero = new Vector2i(0, 0);
+		public static readonly Vector2i Zero = new(0, 0);
 
 		/// <summary>
 		/// The X coordinate.

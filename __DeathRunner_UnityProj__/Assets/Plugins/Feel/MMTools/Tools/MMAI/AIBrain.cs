@@ -46,10 +46,10 @@ namespace MoreMountains.Tools
 		public bool RandomizeFrequencies = false;
 		/// the min and max values between which to randomize the action frequency
 		[MMVector("min","max")]
-		public Vector2 RandomActionFrequency = new Vector2(0.5f, 1f);
+		public Vector2 RandomActionFrequency = new(0.5f, 1f);
 		/// the min and max values between which to randomize the decision frequency
 		[MMVector("min","max")]
-		public Vector2 RandomDecisionFrequency = new Vector2(0.5f, 1f);
+		public Vector2 RandomDecisionFrequency = new(0.5f, 1f);
 
 		protected AIDecision[] _decisions;
 		protected AIAction[] _actions;

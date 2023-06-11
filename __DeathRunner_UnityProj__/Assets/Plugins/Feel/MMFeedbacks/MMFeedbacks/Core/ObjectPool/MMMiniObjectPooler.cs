@@ -22,7 +22,7 @@ namespace MoreMountains.Feedbacks
 		protected MMMiniObjectPool _objectPool;
 		protected const int _initialPoolsListCapacity = 5;
         
-		static List<MMMiniObjectPool> _pools = new List<MMMiniObjectPool>(_initialPoolsListCapacity);
+		static List<MMMiniObjectPool> _pools = new(_initialPoolsListCapacity);
 
 		/// <summary>
 		/// Adds a pooler to the static list if needed
@@ -121,7 +121,7 @@ namespace MoreMountains.Feedbacks
 				}
 				else
 				{
-					GameObject newPool = new GameObject();
+					GameObject newPool = new();
 					newPool.name = DetermineObjectPoolName(GameObjectToPool);
 					_objectPool = newPool.AddComponent<MMMiniObjectPool>();
 					_objectPool.PooledGameObjects = new List<GameObject>();

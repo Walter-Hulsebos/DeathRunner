@@ -21,7 +21,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 
         FloorChunkDB ChunkDB;
         FloorDoorManager DoorManager;
-        HashSet<int> Visited = new HashSet<int>();
+        HashSet<int> Visited = new();
 
         new System.Random random;
         /// <summary>
@@ -81,13 +81,13 @@ namespace DungeonArchitect.Builders.FloorPlan
 	        int NumFloors = Mathf.RoundToInt(floorPlanConfig.BuildingSize.y);
 	        for (int y = 0; y < NumFloors; y++) {
 		        // Build the hallways and the intermediate floor chunks (which will hold the rooms)
-		        List<FloorChunk> FloorChunks = new List<FloorChunk>();
+		        List<FloorChunk> FloorChunks = new();
 		        {
 			        FloorChunk InitialFloor = ChunkDB.Create();
 			        InitialFloor.Bounds.Location = new IntVector(0, y, 0);
 			        InitialFloor.Bounds.Size = MathUtils.ToIntVector(floorPlanConfig.BuildingSize);
 
-			        Stack<FloorChunk> Stack = new Stack<FloorChunk>();
+			        Stack<FloorChunk> Stack = new();
 			        Stack.Push(InitialFloor);
 			        while (Stack.Count > 0) {
 				        FloorChunk Top = Stack.Pop();
@@ -144,7 +144,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 
 		        // Split the floor chunks (space between the hallways) to create rooms
 		        foreach (FloorChunk Chunk in FloorChunks) {
-			        Stack<FloorChunk> Stack = new Stack<FloorChunk>();
+			        Stack<FloorChunk> Stack = new();
 			        Stack.Push(Chunk);
                     int MinRoomSize = Mathf.Max(1, floorPlanConfig.MinRoomSize);
                     int MaxRoomSize = Mathf.Max(1, floorPlanConfig.MaxRoomSize);
@@ -314,7 +314,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 		        return;
 	        }
 
-	        Queue<IntVector> Queue = new Queue<IntVector>();
+	        Queue<IntVector> Queue = new();
 	        Queue.Enqueue(StartLocation);
 
 	        while (Queue.Count > 0) {
@@ -326,7 +326,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 		        }
 
 		        // Create a node here
-		        FloorIslandNode Node = new FloorIslandNode();
+		        FloorIslandNode Node = new();
 		        Node.IslandId = IslandId;
 		        Node.Chunk = CurrentChunk;
 		        Node.Location = Location;
@@ -334,7 +334,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 		        IslandNodes.Add(Node);
 
 		        // Add the neighbors to the queue
-		        List<IntVector> Neighbors = new List<IntVector>();
+		        List<IntVector> Neighbors = new();
 		        Neighbors.Add(Location + new IntVector(-1, 0, 0));
 		        Neighbors.Add(Location + new IntVector(1, 0, 0));
 		        Neighbors.Add(Location + new IntVector(0, 0, 1));
@@ -391,13 +391,13 @@ namespace DungeonArchitect.Builders.FloorPlan
 	        }
 
 	        List<FloorIslandAdjacency> AdjacentNodes = AdjacencyByIslands[IslandId];
-	        HashSet<int> AdjacentIslands = new HashSet<int>();
+	        HashSet<int> AdjacentIslands = new();
 	        foreach (FloorIslandAdjacency AdjacentNode in AdjacentNodes) {
 		        AdjacentIslands.Add(AdjacentNode.A.IslandId);
 		        AdjacentIslands.Add(AdjacentNode.B.IslandId);
 	        }
 	        AdjacentIslands.Remove(IslandId);
-	        IslandNodePriorityPredicate SortPredicate = new IslandNodePriorityPredicate(IslandToChunkMap);
+	        IslandNodePriorityPredicate SortPredicate = new(IslandToChunkMap);
             int[] AdjacentIslandArray = new List<int>(AdjacentIslands).ToArray();
             System.Array.Sort(AdjacentIslandArray, SortPredicate);
 
@@ -407,7 +407,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 		        }
 
 		        // Find all the adjacent cells between these two islands
-		        List<FloorIslandAdjacency> EdgeNodes = new List<FloorIslandAdjacency>();
+		        List<FloorIslandAdjacency> EdgeNodes = new();
 		        foreach (FloorIslandAdjacency AdjacentNode in AdjacentNodes) {
 			        if (AdjacentNode.A.IslandId == AdjacentIsland || AdjacentNode.B.IslandId == AdjacentIsland) {
 				        EdgeNodes.Add(AdjacentNode);
@@ -434,8 +434,8 @@ namespace DungeonArchitect.Builders.FloorPlan
 	        // Create adjacency list
 	        // Do a DFS on the tagged islands and connect the islands with doors
 
-	        HashSet<IntVector> Visited = new HashSet<IntVector>();
-	        List<FloorIslandNode> IslandNodes = new List<FloorIslandNode>();
+	        HashSet<IntVector> Visited = new();
+	        List<FloorIslandNode> IslandNodes = new();
 	        int TotalIslands = 0;
 
 	        // Tag islands with a flood fill.  This helps if custom volume split existing
@@ -444,7 +444,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 		        int IslandId = 0;
 		        for (int x = 0; x < floorPlanConfig.BuildingSize.x; x++) {
 			        for (int z = 0; z < floorPlanConfig.BuildingSize.z; z++) {
-				        IntVector Location = new IntVector(x, y, z);
+				        IntVector Location = new(x, y, z);
 				        if (!Visited.Contains(Location)) {
 					        // Flood fill from here
 					        Visited.Add(Location);
@@ -457,17 +457,17 @@ namespace DungeonArchitect.Builders.FloorPlan
 	        }
 
 	        // Create a node map for faster access
-	        Dictionary<IntVector, FloorIslandNode> IslandNodeByLocation = new Dictionary<IntVector,FloorIslandNode>();
+	        Dictionary<IntVector, FloorIslandNode> IslandNodeByLocation = new();
 	        foreach (FloorIslandNode Node in IslandNodes) {
 		        if (Node.IslandId == -1) continue;
 		        IslandNodeByLocation.Add(Node.Location, Node);
 	        }
 
 	        // Create adjacency list for each island
-	        List<FloorIslandAdjacency> AdjacencyList = new List<FloorIslandAdjacency>();
+	        List<FloorIslandAdjacency> AdjacencyList = new();
 	        for (int x = 0; x < floorPlanConfig.BuildingSize.x; x++) {
 		        for (int z = 0; z < floorPlanConfig.BuildingSize.z; z++) {
-			        IntVector Loc00 = new IntVector(x, y, z);
+			        IntVector Loc00 = new(x, y, z);
 			        if (!IslandNodeByLocation.ContainsKey(Loc00)) {
 				        continue;
 			        }
@@ -478,12 +478,12 @@ namespace DungeonArchitect.Builders.FloorPlan
 			
 			        // Test along the left cell
 			        {
-				        IntVector Loc10 = new IntVector(x + 1, y, z);
+				        IntVector Loc10 = new(x + 1, y, z);
 				        if (IslandNodeByLocation.ContainsKey(Loc10)) {
 					        FloorIslandNode Node10 = IslandNodeByLocation[Loc10];
 					        if (Node10.IslandId != -1 && Node00.IslandId != Node10.IslandId) {
 						        // Different adjacent nodes.  Add to the list
-						        FloorIslandAdjacency Adjacency = new FloorIslandAdjacency();
+						        FloorIslandAdjacency Adjacency = new();
 						        Adjacency.A = Node00;
 						        Adjacency.B = Node10;
 						        AdjacencyList.Add(Adjacency);
@@ -493,12 +493,12 @@ namespace DungeonArchitect.Builders.FloorPlan
 
 			        // Test along the bottom cell
 			        {
-                        IntVector Loc01 = new IntVector(x, y, z + 1);
+                        IntVector Loc01 = new(x, y, z + 1);
 				        if (IslandNodeByLocation.ContainsKey(Loc01)) {
 					        FloorIslandNode Node01 = IslandNodeByLocation[Loc01];
 					        if (Node01.IslandId != -1 && Node00.IslandId != Node01.IslandId) {
 						        // Different adjacent nodes.  Add to the list
-						        FloorIslandAdjacency Adjacency = new FloorIslandAdjacency();
+						        FloorIslandAdjacency Adjacency = new();
 						        Adjacency.A = Node00;
 						        Adjacency.B = Node01;
 						        AdjacencyList.Add(Adjacency);
@@ -509,7 +509,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 	        }
 
 	        // Create another lookup for faster access
-	        Dictionary<int, List<FloorIslandAdjacency>> AdjacencyByIsland = new Dictionary<int,List<FloorIslandAdjacency>>();
+	        Dictionary<int, List<FloorIslandAdjacency>> AdjacencyByIsland = new();
 	        foreach (FloorIslandAdjacency Adjacency in AdjacencyList) {
 		        int IslandA = Adjacency.A.IslandId;
 		        int IslandB = Adjacency.B.IslandId;
@@ -520,7 +520,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 		        AdjacencyByIsland[IslandB].Add(Adjacency);
 	        }
 
-	        Dictionary<int, FloorChunk> IslandToChunkMap = new Dictionary<int,FloorChunk>();
+	        Dictionary<int, FloorChunk> IslandToChunkMap = new();
 	        foreach (FloorIslandNode IslandNode in IslandNodes) {
 		        if (IslandToChunkMap.ContainsKey(IslandNode.IslandId)) {
 			        continue;
@@ -529,7 +529,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 	        }
 
 	        // Connect the islands to the main network with doors
-	        HashSet<int> IslandVisited = new HashSet<int>();
+	        HashSet<int> IslandVisited = new();
 	        for (int IslandId = 0; IslandId < TotalIslands; IslandId++) {
 		        ConnectIslandRecursive(IslandId, AdjacencyByIsland, IslandVisited, random, DoorManager, IslandToChunkMap);
 	        }
@@ -617,7 +617,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 				        // Emit the ground marker
 				        if (Chunk00 != null && Chunk00.ChunkType != FloorChunkType.Outside) {
 					        if (bEmitGroundMarker) {
-						        Vector3 GridLocation = new Vector3(x + 0.5f, y, z + 0.5f);
+						        Vector3 GridLocation = new(x + 0.5f, y, z + 0.5f);
 						        Vector3 WorldLocation = Vector3.Scale(GridLocation, GridSize);
 						        if (Chunk00.GroundMarker.Length > 0) {
 							        GroundMarkerName = Chunk00.GroundMarker;
@@ -625,7 +625,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 						        EmitMarkerAt(WorldLocation, GroundMarkerName, 0);
 					        }
 					        if (bEmitCeilingMarker) {
-						        Vector3 GridLocation = new Vector3(x + 0.5f, y + 1, z + 0.5f);
+						        Vector3 GridLocation = new(x + 0.5f, y + 1, z + 0.5f);
 						        Vector3 WorldLocation = Vector3.Scale(GridLocation, GridSize);
 						        if (Chunk00.CeilingMarker.Length > 0) {
 							        CeilingMarkerName = Chunk00.CeilingMarker;
@@ -678,7 +678,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 				        }
 
 				        if (bEmitLeftWall) {
-					        Vector3 GridLocation = new Vector3(x + 1, y, z + 0.5f);
+					        Vector3 GridLocation = new(x + 1, y, z + 0.5f);
 					        Vector3 WorldLocation = Vector3.Scale(GridLocation, GridSize);
 
 					        string MarkerName;
@@ -703,7 +703,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 					        EmitMarkerAt(WorldLocation, MarkerName, wallAngleLeft);
 				        }
 				        if (bEmitBottomWall) {
-					        Vector3 GridLocation = new Vector3(x + 0.5f, y, z + 1);
+					        Vector3 GridLocation = new(x + 0.5f, y, z + 1);
 					        Vector3 WorldLocation = Vector3.Scale(GridLocation, GridSize);
 
 					        string MarkerName;
@@ -733,7 +733,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 
 
 	        // Emit center marker if specified
-	        List<FloorChunk> Chunks = new List<FloorChunk>();
+	        List<FloorChunk> Chunks = new();
 	        ChunkDB.GetChunks(Chunks);
 	        foreach (FloorChunk Chunk in Chunks) {
 		        if (Chunk.bEmitGroundMarker && Chunk.CenterMarker.Length > 0) {

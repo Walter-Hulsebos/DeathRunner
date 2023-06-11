@@ -167,7 +167,7 @@ namespace FMODUnity
         internal List<Legacy.PlatformIntSetting> RealChannelSettings;
 
         [SerializeField]
-        internal List<string> Plugins = new List<string>();
+        internal List<string> Plugins = new();
 
         [SerializeField]
         public List<string> MasterBanks;
@@ -221,10 +221,10 @@ namespace FMODUnity
         // It is populated at load time from the Platform objects in the settings asset.
         // It is serializable to facilitate undo support.
         [SerializeField]
-        public List<Platform> Platforms = new List<Platform>();
+        public List<Platform> Platforms = new();
 
         // This is used to find the platform that matches the current Unity runtime platform.
-        internal Dictionary<RuntimePlatform, List<Platform>> PlatformForRuntimePlatform = new Dictionary<RuntimePlatform, List<Platform>>();
+        internal Dictionary<RuntimePlatform, List<Platform>> PlatformForRuntimePlatform = new();
 
         // Default platform settings.
         [NonSerialized]
@@ -237,11 +237,11 @@ namespace FMODUnity
 #if UNITY_EDITOR
         // We store a persistent list so we don't try to re-migrate platforms if the user deletes them.
         [SerializeField]
-        internal List<Legacy.Platform> MigratedPlatforms = new List<Legacy.Platform>();
+        internal List<Legacy.Platform> MigratedPlatforms = new();
 #endif
 
         // A collection of templates for constructing known platforms.
-        internal static List<PlatformTemplate> PlatformTemplates = new List<PlatformTemplate>();
+        internal static List<PlatformTemplate> PlatformTemplates = new();
 
         [NonSerialized]
         private bool hasLoaded = false;
@@ -717,7 +717,7 @@ namespace FMODUnity
             {
                 // Match on basename only in case the temp file location has moved
                 string basename = Regex.Escape(Path.GetFileName(path));
-                Regex regex = new Regex(Il2CppCommand_AdditionalCpp + "=\"[^\"]*" + basename + "\"");
+                Regex regex = new(Il2CppCommand_AdditionalCpp + "=\"[^\"]*" + basename + "\"");
 
                 for (int startIndex = 0; startIndex < newArguments.Length; )
                 {

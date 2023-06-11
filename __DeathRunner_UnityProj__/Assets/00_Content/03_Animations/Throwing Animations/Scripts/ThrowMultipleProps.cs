@@ -76,7 +76,7 @@ namespace KevinIglesias {
                 float nextX = Mathf.MoveTowards(propToThrow1.position.x, x1, speed * Time.deltaTime);
                 float baseY = Mathf.Lerp(startPos1.y, targetPos.position.y, (nextX - x0) / dist);
                 float arc = arcHeight * (nextX - x0) * (nextX - x1) / (-0.25f * dist * dist);
-                Vector3 nextPos = new Vector3(nextX, baseY + arc, propToThrow1.position.z);
+                Vector3 nextPos = new(nextX, baseY + arc, propToThrow1.position.z);
             
                 propToThrow1.rotation = LookAt2D(nextPos - propToThrow1.position);
                 propToThrow1.position = nextPos;
@@ -98,7 +98,7 @@ namespace KevinIglesias {
                 float nextX = Mathf.MoveTowards(propToThrow2.position.x, x1, speed * Time.deltaTime);
                 float baseY = Mathf.Lerp(startPos2.y, targetPos.position.y, (nextX - x0) / dist);
                 float arc = arcHeight * (nextX - x0) * (nextX - x1) / (-0.25f * dist * dist);
-                Vector3 nextPos = new Vector3(nextX, baseY + arc, propToThrow2.position.z);
+                Vector3 nextPos = new(nextX, baseY + arc, propToThrow2.position.z);
             
                 propToThrow2.rotation = LookAt2D(nextPos - propToThrow2.position);
                 propToThrow2.position = nextPos;

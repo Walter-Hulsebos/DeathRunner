@@ -11,7 +11,7 @@ namespace DungeonArchitect.LevelStreaming
             var dungeonObjects = DungeonUtils.GetDungeonObjects(dungeon);
 
             // Group the dungeon items by cell ids
-            Dictionary<int, List<GameObject>> gameObjectsByCellId = new Dictionary<int, List<GameObject>>();
+            Dictionary<int, List<GameObject>> gameObjectsByCellId = new();
             foreach (var dungeonObject in dungeonObjects)
             {
                 var data = dungeonObject.GetComponent<DungeonSceneProviderData>();

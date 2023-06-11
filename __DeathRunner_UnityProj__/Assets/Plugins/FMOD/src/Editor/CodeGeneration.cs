@@ -13,7 +13,7 @@ namespace FMODUnity
         {
             List<string> validatedPlugins = ValidateStaticPlugins(platform.StaticPlugins, reportError);
 
-            using (StreamWriter file = new StreamWriter(filePath))
+            using (StreamWriter file = new(filePath))
             {
                 WriteStaticPluginRegistration(file, platform.IsFMODStaticallyLinked, validatedPlugins);
             }
@@ -75,7 +75,7 @@ namespace FMODUnity
 
         private static List<string> ValidateStaticPlugins(List<string> staticPlugins, Action<string> reportError)
         {
-            List<string> result = new List<string>();
+            List<string> result = new();
 
             for (int i = 0; i < staticPlugins.Count; ++i)
             {

@@ -114,7 +114,7 @@ namespace MoreMountains.Feedbacks
 		protected virtual AudioSource CreateAudioSource(GameObject owner, string audioSourceName)
 		{
 			// we create a temporary game object to host our audio source
-			GameObject temporaryAudioHost = new GameObject(audioSourceName);
+			GameObject temporaryAudioHost = new(audioSourceName);
 			SceneManager.MoveGameObjectToScene(temporaryAudioHost.gameObject, this.gameObject.scene);
 			// we set the temp audio's position
 			temporaryAudioHost.transform.position = owner.transform.position;
@@ -215,7 +215,7 @@ namespace MoreMountains.Feedbacks
 			if (PlayMethod == PlayMethods.OnDemand)
 			{
 				// we create a temporary game object to host our audio source
-				GameObject temporaryAudioHost = new GameObject("TempAudio");
+				GameObject temporaryAudioHost = new("TempAudio");
 				SceneManager.MoveGameObjectToScene(temporaryAudioHost.gameObject, this.gameObject.scene);
 				// we set the temp audio's position
 				temporaryAudioHost.transform.position = position;
@@ -310,7 +310,7 @@ namespace MoreMountains.Feedbacks
 
 			float volume = Random.Range(MinVolume, MaxVolume);
 			float pitch = Random.Range(MinPitch, MaxPitch);
-			GameObject temporaryAudioHost = new GameObject("EditorTestAS_WillAutoDestroy");
+			GameObject temporaryAudioHost = new("EditorTestAS_WillAutoDestroy");
 			SceneManager.MoveGameObjectToScene(temporaryAudioHost.gameObject, this.gameObject.scene);
 			temporaryAudioHost.transform.position = this.transform.position;
 			_editorAudioSource = temporaryAudioHost.AddComponent<AudioSource>() as AudioSource;

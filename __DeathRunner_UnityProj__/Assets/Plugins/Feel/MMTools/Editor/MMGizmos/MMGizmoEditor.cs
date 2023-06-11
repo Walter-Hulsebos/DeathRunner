@@ -197,7 +197,7 @@ namespace MoreMountains.Tools
 
 			if (mmGizmo._boxCollider2DNotNull)
 			{
-				Vector3 gizmoSize = new Vector3();
+				Vector3 gizmoSize = new();
 				gizmoSize.x =  mmGizmo._boxCollider2D.size.x ;
 				gizmoSize.y =  mmGizmo._boxCollider2D.size.y ;
 				gizmoSize.z = 0.1f;

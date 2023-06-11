@@ -8,7 +8,7 @@ namespace DungeonArchitect.Visibility
     {
         public int VisibilityDepth { get; set; } = 1;
 
-        private List<VisibilityGraphNode> nodes = new List<VisibilityGraphNode>();
+        private List<VisibilityGraphNode> nodes = new();
 
         struct VisibilitySearchState
         {

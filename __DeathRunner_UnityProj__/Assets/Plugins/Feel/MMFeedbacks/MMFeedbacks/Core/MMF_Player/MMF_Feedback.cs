@@ -77,7 +77,7 @@ namespace MoreMountains.Feedbacks
 			"a random value (randomized between its x and y) by which to multiply the output of this feedback, if RandomizeOutput is true")]
 		[MMFCondition("RandomizeOutput", true)]
 		[MMFVector("Min", "Max")]
-		public Vector2 RandomMultiplier = new Vector2(0.8f, 1f);
+		public Vector2 RandomMultiplier = new(0.8f, 1f);
 
 		/// if this is true, this feedback's duration will be multiplied by a random value on play, picked between RandomDurationMultiplier.x and RandomDurationMultiplier.y
 		[Tooltip(
@@ -89,7 +89,7 @@ namespace MoreMountains.Feedbacks
 			"a random value (randomized between its x and y) by which to multiply the duration of this feedback, if RandomizeDuration is true")]
 		[MMFCondition("RandomizeDuration", true)]
 		[MMFVector("Min", "Max")]
-		public Vector2 RandomDurationMultiplier = new Vector2(0.5f, 2f);
+		public Vector2 RandomDurationMultiplier = new(0.5f, 2f);
 
 		[MMFInspectorGroup(_rangeGroupName, true, 47)]
 		/// if this is true, only shakers within the specified range will respond to this feedback
@@ -107,11 +107,11 @@ namespace MoreMountains.Feedbacks
 		/// the animation curve to use to define falloff (on the x 0 represents the range center, 1 represents the max distance to it)
 		[Tooltip(
 			"the animation curve to use to define falloff (on the x 0 represents the range center, 1 represents the max distance to it)")]
-		public AnimationCurve RangeFalloff = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(1f, 0f));
+		public AnimationCurve RangeFalloff = new(new Keyframe(0f, 1f), new Keyframe(1f, 0f));
 
 		/// the values to remap the falloff curve's y axis' 0 and 1
 		[Tooltip("the values to remap the falloff curve's y axis' 0 and 1")] [MMFVector("Zero", "One")]
-		public Vector2 RemapRangeFalloff = new Vector2(0f, 1f);
+		public Vector2 RemapRangeFalloff = new(0f, 1f);
 
 		/// the Owner of the feedback, as defined when calling the Initialization method
 		[HideInInspector] public MMF_Player Owner;

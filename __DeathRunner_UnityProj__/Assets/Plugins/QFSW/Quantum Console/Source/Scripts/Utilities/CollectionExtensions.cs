@@ -10,7 +10,7 @@ namespace QFSW.QC.Utilities
         /// <returns>Dictionary with the inverted relationship.</returns>
         public static Dictionary<TValue, TKey> Invert<TKey, TValue>(this IDictionary<TKey, TValue> source)
         {
-            Dictionary<TValue, TKey> dictionary = new Dictionary<TValue, TKey>();
+            Dictionary<TValue, TKey> dictionary = new();
             foreach (KeyValuePair<TKey, TValue> item in source)
             {
                 if (!dictionary.ContainsKey(item.Value))
@@ -66,7 +66,7 @@ namespace QFSW.QC.Utilities
         /// <returns>The distinct stream.</returns>
         public static IEnumerable<TValue> DistinctBy<TValue, TDistinct>(this IEnumerable<TValue> source, Func<TValue, TDistinct> predicate)
         {
-            HashSet<TDistinct> set = new HashSet<TDistinct>();
+            HashSet<TDistinct> set = new();
             foreach (TValue value in source)
             {
                 if (set.Add(predicate(value)))

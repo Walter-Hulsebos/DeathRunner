@@ -7,7 +7,7 @@ namespace DungeonArchitect.MarkerGenerator.Rule
     public class MarkerGenRuleActionList : ScriptableObject
     {
         public MarkerGenRuleActionInfo[] actionList = Array.Empty<MarkerGenRuleActionInfo>();
-        public MarkerGenRuleActionListHints hints = new MarkerGenRuleActionListHints();
+        public MarkerGenRuleActionListHints hints = new();
         public void Clear()
         {
             actionList = Array.Empty<MarkerGenRuleActionInfo>();

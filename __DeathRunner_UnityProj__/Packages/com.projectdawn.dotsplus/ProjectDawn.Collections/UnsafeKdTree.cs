@@ -56,7 +56,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         /// <summary>
         /// Returns the tree root.
         /// </summary>
-        public Handle Root => new Handle(m_RootHandle);
+        public Handle Root => new(m_RootHandle);
 
         /// <summary>
         /// The element at a given position.

@@ -8,7 +8,7 @@ namespace DungeonArchitect.SxEngine
 {
     public class SxSceneGraph
     {
-        public SxRootSceneNode RootNode { get; } = new SxRootSceneNode();
+        public SxRootSceneNode RootNode { get; } = new();
 
         public void IterateNodes(System.Action<ISxSceneNode> visit)
         {
@@ -68,7 +68,7 @@ namespace DungeonArchitect.SxEngine
         {
             get => children.ToArray();
         }
-        private List<ISxSceneNode> children = new List<ISxSceneNode>();
+        private List<ISxSceneNode> children = new();
 
         public abstract void Draw(SxRenderContext context, Matrix4x4 accumWorldTransform, SxRenderCommandList renderCommandList);
         public abstract void Tick(SxRenderContext context, float deltaTime);

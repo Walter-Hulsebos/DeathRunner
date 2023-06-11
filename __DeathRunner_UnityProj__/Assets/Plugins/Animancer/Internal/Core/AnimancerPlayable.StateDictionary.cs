@@ -39,7 +39,7 @@ namespace Animancer
 
             /// <summary><see cref="AnimancerState.Key"/> mapped to <see cref="AnimancerState"/>.</summary>
             private readonly Dictionary<object, AnimancerState>
-                States = new Dictionary<object, AnimancerState>(EqualityComparer);
+                States = new(EqualityComparer);
 
             /************************************************************************************************************************/
 

@@ -51,12 +51,12 @@ namespace MoreMountains.Tools
 			source.RefreshAllTiles();
 			destination.RefreshAllTiles();
             
-			List<Vector3Int> referenceTilemapPositions = new List<Vector3Int>();
+			List<Vector3Int> referenceTilemapPositions = new();
             
 			// we grab all filled positions from the ref tilemap
 			foreach (Vector3Int pos in source.cellBounds.allPositionsWithin)
 			{
-				Vector3Int localPlace = new Vector3Int(pos.x, pos.y, pos.z);
+				Vector3Int localPlace = new(pos.x, pos.y, pos.z);
 				if (source.HasTile(localPlace))
 				{
 					referenceTilemapPositions.Add(localPlace);

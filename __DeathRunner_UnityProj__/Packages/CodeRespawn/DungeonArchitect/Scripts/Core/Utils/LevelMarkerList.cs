@@ -8,7 +8,7 @@ namespace DungeonArchitect
 {
     public class LevelMarkerList : IEnumerable<PropSocket>
     {
-        protected List<PropSocket> markers = new List<PropSocket>();
+        protected List<PropSocket> markers = new();
         protected int _SocketIdCounter = 0;
         public bool AllowDuplicateMarkers = true;
 
@@ -81,7 +81,7 @@ namespace DungeonArchitect
 
         public PropSocket EmitMarker(string SocketType, Matrix4x4 transform, IntVector gridPosition, int cellId, object metadata)
         {
-            PropSocket socket = new PropSocket();
+            PropSocket socket = new();
             socket.Id = GetNextSocketId();
             socket.SocketType = SocketType;
             socket.Transform = transform;
@@ -131,7 +131,7 @@ namespace DungeonArchitect
     public class SpatialPartionedLevelMarkerList : LevelMarkerList
     {
         private float partitionCellSize = 4.0f;
-        private Dictionary<IntVector2, List<PropSocket>> buckets = new Dictionary<IntVector2, List<PropSocket>>();
+        private Dictionary<IntVector2, List<PropSocket>> buckets = new();
 
         public SpatialPartionedLevelMarkerList(float partitionCellSize)
         {

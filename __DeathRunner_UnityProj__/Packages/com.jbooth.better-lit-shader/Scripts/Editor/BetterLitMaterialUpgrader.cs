@@ -32,7 +32,7 @@ namespace JBooth.BetterLit
       {
          if (mat.shaderKeywords != null)
          {
-            List<string> keywords = new List<string>(mat.shaderKeywords);
+            List<string> keywords = new(mat.shaderKeywords);
             if (mat.GetInt("_Version") > 2020)
                return false; // already revisioned.
             if (keywords.Contains("_LAYERNOISE") ||
@@ -182,7 +182,7 @@ namespace JBooth.BetterLit
          if (GUILayout.Button("Do It"))
          {
             string[] guids = AssetDatabase.FindAssets("t:Material");
-            List<Material> mats = new List<Material>();
+            List<Material> mats = new();
             int count = 0;
             foreach (var g in guids)
             {

@@ -53,7 +53,7 @@ namespace MoreMountains.Tools
 		public virtual void Save()
 		{
 			InitializeSaveLoadMethod();
-			MMSaveLoadTestObject testObject = new MMSaveLoadTestObject();
+			MMSaveLoadTestObject testObject = new();
 			testObject.SavedText = TargetInputField.text;
 			MMSaveLoadManager.Save(testObject, FileName+SaveFileExtension, FolderName);
 		}

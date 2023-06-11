@@ -36,7 +36,7 @@ namespace MoreMountains.Tools
 		public float DefaultDuration = 0.2f;
 		/// the default curve to use for this fader
 		[Tooltip("the default curve to use for this fader")]
-		public MMTweenType DefaultTween = new MMTweenType(MMTween.MMTweenCurve.LinearTween);
+		public MMTweenType DefaultTween = new(MMTween.MMTweenCurve.LinearTween);
 		/// whether or not the fade should happen in unscaled time 
 		[Tooltip("whether or not the fade should happen in unscaled time")]
 		public bool IgnoreTimescale = true;

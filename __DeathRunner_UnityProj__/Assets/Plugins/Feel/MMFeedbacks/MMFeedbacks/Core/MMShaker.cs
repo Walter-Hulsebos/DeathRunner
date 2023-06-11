@@ -54,7 +54,7 @@ namespace MoreMountains.Feedbacks
         
 		public virtual float GetTime() { return (TimescaleMode == TimescaleModes.Scaled) ? Time.time : Time.unscaledTime; }
 		public virtual float GetDeltaTime() { return (TimescaleMode == TimescaleModes.Scaled) ? Time.deltaTime : Time.unscaledDeltaTime; }
-		public virtual MMChannelData ChannelData => new MMChannelData(ChannelMode, Channel, MMChannelDefinition);
+		public virtual MMChannelData ChannelData => new(ChannelMode, Channel, MMChannelDefinition);
         
 		public bool ListeningToEvents => _listeningToEvents;
 

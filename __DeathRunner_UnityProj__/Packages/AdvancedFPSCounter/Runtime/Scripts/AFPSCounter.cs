@@ -50,18 +50,18 @@ namespace CodeStage.AdvancedFPSCounter
 		/// <summary>
 		/// Frames Per Second counter.
 		/// </summary>
-		public FPSCounterData fpsCounter = new FPSCounterData();
+		public FPSCounterData fpsCounter = new();
 
 		/// <summary>
 		/// Mono or heap memory counter.
 		/// </summary>
-		public MemoryCounterData memoryCounter = new MemoryCounterData();
+		public MemoryCounterData memoryCounter = new();
 
 		/// <summary>
 		/// Device hardware info.<br/>
 		/// Shows CPU name, cores (threads) count, GPU name, total VRAM, total RAM, screen DPI and screen size.
 		/// </summary>
-		public DeviceInfoCounterData deviceInfoCounter = new DeviceInfoCounterData();
+		public DeviceInfoCounterData deviceInfoCounter = new();
 
 		/// <summary>
 		/// Used to enable / disable plugin at runtime. Set to KeyCode.None to disable.
@@ -114,7 +114,7 @@ namespace CodeStage.AdvancedFPSCounter
 
 		/* circle gesture variables */
 
-		private readonly List<Vector2> gesturePoints = new List<Vector2>();
+		private readonly List<Vector2> gesturePoints = new();
 		private int gestureCount;
 
 		// ----------------------------------------------------------------------------
@@ -361,7 +361,7 @@ namespace CodeStage.AdvancedFPSCounter
 		#region ShadowDistance
 		[Tooltip("Distance of the shadow effect.")]
 		[SerializeField]
-		private Vector2 shadowDistance = new Vector2(1, -1);
+		private Vector2 shadowDistance = new(1, -1);
 
 		/// <summary>
 		/// Distance of the shadow effect.
@@ -439,7 +439,7 @@ namespace CodeStage.AdvancedFPSCounter
 		#region OutlineDistance
 		[Tooltip("Distance of the outline effect.")]
 		[SerializeField]
-		private Vector2 outlineDistance = new Vector2(1, -1);
+		private Vector2 outlineDistance = new(1, -1);
 
 		/// <summary>
 		/// Distance of the outline effect.
@@ -619,7 +619,7 @@ namespace CodeStage.AdvancedFPSCounter
 		#region PaddingOffset
 		[Tooltip("Pixel offset for anchored labels. Automatically applied to all labels.")]
 		[SerializeField]
-		private Vector2 paddingOffset = new Vector2(5, 5);
+		private Vector2 paddingOffset = new(5, 5);
 
 		/// <summary>
 		/// Pixel offset for anchored labels. Automatically applied to all labels.

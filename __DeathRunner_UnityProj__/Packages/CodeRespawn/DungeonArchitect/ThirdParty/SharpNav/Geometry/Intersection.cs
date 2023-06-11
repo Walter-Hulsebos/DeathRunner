@@ -96,7 +96,7 @@ namespace SharpNav.Geometry
 			{
 				Vector3 va = polya[j];
 				Vector3 vb = polya[i];
-				Vector3 n = new Vector3(va.X - vb.X, 0.0f, va.Z - vb.Z);
+				Vector3 n = new(va.X - vb.X, 0.0f, va.Z - vb.Z);
 				float amin, amax, bmin, bmax;
 				ProjectPoly(n, polya, npolya, out amin, out amax);
 				ProjectPoly(n, polyb, npolyb, out bmin, out bmax);
@@ -111,7 +111,7 @@ namespace SharpNav.Geometry
 			{
 				Vector3 va = polyb[j];
 				Vector3 vb = polyb[i];
-				Vector3 n = new Vector3(va.X - vb.X, 0.0f, va.Z - vb.Z);
+				Vector3 n = new(va.X - vb.X, 0.0f, va.Z - vb.Z);
 				float amin, amax, bmin, bmax;
 				ProjectPoly(n, polya, npolya, out amin, out amax);
 				ProjectPoly(n, polyb, npolyb, out bmin, out bmax);

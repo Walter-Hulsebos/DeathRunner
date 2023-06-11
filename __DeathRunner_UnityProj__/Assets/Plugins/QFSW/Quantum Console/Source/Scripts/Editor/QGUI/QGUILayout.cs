@@ -35,7 +35,7 @@ namespace QFSW.QC.QGUI
 
         public static Vector2 GetMaxContentSize(GUIStyle style, params GUIContent[] contents)
         {
-            Vector2 maxSize = new Vector2();
+            Vector2 maxSize = new();
             foreach (GUIContent content in contents)
             {
                 Vector2 size = style.CalcSize(content);

@@ -9,7 +9,7 @@ namespace DungeonArchitect.Editors.LaunchPad
     class ScreenPageActionJsonData
     {
         public string type = "";
-        public LaunchPadActionData data = new LaunchPadActionData();
+        public LaunchPadActionData data = new();
     }
 
 
@@ -34,7 +34,7 @@ namespace DungeonArchitect.Editors.LaunchPad
                 image = Texture2D.whiteTexture;
             }
 
-            StackPanelWidget content = new StackPanelWidget(StackPanelOrientation.Vertical);
+            StackPanelWidget content = new(StackPanelOrientation.Vertical);
             content.AddWidget(
                 new ImageWidget(image)
                 .SetDrawMode(ImageWidgetDrawMode.Fit)

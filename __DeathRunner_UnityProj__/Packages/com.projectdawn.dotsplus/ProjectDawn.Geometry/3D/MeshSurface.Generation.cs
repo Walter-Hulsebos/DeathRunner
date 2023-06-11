@@ -260,10 +260,10 @@ namespace ProjectDawn.Geometry3D
                     }
 
                     // New triangles
-                    int3 t0 = new int3(index.x, divisionIndex.x, divisionIndex.z);
-                    int3 t1 = new int3(divisionIndex.x, index.y, divisionIndex.y);
-                    int3 t2 = new int3(divisionIndex.z, divisionIndex.y, index.z);
-                    int3 t3 = new int3(divisionIndex.x, divisionIndex.y, divisionIndex.z);
+                    int3 t0 = new(index.x, divisionIndex.x, divisionIndex.z);
+                    int3 t1 = new(divisionIndex.x, index.y, divisionIndex.y);
+                    int3 t2 = new(divisionIndex.z, divisionIndex.y, index.z);
+                    int3 t3 = new(divisionIndex.x, divisionIndex.y, divisionIndex.z);
                     surface.Indices.Add(t0);
                     surface.Indices.Add(t1);
                     surface.Indices.Add(t2);

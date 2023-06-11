@@ -546,7 +546,7 @@ namespace Animancer.Editor
             /************************************************************************************************************************/
 
             /// <summary>The stack of active contexts.</summary>
-            public static readonly LazyStack<DrawerContext> Stack = new LazyStack<DrawerContext>();
+            public static readonly LazyStack<DrawerContext> Stack = new();
 
             /// <summary>Returns a disposable <see cref="DrawerContext"/> representing the specified parameters.</summary>
             /// <remarks>

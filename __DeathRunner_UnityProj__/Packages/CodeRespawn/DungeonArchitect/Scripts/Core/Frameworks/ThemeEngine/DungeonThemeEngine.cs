@@ -44,7 +44,7 @@ namespace DungeonArchitect.Themeing
                 random = new PMRandom(context.config.Seed);
             }
 
-            PropBySocketTypeByTheme_t PropBySocketTypeByTheme = new PropBySocketTypeByTheme_t();
+            PropBySocketTypeByTheme_t PropBySocketTypeByTheme = new();
             foreach (DungeonThemeData Theme in Themes)
             {
                 CreatePropLookup(Theme, PropBySocketTypeByTheme);
@@ -52,7 +52,7 @@ namespace DungeonArchitect.Themeing
 
             // Collect all the theme override volumes and prepare their theme lookup
             var overrideVolumes = new List<ThemeOverrideVolume>();
-            Dictionary<Graph, DungeonThemeData> GraphToThemeMapping = new Dictionary<Graph, DungeonThemeData>();
+            Dictionary<Graph, DungeonThemeData> GraphToThemeMapping = new();
 
             // Process the theme override volumes
             var themeOverrides = context.themeOverrideVolumes;
@@ -62,7 +62,7 @@ namespace DungeonArchitect.Themeing
                 var graph = volume.overrideTheme;
                 if (graph != null && !GraphToThemeMapping.ContainsKey(graph))
                 {
-                    DungeonThemeData theme = new DungeonThemeData();
+                    DungeonThemeData theme = new();
                     theme.BuildFromGraph(volume.overrideTheme);
                     GraphToThemeMapping.Add(volume.overrideTheme, theme);
 
@@ -274,7 +274,7 @@ namespace DungeonArchitect.Themeing
                 return;
             }
 
-            PropBySocketType_t PropBySocketType = new PropBySocketType_t();
+            PropBySocketType_t PropBySocketType = new();
             PropBySocketTypeByTheme.Add(theme, PropBySocketType);
 
             foreach (DungeonThemeItem Prop in theme.Props)

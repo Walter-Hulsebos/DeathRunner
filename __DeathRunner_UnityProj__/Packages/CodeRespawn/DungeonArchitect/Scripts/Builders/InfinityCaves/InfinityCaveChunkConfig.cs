@@ -6,7 +6,7 @@ namespace DungeonArchitect.Builders.Infinity.Caves
 {
 	public class InfinityCaveChunkConfig : InfinityDungeonConfig
     {
-        public Vector2 gridSize = new Vector2(4, 4);
+        public Vector2 gridSize = new(4, 4);
         public int iterations = 4;
         public int neighborRocks = 5;
 

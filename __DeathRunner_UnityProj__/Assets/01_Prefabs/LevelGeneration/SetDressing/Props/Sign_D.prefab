@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6539817015564355373}
   - component: {fileID: 9018158795650773991}
   - component: {fileID: -3663242851664295419}
-  - component: {fileID: 4267741533912491717}
   m_Layer: 0
   m_Name: Sign_D
   m_TagString: Untagged
@@ -95,21 +94,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7360592445466972722}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.7255828, y: 0.9763557, z: 0.64056116}
   m_Center: {x: 0, y: 0.4881779, z: -0.000000029802322}
---- !u!114 &4267741533912491717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7360592445466972722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: d152dc612e46d124881c112d788f7d87, type: 2}

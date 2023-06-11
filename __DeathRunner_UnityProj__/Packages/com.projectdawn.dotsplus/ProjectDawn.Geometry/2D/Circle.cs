@@ -115,7 +115,7 @@ namespace ProjectDawn.Geometry2D
         /// <summary>
         /// Returns minimum rectangle that fully covers shape.
         /// </summary>
-        public Rectangle BoundingRectangle() => new Rectangle(Center - Radius, Diameter);
+        public Rectangle BoundingRectangle() => new(Center - Radius, Diameter);
 
         /// <summary>
         /// Returns minimum bounding circle that contains both circles.

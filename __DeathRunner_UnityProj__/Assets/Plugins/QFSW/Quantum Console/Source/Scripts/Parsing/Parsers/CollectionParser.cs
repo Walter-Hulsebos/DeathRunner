@@ -6,7 +6,7 @@ namespace QFSW.QC.Parsers
 {
     public class CollectionParser : MassGenericQcParser
     {
-        protected override HashSet<Type> GenericTypes { get; } = new HashSet<Type>
+        protected override HashSet<Type> GenericTypes { get; } = new()
         {
             typeof(List<>),
             typeof(Stack<>),

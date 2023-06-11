@@ -6,7 +6,7 @@ namespace DungeonArchitect.RuntimeGraphs
 {
     public class RuntimeGraph<T>
     {
-        public List<RuntimeGraphNode<T>> Nodes = new List<RuntimeGraphNode<T>>();
+        public List<RuntimeGraphNode<T>> Nodes = new();
 
         public void RemoveNode(RuntimeGraphNode<T> node)
         {
@@ -28,8 +28,8 @@ namespace DungeonArchitect.RuntimeGraphs
         public RuntimeGraph<T> Graph;
         public Vector2 Position = Vector2.zero;
 
-        public List<RuntimeGraphNode<T>> Outgoing = new List<RuntimeGraphNode<T>>();
-        public List<RuntimeGraphNode<T>> Incoming = new List<RuntimeGraphNode<T>>();
+        public List<RuntimeGraphNode<T>> Outgoing = new();
+        public List<RuntimeGraphNode<T>> Incoming = new();
 
         public RuntimeGraphNode(RuntimeGraph<T> graph)
         {

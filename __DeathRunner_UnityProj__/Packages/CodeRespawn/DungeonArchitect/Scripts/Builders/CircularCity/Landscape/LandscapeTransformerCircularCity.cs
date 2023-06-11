@@ -28,7 +28,7 @@ namespace DungeonArchitect.Builders.CircularCity
         public Texture2D diffuse;
         public Texture2D normal;
         public float metallic = 0;
-        public Vector2 size = new Vector2(15, 15);
+        public Vector2 size = new(15, 15);
         public Vector2 offset = Vector2.zero;
         public AnimationCurve curve;
     }

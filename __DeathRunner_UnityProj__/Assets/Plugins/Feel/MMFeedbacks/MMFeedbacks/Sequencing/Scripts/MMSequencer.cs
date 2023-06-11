@@ -99,7 +99,7 @@ namespace MoreMountains.Feedbacks
 			Playing = false;
 			if (MetronomeSound != null)
 			{
-				GameObject go = new GameObject();
+				GameObject go = new();
 				SceneManager.MoveGameObjectToScene(go, this.gameObject.scene);
 				go.name = "BeatSoundAudioSource";
 				go.transform.SetParent(this.transform);
@@ -303,7 +303,7 @@ namespace MoreMountains.Feedbacks
 
 			for (int trackIndex = 0; trackIndex < Sequence.SequenceTracks.Count; trackIndex++)
 			{
-				MMSequenceNote newNote = new MMSequenceNote();
+				MMSequenceNote newNote = new();
 				newNote.ID = -1;
 				newNote.Timestamp = Sequence.QuantizedSequence[trackIndex].Line.Count * beatDuration;
 				Sequence.QuantizedSequence[trackIndex].Line.Add(newNote);
@@ -384,7 +384,7 @@ namespace MoreMountains.Feedbacks
 					Sequence.QuantizedSequence[trackIndex].Line = new List<MMSequenceNote>();
 					for (int i = 0; i < SequencerLength; i++)
 					{
-						MMSequenceNote note = new MMSequenceNote();
+						MMSequenceNote note = new();
 						note.ID = -1;
 						note.Timestamp = i * beatDuration;
 						Sequence.QuantizedSequence[trackIndex].Line.Add(note);

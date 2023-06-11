@@ -12,7 +12,7 @@ namespace MoreMountains.Tools
 	{
 		/// the min and max duration of the interval between two events, in seconds
 		[MMVector("Min", "Max")]
-		public Vector2 RandomIntervalDuration = new Vector2(1f, 3f);
+		public Vector2 RandomIntervalDuration = new(1f, 3f);
 		/// the event to play at the end of each interval 
 		public UnityEvent OnRandomInterval;
         

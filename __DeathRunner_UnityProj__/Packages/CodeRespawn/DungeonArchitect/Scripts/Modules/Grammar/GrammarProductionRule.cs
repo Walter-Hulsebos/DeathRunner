@@ -16,6 +16,6 @@ namespace DungeonArchitect.Grammar
 
         [HideInInspector]
         [SerializeField]
-        public List<WeightedGrammarGraph> RHSGraphs = new List<WeightedGrammarGraph>();
+        public List<WeightedGrammarGraph> RHSGraphs = new();
     }
 }

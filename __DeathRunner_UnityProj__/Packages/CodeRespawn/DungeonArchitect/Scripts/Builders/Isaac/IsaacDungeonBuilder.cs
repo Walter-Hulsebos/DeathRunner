@@ -13,8 +13,8 @@ namespace DungeonArchitect.Builders.Isaac
         new System.Random random;
 
 
-        List<IsaacRoom> rooms = new List<IsaacRoom>();
-        List<IsaacDoor> doors = new List<IsaacDoor>();
+        List<IsaacRoom> rooms = new();
+        List<IsaacDoor> doors = new();
 
         /// <summary>
         /// Builds the dungeon layout.  In this method, you should build your dungeon layout and save it in your model file
@@ -58,10 +58,10 @@ namespace DungeonArchitect.Builders.Isaac
         }
 
         IntVector[] directions = new IntVector[] {
-                new IntVector(1, 0, 0),
-                new IntVector(0, 0, 1),
-                new IntVector(-1, 0, 0),
-                new IntVector(0, 0, -1),
+                new(1, 0, 0),
+                new(0, 0, 1),
+                new(-1, 0, 0),
+                new(0, 0, -1),
             };
 
         void GenerateLevelLayout()

@@ -22,7 +22,7 @@ class CellSpatialConfig3D
 
 public class CornerEmitter3D : DungeonMarkerEmitter
 {
-    List<CellSpatialConfig3D> CornerConfigs = new List<CellSpatialConfig3D>();
+    List<CellSpatialConfig3D> CornerConfigs = new();
     public bool mergeRoomCorridor = false;
 
     void RegisterConfig(string MarkerName, int[] NeighborConfig)

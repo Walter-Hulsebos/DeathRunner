@@ -8,11 +8,11 @@ namespace DungeonArchitect.Utils
     {   
         protected TStaticState staticState;
 
-        private Stack<TState> stack = new Stack<TState>();
+        private Stack<TState> stack = new();
         private bool running = false;
         private bool foundResult = false;
         private TResult result;
-        private TSharedState sharedState = new TSharedState();
+        private TSharedState sharedState = new();
 
         public delegate void ExecuteFrameDelegate(TState top, TStaticState staticState, TSharedState sharedState, StackSystem<TState, TStaticState, TSharedState, TResult> stackSystem);
 

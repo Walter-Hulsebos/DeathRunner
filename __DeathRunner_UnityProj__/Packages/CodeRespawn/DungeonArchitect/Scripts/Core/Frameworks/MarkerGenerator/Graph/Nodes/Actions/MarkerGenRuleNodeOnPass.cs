@@ -6,8 +6,8 @@ namespace DungeonArchitect.MarkerGenerator.Nodes.Actions
 {
     public class MarkerGenRuleNodeOnPass : MarkerGenRuleGraphNodeActionBase
     {
-        public override Color BodyColor => new Color(0.1f, 0.1f, 0.3f);
-        public override Color TitleColor => new Color(0.1f, 0.2f, 0.4f);
+        public override Color BodyColor => new(0.1f, 0.1f, 0.3f);
+        public override Color TitleColor => new(0.1f, 0.2f, 0.4f);
         
         public override void Initialize(string id, Graph graph)
         {

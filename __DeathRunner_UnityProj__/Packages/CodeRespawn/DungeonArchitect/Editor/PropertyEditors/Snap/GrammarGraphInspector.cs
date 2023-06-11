@@ -122,7 +122,7 @@ namespace DungeonArchitect.Editors.SnapFlow
         void ExecuteGeneratorScript(IGrammarGraphBuildScript generatorScript, GrammarGraph grammar, SnapFlowAsset flowAsset, UIPlatform platform, UIUndoSystem undo)
         {
             var graphBuilder = new EditorGraphBuilder(grammar, flowAsset, platform, undo);
-            GrammarGraphBuilder grammarBuilder = new GrammarGraphBuilder(grammar, flowAsset.nodeTypes, graphBuilder);
+            GrammarGraphBuilder grammarBuilder = new(grammar, flowAsset.nodeTypes, graphBuilder);
             grammarBuilder.ClearGraph();
             generatorScript.Generate(grammarBuilder);
         }

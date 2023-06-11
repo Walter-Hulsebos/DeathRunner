@@ -131,7 +131,7 @@ namespace DungeonArchitect
         private DungeonItemSpawnListener[] spawnListeners;
         private Queue<DungeonNodeSpawnData> buildQueue;
 
-        List<SpawnInfo> spawnList = new List<SpawnInfo>();
+        List<SpawnInfo> spawnList = new();
 
         public AsyncDungeonSceneObjectSpawner(long maxMilliPerFrame, Vector3 buildOrigin)
         {

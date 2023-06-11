@@ -39,7 +39,7 @@ namespace Drawing {
 		private int version;
 		public Settings settings;
 
-		public static Settings DefaultSettings => new Settings();
+		public static Settings DefaultSettings => new();
 
 		public static DrawingSettings GetSettingsAsset () {
 #if UNITY_EDITOR

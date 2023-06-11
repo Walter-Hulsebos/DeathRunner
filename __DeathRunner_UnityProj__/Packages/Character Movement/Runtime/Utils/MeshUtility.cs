@@ -9,13 +9,13 @@ namespace EasyCharacterMovement
         private const int kMaxVertices = 1024;
         private const int kMaxTriangles = kMaxVertices * 3;
 
-        private static readonly List<Vector3> _vertices = new List<Vector3>(kMaxVertices);
+        private static readonly List<Vector3> _vertices = new(kMaxVertices);
 
-        private static readonly List<ushort> _triangles16 = new List<ushort>(kMaxTriangles);
-        private static readonly List<int> _triangles32 = new List<int>();
+        private static readonly List<ushort> _triangles16 = new(kMaxTriangles);
+        private static readonly List<int> _triangles32 = new();
 
-        private static readonly List<ushort> _scratchBuffer16 = new List<ushort>(kMaxTriangles);
-        private static readonly List<int> _scratchBuffer32 = new List<int>();
+        private static readonly List<ushort> _scratchBuffer16 = new(kMaxTriangles);
+        private static readonly List<int> _scratchBuffer32 = new();
 
         public static Vector3 FindMeshOpposingNormal(Mesh sharedMesh, ref RaycastHit inHit)
         {

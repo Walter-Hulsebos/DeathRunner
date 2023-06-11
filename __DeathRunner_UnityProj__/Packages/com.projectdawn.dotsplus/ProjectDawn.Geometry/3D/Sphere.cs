@@ -45,7 +45,7 @@ namespace ProjectDawn.Geometry3D
         /// <summary>
         /// Returns unit sphere.
         /// </summary>
-        public static Sphere Unit => new Sphere(0, 1);
+        public static Sphere Unit => new(0, 1);
 
         public Sphere(float3 center, float radius)
         {
@@ -109,7 +109,7 @@ namespace ProjectDawn.Geometry3D
         /// <summary>
         /// Returns minimum rectangle that fully covers shape.
         /// </summary>
-        public Box BoundingBox() => new Box(Center - Radius, Diameter);
+        public Box BoundingBox() => new(Center - Radius, Diameter);
 
         /// <summary>
         /// Returns minimum bounding sphere that contains both spheres.

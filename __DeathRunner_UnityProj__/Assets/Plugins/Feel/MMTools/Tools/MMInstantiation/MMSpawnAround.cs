@@ -37,7 +37,7 @@ namespace MoreMountains.Tools
 		/// the maximum size of the cube's base
 		[Tooltip("the maximum size of the cube's base")]
 		[MMEnumCondition("Shape", (int)MMSpawnAroundShapes.Cube)]
-		public Vector3 MaximumCubeBaseSize = new Vector3(2f, 2f, 2f);
+		public Vector3 MaximumCubeBaseSize = new(2f, 2f, 2f);
 
 		[Header("NormalAxisOffset")]
 		/// the minimum offset to apply on the normal axis
@@ -54,7 +54,7 @@ namespace MoreMountains.Tools
 		/// a curve used to define how distance to the origin should be altered (potentially above min/max distance)
 		[Tooltip("a curve used to define how distance to the origin should be altered (potentially above min/max distance)")]
 		[MMCondition("UseNormalAxisOffsetCurve",true)]
-		public AnimationCurve NormalOffsetCurve = new AnimationCurve(new Keyframe(0, 1f), new Keyframe(1, 1f));
+		public AnimationCurve NormalOffsetCurve = new(new Keyframe(0, 1f), new Keyframe(1, 1f));
 		/// the value to which the curve's zero should be remapped to
 		[Tooltip("the value to which the curve's zero should be remapped to")]
 		[MMCondition("UseNormalAxisOffsetCurve",true)]

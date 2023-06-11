@@ -34,14 +34,14 @@ namespace DungeonArchitect.Flow.Items
         /// <summary>
         /// Reference to other items (e.g. key locks from other nodes)
         /// </summary>
-        public List<DungeonUID> referencedItemIds = new List<DungeonUID>();
+        public List<DungeonUID> referencedItemIds = new();
 
         public bool editorSelected = false;
 
         public FlowGraphItemCustomInfo customInfo = FlowGraphItemCustomInfo.Default;
 
         [HideInInspector]
-        public FlowDomainDataRegistry domainData = new FlowDomainDataRegistry();
+        public FlowDomainDataRegistry domainData = new();
 
         public FlowItem()
         {
@@ -87,7 +87,7 @@ namespace DungeonArchitect.Flow.Items
         public Color textColor;
         public Color backgroundColor;
 
-        public static readonly FlowGraphItemCustomInfo Default = new FlowGraphItemCustomInfo("custom", "", Color.white, Color.black);
+        public static readonly FlowGraphItemCustomInfo Default = new("custom", "", Color.white, Color.black);
 
         public FlowGraphItemCustomInfo(string itemType, string text, Color textColor, Color backgroundColor)
         {

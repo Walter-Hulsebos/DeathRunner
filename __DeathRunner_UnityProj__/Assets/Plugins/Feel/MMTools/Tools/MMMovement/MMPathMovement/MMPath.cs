@@ -388,19 +388,19 @@ namespace MoreMountains.Tools
 		[System.Serializable] public struct Data
 		{
 			public static Data ForwardLoopingPath(Vector3 ctr, Vector3[] vtx, float wait) 
-				=> new Data()
+				=> new()
 				{
 					Center = ctr, Offsets = vtx, Delay = wait,
 					Cycle = CycleOptions.Loop, Direction = MovementDirection.Ascending
 				};
 			public static Data ForwardBackAndForthPath(Vector3 ctr, Vector3[] vtx, float wait) 
-				=> new Data()
+				=> new()
 				{
 					Center = ctr, Offsets = vtx, Delay = wait,
 					Cycle = CycleOptions.BackAndForth, Direction = MovementDirection.Ascending
 				};
 			public static Data ForwardOnlyOncePath(Vector3 ctr, Vector3[] vtx, float wait) 
-				=> new Data()
+				=> new()
 				{
 					Center = ctr, Offsets = vtx, Delay = wait,
 					Cycle = CycleOptions.OnlyOnce, Direction = MovementDirection.Ascending

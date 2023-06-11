@@ -8,10 +8,10 @@ namespace DungeonArchitect.UI.Widgets
     {
         public float ButtonSize = 20;
         public float Padding = 0;
-        public Color Background = new Color(0, 0, 0, 0.25f);
+        public Color Background = new(0, 0, 0, 0.25f);
         public delegate void OnButtonPressed(UISystem uiSystem, string id);
         public event OnButtonPressed ButtonPressed;
-        public List<ButtonInfo> buttons = new List<ButtonInfo>();
+        public List<ButtonInfo> buttons = new();
 
         public class ButtonInfo
         {

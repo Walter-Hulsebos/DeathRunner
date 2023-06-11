@@ -28,7 +28,7 @@ namespace MoreMountains.Tools
 			MMInspectorButtonAttribute inspectorButtonAttribute = (MMInspectorButtonAttribute)attribute;
 
 			float buttonLength = position.width;
-			Rect buttonRect = new Rect(position.x, position.y, buttonLength, position.height);
+			Rect buttonRect = new(position.x, position.y, buttonLength, position.height);
 			GUI.skin.button.alignment = TextAnchor.MiddleLeft;
 
 			if (GUI.Button(buttonRect, inspectorButtonAttribute.MethodName))

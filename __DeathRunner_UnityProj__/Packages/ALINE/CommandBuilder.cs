@@ -40,15 +40,15 @@ namespace Drawing {
 		/// <summary>How much to move the text in screen-space</summary>
 		public float2 pixelOffset;
 
-		public static readonly LabelAlignment TopLeft = new LabelAlignment { relativePivot = new float2(0.0f, 1.0f), pixelOffset = new float2(0, 0) };
-		public static readonly LabelAlignment MiddleLeft = new LabelAlignment { relativePivot = new float2(0.0f, 0.5f), pixelOffset = new float2(0, 0) };
-		public static readonly LabelAlignment BottomLeft = new LabelAlignment { relativePivot = new float2(0.0f, 0.0f), pixelOffset = new float2(0, 0) };
-		public static readonly LabelAlignment BottomCenter = new LabelAlignment { relativePivot = new float2(0.5f, 0.0f), pixelOffset = new float2(0, 0) };
-		public static readonly LabelAlignment BottomRight = new LabelAlignment { relativePivot = new float2(1.0f, 0.0f), pixelOffset = new float2(0, 0) };
-		public static readonly LabelAlignment MiddleRight = new LabelAlignment { relativePivot = new float2(1.0f, 0.5f), pixelOffset = new float2(0, 0) };
-		public static readonly LabelAlignment TopRight = new LabelAlignment { relativePivot = new float2(1.0f, 1.0f), pixelOffset = new float2(0, 0) };
-		public static readonly LabelAlignment TopCenter = new LabelAlignment { relativePivot = new float2(0.5f, 1.0f), pixelOffset = new float2(0, 0) };
-		public static readonly LabelAlignment Center = new LabelAlignment { relativePivot = new float2(0.5f, 0.5f), pixelOffset = new float2(0, 0) };
+		public static readonly LabelAlignment TopLeft = new() { relativePivot = new float2(0.0f, 1.0f), pixelOffset = new float2(0, 0) };
+		public static readonly LabelAlignment MiddleLeft = new() { relativePivot = new float2(0.0f, 0.5f), pixelOffset = new float2(0, 0) };
+		public static readonly LabelAlignment BottomLeft = new() { relativePivot = new float2(0.0f, 0.0f), pixelOffset = new float2(0, 0) };
+		public static readonly LabelAlignment BottomCenter = new() { relativePivot = new float2(0.5f, 0.0f), pixelOffset = new float2(0, 0) };
+		public static readonly LabelAlignment BottomRight = new() { relativePivot = new float2(1.0f, 0.0f), pixelOffset = new float2(0, 0) };
+		public static readonly LabelAlignment MiddleRight = new() { relativePivot = new float2(1.0f, 0.5f), pixelOffset = new float2(0, 0) };
+		public static readonly LabelAlignment TopRight = new() { relativePivot = new float2(1.0f, 1.0f), pixelOffset = new float2(0, 0) };
+		public static readonly LabelAlignment TopCenter = new() { relativePivot = new float2(0.5f, 1.0f), pixelOffset = new float2(0, 0) };
+		public static readonly LabelAlignment Center = new() { relativePivot = new float2(0.5f, 0.5f), pixelOffset = new float2(0, 0) };
 
 		/// <summary>
 		/// Moves the text by the specified amount of pixels in screen-space.
@@ -83,16 +83,16 @@ namespace Drawing {
 	/// <summary>Some static fields that need to be in a separate class because Burst doesn't support them</summary>
 	static class MeshLayouts {
 		internal static readonly VertexAttributeDescriptor[] MeshLayout = {
-			new VertexAttributeDescriptor(VertexAttribute.Position, VertexAttributeFormat.Float32, 3),
-			new VertexAttributeDescriptor(VertexAttribute.Normal, VertexAttributeFormat.Float32, 3),
-			new VertexAttributeDescriptor(VertexAttribute.Color, VertexAttributeFormat.UNorm8, 4),
-			new VertexAttributeDescriptor(VertexAttribute.TexCoord0, VertexAttributeFormat.Float32, 2),
+			new(VertexAttribute.Position, VertexAttributeFormat.Float32, 3),
+			new(VertexAttribute.Normal, VertexAttributeFormat.Float32, 3),
+			new(VertexAttribute.Color, VertexAttributeFormat.UNorm8, 4),
+			new(VertexAttribute.TexCoord0, VertexAttributeFormat.Float32, 2),
 		};
 
 		internal static readonly VertexAttributeDescriptor[] MeshLayoutText = {
-			new VertexAttributeDescriptor(VertexAttribute.Position, VertexAttributeFormat.Float32, 3),
-			new VertexAttributeDescriptor(VertexAttribute.Color, VertexAttributeFormat.UNorm8, 4),
-			new VertexAttributeDescriptor(VertexAttribute.TexCoord0, VertexAttributeFormat.Float32, 2),
+			new(VertexAttribute.Position, VertexAttributeFormat.Float32, 3),
+			new(VertexAttribute.Color, VertexAttributeFormat.UNorm8, 4),
+			new(VertexAttribute.TexCoord0, VertexAttributeFormat.Float32, 2),
 		};
 	}
 
@@ -2104,7 +2104,7 @@ namespace Drawing {
 		/// <param name="radius">Distance from the center to each vertex.</param>
 		public void WirePolygon (float3 center, int vertices, quaternion rotation, float radius) {
 			PushMatrix(float4x4.TRS(center, rotation, new float3(radius, radius, radius)));
-			float3 prev = new float3(0, 0, 1);
+			float3 prev = new(0, 0, 1);
 			for (int i = 1; i <= vertices; i++) {
 				float a = 2 * math.PI * (i / (float)vertices);
 				var p = new float3(math.sin(a), 0, math.cos(a));
@@ -3755,14 +3755,14 @@ namespace Drawing {
 			}
 
 			static readonly float4[] BoxVertices = {
-				new float4(-1, -1, -1, 1),
-				new float4(-1, -1, +1, 1),
-				new float4(-1, +1, -1, 1),
-				new float4(-1, +1, +1, 1),
-				new float4(+1, -1, -1, 1),
-				new float4(+1, -1, +1, 1),
-				new float4(+1, +1, -1, 1),
-				new float4(+1, +1, +1, 1),
+				new(-1, -1, -1, 1),
+				new(-1, -1, +1, 1),
+				new(-1, +1, -1, 1),
+				new(-1, +1, +1, 1),
+				new(+1, -1, -1, 1),
+				new(+1, -1, +1, 1),
+				new(+1, +1, -1, 1),
+				new(+1, +1, +1, 1),
 			};
 
 			static readonly int[] BoxTriangles = {

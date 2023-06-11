@@ -143,7 +143,7 @@ namespace DungeonArchitect.RoomDesigner
 
         class MarkerEmitCommandList
         {
-            public Dictionary<Vector3, MarkerEmitCommand> Map = new Dictionary<Vector3, MarkerEmitCommand>();
+            public Dictionary<Vector3, MarkerEmitCommand> Map = new();
             public void Add(MarkerEmitCommand command)
             {
                 Map.Add(command.position, command);

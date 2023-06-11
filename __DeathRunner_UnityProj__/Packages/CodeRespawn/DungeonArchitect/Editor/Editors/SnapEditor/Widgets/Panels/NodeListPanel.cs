@@ -11,7 +11,7 @@ namespace DungeonArchitect.Editors.SnapFlow
     class NodeListViewConstants
     {
         public static readonly string DragDropID = "NodeTypeDragOp";
-        public static readonly Color ThemeColor = new Color(0.2f, 0.3f, 0.3f);
+        public static readonly Color ThemeColor = new(0.2f, 0.3f, 0.3f);
     }
 
     public class NodeListViewItem : ListViewTextItemWidget

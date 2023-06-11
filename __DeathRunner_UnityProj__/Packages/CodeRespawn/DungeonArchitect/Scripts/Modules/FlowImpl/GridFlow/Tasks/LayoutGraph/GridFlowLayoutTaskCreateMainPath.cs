@@ -22,8 +22,8 @@ namespace DungeonArchitect.Flow.Impl.GridFlow.Tasks
             Script
         }
         
-        public TilemapItemPlacementSettings startPlacementSettings = new TilemapItemPlacementSettings();        // TODO: Move this to grid flow impl
-        public TilemapItemPlacementSettings goalPlacementSettings = new TilemapItemPlacementSettings();         // TODO: Move this to grid flow impl
+        public TilemapItemPlacementSettings startPlacementSettings = new();        // TODO: Move this to grid flow impl
+        public TilemapItemPlacementSettings goalPlacementSettings = new();         // TODO: Move this to grid flow impl
 
         // Node position constraints
         public NodeConstraintType positionConstraintMode;
@@ -35,7 +35,7 @@ namespace DungeonArchitect.Flow.Impl.GridFlow.Tasks
         public bool fixedStartRoomSize = false;
         public bool fixedEndRoomSize = false;
         
-        private readonly InstanceCache instanceCache = new InstanceCache();
+        private readonly InstanceCache instanceCache = new();
         
         protected override bool Validate(FlowTaskExecContext context, FlowTaskExecInput input, ref string errorMessage, ref FlowTaskExecutionResult executionResult)
         {

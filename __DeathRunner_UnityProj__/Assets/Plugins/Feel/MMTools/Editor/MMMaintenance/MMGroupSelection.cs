@@ -21,7 +21,7 @@ namespace MoreMountains.Tools
 				return;
 			}
 
-			GameObject groupObject = new GameObject();
+			GameObject groupObject = new();
 			groupObject.name = "Group";
 
 			Undo.RegisterCreatedObjectUndo(groupObject, "Group Selection");

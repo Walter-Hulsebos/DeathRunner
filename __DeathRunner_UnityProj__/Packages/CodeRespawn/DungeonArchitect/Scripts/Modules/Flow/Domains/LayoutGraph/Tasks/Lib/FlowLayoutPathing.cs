@@ -23,7 +23,7 @@ namespace DungeonArchitect.Flow.Domains.Layout.Pathing
         public FlowLayoutGraph Graph;
         public FlowLayoutGraphQuery GraphQuery;
         public FlowLayoutGraphNode HeadNode = null;
-        public List<FlowLayoutGraphNode> SinkNodes = new List<FlowLayoutGraphNode>();
+        public List<FlowLayoutGraphNode> SinkNodes = new();
         public System.Random Random;
         public int MinPathSize;
         public int MaxPathSize;
@@ -61,9 +61,9 @@ namespace DungeonArchitect.Flow.Domains.Layout.Pathing
     }
     
     public class FlowLayoutGrowthState {
-        public List<FlowLayoutGrowthStatePathItem> Path = new List<FlowLayoutGrowthStatePathItem>();
-        public HashSet<DungeonUID> Visited = new HashSet<DungeonUID>();
-        public List<FlowLayoutGraphNodeGroup> NodeGroups = new List<FlowLayoutGraphNodeGroup>();
+        public List<FlowLayoutGrowthStatePathItem> Path = new();
+        public HashSet<DungeonUID> Visited = new();
+        public List<FlowLayoutGraphNodeGroup> NodeGroups = new();
         public FlowLayoutGraphNode TailNode = null;
 
         public FlowLayoutGrowthState Clone()
@@ -339,8 +339,8 @@ namespace DungeonArchitect.Flow.Domains.Layout.Pathing
     {
         public bool IsGroup = false;
         public float Weight = 1.0f;
-        public List<DungeonUID> GroupNodes = new List<DungeonUID>();        // The list of nodes that belong to this node
-        public List<DungeonUID> GroupEdgeNodes = new List<DungeonUID>();     // The list of nodes on the edge of the group (so they can connect to other nodes)
+        public List<DungeonUID> GroupNodes = new();        // The list of nodes that belong to this node
+        public List<DungeonUID> GroupEdgeNodes = new();     // The list of nodes on the edge of the group (so they can connect to other nodes)
 
         public object userdata;
     };
@@ -374,7 +374,7 @@ namespace DungeonArchitect.Flow.Domains.Layout.Pathing
         public FlowLayoutGraphNode CurrentNode;
         public FlowLayoutGraphNode IncomingNode;
         public FlowLayoutGraphLink IncomingLink;
-        public FlowLayoutGrowthState State = new FlowLayoutGrowthState();
+        public FlowLayoutGrowthState State = new();
     };
 
     class FFlowLayoutPathingSystemResult
@@ -508,7 +508,7 @@ namespace DungeonArchitect.Flow.Domains.Layout.Pathing
         }
 
 
-        private List<FlowPathGrowthSystem> growthSystems = new List<FlowPathGrowthSystem>();
+        private List<FlowPathGrowthSystem> growthSystems = new();
         private bool foundResult = false;
         private bool timeout = false;
         private long frameCounter = 0;

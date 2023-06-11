@@ -45,7 +45,7 @@ namespace HeurekaGames.AssetHunterPRO
         [SerializeField] GUIContent guiContentRefresh;
 
         //UI Rect
-        Vector2 uiStartPos = new Vector2(10, 50);
+        Vector2 uiStartPos = new(10, 50);
         public static float ButtonMaxHeight = 18;
         public static readonly Heureka_ResourceLoader.HeurekaPackage myPackage = Heureka_ResourceLoader.HeurekaPackage.AHP;
 
@@ -210,13 +210,13 @@ namespace HeurekaGames.AssetHunterPRO
 
         private void deleteEmptyFolders()
         {
-            List<String> emptyfolders = new List<string>();
+            List<String> emptyfolders = new();
             checkEmptyFolder(Application.dataPath, emptyfolders);
 
             if (emptyfolders.Count > 0)
             {
 #if UNITY_2020_1_OR_NEWER
-                List<string> failedPaths = new List<string>();
+                List<string> failedPaths = new();
                 AssetDatabase.DeleteAssets(emptyfolders.ToArray(), failedPaths);
 #else
             foreach (var folder in emptyfolders)
@@ -302,7 +302,7 @@ namespace HeurekaGames.AssetHunterPRO
             bool infoLoaded = (buildInfoManager != null && buildInfoManager.HasSelection);
             if (infoLoaded)
             {
-                GUIContent RefreshGUIContent = new GUIContent(guiContentRefresh);
+                GUIContent RefreshGUIContent = new(guiContentRefresh);
                 Color origColor = GUI.color;
                 if (buildInfoManager.ProjectDirty)
                 {
@@ -338,13 +338,13 @@ namespace HeurekaGames.AssetHunterPRO
             {
                 string sizeAsString = AH_Utils.GetSizeAsString(m_TreeView.GetCombinedUnusedSize());
 
-                GUIContent instancedGUIContent = new GUIContent(guiContentDeleteAll);
+                GUIContent instancedGUIContent = new(guiContentDeleteAll);
                 instancedGUIContent.tooltip = string.Format(instancedGUIContent.tooltip, sizeAsString);
                 if (AH_SettingsManager.Instance.HideButtonText)
                     instancedGUIContent.text = null;
 
                 GUIStyle btnStyle = "button";
-                GUIStyle newStyle = new GUIStyle(btnStyle);
+                GUIStyle newStyle = new(btnStyle);
                 newStyle.normal.textColor = Heureka_WindowStyler.clr_Pink;
 
                 m_TreeView.DrawDeleteAllButton(instancedGUIContent, newStyle, GUILayout.MaxHeight(AH_SettingsManager.Instance.HideButtonText ? ButtonMaxHeight * 2f : ButtonMaxHeight));
@@ -414,14 +414,14 @@ namespace HeurekaGames.AssetHunterPRO
                         m_TreeView.ShowTreeMode();
                     }
                 }
-                GUIContent exportContent = new GUIContent("Export list", "Export all the assets in the list above to a json file");
+                GUIContent exportContent = new("Export list", "Export all the assets in the list above to a json file");
                 if (GUILayout.Button(exportContent, style))
                 {
                     var buildInfo = buildInfoManager.GetSelectedBuildDate() + 
                         "_" + buildInfoManager.GetSelectedBuildTarget()+
                         "_" + ((AH_MultiColumnHeader)m_TreeView.multiColumnHeader).ShowMode;
 
-                    GenericMenu menu = new GenericMenu();
+                    GenericMenu menu = new();
                     menu.AddItem(new GUIContent("JSON"), false, () => AH_ElementList.DumpCurrentListToJSONFile(m_TreeView, buildInfo));
                     menu.AddItem(new GUIContent("CSV"), false, () => AH_ElementList.DumpCurrentListToCSVFile(m_TreeView, buildInfo));
                     menu.ShowAsContext();
@@ -462,7 +462,7 @@ namespace HeurekaGames.AssetHunterPRO
         
         private bool doSelectionButton(GUIContent content)
         {
-            GUIContent btnContent = new GUIContent(content);
+            GUIContent btnContent = new(content);
             if (AH_SettingsManager.Instance.HideButtonText)
                 btnContent.text = null;
 

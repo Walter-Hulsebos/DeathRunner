@@ -22,8 +22,8 @@ namespace MoreMountains.Feedbacks
 		protected Color _buttonColor;
 		protected Color _trackControlColor;
 
-		protected Color _emptyButtonColor = new Color(0,0,0,0.5f);
-		protected Color _empty4ButtonColor = new Color(0, 0, 0, 0.75f);
+		protected Color _emptyButtonColor = new(0,0,0,0.5f);
+		protected Color _empty4ButtonColor = new(0, 0, 0, 0.75f);
 		protected const float _buttonWidth = 24;
 		protected const float _trackControlWidth = 11;
 		protected const float _distanceBetweenButtons = 6f;

@@ -13,13 +13,13 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.AssetTreeView
         const float kRowHeights = 20f;
         const float kToggleWidth = 18f;
 
-        AH_TreeViewSelectionInfo treeviewSelectionInfo = new AH_TreeViewSelectionInfo();
+        AH_TreeViewSelectionInfo treeviewSelectionInfo = new();
 
         GUIContent[] guiContents_toolbarShowSelection = new GUIContent[3]
 {
-                new GUIContent(AH_MultiColumnHeader.AssetShowMode.Unused.ToString(),"Show only assets that was NOT included in build"),
-                new GUIContent(AH_MultiColumnHeader.AssetShowMode.Used.ToString(),"Show only assets that WAS included in build"),
-                new GUIContent(AH_MultiColumnHeader.AssetShowMode.All.ToString(),"Show all assets in project")
+                new(AH_MultiColumnHeader.AssetShowMode.Unused.ToString(),"Show only assets that was NOT included in build"),
+                new(AH_MultiColumnHeader.AssetShowMode.Used.ToString(),"Show only assets that WAS included in build"),
+                new(AH_MultiColumnHeader.AssetShowMode.All.ToString(),"Show all assets in project")
 };
 
         // All columns
@@ -68,7 +68,7 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.AssetTreeView
             if (root.children == null)
                 return;
 
-            Stack<TreeViewItem> stack = new Stack<TreeViewItem>();
+            Stack<TreeViewItem> stack = new();
             for (int i = root.children.Count - 1; i >= 0; i--)
                 stack.Push(root.children[i]);
 
@@ -158,7 +158,7 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.AssetTreeView
 
             base.OnGUI(treeViewRect);
 
-            Rect SelectionRect = new Rect(treeViewRect.x, treeViewRect.yMax, treeViewRect.width, AH_TreeViewSelectionInfo.Height);
+            Rect SelectionRect = new(treeViewRect.x, treeViewRect.yMax, treeViewRect.width, AH_TreeViewSelectionInfo.Height);
 
             if (treeviewSelectionInfo.HasSelection/* && ((AH_MultiColumnHeader)multiColumnHeader).ShowMode == AH_MultiColumnHeader.AssetShowMode.Unused*/)
                 treeviewSelectionInfo.OnGUISelectionInfo(SelectionRect);

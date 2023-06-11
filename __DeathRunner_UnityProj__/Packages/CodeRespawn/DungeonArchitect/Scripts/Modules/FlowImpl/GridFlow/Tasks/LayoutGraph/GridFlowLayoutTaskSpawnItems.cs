@@ -9,7 +9,7 @@ namespace DungeonArchitect.Flow.Impl.GridFlow.Tasks
     [FlowExecNodeInfo("Spawn Items", "Layout Graph/", 1030)]
     public class GridFlowLayoutTaskSpawnItems : LayoutBaseFlowTaskSpawnItems
     {
-        public TilemapItemPlacementSettings placementSettings = new TilemapItemPlacementSettings();
+        public TilemapItemPlacementSettings placementSettings = new();
 
         protected override bool Validate(FlowTaskExecContext context, FlowTaskExecInput input, ref string errorMessage,
             ref FlowTaskExecutionResult executionResult)

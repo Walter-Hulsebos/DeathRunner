@@ -55,7 +55,7 @@ namespace ProjectDawn.Geometry3D
         /// <summary>
         /// Flips the plane so the normal points in the opposite direction.
         /// </summary>
-        public Plane3D Flipped => new Plane3D { NormalAndDistance = -NormalAndDistance };
+        public Plane3D Flipped => new() { NormalAndDistance = -NormalAndDistance };
 
         /// <summary>
         /// Constructs a Plane from arbitrary coefficients A, B, C, D of the plane equation Ax + By + Cz + Dw = 0.

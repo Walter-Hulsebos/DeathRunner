@@ -27,7 +27,7 @@ namespace QFSW.QC.Suggestors.Tags
         /// <param name="suggestions">String-convertible suggestions.</param>
         public SuggestionsAttribute(params object[] suggestions)
         {
-            InlineSuggestionsTag tag = new InlineSuggestionsTag(
+            InlineSuggestionsTag tag = new(
                 suggestions.Select(o => o.ToString()));
             _tags = new IQcSuggestorTag[] { tag };
         }

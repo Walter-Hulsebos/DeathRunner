@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3964019245201651541}
   - component: {fileID: 2241609273548161991}
   - component: {fileID: 5479612854161055464}
-  - component: {fileID: 8921326948379801435}
   m_Layer: 0
   m_Name: Box2
   m_TagString: Untagged
@@ -93,22 +92,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8271444035749256132}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 1353746659569323740, guid: a2423fc22f0dd6c45ace4f48c09c4571, type: 3}
---- !u!114 &8921326948379801435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8271444035749256132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: ac2c25b2916bcd042bc064cf9f2fa0dd, type: 2}

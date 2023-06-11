@@ -9,7 +9,7 @@ namespace Sisus.ComponentNames.EditorOnly
 {
 	internal static class MonoScriptSummaryParser
 	{
-		private static readonly StringBuilder stringBuilder = new StringBuilder();
+		private static readonly StringBuilder stringBuilder = new();
 
 		public static bool TryParseSummary([NotNull] MonoBehaviour monoBehaviour, out string summary)
 		{

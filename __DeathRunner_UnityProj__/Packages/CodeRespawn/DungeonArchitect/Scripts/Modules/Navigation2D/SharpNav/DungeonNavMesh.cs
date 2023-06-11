@@ -22,7 +22,7 @@ namespace DungeonArchitect.Navigation {
 		public float cellSize = 0.2f;
 		public int maxCrowdAgents = 50;
 		public Mesh visualization;
-		public Color visualizationColor = new Color(0, 0.5f, 1, 0.25f);
+		public Color visualizationColor = new(0, 0.5f, 1, 0.25f);
 		public bool visualize2D = false;
 
         public event OnNavmeshBuiltDelegate OnNavmeshBuilt;
@@ -82,7 +82,7 @@ namespace DungeonArchitect.Navigation {
 
 		// Use this for initialization
 		public void Build() {
-			List<Triangle3> triangles = new List<Triangle3>();
+			List<Triangle3> triangles = new();
 			// Get all the triangle provider components attached to this game object
 			var triangleProviders = GetComponents<NavigationTriangleProvider>();
 			foreach (var triangleProvider in triangleProviders) {

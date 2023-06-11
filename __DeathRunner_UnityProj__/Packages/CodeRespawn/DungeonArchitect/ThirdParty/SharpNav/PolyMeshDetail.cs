@@ -115,7 +115,7 @@ namespace SharpNav
 				bounds[i] = new BBox2i(xmin, zmin, xmax, zmax);
 			}
 
-			HeightPatch hp = new HeightPatch(0, 0, maxhw, maxhh);
+			HeightPatch hp = new(0, 0, maxhw, maxhh);
 
 			this.meshes = new MeshData[mesh.PolyCount];
 
@@ -132,7 +132,7 @@ namespace SharpNav
 						break;
 
 					PolyVertex pv = mesh.Verts[pvi];
-					Vector3 v = new Vector3(pv.X, pv.Y, pv.Z);
+					Vector3 v = new(pv.X, pv.Y, pv.Z);
 					v.X *= mesh.CellSize;
 					v.Y *= mesh.CellHeight;
 					v.Z *= mesh.CellSize;
@@ -145,10 +145,10 @@ namespace SharpNav
 				hp.Resize(bound.Min.X, bound.Min.Y, bound.Max.X - bound.Min.X, bound.Max.Y - bound.Min.Y);
 				GetHeightData(compactField, p, npoly, mesh.Verts, mesh.BorderSize, hp);
 
-				List<Vector3> tempVerts = new List<Vector3>();
-				List<TriangleData> tempTris = new List<TriangleData>(128);
-				List<EdgeInfo> edges = new List<EdgeInfo>(16);
-				List<SamplingData> samples = new List<SamplingData>(128);
+				List<Vector3> tempVerts = new();
+				List<TriangleData> tempTris = new(128);
+				List<EdgeInfo> edges = new(16);
+				List<SamplingData> samples = new(128);
 				BuildPolyDetail(poly, npoly, sampleDist, sampleMaxError, compactField, hp, tempVerts, tempTris, edges, samples);
 
 				//more detail verts
@@ -625,7 +625,7 @@ namespace SharpNav
 			const int MAX_TRIS = 255;
 			const int MAX_VERTS_PER_EDGE = 32;
 			Vector3[] edge = new Vector3[MAX_VERTS_PER_EDGE + 1];
-			List<int> hull = new List<int>(MAX_VERTS);
+			List<int> hull = new(MAX_VERTS);
 
 			//fill up vertex array
 			for (int i = 0; i < numMeshVerts; ++i)
@@ -775,7 +775,7 @@ namespace SharpNav
 			if (sampleDist > 0)
 			{
 				//create sample locations
-				BBox3 bounds = new BBox3();
+				BBox3 bounds = new();
 				bounds.Min = polyMeshVerts[0];
 				bounds.Max = polyMeshVerts[0];
 
@@ -796,13 +796,13 @@ namespace SharpNav
 				{
 					for (int x = x0; x < x1; x++)
 					{
-						Vector3 pt = new Vector3(x * sampleDist, (bounds.Max.Y + bounds.Min.Y) * 0.5f, z * sampleDist);
+						Vector3 pt = new(x * sampleDist, (bounds.Max.Y + bounds.Min.Y) * 0.5f, z * sampleDist);
 
 						//make sure samples aren't too close to edge
 						if (Distance.PointToPolygonSquared(pt, polyMeshVerts, numMeshVerts) > -sampleDist * 0.5f)
 							continue;
 
-						SamplingData sd = new SamplingData(x, GetHeight(pt, ics, compactField.CellHeight, hp), z, false);
+						SamplingData sd = new(x, GetHeight(pt, ics, compactField.CellHeight, hp), z, false);
 						samples.Add(sd);
 					}
 				}
@@ -1246,7 +1246,7 @@ namespace SharpNav
 			int e = FindEdge(edges, s, t);
 			if (e == -1)
 			{
-				EdgeInfo edge = new EdgeInfo(s, t, rightFace, leftFace);
+				EdgeInfo edge = new(s, t, rightFace, leftFace);
 				edges.Add(edge);
 
 				return edges.Count - 1;

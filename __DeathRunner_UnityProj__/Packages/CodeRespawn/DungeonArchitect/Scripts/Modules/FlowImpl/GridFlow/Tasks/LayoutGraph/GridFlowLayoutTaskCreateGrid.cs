@@ -8,7 +8,7 @@ namespace DungeonArchitect.Flow.Impl.GridFlow.Tasks
     [FlowExecNodeInfo("Create Grid", "Layout Graph/", 1000)]
     public class GridFlowLayoutTaskCreateGrid : FlowExecTask
     {
-        public Vector2Int resolution = new Vector2Int(6, 5);
+        public Vector2Int resolution = new(6, 5);
 
         public override FlowTaskExecOutput Execute(FlowTaskExecContext context, FlowTaskExecInput input)
         {

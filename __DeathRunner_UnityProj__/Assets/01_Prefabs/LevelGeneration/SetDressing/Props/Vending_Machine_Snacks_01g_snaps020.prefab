@@ -92,9 +92,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2329648391755819720}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.11829029, y: 0.04727928, z: 0.17369637}
   m_Center: {x: 0.0004165843, y: 0.023921316, z: -0.00036342815}
 --- !u!1 &2329648391755819722
@@ -189,9 +197,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2329648391755819722}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.11829029, y: 0.04797339, z: 0.17369637}
   m_Center: {x: 0.0004165843, y: 0.023986528, z: -0.00036342815}
 --- !u!1 &2329648391755819724
@@ -286,9 +302,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2329648391755819724}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.11829029, y: 0.04797339, z: 0.17413856}
   m_Center: {x: 0.0004165843, y: 0.023986528, z: -0.00014232844}
 --- !u!1 &2329648391755819726
@@ -301,7 +325,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2329648391756052206}
   - component: {fileID: 2329648391771071054}
-  - component: {fileID: 7636636724335999313}
   m_Layer: 0
   m_Name: Vending_Machine_Snacks_01g_snaps020
   m_TagString: Untagged
@@ -354,16 +377,3 @@ LODGroup:
     renderers:
     - renderer: {fileID: 2329648391753626634}
   m_Enabled: 1
---- !u!114 &7636636724335999313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2329648391755819726}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: f067b40972237d44daa94583c4cf6411, type: 2}

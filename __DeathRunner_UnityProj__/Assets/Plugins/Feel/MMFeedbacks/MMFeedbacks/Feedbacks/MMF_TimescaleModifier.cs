@@ -62,7 +62,7 @@ namespace MoreMountains.Feedbacks
 		/// in Duration mode, the curve to use to lerp the timescale
 		[Tooltip("in Duration mode, the curve to use to lerp the timescale")]
 		[MMFEnumCondition("TimescaleLerpMode", (int)MMTimeScaleLerpModes.Duration)]
-		public MMTweenType TimescaleLerpCurve = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1))); 
+		public MMTweenType TimescaleLerpCurve = new( new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1))); 
 		/// in Duration mode, the duration of the timescale interpolation, in unscaled time seconds
 		[Tooltip("in Duration mode, the duration of the timescale interpolation, in unscaled time seconds")]
 		[MMFEnumCondition("TimescaleLerpMode", (int)MMTimeScaleLerpModes.Duration)]
@@ -74,7 +74,7 @@ namespace MoreMountains.Feedbacks
 		/// in Duration mode, the curve to use to lerp the timescale
 		[Tooltip("in Duration mode, the curve to use to lerp the timescale")]
 		[MMFEnumCondition("TimescaleLerpMode", (int)MMTimeScaleLerpModes.Duration)]
-		public MMTweenType TimescaleLerpCurveOnReset = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
+		public MMTweenType TimescaleLerpCurveOnReset = new( new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// in Duration mode, the duration of the timescale interpolation, in unscaled time seconds
 		[Tooltip("in Duration mode, the duration of the timescale interpolation, in unscaled time seconds")]
 		[MMFEnumCondition("TimescaleLerpMode", (int)MMTimeScaleLerpModes.Duration)]

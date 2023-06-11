@@ -37,8 +37,8 @@ namespace DungeonArchitect.Builders.FloorPlan
 
 	    public int Id;
 	    public FloorChunkType ChunkType;
-	    public Rectangle Bounds = new Rectangle();
-	    public List<IntVector> BoundCells = new List<IntVector>();
+	    public Rectangle Bounds = new();
+	    public List<IntVector> BoundCells = new();
 
 	    public bool bReachable;
 	    public float Priority;
@@ -155,7 +155,7 @@ namespace DungeonArchitect.Builders.FloorPlan
         public void CacheChunkPositions()
         {
             
-	        List<FloorChunk> Chunks = new List<FloorChunk>();
+	        List<FloorChunk> Chunks = new();
 	        GetChunks(Chunks);
 
 	        foreach (FloorChunk Chunk in Chunks) {
@@ -216,8 +216,8 @@ namespace DungeonArchitect.Builders.FloorPlan
             return Chunks.Values.ToArray();
         }
 
-        private Dictionary<int, FloorChunk> Chunks = new Dictionary<int,FloorChunk>();
-        private Dictionary<int, FChunkCacheNode> CachePositionToChunk = new Dictionary<int,FChunkCacheNode>();
+        private Dictionary<int, FloorChunk> Chunks = new();
+        private Dictionary<int, FChunkCacheNode> CachePositionToChunk = new();
         private int IdCounter;
     }
 
@@ -257,7 +257,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 		    DoorMap.Clear();
 	    }
 
-        private Dictionary<IntVector, HashSet<IntVector>> DoorMap = new Dictionary<IntVector,HashSet<IntVector>>();
+        private Dictionary<IntVector, HashSet<IntVector>> DoorMap = new();
     }
 
 }

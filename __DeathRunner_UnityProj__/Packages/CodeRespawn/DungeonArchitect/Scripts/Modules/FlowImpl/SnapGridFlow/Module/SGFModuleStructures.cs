@@ -45,8 +45,8 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow
         // The doors in this module
         public SgfModuleDoor[] Doors = new SgfModuleDoor[0];
 
-        public HashSet<SgfModuleDoor> Incoming = new HashSet<SgfModuleDoor>();
-        public HashSet<SgfModuleDoor> Outgoing = new HashSet<SgfModuleDoor>();
+        public HashSet<SgfModuleDoor> Incoming = new();
+        public HashSet<SgfModuleDoor> Outgoing = new();
 
         public Bounds GetModuleBounds()
         {

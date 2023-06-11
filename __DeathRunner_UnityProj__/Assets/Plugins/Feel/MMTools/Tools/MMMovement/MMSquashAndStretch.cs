@@ -38,23 +38,23 @@ namespace MoreMountains.Tools
 
 		[Header("Rescale")]
 		/// the minimum scale to apply to this object
-		public Vector2 MinimumScale = new Vector2(0.5f, 0.5f);
+		public Vector2 MinimumScale = new(0.5f, 0.5f);
 		/// the maximum scale to apply to this object
-		public Vector2 MaximumScale = new Vector2(2f, 2f);
+		public Vector2 MaximumScale = new(2f, 2f);
 
 		[Header("Squash")]
 		/// if this is true, the object will squash once velocity goes below the specified threshold
 		public bool AutoSquashOnStop = false;
 		/// the curve to apply when squashing the object (this describes scale on x and z, will be inverted for y to maintain mass)
-		public AnimationCurve SquashCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
+		public AnimationCurve SquashCurve = new(new Keyframe(0, 0), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
 		/// the velocity threshold after which a squash can be triggered if the object stops
 		public float SquashVelocityThreshold = 0.1f;
 		/// the maximum duration of the squash (will be reduced if velocity is low)
 		[MMVector("Min","Max")]
-		public Vector2 SquashDuration = new Vector2(0.25f, 0.5f);
+		public Vector2 SquashDuration = new(0.25f, 0.5f);
 		/// the maximum intensity of the squash
 		[MMVector("Min", "Max")]
-		public Vector2 SquashIntensity = new Vector2(0f, 1f);
+		public Vector2 SquashIntensity = new(0f, 1f);
 
 		[Header("Spring")] 
 		/// whether or not to add extra spring to the squash and stretch

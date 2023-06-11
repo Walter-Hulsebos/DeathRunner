@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace DungeonArchitect.Samples.ShooterGame {
 	public class MiniMapEnemyDots : MonoBehaviour {
 		public GameObject enemyDotTemplate;
-		public Queue<GameObject> dots = new Queue<GameObject>();
+		public Queue<GameObject> dots = new();
 		public Transform baseDungeon;
 		public Transform miniMapDungeon;
 

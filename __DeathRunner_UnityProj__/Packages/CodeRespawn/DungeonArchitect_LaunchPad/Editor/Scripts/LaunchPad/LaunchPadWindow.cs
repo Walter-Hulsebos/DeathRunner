@@ -30,7 +30,7 @@ namespace DungeonArchitect.Editors.LaunchPad
 
         UISystem uiSystem;
         UIRenderer renderer;
-        Color backgroundColor = new Color(0.1f, 0.1f, 0.1f);
+        Color backgroundColor = new(0.1f, 0.1f, 0.1f);
         BreadCrumbWidget breadCrumb;
         PanelWidget pageHost;
         ScrollPanelWidget pageScroller;
@@ -109,7 +109,7 @@ namespace DungeonArchitect.Editors.LaunchPad
             }
         }
 
-        private LaunchPadCategoryDataSource categoryDataSource = new LaunchPadCategoryDataSource();
+        private LaunchPadCategoryDataSource categoryDataSource = new();
         
         void LoadCategories()
         {

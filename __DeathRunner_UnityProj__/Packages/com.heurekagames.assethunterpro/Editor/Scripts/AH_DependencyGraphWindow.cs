@@ -28,7 +28,7 @@ namespace HeurekaGames.AssetHunterPRO
         private UnityEngine.Object previewObject;
 
         //UI Rect
-        Vector2 uiStartPos = new Vector2(10, 50);
+        Vector2 uiStartPos = new(10, 50);
         [SerializeField] private bool seeRefsToInProject;
         [SerializeField] private bool seeRefsFromInProject;
         private Texture2D previewTexture;
@@ -306,7 +306,7 @@ namespace HeurekaGames.AssetHunterPRO
                 if (!dependencyGraphManager.HasSelection)
                     GUILayout.FlexibleSpace();
 
-                GUIContent RefreshGUIContent = new GUIContent(guiContentRefresh);
+                GUIContent RefreshGUIContent = new(guiContentRefresh);
                 Color origColor = GUI.color;
                 if (dependencyGraphManager.IsDirty)
                 {
@@ -396,7 +396,7 @@ namespace HeurekaGames.AssetHunterPRO
         {
             get
             {
-                Rect newRect = new Rect(uiStartPos.x, uiStartPos.y + 20 + (AH_SettingsManager.Instance.HideButtonText ? 20 : 0), position.width - (uiStartPos.x * 2), position.height - 90 - (AH_SettingsManager.Instance.HideButtonText ? 20 : 0));
+                Rect newRect = new(uiStartPos.x, uiStartPos.y + 20 + (AH_SettingsManager.Instance.HideButtonText ? 20 : 0), position.width - (uiStartPos.x * 2), position.height - 90 - (AH_SettingsManager.Instance.HideButtonText ? 20 : 0));
                 return newRect;
             }
         }

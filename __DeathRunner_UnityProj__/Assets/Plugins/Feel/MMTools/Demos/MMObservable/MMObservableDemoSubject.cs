@@ -10,7 +10,7 @@ namespace MoreMountains.Tools
 	public class MMObservableDemoSubject : MonoBehaviour
 	{
 		/// a public float we expose, outputting the x position of our object
-		public MMObservable<float> PositionX = new MMObservable<float>();
+		public MMObservable<float> PositionX = new();
 
 		/// <summary>
 		/// On Update we update our x position

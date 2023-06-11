@@ -27,8 +27,8 @@ namespace DungeonArchitect.UI.Widgets
         public bool freeSize = false;
         public float minWindowSize = 100;
         public float barSize = 6;
-        public Color barColor = new Color(0.20f, 0.20f, 0.20f);
-        public Color barHighlightColor = new Color(0.15f, 0.15f, 0.15f);
+        public Color barColor = new(0.20f, 0.20f, 0.20f);
+        public Color barHighlightColor = new(0.15f, 0.15f, 0.15f);
         public event OnSplitBarResized SplitBarDragged;
 
         public Splitter(SplitterDirection direction)
@@ -36,7 +36,7 @@ namespace DungeonArchitect.UI.Widgets
             this.direction = direction;
         }
 
-        private List<SplitterNode> nodes = new List<SplitterNode>();
+        private List<SplitterNode> nodes = new();
 
         public Splitter SetMinWindowSize(float minWindowSize)
         {
@@ -194,7 +194,7 @@ namespace DungeonArchitect.UI.Widgets
 
         Rect GetWidgetBounds(Vector2 hostSize, float offset, float size)
         {
-            Rect bounds = new Rect(Vector2.zero, hostSize);
+            Rect bounds = new(Vector2.zero, hostSize);
             if (Direction == SplitterDirection.Horizontal)
             {
                 bounds.x += offset;

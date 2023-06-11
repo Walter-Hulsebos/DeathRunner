@@ -674,7 +674,7 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             public Vertex* Vertex;
             public double YStar;
 
-            public double2 EventPoint => new double2(Vertex->Point.x, YStar);
+            public double2 EventPoint => new(Vertex->Point.x, YStar);
         }
 
         internal struct SiteComparer : IComparer<SiteEvent>

@@ -42,51 +42,51 @@ namespace MoreMountains.Tools
 		[MMInformation("Set the size (in world units), padding, back and front colors of the healthbar.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// if the healthbar is drawn, its size in world units
 		[Tooltip("if the healthbar is drawn, its size in world units")]
-		public Vector2 Size = new Vector2(1f,0.2f);
+		public Vector2 Size = new(1f,0.2f);
 		/// if the healthbar is drawn, the padding to apply to the foreground, in world units
 		[Tooltip("if the healthbar is drawn, the padding to apply to the foreground, in world units")]
-		public Vector2 BackgroundPadding = new Vector2(0.01f,0.01f);
+		public Vector2 BackgroundPadding = new(0.01f,0.01f);
 		/// the rotation to apply to the MMHealthBarContainer when drawing it
 		[Tooltip("the rotation to apply to the MMHealthBarContainer when drawing it")]
 		public Vector3 InitialRotationAngles;
 		/// if the healthbar is drawn, the color of its foreground
 		[Tooltip("if the healthbar is drawn, the color of its foreground")]
-		public Gradient ForegroundColor = new Gradient()
+		public Gradient ForegroundColor = new()
 		{
 			colorKeys = new GradientColorKey[2] {
-				new GradientColorKey(MMColors.BestRed, 0),
-				new GradientColorKey(MMColors.BestRed, 1f)
+				new(MMColors.BestRed, 0),
+				new(MMColors.BestRed, 1f)
 			},
-			alphaKeys = new GradientAlphaKey[2] {new GradientAlphaKey(1, 0),new GradientAlphaKey(1, 1)}};
+			alphaKeys = new GradientAlphaKey[2] {new(1, 0),new(1, 1)}};
 		/// if the healthbar is drawn, the color of its delayed bar
 		[Tooltip("if the healthbar is drawn, the color of its delayed bar")]
-		public Gradient DelayedColor = new Gradient()
+		public Gradient DelayedColor = new()
 		{
 			colorKeys = new GradientColorKey[2] {
-				new GradientColorKey(MMColors.Orange, 0),
-				new GradientColorKey(MMColors.Orange, 1f)
+				new(MMColors.Orange, 0),
+				new(MMColors.Orange, 1f)
 			},
-			alphaKeys = new GradientAlphaKey[2] { new GradientAlphaKey(1, 0), new GradientAlphaKey(1, 1) }
+			alphaKeys = new GradientAlphaKey[2] { new(1, 0), new(1, 1) }
 		};
 		/// if the healthbar is drawn, the color of its border
 		[Tooltip("if the healthbar is drawn, the color of its border")]
-		public Gradient BorderColor = new Gradient()
+		public Gradient BorderColor = new()
 		{
 			colorKeys = new GradientColorKey[2] {
-				new GradientColorKey(MMColors.AntiqueWhite, 0),
-				new GradientColorKey(MMColors.AntiqueWhite, 1f)
+				new(MMColors.AntiqueWhite, 0),
+				new(MMColors.AntiqueWhite, 1f)
 			},
-			alphaKeys = new GradientAlphaKey[2] { new GradientAlphaKey(1, 0), new GradientAlphaKey(1, 1) }
+			alphaKeys = new GradientAlphaKey[2] { new(1, 0), new(1, 1) }
 		};
 		/// if the healthbar is drawn, the color of its background
 		[Tooltip("if the healthbar is drawn, the color of its background")]
-		public Gradient BackgroundColor = new Gradient()
+		public Gradient BackgroundColor = new()
 		{
 			colorKeys = new GradientColorKey[2] {
-				new GradientColorKey(MMColors.Black, 0),
-				new GradientColorKey(MMColors.Black, 1f)
+				new(MMColors.Black, 0),
+				new(MMColors.Black, 1f)
 			},
-			alphaKeys = new GradientAlphaKey[2] { new GradientAlphaKey(1, 0), new GradientAlphaKey(1, 1) }
+			alphaKeys = new GradientAlphaKey[2] { new(1, 0), new(1, 1) }
 		};
 		/// the name of the sorting layer to put this health bar on
 		[Tooltip("the name of the sorting layer to put this health bar on")]
@@ -136,7 +136,7 @@ namespace MoreMountains.Tools
 		[MMInformation("Set the offset (in world units), relative to the object's center, to which the health bar will be displayed.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the offset to apply to the healthbar compared to the object's center
 		[Tooltip("the offset to apply to the healthbar compared to the object's center")]
-		public Vector3 HealthBarOffset = new Vector3(0f,1f,0f);
+		public Vector3 HealthBarOffset = new(0f,1f,0f);
 
 		[Header("Display")]
 		[MMInformation("Here you can define whether or not the healthbar should always be visible. If not, you can set here how long after a hit it'll remain visible.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
@@ -232,7 +232,7 @@ namespace MoreMountains.Tools
 		/// </summary>
 		protected virtual void DrawHealthBar()
 		{
-			GameObject newGameObject = new GameObject();
+			GameObject newGameObject = new();
 			SceneManager.MoveGameObjectToScene(newGameObject, this.gameObject.scene);
 			newGameObject.name = "HealthBar|"+this.gameObject.name;
 
@@ -260,12 +260,12 @@ namespace MoreMountains.Tools
 				newCanvas.sortingLayerName = SortingLayerName;
 			}
 
-			GameObject container = new GameObject();
+			GameObject container = new();
 			container.transform.SetParent(newGameObject.transform);
 			container.name = "MMProgressBarContainer";
 			container.transform.localScale = Vector3.one;
             
-			GameObject borderImageGameObject = new GameObject();
+			GameObject borderImageGameObject = new();
 			borderImageGameObject.transform.SetParent(container.transform);
 			borderImageGameObject.name = "HealthBar Border";
 			_borderImage = borderImageGameObject.AddComponent<Image>();
@@ -274,7 +274,7 @@ namespace MoreMountains.Tools
 			_borderImage.GetComponent<RectTransform>().sizeDelta = Size;
 			_borderImage.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
 
-			GameObject bgImageGameObject = new GameObject();
+			GameObject bgImageGameObject = new();
 			bgImageGameObject.transform.SetParent(container.transform);
 			bgImageGameObject.name = "HealthBar Background";
 			_backgroundImage = bgImageGameObject.AddComponent<Image>();
@@ -284,7 +284,7 @@ namespace MoreMountains.Tools
 			_backgroundImage.GetComponent<RectTransform>().anchoredPosition = -_backgroundImage.GetComponent<RectTransform>().sizeDelta/2;
 			_backgroundImage.GetComponent<RectTransform>().pivot = Vector2.zero;
 
-			GameObject delayedImageGameObject = new GameObject();
+			GameObject delayedImageGameObject = new();
 			delayedImageGameObject.transform.SetParent(container.transform);
 			delayedImageGameObject.name = "HealthBar Delayed Foreground";
 			_delayedImage = delayedImageGameObject.AddComponent<Image>();
@@ -294,7 +294,7 @@ namespace MoreMountains.Tools
 			_delayedImage.GetComponent<RectTransform>().anchoredPosition = -_delayedImage.GetComponent<RectTransform>().sizeDelta/2;
 			_delayedImage.GetComponent<RectTransform>().pivot = Vector2.zero;
 
-			GameObject frontImageGameObject = new GameObject();
+			GameObject frontImageGameObject = new();
 			frontImageGameObject.transform.SetParent(container.transform);
 			frontImageGameObject.name = "HealthBar Foreground";
 			_foregroundImage = frontImageGameObject.AddComponent<Image>();

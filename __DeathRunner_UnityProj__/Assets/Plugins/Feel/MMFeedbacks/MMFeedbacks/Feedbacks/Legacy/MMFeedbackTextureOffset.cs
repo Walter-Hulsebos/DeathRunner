@@ -53,7 +53,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to tween the offset on
 		[Tooltip("the curve to tween the offset on")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
-		public AnimationCurve OffsetCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve OffsetCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the offset curve's 0 to
 		[Tooltip("the value to remap the offset curve's 0 to")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]

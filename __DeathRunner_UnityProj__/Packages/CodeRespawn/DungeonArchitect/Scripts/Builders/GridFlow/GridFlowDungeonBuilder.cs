@@ -72,7 +72,7 @@ namespace DungeonArchitect.Builders.GridFlow
             var random = new System.Random((int)gridFlowConfig.Seed);
             var domainExtensions = new FlowDomainExtensions();
 
-            FlowExecutor executor = new FlowExecutor();
+            FlowExecutor executor = new();
             if (!executor.Execute(execGraph, random, domainExtensions,gridFlowConfig.numGraphRetries, out execNodeOutputRegistry))
             {
                 Debug.LogError("Failed to generate level layout. Please check your grid flow graph. Alternatively, increase the 'Num Graph Retries' parameter in the config");
@@ -110,7 +110,7 @@ namespace DungeonArchitect.Builders.GridFlow
 
         class LayoutGraphLookup
         {
-            private Dictionary<IntVector2, FlowLayoutGraphNode> nodesByCoord = new Dictionary<IntVector2, FlowLayoutGraphNode>();
+            private Dictionary<IntVector2, FlowLayoutGraphNode> nodesByCoord = new();
             public LayoutGraphLookup(FlowLayoutGraph layoutGraph)
             {
                 foreach (var node in layoutGraph.Nodes)

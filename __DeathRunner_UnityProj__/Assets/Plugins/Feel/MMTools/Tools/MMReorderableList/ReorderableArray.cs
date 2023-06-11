@@ -9,7 +9,7 @@ namespace MoreMountains.Tools
 	public abstract class MMReorderableArray<T> : ICloneable, IList<T>, ICollection<T>, IEnumerable<T> {
 
 		[SerializeField]
-		private List<T> array = new List<T>();
+		private List<T> array = new();
 
 		public MMReorderableArray()
 			: this(0) {

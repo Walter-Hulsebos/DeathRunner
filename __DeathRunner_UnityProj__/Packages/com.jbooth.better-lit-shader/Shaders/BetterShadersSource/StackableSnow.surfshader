@@ -37,7 +37,7 @@ BEGIN_PROPERTIES
     _SnowAmount("Snow Amount", Range(0,1)) = 1
     _SnowAngle("Snow Angle Falloff", Range(0,2)) = 1
     _SnowContrast("Snow Contrast", Range(0.5, 4)) = 1.5
-    _SnowVertexHeight("Snow Vertex Height", Range(0,1)) = 0.05
+    _SnowVertexHeight("Snow Vertex Height", Range(0,1)) = 0.0
     _SnowWorldFade("Snow Height Fade", Vector) = (100, 50, 0, 0)
     _SnowTraxAlbedo("Snow Trax Albedo", 2D) = "white" {}
     _SnowTraxTint("Snow Trax Albedo", Color) = (1,1,1,1)
@@ -101,7 +101,7 @@ BEGIN_CODE
 
    void ModifyVertex(inout VertexData v, inout ExtraV2F e)
    {
-    #if (_SNOW)
+    #if _SNOW && !__ROADSHADER__
         float amount = _SnowAmount;
         if (_SnowMode > 0)
            amount = _Global_SnowLevel;
@@ -132,6 +132,7 @@ BEGIN_CODE
         #if _SNOWNOISE
             snowAmount *= 1 - saturate(1 - (snowAmount * 2 - 1)) * Noise2D(worldPos.xz * _SnowNoiseFreq + _SnowNoiseOffset) * _SnowNoiseAmp;
         #endif
+
         snowAmount = saturate(snowAmount);
 
         #if _LAYERVERTEXMASK
@@ -147,7 +148,7 @@ BEGIN_CODE
 
    void ModifyTessellatedVertex(inout VertexData v, inout ExtraV2F e)
    {
-      #if _TESSELLATION_ON && _SNOW && _HAS_LIT_TESSELLATION
+      #if _TESSELLATION_ON && _SNOW && _HAS_LIT_TESSELLATION && !__ROADSHADER__
          float amount = _SnowAmount;
          if (_SnowMode > 0)
            amount = _Global_SnowLevel;
@@ -321,7 +322,7 @@ BEGIN_CODE
           snowAmount -= _SnowAngle;
           snowAmount *= _SnowContrast;
           snowAmount = saturate(snowAmount) - (1-amount) * (1-amount);
-
+          
           if (_SnowWorldFade.z > 0)
           {
              float2 swf = _SnowWorldFade.xy;
@@ -334,6 +335,19 @@ BEGIN_CODE
           #if _SNOWNOISE
             snowAmount *= 1 - saturate(1 - (snowAmount * 2 - 1)) * Noise2D(d.worldSpacePosition.xz * _SnowNoiseFreq + _SnowNoiseOffset) * _SnowNoiseAmp;
           #endif
+
+          // use height map during transition to full coverage
+          float hamount = saturate(amount * 1.25);
+          snowAmount -= o.Height * (1-hamount);
+  
+          #if _PUDDLES
+            snowAmount -= d.blackboard.puddleAmount * (1-(hamount*hamount));
+          #endif
+
+          #if _ROADWEAR
+            snowAmount -= d.blackboard.roadWear * (1-(hamount*hamount));
+          #endif
+          
           snowAmount = saturate(snowAmount);
 
           float2 uv = d.worldSpacePosition.xz * float2(1, -1) * _SnowAlbedo_ST.xy + _SnowAlbedo_ST.zw;

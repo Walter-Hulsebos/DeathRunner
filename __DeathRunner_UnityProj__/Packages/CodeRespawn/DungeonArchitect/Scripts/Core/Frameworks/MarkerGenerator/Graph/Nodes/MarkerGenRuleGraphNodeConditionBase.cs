@@ -6,8 +6,8 @@ namespace DungeonArchitect.MarkerGenerator.Nodes
 {
     public abstract class MarkerGenRuleGraphNodeConditionBase : MarkerGenRuleGraphNode
     {
-        public override Color BodyColor => new Color(0.15f, 0.1f, 0.1f);
-        public override Color TitleColor => new Color(0.3f, 0.1f, 0.1f);
+        public override Color BodyColor => new(0.15f, 0.1f, 0.1f);
+        public override Color TitleColor => new(0.3f, 0.1f, 0.1f);
 
         protected void CreateInputPin(string pinName)
         {

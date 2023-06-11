@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 6484998152669650499}
   - component: {fileID: 9087032852991748745}
   - component: {fileID: 3327338090050839922}
-  - component: {fileID: 6123571699061903800}
   m_Layer: 0
   m_Name: TrashBag1
   m_TagString: Untagged
@@ -93,22 +92,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7285518304331893596}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 212370497460711607, guid: 674ddefbc5037d94dab09708f895c6cc, type: 3}
---- !u!114 &6123571699061903800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7285518304331893596}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 127303dd3bc1b434baa79243c5d22f64, type: 2}

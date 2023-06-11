@@ -33,7 +33,7 @@ namespace MoreMountains.Feedbacks
 		public bool RepeatUntilStopped = false;
 		/// the properties of the shake (duration, intensity, frequenc)
 		[Tooltip("the properties of the shake (duration, intensity, frequenc)")]
-		public MMCameraShakeProperties CameraShakeProperties = new MMCameraShakeProperties(0.1f, 0.2f, 40f);
+		public MMCameraShakeProperties CameraShakeProperties = new(0.1f, 0.2f, 40f);
 
 		/// <summary>
 		/// On Play, sends a shake camera event

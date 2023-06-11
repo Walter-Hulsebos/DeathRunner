@@ -19,8 +19,8 @@ namespace DungeonArchitect.Flow.Domains.Tilemap.Tasks
         public float maxHeight = -5;
         public float seaLevel = -10;
 
-        public Color landColor = new Color(0.4f, 0.2f, 0);
-        public Color seaColor = new Color(0, 0, 0.4f);
+        public Color landColor = new(0.4f, 0.2f, 0);
+        public Color seaColor = new(0, 0, 0.4f);
         public float minColorMultiplier = 0.1f;
 
         public override FlowTaskExecOutput Execute(FlowTaskExecContext context, FlowTaskExecInput input)

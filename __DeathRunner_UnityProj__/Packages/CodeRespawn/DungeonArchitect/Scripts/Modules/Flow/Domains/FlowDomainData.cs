@@ -11,7 +11,7 @@ namespace DungeonArchitect.Flow.Domains
     [System.Serializable]
     public class FlowDomainDataRegistry
     {
-        private Dictionary<System.Type, IFlowDomainData> crossDomainData = new Dictionary<System.Type, IFlowDomainData>();
+        private Dictionary<System.Type, IFlowDomainData> crossDomainData = new();
         
         public T Get<T>() where T : IFlowDomainData, new()
         {
@@ -20,7 +20,7 @@ namespace DungeonArchitect.Flow.Domains
                 return (T)crossDomainData[typeof(T)];
             }
 
-            T data = new T();
+            T data = new();
             crossDomainData.Add(typeof(T), data);
             return data;
         }

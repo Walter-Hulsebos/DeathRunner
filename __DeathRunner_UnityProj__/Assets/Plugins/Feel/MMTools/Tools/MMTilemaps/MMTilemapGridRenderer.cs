@@ -145,7 +145,7 @@ namespace MoreMountains.Tools
 					{
 						if (counter >= startIndex)
 						{
-							Vector3Int tilePosition = new Vector3Int(i, j, 0);
+							Vector3Int tilePosition = new(i, j, 0);
 							tilePosition += ComputeOffset(width, height);
 							tilemap.SetTile(tilePosition, tile);
 							drawCount++;
@@ -170,7 +170,7 @@ namespace MoreMountains.Tools
 		/// <returns></returns>
 		public static Vector3Int ComputeOffset(int width, int height)
 		{
-			Vector3Int offset = new Vector3Int(width + 2, height + 2, 0);
+			Vector3Int offset = new(width + 2, height + 2, 0);
 			offset = offset - offset/2;
 			return -offset;
 		}

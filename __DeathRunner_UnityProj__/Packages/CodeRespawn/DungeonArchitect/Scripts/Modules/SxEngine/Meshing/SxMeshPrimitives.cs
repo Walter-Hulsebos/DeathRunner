@@ -20,10 +20,10 @@ namespace DungeonArchitect.SxEngine
          
             var vertices = new SxMeshVertex[]
             {
-                new SxMeshVertex(new Vector3(-1, -1, 0), color, new Vector2(0, 0)),
-                new SxMeshVertex(new Vector3(1, -1, 0), color, new Vector2(1, 0)),
-                new SxMeshVertex(new Vector3(1, 1, 0), color, new Vector2(1, 1)),
-                new SxMeshVertex(new Vector3(-1, 1, 0), color, new Vector2(0, 1))
+                new(new Vector3(-1, -1, 0), color, new Vector2(0, 0)),
+                new(new Vector3(1, -1, 0), color, new Vector2(1, 0)),
+                new(new Vector3(1, 1, 0), color, new Vector2(1, 1)),
+                new(new Vector3(-1, 1, 0), color, new Vector2(0, 1))
             };
 
             CreateSection(0, GL.QUADS, vertices);   

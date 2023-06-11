@@ -19,7 +19,7 @@ namespace MoreMountains.Feedbacks
 
 		public virtual MMSequenceNote Copy()
 		{
-			MMSequenceNote newNote = new MMSequenceNote();
+			MMSequenceNote newNote = new();
 			newNote.ID = this.ID;
 			newNote.Timestamp = this.Timestamp;
 			return newNote;
@@ -168,7 +168,7 @@ namespace MoreMountains.Feedbacks
 				QuantizedSequence[i].Line = new List<MMSequenceNote>();
 				for (int j = 0; j < numberOfBeatsInSequence; j++)
 				{
-					MMSequenceNote newNote = new MMSequenceNote();
+					MMSequenceNote newNote = new();
 					newNote.ID = -1;
 					newNote.Timestamp = _quantizedBeats[j];
 					QuantizedSequence[i].Line.Add(newNote);

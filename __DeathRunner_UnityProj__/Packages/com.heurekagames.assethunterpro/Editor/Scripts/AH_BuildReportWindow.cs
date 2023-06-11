@@ -19,7 +19,7 @@ namespace HeurekaGames.AssetHunterPRO
         private AH_BuildReportWindowData data;
 
         //Adding same string multiple times in order to show more green and yellow than orange and red
-        public static readonly List<string> ColorDotIconList = new List<string>() {
+        public static readonly List<string> ColorDotIconList = new() {
             "sv_icon_dot6_pix16_gizmo",
             "sv_icon_dot5_pix16_gizmo",
             "sv_icon_dot5_pix16_gizmo",
@@ -160,7 +160,7 @@ namespace HeurekaGames.AssetHunterPRO
             {
                 //Find the relative value of all items so we can show which files are taking up the most space
                 //A way to keep track of the sorted values
-                List<AH_BuildReportWindowFileInfo> tmpList = new List<AH_BuildReportWindowFileInfo>();
+                List<AH_BuildReportWindowFileInfo> tmpList = new();
                 foreach (var infoList in roleInfoList)
                 {
                     foreach (var fileInfo in infoList.fileInfoList)
@@ -229,7 +229,7 @@ namespace HeurekaGames.AssetHunterPRO
             [SerializeField] internal string path;
             [SerializeField] internal ulong size;
             [SerializeField] internal string sizeString;
-            [SerializeField] GUIContent content = new GUIContent();
+            [SerializeField] GUIContent content = new();
             [SerializeField] int fileSizeGroup = 0;
 
             public AH_BuildReportWindowFileInfo(AH_BuildReportFileInfo item)

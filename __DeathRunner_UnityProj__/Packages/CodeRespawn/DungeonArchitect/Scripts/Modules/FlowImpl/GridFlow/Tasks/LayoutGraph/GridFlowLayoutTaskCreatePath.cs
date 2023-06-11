@@ -25,7 +25,7 @@ namespace DungeonArchitect.Flow.Impl.GridFlow.Tasks
         // A ScriptableObject that implements ISGFLayoutNodePositionConstraint
         public string nodePositionConstraintScriptClassName;
         
-        private readonly InstanceCache instanceCache = new InstanceCache();
+        private readonly InstanceCache instanceCache = new();
         
         private Vector2Int FindGridSize(FlowLayoutGraph graph)
         {

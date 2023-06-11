@@ -12,7 +12,7 @@ namespace DungeonArchitect.Utils
         const int M = 2147483647;
         
         uint seed = 0;
-        Random random = new Random();
+        Random random = new();
 		public Random UniformRandom {
 			get {
 				return random;

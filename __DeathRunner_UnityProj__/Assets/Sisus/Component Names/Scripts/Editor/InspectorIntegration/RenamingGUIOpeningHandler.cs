@@ -8,8 +8,8 @@ namespace Sisus.ComponentNames.EditorOnly
     [InitializeOnLoad]
 	internal static class RenamingGUIOpeningHandler
 	{
-        private static readonly GUIContent tooltip = new GUIContent("", "");
-        private static readonly GUIContent label = new GUIContent("");
+        private static readonly GUIContent tooltip = new("", "");
+        private static readonly GUIContent label = new("");
 
         static RenamingGUIOpeningHandler()
 		{

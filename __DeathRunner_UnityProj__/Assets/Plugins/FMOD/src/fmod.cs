@@ -1318,7 +1318,7 @@ namespace FMOD
         }
         public RESULT createSound(string name, MODE mode, out Sound sound)
         {
-            CREATESOUNDEXINFO exinfo = new CREATESOUNDEXINFO();
+            CREATESOUNDEXINFO exinfo = new();
             exinfo.cbsize = MarshalHelper.SizeOf(typeof(CREATESOUNDEXINFO));
 
             return createSound(name, mode, ref exinfo, out sound);
@@ -1340,7 +1340,7 @@ namespace FMOD
         }
         public RESULT createStream(string name, MODE mode, out Sound sound)
         {
-            CREATESOUNDEXINFO exinfo = new CREATESOUNDEXINFO();
+            CREATESOUNDEXINFO exinfo = new();
             exinfo.cbsize = MarshalHelper.SizeOf(typeof(CREATESOUNDEXINFO));
 
             return createStream(name, mode, ref exinfo, out sound);
@@ -3885,7 +3885,7 @@ namespace FMOD
     {
         public class ThreadSafeEncoding : IDisposable
         {
-            UTF8Encoding encoding = new UTF8Encoding();
+            UTF8Encoding encoding = new();
             byte[] encodedBuffer = new byte[128];
             char[] decodedBuffer = new char[128];
             bool inUse;
@@ -3992,7 +3992,7 @@ namespace FMOD
             }
         }
 
-        static List<ThreadSafeEncoding> encoders = new List<ThreadSafeEncoding>(1);
+        static List<ThreadSafeEncoding> encoders = new(1);
 
         public static ThreadSafeEncoding GetFreeHelper()
         {

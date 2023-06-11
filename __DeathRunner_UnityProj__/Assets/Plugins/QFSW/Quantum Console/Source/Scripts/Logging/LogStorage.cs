@@ -7,8 +7,8 @@ namespace QFSW.QC
 {
     public class LogStorage : ILogStorage
     {
-        private readonly List<ILog> _consoleLogs = new List<ILog>(10);
-        private readonly StringBuilder _logTraceBuilder = new StringBuilder(2048);
+        private readonly List<ILog> _consoleLogs = new(10);
+        private readonly StringBuilder _logTraceBuilder = new(2048);
 
         public int MaxStoredLogs { get; set; }
         public IReadOnlyList<ILog> Logs => _consoleLogs;

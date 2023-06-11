@@ -23,7 +23,7 @@ namespace DungeonArchitect.UI.Widgets
     class OverlayPanelNode
     {
         public IWidget Widget;
-        public Vector2 Size = new Vector2(100, 100);
+        public Vector2 Size = new(100, 100);
         public Vector2 Offset = Vector2.zero;
 
         public OverlayPanelVAlign VAlign = OverlayPanelVAlign.Fill;
@@ -34,7 +34,7 @@ namespace DungeonArchitect.UI.Widgets
 
     public class OverlayPanelWidget : WidgetBase
     {
-        List<OverlayPanelNode> nodes = new List<OverlayPanelNode>();
+        List<OverlayPanelNode> nodes = new();
 
         public OverlayPanelWidget AddWidget(IWidget widget, OverlayPanelHAlign HAlign, OverlayPanelVAlign VAlign, Vector2 size, Vector2 offset)
         {

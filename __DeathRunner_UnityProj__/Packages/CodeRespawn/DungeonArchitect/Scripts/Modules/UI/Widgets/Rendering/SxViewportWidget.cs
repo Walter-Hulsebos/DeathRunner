@@ -13,7 +13,7 @@ namespace DungeonArchitect.UI.Widgets
         public float MoveSpeed = 4.0f;
         
         protected SxRenderer renderer;
-        protected FrameTime frameTime = new FrameTime();
+        protected FrameTime frameTime = new();
         protected float pitch = 0;
         protected float yaw = 0;
         protected float OrbitAnglePerPixel = 0.5f;

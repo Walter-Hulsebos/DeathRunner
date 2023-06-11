@@ -10,7 +10,7 @@ namespace JBooth.BetterLit
 {
    class BuildVariantStripped : IPreprocessShaders
    {
-      List<ShaderKeyword> keywords = new List<ShaderKeyword>();
+      List<ShaderKeyword> keywords = new();
       BetterLitVariantConfig config;
       public BuildVariantStripped()
       {

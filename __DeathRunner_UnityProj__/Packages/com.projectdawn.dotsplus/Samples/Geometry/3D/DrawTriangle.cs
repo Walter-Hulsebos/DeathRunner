@@ -9,7 +9,7 @@ public class DrawTriangle : MonoBehaviour
     public Transform PointC;
     public DrawRay IntersectionRay;
     public DrawTriangle IntersectionTriangle;
-    public Triangle Triangle => new Triangle(PointA.position, PointB.position, PointC.position);
+    public Triangle Triangle => new(PointA.position, PointB.position, PointC.position);
 
     private void OnDrawGizmos()
     {

@@ -16,8 +16,8 @@ namespace FMODUnity
     {
         private FMODEventPlayable eventPlayable;
         private EditorEventRef editorEventRef;
-        private List<EditorParamRef> missingInitialParameterValues = new List<EditorParamRef>();
-        private List<EditorParamRef> missingParameterAutomations = new List<EditorParamRef>();
+        private List<EditorParamRef> missingInitialParameterValues = new();
+        private List<EditorParamRef> missingParameterAutomations = new();
 
         private SerializedProperty parametersProperty;
         private SerializedProperty parameterLinksProperty;
@@ -96,7 +96,7 @@ namespace FMODUnity
         {
             if (editorEventRef != null)
             {
-                List<string> namesToDelete = new List<string>();
+                List<string> namesToDelete = new();
 
                 for (int i = 0; i < parametersProperty.arraySize; ++i)
                 {
@@ -199,7 +199,7 @@ namespace FMODUnity
 
         private void DoAddInitialParameterValueMenu(Rect rect, UnityEditorInternal.ReorderableList list)
         {
-            GenericMenu menu = new GenericMenu();
+            GenericMenu menu = new();
             menu.AddItem(new GUIContent("All"), false, () =>
                 {
                     foreach (EditorParamRef parameter in missingInitialParameterValues)
@@ -281,7 +281,7 @@ namespace FMODUnity
 
         private void DoAddParameterLinkMenu(Rect rect, UnityEditorInternal.ReorderableList list)
         {
-            GenericMenu menu = new GenericMenu();
+            GenericMenu menu = new();
             menu.AddItem(new GUIContent("All"), false, () =>
                 {
                     foreach (EditorParamRef parameter in missingParameterAutomations)
@@ -483,7 +483,7 @@ namespace FMODUnity
 
         private static EditorCurveBinding GetParameterCurveBinding(int index)
         {
-            EditorCurveBinding result = new EditorCurveBinding() {
+            EditorCurveBinding result = new() {
                 path = string.Empty,
                 type = typeof(FMODEventPlayable),
                 propertyName = string.Format("parameterAutomation.slot{0:D2}", index),

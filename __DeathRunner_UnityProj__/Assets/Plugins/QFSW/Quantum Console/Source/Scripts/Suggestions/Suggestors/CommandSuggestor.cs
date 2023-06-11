@@ -18,8 +18,8 @@ namespace QFSW.QC.Suggestors
 
     public class CommandSuggestor : BasicCachedQcSuggestor<CollapsedCommand>
     {
-        private readonly Dictionary<string, List<CommandData>> _commandGroups = new Dictionary<string, List<CommandData>>();
-        private readonly Stack<CollapsedCommand> _commandCollector = new Stack<CollapsedCommand>();
+        private readonly Dictionary<string, List<CommandData>> _commandGroups = new();
+        private readonly Stack<CollapsedCommand> _commandCollector = new();
 
         protected override bool CanProvideSuggestions(SuggestionContext context, SuggestorOptions options)
         {
@@ -91,7 +91,7 @@ namespace QFSW.QC.Suggestors
 
                 foreach (CommandData command in commandGroup)
                 {
-                    CollapsedCommand newCandidate = new CollapsedCommand(command);
+                    CollapsedCommand newCandidate = new(command);
                     if (_commandCollector.Count > 0)
                     {
                         CollapsedCommand prevCandidate = _commandCollector.Peek();

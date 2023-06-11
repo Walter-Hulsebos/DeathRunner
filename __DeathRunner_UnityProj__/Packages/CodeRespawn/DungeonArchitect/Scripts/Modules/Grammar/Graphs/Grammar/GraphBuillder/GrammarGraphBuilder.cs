@@ -16,7 +16,7 @@ namespace DungeonArchitect.Grammar
         GraphBuilder graphBuilder;
         int nodeIdCounter = 0;
         GrammarGraph grammarGraph;
-        Dictionary<int, GraphNode> generatedNodes = new Dictionary<int, GraphNode>();
+        Dictionary<int, GraphNode> generatedNodes = new();
 
         public GrammarGraphBuilder(GrammarGraph grammarGraph, GrammarNodeType[] nodeTypes, GraphBuilder graphBuilder)
         {

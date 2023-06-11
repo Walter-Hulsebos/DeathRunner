@@ -105,7 +105,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// the curve used to tween the continuous intensity
 		[Tooltip("the curve used to tween the continuous intensity")]
 		[MMFEnumCondition("HapticMethod", (int)HapticMethods.Continuous)]
-		public AnimationCurve ContinuousIntensityCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1f, 1f));
+		public AnimationCurve ContinuousIntensityCurve = new(new Keyframe(0, 1), new Keyframe(1f, 1f));
 		/// the sharpness that should be used to initialize the continuous haptic
 		[Tooltip("the sharpness that should be used to initialize the continuous haptic")]
 		[MMFEnumCondition("HapticMethod", (int)HapticMethods.Continuous)]
@@ -113,7 +113,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// the curve used to tween the continuous sharpness
 		[Tooltip("the curve used to tween the continuous sharpness")]
 		[MMFEnumCondition("HapticMethod", (int)HapticMethods.Continuous)]
-		public AnimationCurve ContinuousSharpnessCurve = new AnimationCurve(new Keyframe(0, 1), new Keyframe(1f, 1f));
+		public AnimationCurve ContinuousSharpnessCurve = new(new Keyframe(0, 1), new Keyframe(1f, 1f));
 		/// the duration of the continuous haptic
 		[Tooltip("the duration of the continuous haptic")]
 		[MMFEnumCondition("HapticMethod", (int)HapticMethods.Continuous)]

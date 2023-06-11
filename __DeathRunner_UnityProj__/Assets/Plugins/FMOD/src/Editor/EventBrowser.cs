@@ -32,7 +32,7 @@ namespace FMODUnity
         private SearchField searchField;
 
         [SerializeField]
-        private PreviewArea previewArea = new PreviewArea();
+        private PreviewArea previewArea = new();
 
         [SerializeField]
         private TreeView.State treeViewState;
@@ -110,7 +110,7 @@ namespace FMODUnity
             private static readonly Texture2D discreteParameterIcon = EditorUtils.LoadImage("DiscreteParameterIcon.png");
             private static readonly Texture2D labeledParameterIcon = EditorUtils.LoadImage("LabeledParameterIcon.png");
 
-            private Dictionary<string, int> itemIDs = new Dictionary<string, int>();
+            private Dictionary<string, int> itemIDs = new();
 
             private const string EventPrefix = "event:/";
             private const string SnapshotPrefix = "snapshot:/";
@@ -187,7 +187,7 @@ namespace FMODUnity
             private FolderItem CreateFolderItem(string name, string path, bool hasChildren, bool forceExpanded,
                 TreeViewItem parent)
             {
-                FolderItem item = new FolderItem(AffirmItemID("folder:" + path), 0, name);
+                FolderItem item = new(AffirmItemID("folder:" + path), 0, name);
 
                 bool expanded;
 
@@ -278,7 +278,7 @@ namespace FMODUnity
                         EventManager.Parameters, p => p.StudioPath);
                 }
 
-                List<TreeViewItem> rows = new List<TreeViewItem>();
+                List<TreeViewItem> rows = new();
 
                 AddChildrenInOrder(rows, rootItem);
 
@@ -290,7 +290,7 @@ namespace FMODUnity
                 return rows;
             }
 
-            private static NaturalComparer naturalComparer = new NaturalComparer();
+            private static NaturalComparer naturalComparer = new();
 
             private void CreateSubTree<T>(string rootName, string rootPath,
                 IEnumerable<T> sourceRecords, Func<T, string> GetPath,
@@ -318,7 +318,7 @@ namespace FMODUnity
                 TreeViewItem root =
                     CreateFolderItem(rootName, rootPath, records.Any(), TypeFilter != TypeFilter.All, rootItem);
 
-                List<TreeViewItem> currentFolderItems = new List<TreeViewItem>();
+                List<TreeViewItem> currentFolderItems = new();
 
                 foreach (var record in records)
                 {
@@ -603,8 +603,8 @@ namespace FMODUnity
                 public TreeViewState baseState;
                 public List<int> noSearchExpandState;
                 public ScriptableObject selectedObject;
-                public List<string> itemPaths = new List<string>();
-                public List<int> itemIDs = new List<int>();
+                public List<string> itemPaths = new();
+                public List<int> itemIDs = new();
                 public TypeFilter typeFilter = TypeFilter.All;
                 public bool dragEnabled = true;
 
@@ -622,7 +622,7 @@ namespace FMODUnity
             {
                 get
                 {
-                    State result = new State(base.state);
+                    State result = new(base.state);
 
                     if (noSearchExpandState != null)
                     {
@@ -745,19 +745,19 @@ namespace FMODUnity
             private EditorEventRef currentEvent;
 
             [SerializeField]
-            private DetailsView detailsView = new DetailsView();
+            private DetailsView detailsView = new();
 
             [SerializeField]
-            private TransportControls transportControls = new TransportControls();
+            private TransportControls transportControls = new();
 
             [SerializeField]
-            private Event3DPreview event3DPreview = new Event3DPreview();
+            private Event3DPreview event3DPreview = new();
 
             [SerializeField]
-            private PreviewMeters meters = new PreviewMeters();
+            private PreviewMeters meters = new();
 
             [SerializeField]
-            private EventParameterControls parameterControls = new EventParameterControls();
+            private EventParameterControls parameterControls = new();
 
             private GUIStyle mainStyle;
 
@@ -1141,7 +1141,7 @@ namespace FMODUnity
                 }
 
                 Vector2 center = arenaRect.center;
-                Rect rect2 = new Rect(center.x + eventPosition.x - 6, center.y + eventPosition.y - 6, 12, 12);
+                Rect rect2 = new(center.x + eventPosition.x - 6, center.y + eventPosition.y - 6, 12, 12);
                 GUI.DrawTexture(rect2, emitter);
 
                 GUI.color = originalColour;
@@ -1196,7 +1196,7 @@ namespace FMODUnity
                 if (PreviewEventInstance.isValid())
                 {
                     // Listener at origin
-                    FMOD.ATTRIBUTES_3D pos = new FMOD.ATTRIBUTES_3D();
+                    FMOD.ATTRIBUTES_3D pos = new();
                     pos.position.x = (float)Math.Sin(eventOrientation) * eventDistance;
                     pos.position.y = (float)Math.Cos(eventOrientation) * eventDistance;
                     pos.forward.x = 1.0f;
@@ -1210,7 +1210,7 @@ namespace FMODUnity
         private class EventParameterControls
         {
             [NonSerialized]
-            private Dictionary<string, float> parameterValues = new Dictionary<string, float>();
+            private Dictionary<string, float> parameterValues = new();
 
             [NonSerialized]
             private Vector2 scrollPosition;
@@ -1326,7 +1326,7 @@ namespace FMODUnity
 
                 for(int i = 0; i < metering.Length; i++)
                 {
-                    Rect meterRect = new Rect(baseX + meterPositions[i], fullRect.y, meterWidth, fullRect.height);
+                    Rect meterRect = new(baseX + meterPositions[i], fullRect.y, meterWidth, fullRect.height);
 
                     GUI.DrawTexture(meterRect, meterOff);
                     
@@ -1344,8 +1344,8 @@ namespace FMODUnity
 
                     visible *= fullRect.height / (float)meterOff.height;
 
-                    Rect levelPosRect = new Rect(meterRect.x, fullRect.height - visible + meterRect.y, meterWidth, visible);
-                    Rect levelUVRect = new Rect(0, 0, 1.0f, visible / fullRect.height);
+                    Rect levelPosRect = new(meterRect.x, fullRect.height - visible + meterRect.y, meterWidth, visible);
+                    Rect levelUVRect = new(0, 0, 1.0f, visible / fullRect.height);
                     GUI.DrawTextureWithTexCoords(levelPosRect, meterOn, levelUVRect);
                 }
             }
@@ -1373,7 +1373,7 @@ namespace FMODUnity
 
             private List<float> meterPositionsForSpeakerMode(FMOD.SPEAKERMODE mode, float meterWidth, float groupGap, float lfeGap)
             {
-                List<float> offsets = new List<float>();
+                List<float> offsets = new();
 
                 switch(mode)
                 {

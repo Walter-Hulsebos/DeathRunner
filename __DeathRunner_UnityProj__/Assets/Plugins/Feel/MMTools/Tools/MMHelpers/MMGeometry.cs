@@ -25,7 +25,7 @@ namespace MoreMountains.Tools
 
 		public static List<MMEdge> GetEdges(int[] indices)
 		{
-			List<MMEdge> edgeList = new List<MMEdge>();
+			List<MMEdge> edgeList = new();
 			for (int i = 0; i < indices.Length; i += 3)
 			{
 				int vertice1 = indices[i];
@@ -40,7 +40,7 @@ namespace MoreMountains.Tools
 
 		public static List<MMEdge> FindBoundary(this List<MMEdge> edges)
 		{
-			List<MMEdge> edgeList = new List<MMEdge>(edges);
+			List<MMEdge> edgeList = new(edges);
 			for (int i = edgeList.Count - 1; i > 0; i--)
 			{
 				for (int n = i - 1; n >= 0; n--)
@@ -59,7 +59,7 @@ namespace MoreMountains.Tools
 		}
 		public static List<MMEdge> SortEdges(this List<MMEdge> edges)
 		{
-			List<MMEdge> edgeList = new List<MMEdge>(edges);
+			List<MMEdge> edgeList = new(edges);
 			for (int i = 0; i < edgeList.Count - 2; i++)
 			{
 				MMEdge E = edgeList[i];

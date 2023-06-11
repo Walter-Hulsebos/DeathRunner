@@ -50,7 +50,7 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow.Tasks
             }
 
             // Find the min-max coords of the existing graph
-            Vector3 min = new Vector3(float.MaxValue, float.MaxValue, float.MaxValue);
+            Vector3 min = new(float.MaxValue, float.MaxValue, float.MaxValue);
             Vector3 max = -min;
 
             var nodes = new Dictionary<Vector3Int, FlowLayoutGraphNode>();

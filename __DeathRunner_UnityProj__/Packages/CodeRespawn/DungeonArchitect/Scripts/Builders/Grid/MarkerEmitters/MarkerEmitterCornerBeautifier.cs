@@ -91,25 +91,25 @@ namespace DungeonArchitect.Builders.Grid
 		/////////////////////////
 		
 		static CellSpatialConfig[] CornerConfigs = new CellSpatialConfig[] {
-			new CellSpatialConfig("Corner_N", new int[] {
+			new("Corner_N", new int[] {
 				0, 2, 0,
 				1, 1, 1,
 				0, 0, 0
 			}),
 			
-			new CellSpatialConfig("Corner_S", new int[] {
+			new("Corner_S", new int[] {
 				0, 0, 0,
 				1, 1, 1,
 				0, 2, 0
 			}),
 			
-			new CellSpatialConfig("Corner_W", new int[] {
+			new("Corner_W", new int[] {
 				0, 1, 0,
 				2, 1, 0,
 				0, 1, 0
 			}),
 			
-			new CellSpatialConfig("Corner_E", new int[] {
+			new("Corner_E", new int[] {
 				0, 1, 0,
 				0, 1, 2,
 				0, 1, 0
@@ -117,72 +117,72 @@ namespace DungeonArchitect.Builders.Grid
 			
 			/*
 			*/
-			new CellSpatialConfig("Corner_BSlash", new int[] {
+			new("Corner_BSlash", new int[] {
 				1, 1, 2,
 				1, 1, 1,
 				2, 1, 1
 			}),
-			new CellSpatialConfig("Corner_Slash", new int[] {
+			new("Corner_Slash", new int[] {
 				2, 1, 1,
 				1, 1, 1,
 				1, 1, 2
 			}),
 
-			new CellSpatialConfig("Corner_ISlash", new int[] {
+			new("Corner_ISlash", new int[] {
 				1, 2, 2,
 				2, 1, 2,
 				2, 2, 1
 			}),
-			new CellSpatialConfig("Corner_IBSlash", new int[] {
+			new("Corner_IBSlash", new int[] {
 				2, 2, 1,
 				2, 1, 2,
 				1, 2, 2
 			}),
 
-			new CellSpatialConfig("Corner_NW", new int[] {
+			new("Corner_NW", new int[] {
 				0, 2, 0,
 				2, 1, 1,
 				0, 1, 0
 			}),
 			
-			new CellSpatialConfig("Corner_NE", new int[] {
+			new("Corner_NE", new int[] {
 				0, 2, 0,
 				1, 1, 2,
 				0, 1, 0
 			}),
 			
-			new CellSpatialConfig("Corner_SW", new int[] {
+			new("Corner_SW", new int[] {
 				0, 1, 0,
 				2, 1, 1,
 				0, 2, 0
 			}),
 			
-			new CellSpatialConfig("Corner_SE", new int[] {
+			new("Corner_SE", new int[] {
 				0, 1, 0,
 				1, 1, 2,
 				0, 2, 0
 			}),
 			
 			// Inverted
-			new CellSpatialConfig("Corner_INW", new int[] {
+			new("Corner_INW", new int[] {
 				2, 1, 0,
 				1, 1, 0,
 				0, 0, 0
 			}),
 			
-			new CellSpatialConfig("Corner_INE", new int[] {
+			new("Corner_INE", new int[] {
 				0, 1, 2,
 				0, 1, 1,
 				0, 0, 0
 			}),
 			
-			new CellSpatialConfig("Corner_ISW", new int[] {
+			new("Corner_ISW", new int[] {
 				0, 0, 0,
 				1, 1, 0,
 				2, 1, 0
 			}),
 			
-			new CellSpatialConfig("Corner_ISE", new int[] {
+			new("Corner_ISE", new int[] {
 				0, 0, 0,
 				0, 1, 1,
 				0, 1, 2

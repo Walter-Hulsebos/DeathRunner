@@ -229,10 +229,10 @@ namespace DungeonArchitect.UI.Widgets
             float x1 = (bounds.xMax - padding);
             float y1 = (bounds.yMax - padding);
 
-            Vector2 P00 = new Vector2(x0, y0);
-            Vector2 P10 = new Vector2(x1, y0);
-            Vector2 P11 = new Vector2(x1, y1);
-            Vector2 P01 = new Vector2(x0, y1);
+            Vector2 P00 = new(x0, y0);
+            Vector2 P10 = new(x1, y0);
+            Vector2 P11 = new(x1, y1);
+            Vector2 P01 = new(x0, y1);
             if (thickness == 1)
             {
                 renderer.DrawPolyLine(color, P00, P10, P11, P01, P00);
@@ -250,7 +250,7 @@ namespace DungeonArchitect.UI.Widgets
             }
         }
 
-        public readonly static Color FOCUS_HIGHLITE_COLOR = new Color(1, 0.5f, 0, 1);
+        public readonly static Color FOCUS_HIGHLITE_COLOR = new(1, 0.5f, 0, 1);
         public static void DrawWidgetGroup(UISystem uiSystem, UIRenderer renderer, IWidget widget)
         {
             renderer.BeginGroup(widget.WidgetBounds);

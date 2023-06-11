@@ -55,7 +55,7 @@ namespace MoreMountains.Feedbacks
 		/// the gradient to apply over the lifetime of the text
 		[Tooltip("the gradient to apply over the lifetime of the text")]
 		[GradientUsage(true)]
-		public Gradient AnimateColorGradient = new Gradient();
+		public Gradient AnimateColorGradient = new();
 
 		[Header("Lifetime")]
 

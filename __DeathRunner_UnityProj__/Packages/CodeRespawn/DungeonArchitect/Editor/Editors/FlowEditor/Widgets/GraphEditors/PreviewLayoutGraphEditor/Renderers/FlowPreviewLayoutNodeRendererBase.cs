@@ -24,9 +24,9 @@ namespace DungeonArchitect.Editors.Flow.Layout
 
         class GridFlowPreviewEditorConstants
         {
-            public static readonly Color NODE_BORDER_COLOR = new Color(0.1f, 0.1f, 0.1f);
-            public static readonly Color NODE_BORDER_COLOR_SELECTED = new Color(1, .5f, 0, 1);
-            public static readonly Vector2 BASE_PADDING = new Vector2(24, 24);
+            public static readonly Color NODE_BORDER_COLOR = new(0.1f, 0.1f, 0.1f);
+            public static readonly Color NODE_BORDER_COLOR_SELECTED = new(1, .5f, 0, 1);
+            public static readonly Vector2 BASE_PADDING = new(24, 24);
         }
 
         public static GUIStyle GetNodeStyle(GraphNode node, float zoomLevel)

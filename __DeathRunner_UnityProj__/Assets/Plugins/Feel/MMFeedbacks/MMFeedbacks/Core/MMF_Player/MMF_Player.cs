@@ -1178,7 +1178,7 @@ namespace MoreMountains.Feedbacks
 		public virtual List<T> GetFeedbacksOfType<T>() where T:MMF_Feedback
 		{
 			_t = typeof(T);
-			List<T> list = new List<T>();
+			List<T> list = new();
 			foreach (MMF_Feedback feedback in FeedbacksList)
 			{
 				if (feedback.GetType() == _t)
@@ -1215,7 +1215,7 @@ namespace MoreMountains.Feedbacks
 		public virtual List<T> GetFeedbacksOfType<T>(string searchedLabel) where T:MMF_Feedback
 		{
 			_t = typeof(T);
-			List<T> list = new List<T>();
+			List<T> list = new();
 			foreach (MMF_Feedback feedback in FeedbacksList)
 			{
 				if ((feedback.GetType() == _t) && (feedback.Label == searchedLabel))

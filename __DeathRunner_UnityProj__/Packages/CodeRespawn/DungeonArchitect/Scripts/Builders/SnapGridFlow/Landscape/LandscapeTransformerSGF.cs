@@ -51,7 +51,7 @@ namespace DungeonArchitect.Builders.SnapGridFlow
         public float roomBlurThreshold = 0.5f;
 
         private Vector3 chunkSize = Vector3.zero;
-        private HashSet<Vector3Int> nodesToRasterize = new HashSet<Vector3Int>();
+        private HashSet<Vector3Int> nodesToRasterize = new();
         private Vector3Int min = Vector3Int.zero;
         private Vector3Int max = Vector3Int.zero;
         private IntVector[] terrainBases;
@@ -82,7 +82,7 @@ namespace DungeonArchitect.Builders.SnapGridFlow
 		            FlowLayoutGraphNode[] subNodes = node.MergedCompositeNodes.Count == 0 ? new FlowLayoutGraphNode[]{ node } : node.MergedCompositeNodes.ToArray();
 		            foreach (var subNode in subNodes)
 		            {   
-			            Vector3Int coord = new Vector3Int(
+			            Vector3Int coord = new(
 				            Mathf.RoundToInt(subNode.coord.x),
 				            Mathf.RoundToInt(subNode.coord.y),
 				            Mathf.RoundToInt(subNode.coord.z));

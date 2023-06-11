@@ -28,7 +28,7 @@ namespace MoreMountains.Feedbacks
 			_audioSources = new List<AudioSource>();
 			foreach(AudioClip sound in Sounds)
 			{
-				GameObject asGO = new GameObject();
+				GameObject asGO = new();
 				SceneManager.MoveGameObjectToScene(asGO, this.gameObject.scene);
 				asGO.name = "AudioSource - " + sound.name;
 				asGO.transform.SetParent(this.transform);

@@ -76,7 +76,7 @@ namespace DungeonArchitect.RoomDesigner.Editors
             var doorWorldPos = Vector3.Scale(baseOffset + door.logicalCursorPosition, room.gridSize);
             Handles.color = Color.green;
             float size = HandleUtility.GetHandleSize(doorWorldPos) * 0.25f;
-            doorWorldPos = Handles.FreeMoveHandle(doorWorldPos, Quaternion.identity, size, snap, Handles.SphereHandleCap);
+            var fmh_79_65_638220018778242914 = Quaternion.identity; doorWorldPos = Handles.FreeMoveHandle(doorWorldPos, size, snap, Handles.SphereHandleCap);
             var logicalPos = MU.Divide(doorWorldPos, room.gridSize) - baseOffset;
 
             var oldLogicalPosition = door.logicalPosition;
@@ -97,10 +97,10 @@ namespace DungeonArchitect.RoomDesigner.Editors
             var doorHeight = room.gridSize.y * 2;
             var points = new Vector3[]
             {
-                new Vector3(-offset, 0, 0),
-                new Vector3( offset, 0, 0),
-                new Vector3( offset, doorHeight, 0),
-                new Vector3(-offset, doorHeight, 0)
+                new(-offset, 0, 0),
+                new( offset, 0, 0),
+                new( offset, doorHeight, 0),
+                new(-offset, doorHeight, 0)
             };
 
             var doorWorldPos = Vector3.Scale(room.roomPosition.ToVector3() + door.logicalPosition, room.gridSize);

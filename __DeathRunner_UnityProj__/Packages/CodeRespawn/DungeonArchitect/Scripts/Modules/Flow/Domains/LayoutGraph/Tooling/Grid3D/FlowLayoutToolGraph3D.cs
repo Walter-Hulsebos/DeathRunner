@@ -23,17 +23,17 @@ namespace DungeonArchitect.Flow.Domains.Layout.Tooling.Graph3D
     
     class FlowLayout3DConstants
     {
-        public static readonly Color InactiveNodeColor = new Color(0, 0, 0, 0.05f);
-        public static readonly Color LinkColor = new Color(0, 0, 0, 0.9f);
-        public static readonly Color LinkOneWayColor = new Color(1, 0.2f, 0, 0.9f);
-        public static readonly Color LinkItemRefColor = new Color(1, 0, 0, 0.9f);
+        public static readonly Color InactiveNodeColor = new(0, 0, 0, 0.05f);
+        public static readonly Color LinkColor = new(0, 0, 0, 0.9f);
+        public static readonly Color LinkOneWayColor = new(1, 0.2f, 0, 0.9f);
+        public static readonly Color LinkItemRefColor = new(1, 0, 0, 0.9f);
         public static readonly float LinkHeadThicknessMultiplier = 4.0f;
         public static readonly float ItemNodeScaleMultiplier = 0.3f;   
     }
 
     public class FlowLayoutToolGraph3D : SxViewportWidget
     {
-        private FlowLayout3DRenderSettings renderSettings = new FlowLayout3DRenderSettings(0.5f); 
+        private FlowLayout3DRenderSettings renderSettings = new(0.5f); 
         
         public void RecenterView()
         {   

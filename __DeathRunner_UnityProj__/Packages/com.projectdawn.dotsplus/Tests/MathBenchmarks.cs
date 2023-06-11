@@ -42,7 +42,7 @@ namespace ProjectDawn.Mathematics.Tests
             public void SetMaxLength__Test_ReturnsSameVectorWhenWithinMaxLength()
             {
                 // Arrange
-                F32x3 __vector = new F32x3(x: 1, y: 2, z: 3);
+                F32x3 __vector = new(x: 1, y: 2, z: 3);
                 F32x3 __expected = __vector;
                 const F32 MAX_LENGTH = 4.0f;
 
@@ -57,11 +57,11 @@ namespace ProjectDawn.Mathematics.Tests
             public void SetMaxLength__Test_ReturnsClampedVectorWhenExceedsMaxLength()
             {
                 // Arrange
-                F32x3 __vectorA   = new F32x3(x: +2.0f,      y: +4.0f,      z: +6.0f);      //Length = 7.483315
-                F32x3 __expectedA = new F32x3(x: +1.336306f, y: +2.672612f, z: +4.008918f); //Length = 5.0
+                F32x3 __vectorA   = new(x: +2.0f,      y: +4.0f,      z: +6.0f);      //Length = 7.483315
+                F32x3 __expectedA = new(x: +1.336306f, y: +2.672612f, z: +4.008918f); //Length = 5.0
                 
-                F32x3 __vectorB   = new F32x3(x: -2.0f,      y: -4.0f,      z: -6.0f);      //Length = 7.483315
-                F32x3 __expectedB = new F32x3(x: -1.336306f, y: -2.672612f, z: -4.008918f); //Length = 5.0
+                F32x3 __vectorB   = new(x: -2.0f,      y: -4.0f,      z: -6.0f);      //Length = 7.483315
+                F32x3 __expectedB = new(x: -1.336306f, y: -2.672612f, z: -4.008918f); //Length = 5.0
                 
                 const F32 MAX_LENGTH = 5.0f;
 
@@ -79,9 +79,9 @@ namespace ProjectDawn.Mathematics.Tests
             {
                 const F32 MAX_LENGTH = 5.0f;
 
-                Random __rng = new Random(seed: 69);
-                F32x3  __min = new F32x3(x: -10, y: -10, z: -10);
-                F32x3  __max = new F32x3(x: +10, y: +10, z: +10);
+                Random __rng = new(seed: 69);
+                F32x3  __min = new(x: -10, y: -10, z: -10);
+                F32x3  __max = new(x: +10, y: +10, z: +10);
                 
                 Measure.Method(action: () =>
                     {
@@ -102,8 +102,8 @@ namespace ProjectDawn.Mathematics.Tests
             public void SetLength__Test()
             {
                 // Arrange
-                F32x3 __vector   = new F32x3(x: 2, y: 4, z: 6);                         //Length = 7.483315
-                F32x3 __expected = new F32x3(x: 1.336306f, y: 2.672612f, z: 4.008918f); //Length = 5.0
+                F32x3 __vector   = new(x: 2, y: 4, z: 6);                         //Length = 7.483315
+                F32x3 __expected = new(x: 1.336306f, y: 2.672612f, z: 4.008918f); //Length = 5.0
                 const F32 LENGTH = 5.0f;
                 
                 // Vector3 a = new Vector3(x: 2, y: 4, z: 6);
@@ -121,9 +121,9 @@ namespace ProjectDawn.Mathematics.Tests
             {
                 const F32 LENGTH = 5.0f;
 
-                Random __rng = new Random(seed: 69);
-                F32x3  __min = new F32x3(x: -10, y: -10, z: -10);
-                F32x3  __max = new F32x3(x: +10, y: +10, z: +10);
+                Random __rng = new(seed: 69);
+                F32x3  __min = new(x: -10, y: -10, z: -10);
+                F32x3  __max = new(x: +10, y: +10, z: +10);
                 
                 Measure.Method(action: () =>
                     {
@@ -149,7 +149,7 @@ namespace ProjectDawn.Mathematics.Tests
             public void WithMaxLength__Test_ReturnsSameVectorWhenWithinMaxLength()
             {
                 // Arrange
-                F32x3 __vector = new F32x3(x: 1, y: 2, z: 3);
+                F32x3 __vector = new(x: 1, y: 2, z: 3);
                 const F32 MAX_LENGTH = 4.0f;
 
                 // Act
@@ -166,8 +166,8 @@ namespace ProjectDawn.Mathematics.Tests
             public void WithMaxLength__Test_ReturnsClampedVectorWhenExceedsMaxLength()
             {
                 // Arrange
-                F32x3 __vector   = new F32x3(x: 2, y: 4, z: 6);                         //Length = 7.483315
-                F32x3 __expected = new F32x3(x: 1.336306f, y: 2.672612f, z: 4.008918f); //Length = 5
+                F32x3 __vector   = new(x: 2, y: 4, z: 6);                         //Length = 7.483315
+                F32x3 __expected = new(x: 1.336306f, y: 2.672612f, z: 4.008918f); //Length = 5
                 const F32 MAX_LENGTH = 5.0f;
 
                 // Act
@@ -182,9 +182,9 @@ namespace ProjectDawn.Mathematics.Tests
             {
                 const F32 MAX_LENGTH = 5.0f;
 
-                Random __rng = new Random(seed: 69);
-                F32x3  __min = new F32x3(x: -10, y: -10, z: -10);
-                F32x3  __max = new F32x3(x: +10, y: +10, z: +10);
+                Random __rng = new(seed: 69);
+                F32x3  __min = new(x: -10, y: -10, z: -10);
+                F32x3  __max = new(x: +10, y: +10, z: +10);
                 
                 Measure.Method(action: () =>
                     {

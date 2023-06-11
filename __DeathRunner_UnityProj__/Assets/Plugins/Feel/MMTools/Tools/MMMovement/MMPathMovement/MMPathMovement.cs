@@ -53,7 +53,7 @@ namespace MoreMountains.Tools
 		public PossibleAccelerationType AccelerationType = PossibleAccelerationType.ConstantSpeed;
 		/// the acceleration to apply to an object traveling between two points of the path.
 		[Tooltip("the acceleration to apply to an object traveling between two points of the path.")] 
-		public AnimationCurve Acceleration = new AnimationCurve(new Keyframe(0,1f),new Keyframe(1f,0f));
+		public AnimationCurve Acceleration = new(new Keyframe(0,1f),new Keyframe(1f,0f));
 		/// the chosen update mode (update, fixed update, late update)
 		[Tooltip("the chosen update mode (update, fixed update, late update)")]
 		public UpdateModes UpdateMode = UpdateModes.Update;

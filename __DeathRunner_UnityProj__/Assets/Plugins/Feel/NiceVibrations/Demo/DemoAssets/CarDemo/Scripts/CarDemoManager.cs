@@ -24,7 +24,7 @@ namespace Lofelt.NiceVibrations
         public Transform LeftWheel;
         public Transform RightWheel;
         public RectTransform CarBody;
-        public Vector3 WheelRotationSpeed = new Vector3(0f, 0f, 50f);
+        public Vector3 WheelRotationSpeed = new(0f, 0f, 50f);
 
         [Header("UI")]
         public GameObject ReloadingPrompt;

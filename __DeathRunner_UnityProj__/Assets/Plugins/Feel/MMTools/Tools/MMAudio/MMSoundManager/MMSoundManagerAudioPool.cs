@@ -39,7 +39,7 @@ namespace MoreMountains.Tools
 
 			for (int i = 0; i < poolSize; i++)
 			{
-				GameObject temporaryAudioHost = new GameObject("MMAudioSourcePool_"+i);
+				GameObject temporaryAudioHost = new("MMAudioSourcePool_"+i);
 				SceneManager.MoveGameObjectToScene(temporaryAudioHost.gameObject, parent.gameObject.scene);
 				AudioSource tempSource = temporaryAudioHost.AddComponent<AudioSource>();
 				MMFollowTarget followTarget = temporaryAudioHost.AddComponent<MMFollowTarget>();
@@ -93,7 +93,7 @@ namespace MoreMountains.Tools
 
 			if (poolCanExpand)
 			{
-				GameObject temporaryAudioHost = new GameObject("MMAudioSourcePool_"+_pool.Count);
+				GameObject temporaryAudioHost = new("MMAudioSourcePool_"+_pool.Count);
 				SceneManager.MoveGameObjectToScene(temporaryAudioHost.gameObject, parent.gameObject.scene);
 				AudioSource tempSource = temporaryAudioHost.AddComponent<AudioSource>();
 				temporaryAudioHost.transform.SetParent(parent);

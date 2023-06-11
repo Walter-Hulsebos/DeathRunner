@@ -28,7 +28,7 @@ namespace MoreMountains.Tools
 		protected const int _initialPoolsListCapacity = 5;
 		protected bool _onSceneLoadedRegistered = false;
         
-		public static List<MMObjectPool> _pools = new List<MMObjectPool>(_initialPoolsListCapacity);
+		public static List<MMObjectPool> _pools = new(_initialPoolsListCapacity);
 
 		/// <summary>
 		/// Adds a pooler to the static list if needed

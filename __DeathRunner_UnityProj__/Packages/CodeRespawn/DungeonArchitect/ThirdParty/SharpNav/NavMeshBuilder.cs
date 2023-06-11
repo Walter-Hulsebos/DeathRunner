@@ -285,7 +285,7 @@ namespace SharpNav
 			if (polyMeshDetail != null)
 			{
 				int vbase = 0;
-				List<Vector3> storedDetailVerts = new List<Vector3>();
+				List<Vector3> storedDetailVerts = new();
 				for (int i = 0; i < polyMesh.PolyCount; i++)
 				{
 					int vb = polyMeshDetail.Meshes[i].VertexIndex;

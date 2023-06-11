@@ -267,7 +267,7 @@ namespace MoreMountains.Tools
 		public static string[] GetAllPrefabsInProject()
 		{
 			string[] assetPaths = AssetDatabase.GetAllAssetPaths();
-			List<string> results = new List<string>();
+			List<string> results = new();
 			foreach (string assetPath in assetPaths)
 			{
 				if (assetPath.Contains(".prefab"))

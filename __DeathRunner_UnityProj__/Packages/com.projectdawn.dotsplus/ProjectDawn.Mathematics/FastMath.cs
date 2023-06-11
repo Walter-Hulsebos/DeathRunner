@@ -42,7 +42,7 @@ namespace ProjectDawn.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static float rsqrt(float value)
         {
-            IntFloatUnion u = new IntFloatUnion();
+            IntFloatUnion u = new();
             u.f = value;
             u.i = 1597463174 - (u.i >> 1);
             return u.f * (1.5f - (0.5f * value * u.f * u.f));
@@ -59,7 +59,7 @@ namespace ProjectDawn.Mathematics
             // u.f = value;
             // u.i = 1597463174 - (u.i >> 1);
             // return u.f * (1.5d - (0.5d * value * u.f * u.f));
-            IntDoubleUnion u = new IntDoubleUnion();
+            IntDoubleUnion u = new();
             u.i = 0x5F1FFFF9 - (u.i >> 1);
             u.f *= 0.703952253d * (2.38924456d - value * u.f * u.f);
             return u.f;

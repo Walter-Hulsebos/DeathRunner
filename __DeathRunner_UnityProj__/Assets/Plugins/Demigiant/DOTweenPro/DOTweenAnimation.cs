@@ -72,7 +72,7 @@ namespace DG.Tweening
         public float delay;
         public float duration = 1;
         public Ease easeType = Ease.OutQuad;
-        public AnimationCurve easeCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+        public AnimationCurve easeCurve = new(new Keyframe(0, 0), new Keyframe(1, 1));
         public LoopType loopType = LoopType.Restart;
         public int loops = 1;
         public string id = "";
@@ -94,9 +94,9 @@ namespace DG.Tweening
         public float endValueFloat;
         public Vector3 endValueV3;
         public Vector2 endValueV2;
-        public Color endValueColor = new Color(1, 1, 1, 1);
+        public Color endValueColor = new(1, 1, 1, 1);
         public string endValueString = "";
-        public Rect endValueRect = new Rect(0, 0, 0, 0);
+        public Rect endValueRect = new(0, 0, 0, 0);
         public Transform endValueTransform;
 
         public bool optionalBool0, optionalBool1;
@@ -542,7 +542,7 @@ namespace DG.Tweening
         /// </summary>
         public List<Tween> GetTweens()
         {
-            List<Tween> result = new List<Tween>();
+            List<Tween> result = new();
             DOTweenAnimation[] anims = this.GetComponents<DOTweenAnimation>();
             foreach (DOTweenAnimation anim in anims) {
                 if (anim.tween != null && anim.tween.active) result.Add(anim.tween);

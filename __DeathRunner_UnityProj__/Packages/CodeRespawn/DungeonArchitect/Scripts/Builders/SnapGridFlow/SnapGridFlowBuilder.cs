@@ -78,7 +78,7 @@ namespace DungeonArchitect.Builders.SnapGridFlow
                     return;
                 }
                 
-                FlowExecutor executor = new FlowExecutor();
+                FlowExecutor executor = new();
                 FlowExecNodeOutputRegistry nodeOutputRegistry;
                 
                 //var sw = System.Diagnostics.Stopwatch.StartNew();

@@ -701,7 +701,7 @@ namespace Drawing {
 		public void WirePolygon (float3 center, int vertices, quaternion rotation, float radius, Color color) {
 			PushColor(color);
 			PushMatrix(float4x4.TRS(center, rotation, new float3(radius, radius, radius)));
-			float3 prev = new float3(0, 0, 1);
+			float3 prev = new(0, 0, 1);
 			for (int i = 1; i <= vertices; i++) {
 				float a = 2 * math.PI * (i / (float)vertices);
 				var p = new float3(math.sin(a), 0, math.cos(a));

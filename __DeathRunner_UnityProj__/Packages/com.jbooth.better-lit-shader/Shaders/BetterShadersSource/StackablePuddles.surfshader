@@ -26,7 +26,7 @@ BEGIN_PROPERTIES
    _PuddleAmount("Puddle Amount", Range(0,1)) = 0
    _PuddleFalloff("Puddle Contrast", Range(2, 50)) = 12
    _PuddleAngleMin("Moss Angle Minimum", Range(0,1)) = 0.1
-   _PuddleColor("Puddle Color", Color) = (0.2, 0.2, 0.2, 0.7)
+   _PuddleColor("Puddle Color", Color) = (0.2, 0.2, 0.2, 0.95)
    _PuddleNoiseTex("Noise Texture", 2D) = "black" { }
    _PuddleNoiseFrequency("Noise Frequency", Float) = 1
    _PuddleNoiseAmplitude("Noise Amplitude", Range(0,10)) = 0.5
@@ -35,7 +35,7 @@ BEGIN_PROPERTIES
    _RainDropTexture("RainDrop Texture", 2D) = "white" {}
    _RainIntensityScale("Intensity/Scale/MinWet", Vector) = (1, 25, 0, 400)
    _WetnessShoreline("Wetness Shore Height", Float) = -99999
-
+   _PuddleHeightDampening("Height Dampening", Range(0,1)) = 0
     [Toggle(_WETNESSEFFECTOR)] _WetnessUseEffector("Use Effector", Float) = 0
     [MaterialToggle]_WetnessEffectorInvert("Invert", Float) = 0
     [Toggle(_PUDDLEEFFECTOR)] _PuddleUseEffector("Use Effector", Float) = 0
@@ -85,6 +85,7 @@ BEGIN_CBUFFER
         half _PuddleNoiseCenter;
         half _PuddleAngleMin;
         int _PuddleEffectorInvert;
+        half _PuddleHeightDampening;
     //#endif
 
     
@@ -97,6 +98,9 @@ BEGIN_CBUFFER
 
 END_CBUFFER
 
+BEGIN_BLACKBOARD
+   half puddleAmount;
+END_BLACKBOARD
 
 // All code goes here
 BEGIN_CODE
@@ -231,7 +235,7 @@ BEGIN_CODE
             #elif _PUDDLENOISETEXTURE
                 mask = (FBM2DTextureLOD(_PuddleNoiseTex, nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
             #elif _PUDDLENOISEWORLEY
-                mask = (FBM2DWorley(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
+                mask = (WorleyNoise2D(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
             #else
                 mask = (Noise2D(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
             #endif
@@ -241,6 +245,7 @@ BEGIN_CODE
 
          GetPuddleParams(d, mask, pudHeight);
          float height = pudHeight * mask;
+          
          if (e.blackboard.vertexHeightOffset < height)
          {
             e.blackboard.vertexHeightOffset = height;
@@ -284,7 +289,7 @@ BEGIN_CODE
 #endif
    
 
-   void SurfaceFunction(inout Surface o, ShaderData d)
+   void SurfaceFunction(inout Surface o, inout ShaderData d)
    {
       half wetnessLevel = 0;
       #if _WETNESS
@@ -310,22 +315,26 @@ BEGIN_CODE
             #elif _PUDDLENOISETEXTURE
                 mask = (FBM2DTexture(_PuddleNoiseTex, nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
             #elif _PUDDLENOISEWORLEY
-                mask = (FBM2DWorley(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
+                mask = (WorleyNoise2D(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
             #else
                 mask = (Noise2D(nuv * _PuddleNoiseFrequency + _PuddleNoiseOffset) * _PuddleNoiseAmplitude + _PuddleNoiseCenter);
             #endif
           #endif
 
           GetPuddleParams(d, mask, pudHeight);
+          float oHeight = o.Height;
+          oHeight = lerp(o.Height, 0.5, _PuddleHeightDampening);
+          
           pudHeight *= mask;
-          depth = pudHeight - o.Height;
+          depth = pudHeight - oHeight;
           depthMask = saturate(depth * _PuddleFalloff);
           depthMask *= _PuddleColor.a;
-          depth = o.Height - pudHeight;
+          depth = oHeight - pudHeight;
 
           // extend wetness slighting higher than the puddle
-          half wetmask = saturate((pudHeight + 0.05 - o.Height) * _PuddleFalloff);
+          half wetmask = saturate((pudHeight + 0.05 - oHeight) * _PuddleFalloff);
           wetnessLevel = max(wetmask, wetnessLevel);
+          d.blackboard.puddleAmount = saturate(pudHeight);
        #endif
 
        

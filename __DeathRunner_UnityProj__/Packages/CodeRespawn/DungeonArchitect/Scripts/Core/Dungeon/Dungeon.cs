@@ -64,7 +64,7 @@ namespace DungeonArchitect
 		}
 
         //[SerializeField]
-        LevelMarkerList markers = new LevelMarkerList();
+        LevelMarkerList markers = new();
         public LevelMarkerList Markers
         {
             get { return markers; }
@@ -118,7 +118,7 @@ namespace DungeonArchitect
             var themes = new List<DungeonThemeData>();
             foreach (var themeGraph in dungeonThemes)
             {
-                DungeonThemeData theme = new DungeonThemeData();
+                DungeonThemeData theme = new();
                 theme.BuildFromGraph(themeGraph);
                 themes.Add(theme);
             }

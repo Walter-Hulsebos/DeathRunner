@@ -36,23 +36,23 @@ namespace FMODUnityResonance
         private SerializedProperty reverbTime = null;
         private SerializedProperty size = null;
 
-        private GUIContent surfaceMaterialsLabel = new GUIContent("Surface Materials",
+        private GUIContent surfaceMaterialsLabel = new("Surface Materials",
           "Room surface materials to calculate the acoustic properties of the room.");
-        private GUIContent surfaceMaterialLabel = new GUIContent("Surface Material",
+        private GUIContent surfaceMaterialLabel = new("Surface Material",
           "Surface material used to calculate the acoustic properties of the room.");
-        private GUIContent reflectivityLabel = new GUIContent("Reflectivity",
+        private GUIContent reflectivityLabel = new("Reflectivity",
           "Adjusts what proportion of the direct sound is reflected back by each surface, after an " +
           "appropriate delay. Reverberation is unaffected by this setting.");
-        private GUIContent reverbGainLabel = new GUIContent("Gain (dB)",
+        private GUIContent reverbGainLabel = new("Gain (dB)",
           "Applies a gain adjustment to the reverberation in the room. The default value will leave " +
           "reverb unaffected.");
-        private GUIContent reverbPropertiesLabel = new GUIContent("Reverb Properties",
+        private GUIContent reverbPropertiesLabel = new("Reverb Properties",
           "Parameters to adjust the reverb properties of the room.");
-        private GUIContent reverbBrightnessLabel = new GUIContent("Brightness",
+        private GUIContent reverbBrightnessLabel = new("Brightness",
           "Adjusts the balance between high and low frequencies in the reverb.");
-        private GUIContent reverbTimeLabel = new GUIContent("Time",
+        private GUIContent reverbTimeLabel = new("Time",
           "Adjusts the overall duration of the reverb by a positive scaling factor.");
-        private GUIContent sizeLabel = new GUIContent("Size", "Sets the room dimensions.");
+        private GUIContent sizeLabel = new("Size", "Sets the room dimensions.");
 
         private void OnEnable()
         {

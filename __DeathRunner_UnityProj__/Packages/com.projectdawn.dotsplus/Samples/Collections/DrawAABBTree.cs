@@ -33,7 +33,7 @@ public class DrawAABBTree : MonoBehaviour
             Rectangle = rectangle;
         }
         public float SurfaceArea() => Rectangle.Perimeter;
-        public Volume Union(Volume value) => new Volume(Rectangle.Union(Rectangle, value.Rectangle));
+        public Volume Union(Volume value) => new(Rectangle.Union(Rectangle, value.Rectangle));
     }
 
     private void OnDrawGizmos()

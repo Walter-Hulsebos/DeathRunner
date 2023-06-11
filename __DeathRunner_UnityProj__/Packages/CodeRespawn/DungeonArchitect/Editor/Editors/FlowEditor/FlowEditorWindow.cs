@@ -18,7 +18,7 @@ namespace DungeonArchitect.Editors.Flow
     {
         protected UISystem uiSystem;
         protected UIRenderer renderer;
-        protected List<IDeferredUICommand> deferredCommands = new List<IDeferredUICommand>();
+        protected List<IDeferredUICommand> deferredCommands = new();
         private FlowExecNodeOutputRegistry previewNodeOutputRegistry = null;
         private BorderWidget domainHostWidget;
         private IWidget domainEmptyWidget;
@@ -35,7 +35,7 @@ namespace DungeonArchitect.Editors.Flow
         protected FlowEditorConfig editorConfig = null;
         
         [SerializeField]
-        private List<FlowDomainEditor> domainEditors = new List<FlowDomainEditor>();
+        private List<FlowDomainEditor> domainEditors = new();
         
         protected abstract FlowEditorConfig CreateEditorConfig();
         protected abstract FlowExecNodeOutputRegistry GetLinkedDungeonNodeOutputRegistry();
@@ -221,7 +221,7 @@ namespace DungeonArchitect.Editors.Flow
             var domainExtensions = new FlowDomainExtensions();
             AddDomainExtenders(domainExtensions);
             
-            FlowExecutor executor = new FlowExecutor();
+            FlowExecutor executor = new();
             if (!executor.Execute(execGraph, random, domainExtensions, 100, out previewNodeOutputRegistry))
             {
                 Debug.LogError("Failed to produce graph");
@@ -606,7 +606,7 @@ namespace DungeonArchitect.Editors.Flow
                         Vector2 resultMousePosition = Vector2.zero;
                         if (WidgetUtils.BuildWidgetEvent(e.mousePosition, layout, uiSystem.FocusedWidget, ref resultMousePosition))
                         {
-                            Event widgetEvent = new Event(e);
+                            Event widgetEvent = new(e);
                             widgetEvent.mousePosition = resultMousePosition;
                             uiSystem.FocusedWidget.HandleInput(widgetEvent, uiSystem);
                         }

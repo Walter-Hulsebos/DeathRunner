@@ -40,7 +40,7 @@ namespace DungeonArchitect.Flow.Exec
 
     public class FlowTaskExecOutput
     {
-        public FlowExecTaskState State = new FlowExecTaskState();
+        public FlowExecTaskState State = new();
         public FlowTaskExecutionResult ExecutionResult = FlowTaskExecutionResult.FailHalt;
         public FlowTaskExecutionFailureReason FailureReason = FlowTaskExecutionFailureReason.Unknown;
         public string ErrorMessage = "";
@@ -107,7 +107,7 @@ namespace DungeonArchitect.Flow.Exec
             return null;
         }
 
-        private Dictionary<string, FlowTaskExecOutput> stateByNodeId = new Dictionary<string, FlowTaskExecOutput>();
+        private Dictionary<string, FlowTaskExecOutput> stateByNodeId = new();
     }
 
     public class FlowExecTaskState
@@ -156,6 +156,6 @@ namespace DungeonArchitect.Flow.Exec
             return states.Keys.ToArray();
         }
         
-        protected Dictionary<System.Type, ICloneable> states = new Dictionary<Type, ICloneable>();
+        protected Dictionary<System.Type, ICloneable> states = new();
     }
 }

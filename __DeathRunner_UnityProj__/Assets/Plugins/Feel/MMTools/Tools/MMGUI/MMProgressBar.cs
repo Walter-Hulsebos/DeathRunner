@@ -179,10 +179,10 @@ namespace MoreMountains.Tools
 		/// the curve to map the bump animation on
 		[Tooltip("the curve to map the bump animation on")]
 		[FormerlySerializedAs("BumpAnimationCurve")]
-		public AnimationCurve BumpScaleAnimationCurve = new AnimationCurve(new Keyframe(1, 1), new Keyframe(0.3f, 1.05f), new Keyframe(1, 1));
+		public AnimationCurve BumpScaleAnimationCurve = new(new Keyframe(1, 1), new Keyframe(0.3f, 1.05f), new Keyframe(1, 1));
 		/// the curve to map the bump animation color animation on
 		[Tooltip("the curve to map the bump animation color animation on")]
-		public AnimationCurve BumpColorAnimationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve BumpColorAnimationCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// whether or not the bar is bumping right now
 		public bool Bumping { get; protected set; }
 

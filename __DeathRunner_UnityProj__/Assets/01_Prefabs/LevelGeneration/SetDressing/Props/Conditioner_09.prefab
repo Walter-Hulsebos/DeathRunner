@@ -92,9 +92,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3086877010668263290}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.55412745, y: 0.5943489, z: 0.7071159}
   m_Center: {x: 0.16903588, y: 0.25370473, z: -0.008172169}
 --- !u!1 &7902361634227091098
@@ -190,7 +198,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8855043155974272807}
   - component: {fileID: 4375653293802061910}
-  - component: {fileID: 688175468800073995}
   m_Layer: 0
   m_Name: Conditioner_09
   m_TagString: Untagged
@@ -243,19 +250,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7047551376194923121}
   m_Enabled: 1
---- !u!114 &688175468800073995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8190005349477641629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: feedecd89b9319a40b0b3028fb6c2385, type: 2}
 --- !u!1 &9174120537801313297
 GameObject:
   m_ObjectHideFlags: 0

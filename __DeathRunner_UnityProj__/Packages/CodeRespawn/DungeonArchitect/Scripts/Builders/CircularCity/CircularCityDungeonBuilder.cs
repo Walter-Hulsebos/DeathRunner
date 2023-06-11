@@ -265,7 +265,7 @@ namespace DungeonArchitect.Builders.CircularCity
         class SpatialPartitionCache
         {
             private int gridSize;
-            Dictionary<IntVector2, List<Vector3>> occupancyGrid = new Dictionary<IntVector2, List<Vector3>>();
+            Dictionary<IntVector2, List<Vector3>> occupancyGrid = new();
 
             public SpatialPartitionCache(int gridSize)
             {

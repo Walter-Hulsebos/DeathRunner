@@ -15,7 +15,7 @@ namespace SharpNav
 		/// <summary>
 		/// A "null" reference is one with a negative index.
 		/// </summary>
-		public static readonly CompactSpanReference Null = new CompactSpanReference(0, 0, -1);
+		public static readonly CompactSpanReference Null = new(0, 0, -1);
 
 		/// <summary>
 		/// The X coordinate of the referenced span.

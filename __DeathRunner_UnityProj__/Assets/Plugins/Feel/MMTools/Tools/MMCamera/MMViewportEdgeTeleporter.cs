@@ -20,18 +20,18 @@ namespace  MoreMountains.Tools
 		[Header("Viewport Bounds")] 
 		/// the origin values of the viewport
 		[MMVector("X","Y")]
-		public Vector2 ViewportOrigin = new Vector2(0f, 0f);
+		public Vector2 ViewportOrigin = new(0f, 0f);
 		/// the dimensions of the viewport
 		[MMVector("W","H")]
-		public Vector2 ViewportDimensions = new Vector2(1f, 1f);
+		public Vector2 ViewportDimensions = new(1f, 1f);
         
 		[Header("Teleport Bounds")] 
 		/// the origin of the teleport destination zone
 		[MMVector("X","Y")]
-		public Vector2 TeleportOrigin = new Vector2(0f, 0f);
+		public Vector2 TeleportOrigin = new(0f, 0f);
 		/// the dimensions of the teleport destination zone
 		[MMVector("W","H")]
-		public Vector2 TeleportDimensions = new Vector2(1f, 1f);
+		public Vector2 TeleportDimensions = new(1f, 1f);
 
 		[Header("Events")] 
 		/// an event to trigger on teleport

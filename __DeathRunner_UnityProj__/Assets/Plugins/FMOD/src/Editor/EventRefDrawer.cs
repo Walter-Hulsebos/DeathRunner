@@ -11,7 +11,7 @@ namespace FMODUnity
     {
         private static readonly Texture RepairIcon = EditorUtils.LoadImage("Wrench.png");
         private static readonly Texture WarningIcon = EditorUtils.LoadImage("NotFound.png");
-        private static readonly GUIContent NotFoundWarning = new GUIContent("Event Not Found", WarningIcon);
+        private static readonly GUIContent NotFoundWarning = new("Event Not Found", WarningIcon);
 
         private static GUIStyle buttonStyle;
 
@@ -54,9 +54,9 @@ namespace FMODUnity
 
                 property.isExpanded = EditorGUI.Foldout(headerRect, property.isExpanded, label, true);
 
-                Rect addRect = new Rect(position.xMax - addIcon.width - 7, position.y, addIcon.width + 7, baseHeight);
-                Rect openRect = new Rect(addRect.x - openIcon.width - 7, position.y, openIcon.width + 6, baseHeight);
-                Rect searchRect = new Rect(openRect.x - browseIcon.width - 9, position.y, browseIcon.width + 8, baseHeight);
+                Rect addRect = new(position.xMax - addIcon.width - 7, position.y, addIcon.width + 7, baseHeight);
+                Rect openRect = new(addRect.x - openIcon.width - 7, position.y, openIcon.width + 6, baseHeight);
+                Rect searchRect = new(openRect.x - browseIcon.width - 9, position.y, browseIcon.width + 8, baseHeight);
                 Rect pathRect = position;
                 pathRect.xMin = headerRect.xMax;
                 pathRect.xMax = searchRect.x - 3;
@@ -181,7 +181,7 @@ namespace FMODUnity
 
                     if (renamedEvent != null)
                     {
-                        MismatchInfo mismatch = new MismatchInfo() {
+                        MismatchInfo mismatch = new() {
                             Message = string.Format("Moved to {0}", renamedEvent.Path),
                             HelpText = string.Format(
                                 "This event has been moved in FMOD Studio.\n" +
@@ -266,7 +266,7 @@ namespace FMODUnity
         {
             rect = EditorUtils.DrawHelpButton(rect, () => new SimpleHelp(mismatch.HelpText, 400));
 
-            Rect repairRect = new Rect(repairButtonX, rect.y, repairButtonWidth, GetBaseHeight());
+            Rect repairRect = new(repairButtonX, rect.y, repairButtonWidth, GetBaseHeight());
 
             if (GUI.Button(repairRect, new GUIContent(RepairIcon, mismatch.RepairTooltip), buttonStyle))
             {

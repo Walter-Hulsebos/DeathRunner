@@ -17,7 +17,7 @@ namespace DungeonArchitect.Editors
     public class DungeonThemeGraphEditor : GraphEditor
     {
         // tracks dungeon objects in the scene that have the same graph being edited. This is used for realtime updates
-        readonly DungeonObjectTracker dungeonObjectTracker = new DungeonObjectTracker();
+        readonly DungeonObjectTracker dungeonObjectTracker = new();
 
         [SerializeField]
         public bool realtimeUpdate = true;
@@ -26,7 +26,7 @@ namespace DungeonArchitect.Editors
         public bool visualizeMarkers = false;
         
         [SerializeField]
-        ThemeEditorSceneVisualizer visualizer = new ThemeEditorSceneVisualizer();
+        ThemeEditorSceneVisualizer visualizer = new();
         
         
         protected override void InitializeNodeRenderers(GraphNodeRendererFactory nodeRenderers)
@@ -411,7 +411,7 @@ namespace DungeonArchitect.Editors
             public SpatialConstraintsEditorAssignmentState assignmentState = SpatialConstraintsEditorAssignmentState.NotAssigned;
             public bool initialized = false;
         }
-        SpatialConstraintWindowState spatailWindowState = new SpatialConstraintWindowState();
+        SpatialConstraintWindowState spatailWindowState = new();
 
         void SetSpatialConstraintEditorAsset(SpatialConstraintAsset spatialAsset, SpatialConstraintsEditorAssignmentState state)
         {

@@ -13,7 +13,7 @@ namespace DungeonArchitect.Utils
             this.shader = shader;
         }
 
-        Dictionary<Texture2D, Material> materialsByTexture = new Dictionary<Texture2D, Material>();
+        Dictionary<Texture2D, Material> materialsByTexture = new();
         public Material GetMaterial(Texture2D texture)
         {
             if (!materialsByTexture.ContainsKey(texture))

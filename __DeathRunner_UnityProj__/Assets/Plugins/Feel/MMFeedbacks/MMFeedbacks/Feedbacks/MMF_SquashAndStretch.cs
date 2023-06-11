@@ -64,7 +64,7 @@ namespace MoreMountains.Feedbacks
 		public float Offset = 0f;
 		/// the curve along which to animate the scale
 		[Tooltip("the curve along which to animate the scale")]
-		public AnimationCurve AnimateCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0));
+		public AnimationCurve AnimateCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0));
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
 		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
 		public bool AllowAdditivePlays = false;

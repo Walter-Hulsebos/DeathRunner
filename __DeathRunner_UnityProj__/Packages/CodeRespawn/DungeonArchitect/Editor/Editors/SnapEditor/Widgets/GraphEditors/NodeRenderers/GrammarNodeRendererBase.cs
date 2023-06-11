@@ -55,10 +55,10 @@ namespace DungeonArchitect.Editors.SnapFlow
 
         class GrammarNodeEditorConstants
         {
-            public static readonly Color PIN_COLOR_HOVER = new Color(1, 0.6f, 0.0f);
-            public static readonly Color PIN_COLOR_CLICK = new Color(1, 0.9f, 0.0f);
-            public static readonly Color FOCUS_HIGHLITE_COLOR = new Color(1, 0.5f, 0, 1);
-            public static readonly Vector2 BASE_PADDING = new Vector2(16, 16);
+            public static readonly Color PIN_COLOR_HOVER = new(1, 0.6f, 0.0f);
+            public static readonly Color PIN_COLOR_CLICK = new(1, 0.9f, 0.0f);
+            public static readonly Color FOCUS_HIGHLITE_COLOR = new(1, 0.5f, 0, 1);
+            public static readonly Vector2 BASE_PADDING = new(16, 16);
         }
 
         static Color GetPinColor(GraphPin pin, Color nodeColor)

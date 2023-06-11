@@ -98,7 +98,7 @@ namespace Sisus.ComponentNames.EditorOnly
 				return;
 			}
 
-			Dictionary<String, String> namesAndOverridesCache = new Dictionary<String, String>();
+			Dictionary<String, String> namesAndOverridesCache = new();
 
 			for(Int32 i = 0; i < count; i++)
 			{
@@ -417,7 +417,7 @@ namespace Sisus.ComponentNames.EditorOnly
 			// find the current event target...
 			SerializedProperty methodName = listener.FindPropertyRelative(kMethodNamePath);
 
-			GenericMenu menu = new GenericMenu();
+			GenericMenu menu = new();
 
 			menu.AddItem
 			(
@@ -442,8 +442,8 @@ namespace Sisus.ComponentNames.EditorOnly
 			MethodInfo delegateMethod = delegateType.GetMethod("Invoke");
 			Type[] delegateArgumentsTypes = delegateMethod.GetParameters().Select(x => x.ParameterType).ToArray();
 
-			Dictionary<String, Int32> duplicateNames = new Dictionary<String, Int32>();
-			Dictionary<String, Int32> duplicateFullNames = new Dictionary<String, Int32>();
+			Dictionary<String, Int32> duplicateNames = new();
+			Dictionary<String, Int32> duplicateFullNames = new();
 
 			GeneratePopUpForType(menu, targetToUse, targetToUse.GetType().Name, listener, delegateArgumentsTypes);
 			duplicateNames[targetToUse.GetType().Name] = 0;
@@ -504,7 +504,7 @@ namespace Sisus.ComponentNames.EditorOnly
 
 		private static void GeneratePopUpForType(GenericMenu menu, Object target, String targetName, SerializedProperty listener, Type[] delegateArgumentsTypes)
 		{
-			List<ValidMethodMap> methods = new List<ValidMethodMap>();
+			List<ValidMethodMap> methods = new();
 			Boolean didAddDynamic = false;
 
 			// skip 'void' event defined on the GUI as we have a void prebuilt type!
@@ -566,7 +566,7 @@ namespace Sisus.ComponentNames.EditorOnly
 
 		private static IEnumerable<ValidMethodMap> CalculateMethodMap(Object target, Type[] t, Boolean allowSubclasses)
 		{
-			List<ValidMethodMap> validMethods = new List<ValidMethodMap>();
+			List<ValidMethodMap> validMethods = new();
 			if(target == null || t == null)
 			{
 				return validMethods;
@@ -619,7 +619,7 @@ namespace Sisus.ComponentNames.EditorOnly
 				// valid method
 				if(paramatersMatch)
 				{
-					ValidMethodMap vmm = new ValidMethodMap
+					ValidMethodMap vmm = new()
 					{
 						target = target,
 						methodInfo = componentMethod
@@ -641,7 +641,7 @@ namespace Sisus.ComponentNames.EditorOnly
 			PersistentListenerMode setMode = GetMode(listener.FindPropertyRelative(kModePath));
 			SerializedProperty typeName = listener.FindPropertyRelative(kArgumentsPath).FindPropertyRelative(kObjectArgumentAssemblyTypeName);
 
-			StringBuilder args = new StringBuilder();
+			StringBuilder args = new();
 			Int32 count = method.methodInfo.GetParameters().Length;
 			for(Int32 index = 0; index < count; index++)
 			{

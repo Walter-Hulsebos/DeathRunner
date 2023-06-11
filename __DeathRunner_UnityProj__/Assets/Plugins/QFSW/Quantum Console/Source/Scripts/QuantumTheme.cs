@@ -13,19 +13,19 @@ namespace QFSW.QC
         [SerializeField] public Material PanelMaterial = null;
         [SerializeField] public Color PanelColor = Color.white;
 
-        [SerializeField] public Color CommandLogColor = new Color(0, 1, 1);
-        [SerializeField] public Color SelectedSuggestionColor = new Color(1, 1, 0.55f);
+        [SerializeField] public Color CommandLogColor = new(0, 1, 1);
+        [SerializeField] public Color SelectedSuggestionColor = new(1, 1, 0.55f);
         [SerializeField] public Color SuggestionColor = Color.gray;
         [SerializeField] public Color ErrorColor = Color.red;
-        [SerializeField] public Color WarningColor = new Color(1, 0.5f, 0);
+        [SerializeField] public Color WarningColor = new(1, 0.5f, 0);
         [SerializeField] public Color SuccessColor = Color.green;
 
         [SerializeField] public string TimestampFormat = "[{0}:{1}:{2}]";
         [SerializeField] public string CommandLogFormat = "> {0}";
 
         [SerializeField] public Color DefaultReturnValueColor = Color.white;
-        [SerializeField] public List<TypeColorFormatter> TypeFormatters = new List<TypeColorFormatter>(0);
-        [SerializeField] public List<CollectionFormatter> CollectionFormatters = new List<CollectionFormatter>(0);
+        [SerializeField] public List<TypeColorFormatter> TypeFormatters = new(0);
+        [SerializeField] public List<CollectionFormatter> CollectionFormatters = new(0);
 
         private T FindTypeFormatter<T>(List<T> formatters, Type type) where T : TypeFormatter
         {

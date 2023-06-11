@@ -8,7 +8,7 @@ namespace HeurekaGames.AssetHunterPRO
 {
     public class AH_SettingsManager
     {
-        private static readonly AH_SettingsManager instance = new AH_SettingsManager();
+        private static readonly AH_SettingsManager instance = new();
 
         #region singleton
         // Explicit static constructor to tell C# compiler
@@ -68,7 +68,7 @@ namespace HeurekaGames.AssetHunterPRO
 
         //Types to Ignore by default
 #if UNITY_2017_3_OR_NEWER
-        internal readonly static List<Type> InitialValueIgnoredTypes = new List<Type>() {
+        internal readonly static List<Type> InitialValueIgnoredTypes = new() {
  #if UNITY_2021_2_OR_NEWER
             typeof(UnityEditor.ShaderInclude), //Have to exclude this here because Unitys AssetDatabase.GetDependencies() does not include shaderincludes for some reason :(
 #endif
@@ -86,14 +86,14 @@ namespace HeurekaGames.AssetHunterPRO
 #endif
 
         //File extensions to Ignore by default
-        internal readonly static List<string> InitialValueIgnoredExtensions = new List<string>() {
+        internal readonly static List<string> InitialValueIgnoredExtensions = new() {
             ".dll",
             "."+AH_SerializationHelper.SettingsExtension,
             "."+AH_SerializationHelper.BuildInfoExtension
         };
 
         //List of strings which, if contained in asset path, is ignored (Editor, Resources, etc)
-        internal readonly static List<string> InitialValueIgnoredPathEndsWith = new List<string>() {
+        internal readonly static List<string> InitialValueIgnoredPathEndsWith = new() {
             string.Format("{0}heureka", System.IO.Path.DirectorySeparatorChar),
             string.Format("{0}editor", System.IO.Path.DirectorySeparatorChar),
             string.Format("{0}plugins", System.IO.Path.DirectorySeparatorChar),
@@ -101,8 +101,8 @@ namespace HeurekaGames.AssetHunterPRO
             string.Format("{0}editor default resources", System.IO.Path.DirectorySeparatorChar)
         };
 
-        internal readonly static List<string> InitialValueIgnoredFiles = new List<string>();
-        internal readonly static List<string> InitialValueIgnoredFolders = new List<string>();
+        internal readonly static List<string> InitialValueIgnoredFiles = new();
+        internal readonly static List<string> InitialValueIgnoredFolders = new();
 
         [SerializeField] private AH_ExclusionTypeList ignoredListTypes;
         [SerializeField] private AH_IgnoreList ignoredListPathEndsWith;
@@ -189,11 +189,11 @@ namespace HeurekaGames.AssetHunterPRO
 
         public GUIContent[] GUIcontentignoredLists = new GUIContent[5]
      {
-                new GUIContent("Endings"),
-                new GUIContent("Types"),
-                new GUIContent("Folders"),
-                new GUIContent("Files"),
-                new GUIContent("Extentions")
+                new("Endings"),
+                new("Types"),
+                new("Folders"),
+                new("Files"),
+                new("Extentions")
      };
         #endregion
 
@@ -331,7 +331,7 @@ namespace HeurekaGames.AssetHunterPRO
                 }
             }
 
-            GUIContent content = new GUIContent("EXPERIMENTAL FEATURE!", EditorGUIUtility.IconContent("console.warnicon.sml").image, "Cant be 100% sure script files are usused, so you need to handle with care");
+            GUIContent content = new("EXPERIMENTAL FEATURE!", EditorGUIUtility.IconContent("console.warnicon.sml").image, "Cant be 100% sure script files are usused, so you need to handle with care");
             //TODO PARTIAL CLASSES
             //INHERITANCE
             //AddComponent<Type>
@@ -355,7 +355,7 @@ namespace HeurekaGames.AssetHunterPRO
             if (newPath != "")
                 validPath = newPath;
 
-            GUIContent content = new GUIContent(title + ": " + AH_Utils.ShrinkPathMiddle(validPath, 44), title + " is saved at " + validPath);
+            GUIContent content = new(title + ": " + AH_Utils.ShrinkPathMiddle(validPath, 44), title + " is saved at " + validPath);
 
             GUILayout.Label(content, (defaultVal != path) ? EditorStyles.boldLabel : EditorStyles.label);
             GUILayout.FlexibleSpace();

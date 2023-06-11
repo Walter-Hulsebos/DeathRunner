@@ -20,7 +20,7 @@ namespace FMODUnity
         public const string DownloadURL = "https://www.fmod.com/download";
 
         // This is used to find the platform that implements the current Unity build target.
-        private Dictionary<BuildTarget, Platform> PlatformForBuildTarget = new Dictionary<BuildTarget, Platform>();
+        private Dictionary<BuildTarget, Platform> PlatformForBuildTarget = new();
 
         private static string FMODFolderFull => $"Assets/{RuntimeUtils.PluginBasePath}";
 
@@ -577,7 +577,7 @@ namespace FMODUnity
 
             Instance.binaryCompatibilitiesBeforeBuild = new Dictionary<string, bool>();
 
-            HashSet<string> enabledPaths = new HashSet<string>();
+            HashSet<string> enabledPaths = new();
 
             foreach (string path in platform.GetBinaryAssetPaths(target, binaryType | Platform.BinaryType.Optional))
             {
@@ -680,8 +680,7 @@ namespace FMODUnity
 
                 if (EditorWindow.HasOpenInstances<BuildPlayerWindow>())
                 {
-                    GUIContent message =
-                        new GUIContent("FMOD detected issues with this platform!\nSee the Console for details.");
+                    GUIContent message = new("FMOD detected issues with this platform!\nSee the Console for details.");
                     EditorWindow.GetWindow<BuildPlayerWindow>().ShowNotification(message, 10);
                 }
             }

@@ -87,7 +87,7 @@ namespace SharpNav
 			var verts = new List<PolyVertex>(maxVertices);
 			var polys = new List<Polygon>(maxTris);
 
-			Queue<int> vertRemoveQueue = new Queue<int>(maxVertices);
+			Queue<int> vertRemoveQueue = new(maxVertices);
 
 			this.numVertsPerPoly = numVertsPerPoly;
 
@@ -95,7 +95,7 @@ namespace SharpNav
 
 			int[] indices = new int[maxVertsPerCont]; //keep track of vertex hash codes
 			Triangle[] tris = new Triangle[maxVertsPerCont];
-			List<Polygon> contPolys = new List<Polygon>(maxVertsPerCont + 1);
+			List<Polygon> contPolys = new(maxVertsPerCont + 1);
 
 			//extract contour data
 			foreach (Contour cont in contSet)
@@ -151,7 +151,7 @@ namespace SharpNav
 					//each polygon has numVertsPerPoly
 					//index 0, 1, 2 store triangle vertices
 					//other polygon indexes (3 to numVertsPerPoly - 1) should be used for storing extra vertices when two polygons merge together
-					Polygon p = new Polygon(numVertsPerPoly, Area.Null, RegionId.Null, 0);
+					Polygon p = new(numVertsPerPoly, Area.Null, RegionId.Null, 0);
 					p.Vertices[0] = RemoveDiagonalFlag(indices[ti.Index0]);
 					p.Vertices[1] = RemoveDiagonalFlag(indices[ti.Index1]);
 					p.Vertices[2] = RemoveDiagonalFlag(indices[ti.Index2]);
@@ -211,7 +211,7 @@ namespace SharpNav
 				for (int i = 0; i < contPolys.Count; i++)
 				{
 					Polygon p = contPolys[i];
-					Polygon p2 = new Polygon(numVertsPerPoly, cont.Area, cont.RegionId, 0);
+					Polygon p2 = new(numVertsPerPoly, cont.Area, cont.RegionId, 0);
 
 					Buffer.BlockCopy(p.Vertices, 0, p2.Vertices, 0, numVertsPerPoly * sizeof(int));
 
@@ -989,7 +989,7 @@ namespace SharpNav
 			int maxEdgeCount = polys.Count * numVertsPerPoly;
 			int[] firstEdge = new int[vertices.Count + maxEdgeCount];
 			int nextEdge = vertices.Count;
-			List<AdjacencyEdge> edges = new List<AdjacencyEdge>(maxEdgeCount);
+			List<AdjacencyEdge> edges = new(maxEdgeCount);
 
 			for (int i = 0; i < vertices.Count; i++)
 				firstEdge[i] = NullId;
@@ -1136,10 +1136,10 @@ namespace SharpNav
 				}
 			}
 
-			List<Edge> edges = new List<Edge>(numRemovedVerts * numVertsPerPoly);
-			List<int> hole = new List<int>(numRemovedVerts * numVertsPerPoly);
-			List<RegionId> regions = new List<RegionId>(numRemovedVerts * numVertsPerPoly);
-			List<Area> areas = new List<Area>(numRemovedVerts * numVertsPerPoly);
+			List<Edge> edges = new(numRemovedVerts * numVertsPerPoly);
+			List<int> hole = new(numRemovedVerts * numVertsPerPoly);
+			List<RegionId> regions = new(numRemovedVerts * numVertsPerPoly);
+			List<Area> areas = new(numRemovedVerts * numVertsPerPoly);
 
 			//Iterate through all the polygons
 			for (int i = 0; i < polys.Count; i++)
@@ -1254,14 +1254,14 @@ namespace SharpNav
 				ntris = -ntris;
 
 			//merge hole triangles back to polygons
-			List<Polygon> mergePolys = new List<Polygon>(ntris + 1);
+			List<Polygon> mergePolys = new(ntris + 1);
 
 			for (int j = 0; j < ntris; j++)
 			{
 				Triangle t = tris[j];
 				if (t.Index0 != t.Index1 && t.Index0 != t.Index2 && t.Index1 != t.Index2)
 				{
-					Polygon p = new Polygon(numVertsPerPoly, areas[t.Index0], regions[t.Index0], 0);
+					Polygon p = new(numVertsPerPoly, areas[t.Index0], regions[t.Index0], 0);
 					p.Vertices[0] = hole[t.Index0];
 					p.Vertices[1] = hole[t.Index1];
 					p.Vertices[2] = hole[t.Index2];

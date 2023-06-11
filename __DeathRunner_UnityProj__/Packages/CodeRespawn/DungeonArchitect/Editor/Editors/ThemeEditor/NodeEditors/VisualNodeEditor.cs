@@ -19,7 +19,7 @@ namespace DungeonArchitect.Editors
         SerializedProperty IsStatic;
         SerializedProperty affectsNavigation;
         SerializedProperty useSpatialConstraint;
-        InstanceCache instanceCache = new InstanceCache();
+        InstanceCache instanceCache = new();
         bool foldoutSpatialAdvanced = false;
 
         public override void OnEnable()

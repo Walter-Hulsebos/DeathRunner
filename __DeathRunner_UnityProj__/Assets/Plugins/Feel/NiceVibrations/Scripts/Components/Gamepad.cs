@@ -106,7 +106,7 @@ namespace Lofelt.NiceVibrations
         // This Timer is used to wait until it is time to advance to the next entry in loadedRumble.
         // When the Timer is elapsed, ProcessNextRumble() is called to set new motor speeds to the
         // gamepad.
-        static Timer rumbleTimer = new Timer();
+        static Timer rumbleTimer = new();
 
         // The index of the entry of loadedRumble that is currently being played back
         static int rumbleIndex = -1;
@@ -115,7 +115,7 @@ namespace Lofelt.NiceVibrations
         static long rumblePositionMs = 0;
 
         // Keeps track of how much time elapsed since playback was started
-        static Stopwatch playbackWatch = new Stopwatch();
+        static Stopwatch playbackWatch = new();
 
         /// <summary>
         /// A multiplication factor applied to the motor speeds of the low frequency motor.

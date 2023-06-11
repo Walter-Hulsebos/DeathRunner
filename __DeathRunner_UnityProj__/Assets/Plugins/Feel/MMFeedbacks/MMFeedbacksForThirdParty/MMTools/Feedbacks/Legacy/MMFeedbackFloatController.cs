@@ -51,7 +51,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to apply to the one time shake
 		[Tooltip("the curve to apply to the one time shake")]
 		[MMFEnumCondition("Mode", (int)Modes.OneTime)]
-		public AnimationCurve OneTimeCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve OneTimeCurve = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to move this float controller to
 		[Tooltip("the value to move this float controller to")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
@@ -63,7 +63,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve over which to move the value in ToDestination mode
 		[Tooltip("the curve over which to move the value in ToDestination mode")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
-		public AnimationCurve ToDestinationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ToDestinationCurve = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 
 		/// the duration of this feedback is the duration of the one time hit
 		public override float FeedbackDuration

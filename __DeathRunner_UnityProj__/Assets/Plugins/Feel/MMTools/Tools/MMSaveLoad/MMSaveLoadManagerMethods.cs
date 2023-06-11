@@ -41,13 +41,13 @@ namespace MoreMountains.Tools
 		/// <param name="sKey"></param>
 		protected virtual void Encrypt(Stream inputStream, Stream outputStream, string sKey)
 		{
-			RijndaelManaged algorithm = new RijndaelManaged();
-			Rfc2898DeriveBytes key = new Rfc2898DeriveBytes(sKey, Encoding.ASCII.GetBytes(_saltText));
+			RijndaelManaged algorithm = new();
+			Rfc2898DeriveBytes key = new(sKey, Encoding.ASCII.GetBytes(_saltText));
 
 			algorithm.Key = key.GetBytes(algorithm.KeySize / 8);
 			algorithm.IV = key.GetBytes(algorithm.BlockSize / 8);
 
-			CryptoStream cryptostream = new CryptoStream(inputStream, algorithm.CreateEncryptor(), CryptoStreamMode.Read);
+			CryptoStream cryptostream = new(inputStream, algorithm.CreateEncryptor(), CryptoStreamMode.Read);
 			cryptostream.CopyTo(outputStream);
 		}
 
@@ -59,13 +59,13 @@ namespace MoreMountains.Tools
 		/// <param name="sKey"></param>
 		protected virtual void Decrypt(Stream inputStream, Stream outputStream, string sKey)
 		{
-			RijndaelManaged algorithm = new RijndaelManaged();
-			Rfc2898DeriveBytes key = new Rfc2898DeriveBytes(sKey, Encoding.ASCII.GetBytes(_saltText));
+			RijndaelManaged algorithm = new();
+			Rfc2898DeriveBytes key = new(sKey, Encoding.ASCII.GetBytes(_saltText));
 
 			algorithm.Key = key.GetBytes(algorithm.KeySize / 8);
 			algorithm.IV = key.GetBytes(algorithm.BlockSize / 8);
 
-			CryptoStream cryptostream = new CryptoStream(inputStream, algorithm.CreateDecryptor(), CryptoStreamMode.Read);
+			CryptoStream cryptostream = new(inputStream, algorithm.CreateDecryptor(), CryptoStreamMode.Read);
 			cryptostream.CopyTo(outputStream);
 		}
 	}

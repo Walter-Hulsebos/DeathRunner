@@ -121,7 +121,7 @@ namespace JBooth.BetterLit
 
         public bool IsUnlit() { return mat.shader.name.Contains("Unlit"); }
         public bool IsMatCap() { return mat.IsKeywordEnabled("_USEMATCAP"); }
-        static System.Collections.Generic.Dictionary<string, bool> rolloutStates = new System.Collections.Generic.Dictionary<string, bool>();
+        static System.Collections.Generic.Dictionary<string, bool> rolloutStates = new();
         static GUIStyle rolloutStyle;
         public static bool DrawRollup(string text, bool defaultState = true, bool inset = false)
         {
@@ -162,7 +162,7 @@ namespace JBooth.BetterLit
             return rolloutStates[text];
         }
 
-        static Dictionary<string, bool> rolloutKeywordStates = new System.Collections.Generic.Dictionary<string, bool>();
+        static Dictionary<string, bool> rolloutKeywordStates = new();
 
         public static bool DrawRollupKeywordToggle(Material mat, string text, string keyword)
         {
@@ -393,8 +393,8 @@ namespace JBooth.BetterLit
             None = 2
         }
 
-        static GUIContent CCullMode = new GUIContent("Cull Mode", "(_CullMode) Do we render back faces?");
-        static GUIContent CBackFaceNormal = new GUIContent("Back Face Normal", "(_DoubleSidedNormalMode) How should the normal be handled for the back side of the surface");
+        static GUIContent CCullMode = new("Cull Mode", "(_CullMode) Do we render back faces?");
+        static GUIContent CBackFaceNormal = new("Back Face Normal", "(_DoubleSidedNormalMode) How should the normal be handled for the back side of the surface");
         public void DoCullMode()
         {
             CullMode cullMode = (CullMode)(int)mat.GetFloat("_CullMode");
@@ -482,7 +482,7 @@ namespace JBooth.BetterLit
             }
         }
 
-        GUIContent CTessMethod = new GUIContent("Method", "Edge based tessellation tried to keep a consistant edge size, Distance based is based off distance from the camera. Edge can be a little less stable as it's view angle dependent, but is usually a bit more performant");
+        GUIContent CTessMethod = new("Method", "Edge based tessellation tried to keep a consistant edge size, Distance based is based off distance from the camera. Edge can be a little less stable as it's view angle dependent, but is usually a bit more performant");
         // This is only for the final shader editor, not for better shaders.
         public void DoTessellationOption(MaterialEditor materialEditor, MaterialProperty[] props)
         {
@@ -555,7 +555,7 @@ namespace JBooth.BetterLit
             return packing;
         }
 
-        GUIContent CPacking = new GUIContent("Texture Packing", "Unity : PBR Data is packed into 3 textures, Fastest : Packed into 2 textures. FastMetal : 2 texture packing with metal instead of AO. See docs for packing format");
+        GUIContent CPacking = new("Texture Packing", "Unity : PBR Data is packed into 3 textures, Fastest : Packed into 2 textures. FastMetal : 2 texture packing with metal instead of AO. See docs for packing format");
         Packing DoPacking(Material mat)
         {
             Packing packing = GetPacking();
@@ -585,10 +585,10 @@ namespace JBooth.BetterLit
             FlatBlend,
             BarycentricBlend
         }
-        static GUIContent CTriplanarContrast = new GUIContent("Triplanar Contrast", "How tight is the blend between triplanar projections");
-        static GUIContent CTriplanarSpace = new GUIContent("Triplanar Space", "What space is the triplanar projection in?");
-        static GUIContent CTriplanarBaryBlend = new GUIContent("Vertex -> Flat", "Blend between vertex normal (smooth) and flat normal (hard)");
-        static GUIContent CTriplanarBlendMode = new GUIContent("Projection Mode", "Standard triplanar, a linear blend between soft and hard normals, or use the barycentric coordinates (which must be baked into the mesh with the mesh converter) to blend only the edges of faces smoothly");
+        static GUIContent CTriplanarContrast = new("Triplanar Contrast", "How tight is the blend between triplanar projections");
+        static GUIContent CTriplanarSpace = new("Triplanar Space", "What space is the triplanar projection in?");
+        static GUIContent CTriplanarBaryBlend = new("Vertex -> Flat", "Blend between vertex normal (smooth) and flat normal (hard)");
+        static GUIContent CTriplanarBlendMode = new("Projection Mode", "Standard triplanar, a linear blend between soft and hard normals, or use the barycentric coordinates (which must be baked into the mesh with the mesh converter) to blend only the edges of faces smoothly");
         TriplanarSpace DoTriplanarSpace(Material mat, MaterialEditor materialEditor, MaterialProperty[] props, string spaceProp, string contrastProp,
            string baryKeyword, string baryProp, string flatKeyword)
         {
@@ -648,7 +648,7 @@ namespace JBooth.BetterLit
         }
 
 
-        static GUIContent CFlatShadingBlend = new GUIContent("Flat Shading", "Flat shading adjusts the normals from smoothed towards faceted");
+        static GUIContent CFlatShadingBlend = new("Flat Shading", "Flat shading adjusts the normals from smoothed towards faceted");
         public void DoFlatShadingMode(MaterialEditor materialEditor, MaterialProperty[] props)
         {
             if (IsUnlit())
@@ -683,9 +683,9 @@ namespace JBooth.BetterLit
             GUI.enabled = old;
         }
 
-        GUIContent CStochastic = new GUIContent("Stochastic", "Prevents visible tiling on surfaces");
-        GUIContent CStochatsicContrast = new GUIContent("Stochastic Contrast", "How tight the blend between stochastic clusers is");
-        GUIContent CStochasticScale = new GUIContent("Stochastic Scale", "How large the patches of texture are before blending into the next area");
+        GUIContent CStochastic = new("Stochastic", "Prevents visible tiling on surfaces");
+        GUIContent CStochatsicContrast = new("Stochastic Contrast", "How tight the blend between stochastic clusers is");
+        GUIContent CStochasticScale = new("Stochastic Scale", "How large the patches of texture are before blending into the next area");
         bool DoStochastic(Material mat, MaterialEditor materialEditor, MaterialProperty[] props, string keyword, string prop, string prop2)
         {
             bool mode = false;
@@ -732,8 +732,8 @@ namespace JBooth.BetterLit
             return normalMode;
         }
 
-        GUIContent CNormalMode = new GUIContent("Normal Mode", "Use traditional normal textures, generate them from the height map, or use the surface gradient framework for slightly higher quality normals when blending normals");
-        GUIContent CAutoNormalStrength = new GUIContent("Normal From Height Strength", "(_AutoNormalStrength) How strong the faked normal map effect is");
+        GUIContent CNormalMode = new("Normal Mode", "Use traditional normal textures, generate them from the height map, or use the surface gradient framework for slightly higher quality normals when blending normals");
+        GUIContent CAutoNormalStrength = new("Normal From Height Strength", "(_AutoNormalStrength) How strong the faked normal map effect is");
         public NormalMode DoNormalMode(MaterialEditor materialEditor, MaterialProperty[] props)
         {
             if (IsUnlit())
@@ -808,7 +808,7 @@ namespace JBooth.BetterLit
 
         }
 
-        static GUIContent CNoiseSpace = new GUIContent("Noise Space", "Space used to generate the noise - 3d noise used in world and local space");
+        static GUIContent CNoiseSpace = new("Noise Space", "Space used to generate the noise - 3d noise used in world and local space");
         NoiseSpace DoNoiseSpace(string prefix, string def)
         {
             NoiseSpace noiseSpace = NoiseSpace.UV;
@@ -849,7 +849,7 @@ namespace JBooth.BetterLit
 
         }
 
-        GUIContent CNoiseQuality = new GUIContent("Noise Quality", "Texture based (fastest), 1 octave of value noise, 3 octaves of value noise, worley noise");
+        GUIContent CNoiseQuality = new("Noise Quality", "Texture based (fastest), 1 octave of value noise, 3 octaves of value noise, worley noise");
         NoiseQuality DoNoiseQuality(string prefix, string ext, string def, string texprefix, MaterialEditor materialEditor, MaterialProperty[] props, bool noiseForced = false)
         {
             NoiseQuality noiseQuality = NoiseQuality.ProceduralLow;
@@ -1019,14 +1019,14 @@ namespace JBooth.BetterLit
             Texture
         }
 
-        static GUIContent CWireSpace = new GUIContent("Wire Space", "(_Wire) Space to use for wire scaling");
-        static GUIContent CWireThickness = new GUIContent("Wire Thickness", "(_WireThickness) Size of wire frame effect");
-        static GUIContent CWireSmoothing = new GUIContent("Wire Smoothing", "(_WireSmoothing) Softness of wire edge");
-        static GUIContent CWireAlbedo = new GUIContent("Wire Albedo", "(_WireAlbedo) Apply wire effect to albedo?");
-        static GUIContent CWireEmissive = new GUIContent("Wire Emissive", "(_WireEmis) Apply wire effect to emissive?");
-        static GUIContent CWireAlpha = new GUIContent("Wire Alpha", "(_WireAlpha) Apply wire effect to alpha?");
-        static GUIContent CWireUseEffector = new GUIContent("Use Effector", "When enabled, rendering of wireframe is controlled by disastance to effector objects");
-        static GUIContent CWireEffectorInvert = new GUIContent("Invert", "Invert the effector effect");
+        static GUIContent CWireSpace = new("Wire Space", "(_Wire) Space to use for wire scaling");
+        static GUIContent CWireThickness = new("Wire Thickness", "(_WireThickness) Size of wire frame effect");
+        static GUIContent CWireSmoothing = new("Wire Smoothing", "(_WireSmoothing) Softness of wire edge");
+        static GUIContent CWireAlbedo = new("Wire Albedo", "(_WireAlbedo) Apply wire effect to albedo?");
+        static GUIContent CWireEmissive = new("Wire Emissive", "(_WireEmis) Apply wire effect to emissive?");
+        static GUIContent CWireAlpha = new("Wire Alpha", "(_WireAlpha) Apply wire effect to alpha?");
+        static GUIContent CWireUseEffector = new("Use Effector", "When enabled, rendering of wireframe is controlled by disastance to effector objects");
+        static GUIContent CWireEffectorInvert = new("Invert", "Invert the effector effect");
 
         enum WireSpace
         {
@@ -1201,8 +1201,8 @@ namespace JBooth.BetterLit
         }
 
 
-        GUIContent CTextureLayerWeights = new GUIContent("Texture Layer Weights", "Do we weight the texture layers with the vertex colors or with a texture?");
-        GUIContent CCurveWeights = new GUIContent("Curve Weights", "Allows you to tighten the interpolation between textures towards a spline like transition");
+        GUIContent CTextureLayerWeights = new("Texture Layer Weights", "Do we weight the texture layers with the vertex colors or with a texture?");
+        GUIContent CCurveWeights = new("Curve Weights", "Allows you to tighten the interpolation between textures towards a spline like transition");
         public void DoTextureLayerWeights(MaterialEditor materialEditor, MaterialProperty[] props)
         {
             bool on = mat.IsKeywordEnabled("_LAYERVERTEXMASK") || mat.IsKeywordEnabled("_LAYERTEXTUREMASK");
@@ -1392,7 +1392,7 @@ namespace JBooth.BetterLit
             }
         }
 
-        GUIContent CTraxPackedNormal = new GUIContent("Packed Map", "Normal in fastest packed format, see docs for details");
+        GUIContent CTraxPackedNormal = new("Packed Map", "Normal in fastest packed format, see docs for details");
         public void DoTrax(MaterialEditor materialEditor, MaterialProperty[] props)
         {
             if (DrawRollupKeywordToggle(mat, "Trax", "_TRAX_ON"))
@@ -1494,12 +1494,34 @@ namespace JBooth.BetterLit
             }
             else if (!mat.IsKeywordEnabled("USEBAKERY"))
             {
-                FindProperty("_BAKERY_VERTEXLMMASK", props).floatValue = 0;
-                FindProperty("_BAKERY_SHNONLINEAR", props).floatValue = 0;
-                FindProperty("_BAKERY_LMSPEC", props).floatValue = 0;
-                FindProperty("_BAKERY_BICUBIC", props).floatValue = 0;
-                FindProperty("_BAKERY_VOLUME", props).floatValue = 0;
-                FindProperty("_BAKERY_VOLROTATION", props).floatValue = 0;
+                bool vertexLMMask = mat.IsKeywordEnabled("_BAKERY_VERTEXLMMASK");
+                bool shonlinear = mat.IsKeywordEnabled("_BAKERY_SHNONLINEAR");
+                bool lmspec = mat.IsKeywordEnabled("_BAKERY_LMSPEC");
+                bool bicubic = mat.IsKeywordEnabled("_BAKERY_BICUBIC");
+                bool volume = mat.IsKeywordEnabled("_BAKERY_VOLUME");
+                bool volRot = mat.IsKeywordEnabled("_BAKERY_VOLROTATION");
+                EditorGUI.BeginChangeCheck();
+                vertexLMMask = EditorGUILayout.Toggle("Vertex LM Mask", vertexLMMask);
+                shonlinear = EditorGUILayout.Toggle("SH On Linear", shonlinear);
+                lmspec = EditorGUILayout.Toggle("LM Spec", lmspec);
+                bicubic = EditorGUILayout.Toggle("BiCubic", bicubic);
+                volume = EditorGUILayout.Toggle("Volume", volume);
+                volRot = EditorGUILayout.Toggle("Volume Rotation", volRot);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    mat.DisableKeyword("_BAKERY_VERTEXLMMASK");
+                    mat.DisableKeyword("_BAKERY_SHNONLINEAR");
+                    mat.DisableKeyword("_BAKERY_LMSPEC");
+                    mat.DisableKeyword("_BAKERY_BICUBIC");
+                    mat.DisableKeyword("_BAKERY_VOLUME");
+                    mat.DisableKeyword("_BAKERY_VOLROTATION");
+                    if (vertexLMMask) mat.EnableKeyword("_BAKERY_VERTEXLMMASK");
+                    if (shonlinear) mat.EnableKeyword("_BAKERY_SHNONLINEAR");
+                    if (lmspec) mat.EnableKeyword("_BAKERY_LMSPEC");
+                    if (bicubic) mat.EnableKeyword("_BAKERY_BICUBIC");
+                    if (volume) mat.EnableKeyword("_BAKERY_VOLUME");
+                    if (volRot) mat.EnableKeyword("_BAKERY_VOLROTATION");
+                }
             }
         }
 
@@ -2070,7 +2092,7 @@ namespace JBooth.BetterLit
 
         }
 
-        static GUIContent CPuddleUseEffector = new GUIContent("Use Effector", "Have effectors add or subtrack puddles");
+        static GUIContent CPuddleUseEffector = new("Use Effector", "Have effectors add or subtrack puddles");
         public void DoPuddles(MaterialEditor materialEditor, MaterialProperty[] props)
         {
             if (IsUnlit())
@@ -2105,7 +2127,7 @@ namespace JBooth.BetterLit
                 materialEditor.ShaderProperty(FindProperty("_PuddleColor", props), "Puddle Color");
                 materialEditor.ShaderProperty(FindProperty("_PuddleAngleMin", props), "Puddle Angle Filter");
                 materialEditor.ShaderProperty(FindProperty("_PuddleFalloff", props), "Puddle Contrast");
-
+                materialEditor.ShaderProperty(FindProperty("_PuddleHeightDampening", props), "Height Dampening");
 
                 bool noiseOn = mat.IsKeywordEnabled("_PUDDLENOISE");
 
@@ -2495,7 +2517,6 @@ namespace JBooth.BetterLit
                 {
                     if (normalMode != NormalMode.FromHeight)
                     {
-                        EditorGUI.BeginChangeCheck();
                         if (packing == Packing.Unity)
                         {
                             WarnNormal(FindProperty("_NormalMap", props).textureValue);
@@ -2507,18 +2528,25 @@ namespace JBooth.BetterLit
                             WarnLinear(FindProperty("_NormalMap", props).textureValue);
                             DoTextureUI(materialEditor, props, uvMode, "Packed", "_NormalMap", false, "", "", "_NormalStrength");
                         }
-                        if (EditorGUI.EndChangeCheck())
+
+                        if (FindProperty("_NormalMap", props).textureValue != null)
                         {
-                            if (FindProperty("_NormalMap", props).textureValue != null)
+                            if (!mat.IsKeywordEnabled("_NORMALMAP"))
                             {
                                 mat.EnableKeyword("_NORMALMAP");
+                                EditorUtility.SetDirty(mat);
                             }
-                            else
+                        }
+                        else
+                        {
+                            if (mat.IsKeywordEnabled("_NORMALMAP"))
                             {
                                 mat.DisableKeyword("_NORMALMAP");
+                                EditorUtility.SetDirty(mat);
                             }
-                            EditorUtility.SetDirty(mat);
                         }
+                        
+
                     }
                     var maskProp = FindProperty("_MaskMap", props);
                     if (packing == Packing.Unity)
@@ -2891,7 +2919,7 @@ namespace JBooth.BetterLit
             Global = 1
         }
 
-        static GUIContent CWetnessUseEffector = new GUIContent("Use Effector", "Use the effector system to add or remove wetness");
+        static GUIContent CWetnessUseEffector = new("Use Effector", "Use the effector system to add or remove wetness");
         public void DoWetness(MaterialEditor materialEditor, MaterialProperty[] props)
         {
             if (IsUnlit())
@@ -2970,7 +2998,7 @@ namespace JBooth.BetterLit
             Vertex,
             Normal
         }
-        static GUIContent CUseTexturedNormal = new GUIContent("Textured Normal", "Use normal from normal map or vertex normal for fresnel effect?");
+        static GUIContent CUseTexturedNormal = new("Textured Normal", "Use normal from normal map or vertex normal for fresnel effect?");
         public void DoFresnel(MaterialEditor materialEditor, MaterialProperty[] props,
            string keyword, string normKeyword, string colorProp, string paramProp)
         {
@@ -3221,7 +3249,7 @@ namespace JBooth.BetterLit
             On,
             Global
         }
-        static GUIContent CSnowUseEffector = new GUIContent("Use Effector", "Use effector system to modify the snow amount");
+        static GUIContent CSnowUseEffector = new("Use Effector", "Use effector system to modify the snow amount");
         public void DoSnow(MaterialEditor materialEditor, MaterialProperty[] props)
         {
             if (!mat.HasProperty("_SnowMode"))

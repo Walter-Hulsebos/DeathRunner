@@ -93,9 +93,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7938270698903474480}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.3054353, y: 0.6857647, z: 0.2574419}
   m_Center: {x: 0.1474492, y: 0.34288234, z: -0.08705381}
 --- !u!114 &6586767035086073995
@@ -203,9 +211,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7938270698903474482}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.3054353, y: 0.6857647, z: 0.25514418}
   m_Center: {x: 0.1474492, y: 0.34288234, z: -0.088202685}
 --- !u!114 &9087175435046087421
@@ -230,7 +246,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7938270698903899412}
   - component: {fileID: 7938270698889402804}
-  - component: {fileID: 2673670139512387882}
   m_Layer: 0
   m_Name: Electric_Box_01a_snaps020
   m_TagString: Untagged
@@ -283,19 +298,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7938270698905669616}
   m_Enabled: 1
---- !u!114 &2673670139512387882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7938270698903474484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: a9082a51bb8ca994c8477cd5e96a6a77, type: 2}
 --- !u!1 &7938270698903474486
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,8 +390,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7938270698903474486}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.3054353, y: 0.6857647, z: 0.25847533}
   m_Center: {x: 0.1474492, y: 0.34288234, z: -0.08653711}

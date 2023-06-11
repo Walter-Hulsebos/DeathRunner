@@ -136,15 +136,15 @@ namespace FMODUnity
             private SerializedProperty paramsProperty;
 
             // This holds one SerializedObject for each object in the current selection.
-            private List<SerializedObject> serializedTargets = new List<SerializedObject>();
+            private List<SerializedObject> serializedTargets = new();
 
             // Mappings from EditorParamRef to initial parameter value property for all properties
             // found in the current selection.
-            private List<PropertyRecord> propertyRecords = new List<PropertyRecord>();
+            private List<PropertyRecord> propertyRecords = new();
 
             // Any parameters that are in the current event but are missing from some objects in
             // the current selection, so we can put them in the "Add" menu.
-            private List<EditorParamRef> missingParameters = new List<EditorParamRef>();
+            private List<EditorParamRef> missingParameters = new();
 
             // A mapping from EditorParamRef to the initial parameter value properties in the
             // current selection that have the same name.
@@ -282,7 +282,7 @@ namespace FMODUnity
 
                 if (EditorGUI.DropdownButton(position, new GUIContent("Add"), FocusType.Passive))
                 {
-                    GenericMenu menu = new GenericMenu();
+                    GenericMenu menu = new();
                     menu.AddItem(new GUIContent("All"), false, () =>
                         {
                             foreach (EditorParamRef parameter in missingParameters)
@@ -339,7 +339,7 @@ namespace FMODUnity
             {
                 delete = false;
 
-                GUIContent removeLabel = new GUIContent("Remove");
+                GUIContent removeLabel = new("Remove");
 
                 Rect position = EditorGUILayout.GetControlRect();
 
@@ -354,7 +354,7 @@ namespace FMODUnity
                 sliderRect.xMin = nameLabelRect.xMax;
                 sliderRect.xMax = removeButtonRect.xMin - EditorStyles.miniButton.margin.left;
 
-                GUIContent nameLabel = new GUIContent(record.name);
+                GUIContent nameLabel = new(record.name);
 
                 float value = 0;
                 bool mixedValues = false;
@@ -456,7 +456,7 @@ namespace FMODUnity
                     if (mixedValues && Event.current.type == EventType.ContextClick
                         && nameLabelRect.Contains(Event.current.mousePosition))
                     {
-                        GenericMenu menu = new GenericMenu();
+                        GenericMenu menu = new();
 
                         foreach (SerializedProperty sourceProperty in record.valueProperties)
                         {

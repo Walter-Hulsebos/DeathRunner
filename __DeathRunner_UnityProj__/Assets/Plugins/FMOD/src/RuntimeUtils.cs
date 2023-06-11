@@ -264,7 +264,7 @@ namespace FMODUnity
     [Serializable]
     public class ThreadAffinityGroup
     {
-        public List<ThreadType> threads = new List<ThreadType>();
+        public List<ThreadType> threads = new();
         public ThreadAffinity affinity = ThreadAffinity.Any;
 
         public ThreadAffinityGroup()
@@ -360,7 +360,7 @@ namespace FMODUnity
 
         public static FMOD.ATTRIBUTES_3D To3DAttributes(this Vector3 pos)
         {
-            FMOD.ATTRIBUTES_3D attributes = new FMOD.ATTRIBUTES_3D();
+            FMOD.ATTRIBUTES_3D attributes = new();
             attributes.forward = ToFMODVector(Vector3.forward);
             attributes.up = ToFMODVector(Vector3.up);
             attributes.position = ToFMODVector(pos);
@@ -370,7 +370,7 @@ namespace FMODUnity
 
         public static FMOD.ATTRIBUTES_3D To3DAttributes(this Transform transform)
         {
-            FMOD.ATTRIBUTES_3D attributes = new FMOD.ATTRIBUTES_3D();
+            FMOD.ATTRIBUTES_3D attributes = new();
             attributes.forward = transform.forward.ToFMODVector();
             attributes.up = transform.up.ToFMODVector();
             attributes.position = transform.position.ToFMODVector();
@@ -380,7 +380,7 @@ namespace FMODUnity
 
         public static FMOD.ATTRIBUTES_3D To3DAttributes(this Transform transform, Vector3 velocity)
         {
-            FMOD.ATTRIBUTES_3D attributes = new FMOD.ATTRIBUTES_3D();
+            FMOD.ATTRIBUTES_3D attributes = new();
             attributes.forward = transform.forward.ToFMODVector();
             attributes.up = transform.up.ToFMODVector();
             attributes.position = transform.position.ToFMODVector();

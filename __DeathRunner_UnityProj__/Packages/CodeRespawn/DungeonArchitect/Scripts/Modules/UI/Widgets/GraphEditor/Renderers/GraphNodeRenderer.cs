@@ -102,8 +102,8 @@ namespace DungeonArchitect.UI.Widgets.GraphEditors
 
     public class GraphNodeRendererFactory
     {
-        GraphNodeRenderer defaultRenderer = new GraphNodeRenderer();
-        Dictionary<Type, GraphNodeRenderer> renderers = new Dictionary<Type, GraphNodeRenderer>();
+        GraphNodeRenderer defaultRenderer = new();
+        Dictionary<Type, GraphNodeRenderer> renderers = new();
 
 
         public void RegisterNodeRenderer(Type nodeType, GraphNodeRenderer renderer)

@@ -92,7 +92,7 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl
 
         IList<int> GetParentsBelowStackBased(TreeElement searchFromThis)
         {
-            Stack<TreeElement> stack = new Stack<TreeElement>();
+            Stack<TreeElement> stack = new();
             stack.Push(searchFromThis);
 
             var parentsBelow = new List<int>();

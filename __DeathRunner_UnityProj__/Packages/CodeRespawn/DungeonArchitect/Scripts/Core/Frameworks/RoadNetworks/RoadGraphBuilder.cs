@@ -164,7 +164,7 @@ namespace DungeonArchitect.RoadNetworks
         }
 
         RoadGraphBuilderSettings settings;
-        Dictionary<int, RoadGraphBuildNode> nodes = new Dictionary<int, RoadGraphBuildNode>();
+        Dictionary<int, RoadGraphBuildNode> nodes = new();
         int _nodeIdCounter = 0;
     }
 
@@ -187,8 +187,8 @@ namespace DungeonArchitect.RoadNetworks
 
         public int nodeId;
         public Vector3 position;
-        public List<RoadGraphBuildNode> connectedNodes = new List<RoadGraphBuildNode>();
-        public List<float> edgeThickness = new List<float>();
+        public List<RoadGraphBuildNode> connectedNodes = new();
+        public List<float> edgeThickness = new();
     }
 
 

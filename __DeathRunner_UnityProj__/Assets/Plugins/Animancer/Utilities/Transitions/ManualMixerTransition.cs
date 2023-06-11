@@ -50,7 +50,7 @@ namespace Animancer
 
             /// <summary>Should two lines be used to draw each child?</summary>
             public static readonly BoolPref
-                TwoLineMode = new BoolPref(
+                TwoLineMode = new(
                     nameof(ManualMixerTransition) + "." + nameof(Drawer) + "." + nameof(TwoLineMode),
                     "Two Line Mode",
                     true);
@@ -71,7 +71,7 @@ namespace Animancer
             public static SerializedProperty CurrentSynchronizeChildren { get; private set; }
 
             private readonly Dictionary<string, ReorderableList>
-                PropertyPathToStates = new Dictionary<string, ReorderableList>();
+                PropertyPathToStates = new();
 
             private ReorderableList _MultiSelectDummyList;
 

@@ -50,8 +50,8 @@ namespace UnityTemplateProjects
             }
         }
         
-        CameraState m_TargetCameraState = new CameraState();
-        CameraState m_InterpolatingCameraState = new CameraState();
+        CameraState m_TargetCameraState = new();
+        CameraState m_InterpolatingCameraState = new();
 
         [Header("Movement Settings")]
         [Tooltip("Exponential boost factor on translation, controllable by mouse wheel.")]
@@ -62,7 +62,7 @@ namespace UnityTemplateProjects
 
         [Header("Rotation Settings")]
         [Tooltip("X = Change in mouse position.\nY = Multiplicative factor for camera rotation.")]
-        public AnimationCurve mouseSensitivityCurve = new AnimationCurve(new Keyframe(0f, 0.5f, 0f, 5f), new Keyframe(1f, 2.5f, 0f, 0f));
+        public AnimationCurve mouseSensitivityCurve = new(new Keyframe(0f, 0.5f, 0f, 5f), new Keyframe(1f, 2.5f, 0f, 0f));
 
         [Tooltip("Time it takes to interpolate camera rotation 99% of the way to the target."), Range(0.001f, 1f)]
         public float rotationLerpTime = 0.01f;
@@ -78,7 +78,7 @@ namespace UnityTemplateProjects
 
         Vector3 GetInputTranslationDirection()
         {
-            Vector3 direction = new Vector3();
+            Vector3 direction = new();
             if (Input.GetKey(KeyCode.W))
             {
                 direction += Vector3.forward;

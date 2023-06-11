@@ -27,13 +27,13 @@ namespace MoreMountains.Feedbacks
 				where assemblyType.IsSubclassOf(typeof(MMFeedback))
 				select assemblyType).ToList();
             
-			List<string> typeNames = new List<string>();
+			List<string> typeNames = new();
 
 
 			string previousType = "";
 			for (int i = 0; i < types.Count; i++)
 			{
-				MMFeedbacksEditor.FeedbackTypePair newType = new MMFeedbacksEditor.FeedbackTypePair();
+				MMFeedbacksEditor.FeedbackTypePair newType = new();
 				newType.FeedbackType = types[i];
 				newType.FeedbackName = FeedbackPathAttribute.GetFeedbackDefaultPath(types[i]);
 				if (newType.FeedbackName == "MMFeedbackBase")
@@ -46,7 +46,7 @@ namespace MoreMountains.Feedbacks
 			}
             
 			typeNames.Sort();
-			StringBuilder builder = new StringBuilder();
+			StringBuilder builder = new();
 			int counter = 1;
 			foreach (string typeName in typeNames)
 			{
@@ -86,13 +86,13 @@ namespace MoreMountains.Feedbacks
 				where assemblyType.IsSubclassOf(typeof(MMF_Feedback))
 				select assemblyType).ToList();
             
-			List<string> typeNames = new List<string>();
+			List<string> typeNames = new();
 
 
 			string previousType = "";
 			for (int i = 0; i < types.Count; i++)
 			{
-				MMFeedbacksEditor.FeedbackTypePair newType = new MMFeedbacksEditor.FeedbackTypePair();
+				MMFeedbacksEditor.FeedbackTypePair newType = new();
 				newType.FeedbackType = types[i];
 				newType.FeedbackName = FeedbackPathAttribute.GetFeedbackDefaultPath(types[i]);
 				if (newType.FeedbackName == "MMF_FeedbackBase")
@@ -105,7 +105,7 @@ namespace MoreMountains.Feedbacks
 			}
             
 			typeNames.Sort();
-			StringBuilder builder = new StringBuilder();
+			StringBuilder builder = new();
 			int counter = 1;
 			foreach (string typeName in typeNames)
 			{

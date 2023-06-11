@@ -21,7 +21,7 @@ namespace Animancer.Editor
 
         /// <summary>A lazy list of information about the layers currently being displayed.</summary>
         private readonly List<AnimancerLayerDrawer>
-            LayerInfos = new List<AnimancerLayerDrawer>();
+            LayerInfos = new();
 
         /// <summary>The number of elements in <see cref="LayerInfos"/> that are currently being used.</summary>
         private int _LayerCount;
@@ -462,16 +462,16 @@ namespace Animancer.Editor
             MenuPrefix = "Display Options/";
 
         internal static readonly BoolPref
-            SortStatesByName = new BoolPref(KeyPrefix, MenuPrefix + "Sort States By Name", true),
-            HideInactiveStates = new BoolPref(KeyPrefix, MenuPrefix + "Hide Inactive States", false),
-            HideSingleLayerHeader = new BoolPref(KeyPrefix, MenuPrefix + "Hide Single Layer Header", true),
-            RepaintConstantly = new BoolPref(KeyPrefix, MenuPrefix + "Repaint Constantly", true),
-            SeparateActiveFromInactiveStates = new BoolPref(KeyPrefix, MenuPrefix + "Separate Active From Inactive States", false),
-            ScaleTimeBarByWeight = new BoolPref(KeyPrefix, MenuPrefix + "Scale Time Bar by Weight", true),
-            ShowInternalDetails = new BoolPref(KeyPrefix, MenuPrefix + "Show Internal Details", false),
-            VerifyAnimationBindings = new BoolPref(KeyPrefix, MenuPrefix + "Verify Animation Bindings", true),
-            AutoNormalizeWeights = new BoolPref(KeyPrefix, MenuPrefix + "Auto Normalize Weights", true),
-            UseNormalizedTimeSliders = new BoolPref("Inspector", nameof(UseNormalizedTimeSliders), false);
+            SortStatesByName = new(KeyPrefix, MenuPrefix + "Sort States By Name", true),
+            HideInactiveStates = new(KeyPrefix, MenuPrefix + "Hide Inactive States", false),
+            HideSingleLayerHeader = new(KeyPrefix, MenuPrefix + "Hide Single Layer Header", true),
+            RepaintConstantly = new(KeyPrefix, MenuPrefix + "Repaint Constantly", true),
+            SeparateActiveFromInactiveStates = new(KeyPrefix, MenuPrefix + "Separate Active From Inactive States", false),
+            ScaleTimeBarByWeight = new(KeyPrefix, MenuPrefix + "Scale Time Bar by Weight", true),
+            ShowInternalDetails = new(KeyPrefix, MenuPrefix + "Show Internal Details", false),
+            VerifyAnimationBindings = new(KeyPrefix, MenuPrefix + "Verify Animation Bindings", true),
+            AutoNormalizeWeights = new(KeyPrefix, MenuPrefix + "Auto Normalize Weights", true),
+            UseNormalizedTimeSliders = new("Inspector", nameof(UseNormalizedTimeSliders), false);
 
         /************************************************************************************************************************/
 

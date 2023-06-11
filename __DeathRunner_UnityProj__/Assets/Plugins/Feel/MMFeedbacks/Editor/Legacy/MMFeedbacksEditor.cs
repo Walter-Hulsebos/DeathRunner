@@ -31,7 +31,7 @@ namespace MoreMountains.Feedbacks
 			// Single Copy --------------------------------------------------------------------
 
 			static public System.Type Type { get; private set; }
-			static List<SerializedProperty> Properties = new List<SerializedProperty>();
+			static List<SerializedProperty> Properties = new();
             
 			public static string[] IgnoreList = new string[]
 			{
@@ -102,7 +102,7 @@ namespace MoreMountains.Feedbacks
 
 					FeedbackCopy.Copy(new SerializedObject(arrayFeedback));
 					MMFeedback newFeedback = targetEditor.AddFeedback(arrayFeedback.GetType());
-					SerializedObject serialized = new SerializedObject(newFeedback);
+					SerializedObject serialized = new(newFeedback);
 					serialized.Update();
 					FeedbackCopy.Paste(serialized);
 					serialized.ApplyModifiedProperties();
@@ -131,7 +131,7 @@ namespace MoreMountains.Feedbacks
 		protected bool _canDisplayInspector = true;
         
 		protected Dictionary<MMFeedback, Editor> _editors;
-		protected List<FeedbackTypePair> _typesAndNames = new List<FeedbackTypePair>();
+		protected List<FeedbackTypePair> _typesAndNames = new();
 		protected string[] _typeDisplays;
 		protected int _draggedStartID = -1;
 		protected int _draggedEndID = -1;
@@ -139,8 +139,8 @@ namespace MoreMountains.Feedbacks
 		protected Color _originalBackgroundColor;
 		protected Color _scriptDrivenBoxColor;
 		protected Texture2D _scriptDrivenBoxBackgroundTexture;
-		protected Color _scriptDrivenBoxColorFrom = new Color(1f,0f,0f,1f);
-		protected Color _scriptDrivenBoxColorTo = new Color(0.7f,0.1f,0.1f,1f);
+		protected Color _scriptDrivenBoxColorFrom = new(1f,0f,0f,1f);
+		protected Color _scriptDrivenBoxColorTo = new(0.7f,0.1f,0.1f,1f);
 		protected Color _playButtonColor = new Color32(193, 255, 2, 255);
 		private static bool _settingsMenuDropdown;
 		protected GUIStyle _directionButtonStyle;
@@ -191,10 +191,10 @@ namespace MoreMountains.Feedbacks
 				select assemblyType).ToList();
 
 			// Create display list from types
-			List<string> typeNames = new List<string>();
+			List<string> typeNames = new();
 			for (int i = 0; i < types.Count; i++)
 			{
-				FeedbackTypePair newType = new FeedbackTypePair();
+				FeedbackTypePair newType = new();
 				newType.FeedbackType = types[i];
 				newType.FeedbackName = FeedbackPathAttribute.GetFeedbackDefaultPath(types[i]);
 				if (newType.FeedbackName == "MMFeedbackBase")
@@ -333,19 +333,19 @@ namespace MoreMountains.Feedbacks
 			// Duration ----------------------------------------------------------------------------------------------
             
 			float durationRectWidth = 70f;
-			Rect durationRect = new Rect(helpBoxRect.xMax - durationRectWidth, helpBoxRect.yMax + 6, durationRectWidth, 17f);
+			Rect durationRect = new(helpBoxRect.xMax - durationRectWidth, helpBoxRect.yMax + 6, durationRectWidth, 17f);
 			durationRect.xMin = helpBoxRect.xMax - durationRectWidth;
 			durationRect.xMax = helpBoxRect.xMax;
             
 			float playingRectWidth = 70f;
-			Rect playingRect = new Rect(helpBoxRect.xMax - playingRectWidth - durationRectWidth, helpBoxRect.yMax + 6, playingRectWidth, 17f);
+			Rect playingRect = new(helpBoxRect.xMax - playingRectWidth - durationRectWidth, helpBoxRect.yMax + 6, playingRectWidth, 17f);
 			playingRect.xMin = helpBoxRect.xMax - durationRectWidth- playingRectWidth;
 			playingRect.xMax = helpBoxRect.xMax;
 
 			// Direction ----------------------------------------------------------------------------------------------
 
 			float directionRectWidth = 16f;
-			Rect directionRect = new Rect(helpBoxRect.xMax - directionRectWidth, helpBoxRect.yMax + 5, directionRectWidth, 17f);
+			Rect directionRect = new(helpBoxRect.xMax - directionRectWidth, helpBoxRect.yMax + 5, directionRectWidth, 17f);
 			directionRect.xMin = helpBoxRect.xMax - directionRectWidth;
 			directionRect.xMax = helpBoxRect.xMax;
 
@@ -359,7 +359,7 @@ namespace MoreMountains.Feedbacks
 			if (_targetMMFeedbacks.Direction == MMFeedbacks.Directions.BottomToTop)
 			{
 				Texture arrowUpIcon = Resources.Load("FeelArrowUp") as Texture;
-				GUIContent directionIcon = new GUIContent(arrowUpIcon);
+				GUIContent directionIcon = new(arrowUpIcon);
 
 				if (GUI.Button(directionRect, directionIcon, _directionButtonStyle))
 				{
@@ -369,7 +369,7 @@ namespace MoreMountains.Feedbacks
 			else
 			{
 				Texture arrowDownIcon = Resources.Load("FeelArrowDown") as Texture;
-				GUIContent directionIcon = new GUIContent(arrowDownIcon);
+				GUIContent directionIcon = new(arrowDownIcon);
 
 				if (GUI.Button(directionRect, directionIcon, _directionButtonStyle))
 				{
@@ -481,7 +481,7 @@ namespace MoreMountains.Feedbacks
 
 				if (_draggedStartID == i && headerRect != Rect.zero)
 				{
-					Color color = new Color(0, 1, 1, 0.2f);
+					Color color = new(0, 1, 1, 0.2f);
 					EditorGUI.DrawRect(headerRect, color);
 				}
 
@@ -512,7 +512,7 @@ namespace MoreMountains.Feedbacks
                     
 					if ( (!string.IsNullOrEmpty(helpText)) && (MMFeedbacksConfiguration.Instance.ShowInspectorTips))
 					{
-						GUIStyle style = new GUIStyle(EditorStyles.helpBox);
+						GUIStyle style = new(EditorStyles.helpBox);
 						style.richText = true;
 						float newHeight = style.CalcHeight(new GUIContent(helpText), EditorGUIUtility.currentViewWidth);
 						EditorGUILayout.LabelField(helpText, style);
@@ -908,7 +908,7 @@ namespace MoreMountains.Feedbacks
 			SerializedProperty property = _mmfeedbacks.GetArrayElementAtIndex(id);
 			MMFeedback feedback = property.objectReferenceValue as MMFeedback;
 
-			SerializedObject serialized = new SerializedObject(feedback);
+			SerializedObject serialized = new(feedback);
 
 			FeedbackCopy.Paste(serialized);
 			serialized.ApplyModifiedProperties();
@@ -920,7 +920,7 @@ namespace MoreMountains.Feedbacks
 		protected virtual void PasteAsNew()
 		{
 			MMFeedback newFeedback = AddFeedback(FeedbackCopy.Type);
-			SerializedObject serialized = new SerializedObject(newFeedback);
+			SerializedObject serialized = new(newFeedback);
 
 			serialized.Update();
 			FeedbackCopy.Paste(serialized);

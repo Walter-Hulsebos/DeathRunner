@@ -67,8 +67,8 @@ namespace DungeonArchitect
         }
 
         protected Color COLOR_WIRE = Color.yellow;
-        protected Color COLOR_SOLID_DESELECTED = new Color(1, 1, 0, 0.0f);
-        protected Color COLOR_SOLID = new Color(1, 1, 0, 0.1f);
+        protected Color COLOR_SOLID_DESELECTED = new(1, 1, 0, 0.0f);
+        protected Color COLOR_SOLID = new(1, 1, 0, 0.1f);
         void OnDrawGizmosSelected()
         {
             DrawGizmo(true);

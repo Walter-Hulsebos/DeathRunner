@@ -12,7 +12,7 @@ namespace QFSW.QC
     {
         private readonly IQcSuggestor[] _suggestors;
         private readonly IQcSuggestionFilter[] _suggestionFilters;
-        private readonly List<IQcSuggestion> _suggestionBuffer = new List<IQcSuggestion>();
+        private readonly List<IQcSuggestion> _suggestionBuffer = new();
 
         /// <summary>
         /// Creates a Quantum Suggestor with a custom set of suggestors an suggestion filters.
@@ -55,7 +55,7 @@ namespace QFSW.QC
             _suggestionBuffer.AddRange(suggestions);
 
             // Sort suggestions
-            AlphanumComparator comparator = new AlphanumComparator();
+            AlphanumComparator comparator = new();
             IOrderedEnumerable<IQcSuggestion> sortedSuggestions =
                 _suggestionBuffer
                     .OrderBy(x => x.PrimarySignature.Length)

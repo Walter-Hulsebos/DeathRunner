@@ -24,17 +24,17 @@ namespace HeurekaGames.AssetHunterPRO
         public ulong TotalSize;
 
         //Temporary dict for populating the asset usage data
-        Dictionary<string, List<string>> assetDict = new Dictionary<string, List<string>>();
+        Dictionary<string, List<string>> assetDict = new();
         //The serialized information stored in the JSON
-        public List<AH_SerializableAssetInfo> AssetListUnSorted = new List<AH_SerializableAssetInfo>();
+        public List<AH_SerializableAssetInfo> AssetListUnSorted = new();
 
         //Only avaliable in 2018
 #if UNITY_2018_1_OR_NEWER
-        public List<AH_BuildReportFileInfo> BuildReportInfoList = new List<AH_BuildReportFileInfo>();
+        public List<AH_BuildReportFileInfo> BuildReportInfoList = new();
 #endif
 
         //A sorted version of the assetList
-        SortedList<string, AH_SerializableAssetInfo> assetListSorted = new SortedList<string, AH_SerializableAssetInfo>();
+        SortedList<string, AH_SerializableAssetInfo> assetListSorted = new();
 
         public SortedList<string, AH_SerializableAssetInfo> AssetListSorted
         {
@@ -181,7 +181,7 @@ namespace HeurekaGames.AssetHunterPRO
             foreach (var item in assetDict)
             {
                 var sceneIDs = item.Value.Select(x => AssetDatabase.AssetPathToGUID(x)).ToList(); //Id scene IDs from paths
-                AH_SerializableAssetInfo newAssetInfo = new AH_SerializableAssetInfo(item.Key, sceneIDs);
+                AH_SerializableAssetInfo newAssetInfo = new(item.Key, sceneIDs);
                 AssetListUnSorted.Add(newAssetInfo);
             }
 

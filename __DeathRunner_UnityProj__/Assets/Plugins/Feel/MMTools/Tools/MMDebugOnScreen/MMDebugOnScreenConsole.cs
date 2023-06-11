@@ -32,7 +32,7 @@ namespace MoreMountains.Tools
 		protected string _valueTagEnd;
 		protected const string space = " ";
 
-		protected Vector2 _closedSize = new Vector2(60, 80);
+		protected Vector2 _closedSize = new(60, 80);
 		protected Vector2 _openBackgroundWidth;
 		protected int _last_append_at_frame = -1;
 

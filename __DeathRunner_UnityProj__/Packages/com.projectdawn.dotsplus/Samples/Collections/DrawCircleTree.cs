@@ -33,7 +33,7 @@ public class DrawCircleTree : MonoBehaviour
             Circle = rectangle;
         }
         public float SurfaceArea() => Circle.Perimeter;
-        public Volume Union(Volume value) => new Volume(Circle.Union(Circle, value.Circle));
+        public Volume Union(Volume value) => new(Circle.Union(Circle, value.Circle));
     }
 
     private void OnDrawGizmos()

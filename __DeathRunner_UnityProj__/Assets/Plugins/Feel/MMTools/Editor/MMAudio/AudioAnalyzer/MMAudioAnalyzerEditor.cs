@@ -34,8 +34,8 @@ namespace MoreMountains.Tools
 		protected float _inspectorWidth;
 		protected int _numberOfBands;
 		protected Color _barColor;
-		protected Color _inactiveColor = new Color(0f, 0f, 0f, 0.4f);
-		protected Color _bufferedBarColor = new Color(0f, 0f, 0f, 0.3f);
+		protected Color _inactiveColor = new(0f, 0f, 0f, 0.4f);
+		protected Color _bufferedBarColor = new(0f, 0f, 0f, 0.3f);
 		protected Color _normalBarColor = MMColors.Orange;
 		protected Color _normalNormalizedBarColor = MMColors.Aqua;
 		protected Color _peakColor = MMColors.Yellow;
@@ -83,7 +83,7 @@ namespace MoreMountains.Tools
 		protected Vector3 _axisDestination = Vector3.zero;
 
 		// styles
-		protected GUIStyle _redLabel = new GUIStyle();
+		protected GUIStyle _redLabel = new();
 		protected Color _normalLabelColor;
 
 		protected Rect _rect;

@@ -93,7 +93,7 @@ namespace DungeonArchitect.Graphs
         }
 
         [SerializeField]
-        Vector2 position = new Vector2();
+        Vector2 position = new();
         /// <summary>
         /// The position of the graph pin, relative to the owning node's position
         /// </summary>
@@ -128,7 +128,7 @@ namespace DungeonArchitect.Graphs
         }
 
         [SerializeField]
-        Rect boundsOffset = new Rect(0, 0, 20, 20);
+        Rect boundsOffset = new(0, 0, 20, 20);
         /// <summary>
         /// The bounds of the pin, relative to the node's position
         /// </summary>
@@ -145,7 +145,7 @@ namespace DungeonArchitect.Graphs
         }
 
         [SerializeField]
-        Vector2 tangent = new Vector2();
+        Vector2 tangent = new();
         /// <summary>
         /// The tangent of the pin.  Links connected to this pin would come in or out from this direction
         /// </summary>

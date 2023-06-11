@@ -56,7 +56,7 @@ namespace Animancer
 
         /// <summary>Creates a new <see cref="SimpleTimer"/> with the specified `name` and starts it.</summary>
         public static SimpleTimer Start(string name = null)
-             => new SimpleTimer
+             => new()
              {
                  name = name,
                  startTime = CurrentTime,

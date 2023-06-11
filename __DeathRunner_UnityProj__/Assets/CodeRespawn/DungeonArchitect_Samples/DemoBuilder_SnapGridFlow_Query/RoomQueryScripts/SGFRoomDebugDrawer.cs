@@ -12,7 +12,7 @@ public class SGFRoomDebugDrawer : MonoBehaviour
     private SnapGridFlowQuery query;
     private Transform player;
 
-    private Bounds roomBoundsToDraw = new Bounds();
+    private Bounds roomBoundsToDraw = new();
     
     private void Awake()
     {

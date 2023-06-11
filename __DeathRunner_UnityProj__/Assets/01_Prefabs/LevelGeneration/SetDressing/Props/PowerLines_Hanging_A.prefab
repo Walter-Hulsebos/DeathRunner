@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3374978}
   - component: {fileID: 2370860}
   - component: {fileID: 3267081612446777114}
-  - component: {fileID: 6045915451973069101}
   m_Layer: 0
   m_Name: PowerLines_Hanging_A
   m_TagString: Untagged
@@ -94,21 +93,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199208}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 5.294858, y: 1.1521475, z: 0.26392102}
   m_Center: {x: -2.5311522, y: -0.52416265, z: 0.012959484}
---- !u!114 &6045915451973069101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 199208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 6f08f1bc4a17dc24981430c87c3075ca, type: 2}

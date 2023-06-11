@@ -6,7 +6,7 @@ namespace DungeonArchitect.SxEngine
 {
     public class SxWorld
     {
-        private SxSceneGraph sceneGraph = new SxSceneGraph();
+        private SxSceneGraph sceneGraph = new();
 
         public SxRootSceneNode RootNode
         {

@@ -40,7 +40,7 @@ namespace HeurekaGames.Upgrade
 
         private static void TryUpgrade(bool force)
         {
-            List<string> markedForDelete = new List<string>();
+            List<string> markedForDelete = new();
             foreach (var guid in oldGuids)
             {
                 var path = AssetDatabase.GUIDToAssetPath(guid);
@@ -91,7 +91,7 @@ namespace HeurekaGames.Upgrade
                 await Task.Delay(100);
             }
 
-            List<AddRequest> addRequests = new List<AddRequest>();
+            List<AddRequest> addRequests = new();
             foreach (var item in Request.Result)
             {
                 if (heurekaPackages.Any(x => x.Equals(item.name)))

@@ -15,37 +15,37 @@ namespace QFSW.QC.Editor
 
         private static readonly SupportItem[] _supportItems =
         {
-            new SupportItem
+            new()
             {
                 Name = "Docs",
                 Tooltip = "Official and up to date documentation for Quantum Console.",
                 Url = "https://qfsw.co.uk/docs/QC/"
             },
-            new SupportItem
+            new()
             {
                 Name = "Email",
                 Tooltip = "Email address for support and other inquiries.",
                 Url = "mailto:support@qfsw.co.uk"
             },
-            new SupportItem
+            new()
             {
                 Name = "Discord",
                 Tooltip = "Discord server for customer support, WIPs and more.",
                 Url = "https://discord.gg/g8SJ7X6"
             },
-            new SupportItem
+            new()
             {
                 Name = "Twitter",
                 Tooltip = "Get in touch or show off what you've made with QC.",
                 Url = "https://twitter.com/QFSW1024"
             },
-            new SupportItem
+            new()
             {
                 Name = "Review",
                 Tooltip = "Leave a review to share your opinion and support Quantum Console!",
                 Url = "https://assetstore.unity.com/packages/tools/utilities/quantum-console-211046#reviews"
             },
-            new SupportItem
+            new()
             {
                 Name = "Survey",
                 Tooltip = "A short survey to help me get feedback on Quantum Console and prioritize what needs the most focus.",
@@ -73,7 +73,7 @@ namespace QFSW.QC.Editor
 
         public static void DrawSupportRow()
         {
-            LayoutController layout = new LayoutController(EditorGUILayout.GetControlRect());
+            LayoutController layout = new(EditorGUILayout.GetControlRect());
             layout.SpliceRow(_supportItemRects.Length, ref _supportItemRects);
 
             for (int i = 0; i < _supportItems.Length; i++)

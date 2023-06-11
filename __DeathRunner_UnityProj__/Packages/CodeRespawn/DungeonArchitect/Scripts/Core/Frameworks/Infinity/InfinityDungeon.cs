@@ -17,7 +17,7 @@ namespace DungeonArchitect
         public GameObject chunkDungeonTemplate;
 
         [SerializeField]
-        List<InfinityDungeonConfig> spawnedChunks = new List<InfinityDungeonConfig>();
+        List<InfinityDungeonConfig> spawnedChunks = new();
 
         [SerializeField]
         [HideInInspector]

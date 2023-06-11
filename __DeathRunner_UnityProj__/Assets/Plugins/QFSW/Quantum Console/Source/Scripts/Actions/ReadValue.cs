@@ -9,7 +9,7 @@ namespace QFSW.QC.Actions
     /// </summary>
     public class ReadValue<T> : Composite
     {
-        private static readonly QuantumParser Parser = new QuantumParser();
+        private static readonly QuantumParser Parser = new();
 
         /// <param name="getValue">A delegate which returns the parsed value entered by the user.</param>
         /// <param name="config">The config to provide the response flow with.</param>

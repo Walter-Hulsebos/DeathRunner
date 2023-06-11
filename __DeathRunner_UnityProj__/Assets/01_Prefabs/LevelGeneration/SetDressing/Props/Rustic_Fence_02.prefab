@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8842719230258088323}
   - component: {fileID: 4277709400337060992}
   - component: {fileID: 3383733409107049983}
-  - component: {fileID: 3984233298965583959}
   m_Layer: 0
   m_Name: Rustic_Fence_02
   m_TagString: Untagged
@@ -94,9 +93,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7041195748622542934}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.061056674, y: 1.4770058, z: 2.202109}
   m_Center: {x: 0.0082623055, y: 0.7385029, z: 1.0204526}
 --- !u!205 &3383733409107049983
@@ -118,16 +125,3 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8842719230258088323}
   m_Enabled: 1
---- !u!114 &3984233298965583959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7041195748622542934}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: dbed0a4e5db26844b9f9c65c1b15e047, type: 2}

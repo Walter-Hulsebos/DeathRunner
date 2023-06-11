@@ -19,11 +19,11 @@ namespace Sisus.ComponentNames.EditorOnly
 	{
 		public static event Action<Component, string> Changed;
 
-		private static readonly Dictionary<Type, string> defaults = new Dictionary<Type, string>();
-		private static readonly Dictionary<Object, string> overrides = new Dictionary<Object, string>();
-		private static readonly Dictionary<Type, string> defaultInspectorTitles = new Dictionary<Type, string>();
-		private static readonly Dictionary<Object, string> inspectorTitleOverrides = new Dictionary<Object, string>();
-		private static readonly Dictionary<Object, string> tooltips = new Dictionary<Object, string>();
+		private static readonly Dictionary<Type, string> defaults = new();
+		private static readonly Dictionary<Object, string> overrides = new();
+		private static readonly Dictionary<Type, string> defaultInspectorTitles = new();
+		private static readonly Dictionary<Object, string> inspectorTitleOverrides = new();
+		private static readonly Dictionary<Object, string> tooltips = new();
 
 		/// <summary>
 		/// Should class name be added as suffix in the inspector by default?

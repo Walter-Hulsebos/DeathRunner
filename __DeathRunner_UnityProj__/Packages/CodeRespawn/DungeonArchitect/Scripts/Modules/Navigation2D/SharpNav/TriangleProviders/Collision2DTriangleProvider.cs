@@ -52,14 +52,14 @@ namespace DungeonArchitect.Navigation {
 		
 		
 		static readonly Vector3[] cubeVertices = new Vector3[] { 
-			new Vector3(-0.5f, -0.5f, 0.5f), 
-			new Vector3(0.5f, -0.5f, 0.5f), 
-			new Vector3(0.5f, 0.5f, 0.5f), 
-			new Vector3(-0.5f, 0.5f, 0.5f), 
-			new Vector3(-0.5f, -0.5f, -0.5f), 
-			new Vector3(0.5f, -0.5f, -0.5f), 
-			new Vector3(0.5f, 0.5f, -0.5f), 
-			new Vector3(-0.5f, 0.5f, -0.5f) 
+			new(-0.5f, -0.5f, 0.5f), 
+			new(0.5f, -0.5f, 0.5f), 
+			new(0.5f, 0.5f, 0.5f), 
+			new(-0.5f, 0.5f, 0.5f), 
+			new(-0.5f, -0.5f, -0.5f), 
+			new(0.5f, -0.5f, -0.5f), 
+			new(0.5f, 0.5f, -0.5f), 
+			new(-0.5f, 0.5f, -0.5f) 
 		};
 		
 		static readonly int[] cubeIndices = new int[] { 

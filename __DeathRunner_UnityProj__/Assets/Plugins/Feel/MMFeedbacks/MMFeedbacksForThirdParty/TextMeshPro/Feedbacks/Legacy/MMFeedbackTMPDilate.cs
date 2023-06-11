@@ -47,7 +47,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to tween on
 		[Tooltip("the curve to tween on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
-		public MMTweenType DilateCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(0.3f, 1f), new Keyframe(1, 0.5f)));
+		public MMTweenType DilateCurve = new(new AnimationCurve(new Keyframe(0, 0.5f), new Keyframe(0.3f, 1f), new Keyframe(1, 0.5f)));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]

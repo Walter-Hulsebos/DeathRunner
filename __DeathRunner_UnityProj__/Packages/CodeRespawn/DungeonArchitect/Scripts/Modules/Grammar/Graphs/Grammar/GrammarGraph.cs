@@ -10,7 +10,7 @@ namespace DungeonArchitect.Grammar
         public bool useProceduralScript = false;
         public string generatorScriptClass;
 
-        public KeyValueData editorData = new KeyValueData();
+        public KeyValueData editorData = new();
 
         public override void OnEnable()
         {

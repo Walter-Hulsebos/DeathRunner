@@ -47,7 +47,7 @@ namespace MoreMountains.Feedbacks
 		public bool ForceDestinationOnEnd = false;
 		/// a global curve to animate all properties on, unless dedicated ones are specified
 		[Tooltip("a global curve to animate all properties on, unless dedicated ones are specified")]
-		public AnimationCurve GlobalAnimationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve GlobalAnimationCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the duration of the transition, in seconds
 		[Tooltip("the duration of the transition, in seconds")]
 		public float Duration = 0.2f;
@@ -92,7 +92,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to use to animate the position on
 		[Tooltip("the curve to use to animate the position on")]
 		[MMFCondition("SeparatePositionCurve", true)]
-		public AnimationCurve AnimatePositionCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve AnimatePositionCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
         
 		/// whether or not to use a separate animation curve to animate the rotation
 		[Tooltip("whether or not to use a separate animation curve to animate the rotation")]
@@ -100,7 +100,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to use to animate the rotation on
 		[Tooltip("the curve to use to animate the rotation on")]
 		[MMFCondition("SeparateRotationCurve", true)]
-		public AnimationCurve AnimateRotationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve AnimateRotationCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
         
 		/// whether or not to use a separate animation curve to animate the scale
 		[Tooltip("whether or not to use a separate animation curve to animate the scale")]
@@ -108,7 +108,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to use to animate the scale on
 		[Tooltip("the curve to use to animate the scale on")]
 		[MMFCondition("SeparateScaleCurve", true)]
-		public AnimationCurve AnimateScaleCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve AnimateScaleCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
         
 		/// the duration of this feedback is the duration of the movement
 		public override float FeedbackDuration { get { return ApplyTimeMultiplier(Duration); } set { Duration = value; } }

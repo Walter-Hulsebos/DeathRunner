@@ -44,7 +44,7 @@ namespace HeurekaGames.AssetHunterPRO
 
             if (path.Length != 0)
             {
-                List<AssetDumpData> elements = new List<AssetDumpData>();
+                List<AssetDumpData> elements = new();
 
                 foreach (var element in m_TreeView.GetRows())
                     populateDumpListRecursively(m_TreeView.treeModel.Find(element.id), ((AH_MultiColumnHeader)m_TreeView.multiColumnHeader).ShowMode, ref elements);

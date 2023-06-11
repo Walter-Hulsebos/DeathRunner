@@ -29,7 +29,7 @@ namespace DungeonArchitect.Utils.Noise
     public abstract class NoiseTable<T> : INoiseTable<T>
     {
         private int size;
-        private List<T> data = new List<T>();
+        private List<T> data = new();
         protected INoisePolicy<T> noisePolicy;
 
         protected abstract INoisePolicy<T> CreateNoisePolicy();

@@ -37,7 +37,7 @@ namespace SharpNav
 		/// <summary>
 		/// A null region is one with an ID of 0.
 		/// </summary>
-		public static readonly RegionId Null = new RegionId(0, 0);
+		public static readonly RegionId Null = new(0, 0);
 
 		/// <summary>
 		/// A bitmask 
@@ -603,7 +603,7 @@ namespace SharpNav
 			RegionId otherId = otherRegion.id;
 
 			// Duplicate current neighbourhood.
-			List<RegionId> thisConnected = new List<RegionId>();
+			List<RegionId> thisConnected = new();
 			for (int i = 0; i < connections.Count; ++i)
 				thisConnected.Add(connections[i]);
 			List<RegionId> otherConnected = otherRegion.connections;

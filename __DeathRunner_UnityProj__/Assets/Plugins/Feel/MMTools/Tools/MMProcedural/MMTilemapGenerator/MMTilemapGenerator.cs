@@ -19,11 +19,11 @@ namespace MoreMountains.Tools
 		/// The width of the grid, in cells
 		[Tooltip("The width of the grid, in cells")]
 		[MMVector("Min","Max")]
-		public Vector2Int GridWidth = new Vector2Int(50,50);
+		public Vector2Int GridWidth = new(50,50);
 		/// the height of the grid, in cells
 		[Tooltip("the height of the grid, in cells")]
 		[MMVector("Min","Max")]
-		public Vector2Int GridHeight = new Vector2Int(50,50);
+		public Vector2Int GridHeight = new(50,50);
 
 		[Header("Data")] 
 		/// the list of layers that will be used to generate the tilemap
@@ -46,7 +46,7 @@ namespace MoreMountains.Tools
 		public float SlowRenderDuration = 1f;
 		/// the tween to use for the slow render
 		[Tooltip("the tween to use for the slow render")]
-		public MMTweenType SlowRenderTweenType = new MMTweenType(MMTween.MMTweenCurve.EaseInOutCubic);
+		public MMTweenType SlowRenderTweenType = new(MMTween.MMTweenCurve.EaseInOutCubic);
         
 		protected int[,] _grid;
 
@@ -89,7 +89,7 @@ namespace MoreMountains.Tools
 		void Reset()
 		{
 			Layers = new MMTilemapGeneratorLayerList(){
-				new MMTilemapGeneratorLayer()
+				new()
 			};
 		}
 

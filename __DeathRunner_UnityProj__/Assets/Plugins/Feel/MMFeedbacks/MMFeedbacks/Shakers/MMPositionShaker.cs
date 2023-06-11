@@ -60,11 +60,11 @@ namespace MoreMountains.Feedbacks
 		/// when adding directional noise, noise strength will be randomized between this value and DirectionalNoiseStrengthMax
 		[Tooltip("when adding directional noise, noise strength will be randomized between this value and DirectionalNoiseStrengthMax")]
 		[MMCondition("AddDirectionalNoise", true)]
-		public Vector3 DirectionalNoiseStrengthMin = new Vector3(0.25f, 0.25f, 0.25f);
+		public Vector3 DirectionalNoiseStrengthMin = new(0.25f, 0.25f, 0.25f);
 		/// when adding directional noise, noise strength will be randomized between this value and DirectionalNoiseStrengthMin
 		[Tooltip("when adding directional noise, noise strength will be randomized between this value and DirectionalNoiseStrengthMin")]
 		[MMCondition("AddDirectionalNoise", true)]
-		public Vector3 DirectionalNoiseStrengthMax = new Vector3(0.25f, 0.25f, 0.25f);
+		public Vector3 DirectionalNoiseStrengthMax = new(0.25f, 0.25f, 0.25f);
         
 		[MMInspectorGroup("Randomness", true, 44)]
 		/// a unique seed you can use to get different outcomes when shaking more than one transform at once
@@ -81,7 +81,7 @@ namespace MoreMountains.Feedbacks
 		/// the animation curve used to define attenuation, impacting the amplitude of the shake
 		[Tooltip("the animation curve used to define attenuation, impacting the amplitude of the shake")]
 		[MMCondition("UseAttenuation", true)]
-		public AnimationCurve AttenuationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve AttenuationCurve = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 
 		[MMInspectorGroup("Test", true, 46)]
 		[MMInspectorButton("StartShaking")] 

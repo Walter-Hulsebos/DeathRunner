@@ -106,7 +106,7 @@ namespace MoreMountains.Tools
 		/// <param name="message">Message.</param>
 		protected virtual float DetermineTextboxHeight(string message)
 		{
-			GUIStyle style = new GUIStyle(EditorStyles.helpBox);
+			GUIStyle style = new(EditorStyles.helpBox);
 			style.richText=true;
 
 			float newHeight = style.CalcHeight(new GUIContent(message),EditorGUIUtility.currentViewWidth - iconWidth);

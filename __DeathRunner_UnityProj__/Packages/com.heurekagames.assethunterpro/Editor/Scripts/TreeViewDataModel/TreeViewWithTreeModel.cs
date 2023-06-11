@@ -22,7 +22,7 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl
     internal class TreeViewWithTreeModel<T> : TreeView where T : TreeElement
     {
         TreeModel<T> m_TreeModel;
-        protected readonly List<TreeViewItem> m_Rows = new List<TreeViewItem>(100);
+        protected readonly List<TreeViewItem> m_Rows = new(100);
         public event Action treeChanged;
 
         public TreeModel<T> treeModel { get { return m_TreeModel; } }
@@ -122,7 +122,7 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl
         {
             const int kItemDepth = 0; // tree is flattened when searching
 
-            Stack<T> stack = new Stack<T>();
+            Stack<T> stack = new();
 
             if (searchFromThis?.children != null)
             {

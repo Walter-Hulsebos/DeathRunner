@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 28791108742500600}
   - component: {fileID: 5061015692506556297}
-  - component: {fileID: 7504913200937483054}
   m_Layer: 0
   m_Name: Signboard_09
   m_TagString: Untagged
@@ -58,19 +57,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 8135769343358510501}
   m_Enabled: 1
---- !u!114 &7504913200937483054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 805469168667789890}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: bb79e2422f55f7b4cad8c3841b5f4c57, type: 2}
 --- !u!1 &8021951692382538365
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,9 +149,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8021951692382538365}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.1329627, y: 1.7815926, z: 0.6993118}
   m_Center: {x: -0.0012437627, y: 0.015557557, z: 0.34578547}
 --- !u!1 &8444923724634647417

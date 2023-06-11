@@ -25,7 +25,7 @@ namespace MoreMountains.Feedbacks
 		/// The curve along which to evaluate the position of the RectTransform's pivot
 		[Tooltip("The curve along which to evaluate the position of the RectTransform's pivot")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
-		public MMTweenType SpeedCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
+		public MMTweenType SpeedCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// the position to remap the curve's 0 to 
 		[Tooltip("the position to remap the curve's 0 to")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
@@ -42,8 +42,8 @@ namespace MoreMountains.Feedbacks
 				return;
 			}
             
-			MMFeedbackBaseTarget target = new MMFeedbackBaseTarget();
-			MMPropertyReceiver receiver = new MMPropertyReceiver();
+			MMFeedbackBaseTarget target = new();
+			MMPropertyReceiver receiver = new();
 			receiver.TargetObject = TargetRectTransform.gameObject;
 			receiver.TargetComponent = TargetRectTransform;
 			receiver.TargetPropertyName = "pivot";

@@ -20,7 +20,7 @@ namespace MoreMountains.Tools
 		/// <param name="saveFile"></param>
 		public void Save(object objectToSave, FileStream saveFile)
 		{
-			BinaryFormatter formatter = new BinaryFormatter();
+			BinaryFormatter formatter = new();
 			formatter.Serialize(saveFile, objectToSave);
 			saveFile.Close();
 		}
@@ -34,7 +34,7 @@ namespace MoreMountains.Tools
 		public object Load(System.Type objectType, FileStream saveFile)
 		{
 			object savedObject;
-			BinaryFormatter formatter = new BinaryFormatter();
+			BinaryFormatter formatter = new();
 			savedObject = formatter.Deserialize(saveFile);
 			saveFile.Close();
 			return savedObject;

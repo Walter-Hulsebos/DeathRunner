@@ -14,9 +14,9 @@ namespace DungeonArchitect.Builders.GridFlow
         private FlowLayoutGraph graph;
         private Vector3 gridSize = Vector3.zero;
 
-        Dictionary<IntVector2, FlowLayoutGraphNode> nodesByCoord = new Dictionary<IntVector2, FlowLayoutGraphNode>();
-        Dictionary<IntVector2, List<FlowTilemapCell>> tilesByNode = new Dictionary<IntVector2, List<FlowTilemapCell>>();
-        Dictionary<IntVector2, List<FlowTilemapCell>> freeTilesByNode = new Dictionary<IntVector2, List<FlowTilemapCell>>();
+        Dictionary<IntVector2, FlowLayoutGraphNode> nodesByCoord = new();
+        Dictionary<IntVector2, List<FlowTilemapCell>> tilesByNode = new();
+        Dictionary<IntVector2, List<FlowTilemapCell>> freeTilesByNode = new();
 
         public override void OnPostLayoutBuild()
         {

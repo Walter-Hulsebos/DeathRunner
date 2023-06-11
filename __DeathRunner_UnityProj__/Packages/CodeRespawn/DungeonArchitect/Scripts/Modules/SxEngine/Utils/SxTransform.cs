@@ -11,7 +11,7 @@ namespace DungeonArchitect.SxEngine.Utils
         private Matrix4x4 _matrix;
         private bool dirty;
 
-        public static readonly SxTransform identity = new SxTransform()
+        public static readonly SxTransform identity = new()
         {
             _position = Vector3.zero,
             _rotation = Quaternion.identity,

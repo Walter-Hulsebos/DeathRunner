@@ -14,8 +14,8 @@ namespace DungeonArchitect.Flow.Impl.GridFlow.Tasks
     [FlowExecNodeInfo("Initialize Tilemap", "Tilemap/", 2000)]
     public class GridFlowTilemapTaskInitialize : TilemapBaseFlowTaskInitialize
     {
-        public Vector2Int tilemapSizePerNode = new Vector2Int(10, 10);
-        public Vector2 perturbAmount = new Vector2(3, 3);
+        public Vector2Int tilemapSizePerNode = new(10, 10);
+        public Vector2 perturbAmount = new(3, 3);
         public float corridorLaneWidth = 2;
         public int layoutPadding = 0;
         public bool cropTilemap = true;

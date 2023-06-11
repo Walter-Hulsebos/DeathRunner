@@ -127,7 +127,7 @@ namespace MoreMountains.Tools
 		/// <param name="color"></param>
 		private static void LogCommand(string command, string color)
 		{
-			DebugLogItem item = new DebugLogItem(command, color, Time.frameCount, Time.time, 3, true);
+			DebugLogItem item = new(command, color, Time.frameCount, Time.time, 3, true);
 			LogHistory.Add(item);
 			MMDebugLogEvent.Trigger(new DebugLogItem(null, "", Time.frameCount, Time.time, 0, false));
 		}
@@ -162,7 +162,7 @@ namespace MoreMountains.Tools
 		/// <summary>
 		/// A list of all the debug logs (up to DebugLogMaxLength entries)
 		/// </summary>
-		public static List<DebugLogItem> LogHistory = new List<DebugLogItem>(_logHistoryMaxLength);
+		public static List<DebugLogItem> LogHistory = new(_logHistoryMaxLength);
 
 		/// <summary>
 		/// Returns a string with all log history condensed
@@ -174,7 +174,7 @@ namespace MoreMountains.Tools
 				string colorPrefix = "";
 				string colorSuffix = "";
 
-				StringBuilder log = new StringBuilder();
+				StringBuilder log = new();
 				for (int i = 0; i < LogHistory.Count; i++)
 				{
 					// colors
@@ -257,7 +257,7 @@ namespace MoreMountains.Tools
 		/// <returns></returns>
 		public static DebugLogItem LogDebugToConsole(object message, string color, int timePrecision, bool displayFrameCount)
 		{
-			DebugLogItem item = new DebugLogItem(message, color, Time.frameCount, Time.time, timePrecision, displayFrameCount);
+			DebugLogItem item = new(message, color, Time.frameCount, Time.time, timePrecision, displayFrameCount);
 
 			// we add to our DebugLog 
 			if (LogHistory.Count > _logHistoryMaxLength)
@@ -733,14 +733,14 @@ namespace MoreMountains.Tools
 			Vector3 boundsCenter = bounds.center;
 			Vector3 boundsExtents = bounds.extents;
 		  
-			Vector3 v3FrontTopLeft     = new Vector3(boundsCenter.x - boundsExtents.x, boundsCenter.y + boundsExtents.y, boundsCenter.z - boundsExtents.z);  // Front top left corner
-			Vector3 v3FrontTopRight    = new Vector3(boundsCenter.x + boundsExtents.x, boundsCenter.y + boundsExtents.y, boundsCenter.z - boundsExtents.z);  // Front top right corner
-			Vector3 v3FrontBottomLeft  = new Vector3(boundsCenter.x - boundsExtents.x, boundsCenter.y - boundsExtents.y, boundsCenter.z - boundsExtents.z);  // Front bottom left corner
-			Vector3 v3FrontBottomRight = new Vector3(boundsCenter.x + boundsExtents.x, boundsCenter.y - boundsExtents.y, boundsCenter.z - boundsExtents.z);  // Front bottom right corner
-			Vector3 v3BackTopLeft      = new Vector3(boundsCenter.x - boundsExtents.x, boundsCenter.y + boundsExtents.y, boundsCenter.z + boundsExtents.z);  // Back top left corner
-			Vector3 v3BackTopRight     = new Vector3(boundsCenter.x + boundsExtents.x, boundsCenter.y + boundsExtents.y, boundsCenter.z + boundsExtents.z);  // Back top right corner
-			Vector3 v3BackBottomLeft   = new Vector3(boundsCenter.x - boundsExtents.x, boundsCenter.y - boundsExtents.y, boundsCenter.z + boundsExtents.z);  // Back bottom left corner
-			Vector3 v3BackBottomRight  = new Vector3(boundsCenter.x + boundsExtents.x, boundsCenter.y - boundsExtents.y, boundsCenter.z + boundsExtents.z);  // Back bottom right corner
+			Vector3 v3FrontTopLeft     = new(boundsCenter.x - boundsExtents.x, boundsCenter.y + boundsExtents.y, boundsCenter.z - boundsExtents.z);  // Front top left corner
+			Vector3 v3FrontTopRight    = new(boundsCenter.x + boundsExtents.x, boundsCenter.y + boundsExtents.y, boundsCenter.z - boundsExtents.z);  // Front top right corner
+			Vector3 v3FrontBottomLeft  = new(boundsCenter.x - boundsExtents.x, boundsCenter.y - boundsExtents.y, boundsCenter.z - boundsExtents.z);  // Front bottom left corner
+			Vector3 v3FrontBottomRight = new(boundsCenter.x + boundsExtents.x, boundsCenter.y - boundsExtents.y, boundsCenter.z - boundsExtents.z);  // Front bottom right corner
+			Vector3 v3BackTopLeft      = new(boundsCenter.x - boundsExtents.x, boundsCenter.y + boundsExtents.y, boundsCenter.z + boundsExtents.z);  // Back top left corner
+			Vector3 v3BackTopRight     = new(boundsCenter.x + boundsExtents.x, boundsCenter.y + boundsExtents.y, boundsCenter.z + boundsExtents.z);  // Back top right corner
+			Vector3 v3BackBottomLeft   = new(boundsCenter.x - boundsExtents.x, boundsCenter.y - boundsExtents.y, boundsCenter.z + boundsExtents.z);  // Back bottom left corner
+			Vector3 v3BackBottomRight  = new(boundsCenter.x + boundsExtents.x, boundsCenter.y - boundsExtents.y, boundsCenter.z + boundsExtents.z);  // Back bottom right corner
 
 
 			Handles.color = color;
@@ -880,10 +880,10 @@ namespace MoreMountains.Tools
 
 			Gizmos.color = color;
 
-			Vector3 v3TopLeft = new Vector3(center.x - size.x/2, center.y + size.y/2, 0);
-			Vector3 v3TopRight = new Vector3(center.x + size.x/2, center.y + size.y/2, 0);;
-			Vector3 v3BottomRight = new Vector3(center.x + size.x/2, center.y - size.y/2, 0);;
-			Vector3 v3BottomLeft = new Vector3(center.x - size.x/2, center.y - size.y/2, 0);;
+			Vector3 v3TopLeft = new(center.x - size.x/2, center.y + size.y/2, 0);
+			Vector3 v3TopRight = new(center.x + size.x/2, center.y + size.y/2, 0);;
+			Vector3 v3BottomRight = new(center.x + size.x/2, center.y - size.y/2, 0);;
+			Vector3 v3BottomLeft = new(center.x - size.x/2, center.y - size.y/2, 0);;
 
 			Gizmos.DrawLine(v3TopLeft,v3TopRight);
 			Gizmos.DrawLine(v3TopRight,v3BottomRight);
@@ -933,8 +933,8 @@ namespace MoreMountains.Tools
 				return;
 			}
 
-			Vector3 pos = new Vector3( rectangle.x + rectangle.width/2, rectangle.y + rectangle.height/2, 0.0f );
-			Vector3 scale = new Vector3 (rectangle.width, rectangle.height, 0.0f );
+			Vector3 pos = new( rectangle.x + rectangle.width/2, rectangle.y + rectangle.height/2, 0.0f );
+			Vector3 scale = new(rectangle.width, rectangle.height, 0.0f );
 
 			MMDebug.DrawRectangle (pos, color, scale); 
 		}	

@@ -7,7 +7,7 @@ namespace DungeonArchitect.SxEngine
 {
     public class SxActor : ISxSceneNode
     {
-        private List<SxActorComponent> components = new List<SxActorComponent>();
+        private List<SxActorComponent> components = new();
         
         private SxTransform worldTransform = SxTransform.identity;
         public SxTransform WorldTransform
@@ -17,7 +17,7 @@ namespace DungeonArchitect.SxEngine
         }
         
         public SxWorld World;
-        private List<ISxSceneNode> children = new List<ISxSceneNode>();
+        private List<ISxSceneNode> children = new();
         public ISxSceneNode[] Children
         {
             get => children.ToArray();

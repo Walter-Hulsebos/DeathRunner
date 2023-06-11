@@ -16,7 +16,7 @@ namespace MoreMountains.Tools
 		[DrawGizmo(GizmoType.InSelectionHierarchy | GizmoType.NotInSelectionHierarchy)]
 		static void DrawGameObjectName(MMSceneViewIcon sceneViewIcon, GizmoType gizmoType)
 		{   
-			GUIStyle style = new GUIStyle();
+			GUIStyle style = new();
 			style.normal.textColor = Color.blue;	 
 			Handles.Label(sceneViewIcon.transform.position, sceneViewIcon.gameObject.name,style);
 		}

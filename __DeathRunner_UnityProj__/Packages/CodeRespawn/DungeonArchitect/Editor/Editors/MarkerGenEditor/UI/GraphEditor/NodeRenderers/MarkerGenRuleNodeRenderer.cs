@@ -55,7 +55,7 @@ namespace DungeonArchitect.Editors.MarkerGenerator.UI.NodeRenderers
             }
         }
 
-        private Dictionary<GraphPin, List<GraphPin>> linkedTo = new Dictionary<GraphPin, List<GraphPin>>();
+        private Dictionary<GraphPin, List<GraphPin>> linkedTo = new();
 
         public override void BeginFrame(Graph graph)
         {
@@ -107,7 +107,7 @@ namespace DungeonArchitect.Editors.MarkerGenerator.UI.NodeRenderers
             return connected ? pinTexDefault : pinTexDefaultHollow;
         }
 
-        private Vector2 pinPadding = new Vector2(4, 4);
+        private Vector2 pinPadding = new(4, 4);
         
         Vector2 CalcSize(MarkerGenRuleGraphPin pin, GUIStyle style)
         {
@@ -191,7 +191,7 @@ namespace DungeonArchitect.Editors.MarkerGenerator.UI.NodeRenderers
                 if (checkboxVisible)
                 {
                     const float checkboxSize = 16;
-                    Rect toggleBounds = new Rect();
+                    Rect toggleBounds = new();
                     toggleBounds.width = checkboxSize / cameraZoomLevel;
                     toggleBounds.height = checkboxSize / cameraZoomLevel;
                     toggleBounds.x = currentX;

@@ -54,7 +54,7 @@ namespace MoreMountains.Tools
 		/// <param name="duration">Duration, in seconds.</param>
 		/// <param name="targetAlpha">Target alpha, from 0 to 1.</param>
 		public MMFadeEvent(float duration, float targetAlpha, MMTweenType tween, int id=0, 
-			bool ignoreTimeScale = true, Vector3 worldPosition = new Vector3())
+			bool ignoreTimeScale = true, Vector3 worldPosition = new())
 		{
 			ID = id;
 			Duration = duration;
@@ -69,7 +69,7 @@ namespace MoreMountains.Tools
 			Trigger(duration, targetAlpha, new MMTweenType(MMTween.MMTweenCurve.EaseInCubic));
 		}
 		public static void Trigger(float duration, float targetAlpha, MMTweenType tween, int id = 0, 
-			bool ignoreTimeScale = true, Vector3 worldPosition = new Vector3())
+			bool ignoreTimeScale = true, Vector3 worldPosition = new())
 		{
 			e.ID = id;
 			e.Duration = duration;
@@ -99,7 +99,7 @@ namespace MoreMountains.Tools
 		/// </summary>
 		/// <param name="duration">Duration.</param>
 		public MMFadeInEvent(float duration, MMTweenType tween, int id = 0, 
-			bool ignoreTimeScale = true, Vector3 worldPosition = new Vector3())
+			bool ignoreTimeScale = true, Vector3 worldPosition = new())
 		{
 			ID = id;
 			Duration = duration;
@@ -109,7 +109,7 @@ namespace MoreMountains.Tools
 		}
 		static MMFadeInEvent e;
 		public static void Trigger(float duration, MMTweenType tween, int id = 0, 
-			bool ignoreTimeScale = true, Vector3 worldPosition = new Vector3())
+			bool ignoreTimeScale = true, Vector3 worldPosition = new())
 		{
 			e.ID = id;
 			e.Duration = duration;
@@ -138,7 +138,7 @@ namespace MoreMountains.Tools
 		/// </summary>
 		/// <param name="duration">Duration.</param>
 		public MMFadeOutEvent(float duration, MMTweenType tween, int id = 0, 
-			bool ignoreTimeScale = true, Vector3 worldPosition = new Vector3())
+			bool ignoreTimeScale = true, Vector3 worldPosition = new())
 		{
 			ID = id;
 			Duration = duration;
@@ -149,7 +149,7 @@ namespace MoreMountains.Tools
 
 		static MMFadeOutEvent e;
 		public static void Trigger(float duration, MMTweenType tween, int id = 0, 
-			bool ignoreTimeScale = true, Vector3 worldPosition = new Vector3())
+			bool ignoreTimeScale = true, Vector3 worldPosition = new())
 		{
 			e.ID = id;
 			e.Duration = duration;
@@ -192,7 +192,7 @@ namespace MoreMountains.Tools
 		public float DefaultDuration = 0.2f;
 		/// the default curve to use for this fader
 		[Tooltip("the default curve to use for this fader")]
-		public MMTweenType DefaultTween = new MMTweenType(MMTween.MMTweenCurve.LinearTween);
+		public MMTweenType DefaultTween = new(MMTween.MMTweenCurve.LinearTween);
 		/// whether or not the fade should happen in unscaled time
 		[Tooltip("whether or not the fade should happen in unscaled time")] 
 		public bool IgnoreTimescale = true;

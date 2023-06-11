@@ -43,7 +43,7 @@ namespace HeurekaGames.AssetHunterPRO
 
         internal static void SerializeAndSaveCSV(AH_ElementList elementList, string path)
         {
-            List<string[]> rowData = new List<string[]>();
+            List<string[]> rowData = new();
 
             // Creating First row of titles manually..
             string[] rowDataTemp = new string[5];
@@ -75,7 +75,7 @@ namespace HeurekaGames.AssetHunterPRO
             int length = output.GetLength(0);
             string delimiter = ",";
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             for (int index = 0; index < length; index++)
                 sb.AppendLine(string.Join(delimiter, output[index]));

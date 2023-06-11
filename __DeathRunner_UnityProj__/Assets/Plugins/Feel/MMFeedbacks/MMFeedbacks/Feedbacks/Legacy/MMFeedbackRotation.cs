@@ -58,7 +58,7 @@ namespace MoreMountains.Feedbacks
 		/// how the x part of the rotation should animate over time, in degrees
 		[Tooltip("how the x part of the rotation should animate over time, in degrees")]
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
-		public AnimationCurve AnimateRotationX = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve AnimateRotationX = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// if this is true, should animate the X rotation
 		[Tooltip("if this is true, should animate the X rotation")]
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
@@ -66,7 +66,7 @@ namespace MoreMountains.Feedbacks
 		/// how the y part of the rotation should animate over time, in degrees
 		[Tooltip("how the y part of the rotation should animate over time, in degrees")]
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
-		public AnimationCurve AnimateRotationY = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve AnimateRotationY = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// if this is true, should animate the X rotation
 		[Tooltip("if this is true, should animate the X rotation")]
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
@@ -74,7 +74,7 @@ namespace MoreMountains.Feedbacks
 		/// how the z part of the rotation should animate over time, in degrees
 		[Tooltip("how the z part of the rotation should animate over time, in degrees")]
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
-		public AnimationCurve AnimateRotationZ = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve AnimateRotationZ = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
 		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
 		public bool AllowAdditivePlays = false;
@@ -90,11 +90,11 @@ namespace MoreMountains.Feedbacks
 		/// the angles to match when in ToDestination mode
 		[Tooltip("the angles to match when in ToDestination mode")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
-		public Vector3 DestinationAngles = new Vector3(0f, 180f, 0f);
+		public Vector3 DestinationAngles = new(0f, 180f, 0f);
 		/// the animation curve to use when animating to destination (individual x,y,z curves above won't be used)
 		[Tooltip("the animation curve to use when animating to destination (individual x,y,z curves above won't be used)")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
-		public AnimationCurve ToDestinationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1f));
+		public AnimationCurve ToDestinationCurve = new(new Keyframe(0, 0), new Keyframe(1, 1f));
         
 		/// the duration of this feedback is the duration of the rotation
 		public override float FeedbackDuration { get { return ApplyTimeMultiplier(AnimateRotationDuration); } set { AnimateRotationDuration = value; } }

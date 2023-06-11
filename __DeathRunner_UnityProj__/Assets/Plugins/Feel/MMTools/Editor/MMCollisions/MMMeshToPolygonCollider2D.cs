@@ -44,7 +44,7 @@ namespace MoreMountains.Tools
 		/// <returns></returns>
 		private static Vector2[] VectorsToPoints(Vector3[] vectors)
 		{
-			List<Vector2> newColliderVertices = new List<Vector2>();
+			List<Vector2> newColliderVertices = new();
 
 			for (int i = 0; i < vectors.Length; i++)
 			{
@@ -62,7 +62,7 @@ namespace MoreMountains.Tools
 		/// <returns></returns>
 		private static Vector3[] MeshFilterToVectors(MeshFilter meshFilter)
 		{
-			List<Vector3> vertices = new List<Vector3>();
+			List<Vector3> vertices = new();
 			meshFilter.sharedMesh.GetVertices(vertices);
 
 			List<MMGeometry.MMEdge> boundaryPath = MMGeometry.GetEdges(meshFilter.sharedMesh.triangles).FindBoundary().SortEdges();

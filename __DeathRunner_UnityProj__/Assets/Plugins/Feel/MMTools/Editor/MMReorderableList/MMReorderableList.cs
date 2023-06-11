@@ -865,8 +865,8 @@ namespace MoreMountains.Tools
 				Style.footerBackground.Draw(rect, false, false, false, false);
 			}
 
-			Rect addRect = new Rect(rect.xMin + 4f, rect.y - 3f, 25f, 13f);
-			Rect subRect = new Rect(rect.xMax - 29f, rect.y - 3f, 25f, 13f);
+			Rect addRect = new(rect.xMin + 4f, rect.y - 3f, 25f, 13f);
+			Rect subRect = new(rect.xMax - 29f, rect.y - 3f, 25f, 13f);
 
 			EditorGUI.BeginDisabledGroup(!canAdd);
 
@@ -917,7 +917,7 @@ namespace MoreMountains.Tools
 
 			selection.Select(IndexOf(element));
 
-			GenericMenu menu = new GenericMenu();
+			GenericMenu menu = new();
 
 			if (element.isInstantiatedPrefab) {
 
@@ -934,7 +934,7 @@ namespace MoreMountains.Tools
 
 		private void HandleMultipleContextClick(Event evt) {
 
-			GenericMenu menu = new GenericMenu();
+			GenericMenu menu = new();
 
 			if (selection.CanRevert(list)) {
 
@@ -1272,7 +1272,7 @@ namespace MoreMountains.Tools
 				SerializedProperty property = list.GetArrayElementAtIndex(i);
 				Rect elementRect = elementRects[i];
 
-				DragElement dragElement = new DragElement() {
+				DragElement dragElement = new() {
 					property = property,
 					dragOffset = dragPosition - elementRect.y,
 					rect = elementRect,
@@ -1748,7 +1748,7 @@ namespace MoreMountains.Tools
 
 			public ListSelection Clone() {
 
-				ListSelection clone = new ListSelection(ToArray());
+				ListSelection clone = new(ToArray());
 				clone.firstSelected = firstSelected;
 
 				return clone;

@@ -17,7 +17,7 @@ namespace ProjectDawn.Collections.Tests
         public unsafe void UnsafeLinkedListBenchmarkTests_Int_Add()
         {
             int count = 1000000;
-            Stopwatch stopWatch = new Stopwatch();
+            Stopwatch stopWatch = new();
 
             stopWatch.Restart();
             var linkedList = new UnsafeLinkedList<int>(1, Allocator.Temp);
@@ -44,7 +44,7 @@ namespace ProjectDawn.Collections.Tests
         public unsafe void UnsafeLinkedListBenchmarkTests_Int_RandomRemove()
         {
             int count = 200000;
-            Stopwatch stopWatch = new Stopwatch();
+            Stopwatch stopWatch = new();
             Random rnd;
 
             rnd = new Random(1);

@@ -29,7 +29,7 @@ namespace DungeonArchitect.MiniMaps
         {
             if (minimapTexture != null)
             {
-                IntVector2 desiredSize = new IntVector2(minimapTexture.width, minimapTexture.height);
+                IntVector2 desiredSize = new(minimapTexture.width, minimapTexture.height);
                 CreateTextures(desiredSize, out staticImage, out fogOfWar, out overlayImage, out textureSize);
                 timeSinceLastUpdate = 0;
 

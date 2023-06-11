@@ -18,11 +18,11 @@ namespace MoreMountains.Feedbacks
 		// Single Copy --------------------------------------------------------------------
 
 		static public System.Type Type { get; private set; }
-		static List<SerializedProperty> Properties = new List<SerializedProperty>();
+		static List<SerializedProperty> Properties = new();
         
-		public static readonly List<MMF_Feedback> CopiedFeedbacks = new List<MMF_Feedback>();
+		public static readonly List<MMF_Feedback> CopiedFeedbacks = new();
 
-		public static List<MMF_Player> ShouldKeepChanges = new List<MMF_Player>();
+		public static List<MMF_Player> ShouldKeepChanges = new();
 
 		static string[] IgnoreList = new string[]
 		{

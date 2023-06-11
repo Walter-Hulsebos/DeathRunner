@@ -19,7 +19,7 @@ namespace DungeonArchitect.Builders.SimpleCity
         public IntVector Position;
         public SimpleCityCellType CellType;
         public Quaternion Rotation;
-        public Vector3 BlockSize = new Vector3(1, 0, 1);
+        public Vector3 BlockSize = new(1, 0, 1);
         public string MarkerNameOverride;
     }
 

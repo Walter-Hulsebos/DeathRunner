@@ -16,7 +16,7 @@ namespace MoreMountains.Tools
 		public static bool IsProSkin = EditorGUIUtility.isProSkin;
 		public static Texture2D GroupClosedTriangle = Resources.Load<Texture2D>("IN foldout focus-6510");
 		public static Texture2D GroupOpenTriangle = Resources.Load<Texture2D>("IN foldout focus on-5718");
-		public static Texture2D NoTexture = new Texture2D(0, 0);
+		public static Texture2D NoTexture = new(0, 0);
 
 		static MMMonoBehaviourDrawerStyle()
 		{
@@ -83,7 +83,7 @@ namespace MoreMountains.Tools
 			{
 				pix[i] = col;
 			}
-			Texture2D result = new Texture2D(width, height);
+			Texture2D result = new(width, height);
 			result.SetPixels(pix);
 			result.Apply();
 			return result;

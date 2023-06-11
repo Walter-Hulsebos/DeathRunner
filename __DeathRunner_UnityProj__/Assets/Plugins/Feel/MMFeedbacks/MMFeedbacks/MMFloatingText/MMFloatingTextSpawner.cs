@@ -122,7 +122,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve on which to animate the x movement
 		[Tooltip("the curve on which to animate the x movement")]
 		[MMCondition("AnimateX", true)]
-		public AnimationCurve AnimateXCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
+		public AnimationCurve AnimateXCurve = new(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
 		/// whether or not to animate the Y movement of spawned texts
 		[Tooltip("whether or not to animate the Y movement of spawned texts")]
 		public bool AnimateY = true;
@@ -133,11 +133,11 @@ namespace MoreMountains.Feedbacks
 		/// the value to which the y movement curve's one should be remapped to
 		[Tooltip("the value to which the y movement curve's one should be remapped to")]
 		[MMCondition("AnimateY", true)]
-		public Vector2 RemapYOne = new Vector2(5f, 5f);
+		public Vector2 RemapYOne = new(5f, 5f);
 		/// the curve on which to animate the y movement
 		[Tooltip("the curve on which to animate the y movement")]
 		[MMCondition("AnimateY", true)]
-		public AnimationCurve AnimateYCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
+		public AnimationCurve AnimateYCurve = new(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
 		/// whether or not to animate the Z movement of spawned texts
 		[Tooltip("whether or not to animate the Z movement of spawned texts")]
 		public bool AnimateZ = false;
@@ -152,7 +152,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve on which to animate the z movement
 		[Tooltip("the curve on which to animate the z movement")]
 		[MMCondition("AnimateZ", true)]
-		public AnimationCurve AnimateZCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
+		public AnimationCurve AnimateZCurve = new(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
         
 		[MMInspectorGroup("Facing Directions", true, 16)]
         
@@ -196,7 +196,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve on which to animate the scale
 		[Tooltip("the curve on which to animate the scale")]
 		[MMCondition("AnimateScale", true)]
-		public AnimationCurve AnimateScaleCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(0.15f, 1f), new Keyframe(0.85f, 1f), new Keyframe(1f, 0f));
+		public AnimationCurve AnimateScaleCurve = new(new Keyframe(0f, 0f), new Keyframe(0.15f, 1f), new Keyframe(0.85f, 1f), new Keyframe(1f, 0f));
         
 		[MMInspectorGroup("Animate Color", true, 55)]
 
@@ -206,7 +206,7 @@ namespace MoreMountains.Feedbacks
 		/// the gradient over which to animate the spawned text's color over time
 		[Tooltip("the gradient over which to animate the spawned text's color over time")]
 		[GradientUsage(true)]
-		public Gradient AnimateColorGradient = new Gradient();
+		public Gradient AnimateColorGradient = new();
 
 		[MMInspectorGroup("Animate Opacity", true, 45)]
 
@@ -224,7 +224,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve on which to animate the opacity
 		[Tooltip("the curve on which to animate the opacity")]
 		[MMCondition("AnimateOpacity", true)]
-		public AnimationCurve AnimateOpacityCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(0.2f, 1f), new Keyframe(0.8f, 1f), new Keyframe(1f, 0f));
+		public AnimationCurve AnimateOpacityCurve = new(new Keyframe(0f, 0f), new Keyframe(0.2f, 1f), new Keyframe(0.8f, 1f), new Keyframe(1f, 0f));
 
 		[MMInspectorGroup("Intensity Multipliers", true, 45)]
 
@@ -254,11 +254,11 @@ namespace MoreMountains.Feedbacks
 
 		/// a random value to display when pressing the TestSpawnOne button
 		[Tooltip("a random value to display when pressing the TestSpawnOne button")]
-		public Vector2Int DebugRandomValue = new Vector2Int(100, 500);
+		public Vector2Int DebugRandomValue = new(100, 500);
 		/// the min and max bounds within which to pick a value to output when pressing the TestSpawnMany button
 		[Tooltip("the min and max bounds within which to pick a value to output when pressing the TestSpawnMany button")]
 		[MMVector("Min", "Max")] 
-		public Vector2 DebugInterval = new Vector2(0.3f, 0.5f);
+		public Vector2 DebugInterval = new(0.3f, 0.5f);
 		/// a button used to test the spawn of one text
 		[Tooltip("a button used to test the spawn of one text")]
 		[MMInspectorButton("TestSpawnOne")]
@@ -326,7 +326,7 @@ namespace MoreMountains.Feedbacks
 				Debug.LogError(this.name + " : no PooledSimpleMMFloatingText prefab has been set.");
 				return;
 			}
-			GameObject newPooler = new GameObject();
+			GameObject newPooler = new();
 			SceneManager.MoveGameObjectToScene(newPooler, this.gameObject.scene);
 			newPooler.name = PooledSimpleMMFloatingText.name + "_Pooler";
 			newPooler.transform.SetParent(this.transform);
@@ -345,7 +345,7 @@ namespace MoreMountains.Feedbacks
 		/// </summary>
 		protected virtual void InstantiateMultiplePool()
 		{
-			GameObject newPooler = new GameObject();
+			GameObject newPooler = new();
 			SceneManager.MoveGameObjectToScene(newPooler, this.gameObject.scene);
 			newPooler.name = this.name + "_Pooler";
 			newPooler.transform.SetParent(this.transform);
@@ -353,7 +353,7 @@ namespace MoreMountains.Feedbacks
 			multiplePooler.Pool = new List<MMMultipleObjectPoolerObject>();
 			foreach (MMFloatingText obj in PooledMultipleMMFloatingText)
 			{
-				MMMultipleObjectPoolerObject item = new MMMultipleObjectPoolerObject();
+				MMMultipleObjectPoolerObject item = new();
 				item.GameObjectToPool = obj.gameObject;
 				item.PoolCanExpand = PoolCanExpand;
 				item.PoolSize = PoolSize;

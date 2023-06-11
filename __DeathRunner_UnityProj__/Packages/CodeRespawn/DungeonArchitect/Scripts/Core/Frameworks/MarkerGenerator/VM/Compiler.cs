@@ -14,10 +14,10 @@ namespace DungeonArchitect.MarkerGenerator.VM
             new ConditionGraphCompiler().CompileImpl(graph, program);
         }
         
-        private readonly List<Instruction> instructions = new List<Instruction>();
-        private readonly List<string> stringTable = new List<string>();
+        private readonly List<Instruction> instructions = new();
+        private readonly List<string> stringTable = new();
         private Dictionary<GraphPin, GraphPin> incomingPinMap;
-        private readonly HashSet<MarkerGenRuleGraphNode> visited = new HashSet<MarkerGenRuleGraphNode>();
+        private readonly HashSet<MarkerGenRuleGraphNode> visited = new();
         private void CompileImpl(MarkerGenRuleGraph graph, MarkerGenRuleProgram program)
         {   
             instructions.Clear();

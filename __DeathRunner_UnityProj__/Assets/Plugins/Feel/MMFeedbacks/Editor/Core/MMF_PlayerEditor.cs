@@ -62,8 +62,8 @@ namespace MoreMountains.Feedbacks
 		protected SerializedProperty _feedbackListProperty;
 		protected MMF_Feedback _feedbackListFeedback;
 		protected Dictionary<MMF_Feedback, Editor> _editors;
-		protected List<string> _typeNames = new List<string>();
-		public static List<FeedbackTypePair> _typesAndNames = new List<FeedbackTypePair>();
+		protected List<string> _typeNames = new();
+		public static List<FeedbackTypePair> _typesAndNames = new();
 		public static string[] _typeDisplays;
 		protected int _draggedStartID = -1;
 		protected int _draggedEndID = -1;
@@ -75,22 +75,22 @@ namespace MoreMountains.Feedbacks
 		protected bool _cachedGUI = false;
         
 		// GUI Styles
-		protected GUIStyle _directionButtonStyle = new GUIStyle();
-		protected GUIStyle _playingStyle = new GUIStyle();
+		protected GUIStyle _directionButtonStyle = new();
+		protected GUIStyle _playingStyle = new();
         
 		// Icons
 		protected GUIContent _directionIconUp;
 		protected GUIContent _directionIconDown;
         
 		// Colors
-		protected Color _scriptDrivenBoxColorFrom = new Color(1f,0f,0f,1f);
-		protected Color _scriptDrivenBoxColorTo = new Color(0.7f,0.1f,0.1f,1f);
+		protected Color _scriptDrivenBoxColorFrom = new(1f,0f,0f,1f);
+		protected Color _scriptDrivenBoxColorTo = new(0.7f,0.1f,0.1f,1f);
 		protected Color _playButtonColor = new Color32(193, 255, 2, 255);
 		protected Color _keepPlaymodeChangesButtonColor = new Color32(255, 97, 33, 255);
 		protected Color _originalBackgroundColor;
 		protected Color _scriptDrivenBoxColor;
 		protected Color _baseColor;
-		protected Color _draggedColor = new Color(0, 1, 1, 0.2f);
+		protected Color _draggedColor = new(0, 1, 1, 0.2f);
 		protected Color _redBackgroundColor = new Color32(255, 97, 33, 255);
 		protected Color _savedTextColor;
 
@@ -100,9 +100,9 @@ namespace MoreMountains.Feedbacks
 		protected float _durationRectWidth = 70f;
 		protected float _playingRectWidth = 70f;
 		protected float _directionRectWidth = 16f;
-		protected Rect _durationRect = new Rect(); 
-		protected Rect _playingRect = new Rect();
-		protected Rect _directionRect = new Rect();
+		protected Rect _durationRect = new(); 
+		protected Rect _playingRect = new();
+		protected Rect _directionRect = new();
 
 		protected GUIContent _pasteAsNewGUIContent;
 		protected GUIContent _replaceAllGUIContent;
@@ -122,8 +122,7 @@ namespace MoreMountains.Feedbacks
 		protected GUILayoutOption _replaceAllOption;
 		protected GUILayoutOption _pasteAllAsNewOption;
 
-		protected Dictionary<int, MMF_FeedbackInspector> MMF_FeedbackInspectors =
-			new Dictionary<int, MMF_FeedbackInspector>();
+		protected Dictionary<int, MMF_FeedbackInspector> MMF_FeedbackInspectors = new();
 
 		protected const string _copyAllText = "Copy all";
 		protected const string _pasteAsNewText = "Paste as new";
@@ -246,7 +245,7 @@ namespace MoreMountains.Feedbacks
 			_typeNames.Clear();
 			for (int i = 0; i < types.Count; i++)
 			{
-				FeedbackTypePair _newType = new FeedbackTypePair();
+				FeedbackTypePair _newType = new();
 				_newType.FeedbackType = types[i];
 				_newType.FeedbackName = FeedbackPathAttribute.GetFeedbackDefaultPath(types[i]);
 				if ((_newType.FeedbackName == "MMF_FeedbackBase") || (_newType.FeedbackName == null))
@@ -711,7 +710,7 @@ namespace MoreMountains.Feedbacks
 						}
 						else
 						{
-							MMF_FeedbackInspector newInspector = new MMF_FeedbackInspector(); 
+							MMF_FeedbackInspector newInspector = new(); 
 							MMF_FeedbackInspectors.Add(_feedbackListFeedback.UniqueID, newInspector);
 							newInspector.Initialization(currentProperty, _feedbackListFeedback, _expandGroupsInInspectors);
 						}

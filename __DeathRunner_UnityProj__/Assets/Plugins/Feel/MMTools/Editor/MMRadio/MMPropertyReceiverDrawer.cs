@@ -12,7 +12,7 @@ namespace MoreMountains.Tools
 	[CanEditMultipleObjects]
 	public class MMPropertyReceiverDrawer : MMPropertyPickerDrawer
 	{
-		protected Color _mmYellow = new Color(1f, 0.7686275f, 0f);
+		protected Color _mmYellow = new(1f, 0.7686275f, 0f);
 		protected Color _mmRed = MMColors.Orangered;
 
 		protected override void FillAuthorizedTypes(PropertyPickerViewData viewData)
@@ -105,16 +105,16 @@ namespace MoreMountains.Tools
 			float lineHeight = PropertyPickerViewData._lineHeight;
 			float lineMargin = PropertyPickerViewData._lineMargin;
 			
-			Rect additional1Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 4, position.width, lineHeight);
-			Rect additional2Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 5, position.width, lineHeight);
-			Rect additional3Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 6, position.width, lineHeight);
-			Rect additional4Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 7, position.width, lineHeight);
-			Rect additional5Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 8, position.width, lineHeight);
-			Rect additional6Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 9, position.width, lineHeight);
-			Rect additional7Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 10, position.width, lineHeight);
-			Rect additional8Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 11, position.width, lineHeight);
-			Rect additional9Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 12, position.width, lineHeight);
-			Rect additional10Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 13, position.width, lineHeight);
+			Rect additional1Rect = new(position.x, position.y + (lineHeight + lineMargin) * 4, position.width, lineHeight);
+			Rect additional2Rect = new(position.x, position.y + (lineHeight + lineMargin) * 5, position.width, lineHeight);
+			Rect additional3Rect = new(position.x, position.y + (lineHeight + lineMargin) * 6, position.width, lineHeight);
+			Rect additional4Rect = new(position.x, position.y + (lineHeight + lineMargin) * 7, position.width, lineHeight);
+			Rect additional5Rect = new(position.x, position.y + (lineHeight + lineMargin) * 8, position.width, lineHeight);
+			Rect additional6Rect = new(position.x, position.y + (lineHeight + lineMargin) * 9, position.width, lineHeight);
+			Rect additional7Rect = new(position.x, position.y + (lineHeight + lineMargin) * 10, position.width, lineHeight);
+			Rect additional8Rect = new(position.x, position.y + (lineHeight + lineMargin) * 11, position.width, lineHeight);
+			Rect additional9Rect = new(position.x, position.y + (lineHeight + lineMargin) * 12, position.width, lineHeight);
+			Rect additional10Rect = new(position.x, position.y + (lineHeight + lineMargin) * 13, position.width, lineHeight);
 
 			// displays the related properties
 			if ((viewData._selectedPropertyIndex != 0) && (viewData._propertyType != null))
@@ -163,8 +163,8 @@ namespace MoreMountains.Tools
 
 				if (viewData._propertyType == typeof(Vector4))
 				{
-					Rect additionalVector47Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 9, position.width, lineHeight * 5);
-					Rect additionalVector48Rect = new Rect(position.x, position.y + (lineHeight + lineMargin) * 10 + lineHeight * 4, position.width, lineHeight * 5);
+					Rect additionalVector47Rect = new(position.x, position.y + (lineHeight + lineMargin) * 9, position.width, lineHeight * 5);
+					Rect additionalVector48Rect = new(position.x, position.y + (lineHeight + lineMargin) * 10 + lineHeight * 4, position.width, lineHeight * 5);
 
 					EditorGUI.PropertyField(additional2Rect, property.FindPropertyRelative("ModifyX"), new GUIContent("Modify x"), true);
 					EditorGUI.PropertyField(additional3Rect, property.FindPropertyRelative("ModifyY"), new GUIContent("Modify y"), true);

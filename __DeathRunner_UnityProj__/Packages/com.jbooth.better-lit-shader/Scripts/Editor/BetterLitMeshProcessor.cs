@@ -91,13 +91,13 @@ namespace JBooth.BetterLit
       public Mesh Process(Mesh mesh)
       {
          // cache data for speed
-         List<Vector3> positions = new List<Vector3>(mesh.vertices);
-         List<Vector2> uv0 = new List<Vector2>(positions.Count);
-         List<Vector4> uv1 = new List<Vector4>(positions.Count);
-         List<Vector4> uv2 = new List<Vector4>(positions.Count);
-         List<Vector4> uv3 = new List<Vector4>(positions.Count);
-         List<Color> colors = new List<Color>(positions.Count);
-         List<BoneWeight> boneWeights = new List<BoneWeight>(positions.Count);
+         List<Vector3> positions = new(mesh.vertices);
+         List<Vector2> uv0 = new(positions.Count);
+         List<Vector4> uv1 = new(positions.Count);
+         List<Vector4> uv2 = new(positions.Count);
+         List<Vector4> uv3 = new(positions.Count);
+         List<Color> colors = new(positions.Count);
+         List<BoneWeight> boneWeights = new(positions.Count);
          int[] triangles = mesh.triangles;
          mesh.GetUVs(0, uv0);
          mesh.GetUVs(1, uv1);
@@ -113,7 +113,7 @@ namespace JBooth.BetterLit
                uv0.Add(Vector2.zero);
             }
          }
-         List<Vector4> packedData = new List<Vector4>(uv0.Count);
+         List<Vector4> packedData = new(uv0.Count);
          var normals = new List<Vector3>(mesh.normals);
          var tangents = new List<Vector4>(mesh.tangents);
          var faces = new List<int>(mesh.triangles);
@@ -263,7 +263,7 @@ namespace JBooth.BetterLit
          if (tessdampening)
          {
             // now do tess dampening
-            List<int> search = new List<int>();
+            List<int> search = new();
             for (int x = 0; x < positions.Count; ++x)
             {
                Vector3 orig = positions[x];
@@ -307,7 +307,7 @@ namespace JBooth.BetterLit
             }
          }
 
-         Mesh m = new Mesh();
+         Mesh m = new();
          
          m.Clear();
          m.indexFormat = mesh.indexFormat;

@@ -303,7 +303,7 @@ namespace MoreMountains.Feedbacks
 			MMTimeScaleLerpModes timeScaleLerpMode = MMTimeScaleLerpModes.Speed, MMTweenType timeScaleLerpCurve = null, float timeScaleLerpDuration = 0.2f, 
 			bool timeScaleLerpOnReset = false, MMTweenType timeScaleLerpCurveOnReset = null, float timeScaleLerpDurationOnReset = 0.2f)
 		{
-			TimeScaleProperties timeScaleProperty = new TimeScaleProperties();
+			TimeScaleProperties timeScaleProperty = new();
 			timeScaleProperty.TimeScale = timeScale;
 			timeScaleProperty.Duration = duration;
 			timeScaleProperty.TimeScaleLerp = lerp;
@@ -338,7 +338,7 @@ namespace MoreMountains.Feedbacks
 		/// <param name="freezeFrameEvent">Freeze frame event.</param>
 		public virtual void OnMMFreezeFrameEvent(float duration)
 		{
-			TimeScaleProperties properties = new TimeScaleProperties();
+			TimeScaleProperties properties = new();
 			properties.Duration = duration;
 			properties.TimeScaleLerp = false;
 			properties.LerpSpeed = 0f;

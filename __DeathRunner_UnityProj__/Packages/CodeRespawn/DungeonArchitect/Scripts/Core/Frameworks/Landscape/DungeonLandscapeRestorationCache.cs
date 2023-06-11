@@ -39,7 +39,7 @@ namespace DungeonArchitect.Landscape
 
         [HideInInspector]
         [SerializeField]
-        DLCacheBounds boundsHeight = new DLCacheBounds();
+        DLCacheBounds boundsHeight = new();
 
         [HideInInspector]
         [SerializeField]
@@ -51,7 +51,7 @@ namespace DungeonArchitect.Landscape
 
         [HideInInspector]
         [SerializeField]
-        DLCacheBounds boundsAlpha = new DLCacheBounds();
+        DLCacheBounds boundsAlpha = new();
 
         [HideInInspector]
         [SerializeField]
@@ -63,7 +63,7 @@ namespace DungeonArchitect.Landscape
 
         [HideInInspector]
         [SerializeField]
-        DLCacheBounds boundsDetails = new DLCacheBounds();
+        DLCacheBounds boundsDetails = new();
 
         static void SerializeArray(float[,] array, out float[] result)
         {

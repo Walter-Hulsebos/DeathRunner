@@ -45,7 +45,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMFInspectorGroup("Red", true, 42)]
 		/// the curve used to animate the red value on
 		[Tooltip("the curve used to animate the red value on")]
-		public AnimationCurve ShakeRed = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeRed = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(-200f, 200f)]
@@ -58,7 +58,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMFInspectorGroup("Green", true, 43)]
 		/// the curve used to animate the green value on
 		[Tooltip("the curve used to animate the green value on")]
-		public AnimationCurve ShakeGreen = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeGreen = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(-200f, 200f)]
@@ -71,7 +71,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMFInspectorGroup("Blue", true, 44)]
 		/// the curve used to animate the blue value on
 		[Tooltip("the curve used to animate the blue value on")]
-		public AnimationCurve ShakeBlue = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeBlue = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(-200f, 200f)]

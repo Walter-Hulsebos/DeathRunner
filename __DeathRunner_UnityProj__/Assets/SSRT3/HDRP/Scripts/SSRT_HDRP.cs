@@ -22,75 +22,75 @@ public sealed class SSRT_HDRP : CustomPostProcessVolumeComponent, IPostProcessCo
     [Serializable]
     public sealed class FallbackSampleCountParameter : VolumeParameter<FallbackSampleCount> { public FallbackSampleCountParameter(FallbackSampleCount value, bool overrideState = false) : base(value, overrideState) { } }
     
-    public BoolParameter enabled = new BoolParameter(false);
+    public BoolParameter enabled = new(false);
 
     [Header("Sampling")]
     [Tooltip("Number of per-pixel hemisphere slices. This has a big performance cost and should be kept as low as possible.")]
-    public ClampedIntParameter rotationCount = new ClampedIntParameter(1, 1, 4);
+    public ClampedIntParameter rotationCount = new(1, 1, 4);
 
     [Tooltip("Number of samples taken along one side of a given hemisphere slice. The total number of samples taken per pixel is rotationCount * stepCount * 2. This has a big performance cost and should be kept as low as possible.")]
-    public ClampedIntParameter stepCount = new ClampedIntParameter(12, 1, 32);
+    public ClampedIntParameter stepCount = new(12, 1, 32);
 
     [Tooltip("Effective sampling radius in world space. AO and GI can only have influence within that radius.")]
-    public ClampedFloatParameter radius = new ClampedFloatParameter(5.0f, 1.0f, 25.0f);
+    public ClampedFloatParameter radius = new(5.0f, 1.0f, 25.0f);
 
     [Tooltip("Controls samples distribution. Exp Factor is an exponent applied at each step get increasing step size over the distance.")]
-    public ClampedFloatParameter expFactor = new ClampedFloatParameter(1.0f, 1.0f, 3.0f);
+    public ClampedFloatParameter expFactor = new(1.0f, 1.0f, 3.0f);
 
     [Tooltip("Applies some noise on sample positions to hide the banding artifacts that can occur when there is undersampling.")]
-    public BoolParameter jitterSamples = new BoolParameter(true);
+    public BoolParameter jitterSamples = new(true);
     [Tooltip("Makes the sample distance in view space instead of world-space (helps having more detail up close).")]
-    public BoolParameter screenSpaceSampling = new BoolParameter(false);
+    public BoolParameter screenSpaceSampling = new(false);
     [Tooltip("Use lower mip maps over the distance to use less GPU bandwidth.")]
-    public BoolParameter mipOptimization = new BoolParameter(true);
+    public BoolParameter mipOptimization = new(true);
 
     [Header("GI")]
     [Tooltip("Intensity of the indirect diffuse light.")]
-    public ClampedFloatParameter GIIntensity = new ClampedFloatParameter(10.0f, 0.0f, 100.0f);
+    public ClampedFloatParameter GIIntensity = new(10.0f, 0.0f, 100.0f);
     [Tooltip("Intensity of the light for second and subsequent bounces.")]
-    public ClampedFloatParameter multiBounceGI = new ClampedFloatParameter(0.0f, 0.0f, 1.0f);
+    public ClampedFloatParameter multiBounceGI = new(0.0f, 0.0f, 1.0f);
     [Tooltip("Guess what normal should be based on sample position. This avoids reading normals from the G-Buffer for every sample and saves some GPU bandwidth.")]
-    public BoolParameter normalApproximation = new BoolParameter(false);
+    public BoolParameter normalApproximation = new(false);
     [Tooltip("How much light backface surfaces emit.")]
-    public ClampedFloatParameter backfaceLighting = new ClampedFloatParameter(0.0f, 0.0f, 1.0f);
+    public ClampedFloatParameter backfaceLighting = new(0.0f, 0.0f, 1.0f);
 
     [Header("Occlusion")]
     [Tooltip("Power function applied to AO to make it appear darker/lighter.")]
-    public ClampedFloatParameter AOIntensity = new ClampedFloatParameter(1.0f, 0.0f, 4.0f);
+    public ClampedFloatParameter AOIntensity = new(1.0f, 0.0f, 4.0f);
     [Tooltip("Constant thickness value of objects on the screen in world space. Allows light to pass behind surfaces past that thickness value.")]
-    public ClampedFloatParameter thickness = new ClampedFloatParameter(1.0f, 0.01f, 10.0f);
+    public ClampedFloatParameter thickness = new(1.0f, 0.01f, 10.0f);
     [Tooltip("Increase thickness linearly over distance (avoid losing detail over the distance)")]
-    public BoolParameter linearThickness = new BoolParameter(false);
+    public BoolParameter linearThickness = new(false);
     [Tooltip("Multi-Bounce analytic approximation from GTAO.")]
-    public BoolParameter multiBounceAO = new BoolParameter(false);
+    public BoolParameter multiBounceAO = new(false);
 
     [Header("Off-screen Fallback")]
     [Tooltip("Source for off-screen lighting.")]
-    public FallbackParameter fallback = new FallbackParameter(Fallback.None);
+    public FallbackParameter fallback = new(Fallback.None);
     [Tooltip("Power function applied to ambient source to make it appear darker/lighter.")]
-    public ClampedFloatParameter fallbackPower = new ClampedFloatParameter(1.0f, 1.0f, 4.0f);
+    public ClampedFloatParameter fallbackPower = new(1.0f, 1.0f, 4.0f);
     [Tooltip("Intensity of the ambient light coming from a fallback source.")]
-    public ClampedFloatParameter fallbackIntensity = new ClampedFloatParameter(1.0f, 0.0f, 10.0f);
+    public ClampedFloatParameter fallbackIntensity = new(1.0f, 0.0f, 10.0f);
     [Tooltip("Number of samples per rotation taken in the ambient source. Higer number can give more correct ambient estimation, but is more taxing on performance.")]
-    public FallbackSampleCountParameter fallbackSampleCount = new FallbackSampleCountParameter(FallbackSampleCount._4);
+    public FallbackSampleCountParameter fallbackSampleCount = new(FallbackSampleCount._4);
     [Tooltip("If enabled, ambient sampling done outside of the influence shape of the reflection probes will use the sky light instead (Used only when using reflection probe fallback).")]
-    public BoolParameter reflectSky = new BoolParameter(false);
+    public BoolParameter reflectSky = new(false);
     
     [Header("Filters")]
     [Tooltip("Enable/Disable temporal reprojection")]
-    public BoolParameter temporalAccumulation = new BoolParameter(true);
+    public BoolParameter temporalAccumulation = new(true);
     [Tooltip("Controls the speed of the accumulation, slower accumulation is more effective at removing noise but can introduce ghosting.")]
-    public ClampedFloatParameter temporalResponse = new ClampedFloatParameter(0.35f, 0.0f, 1.0f);
+    public ClampedFloatParameter temporalResponse = new(0.35f, 0.0f, 1.0f);
     [Tooltip("Enable/Disable diffuse denoiser.")]
-    public BoolParameter denoising = new BoolParameter(true);
+    public BoolParameter denoising = new(true);
     [Tooltip("Controls the radius of the GI denoiser.")]
-    public ClampedFloatParameter denoisingRadius = new ClampedFloatParameter(0.5f, 0.0f, 1.0f);
+    public ClampedFloatParameter denoisingRadius = new(0.5f, 0.0f, 1.0f);
 
     [Header("Debug")]
     [Tooltip("View of the different SSRT buffers for debug purposes.")]
-    public DebugModeParameter debugMode = new DebugModeParameter(DebugMode.None);
+    public DebugModeParameter debugMode = new(DebugMode.None);
     [Tooltip("If enabled only the radiance that affects the surface will be displayed, if unchecked radiance will be multiplied by surface albedo.")]
-    public BoolParameter lightOnly = new BoolParameter(false);
+    public BoolParameter lightOnly = new(false);
     
     Material material;
 

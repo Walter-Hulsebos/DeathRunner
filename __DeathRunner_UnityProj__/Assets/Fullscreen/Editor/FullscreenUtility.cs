@@ -130,18 +130,18 @@ namespace FullscreenEditor {
         public static Vector2 MousePosition { get { return mousePosition; } }
 
         /// <summary>The icon of this plugin.</summary>
-        public static readonly Icon FullscreenIcon = new Icon(
+        public static readonly Icon FullscreenIcon = new(
             "iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAMAAABgZ9sFAAAApVBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+4/eNVAAAANnRSTlMA/AfHA2sLtBTy8MxYO/nk9u3Qj06wNCceGeCppF9LPhDot5iBewHYn1JDQS8sIyCJdkdluZF8FV+iAAAB6klEQVRIx+2SWbKbMBBFJcAYC8xswAMznme/pPe/tNASLgImVH5TeefLvhxaouuS/xTpHrwi0nJ/BZE04O2IeomrcqHnTL+RN4HLLH16qOJr/53YYiYI9pcmS/MmMdk+6OoTaLHOPErsNpqlPZ2KnIJpMzerk0x3bAq00efDujw5BuFNws+OwsCY7Md169SJfTaug/nVhsoWYFRHtkqTqZ4I6LA+e1j8qScJe8NHuB4M6+brtgJkreJmZPHty/hjkWLJpk9CmU/UJaLxk8y1RgwAcELSxbfA9gnR+A3WClGnAMAqlaC+OpE+FxcSvPGWwkbBHwXkxx1BXQ7JJ8upz1s5qS+ARAdRBvw/iDSYquSfRflDbCz4k6wyhGEUGl+Y7g9t5QlT1O4LyHlBjgAF7ltzaSx9LH1DAaenOpY+qGfPsF5pretgP3rL3G0AUDcsQOrjRdVZjDpA2bFFQ35ITxMdmmD0Jbo+yVDXezdHXcZmt31KHEA8Fx996G/283c4F+2nY7q8bNOry6MRfd3ZmVaM67OHMQ+jDHe1vF1T4ycd1SlQ07F8jLycmZQOTsdFthw0jKIFIMPTD8yGhlJpRpTvxHaKfsHux225kFcOq9rMc5yVvPGeSUR2Q6VcXk7z3888n68a+eav+AWMDWJNSUXp9QAAAABJRU5ErkJggg=="
         );
 
         /// <summary>A smaller icon of this plugin.</summary>
-        public static readonly Icon FullscreenIconSmall = new Icon(
+        public static readonly Icon FullscreenIconSmall = new(
             "iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAclBMVEUAAABmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmZmbn+Ue6AAAAJXRSTlMABfscDPdX3LmNgF9IKxPtoXdvQxiumWlTJPLjkYcx6M3KxrM+6Owz4AAAAKJJREFUCNdlzlkOwyAMBNDBkECALDRkb9LV979infazliz5eX4GS/Cd6wFE1/mQcWHm4qmhH4Vc5WmaGwXVBPq5pTYCmFdqxRNfPFOJwJx2sX55pK3CaCdUQwZMhtJKFtAG/5PVNzeS1wo47rWqbG+cLUHJoOLD8SY/pnijN67csl0A5bkoqBfzuki/xnTM4vHs3xlEe/aPqKd9GGoAwY1pbj58lQvfBIytyAAAAABJRU5ErkJggg==",
             "iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAMAAAAMCGV4AAAAclBMVEUAAAC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSyGfY5AAAAJXRSTlMABfsM91ccGNy5jYBfSCsT7aF3b0OumWlTJPLjkYcx6M3KxrM+ZTSY8wAAAKJJREFUCNdljtsSgyAMRJegAgIqeNdqr/n/X2ycPjYzO5Oz+3KwBp/cACC65INBz8zFy6B6FvKVF9PSKqg20I876iKAZaNOeObeM5UIzPkQrt4eea8x2Rn1aABtoColASqN/zOySbTsjQLOR6NqO2hnS1DWqPl0vEvHFO/0wY07tiugPBcFDcK8reLX6sQsPF3+SSPayz+imY9xbAAEN+Wl/QKAZAvuNVnEigAAAABJRU5ErkJggg=="
         );
 
         /// <summary>The icon to show on the game view toolbar when fullscreen on play is enabled.</summary>
-        public static readonly Icon FullscreenOnPlayIcon = new Icon(
+        public static readonly Icon FullscreenOnPlayIcon = new(
             "iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAZlBMVEUAAAAZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRkZGRnaqT0eAAAAIXRSTlMA9rSVTunBWTwgFNzOrvvYo4x1ZGA4MALTx6eae3dTCgkQ40nLAAAAcklEQVQY053OORaFIBBE0WpsBQSchz+qvf9NSmCHJlZ4g3cKj8ddbD3q6pWmSwqRnjH/SIxKQ1WN4yOkMpSuDKuhLX41ZOEt3IJxxe0mLA7Ww0LLb87NkGvDJYYk7fkPNYWK0H8G9yIqY2rzHx9ix3i6E/A3BM5M0CXHAAAAAElFTkSuQmCC",
             "iVBORw0KGgoAAAANSUhEUgAAABEAAAARCAMAAAAMs7fIAAAAY1BMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////+aRQ2gAAAAIHRSTlMA9rSV6cFZPCAU3M6uT/vYo4x1ZGBMODAJ08enmnt3U4mFYqQAAABvSURBVBjTnc43AoAwDATBkwHbOJBz1P9fiQvUUqByitXh98XG1xZlsYbhlYy5HTGdxEqkoqLEsjOJdLnJHRTd/pCQhtUwM/qPZwNmA22hIeUtpqZLte4VRRyWtIeqTITpmjC2zCJ9qNMe63wT8fce2Z8EsL04YKYAAAAASUVORK5CYII="
         );

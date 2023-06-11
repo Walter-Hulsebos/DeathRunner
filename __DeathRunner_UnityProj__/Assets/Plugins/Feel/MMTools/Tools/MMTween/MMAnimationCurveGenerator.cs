@@ -31,7 +31,7 @@ namespace MoreMountains.Tools
 		public bool GenerateAnimationCurvesButton;
 
 		protected Type _scriptableObjectType;
-		protected Keyframe _keyframe = new Keyframe();
+		protected Keyframe _keyframe = new();
 		protected MethodInfo _addMethodInfo;
 		protected object[] _parameters;
         
@@ -71,7 +71,7 @@ namespace MoreMountains.Tools
 		protected virtual void CreateAnimationCurve(ScriptableObject asset, MMTween.MMTweenCurve curveType, int curveResolution, bool anti)
 		{
 			// generates an animation curve
-			AnimationCurve animationCurve = new AnimationCurve();
+			AnimationCurve animationCurve = new();
 
 			for (int i = 0; i < curveResolution; i++)
 			{

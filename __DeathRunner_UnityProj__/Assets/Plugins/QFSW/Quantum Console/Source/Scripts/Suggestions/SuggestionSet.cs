@@ -20,7 +20,7 @@ namespace QFSW.QC
         /// <summary>
         /// The suggestions contained within the set.
         /// </summary>
-        public readonly List<IQcSuggestion> Suggestions = new List<IQcSuggestion>();
+        public readonly List<IQcSuggestion> Suggestions = new();
 
         /// <summary>
         /// The currently selected suggestion in the set, if any.

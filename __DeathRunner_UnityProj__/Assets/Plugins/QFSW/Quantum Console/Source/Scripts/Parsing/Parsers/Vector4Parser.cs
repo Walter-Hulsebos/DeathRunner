@@ -7,7 +7,7 @@ namespace QFSW.QC.Parsers
         public override Vector4 Parse(string value)
         {
             string[] vectorParts = value.SplitScoped(',');
-            Vector4 parsedVector = new Vector4();
+            Vector4 parsedVector = new();
 
             if (vectorParts.Length < 2 || vectorParts.Length > 4)
             {

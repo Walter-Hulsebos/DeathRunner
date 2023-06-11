@@ -13,23 +13,23 @@ namespace ProjectDawn.Mathematics
         /// Returns perpendicular from right side to direction.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 perpendicularright(float2 direction) => new float2(direction.y, -direction.x);
+        public static float2 perpendicularright(float2 direction) => new(direction.y, -direction.x);
         /// <summary>
         /// Returns perpendicular from right side to direction.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double2 perpendicularright(double2 direction) => new double2(direction.y, -direction.x);
+        public static double2 perpendicularright(double2 direction) => new(direction.y, -direction.x);
 
         /// <summary>
         /// Returns perpendicular from left side to direction.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 perpendicularleft(float2 direction) => new float2(-direction.y, direction.x);
+        public static float2 perpendicularleft(float2 direction) => new(-direction.y, direction.x);
         /// <summary>
         /// Returns perpendicular from left side to direction.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double2 perpendicularleft(double2 direction) => new double2(-direction.y, direction.x);
+        public static double2 perpendicularleft(double2 direction) => new(-direction.y, direction.x);
 
         /// <summary>
         /// Returns perpendicular from left side to direction.
@@ -75,14 +75,14 @@ namespace ProjectDawn.Mathematics
         /// <param name="angle">Angle in radians used to construct direction.</param>
         /// <returns>Returns direction from the angle.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 direction(float angle) => new float2(cos(angle), sin(angle));
+        public static float2 direction(float angle) => new(cos(angle), sin(angle));
         /// <summary>
         /// Returns direction from the angle.
         /// </summary>
         /// <param name="angle">Angle in radians used to construct direction.</param>
         /// <returns>Returns direction from the angle.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static double2 direction(double angle) => new double2(cos(angle), sin(angle));
+        public static double2 direction(double angle) => new(cos(angle), sin(angle));
 
         /// <summary>
         /// Returns minimum angle between two direction vectors.

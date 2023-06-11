@@ -95,13 +95,13 @@ namespace MoreMountains.Tools
 		public AudioSource TargetAudioSource;
 		/// the min (when it's off) and max (when it's playing) volume for this source
 		[MMVector("Min", "Max")]
-		public Vector2 Volume = new Vector2(1f, 1f);
+		public Vector2 Volume = new(1f, 1f);
 		/// a random delay in seconds to apply, between its RMin and RMax
 		[MMVector("RMin", "RMax")]
 		public Vector2 InitialDelay = Vector2.zero;
 		/// a random crossfade duration (in seconds) to apply when transitioning to this song, between its RMin and RMax
 		[MMVector("RMin", "RMax")]
-		public Vector2 CrossFadeDuration = new Vector2(2f, 2f);
+		public Vector2 CrossFadeDuration = new(2f, 2f);
 		/// a random pitch to apply to this song, between its RMin and RMax
 		[MMVector("RMin", "RMax")]
 		public Vector2 Pitch = Vector2.one;
@@ -249,7 +249,7 @@ namespace MoreMountains.Tools
 					_instance = FindObjectOfType<MMPlaylist> ();
 					if (_instance == null)
 					{
-						GameObject obj = new GameObject ();
+						GameObject obj = new();
 						obj.name = typeof(MMPlaylist).Name + "_AutoCreated";
 						_instance = obj.AddComponent<MMPlaylist> ();
 					}

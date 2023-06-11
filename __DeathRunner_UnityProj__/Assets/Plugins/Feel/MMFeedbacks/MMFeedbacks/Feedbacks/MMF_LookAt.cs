@@ -65,7 +65,7 @@ namespace MoreMountains.Feedbacks
 		public float Duration = 1f;
 		/// the curve over which to animate the look at transition
 		[Tooltip("the curve over which to animate the look at transition")]
-		public MMTweenType LookAtTween = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
+		public MMTweenType LookAtTween = new( new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// whether or not to lock rotation on the x axis
 		[Tooltip("whether or not to lock rotation on the x axis")]
 		public bool LockXAxis = false;

@@ -23,7 +23,7 @@ namespace Sisus.ComponentNames.EditorOnly
 
 		internal static bool NowRenaming;
 		internal static Component StartingToRename;
-		private static readonly ConcurrentDictionary<Component, NameContainer> instances = new ConcurrentDictionary<Component, NameContainer>();
+		private static readonly ConcurrentDictionary<Component, NameContainer> instances = new();
 
 		[SerializeField]
 		private string nameOverride = "";

@@ -165,15 +165,15 @@ namespace MoreMountains.Tools
 		/// the noise amplitude
 		[Tooltip("the noise amplitude")]
 		[MMVector("Min", "Max")]
-		public Vector2 Amplitude = new Vector2(0f,5f);
+		public Vector2 Amplitude = new(0f,5f);
 		/// the noise frequency
 		[Tooltip("the noise frequency")]
 		[MMVector("Min", "Max")]
-		public Vector2 Frequency = new Vector2(1f, 1f);
+		public Vector2 Frequency = new(1f, 1f);
 		/// the noise shift
 		[Tooltip("the noise shift")]
 		[MMVector("Min", "Max")]
-		public Vector2 Shift = new Vector2(0f, 1f);
+		public Vector2 Shift = new(0f, 1f);
 
 		/// if this is true, will let you remap the noise value (without amplitude) to the bounds you've specified
 		[Tooltip("if this is true, will let you remap the noise value (without amplitude) to the bounds you've specified")]
@@ -202,7 +202,7 @@ namespace MoreMountains.Tools
 		public float OneTimeRemapMax = 1f;
 		/// the curve to apply to the one time shake
 		[Tooltip("the curve to apply to the one time shake")]
-		public AnimationCurve OneTimeCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve OneTimeCurve = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		[MMInspectorButton("OneTime")]
 		/// a test button for the one time shake
 		[Tooltip("a test button for the one time shake")]
@@ -240,7 +240,7 @@ namespace MoreMountains.Tools
 		public float ToDestinationDuration = 1f;
 		/// the curve to use to tween to the ToDestination value
 		[Tooltip("the curve to use to tween to the ToDestination value")]
-		public AnimationCurve ToDestinationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 0.6f), new Keyframe(1f, 1f));
+		public AnimationCurve ToDestinationCurve = new(new Keyframe(0, 0), new Keyframe(0.5f, 0.6f), new Keyframe(1f, 1f));
 		/// a test button for the one time shake
 		[Tooltip("a test button for the one time shake")]
 		[MMInspectorButton("ToDestination")]

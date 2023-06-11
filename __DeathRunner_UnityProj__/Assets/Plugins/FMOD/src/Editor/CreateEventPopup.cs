@@ -13,7 +13,7 @@ namespace FMODUnity
             public FolderEntry parent;
             public string name;
             public string guid;
-            public List<FolderEntry> entries = new List<FolderEntry>();
+            public List<FolderEntry> entries = new();
             public Rect rect;
         }
 
@@ -29,8 +29,8 @@ namespace FMODUnity
         private string currentFilter = "";
         private int selectedBank = 0;
         private bool resetCursor = true;
-        private Vector2 scrollPos = new Vector2();
-        private Rect scrollRect = new Rect();
+        private Vector2 scrollPos = new();
+        private Rect scrollRect = new();
         private bool isConnected = false;
 
         internal void SelectEvent(SerializedProperty property)
@@ -249,7 +249,7 @@ namespace FMODUnity
                 Rect currentRect = EditorGUILayout.GetControlRect();
                 
                 var bg = new GUIStyle(GUI.skin.box);
-                Rect bgRect = new Rect(currentRect);
+                Rect bgRect = new(currentRect);
                 bgRect.x = 2;
                 bgRect.width = position.width-4;
                 GUI.Box(bgRect, GUIContent.none, bg);

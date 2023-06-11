@@ -90,7 +90,7 @@ namespace MoreMountains.Feedbacks
 					Destroy(_objectPooler.gameObject);
 				}
 
-				GameObject objectPoolGo = new GameObject();
+				GameObject objectPoolGo = new();
 				objectPoolGo.name = this.name+"_ObjectPooler";
 				_objectPooler = objectPoolGo.AddComponent<MMMiniObjectPooler>();
 				_objectPooler.GameObjectToPool = GameObjectToInstantiate;

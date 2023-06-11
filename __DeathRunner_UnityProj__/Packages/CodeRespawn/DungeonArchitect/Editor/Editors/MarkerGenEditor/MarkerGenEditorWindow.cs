@@ -42,7 +42,7 @@ namespace DungeonArchitect.Editors.MarkerGenerator
         public UISystem uiSystem { get; private set; }
         public MarkerGeneratorAsset Asset { get; set; }
         
-        private List<IDeferredUICommand> deferredCommands = new List<IDeferredUICommand>();
+        private List<IDeferredUICommand> deferredCommands = new();
 
         private double lastUpdateTimestamp = 0;
         public void Init(MarkerGeneratorAsset asset)
@@ -424,7 +424,7 @@ namespace DungeonArchitect.Editors.MarkerGenerator
                         Vector2 resultMousePosition = Vector2.zero;
                         if (WidgetUtils.BuildWidgetEvent(e.mousePosition, layout, uiSystem.FocusedWidget, ref resultMousePosition))
                         {
-                            Event widgetEvent = new Event(e);
+                            Event widgetEvent = new(e);
                             widgetEvent.mousePosition = resultMousePosition;
                             uiSystem.FocusedWidget.HandleInput(widgetEvent, uiSystem);
 

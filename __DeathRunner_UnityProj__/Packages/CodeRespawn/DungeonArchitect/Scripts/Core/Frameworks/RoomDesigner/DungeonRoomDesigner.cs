@@ -26,9 +26,9 @@ namespace DungeonArchitect.RoomDesigner
 
     public class DungeonRoomDesigner : MonoBehaviour
     {
-        public Vector3 gridSize = new Vector3(4, 2, 4);
+        public Vector3 gridSize = new(4, 2, 4);
         public IntVector roomPosition = IntVector.Zero;
-        public IntVector roomSize = new IntVector(2, 1, 2);
+        public IntVector roomSize = new(2, 1, 2);
         public Dungeon dungeon;
         public bool realtimeUpdate = true;
         public bool generateBoundaryMarkers = true;
@@ -36,7 +36,7 @@ namespace DungeonArchitect.RoomDesigner
         public DungeonRoomDoorDesigner[] doors;
         DungeonRoomVoxel voxelWorld = null;
 
-        List<FloorIsland> islands = new List<FloorIsland>();
+        List<FloorIsland> islands = new();
 
         public void GenerateLayout()
         {
@@ -63,13 +63,13 @@ namespace DungeonArchitect.RoomDesigner
             var doorCarvings = new CarvingCommand[]
             {
                 // Make sure the entrance is empty
-                new CarvingCommand(new Vector3(0, 0, 0.5f), DungeonRoomVoxelCellType.Empty, true),
-                new CarvingCommand(new Vector3(0, 1, 0.5f), DungeonRoomVoxelCellType.Empty, true),
+                new(new Vector3(0, 0, 0.5f), DungeonRoomVoxelCellType.Empty, true),
+                new(new Vector3(0, 1, 0.5f), DungeonRoomVoxelCellType.Empty, true),
 
                 // Place a platform beneath the door
-                new CarvingCommand(new Vector3( 0, -1, 0.5f), DungeonRoomVoxelCellType.Occupied, true), // Make sure we have a platform underneath the door entrance
-                new CarvingCommand(new Vector3(-1, -1, 0.5f), DungeonRoomVoxelCellType.Occupied, false),
-                new CarvingCommand(new Vector3( 1, -1, 0.5f), DungeonRoomVoxelCellType.Occupied, false),
+                new(new Vector3( 0, -1, 0.5f), DungeonRoomVoxelCellType.Occupied, true), // Make sure we have a platform underneath the door entrance
+                new(new Vector3(-1, -1, 0.5f), DungeonRoomVoxelCellType.Occupied, false),
+                new(new Vector3( 1, -1, 0.5f), DungeonRoomVoxelCellType.Occupied, false),
             };
 
             // Carve out the door platforms
@@ -155,7 +155,7 @@ namespace DungeonArchitect.RoomDesigner
 
     class FloorIsland
     {
-        List<IntVector> islandCells = new List<IntVector>();
+        List<IntVector> islandCells = new();
         public List<IntVector> IslandCells
         {
             get { return islandCells; }
@@ -181,10 +181,10 @@ namespace DungeonArchitect.RoomDesigner
 
             var bfsOffset = new IntVector[]
             {
-                    new IntVector(-1, 0,  0),
-                    new IntVector( 1, 0,  0),
-                    new IntVector( 0, 0, -1),
-                    new IntVector( 0, 0,  1)
+                    new(-1, 0,  0),
+                    new( 1, 0,  0),
+                    new( 0, 0, -1),
+                    new( 0, 0,  1)
             };
 
             for (int x = 0; x < width; x++)

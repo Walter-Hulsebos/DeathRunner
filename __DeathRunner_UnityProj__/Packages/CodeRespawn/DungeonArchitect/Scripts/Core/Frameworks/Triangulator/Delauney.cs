@@ -102,13 +102,13 @@ namespace DungeonArchitect.Triangulator
 			Vertex.Add(new Triangulator.Geometry.Point((xmid - 2 * dmax), (ymid - dmax)));
 			Vertex.Add(new Triangulator.Geometry.Point(xmid, (ymid + 2 * dmax)));
 			Vertex.Add(new Triangulator.Geometry.Point((xmid + 2 * dmax), (ymid - dmax)));
-			List<Geometry.Triangle> Triangle = new List<Geometry.Triangle>();
+			List<Geometry.Triangle> Triangle = new();
 			Triangle.Add(new Geometry.Triangle(nv, nv + 1, nv + 2)); //SuperTriangle placed at index 0
 			
 			// Include each point one at a time into the existing mesh
 			for (int i = 0; i < nv; i++)
 			{
-				List<Geometry.Edge> Edges = new List<Geometry.Edge>(); //[trimax * 3];
+				List<Geometry.Edge> Edges = new(); //[trimax * 3];
 				// Set up the edge buffer.
 				// If the point (Vertex(i).x,Vertex(i).y) lies inside the circumcircle then the
 				// three edges of that triangle are added to the edge buffer and the triangle is removed from list.

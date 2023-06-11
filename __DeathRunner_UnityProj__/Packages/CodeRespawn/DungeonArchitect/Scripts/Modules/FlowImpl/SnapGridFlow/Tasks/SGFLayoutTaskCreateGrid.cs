@@ -8,7 +8,7 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow.Tasks
     [FlowExecNodeInfo("Create Grid", "Layout Graph/", 1000)]
     public class SGFLayoutTaskCreateGrid : FlowExecTask
     {
-        public Vector3Int resolution = new Vector3Int(6, 4, 5);
+        public Vector3Int resolution = new(6, 4, 5);
 
         public override FlowTaskExecOutput Execute(FlowTaskExecContext context, FlowTaskExecInput input)
         {

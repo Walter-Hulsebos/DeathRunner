@@ -55,19 +55,19 @@ namespace JBooth.InlineTexturePacker
 
 
       string R, G, B, A;
-      TextureData texR = new TextureData();
-      TextureData texG = new TextureData();
-      TextureData texB = new TextureData();
-      TextureData texA = new TextureData();
-      TextureData texColor = new TextureData();
-      TextureData texNormal = new TextureData();
+      TextureData texR = new();
+      TextureData texG = new();
+      TextureData texB = new();
+      TextureData texA = new();
+      TextureData texColor = new();
+      TextureData texNormal = new();
 
       Mode mode;
 
       public static void DoWindow(Mode mode, string R, string G, string B, string A)
       {
          InlineTexturePackerWindow window = (InlineTexturePackerWindow)EditorWindow.GetWindow<InlineTexturePackerWindow>(true, "TexturePacker", true);
-         Vector2 size = new Vector2(430, 190);
+         Vector2 size = new(430, 190);
          if (mode == Mode.NormalRB || mode == Mode.Detail)
          {
             size = new Vector2(330, 190);
@@ -181,7 +181,7 @@ namespace JBooth.InlineTexturePacker
 
       void ExtractChannel(RenderTexture rt, Texture2D tex, Channel src, Channel dst, bool invert, bool grey = false)
       {
-         Texture2D temp = new Texture2D(rt.width, rt.height, TextureFormat.ARGB32, true, mode != Mode.ColorA);
+         Texture2D temp = new(rt.width, rt.height, TextureFormat.ARGB32, true, mode != Mode.ColorA);
          ReadBackTexture(rt, temp);
          Color[] srcC = temp.GetPixels();
          Color[] destC = tex.GetPixels();
@@ -229,9 +229,9 @@ namespace JBooth.InlineTexturePacker
          if (string.IsNullOrEmpty(path))
             return;
 
-         Texture2D tex = new Texture2D((int)largest.x, (int)largest.y, TextureFormat.ARGB32, true, mode != Mode.ColorA);
+         Texture2D tex = new((int)largest.x, (int)largest.y, TextureFormat.ARGB32, true, mode != Mode.ColorA);
 
-         RenderTexture rt = new RenderTexture(tex.width, tex.height, 0, RenderTextureFormat.ARGB32, mode == Mode.ColorA ?  RenderTextureReadWrite.sRGB : RenderTextureReadWrite.Linear);
+         RenderTexture rt = new(tex.width, tex.height, 0, RenderTextureFormat.ARGB32, mode == Mode.ColorA ?  RenderTextureReadWrite.sRGB : RenderTextureReadWrite.Linear);
          Graphics.Blit(Texture2D.blackTexture, rt);
          
          if (mode == Mode.NormalRB)

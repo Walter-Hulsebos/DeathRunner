@@ -10,7 +10,7 @@ namespace MoreMountains.Tools
 {
 	static class MMMonoBehaviourFieldInfo
 	{
-		public static Dictionary<int, List<FieldInfo>> FieldInfoList = new Dictionary<int, List<FieldInfo>>();
+		public static Dictionary<int, List<FieldInfo>> FieldInfoList = new();
 
 		public static int GetFieldInfo(Object target, out List<FieldInfo> fieldInfoList)
 		{

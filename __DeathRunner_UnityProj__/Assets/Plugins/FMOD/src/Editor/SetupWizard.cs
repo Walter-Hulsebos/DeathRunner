@@ -13,7 +13,7 @@ namespace FMODUnity
     {
         private static SetupWizardWindow instance;
 
-        private static readonly List<string> pageNames = new List<string>
+        private static readonly List<string> pageNames = new()
         {
             "Welcome",
             "Updating",
@@ -25,9 +25,9 @@ namespace FMODUnity
             "End"
         };
 
-        private static readonly List<bool> pageComplete = new List<bool>(new bool[(int)PAGES.Max]);
+        private static readonly List<bool> pageComplete = new(new bool[(int)PAGES.Max]);
 
-        private static readonly List<UpdateTask> updateTasks = new List<UpdateTask>() {
+        private static readonly List<UpdateTask> updateTasks = new() {
             UpdateTask.Create(
                 type: UpdateTaskType.ReorganizePluginFiles,
                 name: "Reorganize Plugin Files",
@@ -1098,7 +1098,7 @@ fmod_editor.log";
                 var sourceItem = FindItem(obj.GetHashCode(), root);
                 if (sourceItem == null)
                 {
-                    List<GameObject> gameObjects = new List<GameObject>();
+                    List<GameObject> gameObjects = new();
                     gameObjects.Add(obj);
                     while (obj.transform.parent != null)
                     {

@@ -11,7 +11,7 @@ namespace MoreMountains.Tools
 
 		public static bool GyroscopeActive = true;
 		public static TimeScales TimeScale = TimeScales.Scaled;
-		public static Vector2 Clamps = new Vector2(-1f, 1f);
+		public static Vector2 Clamps = new(-1f, 1f);
 		public static float LerpSpeed = 1f;
 		public static bool TestMode;
         
@@ -67,7 +67,7 @@ namespace MoreMountains.Tools
 		private TimeScales _TimeScale = TimeScales.Scaled;
 		/// the clamps to apply to the values
 		[SerializeField]
-		private Vector2 _Clamps = new Vector2(-1f, 1f);
+		private Vector2 _Clamps = new(-1f, 1f);
 		/// the speed at which to move towards the new position
 		[SerializeField]
 		private float _LerpSpeed = 1f;

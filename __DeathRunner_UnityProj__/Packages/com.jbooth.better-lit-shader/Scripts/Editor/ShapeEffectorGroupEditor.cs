@@ -11,7 +11,7 @@ namespace JBooth.BetterLit
       [UnityEditor.MenuItem("Window/Better Lit Shader/Create Shape Effector Group")]
       static void AddGroup()
       {
-         GameObject go = new GameObject("Effector Group");
+         GameObject go = new("Effector Group");
          go.AddComponent<ShapeEffectorGroup>();
       }
 
@@ -33,7 +33,7 @@ namespace JBooth.BetterLit
                Debug.LogError("Cannot have more than 4 effectors in a group");
                return;
             }
-            GameObject go = new GameObject("Effector");
+            GameObject go = new("Effector");
             var e = go.AddComponent<ShapeEffector>();
             
             group.effectors.Add(e);

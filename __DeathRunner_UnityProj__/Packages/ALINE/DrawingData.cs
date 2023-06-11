@@ -117,7 +117,7 @@ namespace Drawing {
 		public struct Hasher : IEquatable<Hasher> {
 			ulong hash;
 
-			public static Hasher NotSupplied => new Hasher { hash = ulong.MaxValue };
+			public static Hasher NotSupplied => new() { hash = ulong.MaxValue };
 
 			public static Hasher Create<T>(T init) {
 				var h = new Hasher();
@@ -946,9 +946,9 @@ namespace Drawing {
 
 		internal BuilderDataContainer data;
 		internal ProcessedBuilderDataContainer processedData;
-		List<RenderedMeshWithType> meshes = new List<RenderedMeshWithType>();
-		List<Mesh> cachedMeshes = new List<Mesh>();
-		List<Mesh> stagingCachedMeshes = new List<Mesh>();
+		List<RenderedMeshWithType> meshes = new();
+		List<Mesh> cachedMeshes = new();
+		List<Mesh> stagingCachedMeshes = new();
 #if USE_RAW_GRAPHICS_BUFFERS
 		List<Mesh> stagingCachedMeshesDelay = new List<Mesh>();
 #endif
@@ -1124,7 +1124,7 @@ namespace Drawing {
 			public int end;
 		}
 
-		Dictionary<Camera, Range> cameraVersions = new Dictionary<Camera, Range>();
+		Dictionary<Camera, Range> cameraVersions = new();
 
 		void DiscardData (Hasher hasher) {
 			processedData.ReleaseAllWithHash(this, hasher);
@@ -1212,11 +1212,11 @@ namespace Drawing {
 			}
 		}
 
-		static readonly MeshCompareByDrawingOrder meshSorter = new MeshCompareByDrawingOrder();
+		static readonly MeshCompareByDrawingOrder meshSorter = new();
 		// Temporary array, cached to avoid allocations
 		Plane[] frustrumPlanes = new Plane[6];
 		// Temporary block, cached to avoid allocations
-		MaterialPropertyBlock customMaterialProperties = new MaterialPropertyBlock();
+		MaterialPropertyBlock customMaterialProperties = new();
 
 		void LoadMaterials () {
 			// Make sure the material references are correct

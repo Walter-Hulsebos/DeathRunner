@@ -13,28 +13,28 @@ namespace DungeonArchitect.UI.Widgets.GraphEditors
     /// </summary>
     public class GraphRendererContext
     {
-        public UIResourceLookup Resources = new UIResourceLookup();
+        public UIResourceLookup Resources = new();
         public GraphEditor GraphEditor;
     }
 
     [Serializable]
     public class GraphEditorStyle
     {
-        public Color backgroundColor = new Color(0.2f, 0.2f, 0.2f);
-        public Color gridLineColorThick = new Color(1, 1, 1, 0.1f);
-        public Color gridLineColorThin = new Color(1, 1, 1, 0.05f);
+        public Color backgroundColor = new(0.2f, 0.2f, 0.2f);
+        public Color gridLineColorThick = new(1, 1, 1, 0.1f);
+        public Color gridLineColorThin = new(1, 1, 1, 0.05f);
         public float gridCellSpacing = 20;
         public bool gridScaling = false;
         public int gridNumCells = 150;
         public string branding = "Dungeon Architect";
-        public Color brandingColor = new Color(1, 1, 1, 0.1f);
+        public Color brandingColor = new(1, 1, 1, 0.1f);
         public int brandingSize = 40;
         public string readonlyText = "[READ ONLY]";
-        public Color readonlyColor = new Color(1, 1, .5f, 0.4f);
+        public Color readonlyColor = new(1, 1, .5f, 0.4f);
         public int readonlySize = 40;
-        public Color overlayTextColorLo = new Color(1, 1, 1, 0.2f);
-        public Color overlayTextColorHi = new Color(1, 1, 1, 0.6f);
-        public Color selectionBoxColor = new Color(1, 0.6f, 0, 0.6f);
+        public Color overlayTextColorLo = new(1, 1, 1, 0.2f);
+        public Color overlayTextColorHi = new(1, 1, 1, 0.6f);
+        public Color selectionBoxColor = new(1, 0.6f, 0, 0.6f);
         public Color commentTextColor = Color.white;
         public bool displayAssetFilename = true;
     }
@@ -72,7 +72,7 @@ namespace DungeonArchitect.UI.Widgets.GraphEditors
         protected UnityEngine.Object assetObject;
 
         [SerializeField]
-        protected GraphEditorEvents events = new GraphEditorEvents();
+        protected GraphEditorEvents events = new();
         public GraphEditorEvents Events
         {
             get { return events; }
@@ -116,9 +116,9 @@ namespace DungeonArchitect.UI.Widgets.GraphEditors
         CursorDragLink cursorDragLink;
         protected GraphContextMenu contextMenu;
         protected GraphNodeRendererFactory nodeRenderers;
-        protected GraphRendererContext rendererContext = new GraphRendererContext();
+        protected GraphRendererContext rendererContext = new();
 
-        protected Vector2 lastMousePosition = new Vector2();
+        protected Vector2 lastMousePosition = new();
         public Vector2 LastMousePosition { get { return lastMousePosition; } }
 
         protected Rect lastDrawBounds = Rect.zero;
@@ -1337,7 +1337,7 @@ namespace DungeonArchitect.UI.Widgets.GraphEditors
         public event OnSelectionPerformed SelectionPerformed;
 
         // The bounds of the selection box in screen space
-        Rect bounds = new Rect();
+        Rect bounds = new();
         public Rect Bounds
         {
             get
@@ -1350,7 +1350,7 @@ namespace DungeonArchitect.UI.Widgets.GraphEditors
             }
         }
 
-        Vector2 dragStart = new Vector2();
+        Vector2 dragStart = new();
         int dragButton = 0;
         bool dragging = false;
         public bool Dragging
@@ -1476,7 +1476,7 @@ namespace DungeonArchitect.UI.Widgets.GraphEditors
     /// </summary>
     class KeyboardState
     {
-        Dictionary<KeyCode, bool> state = new Dictionary<KeyCode, bool>();
+        Dictionary<KeyCode, bool> state = new();
         bool shift;
         bool control;
         bool alt;
@@ -1557,7 +1557,7 @@ namespace DungeonArchitect.UI.Widgets.GraphEditors
 
         GraphPin mousePin;
         bool active = false;
-        Vector2 mouseScreenPosition = new Vector2();
+        Vector2 mouseScreenPosition = new();
 
         public delegate void OnDraggedLinkReleased(Vector2 mousePositionScreen, UISystem uiSystem);
         public event OnDraggedLinkReleased DraggedLinkReleased;
@@ -1691,7 +1691,7 @@ namespace DungeonArchitect.UI.Widgets.GraphEditors
         private event EventHandler<T> _Event;
 
         [SerializeField]
-        private List<EventHandler<T>> delegates = new List<EventHandler<T>>();
+        private List<EventHandler<T>> delegates = new();
 
         public event EventHandler<T> Event
         {
@@ -1760,11 +1760,11 @@ namespace DungeonArchitect.UI.Widgets.GraphEditors
     [Serializable]
     public class GraphEditorEvents
     {
-        public GraphEvent<GraphNodeEventArgs> OnNodeDragStart = new GraphEvent<GraphNodeEventArgs>();
-        public GraphEvent<GraphNodeEventArgs> OnNodeDragEnd = new GraphEvent<GraphNodeEventArgs>();
-        public GraphEvent<GraphNodeEventArgs> OnNodeDragged = new GraphEvent<GraphNodeEventArgs>();
-        public GraphEvent<GraphNodeEventArgs> OnNodeCreated = new GraphEvent<GraphNodeEventArgs>();
-        public GraphEvent<GraphNodeEventArgs> OnNodeSelectionChanged = new GraphEvent<GraphNodeEventArgs>();
-        public GraphEvent<GraphNodeEventArgs> OnNodeDoubleClicked = new GraphEvent<GraphNodeEventArgs>();
+        public GraphEvent<GraphNodeEventArgs> OnNodeDragStart = new();
+        public GraphEvent<GraphNodeEventArgs> OnNodeDragEnd = new();
+        public GraphEvent<GraphNodeEventArgs> OnNodeDragged = new();
+        public GraphEvent<GraphNodeEventArgs> OnNodeCreated = new();
+        public GraphEvent<GraphNodeEventArgs> OnNodeSelectionChanged = new();
+        public GraphEvent<GraphNodeEventArgs> OnNodeDoubleClicked = new();
     }
 }

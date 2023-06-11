@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5717054616195133354}
   - component: {fileID: 7544648317867760480}
   - component: {fileID: 4603755182508822507}
-  - component: {fileID: 9080566597356951068}
   - component: {fileID: 6495608394044685580}
   m_Layer: 13
   m_Name: Pallet7
@@ -94,24 +93,19 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8337013776761895605}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.8365131, y: 0.3516894, z: 0.5060997}
   m_Center: {x: 0.00354141, y: 0.017783083, z: 0.0009929538}
---- !u!114 &9080566597356951068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8337013776761895605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 4fd87b88995c3c649a48cc04cc8760e6, type: 2}
 --- !u!114 &6495608394044685580
 MonoBehaviour:
   m_ObjectHideFlags: 0

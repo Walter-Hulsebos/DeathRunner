@@ -29,7 +29,7 @@ namespace MoreMountains.Tools
 			{
 				if (target==null)
 					yield break;
-				Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
+				Color newColor = new(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
 				target.color=newColor;
 				yield return null;
 			}
@@ -53,7 +53,7 @@ namespace MoreMountains.Tools
 			{
 				if (target==null)
 					yield break;
-				Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
+				Color newColor = new(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
 				target.color=newColor;
 				yield return null;
 			}			
@@ -78,7 +78,7 @@ namespace MoreMountains.Tools
 				if (target==null)
 					yield break;
 
-				Color newColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
+				Color newColor = new(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
 				target.material.color=newColor;
 
 				t += Time.deltaTime / duration;
@@ -86,7 +86,7 @@ namespace MoreMountains.Tools
 				yield return null;
 
 			}
-			Color finalColor = new Color(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
+			Color finalColor = new(color.r, color.g, color.b, Mathf.SmoothStep(alpha,color.a,t));
 			if (target != null)
 			{
 				target.material.color=finalColor;	

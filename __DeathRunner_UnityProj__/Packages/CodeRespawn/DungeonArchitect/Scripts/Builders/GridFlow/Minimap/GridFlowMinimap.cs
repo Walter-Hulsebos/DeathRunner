@@ -33,7 +33,7 @@ namespace DungeonArchitect.Builders.GridFlow
         GridFlowDungeonModel model;
         GridFlowDungeonConfig config;
         int tileSize = 1;
-        List<GridFlowMinimapTrackedObject> trackedObjects = new List<GridFlowMinimapTrackedObject>();
+        List<GridFlowMinimapTrackedObject> trackedObjects = new();
         Color[] fogMask;
 
         protected override bool SupportsFogOfWar { get { return true; } }

@@ -33,7 +33,7 @@ namespace MoreMountains.Tools
 			// we grab all filled positions from the ref tilemap
 			foreach (Vector3Int pos in _tilemap.cellBounds.allPositionsWithin)
 			{
-				Vector3Int localPlace = new Vector3Int(pos.x, pos.y, pos.z);
+				Vector3Int localPlace = new(pos.x, pos.y, pos.z);
 				if (_tilemap.HasTile(localPlace))
 				{
 					if (TilemapToClean.HasTile(localPlace))

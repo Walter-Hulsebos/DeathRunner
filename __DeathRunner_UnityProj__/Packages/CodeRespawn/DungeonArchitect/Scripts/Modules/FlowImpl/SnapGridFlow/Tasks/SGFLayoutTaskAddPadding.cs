@@ -13,7 +13,7 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow.Tasks
         public bool paddingAlongX = true;
         public bool paddingAlongY = false;
         public bool paddingAlongZ = true;
-        public Color color = new Color(0.5f, 0.5f, 0.75f);
+        public Color color = new(0.5f, 0.5f, 0.75f);
         public string[] categories = new string[0];
         
         public override FlowTaskExecOutput Execute(FlowTaskExecContext context, FlowTaskExecInput input)

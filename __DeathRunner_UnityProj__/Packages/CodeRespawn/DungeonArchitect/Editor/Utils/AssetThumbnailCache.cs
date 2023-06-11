@@ -10,13 +10,13 @@ namespace DungeonArchitect.Editors
     /// </summary>
     public class AssetThumbnailCache
     {
-        Dictionary<Object, Texture2D> thumbnails = new Dictionary<Object, Texture2D>();
+        Dictionary<Object, Texture2D> thumbnails = new();
 
 		/// <summary>
 		/// List of paths which we have alread requested for reimporting. 
 		/// This is used to disallow repeated reimport requests if a thumbnail is still not found
 		/// </summary>
-		HashSet<string> reimportRequestPaths = new HashSet<string>();
+		HashSet<string> reimportRequestPaths = new();
 
         /// <summary>
         /// The texture to display if the thumbnail for an object cannot be created / retrieved

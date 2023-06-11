@@ -325,7 +325,7 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow
                 outSurfaceCoords = surfaceCoords.ToArray();
             }
 	
-            private static Dictionary<Vector3Int, List<Vector3Int>> _volumeCoordsMap = new Dictionary<Vector3Int, List<Vector3Int>>();
+            private static Dictionary<Vector3Int, List<Vector3Int>> _volumeCoordsMap = new();
         };
     }
 

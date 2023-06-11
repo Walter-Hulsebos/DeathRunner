@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3373904}
   - component: {fileID: 2394612}
   - component: {fileID: 7206207617859164480}
-  - component: {fileID: 8437455739371807751}
   m_Layer: 0
   m_Name: PowerLines_90deg_A
   m_TagString: Untagged
@@ -94,21 +93,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 185424}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1.2649785, y: 1.2164977, z: 0.092551306}
   m_Center: {x: -0.5038913, y: 0.52958024, z: 0.0005388409}
---- !u!114 &8437455739371807751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 185424}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 50c56290f22e83248b6dfde9e86445cd, type: 2}

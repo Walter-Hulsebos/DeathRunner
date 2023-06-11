@@ -245,12 +245,12 @@ namespace ProjectDawn.Mathematics
         /// Returns cross product of two vectors.
         /// </summary>
         [MethodImpl(AggressiveInlining)]
-        public static F32x2 cross(F32x2 a, F32x2 b) => new F32x2(a.x * b.y,  -(a.y * b.x));
+        public static F32x2 cross(F32x2 a, F32x2 b) => new(a.x * b.y,  -(a.y * b.x));
         /// <summary>
         /// Returns cross product of two vectors.
         /// </summary>
         [MethodImpl(AggressiveInlining)]
-        public static F64x2 cross(F64x2 a, F64x2 b) => new F64x2(a.x * b.y,  -(a.y * b.x));
+        public static F64x2 cross(F64x2 a, F64x2 b) => new(a.x * b.y,  -(a.y * b.x));
 
         /// <summary>
         /// Returns determinant of two vectors.

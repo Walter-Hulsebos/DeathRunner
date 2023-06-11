@@ -101,7 +101,7 @@ namespace ProjectDawn.Geometry2D
                 float2 point = transform.Transform(points[pointIndex]);
                 float2 nextPoint = transform.Transform(points[(pointIndex + 1) % points.Length]);
 
-                Line edge = new Line(point, nextPoint);
+                Line edge = new(point, nextPoint);
                 float distanceBetweenEdgeAndCentroid = edge.Distance(center);
 
                 radius = math.min(radius, distanceBetweenEdgeAndCentroid);
@@ -149,7 +149,7 @@ namespace ProjectDawn.Geometry2D
 
         private static CollapseEvent FindCollapseEvent(NativeArray<CollapseEdge> edges, int headIndex)
         {
-            CollapseEvent e = new CollapseEvent { EdgeIndex = -1, Time = float.MaxValue };
+            CollapseEvent e = new() { EdgeIndex = -1, Time = float.MaxValue };
             int currentEdge = headIndex;
             while (true)
             {
@@ -240,7 +240,7 @@ namespace ProjectDawn.Geometry2D
             public int NextEdgeIndex;
             public float2 Normal;
 
-            public static CollapseEdge Null => new CollapseEdge
+            public static CollapseEdge Null => new()
             {
                 PreviousEdgeIndex = -1,
                 NextEdgeIndex = -1

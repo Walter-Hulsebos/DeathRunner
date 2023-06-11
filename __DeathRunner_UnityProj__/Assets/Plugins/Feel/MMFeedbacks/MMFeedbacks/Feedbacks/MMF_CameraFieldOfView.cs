@@ -40,7 +40,7 @@ namespace MoreMountains.Feedbacks
 		public bool RelativeFieldOfView = false;
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakeFieldOfView = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeFieldOfView = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(0f, 179f)]

@@ -19,7 +19,7 @@ namespace MoreMountains.Tools
 		{
 			int sceneCount = SceneManager.sceneCount;
 
-			List<Scene> loadedScenes = new List<Scene>(sceneCount);
+			List<Scene> loadedScenes = new(sceneCount);
 			// Scene[] loadedScenes = new Scene[sceneCount];
  
 			for (int i = 0; i < sceneCount; i++)
@@ -44,7 +44,7 @@ namespace MoreMountains.Tools
 		/// <returns></returns>
 		public static List<string> GetScenesInBuild()
 		{
-			List<string> scenesInBuild = new List<string>();
+			List<string> scenesInBuild = new();
             
 			for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
 			{

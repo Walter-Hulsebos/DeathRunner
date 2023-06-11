@@ -111,7 +111,7 @@ namespace MoreMountains.Tools
 		{
 			get
 			{
-				MMSoundManagerPlayOptions defaultOptions = new MMSoundManagerPlayOptions();
+				MMSoundManagerPlayOptions defaultOptions = new();
 				defaultOptions.MmSoundManagerTrack = MMSoundManager.MMSoundManagerTracks.Sfx;
 				defaultOptions.Location = Vector3.zero;
 				defaultOptions.Loop = false;

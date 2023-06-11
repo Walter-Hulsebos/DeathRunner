@@ -38,7 +38,7 @@ namespace QFSW.QC
                 throw new ArgumentException("Incorrect number of generic substitution types were supplied.");
             }
 
-            Dictionary<string, Type> substitutionTable = new Dictionary<string, Type>();
+            Dictionary<string, Type> substitutionTable = new();
             for (int i = 0; i < genericTypeArguments.Length; i++)
             {
                 substitutionTable.Add(GenericParamTypes[i].Name, genericTypeArguments[i]);
@@ -169,7 +169,7 @@ namespace QFSW.QC
 
         private string BuildPrefix(Type declaringType)
         {
-            List<string> prefixes = new List<string>();
+            List<string> prefixes = new();
             Assembly assembly = declaringType.Assembly;
 
             void AddPrefixes(IEnumerable<CommandPrefixAttribute> prefixAttributes, string defaultName)
@@ -224,7 +224,7 @@ namespace QFSW.QC
 
         private Type[] BuildGenericParamTypes(MethodInfo method, Type declaringType)
         {
-            List<Type> types = new List<Type>();
+            List<Type> types = new();
 
             if (declaringType.IsGenericTypeDefinition)
             {

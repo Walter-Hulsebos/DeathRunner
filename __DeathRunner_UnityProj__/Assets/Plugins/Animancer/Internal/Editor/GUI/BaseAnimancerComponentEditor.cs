@@ -22,7 +22,7 @@ namespace Animancer.Editor
 
         /// <summary>The drawer for the <see cref="IAnimancerComponent.Playable"/>.</summary>
         private readonly AnimancerPlayableDrawer
-            PlayableDrawer = new AnimancerPlayableDrawer();
+            PlayableDrawer = new();
 
         /************************************************************************************************************************/
 

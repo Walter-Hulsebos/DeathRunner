@@ -22,7 +22,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		public bool RelativeIntensity = true;
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakeIntensity = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeIntensity = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(0f, 1f)]
@@ -38,7 +38,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		public bool InterpolateColor = false;
 		/// the curve to animate the color on
 		[Tooltip("the curve to animate the color on")]
-		public AnimationCurve ColorCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.05f, 1f), new Keyframe(0.95f, 1), new Keyframe(1, 0));
+		public AnimationCurve ColorCurve = new(new Keyframe(0, 0), new Keyframe(0.05f, 1f), new Keyframe(0.95f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(0, 1)]

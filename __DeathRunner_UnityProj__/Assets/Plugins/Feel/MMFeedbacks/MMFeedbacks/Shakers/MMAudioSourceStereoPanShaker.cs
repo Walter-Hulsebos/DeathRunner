@@ -18,7 +18,7 @@ namespace MoreMountains.Feedbacks
 		public bool RelativeStereoPan = false;
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakeStereoPan = new AnimationCurve(new Keyframe(0, 0f), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f));
+		public AnimationCurve ShakeStereoPan = new(new Keyframe(0, 0f), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(-1f, 1f)]

@@ -57,13 +57,13 @@ namespace FMODUnityResonance
         private static readonly int roomPropertiesIndex = 1;
 
         // Boundaries instance to be used in room detection logic.
-        private static Bounds bounds = new Bounds(Vector3.zero, Vector3.zero);
+        private static Bounds bounds = new(Vector3.zero, Vector3.zero);
 
         // Container to store the currently active rooms in the scene.
-        private static List<FmodResonanceAudioRoom> enabledRooms = new List<FmodResonanceAudioRoom>();
+        private static List<FmodResonanceAudioRoom> enabledRooms = new();
 
         // Current listener position.
-        private static FMOD.VECTOR listenerPositionFmod = new FMOD.VECTOR();
+        private static FMOD.VECTOR listenerPositionFmod = new();
 
         // FMOD Resonance Audio Listener Plugin.
         private static FMOD.DSP listenerPlugin;
@@ -110,7 +110,7 @@ namespace FMODUnityResonance
             FMOD.VECTOR unused;
             RuntimeManager.CoreSystem.get3DListenerAttributes(0, out listenerPositionFmod, out unused,
                                                                   out unused, out unused);
-            Vector3 listenerPosition = new Vector3(listenerPositionFmod.x, listenerPositionFmod.y,
+            Vector3 listenerPosition = new(listenerPositionFmod.x, listenerPositionFmod.y,
                                                    listenerPositionFmod.z);
             Vector3 relativePosition = listenerPosition - room.transform.position;
             Quaternion rotationInverse = Quaternion.Inverse(room.transform.rotation);
@@ -243,7 +243,7 @@ namespace FMODUnityResonance
         {
             // Search through all busses on in banks.
             int numBanks = 0;
-            FMOD.DSP dsp = new FMOD.DSP();
+            FMOD.DSP dsp = new();
             FMOD.Studio.Bank[] banks = null;
             RuntimeManager.StudioSystem.getBankCount(out numBanks);
             RuntimeManager.StudioSystem.getBankList(out banks);

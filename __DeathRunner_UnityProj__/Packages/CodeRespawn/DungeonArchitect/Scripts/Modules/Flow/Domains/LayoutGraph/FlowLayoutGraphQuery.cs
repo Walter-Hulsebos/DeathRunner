@@ -9,9 +9,9 @@ namespace DungeonArchitect.Flow.Domains.Layout
 {
     public class FlowLayoutGraphTraversal
     {
-        private Dictionary<DungeonUID, FNodeInfo[]> outgoingNodes = new Dictionary<DungeonUID, FNodeInfo[]>();
-        private Dictionary<DungeonUID, FNodeInfo[]> incomingNodes = new Dictionary<DungeonUID, FNodeInfo[]>();
-        private Dictionary<DungeonUID, DungeonUID> teleporters = new Dictionary<DungeonUID, DungeonUID>();   // Node -> Node mapping of teleporters
+        private Dictionary<DungeonUID, FNodeInfo[]> outgoingNodes = new();
+        private Dictionary<DungeonUID, FNodeInfo[]> incomingNodes = new();
+        private Dictionary<DungeonUID, DungeonUID> teleporters = new();   // Node -> Node mapping of teleporters
         
         public void Build(FlowLayoutGraph graph)
         {
@@ -427,16 +427,16 @@ namespace DungeonArchitect.Flow.Domains.Layout
         }
         
         private FlowLayoutGraph graph;
-        private Dictionary<DungeonUID, FlowLayoutGraphNode> nodeMap = new Dictionary<DungeonUID, FlowLayoutGraphNode>();
-        private Dictionary<DungeonUID, FlowLayoutGraphLink> linkMap = new Dictionary<DungeonUID, FlowLayoutGraphLink>();
-        private Dictionary<DungeonUID, DungeonUID[]> connectedNodes = new Dictionary<DungeonUID, DungeonUID[]>();
-        private Dictionary<DungeonUID, DungeonUID[]> outgoingNodes = new Dictionary<DungeonUID, DungeonUID[]>();
-        private Dictionary<DungeonUID, DungeonUID[]> incomingNodes = new Dictionary<DungeonUID, DungeonUID[]>();
-        private Dictionary<DungeonUID, DungeonUID> parentNodes = new Dictionary<DungeonUID, DungeonUID>();
-        private Dictionary<DungeonUID, FlowLayoutGraphLink[]> connectedLinks = new Dictionary<DungeonUID, FlowLayoutGraphLink[]>();
-        private FlowLayoutGraphTraversal traversal = new FlowLayoutGraphTraversal();
-        private Dictionary<DungeonUID, FlowLayoutGraphNode> subNodeMap = new Dictionary<DungeonUID, FlowLayoutGraphNode>();
-        private Dictionary<Vector3, DungeonUID> coordToNodeMap = new Dictionary<Vector3, DungeonUID>();
+        private Dictionary<DungeonUID, FlowLayoutGraphNode> nodeMap = new();
+        private Dictionary<DungeonUID, FlowLayoutGraphLink> linkMap = new();
+        private Dictionary<DungeonUID, DungeonUID[]> connectedNodes = new();
+        private Dictionary<DungeonUID, DungeonUID[]> outgoingNodes = new();
+        private Dictionary<DungeonUID, DungeonUID[]> incomingNodes = new();
+        private Dictionary<DungeonUID, DungeonUID> parentNodes = new();
+        private Dictionary<DungeonUID, FlowLayoutGraphLink[]> connectedLinks = new();
+        private FlowLayoutGraphTraversal traversal = new();
+        private Dictionary<DungeonUID, FlowLayoutGraphNode> subNodeMap = new();
+        private Dictionary<Vector3, DungeonUID> coordToNodeMap = new();
         private IntVector graphGridSize;
         private FlowLayoutGraphNode[,,] nodeArray3D = new FlowLayoutGraphNode[0,0,0];
     }

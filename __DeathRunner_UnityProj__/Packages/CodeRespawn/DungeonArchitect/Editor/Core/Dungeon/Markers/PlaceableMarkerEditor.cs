@@ -51,7 +51,7 @@ namespace DungeonArchitect.Editors
                     Vector3 position = placeableMarker.transform.position + Vector3.up * 1.0f;
                     string posString = position.ToString();
 
-                    GUIStyle style = new GUIStyle(GUI.skin.button);
+                    GUIStyle style = new(GUI.skin.button);
                     style.alignment = TextAnchor.MiddleCenter;
                     Handles.Label(position, placeableMarker.debugText, style);
                 }

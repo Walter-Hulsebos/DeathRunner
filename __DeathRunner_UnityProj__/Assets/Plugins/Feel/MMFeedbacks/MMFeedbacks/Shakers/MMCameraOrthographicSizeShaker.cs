@@ -18,7 +18,7 @@ namespace MoreMountains.Feedbacks
 		public bool RelativeOrthographicSize = false;
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakeOrthographicSize = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeOrthographicSize = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		public float RemapOrthographicSizeZero = 5f;

@@ -13,11 +13,11 @@ namespace UnityEngine.AI
         public int agentTypeID { get { return m_AgentTypeID; } set { m_AgentTypeID = value; UpdateLink(); } }
 
         [SerializeField]
-        Vector3 m_StartPoint = new Vector3(0.0f, 0.0f, -2.5f);
+        Vector3 m_StartPoint = new(0.0f, 0.0f, -2.5f);
         public Vector3 startPoint { get { return m_StartPoint; } set { m_StartPoint = value; UpdateLink(); } }
 
         [SerializeField]
-        Vector3 m_EndPoint = new Vector3(0.0f, 0.0f, 2.5f);
+        Vector3 m_EndPoint = new(0.0f, 0.0f, 2.5f);
         public Vector3 endPoint { get { return m_EndPoint; } set { m_EndPoint = value; UpdateLink(); } }
 
         [SerializeField]
@@ -40,12 +40,12 @@ namespace UnityEngine.AI
         int m_Area;
         public int area { get { return m_Area; } set { m_Area = value; UpdateLink(); } }
 
-        NavMeshLinkInstance m_LinkInstance = new NavMeshLinkInstance();
+        NavMeshLinkInstance m_LinkInstance = new();
 
         Vector3 m_LastPosition = Vector3.zero;
         Quaternion m_LastRotation = Quaternion.identity;
 
-        static readonly List<NavMeshLink> s_Tracked = new List<NavMeshLink>();
+        static readonly List<NavMeshLink> s_Tracked = new();
 
         void OnEnable()
         {

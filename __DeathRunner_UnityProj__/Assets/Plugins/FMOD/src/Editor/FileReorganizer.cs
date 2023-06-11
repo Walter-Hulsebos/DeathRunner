@@ -13,7 +13,7 @@ namespace FMODUnity
         public const string ReorganizerMenuItemPath = "FMOD/Reorganize Plugin Files";
 
         [SerializeField]
-        private List<Task> tasks = new List<Task>();
+        private List<Task> tasks = new();
 
         [SerializeField]
         private int taskCount;
@@ -24,7 +24,7 @@ namespace FMODUnity
         private TaskView taskView;
 
         [SerializeField]
-        private TreeViewState taskViewState = new TreeViewState();
+        private TreeViewState taskViewState = new();
 
         [SerializeField]
         private MultiColumnHeaderState taskHeaderState;
@@ -166,7 +166,7 @@ namespace FMODUnity
                 taskHeaderState = newHeaderState;
             }
 
-            MultiColumnHeader taskHeader = new MultiColumnHeader(taskHeaderState);
+            MultiColumnHeader taskHeader = new(taskHeaderState);
 
             taskView = new TaskView(taskViewState, taskHeader, tasks);
             taskView.taskSelected += OnTaskSelected;
@@ -211,7 +211,7 @@ namespace FMODUnity
 
         public static bool IsUpToDate()
         {
-            List<Task> tasks = new List<Task>();
+            List<Task> tasks = new();
 
             TaskGenerator.Generate(tasks);
 
@@ -296,27 +296,27 @@ namespace FMODUnity
             public static MultiColumnHeaderState CreateHeaderState()
             {
                 MultiColumnHeaderState.Column[] columns = new MultiColumnHeaderState.Column[] {
-                    new MultiColumnHeaderState.Column()
+                    new()
                     {
                         headerContent = new GUIContent("Task #"),
                         width = 50,
                         autoResize = false,
                         allowToggleVisibility = false,
                     },
-                    new MultiColumnHeaderState.Column()
+                    new()
                     {
                         headerContent = new GUIContent("Status"),
                         width = 100,
                         autoResize = false,
                         allowToggleVisibility = false,
                     },
-                    new MultiColumnHeaderState.Column() {
+                    new() {
                         headerContent = new GUIContent("Platform"),
                         width = 150,
                         autoResize = false,
                         allowToggleVisibility = false,
                     },
-                    new MultiColumnHeaderState.Column()
+                    new()
                     {
                         headerContent = new GUIContent("Description"),
                         minWidth = 500,
@@ -342,7 +342,7 @@ namespace FMODUnity
 
             protected override TreeViewItem BuildRoot()
             {
-                TreeViewItem root = new TreeViewItem(-1, -1);
+                TreeViewItem root = new(-1, -1);
 
                 if (tasks.Count > 0)
                 {
@@ -360,7 +360,7 @@ namespace FMODUnity
                 }
                 else
                 {
-                    TreeViewItem item = new TreeViewItem(0);
+                    TreeViewItem item = new(0);
                     item.displayName = "Nothing to do here.";
 
                     root.AddChild(item);
@@ -549,7 +549,7 @@ namespace FMODUnity
 
             private void DrawMoveDescription(Rect rect, Task task)
             {
-                Rect sourcePrefixRect = new Rect(rect.x, rect.y, Resources.PrefixSize().x, Resources.PrefixSize().y);
+                Rect sourcePrefixRect = new(rect.x, rect.y, Resources.PrefixSize().x, Resources.PrefixSize().y);
 
                 Rect destinationPrefixRect = sourcePrefixRect;
                 destinationPrefixRect.y = sourcePrefixRect.yMax;
@@ -575,7 +575,7 @@ namespace FMODUnity
 
             private void DrawRemoveFolderDescription(Rect rect, Task task)
             {
-                Rect prefixRect = new Rect(rect.x, rect.y, Resources.PrefixSize().x, Resources.PrefixSize().y);
+                Rect prefixRect = new(rect.x, rect.y, Resources.PrefixSize().x, Resources.PrefixSize().y);
 
                 Rect pathRect = prefixRect;
                 pathRect.x = prefixRect.xMax;
@@ -602,7 +602,7 @@ namespace FMODUnity
 
             private void DrawRemoveAssetDescription(Rect rect, Task task)
             {
-                Rect prefixRect = new Rect(rect.x, rect.y, Resources.PrefixSize().x, Resources.PrefixSize().y);
+                Rect prefixRect = new(rect.x, rect.y, Resources.PrefixSize().x, Resources.PrefixSize().y);
 
                 Rect pathRect = prefixRect;
                 pathRect.x = prefixRect.xMax;
@@ -662,9 +662,9 @@ namespace FMODUnity
 
             private static GUIStyle stepStyle;
 
-            public static readonly GUIContent SourcePrefix = new GUIContent("Move");
-            public static readonly GUIContent DestinationPrefix = new GUIContent("to");
-            public static readonly GUIContent RemovePrefix = new GUIContent("Remove");
+            public static readonly GUIContent SourcePrefix = new("Move");
+            public static readonly GUIContent DestinationPrefix = new("to");
+            public static readonly GUIContent RemovePrefix = new("Remove");
 
             private static Vector2 prefixSize;
 
@@ -677,7 +677,7 @@ namespace FMODUnity
             private static bool cacheInitialized = false;
 
             public static readonly Dictionary<Task.Status, Texture> StatusIcon =
-                new Dictionary<Task.Status, Texture>() {
+                new() {
                 {  Task.Status.Pending, EditorGUIUtility.FindTexture("TestNormal") },
                 {  Task.Status.Succeeded, EditorGUIUtility.FindTexture("TestPassed") },
                 {  Task.Status.Failed, EditorGUIUtility.FindTexture("TestFailed") },
@@ -685,7 +685,7 @@ namespace FMODUnity
             };
 
             public static readonly Dictionary<Task.Status, GUIContent> StatusContent =
-                new Dictionary<Task.Status, GUIContent>() {
+                new() {
                 {  Task.Status.Pending, new GUIContent("Pending", StatusIcon[Task.Status.Pending]) },
                 {  Task.Status.Succeeded, new GUIContent("Succeeded", StatusIcon[Task.Status.Succeeded]) },
                 {  Task.Status.Failed, new GUIContent("Failed", StatusIcon[Task.Status.Failed]) },
@@ -880,7 +880,7 @@ namespace FMODUnity
         private static void DrawAssetPath(Rect rect, string path)
         {
             GUIStyle pathStyle = Resources.AssetPathStyle();
-            GUIContent pathContent = new GUIContent(path);
+            GUIContent pathContent = new(path);
 
             Rect pathRect = rect;
             pathRect.width = pathStyle.CalcSize(pathContent).x;
@@ -931,22 +931,22 @@ namespace FMODUnity
 
             private static readonly MoveRecord[] looseAssets = {
                 // Release 1.10 layout
-                new MoveRecord() { source = FMODRoot + "/fmodplugins.cpp", destination = "obsolete" },
-                new MoveRecord() { source = "Assets/GoogleVR", destination = "addons" },
-                new MoveRecord() { source = "Assets/ResonanceAudio", destination = "addons" },
-                new MoveRecord() { source = "Assets/Resources/FMODStudioSettings.asset", destination = "Resources" },
-                new MoveRecord() { source = "Assets/FMODStudioCache.asset", destination = "Resources" },
+                new() { source = FMODRoot + "/fmodplugins.cpp", destination = "obsolete" },
+                new() { source = "Assets/GoogleVR", destination = "addons" },
+                new() { source = "Assets/ResonanceAudio", destination = "addons" },
+                new() { source = "Assets/Resources/FMODStudioSettings.asset", destination = "Resources" },
+                new() { source = "Assets/FMODStudioCache.asset", destination = "Resources" },
 
                 // Release 2.0 layout
-                new MoveRecord() { source = FMODRoot + "/src/Runtime/fmodplugins.cpp", destination = "obsolete" },
+                new() { source = FMODRoot + "/src/Runtime/fmodplugins.cpp", destination = "obsolete" },
 
                 // Release 2.1 layout
-                new MoveRecord() { source = FMODRoot + "/src/Runtime/fmod_static_plugin_support.h", destination = "obsolete" },
+                new() { source = FMODRoot + "/src/Runtime/fmod_static_plugin_support.h", destination = "obsolete" },
 
                 // Release 2.2 layout
-                new MoveRecord() { source = FMODRoot + "/src/fmodplugins.cpp", destination = "obsolete" },
-                new MoveRecord() { source = FMODRoot + "/src/fmod_static_plugin_support.h", destination = "obsolete" },
-                new MoveRecord() { source = FMODSource + "/CodeGeneration.cs", destination = "src/Editor" },
+                new() { source = FMODRoot + "/src/fmodplugins.cpp", destination = "obsolete" },
+                new() { source = FMODRoot + "/src/fmod_static_plugin_support.h", destination = "obsolete" },
+                new() { source = FMODSource + "/CodeGeneration.cs", destination = "src/Editor" },
             };
 
             private static readonly string[] foldersToCleanUp = {
@@ -958,7 +958,7 @@ namespace FMODUnity
 
             public static void Generate(List<Task> tasks)
             {
-                TaskGenerator generator = new TaskGenerator() { tasks = tasks };
+                TaskGenerator generator = new() { tasks = tasks };
 
                 Settings.Instance.Platforms.ForEach(generator.GenerateTasksForPlatform);
                 generator.GenerateTasksForLooseAssets();
@@ -1067,16 +1067,16 @@ namespace FMODUnity
 
             private static readonly MoveRecord[] codeFolders = {
                 // Release 2.0 layout
-                new MoveRecord() { source = FMODSource + "/Runtime", destination = "src" },
-                new MoveRecord() { source = FMODSource + "/Runtime/Timeline", destination = "src" },
-                new MoveRecord() { source = FMODSource + "/Runtime/wrapper", destination = "src" },
-                new MoveRecord() { source = FMODSource + "/Editor/Timeline", destination = "src/Editor" },
+                new() { source = FMODSource + "/Runtime", destination = "src" },
+                new() { source = FMODSource + "/Runtime/Timeline", destination = "src" },
+                new() { source = FMODSource + "/Runtime/wrapper", destination = "src" },
+                new() { source = FMODSource + "/Editor/Timeline", destination = "src/Editor" },
 
                 // Release 1.10 layout
-                new MoveRecord() { source = FMODRoot + "/Timeline", destination = "src" },
-                new MoveRecord() { source = FMODRoot + "/Wrapper", destination = "src" },
-                new MoveRecord() { source = "Assets/Plugins/Editor/FMOD", destination = "src/Editor" },
-                new MoveRecord() { source = "Assets/Plugins/Editor/FMOD/Timeline", destination = "src/Editor" },
+                new() { source = FMODRoot + "/Timeline", destination = "src" },
+                new() { source = FMODRoot + "/Wrapper", destination = "src" },
+                new() { source = "Assets/Plugins/Editor/FMOD", destination = "src/Editor" },
+                new() { source = "Assets/Plugins/Editor/FMOD/Timeline", destination = "src/Editor" },
             };
 
             private void AddMoveTask(string source, string destination)

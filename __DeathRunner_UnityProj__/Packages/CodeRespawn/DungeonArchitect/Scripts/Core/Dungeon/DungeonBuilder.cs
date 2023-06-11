@@ -18,8 +18,8 @@ namespace DungeonArchitect
         protected PMRandom nrandom;
         protected PMRandom random;
         protected DungeonModel model;
-        protected LevelMarkerList markers = new LevelMarkerList();
-        protected Blackboard blackboard = new Blackboard();
+        protected LevelMarkerList markers = new();
+        protected Blackboard blackboard = new();
 
         public bool asyncBuild = false;
         public long maxBuildTimePerFrame = 32;

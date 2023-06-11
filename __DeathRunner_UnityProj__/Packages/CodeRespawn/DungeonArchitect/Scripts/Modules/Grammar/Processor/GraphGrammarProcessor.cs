@@ -85,7 +85,7 @@ namespace DungeonArchitect.Grammar
                 if (generatorScript != null)
                 {
                     var graphBuilder = new NonEditorGraphBuilder(graph);
-                    GrammarGraphBuilder grammarBuilder = new GrammarGraphBuilder(graph, nodeTypes, graphBuilder);
+                    GrammarGraphBuilder grammarBuilder = new(graph, nodeTypes, graphBuilder);
                     grammarBuilder.ClearGraph();
                     generatorScript.Generate(grammarBuilder);
 
@@ -297,7 +297,7 @@ namespace DungeonArchitect.Grammar
 
     class GraphPatternMatch
     {
-        public Dictionary<RNode, RNode> PatternToDataNode = new Dictionary<RNode, RNode>();
+        public Dictionary<RNode, RNode> PatternToDataNode = new();
     }
 
     class GraphPatternMatcher

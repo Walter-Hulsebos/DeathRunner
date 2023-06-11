@@ -64,7 +64,7 @@ namespace HeurekaGames.AssetHunterPRO
                 : (string.IsNullOrEmpty(optionalLegibleIdentifier) ?
                     identifier : optionalLegibleIdentifier);
 
-            GUIContent content = new GUIContent(label, EditorGUIUtility.IconContent((!btnUsable) ? ((validSelected) ? "d_lightOff" : "d_orangeLight") : "d_greenLight").image);
+            GUIContent content = new(label, EditorGUIUtility.IconContent((!btnUsable) ? ((validSelected) ? "d_lightOff" : "d_orangeLight") : "d_greenLight").image);
 
             GUILayout.Label(content, GUILayout.MaxHeight(16));
             GUILayout.FlexibleSpace();

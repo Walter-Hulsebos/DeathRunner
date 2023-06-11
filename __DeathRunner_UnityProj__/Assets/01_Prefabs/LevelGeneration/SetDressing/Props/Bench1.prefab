@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5634874059082928181}
   - component: {fileID: 3852512201190244740}
   - component: {fileID: 2779880957747564451}
-  - component: {fileID: 7805035212470106234}
   m_Layer: 0
   m_Name: Bench1
   m_TagString: Untagged
@@ -93,22 +92,17 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8065962671323580855}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 2911736426955009642, guid: a2423fc22f0dd6c45ace4f48c09c4571, type: 3}
---- !u!114 &7805035212470106234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8065962671323580855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 11139fb7e4dab5744b88c54bd4ee0f8b, type: 2}

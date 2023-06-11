@@ -487,7 +487,7 @@ namespace DungeonArchitect.Editors
         /// <param name="tag"></param>
         public static void CreateEditorTag(string tag)
         {
-            SerializedObject tagManager = new SerializedObject(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
+            SerializedObject tagManager = new(AssetDatabase.LoadAllAssetsAtPath("ProjectSettings/TagManager.asset")[0]);
             SerializedProperty tagsProp = tagManager.FindProperty("tags");
 
             // Check if the tag is already present

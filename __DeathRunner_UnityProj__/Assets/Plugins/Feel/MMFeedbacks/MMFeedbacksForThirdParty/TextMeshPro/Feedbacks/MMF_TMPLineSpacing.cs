@@ -40,7 +40,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to tween on
 		[Tooltip("the curve to tween on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
-		public MMTweenType LineSpacingCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
+		public MMTweenType LineSpacingCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
@@ -62,8 +62,8 @@ namespace MoreMountains.Feedbacks
 				return;
 			}
 
-			MMF_FeedbackBaseTarget target = new MMF_FeedbackBaseTarget();
-			MMPropertyReceiver receiver = new MMPropertyReceiver();
+			MMF_FeedbackBaseTarget target = new();
+			MMPropertyReceiver receiver = new();
 			receiver.TargetObject = TargetTMPText.gameObject;
 			receiver.TargetComponent = TargetTMPText;
 			receiver.TargetPropertyName = "lineSpacing";

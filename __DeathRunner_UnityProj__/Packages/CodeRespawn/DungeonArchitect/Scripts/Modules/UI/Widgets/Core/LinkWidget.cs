@@ -55,7 +55,7 @@ namespace DungeonArchitect.UI.Widgets
         {
             if (content != null)
             {
-                Rect linkBounds = new Rect(Vector2.zero, WidgetBounds.size);
+                Rect linkBounds = new(Vector2.zero, WidgetBounds.size);
                 renderer.AddCursorRect(linkBounds, UICursorType.Link);
 
                 WidgetUtils.DrawWidgetGroup(uiSystem, renderer, content);
@@ -93,7 +93,7 @@ namespace DungeonArchitect.UI.Widgets
         {
             base.HandleInput(e, uiSystem);
 
-            Rect linkBounds = new Rect(Vector2.zero, WidgetBounds.size);
+            Rect linkBounds = new(Vector2.zero, WidgetBounds.size);
             bool insideBounds = linkBounds.Contains(e.mousePosition);
 
             hovered = insideBounds;

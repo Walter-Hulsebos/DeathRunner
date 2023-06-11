@@ -35,22 +35,22 @@ namespace FMODUnity
 
         private bool isMuted = false;
 
-        private Dictionary<FMOD.GUID, FMOD.Studio.EventDescription> cachedDescriptions = new Dictionary<FMOD.GUID, FMOD.Studio.EventDescription>(new GuidComparer());
+        private Dictionary<FMOD.GUID, FMOD.Studio.EventDescription> cachedDescriptions = new(new GuidComparer());
 
-        private Dictionary<string, LoadedBank> loadedBanks = new Dictionary<string, LoadedBank>();
-        private List<string> sampleLoadRequests = new List<string>();
+        private Dictionary<string, LoadedBank> loadedBanks = new();
+        private List<string> sampleLoadRequests = new();
 
-        private List<AttachedInstance> attachedInstances = new List<AttachedInstance>(128);
+        private List<AttachedInstance> attachedInstances = new(128);
 
 #if UNITY_EDITOR
-        private List<FMOD.Studio.EventInstance> eventPositionWarnings = new List<FMOD.Studio.EventInstance>();
+        private List<FMOD.Studio.EventInstance> eventPositionWarnings = new();
 #endif
 
         private bool listenerWarningIssued = false;
 
         protected bool isOverlayEnabled = false;
         private FMODRuntimeManagerOnGUIHelper overlayDrawer = null;
-        private Rect windowRect = new Rect(10, 10, 300, 100);
+        private Rect windowRect = new(10, 10, 300, 100);
 
         private string lastDebugText;
         private float lastDebugUpdate = 0;
@@ -68,9 +68,9 @@ namespace FMODUnity
         [AOT.MonoPInvokeCallback(typeof(FMOD.DEBUG_CALLBACK))]
         private static FMOD.RESULT DEBUG_CALLBACK(FMOD.DEBUG_FLAGS flags, IntPtr filePtr, int line, IntPtr funcPtr, IntPtr messagePtr)
         {
-            FMOD.StringWrapper file = new FMOD.StringWrapper(filePtr);
-            FMOD.StringWrapper func = new FMOD.StringWrapper(funcPtr);
-            FMOD.StringWrapper message = new FMOD.StringWrapper(messagePtr);
+            FMOD.StringWrapper file = new(filePtr);
+            FMOD.StringWrapper func = new(funcPtr);
+            FMOD.StringWrapper message = new(messagePtr);
 
             if (flags == FMOD.DEBUG_FLAGS.ERROR)
             {
@@ -259,7 +259,7 @@ namespace FMODUnity
             FMOD.SPEAKERMODE speakerMode = currentPlatform.SpeakerMode;
             FMOD.OUTPUTTYPE outputType = currentPlatform.GetOutputType();
 
-            FMOD.ADVANCEDSETTINGS advancedSettings = new FMOD.ADVANCEDSETTINGS();
+            FMOD.ADVANCEDSETTINGS advancedSettings = new();
             advancedSettings.randomSeed = (uint)DateTime.UtcNow.Ticks;
             advancedSettings.maxAT9Codecs = GetChannelCountForFormat(CodecType.AT9);
             advancedSettings.maxFADPCMCodecs = GetChannelCountForFormat(CodecType.FADPCM);
@@ -325,7 +325,7 @@ retry:
 
             if (!string.IsNullOrEmpty(fmodSettings.EncryptionKey))
             {
-                FMOD.Studio.ADVANCEDSETTINGS studioAdvancedSettings = new FMOD.Studio.ADVANCEDSETTINGS();
+                FMOD.Studio.ADVANCEDSETTINGS studioAdvancedSettings = new();
                 result = studioSystem.setAdvancedSettings(studioAdvancedSettings, Settings.Instance.EncryptionKey);
                 CheckInitResult(result, "FMOD.Studio.System.setAdvancedSettings");
             }
@@ -618,7 +618,7 @@ retry:
                         mixerHead.setMeteringEnabled(false, true);
                     }
 
-                    StringBuilder debug = new StringBuilder();
+                    StringBuilder debug = new();
 
                     FMOD.Studio.CPU_USAGE cpuUsage;
                     FMOD.CPU_USAGE cpuUsage_core;
@@ -871,7 +871,7 @@ retry:
                 else
 #endif // (UNITY_ANDROID || UNITY_WEBGL) && !UNITY_EDITOR
                 {
-                    LoadedBank loadedBank = new LoadedBank();
+                    LoadedBank loadedBank = new();
                     FMOD.RESULT loadResult = Instance.studioSystem.loadBankFile(bankPath, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out loadedBank.Bank);
                     Instance.RegisterLoadedBank(loadedBank, bankPath, bankId, loadSamples, loadResult);
                     Instance.loadingBanksRef--;
@@ -902,7 +902,7 @@ retry:
                 }
 #endif
 
-                LoadedBank loadedBank = new LoadedBank();
+                LoadedBank loadedBank = new();
                 FMOD.RESULT loadResult = Instance.studioSystem.loadBankMemory(asset.bytes, FMOD.Studio.LOAD_BANK_FLAGS.NORMAL, out loadedBank.Bank);
                 Instance.RegisterLoadedBank(loadedBank, bankId, bankId, loadSamples, loadResult);
             }
@@ -1141,7 +1141,7 @@ retry:
             return newInstance;
         }
 
-        public static void PlayOneShot(EventReference eventReference, Vector3 position = new Vector3())
+        public static void PlayOneShot(EventReference eventReference, Vector3 position = new())
         {
             try
             {
@@ -1153,7 +1153,7 @@ retry:
             }
         }
 
-        public static void PlayOneShot(string path, Vector3 position = new Vector3())
+        public static void PlayOneShot(string path, Vector3 position = new())
         {
             try
             {
@@ -1165,7 +1165,7 @@ retry:
             }
         }
 
-        public static void PlayOneShot(FMOD.GUID guid, Vector3 position = new Vector3())
+        public static void PlayOneShot(FMOD.GUID guid, Vector3 position = new())
         {
             var instance = CreateInstance(guid);
             instance.set3DAttributes(RuntimeUtils.To3DAttributes(position));

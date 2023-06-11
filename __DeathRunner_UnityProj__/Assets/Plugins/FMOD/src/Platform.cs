@@ -88,23 +88,23 @@ namespace FMODUnity
         private bool active = false;
 
         [SerializeField]
-        protected PropertyStorage Properties = new PropertyStorage();
+        protected PropertyStorage Properties = new();
 
         [SerializeField]
         [FormerlySerializedAs("outputType")]
         internal string OutputTypeName;
 
-        private static List<ThreadAffinityGroup> StaticThreadAffinities = new List<ThreadAffinityGroup>();
+        private static List<ThreadAffinityGroup> StaticThreadAffinities = new();
 
         [SerializeField]
-        private PropertyThreadAffinityList threadAffinities = new PropertyThreadAffinityList();
+        private PropertyThreadAffinityList threadAffinities = new();
 
 #if UNITY_EDITOR
         [SerializeField]
         private float displaySortOrder;
 
         [SerializeField]
-        private List<string> childIdentifiers = new List<string>();
+        private List<string> childIdentifiers = new();
 #else
         // The parent platform from which this platform inherits its property values.
         [NonSerialized]
@@ -801,20 +801,20 @@ namespace FMODUnity
         [Serializable]
         public class PropertyStorage
         {
-            public PropertyBool LiveUpdate = new PropertyBool();
-            public PropertyInt LiveUpdatePort = new PropertyInt();
-            public PropertyBool Overlay = new PropertyBool();
-            public PropertyBool Logging = new PropertyBool();
-            public PropertyInt SampleRate = new PropertyInt();
-            public PropertyString BuildDirectory = new PropertyString();
-            public PropertySpeakerMode SpeakerMode = new PropertySpeakerMode();
-            public PropertyInt VirtualChannelCount = new PropertyInt();
-            public PropertyInt RealChannelCount = new PropertyInt();
-            public PropertyInt DSPBufferLength = new PropertyInt();
-            public PropertyInt DSPBufferCount = new PropertyInt();
-            public PropertyStringList Plugins = new PropertyStringList();
-            public PropertyStringList StaticPlugins = new PropertyStringList();
-            public PropertyCallbackHandler CallbackHandler = new PropertyCallbackHandler();
+            public PropertyBool LiveUpdate = new();
+            public PropertyInt LiveUpdatePort = new();
+            public PropertyBool Overlay = new();
+            public PropertyBool Logging = new();
+            public PropertyInt SampleRate = new();
+            public PropertyString BuildDirectory = new();
+            public PropertySpeakerMode SpeakerMode = new();
+            public PropertyInt VirtualChannelCount = new();
+            public PropertyInt RealChannelCount = new();
+            public PropertyInt DSPBufferLength = new();
+            public PropertyInt DSPBufferCount = new();
+            public PropertyStringList Plugins = new();
+            public PropertyStringList StaticPlugins = new();
+            public PropertyCallbackHandler CallbackHandler = new();
         }
 
         // Whether this platform is active in the settings UI.
@@ -864,46 +864,44 @@ namespace FMODUnity
         internal static class PropertyAccessors
         {
             public static readonly PropertyAccessor<TriStateBool> LiveUpdate
-                    = new PropertyAccessor<TriStateBool>(properties => properties.LiveUpdate, TriStateBool.Disabled);
+                    = new(properties => properties.LiveUpdate, TriStateBool.Disabled);
 
             public static readonly PropertyAccessor<int> LiveUpdatePort
-                    = new PropertyAccessor<int>(properties => properties.LiveUpdatePort, 9264);
+                    = new(properties => properties.LiveUpdatePort, 9264);
 
             public static readonly PropertyAccessor<TriStateBool> Overlay
-                    = new PropertyAccessor<TriStateBool>(properties => properties.Overlay, TriStateBool.Disabled);
+                    = new(properties => properties.Overlay, TriStateBool.Disabled);
 
             public static readonly PropertyAccessor<TriStateBool> Logging
-                    = new PropertyAccessor<TriStateBool>(properties => properties.Logging, TriStateBool.Disabled);
+                    = new(properties => properties.Logging, TriStateBool.Disabled);
 
-            public static readonly PropertyAccessor<int> SampleRate
-                    = new PropertyAccessor<int>(properties => properties.SampleRate, 0);
+            public static readonly PropertyAccessor<int> SampleRate = new(properties => properties.SampleRate, 0);
 
             public static readonly PropertyAccessor<string> BuildDirectory
-                    = new PropertyAccessor<string>(properties => properties.BuildDirectory, "Desktop");
+                    = new(properties => properties.BuildDirectory, "Desktop");
 
             public static readonly PropertyAccessor<FMOD.SPEAKERMODE> SpeakerMode
-                    = new PropertyAccessor<FMOD.SPEAKERMODE>(properties => properties.SpeakerMode, FMOD.SPEAKERMODE.STEREO);
+                    = new(properties => properties.SpeakerMode, FMOD.SPEAKERMODE.STEREO);
 
             public static readonly PropertyAccessor<int> VirtualChannelCount
-                    = new PropertyAccessor<int>(properties => properties.VirtualChannelCount, 128);
+                    = new(properties => properties.VirtualChannelCount, 128);
 
             public static readonly PropertyAccessor<int> RealChannelCount
-                    = new PropertyAccessor<int>(properties => properties.RealChannelCount, 32);
+                    = new(properties => properties.RealChannelCount, 32);
 
             public static readonly PropertyAccessor<int> DSPBufferLength
-                    = new PropertyAccessor<int>(properties => properties.DSPBufferLength, 0);
+                    = new(properties => properties.DSPBufferLength, 0);
 
-            public static readonly PropertyAccessor<int> DSPBufferCount
-                    = new PropertyAccessor<int>(properties => properties.DSPBufferCount, 0);
+            public static readonly PropertyAccessor<int> DSPBufferCount =
+                new(properties => properties.DSPBufferCount, 0);
 
-            public static readonly PropertyAccessor<List<string>> Plugins
-                    = new PropertyAccessor<List<string>>(properties => properties.Plugins, null);
+            public static readonly PropertyAccessor<List<string>> Plugins = new(properties => properties.Plugins, null);
 
             public static readonly PropertyAccessor<List<string>> StaticPlugins
-                    = new PropertyAccessor<List<string>>(properties => properties.StaticPlugins, null);
+                    = new(properties => properties.StaticPlugins, null);
 
             public static readonly PropertyAccessor<PlatformCallbackHandler> CallbackHandler
-                    = new PropertyAccessor<PlatformCallbackHandler>(properties => properties.CallbackHandler, null);
+                    = new(properties => properties.CallbackHandler, null);
         }
 
 #if UNITY_EDITOR
@@ -985,7 +983,7 @@ namespace FMODUnity
 
         internal virtual List<CodecChannelCount> DefaultCodecChannels { get { return staticCodecChannels; } }
 
-        private static List<CodecChannelCount> staticCodecChannels = new List<CodecChannelCount>()
+        private static List<CodecChannelCount> staticCodecChannels = new()
         {
             new CodecChannelCount { format = CodecType.FADPCM, channels = 32 },
             new CodecChannelCount { format = CodecType.Vorbis, channels = 0 },
@@ -997,7 +995,7 @@ namespace FMODUnity
         }
 
         [SerializeField]
-        private PropertyCodecChannels codecChannels = new PropertyCodecChannels();
+        private PropertyCodecChannels codecChannels = new();
 
         internal List<CodecChannelCount> CodecChannels
         {

@@ -69,7 +69,7 @@ namespace SharpNav
 				if (fs.Count == 0)
 					continue;
 
-				CompactCell c = new CompactCell(spanIndex, 0);
+				CompactCell c = new(spanIndex, 0);
 
 				//convert the closed spans to open spans
 				int lastInd = fs.Count - 1;
@@ -502,7 +502,7 @@ namespace SharpNav
 					CompactCell c = cells[x + y * width];
 					for (int i = c.StartIndex, end = c.StartIndex + c.Count; i < end; i++)
 					{
-						CompactSpanReference spanRef = new CompactSpanReference(x, y, i);
+						CompactSpanReference spanRef = new(x, y, i);
 
 						//HACK since the border region flag makes r negative, I changed r == 0 to r <= 0. Figure out exactly what maxRegionId's purpose is and see if Region.IsBorderOrNull is all we need.
 						int r = (int)regionIds[i];
@@ -544,8 +544,8 @@ namespace SharpNav
 			}
 
 			//Remove too small regions
-			Stack<RegionId> stack = new Stack<RegionId>();
-			List<RegionId> trace = new List<RegionId>();
+			Stack<RegionId> stack = new();
+			List<RegionId> trace = new();
 			for (int i = 0; i < numRegions; i++)
 			{
 				Region reg = regions[i];
@@ -690,7 +690,7 @@ namespace SharpNav
 					continue;
 
 				RegionId oldId = regions[i].Id;
-				RegionId newId = new RegionId(++regIdGen);
+				RegionId newId = new(++regIdGen);
 				for (int j = i; j < numRegions; j++)
 				{
 					if (regions[j].Id == oldId)
@@ -1094,7 +1094,7 @@ namespace SharpNav
 		{
 			//TODO this method should always return true, make it not return a bool?
 			//flood fill mark region
-			Stack<CompactSpanReference> stack = new Stack<CompactSpanReference>();
+			Stack<CompactSpanReference> stack = new();
 			stack.Push(start);
 
 			Area area = areas[start.Index];
@@ -1487,7 +1487,7 @@ namespace SharpNav
 						WalkContour(spanRef, flags, verts);
 						Contour.Simplify(verts, simplified, maxError, maxEdgeLength, buildFlags);
 						Contour.RemoveDegenerateSegments(simplified);
-						Contour contour = new Contour(simplified, reg, areas[i], borderSize);
+						Contour contour = new(simplified, reg, areas[i], borderSize);
 
 						if (!contour.IsNull)
 							contours.Add(contour);

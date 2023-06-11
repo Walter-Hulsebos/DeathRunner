@@ -71,7 +71,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to apply to the lerping
 		[Tooltip("the curve to apply to the lerping")]
 		[MMFEnumCondition("Method", (int)Methods.MaterialAlpha, (int)Methods.MaterialEmissionIntensity, (int)Methods.ShaderFloatValue)]
-		public AnimationCurve Curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.05f), new Keyframe(1, 0));
+		public AnimationCurve Curve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1.05f), new Keyframe(1, 0));
 		/// if this is true, this component will use material property blocks instead of working on an instance of the material.
 		[Tooltip("if this is true, this component will use material property blocks instead of working on an instance of the material.")] 
 		public bool UseMaterialPropertyBlocks = false;

@@ -7,7 +7,7 @@ namespace MoreMountains.Tools
 	[CustomPropertyDrawer(typeof(MMReorderableAttributeAttribute))]
 	public class ReorderableDrawer : PropertyDrawer {
 
-		private static Dictionary<int, MMReorderableList> lists = new Dictionary<int, MMReorderableList>();
+		private static Dictionary<int, MMReorderableList> lists = new();
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent label) {
 

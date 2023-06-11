@@ -15,7 +15,7 @@ namespace DungeonArchitect.Editors.Flow.Tilemap
 
     public class FlowPreviewTilemapGraphEditor : GraphEditor
     {
-        private Dictionary<DungeonUID, List<Rect>> itemScreenPositions = new Dictionary<DungeonUID, List<Rect>>();
+        private Dictionary<DungeonUID, List<Rect>> itemScreenPositions = new();
         public event OnFlowPreviewTileClicked TileClicked;
 
         protected override GraphContextMenu CreateContextMenu()

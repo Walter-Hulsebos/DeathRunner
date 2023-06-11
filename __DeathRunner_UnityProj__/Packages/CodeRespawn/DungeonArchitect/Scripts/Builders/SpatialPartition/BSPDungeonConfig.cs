@@ -15,7 +15,7 @@ namespace DungeonArchitect.Builders.BSP
     }
 
     public class BSPDungeonConfig : DungeonConfig {
-        public Vector2 gridSize = new Vector2(4, 4);
+        public Vector2 gridSize = new(4, 4);
 
         /// <summary>
         /// The width of the dungeon in tile coords

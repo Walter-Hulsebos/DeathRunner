@@ -163,7 +163,7 @@ namespace DeathRunner.EnemyAI
                 
                 if(vectorToPlayer == Vector3.zero) return;
                 
-                Vector3 vectorToPlayerFlattened = new Vector3(vectorToPlayer.x, 0, vectorToPlayer.z);
+                Vector3 vectorToPlayerFlattened = new(vectorToPlayer.x, 0, vectorToPlayer.z);
                 Vector3 directionToPlayer = vectorToPlayerFlattened.normalized;
                 
                 if(directionToPlayer == Vector3.zero) return;

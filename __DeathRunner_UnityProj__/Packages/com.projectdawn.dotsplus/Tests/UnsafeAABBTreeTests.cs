@@ -17,7 +17,7 @@ namespace ProjectDawn.Collections.Tests
             Rectangle = rectangle;
         }
         public float SurfaceArea() => Rectangle.Perimeter;
-        public AABRectangle Union(AABRectangle value) => new AABRectangle(Rectangle.Union(Rectangle, value.Rectangle));
+        public AABRectangle Union(AABRectangle value) => new(Rectangle.Union(Rectangle, value.Rectangle));
     }
 
     internal class UnsafeAABBTreeTests

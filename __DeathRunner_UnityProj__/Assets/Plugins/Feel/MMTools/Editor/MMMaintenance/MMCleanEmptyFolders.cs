@@ -15,7 +15,7 @@ namespace MoreMountains.Tools
 	public class MMCleanEmptyFolders : MonoBehaviour
 	{
 		static string _consoleLog = "";
-		static List<DirectoryInfo> _listOfEmptyDirectories = new List<DirectoryInfo>();
+		static List<DirectoryInfo> _listOfEmptyDirectories = new();
 
 		/// <summary>
 		/// Parses the project for empty directories and removes them, as well as their associated meta file

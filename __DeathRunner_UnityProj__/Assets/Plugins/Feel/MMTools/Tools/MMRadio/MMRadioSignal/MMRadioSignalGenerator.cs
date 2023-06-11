@@ -23,7 +23,7 @@ namespace MoreMountains.Tools
 		public MMRadioSignalGeneratorItemList SignalList;
 		/// how to clamp the result value
 		[MMVector("Min", "Max")]
-		public Vector2 Clamps = new Vector2(0f, 1f);
+		public Vector2 Clamps = new(0f, 1f);
 		/// the amplitude of the signal
 		[Range(0f, 1f)]
 		public float Bias = 0.5f;
@@ -34,7 +34,7 @@ namespace MoreMountains.Tools
 		void Reset()
 		{
 			SignalList = new MMRadioSignalGeneratorItemList(){
-				new MMRadioSignalGeneratorItem()
+				new()
 			};
 		}
         
@@ -133,7 +133,7 @@ namespace MoreMountains.Tools
 		public MMSignal.SignalType SignalType = MMSignal.SignalType.Sine;
 		/// if the type is animation curve, the curve to consider
 		[MMEnumCondition("SignalType", (int)MMSignal.SignalType.AnimationCurve)]
-		public AnimationCurve Curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+		public AnimationCurve Curve = new(new Keyframe(0, 0), new Keyframe(1, 1));
 		/// if the type is MMTween, the tween to consider
 		[MMEnumCondition("SignalType", (int)MMSignal.SignalType.MMTween)]
 		public MMTween.MMTweenCurve TweenCurve = MMTween.MMTweenCurve.EaseInOutQuartic;

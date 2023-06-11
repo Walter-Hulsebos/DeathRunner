@@ -39,7 +39,7 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow.Tasks
         public string categoryConstraintScriptClassName;
         
 
-        private readonly InstanceCache instanceCache = new InstanceCache();
+        private readonly InstanceCache instanceCache = new();
 
         public override FlowTaskExecOutput Execute(FlowTaskExecContext context, FlowTaskExecInput input)
         {

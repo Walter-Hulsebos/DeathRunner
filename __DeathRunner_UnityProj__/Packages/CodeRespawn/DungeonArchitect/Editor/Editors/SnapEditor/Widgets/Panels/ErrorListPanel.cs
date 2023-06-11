@@ -43,7 +43,7 @@ namespace DungeonArchitect.Editors.SnapFlow
 
     public class DungeonFlowErrorList
     {
-        public List<DungeonFlowErrorEntry> Errors = new List<DungeonFlowErrorEntry>();
+        public List<DungeonFlowErrorEntry> Errors = new();
     }
 
     public class ErrorListViewSource : ListViewSource<DungeonFlowErrorEntry>
@@ -131,7 +131,7 @@ namespace DungeonArchitect.Editors.SnapFlow
         IWidget host;
         public DungeonFlowErrorList errorList { get; private set; }
 
-        public static readonly Color ThemeColor = new Color(0.3f, 0.2f, 0.2f);
+        public static readonly Color ThemeColor = new(0.3f, 0.2f, 0.2f);
         public ListViewWidget<DungeonFlowErrorEntry> ListView;
 
         public ErrorListPanel(DungeonFlowErrorList errorList)

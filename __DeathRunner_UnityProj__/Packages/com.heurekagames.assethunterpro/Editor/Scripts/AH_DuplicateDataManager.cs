@@ -52,11 +52,11 @@ namespace HeurekaGames.AssetHunterPRO
         public bool RequiresScrollviewRebuild { get; internal set; }
         public bool HasCache { get; private set; }
 
-        [SerializeField] private Dictionary<string, DuplicateAssetData> duplicateDict = new Dictionary<string, DuplicateAssetData>();
+        [SerializeField] private Dictionary<string, DuplicateAssetData> duplicateDict = new();
 
         #region serializationHelpers
-        [SerializeField] private List<string> _duplicateDictKeys = new List<string>();
-        [SerializeField] private List<DuplicateAssetData> _duplicateDictValues = new List<DuplicateAssetData>();
+        [SerializeField] private List<string> _duplicateDictKeys = new();
+        [SerializeField] private List<DuplicateAssetData> _duplicateDictValues = new();
 
         public Dictionary<string, DuplicateAssetData> Entries { get {return duplicateDict; } }
         #endregion
@@ -132,7 +132,7 @@ namespace HeurekaGames.AssetHunterPRO
                                 if (AssetDatabase.IsNativeAsset(LoadedObj) && !LoadedObj.GetType().IsSubclassOf(typeof(ScriptableObject)))
                                 {
                                     string appendString = "";
-                                    using (StreamReader sr = new StreamReader(stream))
+                                    using (StreamReader sr = new(stream))
                                     {
                                         //bool foundFileName = false;
                                             lineCounter = 0;

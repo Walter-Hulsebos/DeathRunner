@@ -115,10 +115,10 @@ namespace SharpNav.Crowds
 		public bool MovePosition(Vector3 npos, NavMeshQuery navquery)
 		{
 			//move along navmesh and update new position
-			Vector3 result = new Vector3();
+			Vector3 result = new();
 			const int MaxVisited = 16;
 			int[] visited = new int[MaxVisited];
-			List<int> listVisited = new List<int>(MaxVisited);
+			List<int> listVisited = new(MaxVisited);
 			bool status = navquery.MoveAlongSurface(new NavPoint(path[0], pos), npos, ref result, listVisited);
 			visited = listVisited.ToArray();
 
@@ -229,7 +229,7 @@ namespace SharpNav.Crowds
 			const int MaxRes = 32;
 			int[] res = new int[MaxRes];
 			float t = 0;
-			Vector3 norm = new Vector3();
+			Vector3 norm = new();
 			int nres = 0;
 			navquery.Raycast(new NavPoint(path[0], pos), goal, ref t, ref norm, res, ref nres, MaxRes);
 			if (nres > 1 && t > 0.99f)

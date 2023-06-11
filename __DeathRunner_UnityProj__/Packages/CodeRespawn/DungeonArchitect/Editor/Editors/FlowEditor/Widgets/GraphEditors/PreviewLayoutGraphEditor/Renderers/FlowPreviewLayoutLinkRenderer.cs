@@ -11,9 +11,9 @@ namespace DungeonArchitect.Editors.Flow.Layout
     public class FlowPreviewLayoutLinkRenderer : IGraphLinkRenderer
     {
         public float padding = 4;
-        public Color lineColorDirected = new Color(1, 1, 1, 1);
-        public Color lineColorUndirected = new Color(1, 1, 1, 0.25f);
-        public Color lineColorOneWay = new Color(1, 0.5f, 0, 1);
+        public Color lineColorDirected = new(1, 1, 1, 1);
+        public Color lineColorUndirected = new(1, 1, 1, 0.25f);
+        public Color lineColorOneWay = new(1, 0.5f, 0, 1);
         public float lineThickness = 3;
 
         public event OnFlowLayoutGraphItemRendered GridFlowLayoutGraphItemRendered;

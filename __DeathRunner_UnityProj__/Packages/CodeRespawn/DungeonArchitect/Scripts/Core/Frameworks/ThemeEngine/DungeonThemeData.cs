@@ -9,7 +9,7 @@ namespace DungeonArchitect.Themeing {
     /// The data-structure for serializing the theme graph to disk
     /// </summary>
 	public class DungeonThemeData {
-		public List<DungeonThemeItem> Props = new List<DungeonThemeItem>();
+		public List<DungeonThemeItem> Props = new();
 
 		public void BuildFromGraph(Graph graph) {
 			Props.Clear();
@@ -92,7 +92,7 @@ namespace DungeonArchitect.Themeing {
 								if (childNode is MarkerEmitterNode) {
 									var emitterNode = childNode as MarkerEmitterNode;
 									if (emitterNode.Marker != null) {
-										PropChildSocketData childData = new PropChildSocketData();
+										PropChildSocketData childData = new();
 										childData.Offset = emitterNode.offset;
 										childData.SocketType = emitterNode.Marker.Caption;
 										item.ChildSockets.Add (childData);

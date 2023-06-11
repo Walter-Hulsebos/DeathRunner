@@ -121,9 +121,9 @@ namespace MoreMountains.Tools
 		{
 			string savePath = FolderName + "/screenshot_" + ResolutionWidth + "x" + ResolutionHeight + "_" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
 
-			RenderTexture renderTexture = new RenderTexture(ResolutionWidth, ResolutionHeight, 24);
+			RenderTexture renderTexture = new(ResolutionWidth, ResolutionHeight, 24);
 			TargetCamera.targetTexture = renderTexture;
-			Texture2D screenShot = new Texture2D(ResolutionWidth, ResolutionHeight, TextureFormat.RGB24, false);
+			Texture2D screenShot = new(ResolutionWidth, ResolutionHeight, TextureFormat.RGB24, false);
 			TargetCamera.Render();
 			RenderTexture.active = renderTexture;
 			screenShot.ReadPixels(new Rect(0, 0, ResolutionWidth, ResolutionHeight), 0, 0);

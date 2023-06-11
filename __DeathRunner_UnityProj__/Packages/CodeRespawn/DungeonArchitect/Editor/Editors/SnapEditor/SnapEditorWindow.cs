@@ -29,7 +29,7 @@ namespace DungeonArchitect.Editors.SnapFlow
         public UISystem uiSystem { get; private set; }
         public SnapFlowAsset FlowAsset { get; set; }
 
-        List<IDeferredUICommand> deferredCommands = new List<IDeferredUICommand>();
+        List<IDeferredUICommand> deferredCommands = new();
 
         readonly static string CMD_EXEC_GRAMMAR = "ExecuteGrammar";
 
@@ -473,7 +473,7 @@ namespace DungeonArchitect.Editors.SnapFlow
                     Vector2 resultMousePosition = Vector2.zero;
                     if (WidgetUtils.BuildWidgetEvent(e.mousePosition, layout, uiSystem.FocusedWidget, ref resultMousePosition))
                     {
-                        Event widgetEvent = new Event(e);
+                        Event widgetEvent = new(e);
                         widgetEvent.mousePosition = resultMousePosition;
                         uiSystem.FocusedWidget.HandleInput(widgetEvent, uiSystem);
                     }

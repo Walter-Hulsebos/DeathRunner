@@ -182,7 +182,7 @@ namespace HeurekaGames.AssetHunterPRO
 
         internal static List<Texture> GetTargetGroupAssetDependencies(BuildTargetGroup targetGroup)
         {
-            List<Texture> buildTargetAssetDependencies = new List<Texture>();
+            List<Texture> buildTargetAssetDependencies = new();
 
             //Run through icons, splashscreens etc and include them as being used
             Texture2D[] targetGroupIcons = PlayerSettings.GetIconsForTargetGroup(targetGroup);
@@ -280,14 +280,14 @@ namespace HeurekaGames.AssetHunterPRO
                     }
                 case BuildTargetGroup.WSA:
                     {
-                        List<Texture2D> textures = new List<Texture2D>();
+                        List<Texture2D> textures = new();
 
 #if !UNITY_2021_1_OR_NEWER
                         //Obsolete at some point in 2021
                         textures.Add(AssetDatabase.LoadAssetAtPath<Texture2D>(PlayerSettings.WSA.packageLogo));
 #endif
 
-                        HashSet<PlayerSettings.WSAImageScale> exceptionScales = new HashSet<PlayerSettings.WSAImageScale>();
+                        HashSet<PlayerSettings.WSAImageScale> exceptionScales = new();
 
                         foreach (PlayerSettings.WSAImageType imageType in Enum.GetValues(typeof(PlayerSettings.WSAImageType)))
                         {

@@ -50,8 +50,8 @@ namespace MoreMountains.Tools
 			float width = sceneView.position.width;
 			float height = sceneView.position.height;
 
-			Vector3 bottomLeft = new Vector3(center.x - width / 2f, center.y - height / 2f, 0f);
-			Vector3 topRight = new Vector3(center.x + width / 2f, center.y + height / 2f, 0f);
+			Vector3 bottomLeft = new(center.x - width / 2f, center.y - height / 2f, 0f);
+			Vector3 topRight = new(center.x + width / 2f, center.y + height / 2f, 0f);
             
 			Vector3 topLeft = bottomLeft;
 			topLeft.y = topRight.y;
@@ -79,14 +79,14 @@ namespace MoreMountains.Tools
 					Handles.color = ratio.RatioColor;
 
 					// aspect ratio positions
-					Vector3 ratioTopLeft =       new Vector3(center.x - size * aspectRatio, center.y + size, 0f);
-					Vector3 ratioTopRight =      new Vector3(center.x + size * aspectRatio, center.y + size, 0f);
-					Vector3 ratioBottomLeft =    new Vector3(center.x - size * aspectRatio, center.y - size, 0f);
-					Vector3 ratioBottomRight =   new Vector3(center.x + size * aspectRatio, center.y - size, 0f);
+					Vector3 ratioTopLeft =       new(center.x - size * aspectRatio, center.y + size, 0f);
+					Vector3 ratioTopRight =      new(center.x + size * aspectRatio, center.y + size, 0f);
+					Vector3 ratioBottomLeft =    new(center.x - size * aspectRatio, center.y - size, 0f);
+					Vector3 ratioBottomRight =   new(center.x + size * aspectRatio, center.y - size, 0f);
 					Vector3 ratioLabelPosition = ratioBottomLeft + 0.1f * Vector3.down + 0.1f * Vector3.right;
 
 					// draws a label under the rectangle
-					GUIStyle style = new GUIStyle();
+					GUIStyle style = new();
 					style.normal.textColor = ratio.RatioColor;
 					style.fontSize = 8;
 					Handles.Label(ratioLabelPosition, ratio.Size.x + ":" + ratio.Size.y, style);
@@ -100,19 +100,19 @@ namespace MoreMountains.Tools
 					zoneColor.a = zoneColor.a * safeZones.UnsafeZonesOpacity;
 
 					// top rectangle
-					verts = new Vector3[] { topLeft, topRight, new Vector3(topLeft.x, ratioTopLeft.y, 0f), new Vector3(topRight.x, ratioTopRight.y, 0f) };
+					verts = new Vector3[] { topLeft, topRight, new(topLeft.x, ratioTopLeft.y, 0f), new(topRight.x, ratioTopRight.y, 0f) };
 					Handles.DrawSolidRectangleWithOutline(verts, zoneColor, new Color(0, 0, 0, 0));
 
 					// bottom rectangle
-					verts = new Vector3[] { bottomLeft, new Vector3(topLeft.x, ratioBottomLeft.y, 0f), new Vector3(topRight.x, ratioBottomRight.y, 0f), bottomRight };
+					verts = new Vector3[] { bottomLeft, new(topLeft.x, ratioBottomLeft.y, 0f), new(topRight.x, ratioBottomRight.y, 0f), bottomRight };
 					Handles.DrawSolidRectangleWithOutline(verts, zoneColor, new Color(0, 0, 0, 0));
 
 					// left rectangle
-					verts = new Vector3[] { new Vector3(topLeft.x, ratioTopLeft.y, 0f), ratioTopLeft, ratioBottomLeft, new Vector3(bottomLeft.x, ratioBottomLeft.y, 0f) };
+					verts = new Vector3[] { new(topLeft.x, ratioTopLeft.y, 0f), ratioTopLeft, ratioBottomLeft, new(bottomLeft.x, ratioBottomLeft.y, 0f) };
 					Handles.DrawSolidRectangleWithOutline(verts, zoneColor, new Color(0, 0, 0, 0));
 
 					// right rectangle
-					verts = new Vector3[] { new Vector3(topRight.x, ratioTopRight.y, 0f), new Vector3(bottomRight.x, ratioBottomRight.y, 0f), ratioBottomRight, ratioTopRight};
+					verts = new Vector3[] { new(topRight.x, ratioTopRight.y, 0f), new(bottomRight.x, ratioBottomRight.y, 0f), ratioBottomRight, ratioTopRight};
 					Handles.DrawSolidRectangleWithOutline(verts, zoneColor, new Color(0, 0, 0, 0));
 
 					// dotted line left 
@@ -141,10 +141,10 @@ namespace MoreMountains.Tools
 
 			Handles.color = safeZones.CenterCrosshairColor;
 
-			Vector3 crosshairTopLeft = new Vector3(center.x - crossHairSize / 2f, center.y + crossHairSize / 2f, 0f);
-			Vector3 crosshairTopRight = new Vector3(center.x + crossHairSize / 2f, center.y + crossHairSize / 2f, 0f);
-			Vector3 crosshairBottomLeft = new Vector3(center.x - crossHairSize / 2f, center.y - crossHairSize / 2f, 0f);
-			Vector3 crosshairBottomRight = new Vector3(center.x + crossHairSize / 2f, center.y - crossHairSize / 2f, 0f);
+			Vector3 crosshairTopLeft = new(center.x - crossHairSize / 2f, center.y + crossHairSize / 2f, 0f);
+			Vector3 crosshairTopRight = new(center.x + crossHairSize / 2f, center.y + crossHairSize / 2f, 0f);
+			Vector3 crosshairBottomLeft = new(center.x - crossHairSize / 2f, center.y - crossHairSize / 2f, 0f);
+			Vector3 crosshairBottomRight = new(center.x + crossHairSize / 2f, center.y - crossHairSize / 2f, 0f);
 
 			// cross
 			Handles.DrawLine(new Vector3(center.x, center.y + crossHairSize / 2f, 0f), new Vector3(center.x, center.y - crossHairSize / 2f, 0f));

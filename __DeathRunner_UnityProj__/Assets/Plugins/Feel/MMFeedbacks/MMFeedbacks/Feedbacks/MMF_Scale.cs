@@ -66,21 +66,21 @@ namespace MoreMountains.Feedbacks
 		/// the x scale animation definition
 		[Tooltip("the x scale animation definition")]
 		[MMFCondition("AnimateX", true)]
-		public MMTweenType AnimateScaleTweenX = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0)));
+		public MMTweenType AnimateScaleTweenX = new( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0)));
 		/// if this is true, should animate the Y scale value
 		[Tooltip("if this is true, should animate the Y scale value")]
 		public bool AnimateY = true;
 		/// the y scale animation definition
 		[Tooltip("the y scale animation definition")]
 		[MMFCondition("AnimateY", true)]
-		public MMTweenType AnimateScaleTweenY = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0)));
+		public MMTweenType AnimateScaleTweenY = new( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0)));
 		/// if this is true, should animate the z scale value
 		[Tooltip("if this is true, should animate the z scale value")]
 		public bool AnimateZ = true;
 		/// the z scale animation definition
 		[Tooltip("the z scale animation definition")]
 		[MMFCondition("AnimateZ", true)]
-		public MMTweenType AnimateScaleTweenZ = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0)));
+		public MMTweenType AnimateScaleTweenZ = new( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1.5f), new Keyframe(1, 0)));
 		/// if this is true, the AnimateX curve only will be used, and applied to all axis
 		[Tooltip("if this is true, the AnimateX curve only will be used, and applied to all axis")] 
 		public bool UniformScaling = false;
@@ -93,7 +93,7 @@ namespace MoreMountains.Feedbacks
 		/// the scale to reach when in ToDestination mode
 		[Tooltip("the scale to reach when in ToDestination mode")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
-		public Vector3 DestinationScale = new Vector3(0.5f, 0.5f, 0.5f);
+		public Vector3 DestinationScale = new(0.5f, 0.5f, 0.5f);
 
 		/// the duration of this feedback is the duration of the scale animation
 		public override float FeedbackDuration { get { return ApplyTimeMultiplier(AnimateScaleDuration); } set { AnimateScaleDuration = value; } }

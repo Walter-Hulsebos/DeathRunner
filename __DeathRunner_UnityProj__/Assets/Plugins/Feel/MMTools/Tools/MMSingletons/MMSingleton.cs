@@ -25,7 +25,7 @@ namespace MoreMountains.Tools
 					_instance = FindObjectOfType<T> ();
 					if (_instance == null)
 					{
-						GameObject obj = new GameObject ();
+						GameObject obj = new();
 						obj.name = typeof(T).Name + "_AutoCreated";
 						_instance = obj.AddComponent<T> ();
 					}

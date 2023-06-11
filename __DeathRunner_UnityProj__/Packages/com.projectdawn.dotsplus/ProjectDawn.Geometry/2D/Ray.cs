@@ -94,6 +94,6 @@ namespace ProjectDawn.Geometry2D
         /// <summary>
         /// Returns line at specific time range.
         /// </summary>
-        public Line ToLine(float2 t) => new Line(GetPoint(t.x), GetPoint(t.y));
+        public Line ToLine(float2 t) => new(GetPoint(t.x), GetPoint(t.y));
     }
 }

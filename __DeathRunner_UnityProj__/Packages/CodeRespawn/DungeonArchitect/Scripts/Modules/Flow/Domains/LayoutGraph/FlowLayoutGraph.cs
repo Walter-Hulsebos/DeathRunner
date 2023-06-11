@@ -11,10 +11,10 @@ namespace DungeonArchitect.Flow.Domains.Layout
     public class FlowLayoutGraph : ICloneable
     {
         [SerializeField]
-        public List<FlowLayoutGraphNode> Nodes = new List<FlowLayoutGraphNode>();
+        public List<FlowLayoutGraphNode> Nodes = new();
 
         [SerializeField]
-        public List<FlowLayoutGraphLink> Links = new List<FlowLayoutGraphLink>();
+        public List<FlowLayoutGraphLink> Links = new();
 
         public void RemoveNode(FlowLayoutGraphNode node)
         {

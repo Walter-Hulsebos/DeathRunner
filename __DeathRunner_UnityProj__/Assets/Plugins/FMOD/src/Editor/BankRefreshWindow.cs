@@ -123,13 +123,13 @@ namespace FMODUnity
 
         private void DrawStatus()
         {
-            GUIStyle labelStyle = new GUIStyle(EditorStyles.whiteLargeLabel);
+            GUIStyle labelStyle = new(EditorStyles.whiteLargeLabel);
             labelStyle.alignment = TextAnchor.MiddleCenter;
 
-            GUIStyle largeErrorStyle = new GUIStyle(labelStyle);
+            GUIStyle largeErrorStyle = new(labelStyle);
             largeErrorStyle.normal.textColor = Color.red;
 
-            GUIStyle errorStyle = new GUIStyle(GUI.skin.box);
+            GUIStyle errorStyle = new(GUI.skin.box);
             errorStyle.alignment = TextAnchor.UpperLeft;
             errorStyle.wordWrap = true;
             errorStyle.normal.textColor = Color.red;
@@ -200,7 +200,7 @@ namespace FMODUnity
 
             GUI.DrawTexture(boxRect, EditorGUIUtility.whiteTexture);
 
-            GUIContent cancelContent = new GUIContent("Cancel");
+            GUIContent cancelContent = new("Cancel");
 
             controlRect = EditorGUILayout.GetControlRect(false, EditorGUIUtility.singleLineHeight * 2);
 

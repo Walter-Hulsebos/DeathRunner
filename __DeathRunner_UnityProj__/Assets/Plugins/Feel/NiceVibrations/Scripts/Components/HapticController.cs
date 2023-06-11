@@ -41,7 +41,7 @@ namespace Lofelt.NiceVibrations
         static bool lofeltHapticsInitalized = false;
 
         // Timer used to call HandleFinishedPlayback() when playback is complete
-        static Timer playbackFinishedTimer = new Timer();
+        static Timer playbackFinishedTimer = new();
 
         // Duration of the loaded haptic clip, in seconds
         static float clipLoadedDurationSecs = 0.0f;

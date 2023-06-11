@@ -23,7 +23,7 @@ namespace DungeonArchitect.UI.Widgets
         int padding = 5;
         bool requestRebuild = false;
 
-        List<BreadCrumbWidgetNode> items = new List<BreadCrumbWidgetNode>();
+        List<BreadCrumbWidgetNode> items = new();
         public event OnBreadCrumbLinkClicked LinkClicked;
         public int FontSize { get; set; }
         public Color TextColor { get; set; }

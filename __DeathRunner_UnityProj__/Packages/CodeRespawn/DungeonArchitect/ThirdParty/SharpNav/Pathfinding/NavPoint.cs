@@ -26,7 +26,7 @@ namespace SharpNav.Pathfinding
 		/// <summary>
 		/// A null point that isn't associated with any polygon.
 		/// </summary>
-		public static readonly NavPoint Null = new NavPoint(0, Vector3.Zero);
+		public static readonly NavPoint Null = new(0, Vector3.Zero);
 
 		/// <summary>
 		/// A reference to the polygon this point is on.

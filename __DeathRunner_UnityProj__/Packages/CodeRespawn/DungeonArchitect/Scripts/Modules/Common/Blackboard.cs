@@ -9,27 +9,27 @@ namespace DungeonArchitect.Utils
     /// </summary>
     public class Blackboard
     {
-        private BlackboardDatabase<int> intEntries = new BlackboardDatabase<int>(0);
+        private BlackboardDatabase<int> intEntries = new(0);
         public BlackboardDatabase<int> IntEntries
         {
             get { return intEntries; }
         }
-        private BlackboardDatabase<float> floatEntries = new BlackboardDatabase<float>(0.0f);
+        private BlackboardDatabase<float> floatEntries = new(0.0f);
         public BlackboardDatabase<float> FloatEntries
         {
             get { return floatEntries; }
         }
-        private BlackboardDatabase<string> stringEntries = new BlackboardDatabase<string>("");
+        private BlackboardDatabase<string> stringEntries = new("");
         public BlackboardDatabase<string> StringEntries
         {
             get { return stringEntries; }
         }
-        private BlackboardDatabase<Vector3> vectorEntries = new BlackboardDatabase<Vector3>(Vector3.zero);
+        private BlackboardDatabase<Vector3> vectorEntries = new(Vector3.zero);
         public BlackboardDatabase<Vector3> VectorEntries
         {
             get { return vectorEntries; }
         }
-        private BlackboardDatabase<IntVector> intVectorEntries = new BlackboardDatabase<IntVector>(IntVector.Zero);
+        private BlackboardDatabase<IntVector> intVectorEntries = new(IntVector.Zero);
         public BlackboardDatabase<IntVector> IntVectorEntries
         {
             get { return intVectorEntries; }
@@ -40,7 +40,7 @@ namespace DungeonArchitect.Utils
     public class BlackboardDatabase<T>
     {
         T defaultValue;
-        Dictionary<string, T> database = new Dictionary<string, T>();
+        Dictionary<string, T> database = new();
 
         public BlackboardDatabase(T defaultValue)
         {

@@ -7,7 +7,7 @@ namespace DungeonArchitect.RoomDesigner.Editors
     public class DungeonRoomDesignerEditor : Editor
     {
         private DungeonRoomDesignerTools activeTool = null;
-        private DungeonRoomDesignerToolbar toolbar = new DungeonRoomDesignerToolbar();
+        private DungeonRoomDesignerToolbar toolbar = new();
 
         protected virtual void OnSceneGUI()
         {

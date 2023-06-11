@@ -26,7 +26,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMInspectorGroup("Temperature", true, 55)]
 		/// the curve used to animate the temperature value on
 		[Tooltip("the curve used to animate the temperature value on")]
-		public AnimationCurve ShakeTemperature = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeTemperature = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(-100f, 100f)]
@@ -39,7 +39,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMInspectorGroup("Tint", true, 56)]
 		/// the curve used to animate the tint value on
 		[Tooltip("the curve used to animate the tint value on")]
-		public AnimationCurve ShakeTint = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeTint = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(-100f, 100f)]

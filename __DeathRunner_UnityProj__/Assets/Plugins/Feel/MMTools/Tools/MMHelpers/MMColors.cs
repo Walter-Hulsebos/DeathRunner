@@ -339,7 +339,7 @@ namespace MoreMountains.Tools
 		/// <returns></returns>
 		public static Color MMRandomColor(this Color color, Color min, Color max)
 		{
-			Color c = new Color()
+			Color c = new()
 			{
 				r = UnityEngine.Random.Range(min.r, max.r),
 				g = UnityEngine.Random.Range(min.g, max.g),
@@ -362,10 +362,10 @@ namespace MoreMountains.Tools
 			{
 				colorKeys = new GradientColorKey[2]
 				{
-					new GradientColorKey(color, 0), new GradientColorKey(color, 1f)
+					new(color, 0), new(color, 1f)
 				}, alphaKeys = new GradientAlphaKey[2]
 				{
-					new GradientAlphaKey(alpha, 0), new GradientAlphaKey(alpha, 1)
+					new(alpha, 0), new(alpha, 1)
 				}
 			};
 		}
@@ -385,10 +385,10 @@ namespace MoreMountains.Tools
 			{
 				colorKeys = new GradientColorKey[2]
 				{
-					new GradientColorKey(startColor, 0), new GradientColorKey(endColor, 1f)
+					new(startColor, 0), new(endColor, 1f)
 				}, alphaKeys = new GradientAlphaKey[2]
 				{
-					new GradientAlphaKey(startAlpha, 0), new GradientAlphaKey(endAlpha, 1)
+					new(startAlpha, 0), new(endAlpha, 1)
 				}
 			};
 		}

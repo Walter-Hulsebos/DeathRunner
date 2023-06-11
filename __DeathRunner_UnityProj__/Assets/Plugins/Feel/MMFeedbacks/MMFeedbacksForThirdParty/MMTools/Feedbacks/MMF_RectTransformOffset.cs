@@ -32,7 +32,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to animate the min offset on
 		[Tooltip("the curve to animate the min offset on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
-		public MMTweenType OffsetMinCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
+		public MMTweenType OffsetMinCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// the value to remap the min curve's 0 on
 		[Tooltip("the value to remap the min curve's 0 on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
@@ -49,7 +49,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to animate the max offset on
 		[Tooltip("the curve to animate the max offset on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
-		public MMTweenType OffsetMaxCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
+		public MMTweenType OffsetMaxCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// the value to remap the max curve's 0 on
 		[Tooltip("the value to remap the max curve's 0 on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
@@ -66,8 +66,8 @@ namespace MoreMountains.Feedbacks
 				return;
 			}
             
-			MMF_FeedbackBaseTarget targetMin = new MMF_FeedbackBaseTarget();
-			MMPropertyReceiver receiverMin = new MMPropertyReceiver();
+			MMF_FeedbackBaseTarget targetMin = new();
+			MMPropertyReceiver receiverMin = new();
 			receiverMin.TargetObject = TargetRectTransform.gameObject;
 			receiverMin.TargetComponent = TargetRectTransform;
 			receiverMin.TargetPropertyName = "offsetMin";
@@ -83,8 +83,8 @@ namespace MoreMountains.Feedbacks
 
 			_targets.Add(targetMin);
             
-			MMF_FeedbackBaseTarget targetMax = new MMF_FeedbackBaseTarget();
-			MMPropertyReceiver receiverMax = new MMPropertyReceiver();
+			MMF_FeedbackBaseTarget targetMax = new();
+			MMPropertyReceiver receiverMax = new();
 			receiverMax.TargetObject = TargetRectTransform.gameObject;
 			receiverMax.TargetComponent = TargetRectTransform;
 			receiverMax.TargetPropertyName = "offsetMax";

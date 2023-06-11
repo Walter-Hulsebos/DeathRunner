@@ -11,11 +11,11 @@ namespace MoreMountains.Tools
 	{
 		[MMVectorAttribute("Min", "Max")]
 		/// the min and max values for the start position of the animation (between 0 and 1)
-		public Vector2 StartPosition = new Vector2(0, 0);
+		public Vector2 StartPosition = new(0, 0);
 
 		[MMVectorAttribute("Min", "Max")]
 		/// the min and max values for the animation speed (1 is normal)
-		public Vector2 AnimationSpeed = new Vector2(1, 1);
+		public Vector2 AnimationSpeed = new(1, 1);
 
 		protected bool _enteredState = false;
 		protected float _initialSpeed;

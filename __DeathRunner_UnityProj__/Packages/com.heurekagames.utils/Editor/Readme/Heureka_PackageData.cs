@@ -15,7 +15,7 @@ namespace HeurekaGames.Utils
         public string Subheader;
         public string AssetIdentifier;
         public string Description;
-        public List<PackageLinks> Links = new List<PackageLinks>();
+        public List<PackageLinks> Links = new();
     }
 
     [System.Serializable]

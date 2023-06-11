@@ -22,14 +22,14 @@ namespace JBooth.BetterLit
          {
             return;
          }
-         List<Vector3> verts = new List<Vector3>(mesh.vertexCount);
-         List<Vector3> normals = new List<Vector3>(mesh.vertexCount);
-         List<Vector2> uvs = new List<Vector2>(mesh.vertexCount);
+         List<Vector3> verts = new(mesh.vertexCount);
+         List<Vector3> normals = new(mesh.vertexCount);
+         List<Vector2> uvs = new(mesh.vertexCount);
          Vector3[] dispUVs = new Vector3[mesh.vertexCount];
          int[] triangles = mesh.triangles;
          mesh.GetVertices(verts);
          mesh.GetUVs(0, uvs);
-         List<int> search = new List<int>();
+         List<int> search = new();
          for (int x = 0; x < verts.Count; ++x)
          {
             Vector3 orig = verts[x];

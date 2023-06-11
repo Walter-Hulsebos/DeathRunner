@@ -92,9 +92,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3365732414310942119}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.45776486, y: 0.1665247, z: 0.65313244}
   m_Center: {x: 0.16434968, y: 0.08326235, z: 0}
 --- !u!1 &5236228911326778528
@@ -107,7 +115,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4891193827721940506}
   - component: {fileID: 412956185612630379}
-  - component: {fileID: 2999911247877296535}
   m_Layer: 0
   m_Name: Block_02
   m_TagString: Untagged
@@ -155,19 +162,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 5362051358853763924}
   m_Enabled: 1
---- !u!114 &2999911247877296535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5236228911326778528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: f0313f0787e966b47be0a5e7f93e577d, type: 2}
 --- !u!1 &7867180941800203025
 GameObject:
   m_ObjectHideFlags: 0

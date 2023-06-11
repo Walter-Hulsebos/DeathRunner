@@ -145,12 +145,12 @@ namespace ProjectDawn.Geometry3D
         /// <summary>
         /// Returns minimum sphere that fully covers shape.
         /// </summary>
-        public Sphere CircumscribedSphere() => new Sphere(Center, math.length(Size) * 0.5f);
+        public Sphere CircumscribedSphere() => new(Center, math.length(Size) * 0.5f);
 
         /// <summary>
         /// Returns maximum sphere that is inside the shape.
         /// </summary>
-        public Sphere InscribedSphere() => new Sphere(Center, math.min(Size.x, Size.y) * 0.5f);
+        public Sphere InscribedSphere() => new(Center, math.min(Size.x, Size.y) * 0.5f);
 
         /// <summary>
         /// Returns minimum bounding box that contains both boxes.

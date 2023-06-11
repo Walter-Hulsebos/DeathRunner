@@ -60,13 +60,13 @@ namespace DungeonArchitect.Editors.Flow.Impl
         {
             if (moduleDatabase == null)
             {
-                errors = new CompileResultEntry[] { new CompileResultEntry(CompileErrorType.Error, "Missing module database reference") };
+                errors = new CompileResultEntry[] { new(CompileErrorType.Error, "Missing module database reference") };
                 return false;
             }
 
             if (moduleDatabase.ModuleBoundsAsset == null)
             {
-                errors = new CompileResultEntry[] { new CompileResultEntry(CompileErrorType.Error, "Missing module bounds reference") };
+                errors = new CompileResultEntry[] { new(CompileErrorType.Error, "Missing module bounds reference") };
                 return false;
             }
 

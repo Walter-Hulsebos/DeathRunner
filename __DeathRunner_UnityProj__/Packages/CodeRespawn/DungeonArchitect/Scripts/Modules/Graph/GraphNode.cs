@@ -45,7 +45,7 @@ namespace DungeonArchitect.Graphs
 
         [SerializeField]
         [HideInInspector]
-        protected Rect bounds = new Rect(10, 10, 120, 120);
+        protected Rect bounds = new(10, 10, 120, 120);
         /// <summary>
         /// The bounds of the node
         /// </summary>

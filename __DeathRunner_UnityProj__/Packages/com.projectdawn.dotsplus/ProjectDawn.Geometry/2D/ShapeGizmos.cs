@@ -103,7 +103,7 @@ namespace ProjectDawn.Geometry2D
         [Conditional("UNITY_EDITOR")]
         public static void DrawWireCapsule(Capsule capsule, Color color)
         {
-            float3 normal = new float3(0, 0, 1);
+            float3 normal = new(0, 0, 1);
             float2 tangent = math2.perpendicularright(capsule.Line.Direction);
             float2 from = capsule.Line.From;
             float2 to = capsule.Line.To;

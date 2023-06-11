@@ -11,12 +11,12 @@ namespace DungeonArchitect.UI.Widgets
         float paddingTop = 26;
         float paddingRight = 5;
         float paddingBottom = 5;
-        Color color = new Color(0.3f, 0.3f, 0.3f);
+        Color color = new(0.3f, 0.3f, 0.3f);
         Color borderColor = Color.black;
         string title = "";
         int titleFontSize = 14;
-        Color titleColor = new Color(0.75f, 0.75f, 0.75f);
-        Vector2 titleOffset = new Vector2(5, 4);
+        Color titleColor = new(0.75f, 0.75f, 0.75f);
+        Vector2 titleOffset = new(5, 4);
         bool drawOutline = true;
 
         IWidget titleWidget;
@@ -124,7 +124,7 @@ namespace DungeonArchitect.UI.Widgets
 
         protected override void DrawImpl(UISystem uiSystem, UIRenderer renderer)
         {
-            Rect borderBounds = new Rect(Vector2.zero, WidgetBounds.size);
+            Rect borderBounds = new(Vector2.zero, WidgetBounds.size);
             
             if (IsPaintEvent(uiSystem))
             {

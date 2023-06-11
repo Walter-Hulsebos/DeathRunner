@@ -38,17 +38,17 @@ namespace FMODUnity
         private SearchProgress scriptableObjectProgress;
 
         [SerializeField]
-        private List<Asset> assets = new List<Asset>();
+        private List<Asset> assets = new();
 
         [SerializeField]
-        private List<Component> components = new List<Component>();
+        private List<Component> components = new();
 
         [SerializeField]
-        private List<Task> tasks = new List<Task>();
+        private List<Task> tasks = new();
 
         private int executableTaskCount = 0;
 
-        private TreeViewState taskViewState = new TreeViewState();
+        private TreeViewState taskViewState = new();
 
         private TaskView taskView;
 
@@ -62,9 +62,9 @@ namespace FMODUnity
         private Vector2 manualDescriptionScrollPosition;
 
         [NonSerialized]
-        private static GUIContent AssetContent = new GUIContent("Asset");
-        private static GUIContent ComponentTypeContent = new GUIContent("Component Type");
-        private static GUIContent GameObjectContent = new GUIContent("Game Object");
+        private static GUIContent AssetContent = new("Asset");
+        private static GUIContent ComponentTypeContent = new("Component Type");
+        private static GUIContent GameObjectContent = new("Game Object");
 
         private string ExecuteButtonText()
         {
@@ -520,9 +520,9 @@ namespace FMODUnity
             Type targetType = target.GetType();
             FieldInfo[] fields = targetType.GetFields(DefaultBindingFlags);
 
-            List<FieldInfo> oldFields = new List<FieldInfo>();
-            List<FieldInfo> newFields = new List<FieldInfo>();
-            List<FieldInfo> subObjectFields = new List<FieldInfo>();
+            List<FieldInfo> oldFields = new();
+            List<FieldInfo> newFields = new();
+            List<FieldInfo> subObjectFields = new();
 
             foreach (FieldInfo f in fields)
             {
@@ -1223,7 +1223,7 @@ namespace FMODUnity
                         FieldInfo oldField = type.GetField(oldFieldName, DefaultBindingFlags);
                         FieldInfo newField = type.GetField(newFieldName, DefaultBindingFlags);
 
-                        EventReference eventReference = new EventReference() { Path = path };
+                        EventReference eventReference = new() { Path = path };
 
                         EditorEventRef eventRef = EventManager.EventFromPath(path);
 
@@ -1636,7 +1636,7 @@ namespace FMODUnity
 
         private int AddAsset(AssetType type, string path)
         {
-            Asset asset = new Asset() {
+            Asset asset = new() {
                 Type = type,
                 Path = path,
             };
@@ -1650,7 +1650,7 @@ namespace FMODUnity
         {
             MonoScript script = MonoScript.FromMonoBehaviour(behaviour);
 
-            Component component = new Component() {
+            Component component = new() {
                 GameObjectID = GlobalObjectId.GetGlobalObjectIdSlow(behaviour.gameObject),
                 Type = behaviour.GetType().Name,
                 Path = EditorUtils.GameObjectPath(behaviour, root),
@@ -1666,7 +1666,7 @@ namespace FMODUnity
         {
             MonoScript script = MonoScript.FromScriptableObject(scriptableObject);
 
-            Component component = new Component() {
+            Component component = new() {
                 Type = scriptableObject.GetType().Name,
                 ScriptPath = AssetDatabase.GetAssetPath(script),
             };
@@ -1927,7 +1927,7 @@ namespace FMODUnity
                         Rect buttonsRect = EditorGUILayout.GetControlRect(false, buttonHeight);
                         buttonsRect = EditorGUI.IndentedRect(buttonsRect);
 
-                        GUIContent openScriptContent = new GUIContent("Open " + component.ScriptPath);
+                        GUIContent openScriptContent = new("Open " + component.ScriptPath);
 
                         Rect openScriptRect = buttonsRect;
                         openScriptRect.width = GUI.skin.button.CalcSize(openScriptContent).x;
@@ -1938,7 +1938,7 @@ namespace FMODUnity
                             AssetDatabase.OpenAsset(script);
                         }
 
-                        GUIContent viewDocumentationContent = new GUIContent("View Documentation");
+                        GUIContent viewDocumentationContent = new("View Documentation");
 
                         Rect viewDocumentationRect = buttonsRect;
                         viewDocumentationRect.x = openScriptRect.xMax + GUI.skin.button.margin.left;
@@ -1958,7 +1958,7 @@ namespace FMODUnity
                     }
                     else
                     {
-                        GUIContent buttonContent = new GUIContent("Execute");
+                        GUIContent buttonContent = new("Execute");
 
                         Rect buttonRect = EditorGUILayout.GetControlRect(false, buttonHeight);
                         buttonRect.width = EditorGUIUtility.labelWidth;
@@ -2061,7 +2061,7 @@ namespace FMODUnity
             public static MultiColumnHeaderState CreateHeaderState()
             {
                 MultiColumnHeaderState.Column[] columns = new MultiColumnHeaderState.Column[] {
-                    new MultiColumnHeaderState.Column()
+                    new()
                     {
                         headerContent = new GUIContent("Target"),
                         width = 225,
@@ -2069,13 +2069,13 @@ namespace FMODUnity
                         allowToggleVisibility = false,
                         canSort = false,
                     },
-                    new MultiColumnHeaderState.Column() {
+                    new() {
                         headerContent = new GUIContent("Task"),
                         autoResize = true,
                         allowToggleVisibility = false,
                         canSort = false,
                     },
-                    new MultiColumnHeaderState.Column()
+                    new()
                     {
                         headerContent = new GUIContent("Status"),
                         width = 175,
@@ -2114,7 +2114,7 @@ namespace FMODUnity
 
             protected override TreeViewItem BuildRoot()
             {
-                TreeViewItem root = new TreeViewItem(-1, -1);
+                TreeViewItem root = new(-1, -1);
 
                 if (tasks.Count > 0)
                 {
@@ -2148,7 +2148,7 @@ namespace FMODUnity
                 }
                 else
                 {
-                    TreeViewItem item = new TreeViewItem(0);
+                    TreeViewItem item = new(0);
                     item.displayName = "No tasks.";
 
                     root.AddChild(item);
@@ -2312,11 +2312,11 @@ namespace FMODUnity
 
                             using (new GUI.GroupScope(rect))
                             {
-                                Rect iconRect = new Rect(0, 0, rect.height, rect.height);
+                                Rect iconRect = new(0, 0, rect.height, rect.height);
 
                                 GUI.DrawTexture(iconRect, typeIcon, ScaleMode.ScaleToFit);
 
-                                GUIContent type = new GUIContent(component.Type);
+                                GUIContent type = new(component.Type);
 
                                 bool hasGameObjectPath = !string.IsNullOrEmpty(component.Path);
 
@@ -2325,7 +2325,7 @@ namespace FMODUnity
                                     type.text += " on";
                                 }
 
-                                Rect typeRect = new Rect(iconRect.xMax, 0,
+                                Rect typeRect = new(iconRect.xMax, 0,
                                     DefaultStyles.label.CalcSize(type).x, rect.height);
 
                                 DefaultGUI.Label(typeRect, type.text, selected, focused);
@@ -2336,9 +2336,9 @@ namespace FMODUnity
 
                                     GUI.DrawTexture(iconRect, Icons.GameObject, ScaleMode.ScaleToFit);
 
-                                    GUIContent gameObject = new GUIContent(component.Path);
+                                    GUIContent gameObject = new(component.Path);
 
-                                    Rect gameObjectRect = new Rect(iconRect.xMax, 0,
+                                    Rect gameObjectRect = new(iconRect.xMax, 0,
                                         DefaultStyles.label.CalcSize(gameObject).x, rect.height);
 
                                     DefaultGUI.Label(gameObjectRect, gameObject.text, selected, focused);

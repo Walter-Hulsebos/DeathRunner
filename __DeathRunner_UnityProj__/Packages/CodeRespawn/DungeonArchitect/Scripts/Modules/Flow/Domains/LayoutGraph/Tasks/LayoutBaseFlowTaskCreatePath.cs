@@ -12,7 +12,7 @@ namespace DungeonArchitect.Flow.Domains.Layout.Tasks
         public int minPathSize = 3;
         public int maxPathSize = 3;
         public string pathName = "branch";
-        public Color nodeColor = new Color(1, 0.5f, 0);
+        public Color nodeColor = new(1, 0.5f, 0);
 
         public string startFromPath = "main";
         public string endOnPath = "";

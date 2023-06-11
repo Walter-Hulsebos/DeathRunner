@@ -95,10 +95,10 @@ namespace MoreMountains.Feedbacks
 		public MMAdditiveSceneLoadingManager.FadeModes FadeMode = MMAdditiveSceneLoadingManager.FadeModes.FadeInThenOut;
 		/// the tween to use on the entry fade
 		[Tooltip("the tween to use on the entry fade")]
-		public MMTweenType EntryFadeTween = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
+		public MMTweenType EntryFadeTween = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// the tween to use on the exit fade
 		[Tooltip("the tween to use on the exit fade")]
-		public MMTweenType ExitFadeTween = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
+		public MMTweenType ExitFadeTween = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 
 		/// <summary>
 		/// On play, we request a load of the destination scene using hte specified method

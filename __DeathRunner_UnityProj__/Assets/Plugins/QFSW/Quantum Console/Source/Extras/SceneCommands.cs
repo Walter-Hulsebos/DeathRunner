@@ -56,7 +56,7 @@ namespace QFSW.QC.Extras
         [Command(aliasOverride: "all-scenes", description: "gets the name and index of every scene included in the build")]
         private static Dictionary<int, string> GetAllScenes()
         {
-            Dictionary<int, string> sceneData = new Dictionary<int, string>();
+            Dictionary<int, string> sceneData = new();
             int sceneCount = SceneManager.sceneCountInBuildSettings;
             for (int i = 0; i < sceneCount; i++)
             {

@@ -9,7 +9,7 @@ public class DrawParabola : DrawCurve
     public float A = 1;
     public float B;
     public float C;
-    public Rectangle Bounds = new Rectangle(-3, 6);
+    public Rectangle Bounds = new(-3, 6);
     public int NumSteps = 100;
     public float DottedLineSize = 10;
 

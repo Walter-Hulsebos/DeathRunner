@@ -152,6 +152,6 @@ namespace DungeonArchitect
             return new Vector2(iv.x, iv.y);
         }
 
-        public static readonly IntVector2 Zero = new IntVector2(0, 0);
+        public static readonly IntVector2 Zero = new(0, 0);
     }
 }

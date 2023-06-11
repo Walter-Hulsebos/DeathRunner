@@ -18,10 +18,10 @@ namespace DungeonArchitect.Builders.Isaac
         public IsaacRoomLayout layout;
 
         [HideInInspector]
-        public List<int> adjacentRooms = new List<int>();
+        public List<int> adjacentRooms = new();
 
         [HideInInspector]
-        public List<IntVector> doorPositions = new List<IntVector>();
+        public List<IntVector> doorPositions = new();
     }
 
     [Serializable]

@@ -38,8 +38,8 @@ namespace DungeonArchitect.Editors.MarkerGenerator.Editors.Grid.Actors
         public GridMarkerGenRuleType ItemType;
         
         private static int idScale = Shader.PropertyToID("_Scale");
-        private static Dictionary<Vector3, SxMaterial> materialRegistryNormal = new Dictionary<Vector3, SxMaterial>();
-        private static Dictionary<Vector3, SxMaterial> materialRegistryHover = new Dictionary<Vector3, SxMaterial>();
+        private static Dictionary<Vector3, SxMaterial> materialRegistryNormal = new();
+        private static Dictionary<Vector3, SxMaterial> materialRegistryHover = new();
         private bool hovered = false;
 
         public void Initialize(Vector3 location, Vector2 scale)
@@ -94,10 +94,10 @@ namespace DungeonArchitect.Editors.MarkerGenerator.Editors.Grid.Actors
     
     public class SxGridMarkerGenGroundActor : SxActor
     {
-        readonly Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent> tiles = new Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent>();
-        readonly Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent> edgesX = new Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent>();
-        readonly Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent> edgesZ = new Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent>();
-        readonly Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent> corners = new Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent>();
+        readonly Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent> tiles = new();
+        readonly Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent> edgesX = new();
+        readonly Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent> edgesZ = new();
+        readonly Dictionary<Vector2Int, SxGridMarkerGenGroundItemComponent> corners = new();
 
         public Rect WorldBounds { get; private set; } = Rect.zero;
         public GridMarkerGenGroundActorSettings Settings { get; private set; }
@@ -253,10 +253,10 @@ namespace DungeonArchitect.Editors.MarkerGenerator.Editors.Grid.Actors
             const float size = 0.5f;
             var vertices = new SxMeshVertex[]
             {
-                new SxMeshVertex(new Vector3(-size, 0, -size), color, new Vector2(0, 0)),   // a
-                new SxMeshVertex(new Vector3(-size, 0, size), color, new Vector2(0, 1)),     // d
-                new SxMeshVertex(new Vector3(size, 0, size), color, new Vector2(1, 1)),     // c
-                new SxMeshVertex(new Vector3(size, 0, -size), color, new Vector2(1, 0)),    // b
+                new(new Vector3(-size, 0, -size), color, new Vector2(0, 0)),   // a
+                new(new Vector3(-size, 0, size), color, new Vector2(0, 1)),     // d
+                new(new Vector3(size, 0, size), color, new Vector2(1, 1)),     // c
+                new(new Vector3(size, 0, -size), color, new Vector2(1, 0)),    // b
             };
 
             CreateSection(0, GL.QUADS, vertices);   

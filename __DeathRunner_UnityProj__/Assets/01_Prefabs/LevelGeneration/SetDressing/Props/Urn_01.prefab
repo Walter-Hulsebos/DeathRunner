@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3889231836633917155}
   - component: {fileID: 8332587395295400338}
-  - component: {fileID: 1346928227215145157}
   m_Layer: 0
   m_Name: Urn_01
   m_TagString: Untagged
@@ -63,19 +62,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6264241959180866771}
   m_Enabled: 1
---- !u!114 &1346928227215145157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4517817495125769305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: d8dff4ddce7db3e42bb7378196cce8b9, type: 2}
 --- !u!1 &4599161110105367447
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,8 +320,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5970397315767611641}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.47914717, y: 0.5819889, z: 0.47914696}
   m_Center: {x: 0, y: 0.29099444, z: 0}

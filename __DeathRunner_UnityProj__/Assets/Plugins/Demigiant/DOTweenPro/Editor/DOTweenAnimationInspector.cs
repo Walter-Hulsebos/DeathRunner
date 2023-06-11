@@ -36,7 +36,7 @@ namespace DG.DOTweenEditor
             BetweenCanvasGroupAndImage
         }
 
-        static readonly Dictionary<DOTweenAnimation.AnimationType, Type[]> _AnimationTypeToComponent = new Dictionary<DOTweenAnimation.AnimationType, Type[]>() {
+        static readonly Dictionary<DOTweenAnimation.AnimationType, Type[]> _AnimationTypeToComponent = new() {
             { DOTweenAnimation.AnimationType.Move, new[] {
 #if true // PHYSICS_MARKER
                 typeof(Rigidbody),
@@ -120,7 +120,7 @@ namespace DG.DOTweenEditor
         };
 #endif
 #if true // TEXTMESHPRO_MARKER
-        static readonly Dictionary<DOTweenAnimation.AnimationType, Type[]> _TMPAnimationTypeToComponent = new Dictionary<DOTweenAnimation.AnimationType, Type[]>() {
+        static readonly Dictionary<DOTweenAnimation.AnimationType, Type[]> _TMPAnimationTypeToComponent = new() {
             { DOTweenAnimation.AnimationType.Color, new[] { typeof(TextMeshPro), typeof(TextMeshProUGUI) } },
             { DOTweenAnimation.AnimationType.Fade, new[] { typeof(TextMeshPro), typeof(TextMeshProUGUI) } },
             { DOTweenAnimation.AnimationType.Text, new[] { typeof(TextMeshPro), typeof(TextMeshProUGUI) } }
@@ -162,16 +162,16 @@ namespace DG.DOTweenEditor
         ChooseTargetMode _chooseTargetMode = ChooseTargetMode.None;
 #pragma warning restore 414
 
-        static readonly GUIContent _GuiC_selfTarget_true = new GUIContent(
+        static readonly GUIContent _GuiC_selfTarget_true = new(
             "SELF", "Will animate components on this gameObject"
         );
-        static readonly GUIContent _GuiC_selfTarget_false = new GUIContent(
+        static readonly GUIContent _GuiC_selfTarget_false = new(
             "OTHER", "Will animate components on the given gameObject instead than on this one"
         );
-        static readonly GUIContent _GuiC_tweenTargetIsTargetGO_true = new GUIContent(
+        static readonly GUIContent _GuiC_tweenTargetIsTargetGO_true = new(
             "Use As Tween Target", "Will set the tween target (via SetTarget, used to control a tween directly from a target) to the \"OTHER\" gameObject"
         );
-        static readonly GUIContent _GuiC_tweenTargetIsTargetGO_false = new GUIContent(
+        static readonly GUIContent _GuiC_tweenTargetIsTargetGO_false = new(
             "Use As Tween Target", "Will set the tween target (via SetTarget, used to control a tween directly from a target) to the gameObject containing this animation, not the \"OTHER\" one"
         );
 

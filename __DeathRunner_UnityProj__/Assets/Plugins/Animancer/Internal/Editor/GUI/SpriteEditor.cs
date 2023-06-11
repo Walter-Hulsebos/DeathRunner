@@ -81,13 +81,13 @@ namespace Animancer.Editor
             {
                 _RectFields = new NormalizedPixelField[]
                 {
-                    new NormalizedPixelField(_Rect.FindPropertyRelative(nameof(Rect.x)), new GUIContent("X (Left)",
+                    new(_Rect.FindPropertyRelative(nameof(Rect.x)), new GUIContent("X (Left)",
                         "The distance from the left edge of the texture to the left edge of the sprite"), false),
-                    new NormalizedPixelField(_Rect.FindPropertyRelative(nameof(Rect.y)), new GUIContent("Y (Bottom)",
+                    new(_Rect.FindPropertyRelative(nameof(Rect.y)), new GUIContent("Y (Bottom)",
                         "The distance from the bottom edge of the texture to the bottom edge of the sprite"), false),
-                    new NormalizedPixelField(_Rect.FindPropertyRelative(nameof(Rect.width)), new GUIContent("Width",
+                    new(_Rect.FindPropertyRelative(nameof(Rect.width)), new GUIContent("Width",
                         "The horizontal size of the sprite"), false),
-                    new NormalizedPixelField(_Rect.FindPropertyRelative(nameof(Rect.height)), new GUIContent("Height",
+                    new(_Rect.FindPropertyRelative(nameof(Rect.height)), new GUIContent("Height",
                         "The vertical size of the sprite"), false),
                 };
             }
@@ -97,9 +97,9 @@ namespace Animancer.Editor
             {
                 _PivotFields = new NormalizedPixelField[]
                 {
-                    new NormalizedPixelField(_Pivot.FindPropertyRelative(nameof(Vector2.x)), new GUIContent("X",
+                    new(_Pivot.FindPropertyRelative(nameof(Vector2.x)), new GUIContent("X",
                         "The horizontal distance from the left edge of the sprite to the pivot point"), true),
-                    new NormalizedPixelField(_Pivot.FindPropertyRelative(nameof(Vector2.y)), new GUIContent("Y",
+                    new(_Pivot.FindPropertyRelative(nameof(Vector2.y)), new GUIContent("Y",
                         "The vertical distance from the bottom edge of the sprite to the pivot point"), true),
                 };
             }
@@ -109,13 +109,13 @@ namespace Animancer.Editor
             {
                 _BorderFields = new NormalizedPixelField[]
                 {
-                    new NormalizedPixelField(_Border.FindPropertyRelative(nameof(Vector4.x)), new GUIContent("Left",
+                    new(_Border.FindPropertyRelative(nameof(Vector4.x)), new GUIContent("Left",
                         BorderTooltip), false),
-                    new NormalizedPixelField(_Border.FindPropertyRelative(nameof(Vector4.y)), new GUIContent("Bottom",
+                    new(_Border.FindPropertyRelative(nameof(Vector4.y)), new GUIContent("Bottom",
                         BorderTooltip), false),
-                    new NormalizedPixelField(_Border.FindPropertyRelative(nameof(Vector4.z)), new GUIContent("Right",
+                    new(_Border.FindPropertyRelative(nameof(Vector4.z)), new GUIContent("Right",
                         BorderTooltip), false),
-                    new NormalizedPixelField(_Border.FindPropertyRelative(nameof(Vector4.w)), new GUIContent("Top",
+                    new(_Border.FindPropertyRelative(nameof(Vector4.w)), new GUIContent("Top",
                         BorderTooltip), false),
                 };
             }
@@ -460,14 +460,14 @@ namespace Animancer.Editor
 
             private static new readonly CompactUnitConversionCache[] DisplayConverters =
             {
-                new CompactUnitConversionCache("px"),
+                new("px"),
                 AnimationTimeAttribute.XSuffix,
             };
 
             /************************************************************************************************************************/
 
-            public static readonly NormalizedPixelFieldAttribute Pixel = new NormalizedPixelFieldAttribute(false);
-            public static readonly NormalizedPixelFieldAttribute Normalized = new NormalizedPixelFieldAttribute(true);
+            public static readonly NormalizedPixelFieldAttribute Pixel = new(false);
+            public static readonly NormalizedPixelFieldAttribute Normalized = new(true);
 
             /************************************************************************************************************************/
 
@@ -499,7 +499,7 @@ namespace Animancer.Editor
             DefaultEditorType = typeof(UnityEditor.Editor).Assembly.GetType("UnityEditor.SpriteInspector");
 
         private readonly Dictionary<Object, UnityEditor.Editor>
-            TargetToDefaultEditor = new Dictionary<Object, UnityEditor.Editor>();
+            TargetToDefaultEditor = new();
 
         /************************************************************************************************************************/
 

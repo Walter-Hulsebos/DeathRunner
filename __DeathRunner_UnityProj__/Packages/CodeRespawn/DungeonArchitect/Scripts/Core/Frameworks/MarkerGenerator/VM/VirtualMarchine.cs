@@ -18,7 +18,7 @@ namespace DungeonArchitect.MarkerGenerator.VM
         
         private MarkerGenRuleProgram program;
         private int instructionIndex = 0;
-        private Stack<int> stack = new Stack<int>();
+        private Stack<int> stack = new();
         private bool running = false;
         
         public string ErrorMessage { get; private set; } = "";

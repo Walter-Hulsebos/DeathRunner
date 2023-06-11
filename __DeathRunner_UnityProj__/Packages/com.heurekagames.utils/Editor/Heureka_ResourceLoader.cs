@@ -7,7 +7,7 @@ namespace HeurekaGames.Utils
 {
     public static class Heureka_ResourceLoader
     {
-        private static readonly Dictionary<HeurekaPackage, string> iconPaths = new Dictionary<HeurekaPackage, string>()
+        private static readonly Dictionary<HeurekaPackage, string> iconPaths = new()
         {
             {HeurekaPackage.SHARED, "com.heurekagames.utils" },
             {HeurekaPackage.AHP, "com.heurekagames.assethunterpro" },

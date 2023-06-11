@@ -19,7 +19,7 @@ namespace HeurekaGames.AssetHunterPRO
         /// List of the Ignored items
         /// </summary>
         [SerializeField]
-        private SerializedIgnoreArray CombinedIgnored = new SerializedIgnoreArray();
+        private SerializedIgnoreArray CombinedIgnored = new();
         /// <summary>
         /// Id of the playerpref location
         /// </summary>
@@ -249,7 +249,7 @@ namespace HeurekaGames.AssetHunterPRO
             /// List of the Ignored items
             /// </summary>
             [SerializeField]
-            public List<string> Ignored = new List<string>();
+            public List<string> Ignored = new();
 
             public SerializedIgnoreArray() { }
 

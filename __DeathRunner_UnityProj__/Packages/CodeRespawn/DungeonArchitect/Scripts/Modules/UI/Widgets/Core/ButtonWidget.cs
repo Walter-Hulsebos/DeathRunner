@@ -6,7 +6,7 @@ namespace DungeonArchitect.UI.Widgets
     public class ButtonWidget : WidgetBase
     {
         GUIContent content;
-        Color color = new Color(0.8f, 0.8f, 0.8f);
+        Color color = new(0.8f, 0.8f, 0.8f);
 
         public delegate void OnButtonPressed(UISystem uiSystem);
         public event OnButtonPressed ButtonPressed;

@@ -17,8 +17,8 @@ namespace QFSW.QC.Grammar
 
         private Regex _operatorRegex;
 
-        private readonly HashSet<Type> _missingOperatorTable = new HashSet<Type>();
-        private readonly Dictionary<Type, IBinaryOperator> _foundOperatorTable = new Dictionary<Type, IBinaryOperator>();
+        private readonly HashSet<Type> _missingOperatorTable = new();
+        private readonly Dictionary<Type, IBinaryOperator> _foundOperatorTable = new();
 
         public bool Match(string value, Type type)
         {

@@ -69,7 +69,7 @@ namespace MoreMountains.Feedbacks
 		public string ConditionEnum = "";
 		public bool Hidden = false;
 
-		BitArray bitArray = new BitArray(32);
+		BitArray bitArray = new(32);
 		public bool ContainsBitFlag(int enumValue)
 		{
 			return bitArray.Get(enumValue);
@@ -98,7 +98,7 @@ namespace MoreMountains.Feedbacks
 			MMFInspectorButtonAttribute inspectorButtonAttribute = (MMFInspectorButtonAttribute)attribute;
 
 			float buttonLength = position.width;
-			Rect buttonRect = new Rect(position.x + (position.width - buttonLength) * 0.5f, position.y, buttonLength, position.height);
+			Rect buttonRect = new(position.x + (position.width - buttonLength) * 0.5f, position.y, buttonLength, position.height);
 
 			if (GUI.Button(buttonRect, inspectorButtonAttribute.MethodName))
 			{
@@ -194,7 +194,7 @@ namespace MoreMountains.Feedbacks
 	[CustomPropertyDrawer(typeof(MMFVectorAttribute))]
 	public class MMVectorLabelsAttributeDrawer : PropertyDrawer
 	{
-		protected static readonly GUIContent[] originalLabels = new GUIContent[] { new GUIContent("X"), new GUIContent("Y"), new GUIContent("Z"), new GUIContent("W") };
+		protected static readonly GUIContent[] originalLabels = new GUIContent[] { new("X"), new("Y"), new("Z"), new("W") };
 		protected const int padding = 375;
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent guiContent)
@@ -337,7 +337,7 @@ namespace MoreMountains.Feedbacks
 
 	public static class MMFeedbackStaticMethods
 	{
-		static List<Component> m_ComponentCache = new List<Component>();
+		static List<Component> m_ComponentCache = new();
 
 		/// <summary>
 		/// Grabs a component without allocating memory uselessly
@@ -513,7 +513,7 @@ namespace MoreMountains.Feedbacks
     
 	public static class MMF_FieldInfo
 	{
-		public static Dictionary<int, List<FieldInfo>> FieldInfoList = new Dictionary<int, List<FieldInfo>>();
+		public static Dictionary<int, List<FieldInfo>> FieldInfoList = new();
 
         
 		public static int GetFieldInfo(MMF_Feedback target, out List<FieldInfo> fieldInfoList)

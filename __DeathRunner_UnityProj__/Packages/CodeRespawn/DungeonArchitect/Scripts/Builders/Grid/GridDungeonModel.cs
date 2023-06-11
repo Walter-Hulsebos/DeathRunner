@@ -70,7 +70,7 @@ namespace DungeonArchitect.Builders.Grid
         }
 
         [SerializeField]
-        Rectangle bounds = new Rectangle();
+        Rectangle bounds = new();
         public Rectangle Bounds
         {
             get { return bounds; }
@@ -114,7 +114,7 @@ namespace DungeonArchitect.Builders.Grid
         }
 
         [SerializeField]
-        HashSet<int> connectedRooms = new HashSet<int>();
+        HashSet<int> connectedRooms = new();
         public HashSet<int> ConnectedRooms
         {
             get { return connectedRooms; }
@@ -122,7 +122,7 @@ namespace DungeonArchitect.Builders.Grid
         }
 
         [SerializeField]
-        HashSet<int> fixedRoomConnections = new HashSet<int>();
+        HashSet<int> fixedRoomConnections = new();
         public HashSet<int> FixedRoomConnections
         {
             get { return fixedRoomConnections; }
@@ -130,7 +130,7 @@ namespace DungeonArchitect.Builders.Grid
         }
 
         [SerializeField]
-        HashSet<int> adjacentCells = new HashSet<int>();
+        HashSet<int> adjacentCells = new();
         public HashSet<int> AdjacentCells
         {
             get
@@ -269,10 +269,10 @@ namespace DungeonArchitect.Builders.Grid
     public class DoorManager
     {
         [SerializeField]
-        Dictionary<IntVector2Key, CellDoor> doorLookupCache = new Dictionary<IntVector2Key, CellDoor>();
+        Dictionary<IntVector2Key, CellDoor> doorLookupCache = new();
 
         [SerializeField]
-        List<CellDoor> doors = new List<CellDoor>();
+        List<CellDoor> doors = new();
 
         public void Clear()
         {
@@ -393,21 +393,21 @@ namespace DungeonArchitect.Builders.Grid
     {
 		[HideInInspector]
         [SerializeField]
-        public DoorManager DoorManager = new DoorManager();
+        public DoorManager DoorManager = new();
         
         [HideInInspector]
         public GridDungeonConfig Config;
         
         [SerializeField]
         [HideInInspector]
-        public List<Cell> Cells = new List<Cell>();
+        public List<Cell> Cells = new();
 		
 		[HideInInspector]
         [SerializeField]
-        public Dictionary<int, List<StairInfo>> CellStairs = new Dictionary<int, List<StairInfo>>();
+        public Dictionary<int, List<StairInfo>> CellStairs = new();
 
         [HideInInspector]
-        public Dictionary<int, Dictionary<int, GridCellInfo>> GridCellInfoLookup = new Dictionary<int, Dictionary<int, GridCellInfo>>();
+        public Dictionary<int, Dictionary<int, GridCellInfo>> GridCellInfoLookup = new();
 
         /// <summary>
         /// Get meta-data about the grid in x, z grid coordinate
@@ -489,7 +489,7 @@ namespace DungeonArchitect.Builders.Grid
         /// <summary>
         /// Cell lookup based on the Cell Id
         /// </summary>
-        public Dictionary<int, Cell> CellLookup = new Dictionary<int, Cell>();
+        public Dictionary<int, Cell> CellLookup = new();
 
         /// <summary>
         /// Finds the cell based on the position in grid coordinates

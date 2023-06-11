@@ -8,11 +8,11 @@ namespace UnityEngine.AI
     public class NavMeshModifierVolume : MonoBehaviour
     {
         [SerializeField]
-        Vector3 m_Size = new Vector3(4.0f, 3.0f, 4.0f);
+        Vector3 m_Size = new(4.0f, 3.0f, 4.0f);
         public Vector3 size { get { return m_Size; } set { m_Size = value; } }
 
         [SerializeField]
-        Vector3 m_Center = new Vector3(0, 1.0f, 0);
+        Vector3 m_Center = new(0, 1.0f, 0);
         public Vector3 center { get { return m_Center; } set { m_Center = value; } }
 
         [SerializeField]
@@ -22,9 +22,9 @@ namespace UnityEngine.AI
         // List of agent types the modifier is applied for.
         // Special values: empty == None, m_AffectedAgents[0] =-1 == All.
         [SerializeField]
-        List<int> m_AffectedAgents = new List<int>(new int[] { -1 });    // Default value is All
+        List<int> m_AffectedAgents = new(new int[] { -1 });    // Default value is All
 
-        static readonly List<NavMeshModifierVolume> s_NavMeshModifiers = new List<NavMeshModifierVolume>();
+        static readonly List<NavMeshModifierVolume> s_NavMeshModifiers = new();
 
         public static List<NavMeshModifierVolume> activeModifiers
         {

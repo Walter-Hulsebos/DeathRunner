@@ -33,7 +33,7 @@ namespace MoreMountains.Tools
 	// using WeakReference to let GC collect those once Engine does not use them anymore
 	public struct MMReferenceHolder<T> : IDisposable where T : class
 	{
-		private static List<WeakReference<T>> _instances = new List<WeakReference<T>>(2);
+		private static List<WeakReference<T>> _instances = new(2);
 
 		private WeakReference<T> _instance;
 		public void Reference(T instance, bool cleanUp = false)

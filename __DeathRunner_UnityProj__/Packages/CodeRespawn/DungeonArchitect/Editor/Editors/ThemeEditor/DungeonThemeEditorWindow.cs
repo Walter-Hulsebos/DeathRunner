@@ -161,7 +161,7 @@ namespace DungeonArchitect.Editors
 
                 if (GUILayout.Button("Navigate To", EditorStyles.toolbarDropDown))
                 {
-                    GenericMenu markerMenu = new GenericMenu();
+                    GenericMenu markerMenu = new();
                     var markerNames = GetMarkerNames();
                     if (markerNames.Length > 0)
                     {
@@ -177,7 +177,7 @@ namespace DungeonArchitect.Editors
                 }
 
 				if (GUILayout.Button("Tools", EditorStyles.toolbarDropDown)) {
-					GenericMenu toolsMenu = new GenericMenu();
+					GenericMenu toolsMenu = new();
                     foreach (var functionInfo in toolFunctions)
                     {
                         toolsMenu.AddItem(new GUIContent(functionInfo.attribute.Path), false, ToolFunctionInvoker, functionInfo.function);

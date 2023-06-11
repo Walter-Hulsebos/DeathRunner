@@ -56,7 +56,7 @@ namespace MoreMountains.Feedbacks
 		/// the MMTween curve definition to use instead of the animation curve to define the acceleration of the movement
 		[Tooltip("the MMTween curve definition to use instead of the animation curve to define the acceleration of the movement")]
 		[MMFEnumCondition("Mode", (int)Modes.AtoB, (int)Modes.ToDestination)]
-		public MMTweenType AnimatePositionTween = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
+		public MMTweenType AnimatePositionTween = new( new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		
 		/// the value to remap the curve's 0 value to
 		[MMFEnumCondition("Mode", (int)Modes.AlongCurve)]
@@ -84,7 +84,7 @@ namespace MoreMountains.Feedbacks
 		/// the acceleration of the movement
 		[Tooltip("the acceleration of the movement")]
 		[MMFCondition("AnimateX", true)]
-		public MMTweenType AnimatePositionTweenX = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f)));
+		public MMTweenType AnimatePositionTweenX = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f)));
 		/// if this is true, the y position will be animated
 		[Tooltip("if this is true, the y position will be animated")]
 		[MMFEnumCondition("Mode", (int)Modes.AlongCurve)]
@@ -92,7 +92,7 @@ namespace MoreMountains.Feedbacks
 		/// the acceleration of the movement
 		[Tooltip("the acceleration of the movement")]
 		[MMFCondition("AnimateY", true)]
-		public MMTweenType AnimatePositionTweenY = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f)));
+		public MMTweenType AnimatePositionTweenY = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f)));
 		/// if this is true, the z position will be animated
 		[Tooltip("if this is true, the z position will be animated")]
 		[MMFEnumCondition("Mode", (int)Modes.AlongCurve)]
@@ -100,7 +100,7 @@ namespace MoreMountains.Feedbacks
 		/// the acceleration of the movement
 		[Tooltip("the acceleration of the movement")]
 		[MMFCondition("AnimateZ", true)]
-		public MMTweenType AnimatePositionTweenZ = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f)));
+		public MMTweenType AnimatePositionTweenZ = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(0.6f, -1f), new Keyframe(1, 0f)));
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
 		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
 		public bool AllowAdditivePlays = false;

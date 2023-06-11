@@ -29,11 +29,11 @@ namespace QFSW.QC
         /// <summary>The logging level to use during operation of the Quantum Console Processor.</summary>
         public static LoggingLevel loggingLevel = LoggingLevel.Full;
 
-        private static readonly QuantumParser _parser = new QuantumParser();
-        private static readonly QuantumPreprocessor _preprocessor = new QuantumPreprocessor();
-        private static readonly QuantumScanRuleset _scanRuleset = new QuantumScanRuleset();
-        private static readonly ConcurrentDictionary<string, CommandData> _commandTable = new ConcurrentDictionary<string, CommandData>();
-        private static readonly List<CommandData> _commandCache = new List<CommandData>();
+        private static readonly QuantumParser _parser = new();
+        private static readonly QuantumPreprocessor _preprocessor = new();
+        private static readonly QuantumScanRuleset _scanRuleset = new();
+        private static readonly ConcurrentDictionary<string, CommandData> _commandTable = new();
+        private static readonly List<CommandData> _commandCache = new();
 
         public static bool TableGenerated { get; private set; }
         public static bool TableIsGenerating { get; private set; }
@@ -158,7 +158,7 @@ namespace QFSW.QC
                     {
                         if (field.IsStrongDelegate())
                         {
-                            FieldDelegateMethod executer = new FieldDelegateMethod(field);
+                            FieldDelegateMethod executer = new(field);
                             yield return (executer, field);
                         }
                         else if (loggingLevel >= LoggingLevel.Warnings)
@@ -168,12 +168,12 @@ namespace QFSW.QC
                     }
                     else
                     {
-                        FieldAutoMethod reader = new FieldAutoMethod(field, FieldAutoMethod.AccessType.Read);
+                        FieldAutoMethod reader = new(field, FieldAutoMethod.AccessType.Read);
                         yield return (reader, field);
 
                         if (!(field.IsLiteral || field.IsInitOnly))
                         {
-                            FieldAutoMethod writer = new FieldAutoMethod(field, FieldAutoMethod.AccessType.Write);
+                            FieldAutoMethod writer = new(field, FieldAutoMethod.AccessType.Write);
                             yield return (writer, field);
                         }
                     }
@@ -306,7 +306,7 @@ namespace QFSW.QC
             int defaultParameters = method.GetParameters().Count(x => x.HasDefaultValue);
             for (int i = 0; i < defaultParameters + 1; i++)
             {
-                CommandData command = new CommandData(method, commandAttribute, descriptionAttribute, i);
+                CommandData command = new(method, commandAttribute, descriptionAttribute, i);
                 yield return command;
             }
         }

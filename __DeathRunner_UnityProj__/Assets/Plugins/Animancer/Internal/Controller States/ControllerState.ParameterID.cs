@@ -62,13 +62,13 @@ namespace Animancer
             /// Creates a new <see cref="ParameterID"/> with the specified <see cref="Name"/> and uses
             /// <see cref="Animator.StringToHash"/> to calculate the <see cref="Hash"/>.
             /// </summary>
-            public static implicit operator ParameterID(string name) => new ParameterID(name);
+            public static implicit operator ParameterID(string name) => new(name);
 
             /// <summary>
             /// Creates a new <see cref="ParameterID"/> with the specified <see cref="Hash"/> and leaves the
             /// <see cref="Name"/> null.
             /// </summary>
-            public static implicit operator ParameterID(int hash) => new ParameterID(hash);
+            public static implicit operator ParameterID(int hash) => new(hash);
 
             /************************************************************************************************************************/
 

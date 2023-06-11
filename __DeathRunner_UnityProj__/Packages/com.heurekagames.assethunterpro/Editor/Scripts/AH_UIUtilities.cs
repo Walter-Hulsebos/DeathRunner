@@ -8,7 +8,7 @@ namespace HeurekaGames.AssetHunterPRO
     {
         public static bool DrawSelectionButton(GUIContent content)
         {
-            GUIContent btnContent = new GUIContent(content);
+            GUIContent btnContent = new(content);
             if (AH_SettingsManager.Instance.HideButtonText)
                 btnContent.text = null;
 

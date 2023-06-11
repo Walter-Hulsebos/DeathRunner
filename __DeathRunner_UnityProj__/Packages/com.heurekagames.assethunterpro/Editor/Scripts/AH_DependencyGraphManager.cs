@@ -18,22 +18,22 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.DependencyGraph
         [SerializeField] private MultiColumnHeaderState multiColumnHeaderStateTo;
         [SerializeField] private AH_DepGraphTreeviewWithModel TreeViewModelFrom;
         [SerializeField] private AH_DepGraphTreeviewWithModel TreeViewModelTo;
-        [SerializeField] private Dictionary<string, List<string>> referencedFrom = new Dictionary<string, List<string>>();
-        [SerializeField] private Dictionary<string, List<string>> referenceTo = new Dictionary<string, List<string>>();
+        [SerializeField] private Dictionary<string, List<string>> referencedFrom = new();
+        [SerializeField] private Dictionary<string, List<string>> referenceTo = new();
 
         #region serializationHelpers
-        [SerializeField] private List<string> _keysFrom = new List<string>();
-        [SerializeField] private List<AH_WrapperList> _wrapperValuesFrom = new List<AH_WrapperList>();
+        [SerializeField] private List<string> _keysFrom = new();
+        [SerializeField] private List<AH_WrapperList> _wrapperValuesFrom = new();
 
-        [SerializeField] private List<string> _keysTo = new List<string>();
-        [SerializeField] private List<AH_WrapperList> _wrapperValuesTo = new List<AH_WrapperList>();
+        [SerializeField] private List<string> _keysTo = new();
+        [SerializeField] private List<AH_WrapperList> _wrapperValuesTo = new();
         #endregion
 
         [SerializeField] private string selectedAssetGUID = "";
         [SerializeField] private string selectedAssetObjectName = "";
         [SerializeField] private UnityEngine.Object selectedAssetObject;
 
-        [SerializeField] private List<string> selectionHistory = new List<string>();
+        [SerializeField] private List<string> selectionHistory = new();
         [SerializeField] private int selectionHistoryIndex = 0;
 
         private bool lockedSelection;
@@ -251,7 +251,7 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.DependencyGraph
             var root = new AH_DepGraphElement("Root", depth, -1, "");
             treeElements.Add(root);
 
-            Stack<string> referenceQueue = new Stack<string>(); //Since we are creating a tree we want the same asset to be referenced in any branch, but we do NOT want circular references
+            Stack<string> referenceQueue = new(); //Since we are creating a tree we want the same asset to be referenced in any branch, but we do NOT want circular references
 
             var references = referenceDict.ContainsKey(assetGUID) ? referenceDict[assetGUID] : null;
             if (references != null)

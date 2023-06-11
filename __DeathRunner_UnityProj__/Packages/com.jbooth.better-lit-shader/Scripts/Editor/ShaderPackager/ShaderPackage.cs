@@ -23,7 +23,7 @@ namespace JBooth.BetterLit.ShaderPackager
 
         static void SetFlags(List<string> flags)
         {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            System.Text.StringBuilder sb = new();
             for (int i = 0; i < flags.Count; ++i)
             {
                 sb.Append(flags[i]);
@@ -96,7 +96,7 @@ namespace JBooth.BetterLit.ShaderPackager
             [HideInInspector] public string shaderSrc;
         }
 
-        public List<Entry> entries = new List<Entry>();
+        public List<Entry> entries = new();
 #if __BETTERSHADERS__
         public Shader betterShader;
         public string betterShaderPath;

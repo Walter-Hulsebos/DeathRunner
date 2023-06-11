@@ -277,17 +277,17 @@ namespace MoreMountains.Tools
 		}
         
 		protected Rect _barRect;
-		protected Color _mmYellow = new Color(1f, 0.7686275f, 0f);
+		protected Color _mmYellow = new(1f, 0.7686275f, 0f);
 		protected Color _mmRed = MMColors.Orangered;
 		protected const int _lineHeight = 20;
 		protected const int _lineMargin = 2;
 		protected const int _numberOfLines = 1;
-		protected Color _progressBarBackground = new Color(0, 0, 0, 0.5f);
+		protected Color _progressBarBackground = new(0, 0, 0, 0.5f);
         
 		protected virtual void DrawLevelProgressBar(Rect position, float level, Color frontColor, Color negativeColor)
 		{
-			Rect levelLabelRect = new Rect(position.x, position.y + (_lineHeight + _lineMargin) * (_numberOfLines - 1), position.width, _lineHeight);
-			Rect levelValueRect = new Rect(position.x - 15 + EditorGUIUtility.labelWidth + 4, position.y + (_lineHeight + _lineMargin) * (_numberOfLines - 1), position.width, _lineHeight);
+			Rect levelLabelRect = new(position.x, position.y + (_lineHeight + _lineMargin) * (_numberOfLines - 1), position.width, _lineHeight);
+			Rect levelValueRect = new(position.x - 15 + EditorGUIUtility.labelWidth + 4, position.y + (_lineHeight + _lineMargin) * (_numberOfLines - 1), position.width, _lineHeight);
 
 			float progressX = position.x - 5 + EditorGUIUtility.labelWidth + 60;
 			float progressY = position.y + (_lineHeight + _lineMargin) * (_numberOfLines - 1) + 6;
@@ -303,9 +303,9 @@ namespace MoreMountains.Tools
 			}
 
 			float progressLevel = Mathf.Clamp01(level);
-			Rect levelProgressBg = new Rect(progressX, progressY, fullProgressWidth, progressHeight);
+			Rect levelProgressBg = new(progressX, progressY, fullProgressWidth, progressHeight);
 			float progressWidth = MMMaths.Remap(progressLevel, 0f, 1f, 0f, fullProgressWidth);
-			Rect levelProgressFront = new Rect(progressX, progressY, progressWidth, progressHeight);
+			Rect levelProgressFront = new(progressX, progressY, progressWidth, progressHeight);
 
 			EditorGUI.LabelField(levelLabelRect, new GUIContent("Level"));
 			EditorGUI.LabelField(levelValueRect, new GUIContent(displayLevel.ToString("F4")));

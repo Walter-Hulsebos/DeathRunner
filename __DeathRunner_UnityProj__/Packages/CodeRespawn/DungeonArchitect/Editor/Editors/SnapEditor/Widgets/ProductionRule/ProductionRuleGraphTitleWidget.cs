@@ -15,7 +15,7 @@ namespace DungeonArchitect.Editors.SnapFlow
 
         protected override void DrawImpl(UISystem uiSystem, UIRenderer renderer)
         {
-            Vector2 titleOffset = new Vector2(5, 4);
+            Vector2 titleOffset = new(5, 4);
 
             var titleStyle = new GUIStyle(EditorStyles.whiteLabel);
             titleStyle.normal.textColor = new Color(0.75f, 0.75f, 0.75f);
@@ -93,7 +93,7 @@ namespace DungeonArchitect.Editors.SnapFlow
         {
             if (IsPaintEvent(uiSystem))
             {
-                Vector2 titleOffset = new Vector2(5, 5);
+                Vector2 titleOffset = new(5, 5);
 
                 var titleStyle = new GUIStyle(EditorStyles.whiteLabel);
                 titleStyle.normal.textColor = new Color(0.75f, 0.75f, 0.75f);

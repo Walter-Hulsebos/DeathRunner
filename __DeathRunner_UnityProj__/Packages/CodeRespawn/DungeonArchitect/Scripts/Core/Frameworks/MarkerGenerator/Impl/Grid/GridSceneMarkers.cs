@@ -8,10 +8,10 @@ namespace DungeonArchitect.MarkerGenerator.Grid
 {
     class GridSceneCell
     {
-        public readonly List<PropSocket> TileMarkers = new List<PropSocket>();
-        public readonly List<PropSocket> CornerMarkers = new List<PropSocket>();
-        public readonly List<PropSocket> EdgeXMarkers = new List<PropSocket>();
-        public readonly List<PropSocket> EdgeZMarkers = new List<PropSocket>();
+        public readonly List<PropSocket> TileMarkers = new();
+        public readonly List<PropSocket> CornerMarkers = new();
+        public readonly List<PropSocket> EdgeXMarkers = new();
+        public readonly List<PropSocket> EdgeZMarkers = new();
 
         public void Add(PropSocket marker, GridMarkerGenRuleType type)
         {
@@ -148,7 +148,7 @@ namespace DungeonArchitect.MarkerGenerator.Grid
         public Vector2Int WorldOffset { get; protected set; }
         public Vector2Int WorldSize { get; protected set; }
         
-        protected readonly List<T> Cells = new List<T>();
+        protected readonly List<T> Cells = new();
     }
 
     class GridCellOccupancyInfo

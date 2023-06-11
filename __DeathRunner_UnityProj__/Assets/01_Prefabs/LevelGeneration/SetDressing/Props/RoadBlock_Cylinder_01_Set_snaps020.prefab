@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8864848284225013081}
-  - component: {fileID: 612426726027646499}
   m_Layer: 0
   m_Name: RoadBlock_Cylinder_01_Set_snaps020
   m_TagString: Untagged
@@ -33,24 +32,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &612426726027646499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7713168367231218598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 52a78daf3412aae468cef29277d1b67e, type: 2}
 --- !u!1001 &761419323755163635
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 8864848284225013081}
     m_Modifications:
     - target: {fileID: 1962943320208584416, guid: 877e2681ec1463e4fab5550f4916a55b,
@@ -113,7 +100,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoadBlock_Cylinder_01b_snaps020
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 877e2681ec1463e4fab5550f4916a55b, type: 3}
 --- !u!4 &1273635080434696467 stripped
 Transform:

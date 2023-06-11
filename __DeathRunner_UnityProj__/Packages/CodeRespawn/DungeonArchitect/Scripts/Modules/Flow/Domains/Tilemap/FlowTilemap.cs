@@ -214,7 +214,7 @@ namespace DungeonArchitect.Flow.Domains.Tilemap
     [System.Serializable]
     public class FlowTilemapCellWallInfo : System.ICloneable
     {
-        public List<IntVector2> owningNodes = new List<IntVector2>();
+        public List<IntVector2> owningNodes = new();
 
         public object Clone()
         {

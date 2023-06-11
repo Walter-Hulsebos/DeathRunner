@@ -13,7 +13,7 @@ namespace FMODUnity
     public class FMODEventPlayable : PlayableAsset, ITimelineClipAsset
     {
         [FormerlySerializedAs("template")]
-        public FMODEventPlayableBehavior Template = new FMODEventPlayableBehavior();
+        public FMODEventPlayableBehavior Template = new();
 
         [FormerlySerializedAs("eventLength")]
         public float EventLength; //In seconds.
@@ -175,7 +175,7 @@ namespace FMODUnity
         public ParamRef[] Parameters = new ParamRef[0];
 
         [FormerlySerializedAs("parameterLinks")]
-        public List<ParameterAutomationLink> ParameterLinks = new List<ParameterAutomationLink>();
+        public List<ParameterAutomationLink> ParameterLinks = new();
 
         [NonSerialized]
         public GameObject TrackTargetObject;
@@ -250,7 +250,7 @@ namespace FMODUnity
                 else
                 {
                     // Handled by the editor auditioning system.
-                    EventArgs args = new EventArgs();
+                    EventArgs args = new();
                     Enter.Invoke(this, args);
                     eventInstance = args.eventInstance;
                 }
@@ -278,7 +278,7 @@ namespace FMODUnity
                 else
                 {
                     // Handled by the editor auditioning system.
-                    EventArgs args = new EventArgs();
+                    EventArgs args = new();
                     args.eventInstance = eventInstance;
                     Exit.Invoke(this, args);
                 }
@@ -336,7 +336,7 @@ namespace FMODUnity
             else
             {
                 // Handled by the editor auditioning system.
-                EventArgs args = new EventArgs();
+                EventArgs args = new();
                 args.eventInstance = eventInstance;
                 GraphStop.Invoke(this, args);
             }

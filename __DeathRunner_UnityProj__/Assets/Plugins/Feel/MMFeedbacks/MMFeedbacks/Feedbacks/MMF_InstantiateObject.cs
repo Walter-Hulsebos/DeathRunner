@@ -111,7 +111,7 @@ namespace MoreMountains.Feedbacks
 					owner.ProxyDestroy(_objectPooler.gameObject);
 				}
 
-				GameObject objectPoolGo = new GameObject();
+				GameObject objectPoolGo = new();
 				objectPoolGo.name = Owner.name+"_ObjectPooler";
 				_objectPooler = objectPoolGo.AddComponent<MMMiniObjectPooler>();
 				_objectPooler.GameObjectToPool = GameObjectToInstantiate;

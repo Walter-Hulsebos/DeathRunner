@@ -40,7 +40,7 @@ namespace MoreMountains.Feedbacks
 		public float Duration = 1f;
 		/// the curve to use for this fade
 		[Tooltip("the curve to use for this fade")]
-		public MMTweenType Curve = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
+		public MMTweenType Curve = new(MMTween.MMTweenCurve.EaseInCubic);
 		/// whether or not this fade should ignore timescale
 		[Tooltip("whether or not this fade should ignore timescale")]
 		public bool IgnoreTimeScale = true;

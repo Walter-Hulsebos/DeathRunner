@@ -8,7 +8,7 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow.Components
 {
     public class SnapGridFlowModule : MonoBehaviour
     {
-        public Vector3Int numChunks = new Vector3Int(1, 1, 1);
+        public Vector3Int numChunks = new(1, 1, 1);
         public SnapGridFlowModuleBounds moduleBounds;
         public bool drawBounds = true;
 
@@ -155,10 +155,10 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow.Components
         {
             public static readonly Vector2[] LocalPoints = new Vector2[]
             {
-                new Vector2(0, 0),
-                new Vector2(1, 0),
-                new Vector2(1, 1),
-                new Vector2(0, 1)
+                new(0, 0),
+                new(1, 0),
+                new(1, 1),
+                new(0, 1)
             };
 
             static readonly float doorSizeX = 0.5f;
@@ -167,12 +167,12 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow.Components
             public static readonly Vector3[] DoorPoints = new Vector3[]
             {
                 // Horizontal Line
-                new Vector3(-doorSizeX, 0, 0),
-                new Vector3(doorSizeX, 0, 0),
+                new(-doorSizeX, 0, 0),
+                new(doorSizeX, 0, 0),
 
                 // Vertical Line
-                new Vector3(0, 0, 0),
-                new Vector3(0, doorSizeY, 0)
+                new(0, 0, 0),
+                new(0, doorSizeY, 0)
             };
 
             public static readonly Vector3[] VerticalDoorPoints;
@@ -246,14 +246,14 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow.Components
 
         private static readonly Vector3[] LocalCubeVerts = new Vector3[]
         {
-            new Vector3(-1, -1, -1),
-            new Vector3(1, -1, -1),
-            new Vector3(1, 1, -1),
-            new Vector3(-1, 1, -1),
-            new Vector3(-1, -1, 1),
-            new Vector3(1, -1, 1),
-            new Vector3(1, 1, 1),
-            new Vector3(-1, 1, 1),
+            new(-1, -1, -1),
+            new(1, -1, -1),
+            new(1, 1, -1),
+            new(-1, 1, -1),
+            new(-1, -1, 1),
+            new(1, -1, 1),
+            new(1, 1, 1),
+            new(-1, 1, 1),
         };
         
         void DrawWireCube(Matrix4x4 transform, Vector3 center, Vector3 extent)

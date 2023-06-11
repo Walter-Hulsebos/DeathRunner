@@ -14,7 +14,7 @@
             this.arg1 = arg1;
         }
 
-        public static readonly Instruction NoOp = new Instruction(OpCodes.NoOp);
-        public static readonly Instruction Halt = new Instruction(OpCodes.Halt);
+        public static readonly Instruction NoOp = new(OpCodes.NoOp);
+        public static readonly Instruction Halt = new(OpCodes.Halt);
     }
 }

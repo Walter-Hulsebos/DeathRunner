@@ -34,10 +34,10 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.AssetTreeView
         [SerializeField]
         private bool isFolder;
         [SerializeField]
-        private Dictionary<AH_MultiColumnHeader.AssetShowMode, long> combinedAssetSizeInFolder = new Dictionary<AH_MultiColumnHeader.AssetShowMode, long>();
+        private Dictionary<AH_MultiColumnHeader.AssetShowMode, long> combinedAssetSizeInFolder = new();
 
         //Dictionary of asset types and their icons (Cant be serialized)
-        private static Dictionary<Type, Texture> iconDictionary = new Dictionary<Type, Texture>();
+        private static Dictionary<Type, Texture> iconDictionary = new();
 
         #endregion
 
@@ -253,7 +253,7 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.AssetTreeView
 
         internal List<string> GetUnusedPathsRecursively()
         {
-            List<string> unusedAssetsInFolder = new List<string>();
+            List<string> unusedAssetsInFolder = new();
 
             //Combine the size of all the children
             if (hasChildren)
@@ -270,7 +270,7 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.AssetTreeView
 
         internal static List<string> GetStoredIconTypes()
         {
-            List<string> iconTypesSerialized = new List<string>();
+            List<string> iconTypesSerialized = new();
             foreach (var item in iconDictionary)
             {
                 iconTypesSerialized.Add(Heureka_Serializer.SerializeType(item.Key));
@@ -280,7 +280,7 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.AssetTreeView
 
         internal static List<Texture> GetStoredIconTextures()
         {
-            List<Texture> iconTexturesSerialized = new List<Texture>();
+            List<Texture> iconTexturesSerialized = new();
             foreach (var item in iconDictionary)
             {
                 iconTexturesSerialized.Add(item.Value);

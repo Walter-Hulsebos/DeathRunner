@@ -9,7 +9,7 @@ namespace DungeonArchitect.Builders.Grid
     public class GridDungeonQuery : DungeonQuery
     {
         [HideInInspector]
-        public Dictionary<int, GameObject[]> DoorObjectsByCellId = new Dictionary<int, GameObject[]>();
+        public Dictionary<int, GameObject[]> DoorObjectsByCellId = new();
 
         public override void OnPostDungeonBuild()
         {

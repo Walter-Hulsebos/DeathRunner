@@ -12,7 +12,7 @@ namespace DungeonArchitect.Grammar
         public string description;
 
         [SerializeField]
-        public Color nodeColor = new Color(0.2f, 0.3f, 0.3f);
+        public Color nodeColor = new(0.2f, 0.3f, 0.3f);
 
         [SerializeField]
         [HideInInspector]

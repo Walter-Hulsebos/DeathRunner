@@ -9,7 +9,7 @@ namespace DungeonArchitect.Flow.Domains
 
     public class FlowDomainExtensions
     {
-        private Dictionary<System.Type, IFlowDomainExtension> extensions = new Dictionary<System.Type, IFlowDomainExtension>();
+        private Dictionary<System.Type, IFlowDomainExtension> extensions = new();
         
         public T GetExtension<T>() where T : IFlowDomainExtension, new()
         {
@@ -18,7 +18,7 @@ namespace DungeonArchitect.Flow.Domains
                 return (T)extensions[typeof(T)];
             }
 
-            T data = new T();
+            T data = new();
             extensions.Add(typeof(T), data);
             return data;
         }

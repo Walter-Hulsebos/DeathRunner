@@ -32,7 +32,7 @@ namespace MoreMountains.Feedbacks
 		public enum SafeModes { Nope, EditorOnly, RuntimeOnly, Full }
         
 		/// a list of MMFeedback to trigger
-		public List<MMFeedback> Feedbacks = new List<MMFeedback>();
+		public List<MMFeedback> Feedbacks = new();
         
 		/// the possible initialization modes. If you use Script, you'll have to initialize manually by calling the Initialization method and passing it an owner
 		/// Otherwise, you can have this component initialize itself at Awake or Start, and in this case the owner will be the MMFeedbacks itself
@@ -74,7 +74,7 @@ namespace MoreMountains.Feedbacks
 		/// if RandomizeDuration is true, the min (x) and max (y) values for the random duration multiplier
 		[Tooltip("if RandomizeDuration is true, the min (x) and max (y) values for the random duration multiplier")]
 		[MMCondition("RandomizeDuration", true)]
-		public Vector2 RandomDurationMultiplier = new Vector2(0.5f, 1.5f);
+		public Vector2 RandomDurationMultiplier = new(0.5f, 1.5f);
 		/// if this is true, more editor-only, detailed info will be displayed per feedback in the duration slot
 		[Tooltip("if this is true, more editor-only, detailed info will be displayed per feedback in the duration slot")]
 		public bool DisplayFullDurationDetails = false;
@@ -97,11 +97,11 @@ namespace MoreMountains.Feedbacks
 		/// the animation curve to use to define falloff (on the x 0 represents the range center, 1 represents the max distance to it)
 		[Tooltip("the animation curve to use to define falloff (on the x 0 represents the range center, 1 represents the max distance to it)")]
 		[MMFCondition("UseRangeFalloff", true)]
-		public AnimationCurve RangeFalloff = new AnimationCurve(new Keyframe(0f, 1f), new Keyframe(1f, 0f));
+		public AnimationCurve RangeFalloff = new(new Keyframe(0f, 1f), new Keyframe(1f, 0f));
 		/// the values to remap the falloff curve's y axis' 0 and 1
 		[Tooltip("the values to remap the falloff curve's y axis' 0 and 1")]
 		[MMFVector("Zero","One")]
-		public Vector2 RemapRangeFalloff = new Vector2(0f, 1f);
+		public Vector2 RemapRangeFalloff = new(0f, 1f);
 		/// whether or not to ignore MMSetFeedbackRangeCenterEvent, used to set the RangeCenter from anywhere
 		[Tooltip("whether or not to ignore MMSetFeedbackRangeCenterEvent, used to set the RangeCenter from anywhere")]
 		public bool IgnoreRangeEvents = false;

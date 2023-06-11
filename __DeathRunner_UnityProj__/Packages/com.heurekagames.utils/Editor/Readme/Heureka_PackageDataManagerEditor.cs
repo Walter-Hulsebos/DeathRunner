@@ -60,7 +60,7 @@ namespace HeurekaGames.Utils
             readmeManager = SelectReadme();// (Heureka_PackageDataManager)target;
             //populate sections
             var guids = AssetDatabase.FindAssets($"t:{nameof(Heureka_PackageData).ToString()}");
-            List<Heureka_PackageData> tmpList = new List<Heureka_PackageData>();
+            List<Heureka_PackageData> tmpList = new();
             foreach (var item in guids)
             {
                 string path = AssetDatabase.GUIDToAssetPath(item);
@@ -72,7 +72,7 @@ namespace HeurekaGames.Utils
             //Sorted lidt by show Priority
             readmeManager.sections = readmeManager.sections.OrderByDescending(val => val.PackageShowPrio).ToArray();
 
-            List<Heureka_PackageData> listUniqueEntries = new List<Heureka_PackageData>();
+            List<Heureka_PackageData> listUniqueEntries = new();
             foreach (var item in readmeManager.sections)
             {
                 //If we dont have this asset identifier in list already

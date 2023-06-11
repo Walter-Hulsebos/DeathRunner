@@ -84,12 +84,12 @@ namespace ProjectDawn.Geometry3D
         public static bool operator !=(Line lhs, Line rhs) => !(lhs == rhs);
 
         /// <inheritdoc />
-        public static implicit operator Line(float value) => new Line(value, value);
+        public static implicit operator Line(float value) => new(value, value);
 
         /// <summary>
         /// Converts to ray.
         /// </summary>
-        public Ray ToRay() => new Ray(From, Towards);
+        public Ray ToRay() => new(From, Towards);
 
         /// <summary>
         /// Returns true if line intersects triangle.

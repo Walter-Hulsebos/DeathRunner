@@ -16,7 +16,7 @@ namespace SharpNav
 		/// <summary>
 		/// The null area is one that is considered unwalkable.
 		/// </summary>
-		public static readonly Area Null = new Area(0);
+		public static readonly Area Null = new(0);
 
 		/// <summary>
 		/// This is a default <see cref="Area"/> in the event that the user does not provide one.
@@ -26,7 +26,7 @@ namespace SharpNav
 		/// integer values. Choosing the maximum value makes it unlikely for the "default" area to collide with any
 		/// user-defined areas.
 		/// </remarks>
-		public static readonly Area Default = new Area(0xff);
+		public static readonly Area Default = new(0xff);
 
 		/// <summary>
 		/// The identifier for an area, represented as a byte.

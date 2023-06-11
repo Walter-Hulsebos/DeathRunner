@@ -7,7 +7,7 @@ public class DrawRay : MonoBehaviour
 {
     public Transform Origin;
 
-    public Ray Ray => new Ray(Origin.position, mul(transform.rotation, new float3(1, 0, 0)));
+    public Ray Ray => new(Origin.position, mul(transform.rotation, new float3(1, 0, 0)));
 
     private void OnDrawGizmos()
     {

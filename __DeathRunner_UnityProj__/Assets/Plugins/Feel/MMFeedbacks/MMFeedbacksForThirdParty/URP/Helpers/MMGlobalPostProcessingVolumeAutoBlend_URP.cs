@@ -28,7 +28,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// the duration of the blend (in seconds)
 		public float BlendDuration = 1f;
 		/// the curve to use to blend
-		public AnimationCurve Curve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1f));
+		public AnimationCurve Curve = new(new Keyframe(0, 0), new Keyframe(1, 1f));
 
 		[Header("Weight")]
 		/// the weight at the start of the blend

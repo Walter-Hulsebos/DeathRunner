@@ -53,7 +53,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to tween the scale on
 		[Tooltip("the curve to tween the scale on")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
-		public AnimationCurve ScaleCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve ScaleCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the scale curve's 0 to
 		[Tooltip("the value to remap the scale curve's 0 to")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]

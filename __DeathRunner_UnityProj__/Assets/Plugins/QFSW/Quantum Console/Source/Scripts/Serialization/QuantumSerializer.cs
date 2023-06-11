@@ -11,8 +11,8 @@ namespace QFSW.QC
     public class QuantumSerializer
     {
         private readonly IQcSerializer[] _serializers;
-        private readonly Dictionary<Type, IQcSerializer> _serializerLookup = new Dictionary<Type, IQcSerializer>();
-        private readonly HashSet<Type> _unserializableLookup = new HashSet<Type>();
+        private readonly Dictionary<Type, IQcSerializer> _serializerLookup = new();
+        private readonly HashSet<Type> _unserializableLookup = new();
 
         private readonly Func<object, QuantumTheme, string> _recursiveSerializer;
 

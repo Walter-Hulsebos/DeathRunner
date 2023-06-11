@@ -21,7 +21,7 @@ namespace MoreMountains.Tools
 		{
 			int[,] grid = PrepareGrid(ref width, ref height);
 			grid = MMGridGeneratorFull.Generate(width, height, true);
-			System.Random random = new System.Random(seed);
+			System.Random random = new(seed);
             
 			int requiredFillQuantity = ((width * height) * fillPercentage) / 100;
 			int fillCounter = 0;

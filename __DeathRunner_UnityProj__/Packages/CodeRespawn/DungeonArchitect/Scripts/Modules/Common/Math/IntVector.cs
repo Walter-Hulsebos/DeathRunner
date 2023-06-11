@@ -151,6 +151,6 @@ namespace DungeonArchitect
             return string.Format("({0}, {1}, {2})", x, y, z);
         }
 
-        public static readonly IntVector Zero = new IntVector(0, 0, 0);
+        public static readonly IntVector Zero = new(0, 0, 0);
 	}
 }

@@ -22,7 +22,7 @@ namespace MoreMountains.Tools
 		[Header("Conversion")]
 		[MMInspectorButton("ConvertToCanvas")]
 		public bool ConvertToCanvasButton;
-		public Vector3 ChildImageOffset = new Vector3(-1024f, -576f, 0f);
+		public Vector3 ChildImageOffset = new(-1024f, -576f, 0f);
 
 		protected Transform _topLevel;
 		protected Dictionary<Transform, int> _sortingOrders;
@@ -51,7 +51,7 @@ namespace MoreMountains.Tools
 			}
 
 			// create a parent in the target canvas
-			GameObject newRoot = new GameObject(this.name, typeof(RectTransform));
+			GameObject newRoot = new(this.name, typeof(RectTransform));
 			newRoot.transform.SetParent(TargetCanvas.transform);
 			RectTransform newRootRect = newRoot.GetComponent<RectTransform>();
 			SetupForStretch(newRootRect);
@@ -75,7 +75,7 @@ namespace MoreMountains.Tools
 		{
 			foreach (Transform child in root)
 			{
-				GameObject imageGO = new GameObject(child.name, typeof(RectTransform));
+				GameObject imageGO = new(child.name, typeof(RectTransform));
 				imageGO.transform.localPosition = ScaleFactor * child.transform.localPosition;
 				if (ReplicateNesting)
 				{

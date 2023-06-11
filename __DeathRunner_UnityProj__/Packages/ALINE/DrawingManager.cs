@@ -24,7 +24,7 @@ namespace Drawing {
 		static Transform activeTransform;
 #endif
 
-		static HashSet<Transform> selectedTransforms = new HashSet<Transform>();
+		static HashSet<Transform> selectedTransforms = new();
 
 		static internal bool drawingGizmos;
 
@@ -117,7 +117,7 @@ namespace Drawing {
 	[AddComponentMenu("")]
 	public class DrawingManager : MonoBehaviour {
 		public DrawingData gizmos;
-		static List<IDrawGizmos> gizmoDrawers = new List<IDrawGizmos>();
+		static List<IDrawGizmos> gizmoDrawers = new();
 		static DrawingManager _instance;
 		bool framePassed;
 		int lastFrameCount = int.MinValue;
@@ -433,7 +433,7 @@ namespace Drawing {
 			}
 		}
 
-		Dictionary<System.Type, bool> typeToGizmosEnabled = new Dictionary<Type, bool>();
+		Dictionary<System.Type, bool> typeToGizmosEnabled = new();
 
 		bool ShouldDrawGizmos (UnityEngine.Object obj) {
 #if UNITY_EDITOR

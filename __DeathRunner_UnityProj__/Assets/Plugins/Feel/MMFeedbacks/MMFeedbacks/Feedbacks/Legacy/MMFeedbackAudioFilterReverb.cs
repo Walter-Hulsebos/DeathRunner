@@ -42,7 +42,7 @@ namespace MoreMountains.Feedbacks
 		public bool RelativeReverb = false;
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakeReverb = new AnimationCurve(new Keyframe(0, 0f), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
+		public AnimationCurve ShakeReverb = new(new Keyframe(0, 0f), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
 		/// the value to remap the curve's 0 to
 		[Range(-10000f, 2000f)]
 		[Tooltip("the value to remap the curve's 0 to")]

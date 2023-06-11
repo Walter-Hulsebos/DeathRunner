@@ -258,7 +258,7 @@ namespace DungeonArchitect.Editors.SpatialConstraints
         class RuleNodeEditorUIState
         {
             public int ruleDropDownIndex = 0;
-            public Dictionary<ConstraintRule, ConstraintUIState> constraintStates = new Dictionary<ConstraintRule, ConstraintUIState>();
+            public Dictionary<ConstraintRule, ConstraintUIState> constraintStates = new();
 
             public class ConstraintUIState
             {

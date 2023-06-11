@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace Drawing {
 	/// <summary>Various high-level utilities that are useful when drawing things</summary>
 	public static class DrawingUtilities {
-		private static List<Component> componentBuffer = new List<Component>();
+		private static List<Component> componentBuffer = new();
 
 		/// <summary>
 		/// Bounding box of a GameObject.
@@ -42,7 +42,7 @@ namespace Drawing {
 		/// </summary>
 		public static Bounds BoundsFrom (Transform transform) {
 			transform.gameObject.GetComponents(componentBuffer);
-			Bounds bounds = new Bounds(transform.position, Vector3.zero);
+			Bounds bounds = new(transform.position, Vector3.zero);
 			for (int i = 0; i < componentBuffer.Count; i++) {
 				var component = componentBuffer[i];
 				if (component is Collider coll) bounds.Encapsulate(coll.bounds);

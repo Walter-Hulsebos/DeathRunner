@@ -45,7 +45,7 @@ namespace DungeonArchitect.Editors.MarkerGen
     [CustomEditor(typeof(MarkerGenRuleNodeConditionScript), false)]
     public class MarkerGenRuleScriptInspector : MarkerGenInspectorBase
     {
-        InstanceCache instanceCache = new InstanceCache();
+        InstanceCache instanceCache = new();
         protected override void HandleInspectorGUI()
         {
             var scriptNode = target as MarkerGenRuleNodeConditionScript;

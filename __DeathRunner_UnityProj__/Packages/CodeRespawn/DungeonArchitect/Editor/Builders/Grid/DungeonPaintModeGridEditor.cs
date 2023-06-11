@@ -204,8 +204,8 @@ namespace DungeonArchitect.Editors
 					verts[i] = DMathUtils.FlipYZ(verts[i]);
 				}
 			}
-            Color faceColor = new Color(color.r, color.g, color.b, faceOpacity);
-            Color outlineColor = new Color(color.r, color.g, color.b, outlineOpacity);
+            Color faceColor = new(color.r, color.g, color.b, faceOpacity);
+            Color outlineColor = new(color.r, color.g, color.b, outlineOpacity);
             Handles.DrawSolidRectangleWithOutline(verts, faceColor, outlineColor);
             
         }

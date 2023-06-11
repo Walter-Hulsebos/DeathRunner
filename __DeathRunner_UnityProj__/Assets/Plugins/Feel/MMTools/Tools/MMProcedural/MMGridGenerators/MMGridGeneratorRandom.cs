@@ -23,7 +23,7 @@ namespace MoreMountains.Tools
 			int[,] grid = PrepareGrid(ref width, ref height);
             
 			grid = MMGridGeneratorFull.Generate(width, height, true);
-			System.Random random = new System.Random(seed);
+			System.Random random = new(seed);
 
 			for (int i = 0; i <= width; i ++) 
 			{

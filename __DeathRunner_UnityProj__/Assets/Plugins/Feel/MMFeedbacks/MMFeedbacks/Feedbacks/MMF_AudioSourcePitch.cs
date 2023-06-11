@@ -40,7 +40,7 @@ namespace MoreMountains.Feedbacks
 		public bool RelativePitch = false;
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve PitchTween = new AnimationCurve(new Keyframe(0, 1f), new Keyframe(0.5f, 0f), new Keyframe(1, 1f));
+		public AnimationCurve PitchTween = new(new Keyframe(0, 1f), new Keyframe(0.5f, 0f), new Keyframe(1, 1f));
 		/// the value to remap the curve's 0 to
 		[Range(-3f, 3f)]
 		[Tooltip("the value to remap the curve's 0 to")]

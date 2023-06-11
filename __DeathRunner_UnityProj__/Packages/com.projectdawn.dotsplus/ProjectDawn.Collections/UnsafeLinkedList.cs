@@ -75,14 +75,14 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         /// <summary>
         /// Returns an iterator pointing to the first element in the list container.
         /// </summary>
-        public Handle Begin => new Handle(m_BeginHandle);
+        public Handle Begin => new(m_BeginHandle);
 
         /// <summary>
         /// Returns an iterator referring to the past-the-end element in the list container.
         /// The past-the-end element is the theoretical element that would follow the last element in the list container. 
         /// It does not point to any element, and thus shall not be dereferenced.
         /// </summary>
-        public Handle End => new Handle(m_EndHandle);
+        public Handle End => new(m_EndHandle);
 
         /// <summary>
         /// Allocator used by this data structure.

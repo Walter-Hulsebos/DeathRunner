@@ -33,7 +33,7 @@ namespace HeurekaGames.Utils
         [SerializeField]
         public class StringList
         {
-            public List<string> Items = new List<string>();
+            public List<string> Items = new();
 
             public StringList(List<string> items)
             {

@@ -11,8 +11,8 @@ namespace MoreMountains.Tools
 	{
 		public bool GroupIsOpen;
 		public MMInspectorGroupAttribute GroupAttribute;
-		public List<SerializedProperty> PropertiesList = new List<SerializedProperty>();
-		public HashSet<string> GroupHashSet = new HashSet<string>();
+		public List<SerializedProperty> PropertiesList = new();
+		public HashSet<string> GroupHashSet = new();
 		public Color GroupColor;
 
 		public void ClearGroup()
@@ -31,8 +31,8 @@ namespace MoreMountains.Tools
 	public class MMMonoBehaviourDrawer : UnityEditor.Editor
 	{
 		public bool DrawerInitialized;
-		public List<SerializedProperty> PropertiesList = new List<SerializedProperty>();
-		public Dictionary<string, MMInspectorGroupData> GroupData = new Dictionary<string, MMInspectorGroupData>();
+		public List<SerializedProperty> PropertiesList = new();
+		public Dictionary<string, MMInspectorGroupData> GroupData = new();
         
 		private string[] _mmHiddenPropertiesToHide;
 		private bool _hasMMHiddenProperties = false;

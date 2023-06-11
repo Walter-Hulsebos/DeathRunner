@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3602234087874590056}
   - component: {fileID: 3602234087859790280}
-  - component: {fileID: 4243885964987575456}
   m_Layer: 0
   m_Name: Ventilating_Duct_01d_snaps020
   m_TagString: Untagged
@@ -63,19 +62,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3602234087876884366}
   m_Enabled: 1
---- !u!114 &4243885964987575456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3602234087874947400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 3b3da87a6446caa42a105476e5febbb7, type: 2}
 --- !u!1 &3602234087874947402
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,9 +155,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3602234087874947402}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 4.0000086, y: 0.59096503, z: 0.59077084}
   m_Center: {x: 2.000001, y: 0.000000014901161, z: 0}
 --- !u!1 &3602234087874947404
@@ -268,9 +262,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3602234087874947404}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 4.0000086, y: 0.59096503, z: 0.59077084}
   m_Center: {x: 2.000001, y: 0.000000014901161, z: -0.000000014901161}
 --- !u!114 &3769630519486099209
@@ -379,9 +381,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3602234087874947406}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 4.0000086, y: 0.5709101, z: 0.5707189}
   m_Center: {x: 2.000001, y: -0.000000014901161, z: -0.000000014901161}
 --- !u!114 &3099602170448536799

@@ -19,7 +19,7 @@ namespace DungeonArchitect.Builders
 {
     public static class DungeonBuilderDefaultMarkers
     {
-        static Dictionary<Type, string[]> DefaultMarkersByBuilder = new Dictionary<Type, string[]>();
+        static Dictionary<Type, string[]> DefaultMarkersByBuilder = new();
 
         static DungeonBuilderDefaultMarkers()
         {

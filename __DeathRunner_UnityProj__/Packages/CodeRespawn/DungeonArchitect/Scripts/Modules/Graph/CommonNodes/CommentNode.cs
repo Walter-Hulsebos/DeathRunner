@@ -6,7 +6,7 @@ namespace DungeonArchitect.Graphs
     public class CommentNode : GraphNode
     {
         public string message = "Comment";
-        public Color background = new Color(1.0f, 0.714f, 0.992f, 0.175f);
+        public Color background = new(1.0f, 0.714f, 0.992f, 0.175f);
         public int fontSize = 22;
 
         public override void CopyFrom(GraphNode node)

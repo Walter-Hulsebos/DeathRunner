@@ -55,14 +55,14 @@ namespace FMODUnity
 
             position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
 
-            GUIStyle buttonStyle = new GUIStyle(GUI.skin.button);
+            GUIStyle buttonStyle = new(GUI.skin.button);
             buttonStyle.padding.top = 1;
             buttonStyle.padding.bottom = 1;
 
-            Rect addRect = new Rect(position.x + position.width - addIcon.width - 7, position.y, addIcon.width + 7, baseHeight);
-            Rect openRect = new Rect(addRect.x - openIcon.width - 7, position.y, openIcon.width + 6, baseHeight);
-            Rect searchRect = new Rect(openRect.x - browseIcon.width - 9, position.y, browseIcon.width + 8, baseHeight);
-            Rect pathRect = new Rect(position.x, position.y, searchRect.x - position.x - 3, baseHeight);
+            Rect addRect = new(position.x + position.width - addIcon.width - 7, position.y, addIcon.width + 7, baseHeight);
+            Rect openRect = new(addRect.x - openIcon.width - 7, position.y, openIcon.width + 6, baseHeight);
+            Rect searchRect = new(openRect.x - browseIcon.width - 9, position.y, browseIcon.width + 8, baseHeight);
+            Rect pathRect = new(position.x, position.y, searchRect.x - position.x - 3, baseHeight);
 
             EditorGUI.PropertyField(pathRect, pathProperty, GUIContent.none);
 

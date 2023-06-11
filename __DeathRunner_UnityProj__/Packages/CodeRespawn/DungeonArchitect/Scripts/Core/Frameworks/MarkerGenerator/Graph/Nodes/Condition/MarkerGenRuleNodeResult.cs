@@ -6,8 +6,8 @@ namespace DungeonArchitect.MarkerGenerator.Nodes.Condition
 {
     public class MarkerGenRuleNodeResult : MarkerGenRuleGraphNodeConditionBase
     {
-        public override Color BodyColor => new Color(0.3f, 0.1f, 0.1f);
-        public override Color TitleColor => new Color(0.4f, 0.1f, 0.1f);
+        public override Color BodyColor => new(0.3f, 0.1f, 0.1f);
+        public override Color TitleColor => new(0.4f, 0.1f, 0.1f);
         
         public override string Title => "Should Select?";
 

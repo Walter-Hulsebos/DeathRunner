@@ -28,7 +28,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to animate the min anchor on
 		[Tooltip("the curve to animate the min anchor on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
-		public MMTweenType AnchorMinCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
+		public MMTweenType AnchorMinCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// the value to remap the min anchor curve's 0 on
 		[Tooltip("the value to remap the min anchor curve's 0 on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
@@ -45,7 +45,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to animate the max anchor on
 		[Tooltip("the curve to animate the max anchor on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
-		public MMTweenType AnchorMaxCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
+		public MMTweenType AnchorMaxCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1)));
 		/// the value to remap the max anchor curve's 0 on
 		[Tooltip("the value to remap the max anchor curve's 0 on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
@@ -62,8 +62,8 @@ namespace MoreMountains.Feedbacks
 				return;
 			}
             
-			MMFeedbackBaseTarget targetMin = new MMFeedbackBaseTarget();
-			MMPropertyReceiver receiverMin = new MMPropertyReceiver();
+			MMFeedbackBaseTarget targetMin = new();
+			MMPropertyReceiver receiverMin = new();
 			receiverMin.TargetObject = TargetRectTransform.gameObject;
 			receiverMin.TargetComponent = TargetRectTransform;
 			receiverMin.TargetPropertyName = "anchorMin";
@@ -79,8 +79,8 @@ namespace MoreMountains.Feedbacks
 
 			_targets.Add(targetMin);
             
-			MMFeedbackBaseTarget targetMax = new MMFeedbackBaseTarget();
-			MMPropertyReceiver receiverMax = new MMPropertyReceiver();
+			MMFeedbackBaseTarget targetMax = new();
+			MMPropertyReceiver receiverMax = new();
 			receiverMax.TargetObject = TargetRectTransform.gameObject;
 			receiverMax.TargetComponent = TargetRectTransform;
 			receiverMax.TargetPropertyName = "anchorMax";

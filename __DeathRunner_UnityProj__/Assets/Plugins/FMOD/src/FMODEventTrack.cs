@@ -14,7 +14,7 @@ namespace FMODUnity
     [DisplayName("FMOD/Event Track")]
     public class FMODEventTrack : TrackAsset
     {
-        public FMODEventMixerBehaviour template = new FMODEventMixerBehaviour();
+        public FMODEventMixerBehaviour template = new();
 
         public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
         {

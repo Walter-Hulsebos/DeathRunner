@@ -369,10 +369,10 @@ namespace DungeonArchitect.MarkerGenerator.Processor.Grid
                 // Run a flood fill algorithm on the initial ground tiles
                 {
                     var neighborDeltas = new Vector2Int[] {
-                        new Vector2Int(-1, 0),
-                        new Vector2Int(1, 0),
-                        new Vector2Int(0, -1),
-                        new Vector2Int(0, 1)
+                        new(-1, 0),
+                        new(1, 0),
+                        new(0, -1),
+                        new(0, 1)
                     };
                     
                     while (queue.Count > 0)

@@ -34,7 +34,7 @@ namespace DungeonArchitect.Navigation {
 		}
 		
 		public static void AddMeshTriangles(List<Triangle3> triangles, Vector3[] vertices, int[] indices, Matrix4x4 transform) {
-			List<SVector3> svertices = new List<SVector3>();
+			List<SVector3> svertices = new();
 			foreach (var vert in vertices) {
 				var gvert = transform.MultiplyPoint(vert);
 				svertices.Add (new SVector3(gvert.x, gvert.y, gvert.z));

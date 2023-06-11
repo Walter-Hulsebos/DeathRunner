@@ -17,7 +17,7 @@ namespace DungeonArchitect
 		public IntVector gridPosition;
 		public int cellId;
 		public bool markForDeletion = false;
-		public List<PropSocket> childMarkers = new List<PropSocket>();
+		public List<PropSocket> childMarkers = new();
 		public object metadata;
 
 		public PropSocket() {}
@@ -90,7 +90,7 @@ namespace DungeonArchitect.Themeing
 		/// <summary>
         /// The child socket markers emitted from this node
 		/// </summary>
-		public List<PropChildSocketData> ChildSockets = new List<PropChildSocketData>();
+		public List<PropChildSocketData> ChildSockets = new();
 
         /// <summary>
         /// Indicates if the object's static flag is to be set

@@ -16,7 +16,7 @@ namespace MoreMountains.Tools
 		protected UnityAction<Scene, Scene> _onActiveSceneChangedCallback;
 		protected string _sceneToLoadName;
 		protected string _antiSpillSceneName;
-		protected List<GameObject> _spillSceneRoots = new List<GameObject>(50);
+		protected List<GameObject> _spillSceneRoots = new(50);
 		protected static List<string> _scenesInBuild;
 		
 		/// <summary>

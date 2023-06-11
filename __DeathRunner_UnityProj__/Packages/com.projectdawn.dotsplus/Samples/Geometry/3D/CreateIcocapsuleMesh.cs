@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 [ExecuteInEditMode]
 public class CreateIcocapsuleMesh : MonoBehaviour
 {
-    public Capsule Capsule = new Capsule(0, 1, 0.5f);
+    public Capsule Capsule = new(0, 1, 0.5f);
     [Range(1, 6)]
     public int Subdivision = 1;
 

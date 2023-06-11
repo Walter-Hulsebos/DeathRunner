@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3350550}
   - component: {fileID: 2318570}
   - component: {fileID: 6599374}
-  - component: {fileID: 2429783119135301096}
   m_Layer: 0
   m_Name: PlasticHanging
   m_TagString: Untagged
@@ -93,21 +92,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 186056}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 2.0790792, y: 0.7203096, z: 0.08669373}
   m_Center: {x: -0.00000017881393, y: -0.27965033, z: 0}
---- !u!114 &2429783119135301096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 186056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 4bb7dcef4a764ed41bf9680d29b85bd8, type: 2}

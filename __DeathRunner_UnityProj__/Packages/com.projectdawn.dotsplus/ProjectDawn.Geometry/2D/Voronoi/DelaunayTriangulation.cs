@@ -46,7 +46,7 @@ namespace ProjectDawn.Geometry2D
         /// <inheritdoc />
         public int ProcessVertex(double2 point, int siteIndexA, int siteIndexB, int siteIndexC)
         {
-            int3 indices = new int3(siteIndexA, siteIndexB, siteIndexC);
+            int3 indices = new(siteIndexA, siteIndexB, siteIndexC);
 
             float2 a = Points[indices.x];
             float2 b = Points[indices.y];

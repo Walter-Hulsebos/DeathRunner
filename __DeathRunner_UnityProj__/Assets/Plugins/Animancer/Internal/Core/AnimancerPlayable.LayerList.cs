@@ -259,7 +259,7 @@ namespace Animancer
 
             /// <summary>Returns an enumerator that will iterate through all layers.</summary>
             public FastEnumerator<AnimancerLayer> GetEnumerator()
-                => new FastEnumerator<AnimancerLayer>(_Layers, _Count);
+                => new(_Layers, _Count);
 
             /// <inheritdoc/>
             IEnumerator<AnimancerLayer> IEnumerable<AnimancerLayer>.GetEnumerator()

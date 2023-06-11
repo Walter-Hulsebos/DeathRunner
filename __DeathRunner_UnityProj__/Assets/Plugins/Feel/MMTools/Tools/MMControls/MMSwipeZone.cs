@@ -104,7 +104,7 @@ namespace MoreMountains.Tools
 		protected virtual void Swipe()
 		{
 			float duration = _swipeEndedAt - _swipeStartedAt;
-			MMSwipeEvent swipeEvent = new MMSwipeEvent (_swipeDirection, _angle, _length, _firstTouchPosition, _destination, duration);
+			MMSwipeEvent swipeEvent = new(_swipeDirection, _angle, _length, _firstTouchPosition, _destination, duration);
 			MMEventManager.TriggerEvent(swipeEvent);
 			if (ZoneSwiped != null)
 			{

@@ -111,21 +111,21 @@ namespace FMODUnity
         private ReorderableList banksToLoadView;
 
         private PlatformsView platformsView;
-        private TreeViewState platformTreeViewState = new TreeViewState();
+        private TreeViewState platformTreeViewState = new();
 
         private string lastSourceBankPath;
 
-        private static readonly GUIContent BankRefreshLabel = new GUIContent("Refresh Banks");
+        private static readonly GUIContent BankRefreshLabel = new("Refresh Banks");
 
         private static readonly GUIContent[] BankRefreshCooldownLabels = new GUIContent[] {
-            new GUIContent("After 1 second"),
-            new GUIContent("After 5 seconds"),
-            new GUIContent("After 10 seconds"),
-            new GUIContent("After 20 seconds"),
-            new GUIContent("After 30 seconds"),
-            new GUIContent("After 1 minute"),
-            new GUIContent("Prompt Me"),
-            new GUIContent("Manually"),
+            new("After 1 second"),
+            new("After 5 seconds"),
+            new("After 10 seconds"),
+            new("After 20 seconds"),
+            new("After 30 seconds"),
+            new("After 1 minute"),
+            new("Prompt Me"),
+            new("Manually"),
         };
 
         private static readonly int[] BankRefreshCooldownValues = new int[] {
@@ -183,7 +183,7 @@ namespace FMODUnity
 
             banksToLoadView = new ReorderableList(banksToLoad);
             banksToLoadView.onAddDropdownCallback = (rect, list) => {
-                GenericMenu menu = new GenericMenu();
+                GenericMenu menu = new();
 
                 menu.AddItem(new GUIContent("Browse..."), false, BrowseForBankToLoad);
                 menu.AddItem(new GUIContent("Add All"), false, AddAllBanksToLoad);
@@ -321,7 +321,7 @@ namespace FMODUnity
             {
                 if (data.overridden)
                 {
-                    Rect indicatorRect = new Rect(data.labelRect) { x = 1, width = 2 };
+                    Rect indicatorRect = new(data.labelRect) { x = 1, width = 2 };
                     GUI.DrawTexture(indicatorRect, propertyOverrideIndicator);
                 }
 
@@ -329,9 +329,9 @@ namespace FMODUnity
                     && Event.current.button == 1
                     && data.labelRect.Contains(Event.current.mousePosition))
                 {
-                    GenericMenu menu = new GenericMenu();
+                    GenericMenu menu = new();
 
-                    GUIContent revertContent = new GUIContent("Revert");
+                    GUIContent revertContent = new("Revert");
 
                     if (data.overridden)
                     {
@@ -460,7 +460,7 @@ namespace FMODUnity
             GUIStyle affinityStyle = EditorStyles.miniButton;
             float affinityWidth = affinityStyle.CalcSize(new GUIContent("00")).x;
 
-            GUIContent anyButtonContent = new GUIContent("Any");
+            GUIContent anyButtonContent = new("Any");
             float anyButtonWidth = affinityStyle.CalcSize(anyButtonContent).x;
 
             float threadsWidth = EditorGUIUtility.labelWidth;
@@ -542,8 +542,8 @@ namespace FMODUnity
 
             GUIStyle editButtonStyle = EditorStyles.popup;
 
-            GUIContent editButtonContent = new GUIContent("Edit");
-            Rect editButtonRect = new Rect(Vector2.zero, editButtonStyle.CalcSize(editButtonContent));
+            GUIContent editButtonContent = new("Edit");
+            Rect editButtonRect = new(Vector2.zero, editButtonStyle.CalcSize(editButtonContent));
 
             float threadsHeight = group.threads.Count * EditorGUIUtility.singleLineHeight;
 
@@ -635,7 +635,7 @@ namespace FMODUnity
             if (editable)
             {
                 GUIStyle deleteButtonStyle = GUI.skin.button;
-                GUIContent deleteButtonContent = new GUIContent("Delete");
+                GUIContent deleteButtonContent = new("Delete");
 
                 Rect deleteButtonRect = controlRect;
                 deleteButtonRect.x = affinitiesRect.xMax;
@@ -661,7 +661,7 @@ namespace FMODUnity
                 editor.platform = platform;
                 editor.parent = parent;
 
-                Rect rect = new Rect(GUIUtility.GUIToScreenPoint(buttonRect.position), buttonRect.size);
+                Rect rect = new(GUIUtility.GUIToScreenPoint(buttonRect.position), buttonRect.size);
 
                 editor.ShowAsDropDown(rect, CalculateSize());
             }
@@ -692,7 +692,7 @@ namespace FMODUnity
 
             private void OnGUI()
             {
-                Rect frameRect = new Rect(0, 0, position.width, position.height);
+                Rect frameRect = new(0, 0, position.width, position.height);
 
                 GUI.Box(frameRect, string.Empty, FrameStyle);
 
@@ -846,8 +846,8 @@ namespace FMODUnity
             private GUIStyle headerStyle;
             private GUIStyle toggleStyle;
 
-            private GUIContent subdirectoryHeader = new GUIContent("Output sub-directory:");
-            private GUIContent speakerModeHeader = new GUIContent("Surround speaker mode:");
+            private GUIContent subdirectoryHeader = new("Output sub-directory:");
+            private GUIContent speakerModeHeader = new("Surround speaker mode:");
 
             private const string HelpText = "Select the output sub-directory and speaker mode that match the project " +
                 "platform settings in the FMOD Studio build preferences.";
@@ -920,7 +920,7 @@ namespace FMODUnity
             {
                 float y = rect.y + headerStyle.margin.top;
 
-                Rect subdirectoryRect = new Rect(rect.x + headerStyle.margin.left, y, subdirectorySize.x, rect.height);
+                Rect subdirectoryRect = new(rect.x + headerStyle.margin.left, y, subdirectorySize.x, rect.height);
 
                 using (new GUILayout.AreaScope(subdirectoryRect))
                 {
@@ -948,7 +948,7 @@ namespace FMODUnity
                     }
                 }
 
-                Rect speakerModeRect = new Rect(subdirectoryRect.xMax + InterColumnSpace, y, speakerModeSize.x, rect.height);
+                Rect speakerModeRect = new(subdirectoryRect.xMax + InterColumnSpace, y, speakerModeSize.x, rect.height);
 
                 using (new GUILayout.AreaScope(speakerModeRect))
                 {
@@ -976,7 +976,7 @@ namespace FMODUnity
                     }
                 }
 
-                Rect helpButtonRect = new Rect(speakerModeRect.xMax, y, helpButtonSize.x, helpButtonSize.y);
+                Rect helpButtonRect = new(speakerModeRect.xMax, y, helpButtonSize.x, helpButtonSize.y);
                 EditorUtils.DrawHelpButton(helpButtonRect, () => new SimpleHelp(HelpText));
             }
         }
@@ -1045,7 +1045,7 @@ namespace FMODUnity
         {
             Rect rect = DrawPlatformPropertyLabel(label, platform, property);
 
-            GUIContent resetContent = new GUIContent("Reset");
+            GUIContent resetContent = new("Reset");
 
             Rect resetRect = rect;
             resetRect.xMin = resetRect.xMax - GUI.skin.button.CalcSize(resetContent).x;
@@ -1184,7 +1184,7 @@ namespace FMODUnity
 
                 Rect rect = EditorGUILayout.GetControlRect();
 
-                GUIContent buttonContent = new GUIContent(string.Format("<b>{0}</b>", parent.DisplayName));
+                GUIContent buttonContent = new(string.Format("<b>{0}</b>", parent.DisplayName));
                 GUIContent iconContent = EditorGUIUtility.IconContent("UnityEditor.FindDependencies");
 
                 Rect labelRect = LabelRect(rect);
@@ -1243,7 +1243,7 @@ namespace FMODUnity
 
             GUIStyle style = GUI.skin.toggle;
 
-            GUIContent content = new GUIContent("Auto");
+            GUIContent content = new("Auto");
             rect.width = style.CalcSize(content).x;
 
             bool useAutoDSPBufferSettings = lengthProperty.Get(platform) == 0 && countProperty.Get(platform) == 0;
@@ -1319,7 +1319,7 @@ namespace FMODUnity
         {
             AffirmResources();
 
-            GUIContent text = new GUIContent("FMOD Settings");
+            GUIContent text = new("FMOD Settings");
 
             Vector2 textSize = mainHeaderStyle.CalcSize(text);
             Vector2 iconSize = GUI.skin.label.CalcSize(mainHeaderIcon);
@@ -1528,16 +1528,16 @@ namespace FMODUnity
         {
             private GUIStyle style;
 
-            private readonly GUIContent introduction = new GUIContent("Choose how to access your FMOD Studio content:");
+            private readonly GUIContent introduction = new("Choose how to access your FMOD Studio content:");
 
             private readonly ListEntry[] listEntries = {
-                new ListEntry("FMOD Studio Project",
+                new("FMOD Studio Project",
                     "If you have the complete FMOD Studio project."
                 ),
-                new ListEntry("Single Platform Build",
+                new("Single Platform Build",
                     "If you have the contents of the <b>Build</b> folder for a single platform."
                 ),
-                new ListEntry("Multiple Platform Build",
+                new("Multiple Platform Build",
                     "If you have the contents of the <b>Build</b> folder for multiple platforms, " +
                     "with each platform in its own subdirectory."
                 ),
@@ -1565,7 +1565,7 @@ namespace FMODUnity
 
             protected override Vector2 GetContentSize()
             {
-                Vector2 size = new Vector2(440, 0);
+                Vector2 size = new(440, 0);
 
                 size.y += style.margin.top;
                 size.y += style.CalcHeight(introduction, size.x);
@@ -1863,11 +1863,11 @@ namespace FMODUnity
 
             private const float FooterMarginRight = 10;
 
-            private static readonly RectOffset BodyPadding = new RectOffset(1, 2, 1, 4);
-            private static readonly RectOffset FooterPadding = new RectOffset(4, 4, 0, 0);
+            private static readonly RectOffset BodyPadding = new(1, 2, 1, 4);
+            private static readonly RectOffset FooterPadding = new(4, 4, 0, 0);
 
-            private static readonly Vector2 DragHandleSize = new Vector2(10, 7);
-            private static readonly Vector2 DragHandlePadding = new Vector2(5, 6);
+            private static readonly Vector2 DragHandleSize = new(10, 7);
+            private static readonly Vector2 DragHandlePadding = new(5, 6);
 
             public PlatformsView(Settings settings, TreeViewState state) : base(state)
             {
@@ -1977,7 +1977,7 @@ namespace FMODUnity
 
             private void DoAddMenu(Rect rect)
             {
-                GenericMenu menu = new GenericMenu();
+                GenericMenu menu = new();
 
                 menu.AddItem(new GUIContent("New Group"), false, AddGroup);
 
@@ -2112,12 +2112,12 @@ namespace FMODUnity
 
                     if (IsItemDraggable(args.item))
                     {
-                        Rect dragRect = new Rect(args.rowRect.position + DragHandlePadding, DragHandleSize);
+                        Rect dragRect = new(args.rowRect.position + DragHandlePadding, DragHandleSize);
 
                         defaultBehaviours.draggingHandle.Draw(dragRect, false, false, false, false);
                     }
 
-                    GUIContent labelContent = new GUIContent(args.label);
+                    GUIContent labelContent = new(args.label);
 
                     GUIStyle labelStyle = GUI.skin.label;
 
@@ -2141,7 +2141,7 @@ namespace FMODUnity
 
                     if (canRename && Event.current.type == EventType.Repaint)
                     {
-                        Rect iconRect = new Rect() {
+                        Rect iconRect = new() {
                             x = labelRect.xMax - renameIcon.width,
                             y = labelRect.yMax - labelStyle.padding.bottom - renameIcon.height,
                             width = renameIcon.width,
@@ -2180,7 +2180,7 @@ namespace FMODUnity
 
             protected override TreeViewItem BuildRoot()
             {
-                TreeViewItem root = new TreeViewItem(-1, -1);
+                TreeViewItem root = new(-1, -1);
 
                 root.AddChild(CreateItem(settings.PlayInEditorPlatform));
 
@@ -2265,7 +2265,7 @@ namespace FMODUnity
 
                 // Undo.RecordObject doesn't capture PlatformGroup.displayName, maybe due to inheritance?
                 // This means we need to use the SerializedObject interface instead.
-                SerializedObject serializedGroup = new SerializedObject(group);
+                SerializedObject serializedGroup = new(group);
                 SerializedProperty displayName = serializedGroup.FindProperty("displayName");
 
                 displayName.stringValue = args.newName;
@@ -2514,7 +2514,7 @@ namespace FMODUnity
             {
                 if (!property.HasValue(platform))
                 {
-                    List<string> newList = new List<string>(property.Get(platform));
+                    List<string> newList = new(property.Get(platform));
 
                     property.Set(platform, newList);
                 }

@@ -25,7 +25,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		public bool RelativeIntensity = false;
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakeIntensity = new AnimationCurve(new Keyframe(0, 0),
+		public AnimationCurve ShakeIntensity = new(new Keyframe(0, 0),
 			new Keyframe(0.2f, 1),
 			new Keyframe(0.25f, -1),
 			new Keyframe(0.35f, 0.7f),

@@ -11,7 +11,7 @@ namespace DungeonArchitect.Utils
     /// </summary>
     public class InstanceCache
     {
-        readonly Dictionary<string, ScriptableObject> instanceByType = new Dictionary<string, ScriptableObject>();
+        readonly Dictionary<string, ScriptableObject> instanceByType = new();
         /// <summary>
         /// Retrieves the instance of the specified ScriptableObject type name. If none exists, a new one is created and stored
         /// </summary>

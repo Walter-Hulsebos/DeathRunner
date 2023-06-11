@@ -486,7 +486,7 @@ namespace DungeonArchitect.Builders.Snap
             // Pick a door from this module to extend
             ModuleBuildNode BestBuildNode = null;
 
-            HashSet<Bounds> OccupiedBounds = new HashSet<Bounds>(_OccupiedBounds);
+            HashSet<Bounds> OccupiedBounds = new(_OccupiedBounds);
 
             int[] ModuleListIndices;
             ModuleListIndices = FindFilteredModuleList(RecursiveState.ModuleInfoList, graphNode.Payload.nodeType.nodeName);
@@ -653,7 +653,7 @@ namespace DungeonArchitect.Builders.Snap
             public int IncomingDoorIndex;
             public SnapAttachmentConfiguration AttachmentConfig;
             public int DepthFromLeaf;
-            public List<ModuleBuildNode> Extensions = new List<ModuleBuildNode>();
+            public List<ModuleBuildNode> Extensions = new();
             public ModuleBuildNode Parent;
 
             /// <summary>
@@ -678,7 +678,7 @@ namespace DungeonArchitect.Builders.Snap
             public bool bSafetyBailOut;
             public int NumTries;
             public bool bFoundBestBuild;
-            public List<ModuleInfo> ModuleInfoList = new List<ModuleInfo>();
+            public List<ModuleInfo> ModuleInfoList = new();
         };
     }
 }

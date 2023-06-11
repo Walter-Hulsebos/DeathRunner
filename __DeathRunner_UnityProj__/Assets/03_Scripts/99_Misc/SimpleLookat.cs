@@ -15,7 +15,7 @@ public class SimpleLookat : MonoBehaviour
     [SerializeField] private Vector3 offsetRotation;
 
     // Get the position of the target, but with the y value of this object.
-    private Vector3 FlatTargetPosition => new Vector3(target.position.x, transform.position.y, target.position.z);
+    private Vector3 FlatTargetPosition => new(target.position.x, transform.position.y, target.position.z);
 
 	
     // Called when the script is loaded (Called in the editor only).

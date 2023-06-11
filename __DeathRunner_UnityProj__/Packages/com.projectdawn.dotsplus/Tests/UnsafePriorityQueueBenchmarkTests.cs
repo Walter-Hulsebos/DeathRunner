@@ -19,7 +19,7 @@ namespace ProjectDawn.Collections.Tests
         public unsafe void UnsafeLinkedPriorityQueueBenchmarkTests_Int_Enqueue()
         {
             int count = 10000;
-            Stopwatch stopWatch = new Stopwatch();
+            Stopwatch stopWatch = new();
             Random rnd;
 
             rnd = new Random(1);
@@ -48,7 +48,7 @@ namespace ProjectDawn.Collections.Tests
         public unsafe void UnsafeLinkedPriorityQueueBenchmarkTests_Int_Dequeue()
         {
             int count = 10000;
-            Stopwatch stopWatch = new Stopwatch();
+            Stopwatch stopWatch = new();
             Random rnd;
 
             rnd = new Random(1);

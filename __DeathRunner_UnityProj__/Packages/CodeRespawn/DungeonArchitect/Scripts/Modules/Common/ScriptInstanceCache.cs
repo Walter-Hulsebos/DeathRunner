@@ -5,7 +5,7 @@ namespace DungeonArchitect.Utils
 {
     public class ScriptInstanceCache<T> where T : ScriptableObject
     {
-        private Dictionary<string, T> _scriptCache = new Dictionary<string, T>();
+        private Dictionary<string, T> _scriptCache = new();
 
         public T GetScript(string typePath)
         {

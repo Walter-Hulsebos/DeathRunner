@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 9078118067538867482}
   - component: {fileID: 5322099651822801684}
   - component: {fileID: 4217170764920550200}
-  - component: {fileID: 8735526694825058380}
   m_Layer: 0
   m_Name: Conditioning_Interior
   m_TagString: Untagged
@@ -113,21 +112,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7420533851427574991}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.25928748, y: 0.34217098, z: 1.2929248}
   m_Center: {x: 0.12964374, y: 0.17108549, z: 0}
---- !u!114 &8735526694825058380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7420533851427574991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 70b0d016b885c034289b40d6dea1a4ad, type: 2}

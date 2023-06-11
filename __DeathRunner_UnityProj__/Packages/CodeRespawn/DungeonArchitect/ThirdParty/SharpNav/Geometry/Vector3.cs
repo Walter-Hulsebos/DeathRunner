@@ -333,27 +333,27 @@ namespace SharpNav.Geometry
 		/// <summary>
 		/// Defines a unit-length Vector3 that points towards the X-axis.
 		/// </summary>
-		public static readonly Vector3 UnitX = new Vector3(1, 0, 0);
+		public static readonly Vector3 UnitX = new(1, 0, 0);
 
 		/// <summary>
 		/// Defines a unit-length Vector3 that points towards the Y-axis.
 		/// </summary>
-		public static readonly Vector3 UnitY = new Vector3(0, 1, 0);
+		public static readonly Vector3 UnitY = new(0, 1, 0);
 
 		/// <summary>
 		/// /// Defines a unit-length Vector3 that points towards the Z-axis.
 		/// </summary>
-		public static readonly Vector3 UnitZ = new Vector3(0, 0, 1);
+		public static readonly Vector3 UnitZ = new(0, 0, 1);
 
 		/// <summary>
 		/// Defines a zero-length Vector3.
 		/// </summary>
-		public static readonly Vector3 Zero = new Vector3(0, 0, 0);
+		public static readonly Vector3 Zero = new(0, 0, 0);
 
 		/// <summary>
 		/// Defines an instance with all components set to 1.
 		/// </summary>
-		public static readonly Vector3 One = new Vector3(1, 1, 1);
+		public static readonly Vector3 One = new(1, 1, 1);
 
 		/// <summary>
 		/// Defines the size of the Vector3 struct in bytes.

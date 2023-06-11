@@ -25,7 +25,7 @@ namespace MoreMountains.Tools
 		}
 		#endif
 
-		private static Dictionary<string, string> cachedPaths = new Dictionary<string, string>();
+		private static Dictionary<string, string> cachedPaths = new();
 
 		private bool GetConditionAttributeResult(MMEnumConditionAttribute enumConditionAttribute, SerializedProperty property)
 		{

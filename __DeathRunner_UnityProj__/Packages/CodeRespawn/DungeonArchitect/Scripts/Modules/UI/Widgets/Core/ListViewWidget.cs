@@ -32,7 +32,7 @@ namespace DungeonArchitect.UI.Widgets
 
         public ScrollPanelWidget ScrollView;
         public int ItemHeight = 40;
-        public Color backgroundColor = new Color(0.1f, 0.1f, 0.1f);
+        public Color backgroundColor = new(0.1f, 0.1f, 0.1f);
 
         StackPanelWidget panel;
         IWidget layout;
@@ -247,9 +247,9 @@ namespace DungeonArchitect.UI.Widgets
         public bool Selected { get; set; }
         public object ItemData { get; set; }
 
-        public GUIStyle TextStyle = new GUIStyle();
-        public GUIStyle SelectedTextStyle = new GUIStyle();
-        public Color SelectedColor = new Color(1.0f, 0.5f, 0.0f);
+        public GUIStyle TextStyle = new();
+        public GUIStyle SelectedTextStyle = new();
+        public Color SelectedColor = new(1.0f, 0.5f, 0.0f);
         public float OffsetX = 10;
         System.Func<string> captionGetter;
 

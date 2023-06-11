@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3356582}
   - component: {fileID: 2387508}
   - component: {fileID: 6568040}
-  - component: {fileID: 1602393948903545173}
   m_Layer: 0
   m_Name: Door_Metal_Chainlink
   m_TagString: Untagged
@@ -94,21 +93,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147914}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1.1315657, y: 2.047161, z: 0.13832836}
   m_Center: {x: -0.47832018, y: 0.007519126, z: 0.005864635}
---- !u!114 &1602393948903545173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 5e38a40811136c147af160d5a94d9687, type: 2}

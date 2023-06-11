@@ -31,7 +31,7 @@ namespace MoreMountains.Tools
 		public List<GameObject> RandomPool;
 		/// the min and max bounds to use to determine a random quantity of objects to spawn
 		[MMVector("Min", "Max")]
-		public Vector2Int Quantity = new Vector2Int(1, 1);
+		public Vector2Int Quantity = new(1, 1);
 
 		[Header("Scale")]
 		/// the scale mode to use (uniform scales the whole object, Vector3 randomizes x, y and z scale elements

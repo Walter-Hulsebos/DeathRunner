@@ -7,8 +7,8 @@ namespace JBooth.BetterLit
    [ExecuteAlways]
    public class ShapeEffectorGroup : MonoBehaviour
    {
-      public List<ShapeEffector> effectors = new List<ShapeEffector>();
-      public List<Material> materials = new List<Material>();
+      public List<ShapeEffector> effectors = new();
+      public List<Material> materials = new();
 
       Matrix4x4[] mtxs = new Matrix4x4[8];
       Vector4[] data = new Vector4[8];

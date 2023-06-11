@@ -64,7 +64,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to use when interpolating towards the destination color
 		[Tooltip("the curve to use when interpolating towards the destination color")]
 		[MMFEnumCondition("ColorMode", (int)ColorModes.Interpolate)]
-		public AnimationCurve ColorCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ColorCurve = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
 		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
 		public bool AllowAdditivePlays = false;

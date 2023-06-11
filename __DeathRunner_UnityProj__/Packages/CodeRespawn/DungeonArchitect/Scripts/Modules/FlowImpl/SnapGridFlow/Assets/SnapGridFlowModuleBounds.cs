@@ -7,7 +7,7 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow
     public class SnapGridFlowModuleBounds : ScriptableObject
     {
         [Tooltip("The world size of a module chunk (1x1x1).  A module can span multiple chunks (e.g 2x2x1)")]
-        public Vector3 chunkSize = new Vector3(40, 20, 40);
+        public Vector3 chunkSize = new(40, 20, 40);
 
         [Tooltip("How high do you want the door to be from the lower bounds. This will create a door visual indicator on the bounds actor, aiding your while designing your modules.  This is used for preview only")]
         public float doorOffsetY = 5;

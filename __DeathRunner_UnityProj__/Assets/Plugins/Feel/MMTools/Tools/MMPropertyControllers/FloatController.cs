@@ -79,7 +79,7 @@ namespace MoreMountains.Tools
 
 		[Header("Ping Pong")]
 		/// the curve to apply to the tween
-		public MMTweenType Curve = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
+		public MMTweenType Curve = new(MMTween.MMTweenCurve.EaseInCubic);
 		/// the minimum value for the ping pong
 		public float MinValue = 0f;
 		/// the maximum value for the ping pong
@@ -92,13 +92,13 @@ namespace MoreMountains.Tools
 		[Header("Random")]
 		[MMVector("Min", "Max")]
 		/// the noise amplitude
-		public Vector2 Amplitude = new Vector2(0f,5f);
+		public Vector2 Amplitude = new(0f,5f);
 		[MMVector("Min", "Max")]
 		/// the noise frequency
-		public Vector2 Frequency = new Vector2(1f, 1f);
+		public Vector2 Frequency = new(1f, 1f);
 		[MMVector("Min", "Max")]
 		/// the noise shift
-		public Vector2 Shift = new Vector2(0f, 1f);
+		public Vector2 Shift = new(0f, 1f);
 		/// if this is true, will let you remap the noise value (without amplitude) to the bounds you've specified
 		public bool RemapNoiseValues = false;
 		/// the value to which to remap the random's zero bound
@@ -118,7 +118,7 @@ namespace MoreMountains.Tools
 		/// the high value to remap the normalized curve value to 
 		public float OneTimeRemapMax = 1f;
 		/// the curve to apply to the one time shake
-		public AnimationCurve OneTimeCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve OneTimeCurve = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// whether or not this controller should go to sleep after a one time shake
 		public bool DisableAfterOneTime;
 		/// whether or not this controller should go back to sleep after a OneTime
@@ -133,7 +133,7 @@ namespace MoreMountains.Tools
 		/// the value to tween to
 		public float ToDestinationValue = 1f;
 		/// the curve to use when tweening a value to destination
-		public AnimationCurve ToDestinationCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 0.6f), new Keyframe(1f, 1f));
+		public AnimationCurve ToDestinationCurve = new(new Keyframe(0, 0), new Keyframe(0.5f, 0.6f), new Keyframe(1f, 1f));
 		/// whether or not this controller should go to sleep after a to destination shake
 		public bool DisableAfterToDestination;
 		[MMInspectorButton("ToDestination")]

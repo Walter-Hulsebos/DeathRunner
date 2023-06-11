@@ -6,7 +6,7 @@ namespace DungeonArchitect.Graphs.Layouts
 {
     public class DefaultGraphLayoutNodeActions : IGraphLayoutNodeActions<GraphNode>
     {
-        Dictionary<GraphNode, List<GraphNode>> outgoingNodes = new Dictionary<GraphNode, List<GraphNode>>();
+        Dictionary<GraphNode, List<GraphNode>> outgoingNodes = new();
 
         public DefaultGraphLayoutNodeActions(Graph graph) {
             // Cache the outgoing nodes to avoid O(N^2) with GetOutgoingNodes function

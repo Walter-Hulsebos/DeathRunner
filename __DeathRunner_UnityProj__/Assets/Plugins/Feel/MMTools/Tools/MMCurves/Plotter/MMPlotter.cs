@@ -63,7 +63,7 @@ namespace MoreMountains.Tools
 		public virtual string[] GetMethodsList()
 		{
 			FillMethodList();
-			List<string> methodNames = new List<string>();
+			List<string> methodNames = new();
 			foreach (MethodInfo method in _methodList)
 			{
 				methodNames.Add(method.Name);

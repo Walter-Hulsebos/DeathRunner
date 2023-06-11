@@ -175,9 +175,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6001929888226190137}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.5829592, y: 4.1230164, z: 0.76831436}
   m_Center: {x: 0.021137089, y: 1.9991302, z: 0.0845865}
 --- !u!1 &6487105772832729391
@@ -273,7 +281,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9070885170540041148}
   - component: {fileID: 4303292427062174925}
-  - component: {fileID: 7376134975149563468}
   m_Layer: 0
   m_Name: Antenna_02
   m_TagString: Untagged
@@ -326,16 +333,3 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6590572298921011550}
   m_Enabled: 1
---- !u!114 &7376134975149563468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8550526636562680070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 42e85b20ef87605488fa111312fbb0ec, type: 2}

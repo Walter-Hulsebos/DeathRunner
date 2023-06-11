@@ -26,7 +26,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to tween on
 		[Tooltip("the curve to tween on")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
-		public MMTweenType FontSizeCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
+		public MMTweenType FontSizeCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[MMFEnumCondition("Mode", (int)MMFeedbackBase.Modes.OverTime)]
@@ -47,8 +47,8 @@ namespace MoreMountains.Feedbacks
 				return;
 			}
 
-			MMFeedbackBaseTarget target = new MMFeedbackBaseTarget();
-			MMPropertyReceiver receiver = new MMPropertyReceiver();
+			MMFeedbackBaseTarget target = new();
+			MMPropertyReceiver receiver = new();
 			receiver.TargetObject = TargetText.gameObject;
 			receiver.TargetComponent = TargetText;
 			receiver.TargetPropertyName = "fontSize";

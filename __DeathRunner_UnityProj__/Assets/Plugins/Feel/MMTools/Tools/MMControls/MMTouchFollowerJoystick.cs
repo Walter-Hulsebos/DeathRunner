@@ -148,7 +148,7 @@ namespace MoreMountains.Tools
 			// we create an inner rect if one wasn't provided
 			if (BackgroundConstraintRectTransform == null)
 			{
-				GameObject innerRect = new GameObject();
+				GameObject innerRect = new();
 				innerRect.transform.SetParent(this.transform);
 				innerRect.name = "BackgroundConstraintRectTransform";
 				BackgroundConstraintRectTransform = innerRect.AddComponent<RectTransform>();

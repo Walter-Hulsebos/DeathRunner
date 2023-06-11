@@ -11,7 +11,7 @@ namespace MoreMountains.Tools
 	[CustomPropertyDrawer(typeof(MMVectorAttribute))]
 	public class MMVectorLabelsAttributeDrawer : PropertyDrawer
 	{
-		protected static readonly GUIContent[] originalLabels = new GUIContent[] { new GUIContent("X"), new GUIContent("Y"), new GUIContent("Z"), new GUIContent("W") };
+		protected static readonly GUIContent[] originalLabels = new GUIContent[] { new("X"), new("Y"), new("Z"), new("W") };
 		protected const int padding = 375;
 
 		public override float GetPropertyHeight(SerializedProperty property, GUIContent guiContent)

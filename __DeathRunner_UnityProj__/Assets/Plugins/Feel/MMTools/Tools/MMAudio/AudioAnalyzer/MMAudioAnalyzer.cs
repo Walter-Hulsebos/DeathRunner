@@ -238,7 +238,7 @@ namespace MoreMountains.Tools
 			if (Mode == Modes.Microphone)
 			{
 				#if !UNITY_WEBGL
-				GameObject audioSourceGo = new GameObject("Microphone");
+				GameObject audioSourceGo = new("Microphone");
 				SceneManager.MoveGameObjectToScene(audioSourceGo, this.gameObject.scene);
 				audioSourceGo.transform.SetParent(this.gameObject.transform);
 				TargetAudioSource = audioSourceGo.AddComponent<AudioSource>();                

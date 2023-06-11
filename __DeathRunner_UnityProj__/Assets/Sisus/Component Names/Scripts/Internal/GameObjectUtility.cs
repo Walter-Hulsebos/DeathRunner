@@ -37,7 +37,7 @@ namespace Sisus.ComponentNames.EditorOnly
 			Object.Destroy(target);
 		}
 
-		private static readonly Stack<int> childIndexes = new Stack<int>();
+		private static readonly Stack<int> childIndexes = new();
 
 		private static void GetChildIndexStackIgnoringAddedGameObjectOverrides(Transform root, Transform leaf, Stack<int> childIndexes)
 		{

@@ -20,7 +20,7 @@ namespace DungeonArchitect.UI.Widgets
 
     public class StackPanelWidget : WidgetBase
     {
-        List<StackPanelNode> nodes = new List<StackPanelNode>();
+        List<StackPanelNode> nodes = new();
         StackPanelOrientation Orientation = StackPanelOrientation.Vertical;
 
         public StackPanelWidget(StackPanelOrientation orientation)

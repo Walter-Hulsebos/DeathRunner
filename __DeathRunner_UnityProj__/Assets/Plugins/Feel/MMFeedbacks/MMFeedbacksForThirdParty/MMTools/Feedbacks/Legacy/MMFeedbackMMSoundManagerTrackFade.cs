@@ -39,7 +39,7 @@ namespace MoreMountains.Feedbacks
 		public float FinalVolume = MMSoundManagerSettings._minimalVolume;
 		/// the tween to operate the fade on
 		[Tooltip("the tween to operate the fade on")]
-		public MMTweenType FadeTween = new MMTweenType(MMTween.MMTweenCurve.EaseInOutQuartic);
+		public MMTweenType FadeTween = new(MMTween.MMTweenCurve.EaseInOutQuartic);
         
 		/// <summary>
 		/// On Play, triggers a fade event, meant to be caught by the MMSoundManager

@@ -6,7 +6,7 @@ namespace DungeonArchitect.Flow.Domains.Layout.Tooling.Graph2D
 {
     public class FlowLayoutToolGraph2DNodePin : GraphPin
     {
-        public Vector2 Padding = new Vector2(0, 0);
+        public Vector2 Padding = new(0, 0);
 
         public override bool ContainsPoint(Vector2 worldPoint)
         {

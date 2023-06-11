@@ -37,7 +37,7 @@ namespace MoreMountains.Tools
 		/// <returns></returns>
 		public static Transform MMFindDeepChildBreadthFirst(this Transform parent, string transformName)
 		{
-			Queue<Transform> queue = new Queue<Transform>();
+			Queue<Transform> queue = new();
 			queue.Enqueue(parent);
 			while (queue.Count > 0)
 			{

@@ -10,7 +10,7 @@ namespace MoreMountains.Tools
 	/// </summary>
 	public static class GameObjectExtensions
 	{
-		static List<Component> m_ComponentCache = new List<Component>();
+		static List<Component> m_ComponentCache = new();
 
 		/// <summary>
 		/// Grabs a component without allocating memory uselessly

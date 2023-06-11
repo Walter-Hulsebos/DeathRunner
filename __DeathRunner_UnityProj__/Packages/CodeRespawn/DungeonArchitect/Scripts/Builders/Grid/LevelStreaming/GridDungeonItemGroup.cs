@@ -15,7 +15,7 @@ namespace DungeonArchitect.Builders.Grid
             
         var _groupInfoArray = GameObject.FindObjectsOfType<DungeonItemGroupInfo>();
 
-        Dictionary<int, DungeonItemGroupInfo> groupObjectByCellId = new Dictionary<int, DungeonItemGroupInfo>();
+        Dictionary<int, DungeonItemGroupInfo> groupObjectByCellId = new();
 
         foreach (var groupInfo in _groupInfoArray)
         {

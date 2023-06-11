@@ -375,12 +375,12 @@ namespace ProjectDawn.Collections
             /// <summary>
             /// Returns iterator to next element.
             /// </summary>
-            public Iterator Next => new Iterator(m_Data, m_Data->Next(m_Handle), m_ReadOnly);
+            public Iterator Next => new(m_Data, m_Data->Next(m_Handle), m_ReadOnly);
 
             /// <summary>
             /// Returns iterator to previous element.
             /// </summary>
-            public Iterator Previous => new Iterator(m_Data, m_Data->Previous(m_Handle), m_ReadOnly);
+            public Iterator Previous => new(m_Data, m_Data->Previous(m_Handle), m_ReadOnly);
 
             internal Iterator(UnsafeLinkedList<T>* data, UnsafeLinkedList<T>.Handle handle, bool readOnly = false)
             {

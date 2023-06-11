@@ -1044,7 +1044,7 @@ namespace DungeonArchitect.Builders.Grid
                     int id1 = other.Id;
                     if (!edgesMapped.ContainsKey(id0) || !edgesMapped[id0].Contains(id1))
                     {
-                        Edge edge = new Edge(id0, id1, distance);
+                        Edge edge = new(id0, id1, distance);
                         edges.Add(edge);
 
                         if (!edgesMapped.ContainsKey(id0)) edgesMapped.Add(id0, new HashSet<int>());
@@ -1077,7 +1077,7 @@ namespace DungeonArchitect.Builders.Grid
             }
 
             // Add some edges from the Delauney triangulation based on a probability
-            PMRandom srandom = new PMRandom(gridConfig.Seed);
+            PMRandom srandom = new(gridConfig.Seed);
             foreach (Cell room in rooms)
             {
                 foreach (int otherDelauney in room.ConnectedRooms)
@@ -1105,7 +1105,7 @@ namespace DungeonArchitect.Builders.Grid
             {
                 if (room != null)
                 {
-                    HashSet<Cell> visited = new HashSet<Cell>();
+                    HashSet<Cell> visited = new();
                     bool hasLoop = CheckLoop(room, null, visited);
                     if (hasLoop) return true;
                 }
@@ -1143,7 +1143,7 @@ namespace DungeonArchitect.Builders.Grid
 
         List<Cell> GetCellsOfType(CellType cellType)
         {
-            List<Cell> filtered = new List<Cell>();
+            List<Cell> filtered = new();
             foreach (var cell in gridModel.Cells)
             {
                 if (cell.CellType == cellType)
@@ -1158,7 +1158,7 @@ namespace DungeonArchitect.Builders.Grid
         {
             List<Cell> rooms = GetCellsOfType(CellType.Room);
             if (rooms.Count < 2) return;
-            HashSet<int> visited = new HashSet<int>();
+            HashSet<int> visited = new();
             Cell startingRoom = rooms[0];
             ConnectCooridorRecursive(-1, startingRoom.Id, visited);
 
@@ -1249,8 +1249,8 @@ namespace DungeonArchitect.Builders.Grid
             bool adjacent = (intersection.Width > 0 || intersection.Length > 0);
             if (adjacent)
             {
-                IntVector doorPointA = new IntVector();
-                IntVector doorPointB = new IntVector();
+                IntVector doorPointA = new();
+                IntVector doorPointB = new();
                 doorPointA.y = cellA.Bounds.Location.y;
                 doorPointB.y = cellB.Bounds.Location.y;
                 if (intersection.Width > 0)
@@ -1430,8 +1430,8 @@ namespace DungeonArchitect.Builders.Grid
             connectionPointsB.Sort(new ConnectionPointSorter(center));
 
             var roomCells = GetCellsOfType(CellType.Room).ToArray();
-            List<IntVector> worstPath = new List<IntVector>();
-            List<IntVector> path = new List<IntVector>();
+            List<IntVector> worstPath = new();
+            List<IntVector> path = new();
             bool solutionFound = false;
             foreach (var cpA in connectionPointsA)
             {
@@ -1587,7 +1587,7 @@ namespace DungeonArchitect.Builders.Grid
             Cell cellA = gridModel.GetCell(roomA);
             Cell cellB = gridModel.GetCell(roomB);
 
-            Rectangle PaddingBounds = new Rectangle(cellX, cellZ, 1, 1);
+            Rectangle PaddingBounds = new(cellX, cellZ, 1, 1);
 
             if (cellA.Bounds.Contains(PaddingBounds.Location) || cellB.Bounds.Contains(PaddingBounds.Location))
             {
@@ -1623,7 +1623,7 @@ namespace DungeonArchitect.Builders.Grid
 
             if (bRequiresPadding)
             {
-                Cell corridorCell = new Cell();
+                Cell corridorCell = new();
                 corridorCell.Id = GetNextCellId();
                 corridorCell.UserDefined = false;
                 corridorCell.Bounds = PaddingBounds;
@@ -1772,10 +1772,10 @@ namespace DungeonArchitect.Builders.Grid
         {
             // build the adjacency graph in memory
             if (gridModel.Cells.Count == 0) return;
-            Dictionary<int, CellHeightNode> CellHeightNodes = new Dictionary<int, CellHeightNode>();
+            Dictionary<int, CellHeightNode> CellHeightNodes = new();
 
-            HashSet<int> visited = new HashSet<int>();
-            Stack<CellHeightFrameInfo> stack = new Stack<CellHeightFrameInfo>(); ;
+            HashSet<int> visited = new();
+            Stack<CellHeightFrameInfo> stack = new(); ;
             var initialCell = gridModel.Cells[0];
             stack.Push(new CellHeightFrameInfo(initialCell.Id, initialCell.Bounds.Location.y));
             var srandom = new PMRandom(gridConfig.Seed);
@@ -1811,7 +1811,7 @@ namespace DungeonArchitect.Builders.Grid
                     top.CurrentHeight = cell.Bounds.Location.y;
                 }
 
-                CellHeightNode node = new CellHeightNode();
+                CellHeightNode node = new();
                 node.CellId = cell.Id;
                 node.Height = top.CurrentHeight;
                 node.MarkForIncrease = false;
@@ -1855,8 +1855,8 @@ namespace DungeonArchitect.Builders.Grid
             bool bContinueIteration = false;
             if (gridModel.Cells.Count == 0) return bContinueIteration;
 
-            HashSet<int> visited = new HashSet<int>();
-            Stack<int> stack = new Stack<int>();
+            HashSet<int> visited = new();
+            Stack<int> stack = new();
             Cell rootCell = gridModel.Cells[0];
             stack.Push(rootCell.Id);
             while (stack.Count > 0)
@@ -2010,7 +2010,7 @@ namespace DungeonArchitect.Builders.Grid
                     if (!pathExists)
                     {
                         // Cells are on different heights.  Check if we have a stair connecting these cells
-                        StairInfo stair = new StairInfo();
+                        StairInfo stair = new();
                         if (GetStair(topId, adjacentCellId, ref stair))
                         {
                             pathExists = true;
@@ -2045,7 +2045,7 @@ namespace DungeonArchitect.Builders.Grid
 
 
 		void AddCorridorPadding(int x, int y, int z) {
-			Cell padding = new Cell();
+			Cell padding = new();
 			padding.Id = GetNextCellId();
 			padding.UserDefined = false;
 			
@@ -2079,9 +2079,9 @@ namespace DungeonArchitect.Builders.Grid
         void ConnectStairs(int WeightThreshold)
         {
             if (gridModel.Cells.Count == 0) return;
-            Stack<StairEdgeInfo> stack = new Stack<StairEdgeInfo>();
-			HashSet<int> visited = new HashSet<int>();
-			HashSet<int> islandsVisited = new HashSet<int>();
+            Stack<StairEdgeInfo> stack = new();
+			HashSet<int> visited = new();
+			HashSet<int> islandsVisited = new();
 
 			for (int i = 0; i < gridModel.Cells.Count; i++) {
 				var startCell = gridModel.Cells[i];
@@ -2311,7 +2311,7 @@ namespace DungeonArchitect.Builders.Grid
 	                                }
 
 	                                float validY = stairOwner.Bounds.Location.y;
-	                                Vector3 StairLocation = new Vector3(validX, validY, validZ);
+	                                Vector3 StairLocation = new(validX, validY, validZ);
 	                                StairLocation += new Vector3(0.5f, 0, 0.5f);
 	                                StairLocation = Vector3.Scale(StairLocation, GridToMeshScale);
 
@@ -2321,7 +2321,7 @@ namespace DungeonArchitect.Builders.Grid
 	                                {
 	                                    CellStairs.Add(stairOwner.Id, new List<StairInfo>());
 	                                }
-	                                StairInfo Stair = new StairInfo();
+	                                StairInfo Stair = new();
 	                                Stair.OwnerCell = stairOwner.Id;
 	                                Stair.ConnectedToCell = stairConnectedTo.Id;
 	                                Stair.Position = StairLocation;
@@ -2520,7 +2520,7 @@ namespace DungeonArchitect.Builders.Grid
 	                                }
 
 	                                float validY = stairOwner.Bounds.Location.y;
-	                                Vector3 StairLocation = new Vector3(validX, validY, validZ);
+	                                Vector3 StairLocation = new(validX, validY, validZ);
 	                                StairLocation += new Vector3(0.5f, 0, 0.5f);
 	                                StairLocation = Vector3.Scale(StairLocation, GridToMeshScale);
 
@@ -2530,7 +2530,7 @@ namespace DungeonArchitect.Builders.Grid
 	                                {
 	                                    CellStairs.Add(stairOwner.Id, new List<StairInfo>());
 	                                }
-	                                StairInfo Stair = new StairInfo();
+	                                StairInfo Stair = new();
 	                                Stair.OwnerCell = stairOwner.Id;
 	                                Stair.ConnectedToCell = stairConnectedTo.Id;
 	                                Stair.Position = StairLocation;
@@ -2554,7 +2554,7 @@ namespace DungeonArchitect.Builders.Grid
 	                        int hash1 = HASH(cellB.Id, adjacentCell);
 	                        int hash2 = HASH(adjacentCell, cellB.Id);
 	                        if (visited.Contains(hash1) || visited.Contains(hash2)) continue;
-	                        StairEdgeInfo edge = new StairEdgeInfo(top.CellIdB, adjacentCell);
+	                        StairEdgeInfo edge = new(top.CellIdB, adjacentCell);
 	                        stack.Push(edge);
 	                    }
 	                }
@@ -2727,7 +2727,7 @@ namespace DungeonArchitect.Builders.Grid
             Cell cell = gridModel.GetCell(info.CellId);
             if (cell == null) return false;
 
-            StairInfo stair = new StairInfo();
+            StairInfo stair = new();
             if (GetStair(cell.Id, baseCell.Id, ref stair))
             {
                 Vector3 IPosition = MathUtils.Divide(stair.Position, GridToMeshScale);
@@ -2854,7 +2854,7 @@ namespace DungeonArchitect.Builders.Grid
                 gridPosition.Set(x, y, z);
 
                 Matrix4x4 transform = Matrix4x4.identity;
-                Vector3 position = new Vector3(x, y, z);
+                Vector3 position = new(x, y, z);
                 if (gridConfig.WallLayoutType == GridDungeonWallType.WallsAsEdges)
                 {
                     position += new Vector3(0.5f, 0, 0);
@@ -2938,7 +2938,7 @@ namespace DungeonArchitect.Builders.Grid
                 gridPosition.Set(x, y, z);
 
                 Matrix4x4 transform = Matrix4x4.identity;
-                Vector3 position = new Vector3(x, y, z);
+                Vector3 position = new(x, y, z);
                 if (gridConfig.WallLayoutType == GridDungeonWallType.WallsAsEdges)
                 {
                     position += new Vector3(0, 0, 0.5f);
@@ -3216,7 +3216,7 @@ namespace DungeonArchitect.Builders.Grid
                     int z = basePosition.z + dz;
                     gridPosition.Set(x, y, z);
 
-                    Vector3 position = new Vector3(x, y, z);
+                    Vector3 position = new(x, y, z);
                     position += new Vector3(0.5f, 0, 0.5f);
                     position.Scale(GridToMeshScale);
 

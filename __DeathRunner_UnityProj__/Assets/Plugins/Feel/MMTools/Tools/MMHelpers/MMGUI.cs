@@ -60,7 +60,7 @@ namespace MoreMountains.Tools
 				pixelColors[i] = color;
 			}
 
-			Texture2D newTexture = new Texture2D(width, height);
+			Texture2D newTexture = new(width, height);
 			newTexture.SetPixels(pixelColors);
 			newTexture.Apply();
  

@@ -20,7 +20,7 @@ namespace MoreMountains.Feedbacks
 		[MMInspectorGroup("Near Plane", true, 32)]
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakeNear = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeNear = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to        
 		[Tooltip("the value to remap the curve's 0 to")]
 		public float RemapNearZero = 0.3f;
@@ -31,7 +31,7 @@ namespace MoreMountains.Feedbacks
 		[MMInspectorGroup("Far Plane", true, 33)]
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakeFar = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeFar = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to        
 		[Tooltip("the value to remap the curve's 0 to")]
 		public float RemapFarZero = 1000f;

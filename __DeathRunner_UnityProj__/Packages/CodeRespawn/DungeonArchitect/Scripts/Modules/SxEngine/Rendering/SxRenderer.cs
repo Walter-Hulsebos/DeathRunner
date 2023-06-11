@@ -56,7 +56,7 @@ namespace DungeonArchitect.SxEngine
 
     public class SxRenderCommandList
     {   
-        private List<SxRenderCommand> renderCommands = new List<SxRenderCommand>();
+        private List<SxRenderCommand> renderCommands = new();
         public SxRenderCommand[] Commands
         {
             get => renderCommands.ToArray();
@@ -92,11 +92,11 @@ namespace DungeonArchitect.SxEngine
         }
         
         public RenderTexture Texture { get; private set; }
-        public SxCamera Camera { get; } = new SxCamera();
+        public SxCamera Camera { get; } = new();
 
         public Matrix4x4 ViewMatrix => Camera.ViewMatrix;
         
-        private ClearState clearState = new ClearState();
+        private ClearState clearState = new();
 
         public bool SortRenderCommands { get; set; } = true;
 

@@ -11,7 +11,7 @@ namespace MoreMountains.Feedbacks
 		/// the receiver to write the level to
 		public MMPropertyReceiver Target;
 		/// the curve to tween the intensity on
-		public MMTweenType LevelCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
+		public MMTweenType LevelCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// the value to remap the intensity curve's 0 to
 		public float RemapLevelZero = 0f;
 		/// the value to remap the intensity curve's 1 to

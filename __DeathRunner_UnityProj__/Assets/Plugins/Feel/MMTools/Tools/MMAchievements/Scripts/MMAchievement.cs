@@ -110,7 +110,7 @@ namespace MoreMountains.Tools
 		/// </summary>
 		public virtual MMAchievement Copy()
 		{
-			MMAchievement clone = new MMAchievement ();
+			MMAchievement clone = new();
 			// we use Json utility to store a copy of our achievement, not a reference
 			clone = JsonUtility.FromJson<MMAchievement>(JsonUtility.ToJson(this));
 			return clone;

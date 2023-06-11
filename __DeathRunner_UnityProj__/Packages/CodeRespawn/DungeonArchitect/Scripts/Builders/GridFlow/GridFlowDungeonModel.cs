@@ -66,7 +66,7 @@ namespace DungeonArchitect.Builders.GridFlow
         
         [HideInInspector]
         [SerializeField]
-        GridFlowModelLookups lookups = new GridFlowModelLookups();
+        GridFlowModelLookups lookups = new();
 
         public FlowTilemapCell GetTilemapCell(Vector3 worldPosition)
         {
@@ -121,7 +121,7 @@ namespace DungeonArchitect.Builders.GridFlow
     [System.Serializable]
     public class GridFlowModelLookups : ISerializationCallbackReceiver
     {
-        public Dictionary<IntVector2, int> NodeCoordLookup { get; } = new Dictionary<IntVector2, int>();
+        public Dictionary<IntVector2, int> NodeCoordLookup { get; } = new();
 
         public void Build(GridFlowDungeonModel model)
         {

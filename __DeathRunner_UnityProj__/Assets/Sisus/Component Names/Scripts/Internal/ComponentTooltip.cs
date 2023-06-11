@@ -13,8 +13,8 @@ namespace Sisus.ComponentNames.EditorOnly
 	/// </summary>
 	internal static class ComponentTooltip
 	{
-		private static readonly Dictionary<Object, string> tooltips = new Dictionary<Object, string>();
-		private static readonly HashSet<Component> hasOverride = new HashSet<Component>();
+		private static readonly Dictionary<Object, string> tooltips = new();
+		private static readonly HashSet<Component> hasOverride = new();
 
 		public static bool HasOverride([NotNull] Component component)
 			=> hasOverride.Contains(component);

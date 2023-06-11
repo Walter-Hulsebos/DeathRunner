@@ -21,7 +21,7 @@ namespace MoreMountains.Tools
 		public UpdateModes UpdateMode = UpdateModes.Update;
 		[MMCondition("Rotating", true)]
 		/// The rotation speed. Positive means clockwise, negative means counter clockwise.
-		public Vector3 RotationSpeed = new Vector3(100f, 0f, 0f);
+		public Vector3 RotationSpeed = new(100f, 0f, 0f);
 
 		[Header("Orbit")]
 		/// if this is true, the object will also move around a pivot (only the position is affected, not the rotation)
@@ -37,7 +37,7 @@ namespace MoreMountains.Tools
 		public Vector3 OrbitCenterOffset = Vector3.zero;
 		/// the axis around which the object should rotate (don't make it zero)
 		[MMCondition("Orbiting", true)]
-		public Vector3 OrbitRotationAxis = new Vector3(0f, 1f, 0f);
+		public Vector3 OrbitRotationAxis = new(0f, 1f, 0f);
 		/// the speed at which to rotate
 		[MMCondition("Orbiting", true)]
 		public float OrbitRotationSpeed = 10f;
@@ -53,10 +53,10 @@ namespace MoreMountains.Tools
 		public bool DrawGizmos = true;
 		[MMCondition("DrawGizmos", true)]
 		/// the color of the orbit disc
-		public Color OrbitPlaneColor = new Color(54f, 169f, 225f, 0.02f);
+		public Color OrbitPlaneColor = new(54f, 169f, 225f, 0.02f);
 		[MMCondition("DrawGizmos", true)]
 		/// the color of the orbit line
-		public Color OrbitLineColor = new Color(225f, 225f, 225f, 0.1f);
+		public Color OrbitLineColor = new(225f, 225f, 225f, 0.1f);
         
 		[HideInInspector]
 		public Vector3 _orbitCenter;

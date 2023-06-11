@@ -11,7 +11,7 @@ namespace Lofelt.NiceVibrations
     {
 
         [Header("Ball")]
-        public Vector2 Gravity = new Vector2(0, -30f);
+        public Vector2 Gravity = new(0, -30f);
 
         protected virtual void Start()
         {

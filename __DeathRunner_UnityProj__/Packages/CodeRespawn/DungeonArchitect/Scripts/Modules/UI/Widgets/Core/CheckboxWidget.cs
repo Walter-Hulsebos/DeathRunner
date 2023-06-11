@@ -7,7 +7,7 @@ namespace DungeonArchitect.UI.Widgets
         public bool Value = false;
         
         private string label;
-        Color color = new Color(0.8f, 0.8f, 0.8f);
+        Color color = new(0.8f, 0.8f, 0.8f);
 
         public CheckboxWidget(bool defaultValue, string label)
         {

@@ -78,7 +78,7 @@ namespace MoreMountains.Tools
 		/// the quaternion value to remap the level's 0 to
 		public Vector3 QuaternionRemapZero = Vector3.zero;
 		/// the quaternion value to remap the level's 1 to
-		public Vector3 QuaternionRemapOne = new Vector3(180f, 180f, 180f);
+		public Vector3 QuaternionRemapOne = new(180f, 180f, 180f);
 
 		// color  ----------------------------------------------------------------------------------------------------------------------
 		/// the color value to remap the level's 0 to

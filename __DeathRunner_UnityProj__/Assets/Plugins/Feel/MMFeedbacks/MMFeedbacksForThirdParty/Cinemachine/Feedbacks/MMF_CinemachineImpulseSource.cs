@@ -30,7 +30,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 
 		/// the velocity to apply to the impulse shake
 		[Tooltip("the velocity to apply to the impulse shake")]
-		public Vector3 Velocity = new Vector3(1f,1f,1f);
+		public Vector3 Velocity = new(1f,1f,1f);
 		#if MM_CINEMACHINE
 			/// the impulse definition to broadcast
 			[Tooltip("the impulse definition to broadcast")]

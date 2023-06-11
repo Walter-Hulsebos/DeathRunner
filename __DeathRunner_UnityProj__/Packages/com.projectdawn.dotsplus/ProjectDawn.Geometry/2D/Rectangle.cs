@@ -168,12 +168,12 @@ namespace ProjectDawn.Geometry2D
         /// <summary>
         /// Returns minimum circle that fully covers shape.
         /// </summary>
-        public Circle CircumscribedCircle() => new Circle(Center, math.length(Size) * 0.5f);
+        public Circle CircumscribedCircle() => new(Center, math.length(Size) * 0.5f);
 
         /// <summary>
         /// Returns maximum circle that is inside the shape.
         /// </summary>
-        public Circle InscribedCircle() => new Circle(Center, math.min(Size.x, Size.y) * 0.5f);
+        public Circle InscribedCircle() => new(Center, math.min(Size.x, Size.y) * 0.5f);
 
         /// <summary>
         /// Returns minimum bounding rectangle that contains both rectangles.

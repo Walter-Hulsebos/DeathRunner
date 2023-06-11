@@ -31,13 +31,13 @@ public class DrawShape : MonoBehaviour
 
     public DrawShape Target;
 
-    public float2 Point => new float2(transform.position.x, transform.position.y);
-    public float2 Scale => new float2(transform.lossyScale.x, transform.lossyScale.y);
-    public Line Line => new Line(Transform(-new float2(Size, 0)), Transform(new float2(Size, 0)));
+    public float2 Point => new(transform.position.x, transform.position.y);
+    public float2 Scale => new(transform.lossyScale.x, transform.lossyScale.y);
+    public Line Line => new(Transform(-new float2(Size, 0)), Transform(new float2(Size, 0)));
     public Ray Ray => Line.ToRay();
-    public Circle Circle => new Circle(Point, Size * Scale.x);
-    public Rectangle Rectangle => new Rectangle(Point - Size * Scale, Size * 2 * Scale);
-    public Capsule Capsule => new Capsule(Line, Size * Scale.x);
+    public Circle Circle => new(Point, Size * Scale.x);
+    public Rectangle Rectangle => new(Point - Size * Scale, Size * 2 * Scale);
+    public Capsule Capsule => new(Line, Size * Scale.x);
     public ConvexPolygon<TransformFloat2> Polygon
     {
         get
@@ -66,7 +66,7 @@ public class DrawShape : MonoBehaviour
         }
     }
 
-    public TransformFloat2 Tran => new TransformFloat2(transform.localToWorldMatrix);
+    public TransformFloat2 Tran => new(transform.localToWorldMatrix);
 
     private void OnDrawGizmos()
     {

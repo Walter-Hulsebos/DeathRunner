@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5968531618666388227}
   - component: {fileID: 5968531618669288227}
   - component: {fileID: 5968531618668288483}
-  - component: {fileID: 6474288203645282832}
   m_Layer: 0
   m_Name: Fan_01a_Fan_snaps020_LOD3
   m_TagString: Untagged
@@ -84,20 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6474288203645282832
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5968531618666350371}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 2c651f30ae60df848a2e4530477ee882, type: 3}
 --- !u!1 &5968531618666350377
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +94,6 @@ GameObject:
   - component: {fileID: 5968531618666388233}
   - component: {fileID: 5968531618669288233}
   - component: {fileID: 5968531618668288489}
-  - component: {fileID: 4936947432504445801}
   m_Layer: 0
   m_Name: Fan_01a_Fan_snaps020_LOD0
   m_TagString: Untagged
@@ -182,20 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &4936947432504445801
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5968531618666350377}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 2c651f30ae60df848a2e4530477ee882, type: 3}
 --- !u!1 &5968531618666350379
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +177,6 @@ GameObject:
   - component: {fileID: 5968531618666388235}
   - component: {fileID: 5968531618652147627}
   - component: {fileID: 2860658121884207989}
-  - component: {fileID: 906236861399546917}
   m_Layer: 0
   m_Name: Fan_01a_Fan_snaps020
   m_TagString: Untagged
@@ -232,7 +201,7 @@ Transform:
   - {fileID: 5968531618666388237}
   - {fileID: 5968531618666388227}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!205 &5968531618652147627
 LODGroup:
@@ -276,23 +245,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 595bee51772b8dc4998b057313ce6797, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Rotator, Assembly-CSharp
   speed: 80
   ForwardY: 0
   ReverseY: 1
---- !u!114 &906236861399546917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5968531618666350379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 9aa38722b804be14da68563918511c5d, type: 2}
 --- !u!1 &5968531618666350381
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,7 +260,6 @@ GameObject:
   - component: {fileID: 5968531618666388237}
   - component: {fileID: 5968531618669288237}
   - component: {fileID: 5968531618668288493}
-  - component: {fileID: 7844837245242967064}
   m_Layer: 0
   m_Name: Fan_01a_Fan_snaps020_LOD2
   m_TagString: Untagged
@@ -377,20 +332,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &7844837245242967064
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5968531618666350381}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 2c651f30ae60df848a2e4530477ee882, type: 3}
 --- !u!1 &5968531618666350383
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,7 +343,6 @@ GameObject:
   - component: {fileID: 5968531618666388239}
   - component: {fileID: 5968531618669288239}
   - component: {fileID: 5968531618668288495}
-  - component: {fileID: 1309454788348953393}
   m_Layer: 0
   m_Name: Fan_01a_Fan_snaps020_LOD1
   m_TagString: Untagged
@@ -475,17 +415,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1309454788348953393
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5968531618666350383}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 2c651f30ae60df848a2e4530477ee882, type: 3}

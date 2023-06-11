@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3382056}
   - component: {fileID: 2311226}
   - component: {fileID: 5893625870285859688}
-  - component: {fileID: 5262734326219881852}
   m_Layer: 0
   m_Name: PowerLines_Straight_A
   m_TagString: Untagged
@@ -94,21 +93,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136618}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 6.319849, y: 0.5214588, z: 0.19490686}
   m_Center: {x: -2.9800391, y: -0.05564174, z: 0.052675497}
---- !u!114 &5262734326219881852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136618}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 68f959c9f8d5d414398ef5a68e902d8f, type: 2}

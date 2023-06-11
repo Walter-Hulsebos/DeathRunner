@@ -101,7 +101,7 @@ namespace DungeonArchitect.MarkerGenerator.Rule.Grid.Assemblies
             foreach (var rotatedRule in rotatedAssembly.Rules)
             {
                 if (rotatedRule.RuleType == GridMarkerGenRuleType.Corner) {
-                    Vector3 offset = new Vector3(0.5f, 0.0f, 0.5f);
+                    Vector3 offset = new(0.5f, 0.0f, 0.5f);
                     Vector3 oldLocation = new Vector3(rotatedRule.Coord.x, 0, rotatedRule.Coord.y) - offset;
                     Vector3 newLocation = rotation * oldLocation + offset;
                     rotatedRule.Coord = new Vector2Int(
@@ -109,14 +109,14 @@ namespace DungeonArchitect.MarkerGenerator.Rule.Grid.Assemblies
                         Mathf.RoundToInt(newLocation.z));
                 }
                 else if (rotatedRule.RuleType == GridMarkerGenRuleType.Ground) {
-                    Vector3 oldLocation = new Vector3(rotatedRule.Coord.x, 0, rotatedRule.Coord.y);
+                    Vector3 oldLocation = new(rotatedRule.Coord.x, 0, rotatedRule.Coord.y);
                     Vector3 newLocation = rotation * oldLocation;
                     rotatedRule.Coord = new Vector2Int(
                         Mathf.RoundToInt(newLocation.x),
                         Mathf.RoundToInt(newLocation.z));
                 }
                 else if (rotatedRule.RuleType == GridMarkerGenRuleType.EdgeX) {
-                    Vector3 oldLocation = new Vector3(rotatedRule.Coord.x, 0, rotatedRule.Coord.y - 0.5f);
+                    Vector3 oldLocation = new(rotatedRule.Coord.x, 0, rotatedRule.Coord.y - 0.5f);
                     Vector3 newLocation = rotation * oldLocation + new Vector3(0.5f, 0, 0);;
                     rotatedRule.RuleType = GridMarkerGenRuleType.EdgeZ;
                     rotatedRule.Coord = new Vector2Int(
@@ -124,7 +124,7 @@ namespace DungeonArchitect.MarkerGenerator.Rule.Grid.Assemblies
                         Mathf.RoundToInt(newLocation.z));
                 }
                 else if (rotatedRule.RuleType == GridMarkerGenRuleType.EdgeZ) {
-                    Vector3 oldLocation = new Vector3(rotatedRule.Coord.x - 0.5f, 0, rotatedRule.Coord.y);
+                    Vector3 oldLocation = new(rotatedRule.Coord.x - 0.5f, 0, rotatedRule.Coord.y);
                     Vector3 newLocation = rotation * oldLocation + new Vector3(0, 0, 0.5f);;
                     rotatedRule.RuleType = GridMarkerGenRuleType.EdgeX;
                     rotatedRule.Coord = new Vector2Int(

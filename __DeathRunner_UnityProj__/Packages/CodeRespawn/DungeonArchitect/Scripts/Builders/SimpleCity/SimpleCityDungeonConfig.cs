@@ -21,7 +21,7 @@ namespace DungeonArchitect.Builders.SimpleCity
 
     public class SimpleCityDungeonConfig : DungeonConfig
     {
-        public Vector2 CellSize = new Vector2(4, 4);
+        public Vector2 CellSize = new(4, 4);
 
         public int minSize = 15;
         public int maxSize = 20;

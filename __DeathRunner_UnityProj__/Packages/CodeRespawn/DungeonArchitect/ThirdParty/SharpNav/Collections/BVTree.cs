@@ -19,9 +19,9 @@ namespace SharpNav.Collections
 	/// </summary>
 	public class BVTree
 	{
-		private static readonly Node.CompareX XComparer = new Node.CompareX();
-		private static readonly Node.CompareY YComparer = new Node.CompareY();
-		private static readonly Node.CompareZ ZComparer = new Node.CompareZ();
+		private static readonly Node.CompareX XComparer = new();
+		private static readonly Node.CompareY YComparer = new();
+		private static readonly Node.CompareZ ZComparer = new();
 
 		/// <summary>
 		/// Nodes in the tree

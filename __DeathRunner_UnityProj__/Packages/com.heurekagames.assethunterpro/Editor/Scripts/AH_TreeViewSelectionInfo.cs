@@ -133,11 +133,11 @@ namespace HeurekaGames.AssetHunterPRO
                     if (!other.RelativePath.StartsWith(item.RelativePath))
                         continue;
 
-                    DirectoryInfo dirInfo = new DirectoryInfo(item.RelativePath);
+                    DirectoryInfo dirInfo = new(item.RelativePath);
 
                     if (other.IsFolder)
                     {
-                        DirectoryInfo otherDir = new DirectoryInfo(other.RelativePath);
+                        DirectoryInfo otherDir = new(other.RelativePath);
 
                         if (!dirInfo.GetDirectories(otherDir.Name, SearchOption.AllDirectories).Any(x => x.FullName == otherDir.FullName))
                             continue;
@@ -147,7 +147,7 @@ namespace HeurekaGames.AssetHunterPRO
                     }
                     else
                     {
-                        FileInfo fi = new FileInfo(other.RelativePath);
+                        FileInfo fi = new(other.RelativePath);
 
                         if (!dirInfo.GetFiles(fi.Name, SearchOption.AllDirectories).Any(x=>x.FullName == fi.FullName))
                             continue;
@@ -189,7 +189,7 @@ namespace HeurekaGames.AssetHunterPRO
             else
             {
                 GUILayout.FlexibleSpace();
-                GUIStyle s = new GUIStyle(EditorStyles.textField);
+                GUIStyle s = new(EditorStyles.textField);
                 s.normal.textColor = Color.red;
                 EditorGUILayout.LabelField("Nested selection is not allowed", s);
             }
@@ -220,8 +220,8 @@ namespace HeurekaGames.AssetHunterPRO
                 return;
 
             string description = "Delete unused assets from folder";
-            GUIContent content = new GUIContent("Delete " + (AH_Utils.GetSizeAsString(folder.GetFileSizeRecursively(AH_MultiColumnHeader.AssetShowMode.Unused))), description);
-            GUIStyle style = new GUIStyle(GUI.skin.button);
+            GUIContent content = new("Delete " + (AH_Utils.GetSizeAsString(folder.GetFileSizeRecursively(AH_MultiColumnHeader.AssetShowMode.Unused))), description);
+            GUIStyle style = new(GUI.skin.button);
             DrawDeleteFolderButton(content, folder, style, description, "Do you want to delete all unused assets from:" + Environment.NewLine + folder.RelativePath, GUILayout.Width(160), GUILayout.Height(32));
         }
 
@@ -233,7 +233,7 @@ namespace HeurekaGames.AssetHunterPRO
 
         private void drawAssetPreview(bool bDraw)
         {
-            GUIContent content = new GUIContent();
+            GUIContent content = new();
 
             //Draw asset preview
             if (bDraw && !selection[0].IsFolder)
@@ -251,7 +251,7 @@ namespace HeurekaGames.AssetHunterPRO
         private void deleteUnusedAssets()
         {
             int choice = EditorUtility.DisplayDialogComplex("Delete unused assets", "Do you want to delete the selected assets", "Yes", "Cancel", "Backup (Very slow)");
-            List<string> affectedAssets = new List<string>();
+            List<string> affectedAssets = new();
 
 
             if (choice == 0)//Delete
@@ -282,7 +282,7 @@ namespace HeurekaGames.AssetHunterPRO
         {
             int choice = EditorUtility.DisplayDialogComplex(header, description, "Yes", "Cancel", "Backup (Very slow)");
 
-            List<string> affectedAssets = new List<string>();
+            List<string> affectedAssets = new();
             if (choice != 1)//Not Cancel
             {
                 //Collect affected assets
@@ -322,7 +322,7 @@ namespace HeurekaGames.AssetHunterPRO
         {
 #if UNITY_2020_1_OR_NEWER
             EditorUtility.DisplayProgressBar("Deleting unused assets", $"Deleting {affectedAssets.Count()} unused assets",.5f);
-            List<string> failedPaths = new List<string>();
+            List<string> failedPaths = new();
             AssetDatabase.DeleteAssets(affectedAssets.ToArray(), failedPaths);
             EditorUtility.ClearProgressBar();
 #else

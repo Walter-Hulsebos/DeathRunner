@@ -50,7 +50,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		public bool RelativeIntensity = false;
 		/// the curve to animate the intensity on
 		[Tooltip("the curve to animate the intensity on")]
-		public AnimationCurve Intensity = new AnimationCurve(new Keyframe(0, 0),
+		public AnimationCurve Intensity = new(new Keyframe(0, 0),
 			new Keyframe(0.2f, 1),
 			new Keyframe(0.25f, -1),
 			new Keyframe(0.35f, 0.7f),

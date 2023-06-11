@@ -37,7 +37,7 @@ namespace MoreMountains.Feedbacks
 		public float FinalVolume = MMSoundManagerSettings._minimalVolume;
 		/// the tween to apply over the fade
 		[Tooltip("the tween to apply over the fade")]
-		public MMTweenType FadeTween = new MMTweenType(MMTween.MMTweenCurve.EaseInOutQuartic);
+		public MMTweenType FadeTween = new(MMTween.MMTweenCurve.EaseInOutQuartic);
         
 		protected AudioSource _targetAudioSource;
         

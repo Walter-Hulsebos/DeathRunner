@@ -9,7 +9,7 @@ namespace DungeonArchitect.Flow.Impl.GridFlow.Tasks
     [FlowExecNodeInfo("Create Key Lock", "Layout Graph/", 1040)]
     public class GridFlowLayoutTaskCreateKeyLock : LayoutBaseFlowTaskCreateKeyLock
     {
-        public TilemapItemPlacementSettings placementSettings = new TilemapItemPlacementSettings();
+        public TilemapItemPlacementSettings placementSettings = new();
 
         protected override bool Validate(FlowTaskExecContext context, FlowTaskExecInput input, ref string errorMessage, ref FlowTaskExecutionResult executionResult)
         {

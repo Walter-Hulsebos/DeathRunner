@@ -64,7 +64,7 @@ namespace MoreMountains.Feedbacks
 		/// the gradient to apply over the lifetime of the text
 		[Tooltip("the gradient to apply over the lifetime of the text")]
 		[GradientUsage(true)]
-		public Gradient AnimateColorGradient = new Gradient();
+		public Gradient AnimateColorGradient = new();
 
 		[MMFInspectorGroup("Lifetime", true, 66)]
 		/// whether or not to force a lifetime on the new text, if not, the default colors of the spawner will be used

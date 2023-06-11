@@ -25,9 +25,9 @@ namespace MoreMountains.Tools
 		/// the transform this camera should rotate around
 		public Transform RotationCenter;
 		/// the minimum rotation to apply to this camera (in degrees)
-		public Vector2 MinRotation = new Vector2(-2f, -2f);
+		public Vector2 MinRotation = new(-2f, -2f);
 		/// the maximum rotation to apply to this camera (in degrees)
-		public Vector2 MaxRotation = new Vector2(2f, 2f);
+		public Vector2 MaxRotation = new(2f, 2f);
 		/// a transform to follow if the camera is animated
 		public Transform AnimatedPosition;
         

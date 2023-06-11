@@ -28,11 +28,11 @@ namespace DungeonArchitect.Utils
     [System.Serializable]
     public class KeyValueData
     {
-        [SerializeField] List<KeyValueDataEntryFloat> dataFloat = new List<KeyValueDataEntryFloat>();
-        [SerializeField] List<KeyValueDataEntryInt> dataInt = new List<KeyValueDataEntryInt>();
-        [SerializeField] List<KeyValueDataEntryString> dataString = new List<KeyValueDataEntryString>();
-        [SerializeField] List<KeyValueDataEntryVector3> dataVector3 = new List<KeyValueDataEntryVector3>();
-        [SerializeField] List<KeyValueDataEntryVector2> dataVector2 = new List<KeyValueDataEntryVector2>();
+        [SerializeField] List<KeyValueDataEntryFloat> dataFloat = new();
+        [SerializeField] List<KeyValueDataEntryInt> dataInt = new();
+        [SerializeField] List<KeyValueDataEntryString> dataString = new();
+        [SerializeField] List<KeyValueDataEntryVector3> dataVector3 = new();
+        [SerializeField] List<KeyValueDataEntryVector2> dataVector2 = new();
 
         // Getters
         public bool GetFloat(string key, ref float value) { return GetValue(dataFloat, key, ref value); }

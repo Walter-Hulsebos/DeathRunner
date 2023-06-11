@@ -70,7 +70,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		public float BlendDuration = 1f;
 		/// the curve to apply to the blend
 		[MMFEnumCondition("Mode", (int)Modes.Override)]
-		public AnimationCurve BlendCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1f));
+		public AnimationCurve BlendCurve = new(new Keyframe(0, 0), new Keyframe(1, 1f));
 		/// the weight to blend from
 		[MMFEnumCondition("Mode", (int)Modes.Override)]
 		public float InitialWeight = 0f;

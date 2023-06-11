@@ -28,7 +28,7 @@ namespace MoreMountains.Tools
 		/// whether or not rotation is enabled
 		public bool RotationEnabled = true;
 		/// the speed of the rotation
-		public Vector2 RotationSpeed = new Vector2(200f, 200f);
+		public Vector2 RotationSpeed = new(200f, 200f);
 		/// the minimum vertical angle limit
 		public int MinVerticalAngleLimit = -80;
 		/// the maximum vertical angle limit

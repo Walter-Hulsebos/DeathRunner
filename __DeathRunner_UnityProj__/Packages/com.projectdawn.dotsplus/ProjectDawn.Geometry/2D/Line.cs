@@ -65,7 +65,7 @@ namespace ProjectDawn.Geometry2D
         public static bool operator !=(Line lhs, Line rhs) => !(lhs == rhs);
 
         /// <inheritdoc />
-        public static implicit operator Line(float value) => new Line(value, value);
+        public static implicit operator Line(float value) => new(value, value);
 
         /// <summary>
         /// Returns a point on the perimeter of this rectangle that is closest to the specified point.
@@ -113,7 +113,7 @@ namespace ProjectDawn.Geometry2D
         /// <summary>
         /// Converts to ray.
         /// </summary>
-        public Ray ToRay() => new Ray(From, Towards);
+        public Ray ToRay() => new(From, Towards);
 
         /// <summary>
         /// Returns minimum rectangle that fully covers shape.

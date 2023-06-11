@@ -8,23 +8,23 @@ namespace MoreMountains.Feedbacks
 	/// </summary>
 	public static class MMF_PlayerStyling
 	{
-		public static readonly GUIStyle SmallTickbox = new GUIStyle("ShurikenToggle");
+		public static readonly GUIStyle SmallTickbox = new("ShurikenToggle");
 
-		static readonly Color _splitterdark = new Color(0.12f, 0.12f, 0.12f, 1.333f);
-		static readonly Color _splitterlight = new Color(0.6f, 0.6f, 0.6f, 1.333f);
+		static readonly Color _splitterdark = new(0.12f, 0.12f, 0.12f, 1.333f);
+		static readonly Color _splitterlight = new(0.6f, 0.6f, 0.6f, 1.333f);
 		public static Color Splitter { get { return EditorGUIUtility.isProSkin ? _splitterdark : _splitterlight; } }
 
-		static readonly Color _headerbackgrounddark = new Color(0.1f, 0.1f, 0.1f, 0.2f);
-		static readonly Color _headerbackgroundlight = new Color(1f, 1f, 1f, 0.4f);
+		static readonly Color _headerbackgrounddark = new(0.1f, 0.1f, 0.1f, 0.2f);
+		static readonly Color _headerbackgroundlight = new(1f, 1f, 1f, 0.4f);
 		public static Color HeaderBackground { get { return EditorGUIUtility.isProSkin ? _headerbackgrounddark : _headerbackgroundlight; } }
 
-		static readonly Color _reorderdark = new Color(1f, 1f, 1f, 0.2f);
-		static readonly Color _reorderlight = new Color(0.1f, 0.1f, 0.1f, 0.2f);
+		static readonly Color _reorderdark = new(1f, 1f, 1f, 0.2f);
+		static readonly Color _reorderlight = new(0.1f, 0.1f, 0.1f, 0.2f);
 		public static Color Reorder { get { return EditorGUIUtility.isProSkin ? _reorderdark : _reorderlight; } }
 
-		static readonly Color _timingDark = new Color(1f, 1f, 1f, 0.5f);
-		static readonly Color _timingLight = new Color(0f, 0f, 0f, 0.5f);
-		static readonly Color _targetLabelColor = new Color(1f, 1f, 1f, 0.4f);
+		static readonly Color _timingDark = new(1f, 1f, 1f, 0.5f);
+		static readonly Color _timingLight = new(0f, 0f, 0f, 0.5f);
+		static readonly Color _targetLabelColor = new(1f, 1f, 1f, 0.4f);
         
 		static readonly Texture2D _paneoptionsicondark;
 		static readonly Texture2D _paneoptionsiconlight;
@@ -39,7 +39,7 @@ namespace MoreMountains.Feedbacks
 			_paneoptionsiconlight = (Texture2D)EditorGUIUtility.Load("Builtin Skins/LightSkin/Images/pane options.png");
 		}
 
-		private static GUIStyle _timingStyle = new GUIStyle();
+		private static GUIStyle _timingStyle = new();
 
 		private static Rect _backgroundRect;
 		private static Rect _progressRect;

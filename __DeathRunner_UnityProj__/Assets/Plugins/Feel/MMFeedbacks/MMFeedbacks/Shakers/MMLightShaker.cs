@@ -35,7 +35,7 @@ namespace MoreMountains.Feedbacks
 		/// the intensity to apply to the light over time
 		/// the curve to tween the intensity on
 		[Tooltip("the intensity to apply to the light over time")]
-		public AnimationCurve IntensityCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve IntensityCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the intensity curve's 0 to
 		[Tooltip("the value to remap the intensity curve's 0 to")]
 		public float RemapIntensityZero = 0f;
@@ -46,7 +46,7 @@ namespace MoreMountains.Feedbacks
 		[MMInspectorGroup("Range", true, 39)]
 		/// the range to apply to the light over time
 		[Tooltip("the range to apply to the light over time")]
-		public AnimationCurve RangeCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve RangeCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the range curve's 0 to
 		[Tooltip("the value to remap the range curve's 0 to")]
 		public float RemapRangeZero = 0f;
@@ -57,7 +57,7 @@ namespace MoreMountains.Feedbacks
 		[MMInspectorGroup("Shadow Strength", true, 38)]
 		/// the range to apply to the light over time
 		[Tooltip("the range to apply to the light over time")]
-		public AnimationCurve ShadowStrengthCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve ShadowStrengthCurve = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// the value to remap the shadow strength's curve's 0 to
 		[Tooltip("the value to remap the shadow strength's curve's 0 to")]
 		public float RemapShadowStrengthZero = 0f;

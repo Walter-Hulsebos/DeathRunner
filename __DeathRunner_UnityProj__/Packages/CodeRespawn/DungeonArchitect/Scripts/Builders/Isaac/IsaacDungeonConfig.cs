@@ -11,8 +11,8 @@ namespace DungeonArchitect.Builders.Isaac
         public int roomWidth = 10;
         public int roomHeight = 6;
 
-        public Vector2 tileSize = new Vector2(1, 1);
-        public Vector2 roomPadding = new Vector2(1, 1);
+        public Vector2 tileSize = new(1, 1);
+        public Vector2 roomPadding = new(1, 1);
 
         public float growForwardProbablity = 0.75f;
         public float growSidewaysProbablity = 0.25f;

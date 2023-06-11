@@ -20,8 +20,8 @@ namespace MoreMountains.Tools
 		/// <param name="saveFile"></param>
 		public void Save(object objectToSave, FileStream saveFile)
 		{
-			BinaryFormatter formatter = new BinaryFormatter();
-			MemoryStream memoryStream = new MemoryStream();
+			BinaryFormatter formatter = new();
+			MemoryStream memoryStream = new();
 			formatter.Serialize(memoryStream, objectToSave);
 			memoryStream.Position = 0;
 			Encrypt(memoryStream, saveFile, Key);
@@ -39,8 +39,8 @@ namespace MoreMountains.Tools
 		public object Load(System.Type objectType, FileStream saveFile)
 		{
 			object savedObject;
-			BinaryFormatter formatter = new BinaryFormatter();
-			MemoryStream memoryStream = new MemoryStream();
+			BinaryFormatter formatter = new();
+			MemoryStream memoryStream = new();
 			try
 			{
 				Decrypt(saveFile, memoryStream, Key);

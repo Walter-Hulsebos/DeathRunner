@@ -45,7 +45,7 @@ namespace FMODUnity
                     return;
                 }
 
-                List<StudioEventEmitter> newEmitters = new List<StudioEventEmitter>();
+                List<StudioEventEmitter> newEmitters = new();
                 targetEmitter.GetComponents(newEmitters);
                 expanded = new bool[newEmitters.Count];
                 foreach (var emitter in newEmitters)

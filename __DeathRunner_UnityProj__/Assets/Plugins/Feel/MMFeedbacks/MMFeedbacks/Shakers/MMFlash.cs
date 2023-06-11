@@ -85,10 +85,10 @@ namespace MoreMountains.Feedbacks
 		[Header("Interpolation")]
 		/// the animation curve to use when flashing in
 		[Tooltip("the animation curve to use when flashing in")]
-		public MMTweenType FlashInTween = new MMTweenType(MMTween.MMTweenCurve.LinearTween);
+		public MMTweenType FlashInTween = new(MMTween.MMTweenCurve.LinearTween);
 		/// the animation curve to use when flashing out
 		[Tooltip("the animation curve to use when flashing out")]
-		public MMTweenType FlashOutTween = new MMTweenType(MMTween.MMTweenCurve.LinearTween);
+		public MMTweenType FlashOutTween = new(MMTween.MMTweenCurve.LinearTween);
 
 		[Header("Debug")]
 		/// the set of test settings to use when pressing the DebugTest button

@@ -115,7 +115,7 @@ namespace SharpNav.Crowds
 				Vector3 pa = position;
 				Vector3 pb = circles[i].Position;
 
-				Vector3 orig = new Vector3(0, 0, 0);
+				Vector3 orig = new(0, 0, 0);
 				circles[i].Dp = pb - pa;
 				circles[i].Dp.Normalize();
 				Vector3 dv = circles[i].DesiredVel - desiredVel;
@@ -190,7 +190,7 @@ namespace SharpNav.Crowds
 				{
 					//special case when the agent is very close to the segment
 					Vector3 sdir = seg.Q - seg.P;
-					Vector3 snorm = new Vector3(0, 0, 0);
+					Vector3 snorm = new(0, 0, 0);
 					snorm.X = -sdir.Z;
 					snorm.Z = sdir.X;
 
@@ -307,7 +307,7 @@ namespace SharpNav.Crowds
 			{
 				for (int x = 0; x < this.parameters.GridSize; x++)
 				{
-					Vector3 vcand = new Vector3(0, 0, 0);
+					Vector3 vcand = new(0, 0, 0);
 					vcand.X = cvx + x * cs - half;
 					vcand.Y = 0;
 					vcand.Z = cvz + y * cs - half;
@@ -372,17 +372,17 @@ namespace SharpNav.Crowds
 
 			//start sampling
 			float cr = vmax * (1.0f - parameters.VelBias);
-			Vector3 res = new Vector3(desiredVel.X * parameters.VelBias, 0, desiredVel.Z * parameters.VelBias);
+			Vector3 res = new(desiredVel.X * parameters.VelBias, 0, desiredVel.Z * parameters.VelBias);
 			int ns = 0;
 
 			for (int k = 0; k < depth; k++)
 			{
 				float minPenalty = float.MaxValue;
-				Vector3 bvel = new Vector3(0, 0, 0);
+				Vector3 bvel = new(0, 0, 0);
 
 				for (int i = 0; i < numPatterns; i++)
 				{
-					Vector3 vcand = new Vector3();
+					Vector3 vcand = new();
 					vcand.X = res.X + pattern[i * 2 + 0] * cr;
 					vcand.Y = 0;
 					vcand.Z = res.Z + pattern[i * 2 + 1] * cr;

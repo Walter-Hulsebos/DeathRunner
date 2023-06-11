@@ -5,8 +5,8 @@ namespace ProjectDawn.Geometry2D
 {
     public partial struct Rectangle
     {
-        public static implicit operator Rect(Rectangle v) => new Rect(v.Position, v.Size);
-        public static implicit operator Rectangle(Rect v) => new Rectangle(v.position, v.size);
+        public static implicit operator Rect(Rectangle v) => new(v.Position, v.Size);
+        public static implicit operator Rectangle(Rect v) => new(v.position, v.size);
     }
 }
 #endif

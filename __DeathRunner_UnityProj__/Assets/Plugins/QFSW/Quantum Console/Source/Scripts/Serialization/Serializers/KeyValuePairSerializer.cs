@@ -8,8 +8,8 @@ namespace QFSW.QC.Serializers
     {
         protected override Type GenericType { get; } = typeof(KeyValuePair<,>);
 
-        private readonly Dictionary<Type, PropertyInfo> _keyPropertyLookup = new Dictionary<Type, PropertyInfo>();
-        private readonly Dictionary<Type, PropertyInfo> _valuePropertyLookup = new Dictionary<Type, PropertyInfo>();
+        private readonly Dictionary<Type, PropertyInfo> _keyPropertyLookup = new();
+        private readonly Dictionary<Type, PropertyInfo> _valuePropertyLookup = new();
 
         public override string SerializeFormatted(object value, QuantumTheme theme)
         {

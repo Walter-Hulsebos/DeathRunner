@@ -17,7 +17,7 @@ namespace MoreMountains.Tools
 		/// whether or not this texture should pan
 		public bool TextureShouldPan = true;
 		/// the speed at which the texture pans
-		public Vector2 Speed = new Vector2(10,10);
+		public Vector2 Speed = new(10,10);
 		/// the name of the sorting layer to render the texture at
 		public string SortingLayerName = "Above";
 		/// the property name, for example "_MainTex"

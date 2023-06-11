@@ -87,10 +87,10 @@ namespace DungeonArchitect.Builders.Maze
         {
             var offsets = new List<IntVector2>
             {
-                new IntVector2(-1, 0),
-                new IntVector2(1, 0),
-                new IntVector2(0, -1),
-                new IntVector2(0, 1)
+                new(-1, 0),
+                new(1, 0),
+                new(0, -1),
+                new(0, 1)
             };
 
             while (offsets.Count > 0)

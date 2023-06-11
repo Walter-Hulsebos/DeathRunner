@@ -62,7 +62,7 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>All of the animation states connected to this layer.</summary>
-        private readonly List<AnimancerState> States = new List<AnimancerState>();
+        private readonly List<AnimancerState> States = new();
 
         /************************************************************************************************************************/
 
@@ -218,7 +218,7 @@ namespace Animancer
 
         /// <inheritdoc/>
         public override FastEnumerator<AnimancerState> GetEnumerator()
-            => new FastEnumerator<AnimancerState>(States);
+            => new(States);
 
         /************************************************************************************************************************/
         #endregion

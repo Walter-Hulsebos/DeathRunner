@@ -346,11 +346,11 @@ namespace SharpNav
 				int con = i;
 				int poly = tile.OffMeshConnections[con].Poly;
 
-				Vector3 extents = new Vector3(tile.OffMeshConnections[con].Radius, tile.Header.WalkableClimb, tile.OffMeshConnections[con].Radius);
+				Vector3 extents = new(tile.OffMeshConnections[con].Radius, tile.Header.WalkableClimb, tile.OffMeshConnections[con].Radius);
 				
 				//Find polygon to connect to
 				Vector3 p = tile.OffMeshConnections[con].Pos0;
-				Vector3 nearestPt = new Vector3();
+				Vector3 nearestPt = new();
 				int reference = FindNearestPolyInTile(tile, p, extents, ref nearestPt);
 				if (reference == 0)
 					continue;
@@ -425,8 +425,8 @@ namespace SharpNav
 					//Create new links
 					Vector3 va = tile.Verts[tile.Polys[i].Verts[j]];
 					Vector3 vb = tile.Verts[tile.Polys[i].Verts[(j + 1) % numPolyVerts]];
-					List<int> nei = new List<int>(4);
-					List<float> neia = new List<float>(4 * 2);
+					List<int> nei = new(4);
+					List<float> neia = new(4 * 2);
 					FindConnectingPolys(va, vb, target, dir.GetOpposite(), nei, neia);
 
 					//Iterate through neighbors
@@ -508,11 +508,11 @@ namespace SharpNav
 				if (!IsLinkAllocated(targetPoly.FirstLink))
 					continue;
 
-				Vector3 extents = new Vector3(targetCon.Radius, target.Header.WalkableClimb, targetCon.Radius);
+				Vector3 extents = new(targetCon.Radius, target.Header.WalkableClimb, targetCon.Radius);
 
 				//Find polygon to connect to
 				Vector3 p = targetCon.Pos1;
-				Vector3 nearestPt = new Vector3();
+				Vector3 nearestPt = new();
 				int reference = FindNearestPolyInTile(tile, p, extents, ref nearestPt);
 				if (reference == 0)
 					continue;
@@ -801,7 +801,7 @@ namespace SharpNav
 			bounds.Max = center + extents;
 
 			//Get nearby polygons from proximity grid
-			List<int> polys = new List<int>(128);
+			List<int> polys = new(128);
 			int polyCount = QueryPolygonsInTile(tile, bounds, polys);
 
 			//Find nearest polygon amongst the nearby polygons
@@ -812,7 +812,7 @@ namespace SharpNav
 			for (int i = 0; i < polyCount; i++)
 			{
 				int reference = polys[i];
-				Vector3 closestPtPoly = new Vector3();
+				Vector3 closestPtPoly = new();
 				tile.ClosestPointOnPoly(DecodePolyIdPoly(reference), center, ref closestPtPoly);
 				float d = (center - closestPtPoly).LengthSquared();
 				if (d < nearestDistanceSqr)

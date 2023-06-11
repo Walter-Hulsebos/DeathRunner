@@ -13,7 +13,7 @@ namespace DungeonArchitect.Builders.SnapGridFlow
         public int visibilityDepth = 1;
         public Transform[] trackedObjects;
         
-        private VisibilityGraph visibilityGraph = new VisibilityGraph();
+        private VisibilityGraph visibilityGraph = new();
 
 
         void Update()

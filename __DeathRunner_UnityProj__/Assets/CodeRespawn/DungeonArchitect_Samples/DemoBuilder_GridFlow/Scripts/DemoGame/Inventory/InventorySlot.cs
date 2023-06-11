@@ -5,6 +5,6 @@ namespace DungeonArchitect.Samples.GridFlow
 {
     public class InventorySlot : MonoBehaviour
     {
-        public InventoryItem item = new InventoryItem();
+        public InventoryItem item = new();
     }
 }

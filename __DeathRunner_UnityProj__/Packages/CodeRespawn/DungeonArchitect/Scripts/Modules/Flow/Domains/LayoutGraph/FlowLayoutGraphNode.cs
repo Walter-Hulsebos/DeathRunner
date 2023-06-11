@@ -16,17 +16,17 @@ namespace DungeonArchitect.Flow.Domains.Layout
         public Color color = Color.green;
         public Vector3 coord = Vector3.zero;
         public string pathName = "";
-        public List<FlowItem> items = new List<FlowItem>();
+        public List<FlowItem> items = new();
         public int pathIndex = -1;
         public int pathLength = 0;
         public bool mainPath = false;
         
         // This node may be a composite node which was created by merging these nodes
         [NonSerialized] // TODO: Fix serialization
-        public List<FlowLayoutGraphNode> MergedCompositeNodes = new List<FlowLayoutGraphNode>();
+        public List<FlowLayoutGraphNode> MergedCompositeNodes = new();
         
         [HideInInspector]
-        public FlowDomainDataRegistry domainData = new FlowDomainDataRegistry();
+        public FlowDomainDataRegistry domainData = new();
         
         public FlowLayoutGraphNode()
         {
@@ -94,7 +94,7 @@ namespace DungeonArchitect.Flow.Domains.Layout
     public class FlowLayoutGraphNodeGroup
     {
         public DungeonUID GroupId = DungeonUID.Empty;
-        public List<DungeonUID> GroupNodes = new List<DungeonUID>();
+        public List<DungeonUID> GroupNodes = new();
 
         public FlowLayoutGraphNodeGroup Clone()
         {

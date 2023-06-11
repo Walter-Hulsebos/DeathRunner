@@ -38,7 +38,7 @@ namespace MoreMountains.Feedbacks
 		public float TransitionDuration = 1f;
 		/// the curve to move along to
 		[Tooltip("the curve to move along to")]
-		public MMTweenType Curve = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
+		public MMTweenType Curve = new(MMTween.MMTweenCurve.EaseInCubic);
 
 		protected bool _active = false;
 		protected bool _toggle = false;

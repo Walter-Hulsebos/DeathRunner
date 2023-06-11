@@ -10,7 +10,7 @@ namespace DungeonArchitect.RoadNetworks
     {
         public event RoadBlockLayoutBuiltDelegate RoadBlockLayoutBuilt;
 
-        Dictionary<int, RoadGraphNode> graphNodes = new Dictionary<int, RoadGraphNode>();
+        Dictionary<int, RoadGraphNode> graphNodes = new();
         MeshFilter meshFilter;
         public RoadLayoutBuilder(RoadGraph roadGraph, MeshFilter meshFilter)
         {

@@ -175,9 +175,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6617645285605945172}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.08888984, y: 0.043848038, z: 3.0911756}
   m_Center: {x: -0.00027501583, y: 0.00887537, z: 1.5002377}
 --- !u!1 &7518621667944114916
@@ -190,7 +198,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7141673538782326878}
   - component: {fileID: 2685919541244184367}
-  - component: {fileID: 7757583549552856005}
   m_Layer: 0
   m_Name: Fence_Pin
   m_TagString: Untagged
@@ -238,16 +245,3 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1589634763903328687}
   m_Enabled: 1
---- !u!114 &7757583549552856005
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7518621667944114916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 75acd0e3a639fd142a6a7038d186d234, type: 2}

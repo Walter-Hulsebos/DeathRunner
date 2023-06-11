@@ -19,10 +19,10 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         /// <summary>The states in the target layer which have non-zero <see cref="AnimancerNode.Weight"/>.</summary>
-        public readonly List<AnimancerState> ActiveStates = new List<AnimancerState>();
+        public readonly List<AnimancerState> ActiveStates = new();
 
         /// <summary>The states in the target layer which have zero <see cref="AnimancerNode.Weight"/>.</summary>
-        public readonly List<AnimancerState> InactiveStates = new List<AnimancerState>();
+        public readonly List<AnimancerState> InactiveStates = new();
 
         /************************************************************************************************************************/
 
@@ -298,7 +298,7 @@ namespace Animancer.Editor
 
         /// <summary>Cached Inspectors that have already been created for states.</summary>
         private readonly Dictionary<AnimancerState, IAnimancerNodeDrawer>
-            StateInspectors = new Dictionary<AnimancerState, IAnimancerNodeDrawer>();
+            StateInspectors = new();
 
         /// <summary>Draws the Inspector for the given `state`.</summary>
         private void DoStateGUI(AnimancerState state)

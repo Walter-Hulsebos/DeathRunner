@@ -7,7 +7,7 @@ namespace QFSW.QC.Parsers
     {
         private const int MaxFlatTupleSize = 8;
 
-        protected override HashSet<Type> GenericTypes { get; } = new HashSet<Type>
+        protected override HashSet<Type> GenericTypes { get; } = new()
         {
             typeof(ValueTuple<>),
             typeof(ValueTuple<,>),

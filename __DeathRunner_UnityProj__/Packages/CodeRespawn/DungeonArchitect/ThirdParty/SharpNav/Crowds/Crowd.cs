@@ -350,7 +350,7 @@ namespace SharpNav.Crowds
 				if (agents[i].TargetState == TargetState.None)
 					continue;
 
-				Vector3 dvel = new Vector3(0, 0, 0);
+				Vector3 dvel = new(0, 0, 0);
 
 				if (agents[i].TargetState == TargetState.Velocity)
 				{
@@ -381,7 +381,7 @@ namespace SharpNav.Crowds
 					float separationWeight = agents[i].Parameters.SeparationWeight;
 
 					float w = 0;
-					Vector3 disp = new Vector3(0, 0, 0);
+					Vector3 disp = new(0, 0, 0);
 
 					for (int j = 0; j < agents[i].NeighborCount; j++)
 					{
@@ -623,7 +623,7 @@ namespace SharpNav.Crowds
 					int npath = agents[i].Corridor.PathCount;
 
 					const int MAX_RES = 32;
-					Vector3 reqPos = new Vector3();
+					Vector3 reqPos = new();
 					int[] reqPath = new int[MAX_RES];
 					int reqPathCount = 0;
 
@@ -733,7 +733,7 @@ namespace SharpNav.Crowds
 						int npath = agents[i].Corridor.PathCount;
 
 						//apply results
-						Vector3 targetPos = new Vector3();
+						Vector3 targetPos = new();
 						targetPos = agents[i].TargetPosition;
 
 						int[] res = new int[this.maxPathResult];

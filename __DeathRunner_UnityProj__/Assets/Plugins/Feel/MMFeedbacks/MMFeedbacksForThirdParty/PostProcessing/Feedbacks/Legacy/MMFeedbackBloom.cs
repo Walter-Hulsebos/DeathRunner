@@ -42,7 +42,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Header("Intensity")]
 		/// the curve to animate the intensity on
 		[Tooltip("the curve to animate the intensity on")]
-		public AnimationCurve ShakeIntensity = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeIntensity = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		public float RemapIntensityZero = 0f;
@@ -53,7 +53,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Header("Threshold")]
 		/// the curve to animate the threshold on
 		[Tooltip("the curve to animate the threshold on")]
-		public AnimationCurve ShakeThreshold = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeThreshold = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		public float RemapThresholdZero = 0f;

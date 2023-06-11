@@ -10,12 +10,12 @@ public class MeshTool : MonoBehaviour
         MeshNormal
     }
 
-    public List<MeshFilter> m_Filters = new List<MeshFilter>();
+    public List<MeshFilter> m_Filters = new();
     public float m_Radius = 1.5f;
     public float m_Power = 2.0f;
     public ExtrudeMethod m_Method = ExtrudeMethod.Vertical;
 
-    RaycastHit m_HitInfo = new RaycastHit();
+    RaycastHit m_HitInfo = new();
 
     void Start()
     {

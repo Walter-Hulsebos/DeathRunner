@@ -11,8 +11,8 @@ namespace MoreMountains.Feedbacks
 	{
 		public bool GroupIsOpen;
 		public MMFInspectorGroupAttribute GroupAttribute;
-		public List<SerializedProperty> PropertiesList = new List<SerializedProperty>();
-		public HashSet<string> GroupHashSet = new HashSet<string>();
+		public List<SerializedProperty> PropertiesList = new();
+		public HashSet<string> GroupHashSet = new();
 		public Color GroupColor;
 
 		public void ClearGroup()
@@ -26,8 +26,8 @@ namespace MoreMountains.Feedbacks
 	public class MMF_FeedbackInspector 
 	{
 		public bool DrawerInitialized;
-		public List<SerializedProperty> PropertiesList = new List<SerializedProperty>();
-		public Dictionary<string, MMFInspectorGroupData> GroupData = new Dictionary<string, MMFInspectorGroupData>();
+		public List<SerializedProperty> PropertiesList = new();
+		public Dictionary<string, MMFInspectorGroupData> GroupData = new();
         
 		private string[] _mmHiddenPropertiesToHide;
 		private bool _hasMMHiddenProperties = false;
@@ -66,8 +66,8 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 		
-		protected Dictionary<string,MMFConditionAttribute> _conditionDictionary = new Dictionary<string,MMFConditionAttribute>();
-		protected Dictionary<string,MMFEnumConditionAttribute> _enumConditionDictionary = new Dictionary<string,MMFEnumConditionAttribute>();
+		protected Dictionary<string,MMFConditionAttribute> _conditionDictionary = new();
+		protected Dictionary<string,MMFEnumConditionAttribute> _enumConditionDictionary = new();
 		protected MMFConditionAttribute _conditionAttributeStore;
 		protected MMFEnumConditionAttribute _enumConditionAttributeStore;
 
@@ -267,11 +267,11 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 
-		protected Rect _leftBorderRect = new Rect();
-		protected Rect _setupRect = new Rect();
-		protected Rect _verticalGroup = new Rect();
-		protected Rect _widthRect = new Rect();
-		protected GUIContent _groupTitle = new GUIContent();
+		protected Rect _leftBorderRect = new();
+		protected Rect _setupRect = new();
+		protected Rect _verticalGroup = new();
+		protected Rect _widthRect = new();
+		protected GUIContent _groupTitle = new();
         
 		protected virtual void DrawGroup(MMFInspectorGroupData groupData, MMF_Feedback feedback)
 		{
@@ -371,8 +371,8 @@ namespace MoreMountains.Feedbacks
 			}
 		}
 		
-		protected GUIContent _tweenCurveGUIContent = new GUIContent("MM Tween Curve");
-		protected GUIContent _animationCurveGUIContent = new GUIContent("Animation Curve");
+		protected GUIContent _tweenCurveGUIContent = new("MM Tween Curve");
+		protected GUIContent _animationCurveGUIContent = new("Animation Curve");
 		protected const string _customInspectorButtonPropertyName = "MMF_Button";
 		protected const string _customTweenTypePropertyName = "MMTweenType";
 		protected const string _findPropertyRelativeMMTweenDefinitionType = "MMTweenDefinitionType";

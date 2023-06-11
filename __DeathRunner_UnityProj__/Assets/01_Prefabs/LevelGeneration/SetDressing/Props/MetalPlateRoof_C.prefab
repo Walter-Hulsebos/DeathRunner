@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3311632}
   - component: {fileID: 2375288}
   - component: {fileID: 6555134}
-  - component: {fileID: 8781174759294227065}
   m_Layer: 0
   m_Name: MetalPlateRoof_C
   m_TagString: Untagged
@@ -93,21 +92,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 133858}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 3.3197188, y: 0.15, z: 2.0518162}
   m_Center: {x: -0.000000059604645, y: -0.1, z: 1.0033313}
---- !u!114 &8781174759294227065
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 133858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: e9ac9c9b0bbd9cd4cb98e568572a68a4, type: 2}

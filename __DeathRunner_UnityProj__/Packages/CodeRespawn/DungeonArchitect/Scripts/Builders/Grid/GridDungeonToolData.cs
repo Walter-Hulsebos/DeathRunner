@@ -9,7 +9,7 @@ namespace DungeonArchitect.Builders.Grid
         // The cells painted by the "Paint" tool
         [SerializeField]
         [HideInInspector]
-        public List<IntVector> paintedCells = new List<IntVector>();
+        public List<IntVector> paintedCells = new();
         
         
 
@@ -20,7 +20,7 @@ namespace DungeonArchitect.Builders.Grid
         /// <param name="automaticRebuild">if true, the dungeon would be rebuilt, if the data model has changed due to this request</param>
 		public bool AddPaintCell(IntVector location) {
 			bool overlappingCell = false;
-			IntVector overlappingCellValue = new IntVector();
+			IntVector overlappingCellValue = new();
 			foreach (var cellData in paintedCells) {
 				if (cellData.x == location.x && cellData.z == location.z) {
 					if (cellData.y != location.y) {

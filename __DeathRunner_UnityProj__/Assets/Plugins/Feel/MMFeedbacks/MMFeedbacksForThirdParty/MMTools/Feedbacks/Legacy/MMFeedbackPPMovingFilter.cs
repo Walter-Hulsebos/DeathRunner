@@ -35,7 +35,7 @@ namespace MoreMountains.Feedbacks
 		public float TransitionDuration = 1f;
 		/// the curve to move along to
 		[Tooltip("the curve to move along to")]
-		public MMTweenType Curve = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
+		public MMTweenType Curve = new(MMTween.MMTweenCurve.EaseInCubic);
         
 		/// the duration of this feedback is the duration of the transition
 		public override float FeedbackDuration { get { return ApplyTimeMultiplier(TransitionDuration); } set { TransitionDuration = value;  } }

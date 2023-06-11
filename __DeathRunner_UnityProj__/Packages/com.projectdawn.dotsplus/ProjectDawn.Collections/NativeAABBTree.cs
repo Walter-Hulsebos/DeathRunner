@@ -297,17 +297,17 @@ namespace ProjectDawn.Collections
             /// <summary>
             /// Returns iterator that references to parent.
             /// </summary>
-            public Iterator Parent => new Iterator(m_Data, m_Data->Parent(m_Handle));
+            public Iterator Parent => new(m_Data, m_Data->Parent(m_Handle));
 
             /// <summary>
             /// Returns iterator that references to left child.
             /// </summary>
-            public Iterator Left => new Iterator(m_Data, m_Data->Left(m_Handle));
+            public Iterator Left => new(m_Data, m_Data->Left(m_Handle));
 
             /// <summary>
             /// Returns iterator that references to right child.
             /// </summary>
-            public Iterator Right => new Iterator(m_Data, m_Data->Right(m_Handle));
+            public Iterator Right => new(m_Data, m_Data->Right(m_Handle));
 
             /// <summary>
             /// Returns true if iterator does not have childs.

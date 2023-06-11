@@ -25,7 +25,7 @@ namespace ProjectDawn.Collections.Tests
                 Rectangle = rectangle;
             }
             public float SurfaceArea() => Rectangle.Perimeter;
-            public AABRectangle Union(AABRectangle value) => new AABRectangle(Rectangle.Union(Rectangle, value.Rectangle));
+            public AABRectangle Union(AABRectangle value) => new(Rectangle.Union(Rectangle, value.Rectangle));
         }
 
         [BurstCompile(CompileSynchronously = true)]
@@ -195,7 +195,7 @@ namespace ProjectDawn.Collections.Tests
                 Shape = circle;
             }
             public float SurfaceArea() => Shape.Perimeter;
-            public AABCircle Union(AABCircle value) => new AABCircle(Circle.Union(Shape, value.Shape));
+            public AABCircle Union(AABCircle value) => new(Circle.Union(Shape, value.Shape));
         }
 
         [BurstCompile(CompileSynchronously = true)]

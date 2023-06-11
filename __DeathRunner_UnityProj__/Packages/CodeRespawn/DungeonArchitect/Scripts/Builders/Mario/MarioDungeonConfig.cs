@@ -32,7 +32,7 @@ namespace DungeonArchitect.Builders.Mario
 
         public int maxJumpTileDistance = 1;
 
-        public Vector3 gridSize = new Vector3(4, 2, 4);
+        public Vector3 gridSize = new(4, 2, 4);
 
         public MarioDungeonLevelChunkRule[] chunkMarkers;
         

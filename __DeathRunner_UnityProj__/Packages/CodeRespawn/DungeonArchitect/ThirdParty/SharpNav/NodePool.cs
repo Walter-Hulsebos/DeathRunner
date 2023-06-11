@@ -70,7 +70,7 @@ namespace SharpNav
 			if (nodes.Count >= maxNodes)
 				return null;
 
-			Node newNode = new Node();
+			Node newNode = new();
 			newNode.ParentIdx = 0;
 			newNode.cost = 0;
 			newNode.total = 0;

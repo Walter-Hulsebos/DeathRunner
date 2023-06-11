@@ -64,14 +64,14 @@ namespace MoreMountains.Tools
 		public TimeScales TimeScale = TimeScales.Unscaled;
 
 		/// the curve to use for this movement
-		public MMTweenType Curve = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
+		public MMTweenType Curve = new(MMTween.MMTweenCurve.EaseInCubic);
 
 		/// whether the filter is active at start or not
 		public bool Active = false;
 
 		[MMVector("On", "Off")]
 		/// the vertical offsets to apply when the filter is on or off
-		public Vector2 FilterOffset = new Vector2(0f, 5f);
+		public Vector2 FilterOffset = new(0f, 5f);
 
 		/// whether or not to add the initial position
 		public bool AddToInitialPosition = true;

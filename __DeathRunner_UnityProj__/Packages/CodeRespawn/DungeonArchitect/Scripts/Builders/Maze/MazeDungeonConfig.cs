@@ -7,7 +7,7 @@ namespace DungeonArchitect.Builders.Maze
 		public int mazeWidth = 20;  
 		public int mazeHeight = 25;
         
-        public Vector2 gridSize = new Vector2(4, 4);
+        public Vector2 gridSize = new(4, 4);
         
         public bool Mode2D = false;
         

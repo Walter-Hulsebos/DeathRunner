@@ -33,7 +33,7 @@ namespace DungeonArchitect.Builders.BSP
 		public Color debugColor = Color.blue;
 		public bool discarded = false;
 
-		public List<BSPNodeObject> connectedRooms = new List<BSPNodeObject>();
+		public List<BSPNodeObject> connectedRooms = new();
 
         public NodeConnection[] subtreeLeafConnections = new NodeConnection[0];
 

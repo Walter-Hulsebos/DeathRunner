@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3394412}
   - component: {fileID: 2359120}
   - component: {fileID: 6515462}
-  - component: {fileID: 5716272286973278388}
   m_Layer: 0
   m_Name: AirConditioner_A
   m_TagString: Untagged
@@ -93,21 +92,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 135374}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.8621403, y: 0.6, z: 0.23}
   m_Center: {x: 0.000000029802322, y: 0.26, z: 0.22}
---- !u!114 &5716272286973278388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 135374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: ef28768029b72db4394b66c0d6e5cf87, type: 2}

@@ -293,7 +293,7 @@ namespace DungeonArchitect.Flow.Domains.Layout.Tooling.Graph3D
     {
         public FlowLayoutGraphLink Link;
         public bool FixPositionEveryFrame = false;
-        private LinkRenderSettings settings = new LinkRenderSettings();
+        private LinkRenderSettings settings = new();
         private SxMeshActor headActor;
 
         public SxActor StartActor
@@ -458,12 +458,12 @@ namespace DungeonArchitect.Flow.Domains.Layout.Tooling.Graph3D
         {
             var planeOffsets = new Vector3[]
             {
-                new Vector3(1, 0, 0),
-                new Vector3(-1, 0, 0),
-                new Vector3(0, 0, 1),
-                new Vector3(0, 0, -1),
-                new Vector3(0, 1, 0),
-                new Vector3(0, -1, 0)
+                new(1, 0, 0),
+                new(-1, 0, 0),
+                new(0, 0, 1),
+                new(0, 0, -1),
+                new(0, 1, 0),
+                new(0, -1, 0)
             };
 
             var quadForward = new Vector3(0, 0, -1);

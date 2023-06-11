@@ -7,7 +7,7 @@ namespace DungeonArchitect.Builders.GridFlow
     public class GridFlowDungeonConfig : DungeonConfig
     {
         public GridFlowAsset flowAsset;
-        public Vector3 gridSize = new Vector3(4, 4, 4);
+        public Vector3 gridSize = new(4, 4, 4);
         
         [Tooltip(@"If the flow graph cannot converge to a solution, retry again this many times.  Usually a dungeon converges within 1-10 tries, depending on how you've designed the flow graph")]
         public int numGraphRetries = 100;

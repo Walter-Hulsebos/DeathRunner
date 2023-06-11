@@ -75,7 +75,7 @@ namespace Sisus.ComponentNames.EditorOnly
 
             // Fix for the TextField clipping over the very top line
             // of the component header component below it.
-            Rect lineRect = new Rect(0f, 0f, Screen.width, 1f);
+            Rect lineRect = new(0f, 0f, Screen.width, 1f);
             EditorGUI.DrawRect(lineRect, LineColor);
         }
 

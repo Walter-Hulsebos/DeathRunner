@@ -21,7 +21,7 @@ namespace HeurekaGames.AssetHunterPRO
         private GUIContent buttonSelectContent;
         private GUIContent labelBtnContent;
         private GUIStyle labelBtnStyle;
-        private List<float> scrollviewPositionList = new List<float>();
+        private List<float> scrollviewPositionList = new();
         private Rect scrollArea;
         private int scrollEndIndex;
 
@@ -139,7 +139,7 @@ namespace HeurekaGames.AssetHunterPRO
             if(duplicateDataManager.RequiresScrollviewRebuild)
                 scrollviewPositionList = new List<float>();
 
-            using (EditorGUILayout.ScrollViewScope scrollview = new EditorGUILayout.ScrollViewScope(scrollPosition))
+            using (EditorGUILayout.ScrollViewScope scrollview = new(scrollPosition))
             {
                 scrollPosition = scrollview.scrollPosition;
 
@@ -221,7 +221,7 @@ namespace HeurekaGames.AssetHunterPRO
 
         private void doFooter()
         {
-            GUIContent RefreshGUIContent = new GUIContent(guiContentRefresh);
+            GUIContent RefreshGUIContent = new(guiContentRefresh);
             Color origColor = GUI.color;
             if (duplicateDataManager.IsDirty)
             {

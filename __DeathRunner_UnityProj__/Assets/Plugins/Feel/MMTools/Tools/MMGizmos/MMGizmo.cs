@@ -59,7 +59,7 @@ namespace MoreMountains.Tools
 		/// the size of the texture to display as a gizmo
 		[Tooltip("the size of the texture to display as a gizmo")]
 		[MMEnumCondition("PositionMode", (int)PositionModes.Texture)]
-		public Vector2 TextureSize = new Vector2(50f,50f); 
+		public Vector2 TextureSize = new(50f,50f); 
 		/// the size of the gizmo when in position mode
 		[Tooltip("the size of the gizmo when in position mode")]
 		[MMEnumCondition("GizmoType", (int)GizmoTypes.Position)]
@@ -116,7 +116,7 @@ namespace MoreMountains.Tools
 		/// the offset to apply to the text
 		[Tooltip("the offset to apply to the text")]
 		[MMCondition("DisplayText", true)]
-		public Vector3 TextOffset = new Vector3(0f, 0.5f, 0f);
+		public Vector3 TextOffset = new(0f, 0.5f, 0f);
 		/// what style to use for the text's font
 		[Tooltip("what style to use for the text's font")]
 		[MMCondition("DisplayText", true)]
@@ -132,11 +132,11 @@ namespace MoreMountains.Tools
 		/// the color of the background behind the text
 		[Tooltip("the color of the background behind the text")]
 		[MMCondition("DisplayText", true)]
-		public Color TextBackgroundColor = new Color(0,0,0,0.3f); 
+		public Color TextBackgroundColor = new(0,0,0,0.3f); 
 		/// the padding to apply to the text's background
 		[Tooltip("the padding to apply to the text's background")]
 		[MMCondition("DisplayText", true)]
-		public Vector4 TextPadding = new Vector4(5,0,5,0); 
+		public Vector4 TextPadding = new(5,0,5,0); 
 		/// the distance from the scene view camera beyond which the gizmo text won't be displayed
 		[Tooltip("the distance from the scene view camera beyond which the gizmo text won't be displayed")]
 		[MMCondition("DisplayText", true)]

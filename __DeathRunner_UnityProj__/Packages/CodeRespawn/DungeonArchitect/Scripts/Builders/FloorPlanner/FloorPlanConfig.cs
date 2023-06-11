@@ -9,7 +9,7 @@ namespace DungeonArchitect.Builders.FloorPlan
 
         public Vector3 BuildingSize;
 
-        public Vector3 GridSize = new Vector3(4, 2, 4);
+        public Vector3 GridSize = new(4, 2, 4);
 
         public int MinRoomSize = 2;
 

@@ -160,7 +160,7 @@ namespace MoreMountains.Tools
 		protected bool _setRealtimeProgressValueIsNull;
 		protected bool _setInterpolatedProgressValueIsNull;
 		protected const float _asyncProgressLimit = 0.9f;
-		protected MMSceneLoadingAntiSpill _antiSpill = new MMSceneLoadingAntiSpill();
+		protected MMSceneLoadingAntiSpill _antiSpill = new();
 		protected static string _antiSpillSceneName = "";
 
 		/// <summary>

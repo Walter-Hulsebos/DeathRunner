@@ -35,13 +35,13 @@ namespace MoreMountains.Tools
 			public Type _propertyType = null;
 
 			public int _numberOfLines = 0;
-			public Color _progressBarBackground = new Color(0, 0, 0, 0.5f);
+			public Color _progressBarBackground = new(0, 0, 0, 0.5f);
 
 			public Type[] _authorizedTypes;
 			public bool _targetIsScriptableObject;
 		}
 		
-		private Dictionary<string, PropertyPickerViewData> _propertyPickerViewData = new Dictionary<string, PropertyPickerViewData>();
+		private Dictionary<string, PropertyPickerViewData> _propertyPickerViewData = new();
 		
 		
 
@@ -156,10 +156,10 @@ namespace MoreMountains.Tools
 			Initialization(property, viewData);
 			
 			// rectangles
-			Rect targetLabelRect = new Rect(position.x, position.y, position.width, PropertyPickerViewData._lineHeight);
-			Rect targetObjectRect = new Rect(position.x, position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin), position.width, PropertyPickerViewData._lineHeight);
-			Rect targetComponentRect = new Rect(position.x, position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin) * 2, position.width, PropertyPickerViewData._lineHeight);
-			Rect targetPropertyRect = new Rect(position.x, position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin) * 3, position.width, PropertyPickerViewData._lineHeight);
+			Rect targetLabelRect = new(position.x, position.y, position.width, PropertyPickerViewData._lineHeight);
+			Rect targetObjectRect = new(position.x, position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin), position.width, PropertyPickerViewData._lineHeight);
+			Rect targetComponentRect = new(position.x, position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin) * 2, position.width, PropertyPickerViewData._lineHeight);
+			Rect targetPropertyRect = new(position.x, position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin) * 3, position.width, PropertyPickerViewData._lineHeight);
 
 			EditorGUI.BeginProperty(position, label, property);
 
@@ -233,8 +233,8 @@ namespace MoreMountains.Tools
 
 		protected virtual void DrawLevelProgressBar(Rect position, float level, Color frontColor, Color negativeColor, PropertyPickerViewData viewData)
 		{
-			Rect levelLabelRect = new Rect(position.x, position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin) * (viewData._numberOfLines - 1), position.width, PropertyPickerViewData._lineHeight);
-			Rect levelValueRect = new Rect(position.x - 15 + EditorGUIUtility.labelWidth + 4, position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin) * (viewData._numberOfLines - 1), position.width, PropertyPickerViewData._lineHeight);
+			Rect levelLabelRect = new(position.x, position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin) * (viewData._numberOfLines - 1), position.width, PropertyPickerViewData._lineHeight);
+			Rect levelValueRect = new(position.x - 15 + EditorGUIUtility.labelWidth + 4, position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin) * (viewData._numberOfLines - 1), position.width, PropertyPickerViewData._lineHeight);
 
 			float progressX = position.x - 5 + EditorGUIUtility.labelWidth + 60;
 			float progressY = position.y + (PropertyPickerViewData._lineHeight + PropertyPickerViewData._lineMargin) * (viewData._numberOfLines - 1) + 6;
@@ -250,9 +250,9 @@ namespace MoreMountains.Tools
 			}
 
 			float progressLevel = Mathf.Clamp01(level);
-			Rect levelProgressBg = new Rect(progressX, progressY, fullProgressWidth, progressHeight);
+			Rect levelProgressBg = new(progressX, progressY, fullProgressWidth, progressHeight);
 			float progressWidth = MMMaths.Remap(progressLevel, 0f, 1f, 0f, fullProgressWidth);
-			Rect levelProgressFront = new Rect(progressX, progressY, progressWidth, progressHeight);
+			Rect levelProgressFront = new(progressX, progressY, progressWidth, progressHeight);
 
 			EditorGUI.LabelField(levelLabelRect, new GUIContent("Level"));
 			EditorGUI.LabelField(levelValueRect, new GUIContent(displayLevel.ToString("F4")));
@@ -293,7 +293,7 @@ namespace MoreMountains.Tools
 			viewData._componentNames = new string[0];
 
 			// we create a temp list to fill our array with
-			List<string> tempComponentsNameList = new List<string>();
+			List<string> tempComponentsNameList = new();
 			tempComponentsNameList.Add(PropertyPickerViewData._undefinedComponentString);
 			viewData._componentList.Add(null);
 
@@ -329,7 +329,7 @@ namespace MoreMountains.Tools
 			viewData._propertiesList = new List<string>();
 
 			// we create a temp list to fill our array with
-			List<string> tempPropertiesList = new List<string>();
+			List<string> tempPropertiesList = new();
 			tempPropertiesList.Add(PropertyPickerViewData._undefinedPropertyString);
 			viewData._propertiesList.Add("");
 

@@ -178,7 +178,7 @@ namespace SharpNav.Geometry
 		/// <returns>A bounding box containing every triangle.</returns>
 		public static BBox3 GetBoundingBox(this IEnumerable<Triangle3> tris, float padding)
 		{
-			BBox3 bounds = new BBox3();
+			BBox3 bounds = new();
 			Vector3 va, vb, vc;
 			foreach (Triangle3 tri in tris)
 			{
@@ -203,7 +203,7 @@ namespace SharpNav.Geometry
 		/// <returns>A bounding box containing every vector.</returns>
 		public static BBox3 GetBoundingBox(this IEnumerable<Vector3> vecs)
 		{
-			BBox3 bounds = new BBox3();
+			BBox3 bounds = new();
 			Vector3 v;
 			foreach (Vector3 vec in vecs)
 			{

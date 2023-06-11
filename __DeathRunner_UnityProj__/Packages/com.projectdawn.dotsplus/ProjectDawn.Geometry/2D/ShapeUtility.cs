@@ -72,7 +72,7 @@ namespace ProjectDawn.Geometry2D
             float2 min = b.Min;
             float2 max = b.Max;
 
-            float4 h = new float4(
+            float4 h = new(
                 d.y * min.x - d.x * min.y,
                 d.y * min.x - d.x * max.y,
                 d.y * max.x - d.x * max.y,
@@ -276,10 +276,10 @@ namespace ProjectDawn.Geometry2D
             float2 c = position + size;
             float2 d = position + new float2(0, size.y);
 
-            Line lineA = new Line(a, b);
-            Line lineB = new Line(b, c);
-            Line lineC = new Line(c, d);
-            Line lineD = new Line(d, a);
+            Line lineA = new(a, b);
+            Line lineB = new(b, c);
+            Line lineC = new(c, d);
+            Line lineD = new(d, a);
 
             if (Intersection(line, lineA, out pointA))
             {

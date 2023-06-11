@@ -147,7 +147,7 @@ namespace Animancer
             /// </summary>
             public static ObjectPool<T>.Disposable Acquire<T>(out T item)
                 where T : class, new()
-                => new ObjectPool<T>.Disposable(out item);
+                => new(out item);
 
             /************************************************************************************************************************/
 
@@ -239,7 +239,7 @@ namespace Animancer
         /************************************************************************************************************************/
 
         private static readonly List<T>
-            Items = new List<T>();
+            Items = new();
 
         /************************************************************************************************************************/
 

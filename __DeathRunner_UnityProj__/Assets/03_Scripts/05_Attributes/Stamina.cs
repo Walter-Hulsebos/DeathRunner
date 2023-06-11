@@ -78,7 +78,9 @@ namespace DeathRunner.Attributes
 
         public Bool IsZero => Value == 0;
         
+        #if UNITY_EDITOR
         private Bool _hasOwnerObject;
+        #endif
         private UnityEngine.Object _ownerObject;
 
 
@@ -107,7 +109,9 @@ namespace DeathRunner.Attributes
         {
             if (owner != null)
             {
+                #if UNITY_EDITOR
                 _hasOwnerObject = true;
+                #endif
                 _ownerObject = owner;
                 
                 #if UNITY_EDITOR
@@ -116,7 +120,9 @@ namespace DeathRunner.Attributes
             }
             else
             {
+                #if UNITY_EDITOR
                 _hasOwnerObject = false;
+                #endif
                 
                 #if UNITY_EDITOR
                 Debug.LogWarning(message: $"{nameof(Stamina)}: Init with owner object, but owner object is null!");

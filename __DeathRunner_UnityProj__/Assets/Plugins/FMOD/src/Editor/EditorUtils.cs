@@ -28,7 +28,7 @@ namespace FMODUnity
         private static FMOD.SPEAKERMODE speakerMode;
         private static string encryptionKey;
 
-        private static List<FMOD.Studio.Bank> loadedPreviewBanks = new List<FMOD.Studio.Bank>();
+        private static List<FMOD.Studio.Bank> loadedPreviewBanks = new();
         private static FMOD.Studio.EventDescription previewEventDesc;
         private static FMOD.Studio.EventInstance previewEventInstance;
 
@@ -205,7 +205,7 @@ namespace FMODUnity
         {
             Transform transform = component.transform;
 
-            StringBuilder objectPath = new StringBuilder();
+            StringBuilder objectPath = new();
 
             while(transform != null && transform.gameObject != root)
             {
@@ -271,10 +271,10 @@ namespace FMODUnity
 
                 using (new EditorGUI.IndentLevelScope())
                 {
-                    GUIContent content = new GUIContent(
+                    GUIContent content = new(
                         string.Format("Will be migrated to <b>{0}</b>", migrationTarget),
                         EditorGUIUtility.IconContent("console.infoicon.sml").image);
-                    GUIStyle style = new GUIStyle(GUI.skin.label) { richText = true };
+                    GUIStyle style = new(GUI.skin.label) { richText = true };
 
                     Rect rect = EditorGUILayout.GetControlRect(false, style.CalcSize(content).y);
                     rect = EditorGUI.IndentedRect(rect);
@@ -449,7 +449,7 @@ namespace FMODUnity
                 {
                     LoadPreviewBanks();
                     EditorEventRef eventRef = EventManager.EventFromPath(behavior.EventReference.Path);
-                    Dictionary<string, float> paramValues = new Dictionary<string, float>();
+                    Dictionary<string, float> paramValues = new();
                     foreach (EditorParamRef param in eventRef.Parameters)
                     {
                         paramValues.Add(param.Name, param.Default);
@@ -527,7 +527,7 @@ namespace FMODUnity
             encryptionKey = Settings.Instance.EncryptionKey;
             if (!string.IsNullOrEmpty(encryptionKey))
             {
-                FMOD.Studio.ADVANCEDSETTINGS studioAdvancedSettings = new FMOD.Studio.ADVANCEDSETTINGS();
+                FMOD.Studio.ADVANCEDSETTINGS studioAdvancedSettings = new();
                 CheckResult(system.setAdvancedSettings(studioAdvancedSettings, encryptionKey));
             }
 
@@ -672,7 +672,7 @@ namespace FMODUnity
             EditorUtility.DisplayDialog("FMOD Studio Unity Integration", text, "OK");
         }
 
-        private static List<FMOD.Studio.EventInstance> previewEventInstances = new List<FMOD.Studio.EventInstance>();
+        private static List<FMOD.Studio.EventInstance> previewEventInstances = new();
 
         public static bool PreviewBanksLoaded
         {
@@ -1235,10 +1235,10 @@ namespace FMODUnity
         private const string AnyCPU = "AnyCPU";
 
         private static readonly LibInfo[] LibrariesToUpdate = {
-            new LibInfo() {cpu = "x86", os = "Windows",  lib = "fmodstudioL.dll", platform = "win", buildTarget = BuildTarget.StandaloneWindows},
-            new LibInfo() {cpu = "x86_64", os = "Windows", lib = "fmodstudioL.dll", platform = "win", buildTarget = BuildTarget.StandaloneWindows64},
-            new LibInfo() {cpu = "x86_64", os = "Linux", lib = "libfmodstudioL.so", platform = "linux", buildTarget = BuildTarget.StandaloneLinux64},
-            new LibInfo() {cpu = AnyCPU, os = "OSX", lib = "fmodstudioL.bundle", platform = "mac", buildTarget = BuildTarget.StandaloneOSX},
+            new() {cpu = "x86", os = "Windows",  lib = "fmodstudioL.dll", platform = "win", buildTarget = BuildTarget.StandaloneWindows},
+            new() {cpu = "x86_64", os = "Windows", lib = "fmodstudioL.dll", platform = "win", buildTarget = BuildTarget.StandaloneWindows64},
+            new() {cpu = "x86_64", os = "Linux", lib = "libfmodstudioL.so", platform = "linux", buildTarget = BuildTarget.StandaloneLinux64},
+            new() {cpu = AnyCPU, os = "OSX", lib = "fmodstudioL.bundle", platform = "mac", buildTarget = BuildTarget.StandaloneOSX},
         };
 
         public static bool SourceLibsExist
@@ -1398,7 +1398,7 @@ namespace FMODUnity
                 name: "Copy New Native Libraries",
                 description: "Copy the new FMOD native libraries to the correct location and enable them.",
                 details: () => {
-                    List<string> actions = new List<string>();
+                    List<string> actions = new();
 
                     foreach (LibInfo libInfo in LibrariesToUpdate)
                     {

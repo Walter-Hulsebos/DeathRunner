@@ -12,20 +12,20 @@ namespace DungeonArchitect.Graphs.Layouts.Layered
         public float Mod;
 
         public LayoutTreeNode<T> Parent;
-        public List<LayoutTreeNode<T>> Children = new List<LayoutTreeNode<T>>();
+        public List<LayoutTreeNode<T>> Children = new();
     }
 
     class LayoutTree<T>
     {
         public LayoutTreeNode<T> root;
-        public List<LayoutTreeNode<T>> nodes = new List<LayoutTreeNode<T>>();
+        public List<LayoutTreeNode<T>> nodes = new();
     }
 
     [System.Serializable]
     public class GraphLayoutLayeredConfig
     {
         [SerializeField]
-        public Vector2 separation = new Vector2(130, 100);
+        public Vector2 separation = new(130, 100);
     }
 
     public class GraphLayoutLayered<T> : GraphLayoutBase<T>

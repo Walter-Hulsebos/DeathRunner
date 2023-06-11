@@ -10,7 +10,7 @@ namespace DungeonArchitect.Editors
     public class DAInspectorBase : Editor
     {
         protected SerializedObject sobject;
-        Dictionary<string, SerializedProperty> properties = new Dictionary<string, SerializedProperty>();
+        Dictionary<string, SerializedProperty> properties = new();
 
         public DAInspectorMonoScriptProperty<T> CreateScriptProperty<T>(string className)
         {

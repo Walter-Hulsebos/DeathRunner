@@ -76,7 +76,7 @@ namespace MoreMountains.Tools
 				{
 					if (sourceParam.name == targetParam.name)
 					{
-						MMAnimatorMirrorBind bind = new MMAnimatorMirrorBind();
+						MMAnimatorMirrorBind bind = new();
 						bind.ParameterHash = sourceParam.nameHash;
 						bind.ParameterType = sourceParam.type;
 						_updateParameters.Add(bind);

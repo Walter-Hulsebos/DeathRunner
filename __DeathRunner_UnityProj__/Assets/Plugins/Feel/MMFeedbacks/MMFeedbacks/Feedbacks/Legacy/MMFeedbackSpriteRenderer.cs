@@ -90,7 +90,7 @@ namespace MoreMountains.Feedbacks
 		/// the color to move to in ToDestination mode
 		[Tooltip("the color to move to in instant mode")]
 		[MMFEnumCondition("Mode", (int)Modes.Instant, (int)Modes.ToDestinationColor, (int)Modes.ToDestinationColorAndBack)]
-		public AnimationCurve ToDestinationColorCurve = new AnimationCurve(new Keyframe(0, 0f), new Keyframe(1, 1f));
+		public AnimationCurve ToDestinationColorCurve = new(new Keyframe(0, 0f), new Keyframe(1, 1f));
         
 		[Header("Flip")]
 		/// whether or not to flip the sprite on X

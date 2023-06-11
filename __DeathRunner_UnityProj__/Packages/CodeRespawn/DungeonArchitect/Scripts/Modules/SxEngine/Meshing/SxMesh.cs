@@ -41,7 +41,7 @@ namespace DungeonArchitect.SxEngine
 
     public class SxMesh
     {
-        public Dictionary<int, SxMeshSection> Sections = new Dictionary<int, SxMeshSection>();
+        public Dictionary<int, SxMeshSection> Sections = new();
         
         public void CreateSection(int sectionIndex, int drawMode, SxMeshVertex[] vertices)
         {
@@ -66,7 +66,7 @@ namespace DungeonArchitect.SxEngine
     
     public class SxMeshRegistry
     {
-        private static Dictionary<System.Type, SxMesh> cache = new Dictionary<System.Type, SxMesh>();
+        private static Dictionary<System.Type, SxMesh> cache = new();
 
         public static SxMesh Get<T>() where T : SxMesh, new()
         {

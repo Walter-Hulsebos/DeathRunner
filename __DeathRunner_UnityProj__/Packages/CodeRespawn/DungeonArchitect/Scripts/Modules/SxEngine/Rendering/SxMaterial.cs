@@ -130,7 +130,7 @@ namespace DungeonArchitect.SxEngine
     
     public class SxMaterialRegistry
     {
-        private static Dictionary<System.Type, SxMaterial> cache = new Dictionary<Type, SxMaterial>();
+        private static Dictionary<System.Type, SxMaterial> cache = new();
 
         public static SxMaterial Get<T>() where T : SxMaterial, new()
         {

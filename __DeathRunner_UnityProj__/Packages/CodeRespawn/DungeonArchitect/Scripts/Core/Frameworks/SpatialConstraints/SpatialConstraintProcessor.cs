@@ -29,7 +29,7 @@ namespace DungeonArchitect.SpatialConstraints
             var markerTransform = marker.Transform;
 
             Vector2 offset2D = (ruleNode.Bounds.center - referenceNode.Bounds.center) / SCBaseDomainNode.TileSize;
-            Vector3 offset = new Vector3(offset2D.x, 0, offset2D.y);
+            Vector3 offset = new(offset2D.x, 0, offset2D.y);
             if (relativeToMarkerRotation)
             {
                 offset = RotateVector(offset, markerTransform);

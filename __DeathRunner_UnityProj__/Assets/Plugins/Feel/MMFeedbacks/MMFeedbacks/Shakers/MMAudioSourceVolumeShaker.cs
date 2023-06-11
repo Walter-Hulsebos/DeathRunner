@@ -18,7 +18,7 @@ namespace MoreMountains.Feedbacks
 		public bool RelativeVolume = false;
 		/// the curve used to animate the intensity value on
 		[Tooltip("the curve used to animate the intensity value on")]
-		public AnimationCurve ShakeVolume = new AnimationCurve(new Keyframe(0, 1f), new Keyframe(0.5f, 0f), new Keyframe(1, 1f));
+		public AnimationCurve ShakeVolume = new(new Keyframe(0, 1f), new Keyframe(0.5f, 0f), new Keyframe(1, 1f));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(-1f, 1f)]

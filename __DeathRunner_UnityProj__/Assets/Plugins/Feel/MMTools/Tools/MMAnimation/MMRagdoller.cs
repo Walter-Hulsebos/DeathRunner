@@ -51,7 +51,7 @@ namespace MoreMountains.Tools
 		protected Vector3 _ragdolledHipPosition;
 		protected Vector3 _ragdolledHeadPosition;
 		protected Vector3 _ragdolledFeetPosition;
-		protected List<RagdollBodyPart> _bodyparts = new List<RagdollBodyPart>();
+		protected List<RagdollBodyPart> _bodyparts = new();
 		protected Animator _animator;
 		protected List<Component> _rigidbodiesTempList;
 		protected Component[] _rigidbodies;
@@ -162,7 +162,7 @@ namespace MoreMountains.Tools
 			{
 				if (component.transform != this.transform)
 				{
-					RagdollBodyPart bodyPart = new RagdollBodyPart { BodyPartTransform = component as Transform };
+					RagdollBodyPart bodyPart = new() { BodyPartTransform = component as Transform };
 					_bodyparts.Add(bodyPart);
 				}
 			}

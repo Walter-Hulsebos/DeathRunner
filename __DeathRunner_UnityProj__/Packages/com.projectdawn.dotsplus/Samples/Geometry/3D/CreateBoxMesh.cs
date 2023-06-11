@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 [ExecuteInEditMode]
 public class CreateBoxMesh : MonoBehaviour
 {
-    public Box Box = new Box(0, 1);
+    public Box Box = new(0, 1);
 
     private void Update()
     {

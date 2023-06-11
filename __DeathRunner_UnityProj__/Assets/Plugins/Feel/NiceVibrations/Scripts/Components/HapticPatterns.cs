@@ -72,7 +72,7 @@ namespace Lofelt.NiceVibrations
             // Each pair of adjacent entries in the Pattern create one entry in the GamepadRumble.
             public GamepadRumble ToRumble()
             {
-                GamepadRumble result = new GamepadRumble();
+                GamepadRumble result = new();
                 if (time.Length <= 1)
                 {
                     return result;
@@ -149,7 +149,7 @@ namespace Lofelt.NiceVibrations
             public Preset(PresetType type, float[] time, float[] amplitude)
             {
                 Debug.Assert(type != PresetType.None);
-                Pattern pattern = new Pattern(time, amplitude);
+                Pattern pattern = new(time, amplitude);
                 this.type = type;
                 this.maximumAmplitudePattern = pattern.time;
 #if ((!UNITY_ANDROID && !UNITY_IOS) || UNITY_EDITOR) && NICE_VIBRATIONS_INPUTSYSTEM_INSTALLED && ENABLE_INPUT_SYSTEM && !NICE_VIBRATIONS_DISABLE_GAMEPAD_SUPPORT
@@ -287,7 +287,7 @@ namespace Lofelt.NiceVibrations
                     .Replace("{duration}", duration.ToString(numberFormat));
 
                 // This preprocessor section will only run for non-mobile platforms
-                GamepadRumble rumble = new GamepadRumble();
+                GamepadRumble rumble = new();
 #if ((!UNITY_ANDROID && !UNITY_IOS) || UNITY_EDITOR) && NICE_VIBRATIONS_INPUTSYSTEM_INSTALLED && ENABLE_INPUT_SYSTEM && !NICE_VIBRATIONS_DISABLE_GAMEPAD_SUPPORT
                 rumble.durationsMs = new int[] { (int)(duration * 1000) };
                 rumble.lowFrequencyMotorSpeeds = new float[] { clampedAmplitude };
@@ -367,7 +367,7 @@ namespace Lofelt.NiceVibrations
                 .Replace("{duration}", clampedDurationSecs.ToString(numberFormat));
 
             // This preprocessor section will only run for non-mobile platforms
-            GamepadRumble rumble = new GamepadRumble();
+            GamepadRumble rumble = new();
 #if ((!UNITY_ANDROID && !UNITY_IOS) || UNITY_EDITOR) && NICE_VIBRATIONS_INPUTSYSTEM_INSTALLED && ENABLE_INPUT_SYSTEM && !NICE_VIBRATIONS_DISABLE_GAMEPAD_SUPPORT
             int rumbleDurationMs = (int)(clampedDurationSecs * 1000);
             const int rumbleEntryDurationMs = 16; // One rumble entry per frame at 60 FPS, which is the limit of what GamepadRumbler can play

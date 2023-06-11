@@ -591,7 +591,7 @@ namespace EasyCharacterMovement
         private Transform _rootTransform;
 
         [SerializeField, Tooltip("The root transform will be positioned at this offset from foot position.")]
-        private F32x3 _rootTransformOffset = new F32x3(0, 0, 0);
+        private F32x3 _rootTransformOffset = new(0, 0, 0);
 
         [Space(15f)]
         [Tooltip("The Character's capsule collider radius.")]
@@ -663,10 +663,10 @@ namespace EasyCharacterMovement
         private F32x3 _capsuleTopCenter;
         private F32x3 _capsuleBottomCenter;
 
-        private readonly HashSet<Rigidbody> _ignoredRigidbodies = new HashSet<Rigidbody>();
-        private readonly HashSet<Collider> _ignoredColliders = new HashSet<Collider>();
+        private readonly HashSet<Rigidbody> _ignoredRigidbodies = new();
+        private readonly HashSet<Collider> _ignoredColliders = new();
 
-        private readonly RaycastHitComparer _hitComparer = new RaycastHitComparer();
+        private readonly RaycastHitComparer _hitComparer = new();
 
         private readonly RaycastHit[] _hits = new RaycastHit[kMaxCollisionCount];
         private readonly Collider[] _overlaps = new Collider[kMaxOverlapCount];
@@ -2141,7 +2141,7 @@ namespace EasyCharacterMovement
                             else
                                 point = updatedPosition + _transformedCapsuleCenter - recoverDirection * _radius;
 
-                            CollisionResult collisionResult = new CollisionResult
+                            CollisionResult collisionResult = new()
                             {
                                 startPenetrating = true,
 
@@ -3361,7 +3361,7 @@ namespace EasyCharacterMovement
                 // First test with the box rotated so the corners are along the major axes (ie rotated 45 degrees).
 
                 F32x3 center = characterPosition + _transformedCapsuleCenter;
-                F32x3 halfExtents = new F32x3(capsuleRadius * 0.707f, capsuleHalfHeight, capsuleRadius * 0.707f);
+                F32x3 halfExtents = new(capsuleRadius * 0.707f, capsuleHalfHeight, capsuleRadius * 0.707f);
                 
                 Quaternion sweepOrientation = rotation * Quaternion.Euler(0f, -rotation.eulerAngles.y, 0f);
                 F32x3 sweepDirection = -1.0f * _characterUp;

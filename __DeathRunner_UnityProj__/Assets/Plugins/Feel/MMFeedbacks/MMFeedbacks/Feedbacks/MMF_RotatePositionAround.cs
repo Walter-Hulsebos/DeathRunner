@@ -53,21 +53,21 @@ namespace MoreMountains.Feedbacks
 		/// how the x part of the movement should animate over time, in degrees
 		[Tooltip("how the x part of the movement should animate over time, in degrees")]
 		[MMCondition("AnimateX", true)]
-		public AnimationCurve AnimateRotationX = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve AnimateRotationX = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// if this is true, should animate movement on the Y axis
 		[Tooltip("if this is true, should animate movement on the Y axis")]
 		public bool AnimateY = true;
 		/// how the y part of the rotation should animate over time, in degrees
 		[Tooltip("how the y part of the rotation should animate over time, in degrees")]
 		[MMCondition("AnimateY", true)]
-		public AnimationCurve AnimateRotationY = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve AnimateRotationY = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// if this is true, should animate movement on the Z axis
 		[Tooltip("if this is true, should animate movement on the Z axis")]
 		public bool AnimateZ = false;
 		/// how the z part of the rotation should animate over time, in degrees
 		[Tooltip("how the z part of the rotation should animate over time, in degrees")]
 		[MMCondition("AnimateZ", true)]
-		public AnimationCurve AnimateRotationZ = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
+		public AnimationCurve AnimateRotationZ = new(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0));
 		/// if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over
 		[Tooltip("if this is true, calling that feedback will trigger it, even if it's in progress. If it's false, it'll prevent any new Play until the current one is over")] 
 		public bool AllowAdditivePlays = false;

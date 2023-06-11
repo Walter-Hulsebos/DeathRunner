@@ -45,10 +45,10 @@ public class IsaacMarkerEmitter_RoomCenter : DungeonMarkerEmitter
             {
                 var cornerCoords = new Vector3[]
                 {
-                    new Vector3(0, 0, 0),
-                    new Vector3(roomWidth - 1, 0, 0),
-                    new Vector3(roomWidth - 1, 0, roomHeight - 1),
-                    new Vector3(0, 0, roomHeight - 1)
+                    new(0, 0, 0),
+                    new(roomWidth - 1, 0, 0),
+                    new(roomWidth - 1, 0, roomHeight - 1),
+                    new(0, 0, roomHeight - 1)
                 };
 
                 var cornerAngles = new float[] { 0, 270, 180, 90 };

@@ -31,7 +31,7 @@ namespace DungeonArchitect.Flow.Domains.Layout.Tasks
         public float spawnProbability = 1.0f;
 
         public bool showDifficulty = false;
-        public Color difficultyInfoColor = new Color(0, 0, 0.5f);
+        public Color difficultyInfoColor = new(0, 0, 0.5f);
 
         class NodeInfo
         {

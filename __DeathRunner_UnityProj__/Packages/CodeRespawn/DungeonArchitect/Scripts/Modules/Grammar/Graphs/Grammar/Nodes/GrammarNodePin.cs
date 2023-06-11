@@ -7,7 +7,7 @@ namespace DungeonArchitect.Grammar
     [System.Serializable]
     public class GrammarNodePin : GraphPin
     {
-        public Vector2 Padding = new Vector2(10, 10);
+        public Vector2 Padding = new(10, 10);
 
         public override bool ContainsPoint(Vector2 worldPoint)
         {

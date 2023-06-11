@@ -15,7 +15,7 @@ namespace DungeonArchitect.Editors.Flow.Layout
 
     public class FlowPreviewLayoutGraphEditor : GraphEditor
     {
-        private Dictionary<DungeonUID, List<Rect>> itemScreenPositions = new Dictionary<DungeonUID, List<Rect>>();
+        private Dictionary<DungeonUID, List<Rect>> itemScreenPositions = new();
         FlowItem selectedItem = null;
 
         public event OnGridFlowAbstractItemSelectionChanged ItemSelectionChanged;

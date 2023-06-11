@@ -213,7 +213,7 @@ namespace DungeonArchitect.UI.Impl.UnityEditor
             get { return styleManager; }
         }
 
-        Dictionary<string, Object> resources = new Dictionary<string, Object>();
+        Dictionary<string, Object> resources = new();
         public object GetResource<T>(string path)
         {
             if (resources.ContainsKey(path) && resources[path] == null)

@@ -107,7 +107,7 @@ namespace MoreMountains.Feedbacks
 		/// if fading, the tween over which to fade the sound 
 		[Tooltip("if fading, the tween over which to fade the sound ")]
 		[MMCondition("Fade", true)]
-		public MMTweenType FadeTween = new MMTweenType(MMTween.MMTweenCurve.EaseInOutQuartic);
+		public MMTweenType FadeTween = new(MMTween.MMTweenCurve.EaseInOutQuartic);
         
 		[Header("Solo")]
 		/// whether or not this sound should play in solo mode over its destination track. If yes, all other sounds on that track will be muted when this sound starts playing
@@ -342,7 +342,7 @@ namespace MoreMountains.Feedbacks
 
 			float volume = Random.Range(MinVolume, MaxVolume);
 			float pitch = Random.Range(MinPitch, MaxPitch);
-			GameObject temporaryAudioHost = new GameObject("EditorTestAS_WillAutoDestroy");
+			GameObject temporaryAudioHost = new("EditorTestAS_WillAutoDestroy");
 			SceneManager.MoveGameObjectToScene(temporaryAudioHost.gameObject, this.gameObject.scene);
 			temporaryAudioHost.transform.position = this.transform.position;
 			_editorAudioSource = temporaryAudioHost.AddComponent<AudioSource>() as AudioSource;

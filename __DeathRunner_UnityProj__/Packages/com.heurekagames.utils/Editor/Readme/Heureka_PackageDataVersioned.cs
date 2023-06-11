@@ -9,7 +9,7 @@ namespace HeurekaGames.Utils
 {
     public class Heureka_PackageDataVersioned : Heureka_PackageData
     {
-        public List<PackageVersion> VersionData = new List<PackageVersion>();
+        public List<PackageVersion> VersionData = new();
         internal bool FoldOutVersionHistory;
 
         private void Item_OnChanged()
@@ -19,7 +19,7 @@ namespace HeurekaGames.Utils
 
         public void AddNewVersion(int major, int minor, int patch)
         {
-            PackageVersion newPackageVersion = new PackageVersion(major, minor, patch);
+            PackageVersion newPackageVersion = new(major, minor, patch);
             VersionData.Add(newPackageVersion);
         }
 
@@ -40,11 +40,11 @@ namespace HeurekaGames.Utils
     [System.Serializable]
     public class PackageVersion
     {
-        [SerializeField] public PackageVersionNum VersionNum = new PackageVersionNum();
-        [SerializeField] public List<string> VersionChanges = new List<string>();
+        [SerializeField] public PackageVersionNum VersionNum = new();
+        [SerializeField] public List<string> VersionChanges = new();
 
         internal bool FoldOut = false;
-        PackageVersionNum newVersionNum = new PackageVersionNum();
+        PackageVersionNum newVersionNum = new();
 
         private const float btnWidth = 150;
         private ReorderableList reorderableList;

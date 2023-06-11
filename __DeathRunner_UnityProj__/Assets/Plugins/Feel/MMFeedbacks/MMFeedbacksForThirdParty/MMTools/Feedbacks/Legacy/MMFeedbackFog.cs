@@ -41,7 +41,7 @@ namespace MoreMountains.Feedbacks
 		public bool ModifyFogDensity = true;
 		/// a curve to use to animate the fog's density over time
 		[Tooltip("a curve to use to animate the fog's density over time")]
-		public MMTweenType DensityCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
+		public MMTweenType DensityCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// the value to remap the fog's density curve zero value to
 		[Tooltip("the value to remap the fog's density curve zero value to")]
 		public float DensityRemapZero = 0.01f;
@@ -58,7 +58,7 @@ namespace MoreMountains.Feedbacks
 		public bool ModifyStartDistance = true;
 		/// a curve to use to animate the fog's start distance over time
 		[Tooltip("a curve to use to animate the fog's start distance over time")]
-		public MMTweenType StartDistanceCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
+		public MMTweenType StartDistanceCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// the value to remap the fog's start distance curve zero value to
 		[Tooltip("the value to remap the fog's start distance curve zero value to")]
 		public float StartDistanceRemapZero = 0f;
@@ -75,7 +75,7 @@ namespace MoreMountains.Feedbacks
 		public bool ModifyEndDistance = true;
 		/// a curve to use to animate the fog's end distance over time
 		[Tooltip("a curve to use to animate the fog's end distance over time")]
-		public MMTweenType EndDistanceCurve = new MMTweenType(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
+		public MMTweenType EndDistanceCurve = new(new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// the value to remap the fog's end distance curve zero value to
 		[Tooltip("the value to remap the fog's end distance curve zero value to")]
 		public float EndDistanceRemapZero = 0f;

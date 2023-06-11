@@ -13,7 +13,7 @@ namespace DungeonArchitect
     /// </summary>
 	public class PooledDungeonSceneProvider : DungeonSceneProvider {
 		// Pools list of game objects by their node ids
-		Dictionary<string, Queue<GameObject>> pooledObjects = new Dictionary<string, Queue<GameObject>>();
+		Dictionary<string, Queue<GameObject>> pooledObjects = new();
 
 		public override void OnDungeonBuildStart() {
             base.OnDungeonBuildStart();

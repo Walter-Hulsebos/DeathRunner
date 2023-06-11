@@ -13,7 +13,7 @@ namespace DungeonArchitect.Graphs
 	[System.Serializable]
 	public class SpriteNode : VisualNode {
 		public Sprite sprite;
-		public Color color = new Color(1, 1, 1, 1);
+		public Color color = new(1, 1, 1, 1);
 		public Material materialOverride;
 		public string sortingLayerName;
 		public int orderInLayer;

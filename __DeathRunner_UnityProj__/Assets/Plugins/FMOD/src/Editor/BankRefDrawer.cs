@@ -45,8 +45,8 @@ namespace FMODUnity
             var buttonStyle = new GUIStyle(GUI.skin.button);
             buttonStyle.padding.top = buttonStyle.padding.bottom = 1;
 
-            Rect searchRect = new Rect(position.x + position.width - browseIcon.width - 15, position.y, browseIcon.width + 10, baseHeight);
-            Rect pathRect = new Rect(position.x, position.y, searchRect.x - position.x - 5, baseHeight);
+            Rect searchRect = new(position.x + position.width - browseIcon.width - 15, position.y, browseIcon.width + 10, baseHeight);
+            Rect pathRect = new(position.x, position.y, searchRect.x - position.x - 5, baseHeight);
 
             EditorGUI.PropertyField(pathRect, pathProperty, GUIContent.none);
             if (GUI.Button(searchRect, new GUIContent(browseIcon, "Select FMOD Bank"), buttonStyle))

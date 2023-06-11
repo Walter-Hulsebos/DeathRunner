@@ -46,7 +46,7 @@ namespace DungeonArchitect.SxEngine
 
     public class SxTextLineList
     {
-        private List<SxTextLineInfo> lines = new List<SxTextLineInfo>();
+        private List<SxTextLineInfo> lines = new();
         public SxTextLineInfo[] Lines => lines.ToArray();
         public int LineSpacing = 10;
 
@@ -82,8 +82,8 @@ namespace DungeonArchitect.SxEngine
     {
         private SxMesh mesh;
         private SxMaterial material;
-        private SxTextLineList lines = new SxTextLineList();
-        public SxTextComponentSettings Settings = new SxTextComponentSettings();
+        private SxTextLineList lines = new();
+        public SxTextComponentSettings Settings = new();
 
         public void SetText(string message)
         {

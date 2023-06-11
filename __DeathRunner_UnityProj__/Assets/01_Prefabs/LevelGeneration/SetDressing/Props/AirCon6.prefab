@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3083785823718668256}
   - component: {fileID: 7121669597496238335}
   - component: {fileID: 4668038017394336558}
-  - component: {fileID: 9081305617327620445}
   m_Layer: 0
   m_Name: AirCon6
   m_TagString: Untagged
@@ -93,21 +92,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142276700414026835}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.9144064, y: 0.6366972, z: 0.3407778}
   m_Center: {x: -0.0077032745, y: 0.012765229, z: -0.006510943}
---- !u!114 &9081305617327620445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142276700414026835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 43ced3fafcfffa040862371387b6b099, type: 2}

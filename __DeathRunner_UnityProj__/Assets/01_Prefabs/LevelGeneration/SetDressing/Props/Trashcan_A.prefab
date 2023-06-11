@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3333584}
   - component: {fileID: 2314784}
   - component: {fileID: 7430176562802066473}
-  - component: {fileID: 251776578247572593}
   m_Layer: 0
   m_Name: Trashcan_A
   m_TagString: Untagged
@@ -94,24 +93,19 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 128326}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.6, y: 0.91075283, z: 0.6}
   m_Center: {x: 0.000000074505806, y: 0.45181814, z: 0.000000029802322}
---- !u!114 &251776578247572593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 128326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: b25d24c73c36e714790ed9e8c1b0afa8, type: 2}
 --- !u!1 &162822
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,8 +198,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 162822}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.6, y: 0.03, z: 0.6}
   m_Center: {x: 0.000000074505806, y: -0.027714271, z: 0}

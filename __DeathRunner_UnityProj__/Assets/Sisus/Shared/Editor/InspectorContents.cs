@@ -13,7 +13,7 @@ namespace Sisus.Shared.EditorOnly
 	public static class InspectorContents
 	{
 		private static readonly IList allInspectors = null;
-		private static readonly List<EditorWindow> allPropertyEditors = new List<EditorWindow>();
+		private static readonly List<EditorWindow> allPropertyEditors = new();
 		private static readonly FieldInfo inspectorElementEditorField;
 		private static readonly Type propertyEditorType;
 		private static bool shouldUpdatePropertyEditors = true;

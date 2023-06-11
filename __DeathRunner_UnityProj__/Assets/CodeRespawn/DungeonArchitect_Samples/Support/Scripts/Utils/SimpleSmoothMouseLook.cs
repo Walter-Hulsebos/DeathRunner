@@ -10,10 +10,10 @@ public class SimpleSmoothMouseLook : MonoBehaviour
 	Vector2 _mouseAbsolute;
 	Vector2 _smoothMouse;
 	
-	public Vector2 clampInDegrees = new Vector2(360, 180);
+	public Vector2 clampInDegrees = new(360, 180);
 	public bool lockCursor;
-	public Vector2 sensitivity = new Vector2(2, 2);
-	public Vector2 smoothing = new Vector2(3, 3);
+	public Vector2 sensitivity = new(2, 2);
+	public Vector2 smoothing = new(3, 3);
 	public Vector2 targetDirection;
 	public Vector2 targetCharacterDirection;
 

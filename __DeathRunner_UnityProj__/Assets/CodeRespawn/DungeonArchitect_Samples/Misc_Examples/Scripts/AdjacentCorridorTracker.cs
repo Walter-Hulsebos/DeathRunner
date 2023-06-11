@@ -12,8 +12,8 @@ public class AdjacentCorridorTracker : MonoBehaviour {
     Material materialCorridors;
     Material materialRooms;
 
-    List<int> ConnectedCorridors = new List<int>();
-    List<int> ConnectedRooms = new List<int>();
+    List<int> ConnectedCorridors = new();
+    List<int> ConnectedRooms = new();
     int cursorCellId;
 
     void Start()
@@ -142,7 +142,7 @@ public class AdjacentCorridorTracker : MonoBehaviour {
             var size = cell.Bounds.Size * gridSize;
 
             // Check if we are within the bounds
-            Rect bounds2D = new Rect(start.x, start.z, size.x, size.z);
+            Rect bounds2D = new(start.x, start.z, size.x, size.z);
             if (bounds2D.Contains(new Vector2(worldHitPoint.x, worldHitPoint.z)))
             {
                 var distance = (worldHitPoint - cam.transform.position).sqrMagnitude;

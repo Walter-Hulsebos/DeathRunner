@@ -22,7 +22,7 @@ namespace QFSW.QC.Actions
             public string Delimiter;
             public Color SelectedColor;
 
-            public static readonly Config Default = new Config
+            public static readonly Config Default = new()
             {
                 ItemFormat = "{0} [{1}]",
                 Delimiter = " ",
@@ -46,7 +46,7 @@ namespace QFSW.QC.Actions
         private static IEnumerator<ICommandAction> Generate(IEnumerable<T> choices, Action<T> onSelect, Config config)
         {
             QuantumConsole console = null;
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new();
 
             IReadOnlyList<T> choiceList = choices as IReadOnlyList<T> ?? choices.ToList();
             KeyCode key = KeyCode.None;

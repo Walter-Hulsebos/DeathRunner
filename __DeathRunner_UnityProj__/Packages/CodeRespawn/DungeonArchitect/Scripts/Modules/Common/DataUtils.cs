@@ -26,7 +26,7 @@ namespace DungeonArchitect.Utils
             };
         }
 
-        public static readonly DungeonUID Empty = new DungeonUID()
+        public static readonly DungeonUID Empty = new()
         {
             Guid = System.Guid.Empty
         };

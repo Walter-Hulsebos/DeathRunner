@@ -57,7 +57,7 @@ namespace MoreMountains.Feedbacks
 		/// the duration of the interpolation, in seconds
 		public float TransitionDuration = 1f;
 		/// the animation curve to interpolate the transition on
-		public AnimationCurve TransitionCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1));
+		public AnimationCurve TransitionCurve = new(new Keyframe(0, 0), new Keyframe(1, 1));
 
 		public virtual float GetTime() { return (Timing.TimescaleMode == TimescaleModes.Scaled) ? Time.time : Time.unscaledTime; }
 		public virtual float GetDeltaTime() { return (Timing.TimescaleMode == TimescaleModes.Scaled) ? Time.deltaTime : Time.unscaledDeltaTime; }

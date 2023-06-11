@@ -43,7 +43,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		public bool RelativeDistance = false;
 		/// the curve used to animate the distance value on
 		[Tooltip("the curve used to animate the distance value on")]
-		public AnimationCurve ShakeDistance = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeDistance = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(0f, 1f)]

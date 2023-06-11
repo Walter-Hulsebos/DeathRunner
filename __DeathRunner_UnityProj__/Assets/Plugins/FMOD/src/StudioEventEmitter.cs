@@ -31,9 +31,9 @@ namespace FMODUnity
         private bool hasTriggered = false;
         private bool isQuitting = false;
         private bool isOneshot = false;
-        private List<ParamRef> cachedParams = new List<ParamRef>();
+        private List<ParamRef> cachedParams = new();
 
-        private static List<StudioEventEmitter> activeEmitters = new List<StudioEventEmitter>();
+        private static List<StudioEventEmitter> activeEmitters = new();
 
         private const string SnapshotString = "snapshot";
 

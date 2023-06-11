@@ -37,7 +37,7 @@ namespace DungeonArchitect.Editors.LaunchPad
         {
             var jsonData = JsonUtility.FromJson<ScreenPageGridCardJsonData>(json);
             Title = jsonData.title;
-            StackPanelWidget content = new StackPanelWidget(StackPanelOrientation.Vertical);
+            StackPanelWidget content = new(StackPanelOrientation.Vertical);
 
             foreach (var category in jsonData.categories)
             {

@@ -7,7 +7,7 @@ namespace DungeonArchitect.Flow.Exec
     [System.Serializable]
     public class FlowExecGraphNodePin : GraphPin
     {
-        public Vector2 Padding = new Vector2(10, 10);
+        public Vector2 Padding = new(10, 10);
 
         public override bool ContainsPoint(Vector2 worldPoint)
         {

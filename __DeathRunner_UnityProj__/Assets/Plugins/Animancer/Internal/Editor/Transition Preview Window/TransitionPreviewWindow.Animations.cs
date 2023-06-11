@@ -546,7 +546,7 @@ namespace Animancer.Editor
             {
                 /************************************************************************************************************************/
 
-                public static readonly WindowMatchStateTime Instance = new WindowMatchStateTime();
+                public static readonly WindowMatchStateTime Instance = new();
 
                 /************************************************************************************************************************/
 

@@ -79,7 +79,7 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow
             return bestFrameFailCount;
         }
 
-        private Dictionary<PlaceableMarker, int> ModuleMarkers = new Dictionary<PlaceableMarker, int>();
+        private Dictionary<PlaceableMarker, int> ModuleMarkers = new();
     };
     
     public struct SgfLayoutModuleResolverSettings
@@ -117,10 +117,10 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow
         {
             public FlowLayoutGraphQuery GraphQuery;
             public System.Random Random;
-            public Dictionary<DungeonUID, SgfModuleNode> ModuleNodesById = new Dictionary<DungeonUID, SgfModuleNode>();
-            public Dictionary<DungeonUID, SgfModuleAssemblySideCell[]> ActiveModuleDoorIndices = new Dictionary<DungeonUID, SgfModuleAssemblySideCell[]>();
-            public Dictionary<FlowLayoutGraphNode, NodeGroupData> NodeGroups = new Dictionary<FlowLayoutGraphNode, NodeGroupData>();
-            public Dictionary<SgfModuleDatabaseItem, Stack<int>> ModuleLastUsedDepth = new Dictionary<SgfModuleDatabaseItem, Stack<int>>();
+            public Dictionary<DungeonUID, SgfModuleNode> ModuleNodesById = new();
+            public Dictionary<DungeonUID, SgfModuleAssemblySideCell[]> ActiveModuleDoorIndices = new();
+            public Dictionary<FlowLayoutGraphNode, NodeGroupData> NodeGroups = new();
+            public Dictionary<SgfModuleDatabaseItem, Stack<int>> ModuleLastUsedDepth = new();
             public int FrameIndex = 0;
         }
         

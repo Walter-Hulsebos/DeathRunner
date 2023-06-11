@@ -62,7 +62,7 @@ namespace MoreMountains.Feedbacks
 		/// how the x part of the rotation should animate over time, in degrees
 		[Tooltip("how the x part of the rotation should animate over time, in degrees")]
 		[MMFCondition("AnimateX")]
-		public MMTweenType AnimateRotationTweenX = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
+		public MMTweenType AnimateRotationTweenX = new( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// if this is true, should animate the Y rotation
 		[Tooltip("if this is true, should animate the Y rotation")]
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
@@ -70,7 +70,7 @@ namespace MoreMountains.Feedbacks
 		/// how the y part of the rotation should animate over time, in degrees
 		[Tooltip("how the y part of the rotation should animate over time, in degrees")]
 		[MMFCondition("AnimateY")]
-		public MMTweenType AnimateRotationTweenY = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
+		public MMTweenType AnimateRotationTweenY = new( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		/// if this is true, should animate the Z rotation
 		[Tooltip("if this is true, should animate the Z rotation")]
 		[MMFEnumCondition("Mode", (int)Modes.Absolute, (int)Modes.Additive)]
@@ -78,7 +78,7 @@ namespace MoreMountains.Feedbacks
 		/// how the z part of the rotation should animate over time, in degrees
 		[Tooltip("how the z part of the rotation should animate over time, in degrees")]
 		[MMFCondition("AnimateZ")]
-		public MMTweenType AnimateRotationTweenZ = new MMTweenType( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
+		public MMTweenType AnimateRotationTweenZ = new( new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.3f, 1f), new Keyframe(1, 0)));
 		
 		
 		
@@ -97,11 +97,11 @@ namespace MoreMountains.Feedbacks
 		/// the angles to match when in ToDestination mode
 		[Tooltip("the angles to match when in ToDestination mode")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
-		public Vector3 DestinationAngles = new Vector3(0f, 180f, 0f);
+		public Vector3 DestinationAngles = new(0f, 180f, 0f);
 		/// how the x part of the rotation should animate over time, in degrees
 		[Tooltip("how the x part of the rotation should animate over time, in degrees")]
 		[MMFEnumCondition("Mode", (int)Modes.ToDestination)]
-		public MMTweenType ToDestinationTween = new MMTweenType(MMTween.MMTweenCurve.EaseInQuintic);
+		public MMTweenType ToDestinationTween = new(MMTween.MMTweenCurve.EaseInQuintic);
 		
 		/// the duration of this feedback is the duration of the rotation
 		public override float FeedbackDuration { get { return ApplyTimeMultiplier(AnimateRotationDuration); } set { AnimateRotationDuration = value; } }

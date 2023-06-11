@@ -68,7 +68,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// the curve to apply to the blend
 		[Tooltip("the curve to apply to the blend")]
 		[MMFEnumCondition("Mode", (int)Modes.Override)]
-		public AnimationCurve BlendCurve = new AnimationCurve(new Keyframe(0, 0), new Keyframe(1, 1f));
+		public AnimationCurve BlendCurve = new(new Keyframe(0, 0), new Keyframe(1, 1f));
 		/// the weight to blend from
 		[Tooltip("the weight to blend from")]
 		[MMFEnumCondition("Mode", (int)Modes.Override)]

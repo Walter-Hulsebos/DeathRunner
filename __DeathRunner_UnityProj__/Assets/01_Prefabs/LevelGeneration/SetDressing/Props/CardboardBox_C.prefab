@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3191632616366083199}
   - component: {fileID: 841614292965783733}
   - component: {fileID: 6544309809116407496}
-  - component: {fileID: 5237529590674286158}
   m_Layer: 0
   m_Name: CardboardBox_C
   m_TagString: Untagged
@@ -93,21 +92,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1202179409653684576}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.91854376, y: 0.7206035, z: 0.6063997}
   m_Center: {x: 0, y: 0.36030176, z: 0}
---- !u!114 &5237529590674286158
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202179409653684576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: af29d81c252828d45988a521f6ab7ef3, type: 2}

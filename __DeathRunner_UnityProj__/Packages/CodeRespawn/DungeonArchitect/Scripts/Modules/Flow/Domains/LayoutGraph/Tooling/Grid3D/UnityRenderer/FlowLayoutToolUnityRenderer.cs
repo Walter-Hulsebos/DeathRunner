@@ -102,7 +102,7 @@ namespace DungeonArchitect.Flow.Domains.Layout.Tooling.Graph3D
     
     public class FlowLayoutGraphUnityVisualizer
     {
-        private List<FlowLayoutGraphUnityVisualizerObject> subObjects = new List<FlowLayoutGraphUnityVisualizerObject>();
+        private List<FlowLayoutGraphUnityVisualizerObject> subObjects = new();
         
         public GameObject Build(SxWorld world) 
         {

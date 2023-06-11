@@ -21,7 +21,7 @@ namespace DungeonArchitect.Editors.SnapFlow
         SnapFlowAsset flowAsset;
         GrammarProductionRule productionRule;
         GraphPanel<SnapEdGrammarGraphEditor> LHSGraphPanel;
-        List<ProductionRuleWidgetRHSState> RHSEditorStates = new List<ProductionRuleWidgetRHSState>();
+        List<ProductionRuleWidgetRHSState> RHSEditorStates = new();
         Splitter splitter;
         IWidget layout;
         bool layoutDirty = false;

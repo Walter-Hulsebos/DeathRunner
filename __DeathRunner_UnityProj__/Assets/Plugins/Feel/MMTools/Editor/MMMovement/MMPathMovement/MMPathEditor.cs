@@ -39,14 +39,14 @@ namespace MoreMountains.Tools
 				EditorGUI.BeginChangeCheck();
 
 				Vector3 oldPoint = t.GetOriginalTransformPosition()+t.PathElements[i].PathElementPosition;
-				GUIStyle style = new GUIStyle();
+				GUIStyle style = new();
 
 				// draws the path item number
 				style.normal.textColor = Color.yellow;	 
 				Handles.Label(t.GetOriginalTransformPosition()+t.PathElements[i].PathElementPosition+(Vector3.down*0.4f)+(Vector3.right*0.4f), ""+i,style);
 
 				// draws a movable handle
-				Vector3 newPoint = Handles.FreeMoveHandle(oldPoint, Quaternion.identity,.5f,new Vector3(.25f,.25f,.25f),Handles.CircleHandleCap);
+				var fmh_49_57_638220018854087405 = Quaternion.identity; Vector3 newPoint = Handles.FreeMoveHandle(oldPoint,.5f,new Vector3(.25f,.25f,.25f),Handles.CircleHandleCap);
 				newPoint = ApplyAxisLock(oldPoint, newPoint);
 				
 				// records changes

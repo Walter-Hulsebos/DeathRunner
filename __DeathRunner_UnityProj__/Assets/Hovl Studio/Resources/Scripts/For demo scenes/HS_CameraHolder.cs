@@ -8,7 +8,7 @@ public class HS_CameraHolder : MonoBehaviour
 {
     //camera holder
     public Transform Holder;
-    public Vector3 cameraPos = new Vector3(0, 0, 0);
+    public Vector3 cameraPos = new(0, 0, 0);
     public float currDistance = 5.0f;
     public float xRotate = 250.0f;
     public float yRotate = 120.0f;
@@ -70,7 +70,7 @@ public class HS_CameraHolder : MonoBehaviour
     }
 
     private ParticleSystem[] particleSystems = new ParticleSystem[0];
-    private List<SVA> svList = new List<SVA>();
+    private List<SVA> svList = new();
     private float H;
 
     public struct SVA
@@ -101,7 +101,7 @@ public class HS_CameraHolder : MonoBehaviour
         foreach (var ps in particleSystems)
         {
             Color baseColor = ps.main.startColor.color;
-            SVA baseSVA = new SVA();
+            SVA baseSVA = new();
             Color.RGBToHSV(baseColor, out H, out baseSVA.S, out baseSVA.V);
             baseSVA.A = baseColor.a;
             svList.Add(baseSVA);

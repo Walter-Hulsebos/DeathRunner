@@ -92,9 +92,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3190359026378451841}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.13502842, y: 0.052201033, z: 0.1739468}
   m_Center: {x: -0.000097524375, y: 0.026099056, z: 0}
 --- !u!1 &3190359026378451845
@@ -107,7 +115,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3190359026377963429}
   - component: {fileID: 3190359026357953285}
-  - component: {fileID: 2892583612951689876}
   m_Layer: 0
   m_Name: Vending_Machine_Snacks_01a_snaps020
   m_TagString: Untagged
@@ -155,19 +162,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 3190359026376193351}
   m_Enabled: 1
---- !u!114 &2892583612951689876
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3190359026378451845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: b2b247bec3b49254b9c1143a25534fa2, type: 2}
 --- !u!1 &3190359026378451847
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,8 +254,16 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3190359026378451847}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 0.13502842, y: 0.052201033, z: 0.1739468}
   m_Center: {x: -0.000097524375, y: 0.026099056, z: 0}

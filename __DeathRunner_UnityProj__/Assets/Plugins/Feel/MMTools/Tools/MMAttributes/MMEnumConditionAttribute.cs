@@ -18,7 +18,7 @@ namespace MoreMountains.Tools
 		public string ConditionEnum = "";
 		public bool Hidden = false;
 
-		BitArray bitArray = new BitArray(32);
+		BitArray bitArray = new(32);
 		public bool ContainsBitFlag(int enumValue)
 		{
 			return bitArray.Get(enumValue);

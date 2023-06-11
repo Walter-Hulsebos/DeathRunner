@@ -7,7 +7,7 @@ namespace DungeonArchitect.Editors.LaunchPad
     [System.Serializable]
     class ScreenPageNewsJsonData : ScreenPageJsonDataBase
     {
-        public DataCardEntry featured = new DataCardEntry();
+        public DataCardEntry featured = new();
         public DataCardEntry[] cards = new DataCardEntry[0];
         public float featuredHeight = 0;
         public float thumbHeight = 0;
@@ -85,7 +85,7 @@ namespace DungeonArchitect.Editors.LaunchPad
             var featured = BuildFeaturedWidget(jsonData);
             var cards = BuildCardsWidget(jsonData);
 
-            StackPanelWidget content = new StackPanelWidget(StackPanelOrientation.Vertical);
+            StackPanelWidget content = new(StackPanelOrientation.Vertical);
             content.AddWidget(featured, 0, true);
             content.AddWidget(cards, 0, true);
 

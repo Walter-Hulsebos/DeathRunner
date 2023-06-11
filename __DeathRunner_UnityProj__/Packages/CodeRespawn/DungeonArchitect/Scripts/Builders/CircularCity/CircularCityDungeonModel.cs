@@ -20,7 +20,7 @@ namespace DungeonArchitect.Builders.CircularCity
         public IntVector Position;
         public CircularCityCellType CellType;
         public Quaternion Rotation;
-        public Vector3 BlockSize = new Vector3(1, 0, 1);
+        public Vector3 BlockSize = new(1, 0, 1);
         public string MarkerNameOverride;
     }
 

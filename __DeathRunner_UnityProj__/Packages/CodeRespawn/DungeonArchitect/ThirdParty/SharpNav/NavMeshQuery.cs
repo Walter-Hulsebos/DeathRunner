@@ -329,8 +329,8 @@ namespace SharpNav
 					nav.TryGetTileAndPolyByRefUnsafe(neighbourRef, out neighbourTile, out neighbourPoly);
 
 					//find edge and calculate distance to edge
-					Vector3 va = new Vector3();
-					Vector3 vb = new Vector3();
+					Vector3 va = new();
+					Vector3 vb = new();
 					if (!GetPortalPoints(bestRef, bestPoly, bestTile, neighbourRef, neighbourPoly, neighbourTile, ref va, ref vb))
 						continue;
 
@@ -592,10 +592,10 @@ namespace SharpNav
 
 			bool stat = false;
 
-			Vector3 closestStartPos = new Vector3();
+			Vector3 closestStartPos = new();
 			ClosestPointOnPolyBoundary(path[0], startPos, ref closestStartPos);
 
-			Vector3 closestEndPos = new Vector3();
+			Vector3 closestEndPos = new();
 			ClosestPointOnPolyBoundary(path[pathSize - 1], endPos, ref closestEndPos);
 
 			stat = AppendVertex(closestStartPos, PathfindingCommon.STRAIGHTPATH_START, path[0], straightPath, straightPathFlags, straightPathRefs, ref straightPathCount, maxStraightPath);
@@ -620,8 +620,8 @@ namespace SharpNav
 
 				for (int i = 0; i < pathSize; i++)
 				{
-					Vector3 left = new Vector3();
-					Vector3 right = new Vector3();
+					Vector3 left = new();
+					Vector3 right = new();
 					PolygonType fromType = 0, toType = 0;
 
 					if (i + 1 < pathSize)
@@ -810,7 +810,7 @@ namespace SharpNav
 				return false;
 
 			int MAX_STACK = 48;
-			Queue<Node> nodeQueue = new Queue<Node>(MAX_STACK);
+			Queue<Node> nodeQueue = new(MAX_STACK);
 
 			tinyNodePool.Clear();
 
@@ -861,7 +861,7 @@ namespace SharpNav
 				for (int i = 0, j = curPoly.VertCount - 1; i < curPoly.VertCount; j = i++)
 				{
 					//find links to neighbors
-					List<int> neis = new List<int>(8);
+					List<int> neis = new(8);
 
 					if ((curPoly.Neis[j] & Link.External) != 0)
 					{
@@ -1566,8 +1566,8 @@ namespace SharpNav
 						continue;
 
 					//find edge and calculate distance to edge
-					Vector3 va = new Vector3();
-					Vector3 vb = new Vector3();
+					Vector3 va = new();
+					Vector3 vb = new();
 					if (!GetPortalPoints(curRef, curPoly, curTile, neighbourRef, neighbourPoly, neighbourTile, ref va, ref vb))
 						continue;
 
@@ -1817,8 +1817,8 @@ namespace SharpNav
 		/// <returns>True, if midpoint found. False, if otherwise.</returns>
 		public bool GetEdgeMidPoint(int from, Poly fromPoly, MeshTile fromTile, int to, Poly toPoly, MeshTile toTile, ref Vector3 mid)
 		{
-			Vector3 left = new Vector3();
-			Vector3 right = new Vector3();
+			Vector3 left = new();
+			Vector3 right = new();
 			if (!GetPortalPoints(from, fromPoly, fromTile, to, toPoly, toTile, ref left, ref right))
 				return false;
 
@@ -2172,8 +2172,8 @@ namespace SharpNav
 				if (nav.TryGetTileAndPolyByRef(to, out toTile, out toPoly) == false)
 					return false;
 
-				Vector3 left = new Vector3();
-				Vector3 right = new Vector3();
+				Vector3 left = new();
+				Vector3 right = new();
 				if (GetPortalPoints(from, fromPoly, fromTile, to, toPoly, toTile, ref left, ref right) == false)
 					break;
 
@@ -2274,7 +2274,7 @@ namespace SharpNav
 			//TODO error state?
 
 			// Get nearby polygons from proximity grid.
-			List<int> polys = new List<int>(128);
+			List<int> polys = new(128);
 			if (!QueryPolygons(ref center, ref extents, polys))
 				throw new InvalidOperationException("no nearby polys?");
 
@@ -2329,7 +2329,7 @@ namespace SharpNav
 
 			MeshTile[] neis = new MeshTile[32];
 			
-			BBox3 bounds = new BBox3(bmin, bmax);
+			BBox3 bounds = new(bmin, bmax);
 			int n = 0;
 			for (int y = miny; y <= maxy; y++)
 			{

@@ -60,11 +60,11 @@ namespace MoreMountains.FeedbacksForThirdParty
 		/// if UseRealTimeModulation:true, the curve along which to modulate amplitude for this continuous haptic, over its total duration
 		[Tooltip("if UseRealTimeModulation:true, the curve along which to modulate amplitude for this continuous haptic, over its total duration")]
 		[MMFCondition("UseRealTimeModulation", true)]
-		public AnimationCurve AmplitudeMultiplication = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
+		public AnimationCurve AmplitudeMultiplication = new(new Keyframe(0, 0), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
 		/// if UseRealTimeModulation:true, the curve along which to modulate frequency for this continuous haptic, over its total duration
 		[Tooltip("if UseRealTimeModulation:true, the curve along which to modulate frequency for this continuous haptic, over its total duration")]
 		[MMFCondition("UseRealTimeModulation", true)]
-		public AnimationCurve ShiftFrequency = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
+		public AnimationCurve ShiftFrequency = new(new Keyframe(0, 0), new Keyframe(0.5f, 1f), new Keyframe(1, 0f));
 
 		[MMFInspectorGroup("Settings", true, 16)]
 		/// a set of settings you can tweak to specify how and when exactly this haptic should play

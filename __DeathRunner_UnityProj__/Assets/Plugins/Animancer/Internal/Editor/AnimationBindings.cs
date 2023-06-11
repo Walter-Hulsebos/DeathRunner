@@ -889,7 +889,7 @@ namespace Animancer.Editor
 
         /************************************************************************************************************************/
 
-        private static readonly GUIStyle ButtonStyle = new GUIStyle();// No margins or anything.
+        private static readonly GUIStyle ButtonStyle = new();// No margins or anything.
 
         /************************************************************************************************************************/
 

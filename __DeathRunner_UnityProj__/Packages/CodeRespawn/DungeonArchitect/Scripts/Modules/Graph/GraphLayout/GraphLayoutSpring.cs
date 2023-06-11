@@ -28,7 +28,7 @@ namespace DungeonArchitect.Graphs.Layouts.Spring
 
     class SpatialGrid<T>
     {
-        Dictionary<IntVector2, List<GraphLayoutNode<T>>> grid = new Dictionary<IntVector2, List<GraphLayoutNode<T>>>();
+        Dictionary<IntVector2, List<GraphLayoutNode<T>>> grid = new();
         float cellSize;
         public SpatialGrid(float cellSize)
         {

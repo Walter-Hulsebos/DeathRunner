@@ -11,7 +11,7 @@ namespace Lofelt.NiceVibrations
         public Camera ButtonCamera;
         public RectTransform ContentZone;
         public WobbleButton WobbleButtonPrefab;
-        public Vector2 PrefabSize = new Vector2(200f, 200f);
+        public Vector2 PrefabSize = new(200f, 200f);
         public float Margin = 20f;
         public float Padding = 20f;
 

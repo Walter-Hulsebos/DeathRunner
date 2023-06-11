@@ -9,7 +9,7 @@ namespace DungeonArchitect.Visibility
     {
         private Bounds bounds;
         private bool _visible = true;
-        private HashSet<VisibilityGraphNode> connectedNodes = new HashSet<VisibilityGraphNode>();
+        private HashSet<VisibilityGraphNode> connectedNodes = new();
 
         public VisibilityGraphNode[] ConnectedNodes
         {

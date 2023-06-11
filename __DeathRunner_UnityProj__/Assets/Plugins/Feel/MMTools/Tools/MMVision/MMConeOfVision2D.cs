@@ -53,7 +53,7 @@ namespace MoreMountains.Tools
 		public LayerMask TargetMask;
 		public float ScanFrequencyInSeconds = 1f;
 		[MMReadOnly]
-		public List<Transform> VisibleTargets = new List<Transform>();
+		public List<Transform> VisibleTargets = new();
 
 		[Header("Mesh")] 
 		public bool ShouldDrawMesh = true;
@@ -71,9 +71,9 @@ namespace MoreMountains.Tools
 		protected float _lastScanTimestamp;
 
 		protected RaycastHit2D _scanForTargetsHit2D;
-		protected List<Vector3> _viewPoints = new List<Vector3>();
-		protected RaycastData _oldViewCast = new RaycastData();
-		protected RaycastData _viewCast = new RaycastData();
+		protected List<Vector3> _viewPoints = new();
+		protected RaycastData _oldViewCast = new();
+		protected RaycastData _viewCast = new();
         
 		protected Vector3[] _vertices;
 		protected int[] _triangles;

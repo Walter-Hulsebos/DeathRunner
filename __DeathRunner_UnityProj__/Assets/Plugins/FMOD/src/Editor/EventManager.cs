@@ -128,7 +128,7 @@ namespace FMODUnity
             }
 
             // Get all banks and set cache time to most recent write time
-            List<string> bankFileNames = new List<string>(Directory.GetFiles(defaultBankFolder, "*.bank", SearchOption.AllDirectories));
+            List<string> bankFileNames = new(Directory.GetFiles(defaultBankFolder, "*.bank", SearchOption.AllDirectories));
             DateTime lastWriteTime = bankFileNames.Max(fileName => File.GetLastWriteTime(fileName));
 
             // Exit early if cache is up to date
@@ -142,7 +142,7 @@ namespace FMODUnity
             // Remove string banks from list
             bankFileNames.RemoveAll(x => x.Contains(".strings"));
 
-            List<string> stringBanks = new List<string>(0);
+            List<string> stringBanks = new(0);
             try
             {
                 var files = Directory.GetFiles(defaultBankFolder, "*." + StringBankExtension, SearchOption.AllDirectories);
@@ -170,8 +170,8 @@ namespace FMODUnity
                 EditorUtils.UnloadPreviewBanks();
             }
 
-            List<string> reducedStringBanksList = new List<string>();
-            HashSet<FMOD.GUID> stringBankGuids = new HashSet<FMOD.GUID>();
+            List<string> reducedStringBanksList = new();
+            HashSet<FMOD.GUID> stringBankGuids = new();
 
             foreach (string stringBankPath in stringBanks)
             {
@@ -204,7 +204,7 @@ namespace FMODUnity
             stringBanks = reducedStringBanksList;
 
             // Reload the strings banks
-            List<FMOD.Studio.Bank> loadedStringsBanks = new List<FMOD.Studio.Bank>();
+            List<FMOD.Studio.Bank> loadedStringsBanks = new();
 
             bool eventRenameOccurred = false;
 
@@ -213,7 +213,7 @@ namespace FMODUnity
                 AssetDatabase.StartAssetEditing();
 
                 eventCache.EditorBanks.ForEach((x) => x.Exists = false);
-                HashSet<string> masterBankFileNames = new HashSet<string>();
+                HashSet<string> masterBankFileNames = new();
 
                 foreach (string stringBankPath in stringBanks)
                 {
@@ -228,7 +228,7 @@ namespace FMODUnity
 
                     loadedStringsBanks.Add(stringBank);
 
-                    FileInfo stringBankFileInfo = new FileInfo(stringBankPath);
+                    FileInfo stringBankFileInfo = new(stringBankPath);
 
                     string masterBankFileName = Path.GetFileName(stringBankPath).Replace(StringBankExtension, BankExtension);
                     masterBankFileNames.Add(masterBankFileName);
@@ -288,7 +288,7 @@ namespace FMODUnity
 
                     bankRef.Exists = true;
 
-                    FileInfo bankFileInfo = new FileInfo(bankFileName);
+                    FileInfo bankFileInfo = new(bankFileName);
 
                     // Update events from this bank if it has been modified,
                     // or it is a master bank (so that we get any global parameters)
@@ -816,8 +816,8 @@ namespace FMODUnity
                     string targetPathRelative = bankRef.Name + bankTargetExtension;
                     string targetPathFull = bankTargetFolder + "/" + targetPathRelative;
 
-                    FileInfo sourceInfo = new FileInfo(sourcePath);
-                    FileInfo targetInfo = new FileInfo(targetPathFull);
+                    FileInfo sourceInfo = new(sourcePath);
+                    FileInfo targetInfo = new(targetPathFull);
 
                     if (!targetInfo.Exists ||
                         sourceInfo.Length != targetInfo.Length ||
@@ -942,7 +942,7 @@ namespace FMODUnity
 
                     EnsureFoldersExist(targetPathRelative, bankTargetFolder);
 
-                    FileInfo targetInfo = new FileInfo(targetPathFull);
+                    FileInfo targetInfo = new(targetPathFull);
 
                     string stubData = RuntimeManager.BankStubPrefix + bankRef.Name;
 
@@ -1050,8 +1050,8 @@ namespace FMODUnity
 
         private static void OnCacheChange()
         {
-            List<string> masterBanks = new List<string>();
-            List<string> banks = new List<string>();
+            List<string> masterBanks = new();
+            List<string> banks = new();
 
             var settings = Settings.Instance;
             bool hasChanged = false;

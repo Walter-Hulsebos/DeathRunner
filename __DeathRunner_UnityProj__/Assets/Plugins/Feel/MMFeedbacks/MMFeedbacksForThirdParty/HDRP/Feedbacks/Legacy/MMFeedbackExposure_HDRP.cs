@@ -41,7 +41,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Header("Intensity")]
 		/// the curve to animate the intensity on
 		[Tooltip("the curve to animate the intensity on")]
-		public AnimationCurve FixedExposure = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0)); 
+		public AnimationCurve FixedExposure = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0)); 
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		public float RemapFixedExposureZero = 8.5f;

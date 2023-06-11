@@ -20,7 +20,7 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow
             this.linkId = DungeonUID.Empty;
         }
 
-        public static readonly SgfModuleAssemblySideCell Empty = new SgfModuleAssemblySideCell()
+        public static readonly SgfModuleAssemblySideCell Empty = new()
         {
             connectionIdx = -1,
             nodeId = DungeonUID.Empty,
@@ -122,12 +122,12 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow
     public class SgfModuleAssembly
     {
         public Vector3Int numChunks;
-        public SgfModuleAssemblySide front = new SgfModuleAssemblySide();
-        public SgfModuleAssemblySide left = new SgfModuleAssemblySide();
-        public SgfModuleAssemblySide back = new SgfModuleAssemblySide();
-        public SgfModuleAssemblySide right = new SgfModuleAssemblySide();
-        public SgfModuleAssemblySide top = new SgfModuleAssemblySide();
-        public SgfModuleAssemblySide down = new SgfModuleAssemblySide();
+        public SgfModuleAssemblySide front = new();
+        public SgfModuleAssemblySide left = new();
+        public SgfModuleAssemblySide back = new();
+        public SgfModuleAssemblySide right = new();
+        public SgfModuleAssemblySide top = new();
+        public SgfModuleAssemblySide down = new();
 
         public void Initialize(Vector3Int numChunks)
         {
@@ -377,8 +377,8 @@ namespace DungeonArchitect.Flow.Impl.SnapGridFlow
             return doorPositions.ToArray();
         }
 
-        private static readonly Dictionary<Vector3Int, SgfModuleAssembly> AssemblyInstanceBySize = new Dictionary<Vector3Int, SgfModuleAssembly>();
-        private static SgfModuleAssemblySideCell _cellCache = new SgfModuleAssemblySideCell();
+        private static readonly Dictionary<Vector3Int, SgfModuleAssembly> AssemblyInstanceBySize = new();
+        private static SgfModuleAssemblySideCell _cellCache = new();
         
         public static void Build(FlowLayoutGraphQuery graphQuery, FlowLayoutPathNodeGroup group, FFAGConstraintsLink[] incomingNodes, out SgfModuleAssembly outAssembly)
         {

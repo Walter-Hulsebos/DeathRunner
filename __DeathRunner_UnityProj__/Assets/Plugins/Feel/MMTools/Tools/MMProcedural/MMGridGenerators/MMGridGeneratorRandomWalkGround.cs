@@ -22,7 +22,7 @@ namespace MoreMountains.Tools
 		/// <returns></returns>
 		public static int[,] Generate(int width, int height, int seed, int minHeightDifference, int maxHeightDifference, int minFlatDistance, int maxFlatDistance, int maxHeight)
 		{
-			System.Random random = new System.Random(seed.GetHashCode());
+			System.Random random = new(seed.GetHashCode());
 			Random.InitState(seed);
             
 			int[,] grid = PrepareGrid(ref width, ref height);

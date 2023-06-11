@@ -339,7 +339,7 @@ namespace MoreMountains.Feedbacks
 		/// <returns></returns>
 		public static Color MMRandomColor(this Color color, Color min, Color max)
 		{
-			Color c = new Color()
+			Color c = new()
 			{
 				r = UnityEngine.Random.Range(min.r, max.r),
 				g = UnityEngine.Random.Range(min.g, max.g),

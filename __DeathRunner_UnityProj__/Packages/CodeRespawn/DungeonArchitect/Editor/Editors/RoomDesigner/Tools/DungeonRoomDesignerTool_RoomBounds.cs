@@ -7,7 +7,7 @@ namespace DungeonArchitect.RoomDesigner.Editors
 {
     public class DungeonRoomDesignerTool_RoomBounds : DungeonRoomDesignerTools
     {
-        private BoxBoundsHandle boundsHandle = new BoxBoundsHandle();
+        private BoxBoundsHandle boundsHandle = new();
 
         public override void DrawSceneGUI(DungeonRoomDesigner room)
         {

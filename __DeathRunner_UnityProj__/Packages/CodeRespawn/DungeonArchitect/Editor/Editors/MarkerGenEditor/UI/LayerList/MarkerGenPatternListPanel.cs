@@ -9,7 +9,7 @@ namespace DungeonArchitect.Editors.MarkerGenerator.UI
     class MarkerGenPatternListViewConstants
     {
         public static readonly string DragDropID = "RuleDragOp";
-        public static readonly Color ThemeColor = new Color(0.3f, 0.3f, 0.2f);
+        public static readonly Color ThemeColor = new(0.3f, 0.3f, 0.2f);
     }
 
     public class MarkerGenPatternListViewItem : ListViewTextItemWidget

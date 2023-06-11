@@ -44,7 +44,7 @@ namespace FMODUnity
             }
 
             Texture deleteTexture = EditorUtils.LoadImage("Delete.png");
-            GUIContent deleteContent = new GUIContent(deleteTexture, "Delete Bank");
+            GUIContent deleteContent = new(deleteTexture, "Delete Bank");
 
             var buttonStyle = new GUIStyle(GUI.skin.button);
             buttonStyle.padding.top = buttonStyle.padding.bottom = 1;

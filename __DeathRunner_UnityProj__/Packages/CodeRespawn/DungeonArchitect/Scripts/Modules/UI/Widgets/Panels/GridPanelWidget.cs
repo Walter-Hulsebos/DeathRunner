@@ -17,15 +17,15 @@ namespace DungeonArchitect.UI.Widgets
 
     public class GridPanelWidget : WidgetBase
     {
-        List<GridPanelNode> nodes = new List<GridPanelNode>();
+        List<GridPanelNode> nodes = new();
         GridPanelArrangementType arrangement = GridPanelArrangementType.VerticalScroll;
-        IntVector2 padding = new IntVector2(10, 10);
-        public Vector2 cellSize = new Vector2(100, 100);
+        IntVector2 padding = new(10, 10);
+        public Vector2 cellSize = new(100, 100);
         public Vector2 desiredCellSize = Vector2.zero;
         public bool autoSize = false;
 
 
-        IntVector2 renderedCells = new IntVector2(0, 0);
+        IntVector2 renderedCells = new(0, 0);
 
         public GridPanelWidget(GridPanelArrangementType arrangement)
         {

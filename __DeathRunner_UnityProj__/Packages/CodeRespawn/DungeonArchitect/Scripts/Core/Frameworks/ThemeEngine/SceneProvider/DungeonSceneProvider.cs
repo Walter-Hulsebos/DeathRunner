@@ -218,9 +218,9 @@ namespace DungeonArchitect
 			return gameObj;
 		}
 		
-		protected Vector3 _position = new Vector3();
-		protected Quaternion _rotation = new Quaternion();
-		protected Vector3 _scale = new Vector3();
+		protected Vector3 _position = new();
+		protected Quaternion _rotation = new();
+		protected Vector3 _scale = new();
 		protected void SetTransform(Transform transform, Matrix4x4 matrix) {
 			Matrix.DecomposeMatrix(ref matrix, out _position, out _rotation, out _scale);
 			transform.position = _position;

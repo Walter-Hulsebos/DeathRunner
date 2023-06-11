@@ -111,13 +111,13 @@ namespace HeurekaGames.Utils
                 return imageToUse;
 
             Texture2D readableTexture = getReadableTexture(imageToUse);
-            Texture2D inverted = new Texture2D(readableTexture.width, readableTexture.height, TextureFormat.ARGB32, false);
+            Texture2D inverted = new(readableTexture.width, readableTexture.height, TextureFormat.ARGB32, false);
             for (int x = 0; x < readableTexture.width; x++)
             {
                 for (int y = 0; y < readableTexture.height; y++)
                 {
                     Color origColor = readableTexture.GetPixel(x, y);
-                    Color invertedColor = new Color(1 - origColor.r, 1 - origColor.g, 1 - origColor.b, origColor.a);
+                    Color invertedColor = new(1 - origColor.r, 1 - origColor.g, 1 - origColor.b, origColor.a);
                     inverted.SetPixel(x, y, (origColor.a > 0) ? invertedColor : origColor);
                 }
             }
@@ -142,7 +142,7 @@ namespace HeurekaGames.Utils
             // Set the current RenderTexture to the temporary one we created
             RenderTexture.active = tmp;
             // Create a new readable Texture2D to copy the pixels to it
-            Texture2D myTexture2D = new Texture2D(imageToUse.width, imageToUse.height);
+            Texture2D myTexture2D = new(imageToUse.width, imageToUse.height);
             // Copy the pixels from the RenderTexture to the new Texture
             myTexture2D.ReadPixels(new Rect(0, 0, tmp.width, tmp.height), 0, 0);
             myTexture2D.Apply();

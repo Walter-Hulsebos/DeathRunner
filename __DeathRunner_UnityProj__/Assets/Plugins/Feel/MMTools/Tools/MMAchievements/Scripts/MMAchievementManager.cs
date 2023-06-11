@@ -164,7 +164,7 @@ namespace MoreMountains.Tools
 		public static void SaveAchievements()
 		{
 			DeterminePath ();
-			SerializedMMAchievementManager serializedMMAchievementManager = new SerializedMMAchievementManager();
+			SerializedMMAchievementManager serializedMMAchievementManager = new();
 			FillSerializedMMAchievementManager(serializedMMAchievementManager);
 			MMSaveLoadManager.Save(serializedMMAchievementManager, SaveFileName+_saveFileExtension, _saveFolderName);
 		}
@@ -193,7 +193,7 @@ namespace MoreMountains.Tools
 
 			for (int i = 0; i < _achievements.Count(); i++)
 			{
-				SerializedMMAchievement newAchievement = new SerializedMMAchievement (_achievements[i].AchievementID, _achievements[i].UnlockedStatus, _achievements[i].ProgressCurrent);
+				SerializedMMAchievement newAchievement = new(_achievements[i].AchievementID, _achievements[i].UnlockedStatus, _achievements[i].ProgressCurrent);
 				serializedAchievements.Achievements [i] = newAchievement;
 			}
 		}

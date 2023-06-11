@@ -22,9 +22,9 @@ namespace Sisus
 	/// </summary>
 	internal static class DLLSummaryParser
     {
-        private static readonly Dictionary<Assembly, XmlDocument> cachedXMLDocuments = new Dictionary<Assembly, XmlDocument>();
+        private static readonly Dictionary<Assembly, XmlDocument> cachedXMLDocuments = new();
 
-        private static readonly Dictionary<Type, string> cachedTooltips = new Dictionary<Type, string>()
+        private static readonly Dictionary<Type, string> cachedTooltips = new()
 		{
 			{ typeof(Transform), "Position, rotation and scale of an object." },
 			{ typeof(MeshFilter), "A class to access the Mesh of the mesh filter." },
@@ -32,7 +32,7 @@ namespace Sisus
 			{ typeof(MeshCollider), "A mesh collider allows you to do collision detection between meshes and primitives." }
 		};
 
-		private static readonly StringBuilder stringBuilder = new StringBuilder(100);
+		private static readonly StringBuilder stringBuilder = new(100);
 
 		/// <summary>
 		/// Attempts to find XML documentation file for dll that defines the given class type and parse XML documentation comments

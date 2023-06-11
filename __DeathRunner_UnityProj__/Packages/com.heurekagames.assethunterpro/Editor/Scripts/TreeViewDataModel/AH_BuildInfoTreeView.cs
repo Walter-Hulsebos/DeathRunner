@@ -84,14 +84,14 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.AssetTreeView
                 return false;
 
             //Add folder
-            System.IO.DirectoryInfo dirInfo = new System.IO.DirectoryInfo(absPath);
+            System.IO.DirectoryInfo dirInfo = new(absPath);
             string dirInfoName = dirInfo.Name;
 
             //Increment ID
             treeViewID++;
 
             //TODO creating new treeviewelements loads asset from memory...DONT DO THAT!! Get filesize info somewhere else
-            AH_TreeviewElement threeViewFolder = new AH_TreeviewElement(dirInfoName, treeViewDepth, treeViewID, ((treeViewDepth != -1) ? relativePath : ""), "", null, false);
+            AH_TreeviewElement threeViewFolder = new(dirInfoName, treeViewDepth, treeViewID, ((treeViewDepth != -1) ? relativePath : ""), "", null, false);
             treeElements.Add(threeViewFolder);
 
             //Increment depth
@@ -119,7 +119,7 @@ namespace HeurekaGames.AssetHunterPRO.BaseTreeviewImpl.AssetTreeView
 
                 //TODO CONTINUE LOOP AND ADDING OF ASSETS
                 treeViewID++;
-                AH_TreeviewElement treeViewElement = new AH_TreeviewElement(assetPath, treeViewDepth, treeViewID, relativepath, assetID, ((isAssetUsed) ? usedAssetInfo.Refs : null), isAssetUsed);
+                AH_TreeviewElement treeViewElement = new(assetPath, treeViewDepth, treeViewID, relativepath, assetID, ((isAssetUsed) ? usedAssetInfo.Refs : null), isAssetUsed);
                 treeElements.Add(treeViewElement);
 
                 hasValidChildren = true;

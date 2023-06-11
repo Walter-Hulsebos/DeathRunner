@@ -16,7 +16,7 @@ public class RandomInstancing : MonoBehaviour
     public int m_BaseHash = 347652783;
     public float m_Size = 100.0f;
 
-    List<Transform> m_Instances = new List<Transform>();
+    List<Transform> m_Instances = new();
     int m_Used;
     int m_LocX, m_LocZ;
 

@@ -36,7 +36,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[Header("Transition Speed")]
 		/// the animation curve to apply to the zoom transition
 		[Tooltip("the animation curve to apply to the zoom transition")]
-		public AnimationCurve ZoomCurve = new AnimationCurve(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
+		public AnimationCurve ZoomCurve = new(new Keyframe(0f, 0f), new Keyframe(1f, 1f));
 
 		[Header("Test Zoom")]
 		/// the mode to apply the zoom in when using the test button in the inspector

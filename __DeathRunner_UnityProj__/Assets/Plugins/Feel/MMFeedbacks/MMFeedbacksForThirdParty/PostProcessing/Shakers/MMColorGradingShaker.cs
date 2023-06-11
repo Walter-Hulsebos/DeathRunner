@@ -22,7 +22,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMInspectorGroup("Post Exposure", true, 40)]
 		/// the curve used to animate the focus distance value on
 		[Tooltip("the curve used to animate the focus distance value on")]
-		public AnimationCurve ShakePostExposure = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakePostExposure = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		public float RemapPostExposureZero = 0f;
@@ -33,7 +33,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMInspectorGroup("Hue Shift", true, 49)]
 		/// the curve used to animate the aperture value on
 		[Tooltip("the curve used to animate the aperture value on")]
-		public AnimationCurve ShakeHueShift = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeHueShift = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(-180f, 180f)]
@@ -46,7 +46,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMInspectorGroup("Saturation", true, 48)]
 		/// the curve used to animate the focal length value on
 		[Tooltip("the curve used to animate the focal length value on")]
-		public AnimationCurve ShakeSaturation = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeSaturation = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(-100f, 100f)]
@@ -59,7 +59,7 @@ namespace MoreMountains.FeedbacksForThirdParty
 		[MMInspectorGroup("Contrast", true, 47)]
 		/// the curve used to animate the focal length value on
 		[Tooltip("the curve used to animate the focal length value on")]
-		public AnimationCurve ShakeContrast = new AnimationCurve(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
+		public AnimationCurve ShakeContrast = new(new Keyframe(0, 0), new Keyframe(0.5f, 1), new Keyframe(1, 0));
 		/// the value to remap the curve's 0 to
 		[Tooltip("the value to remap the curve's 0 to")]
 		[Range(-100f, 100f)]

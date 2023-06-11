@@ -31,7 +31,7 @@ namespace DungeonArchitect.Editors.Flow.DomainEditors.Tilemap
         public event TileEventDelegate TileClicked;
         public event TileEventDelegate TileDoubleClicked;
         
-        FlowTilemapToolBuildContext BuildContext { get; } = new FlowTilemapToolBuildContext();
+        FlowTilemapToolBuildContext BuildContext { get; } = new();
 
         public override IWidget Content { get; protected set; }
 

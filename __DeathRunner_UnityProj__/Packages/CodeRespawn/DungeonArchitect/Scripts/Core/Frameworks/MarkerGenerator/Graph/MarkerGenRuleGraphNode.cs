@@ -5,8 +5,8 @@ namespace DungeonArchitect.MarkerGenerator
 {
     public abstract class MarkerGenRuleGraphNode : GraphNode
     {
-        public virtual Color BodyColor => new Color(0.15f, 0.15f, 0.15f);
-        public virtual Color TitleColor => new Color(0.3f, 0.3f, 0.3f);
+        public virtual Color BodyColor => new(0.15f, 0.15f, 0.15f);
+        public virtual Color TitleColor => new(0.3f, 0.3f, 0.3f);
         
         public abstract string Title { get; }
         

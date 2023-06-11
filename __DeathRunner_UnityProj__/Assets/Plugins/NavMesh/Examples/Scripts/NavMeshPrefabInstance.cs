@@ -25,7 +25,7 @@ public class NavMeshPrefabInstance : MonoBehaviour
     NavMeshDataInstance m_Instance;
 
     // Position Tracking
-    static readonly List<NavMeshPrefabInstance> s_TrackedInstances = new List<NavMeshPrefabInstance>();
+    static readonly List<NavMeshPrefabInstance> s_TrackedInstances = new();
     public static List<NavMeshPrefabInstance> trackedInstances {get {return s_TrackedInstances; }}
     Vector3 m_Position;
     Quaternion m_Rotation;

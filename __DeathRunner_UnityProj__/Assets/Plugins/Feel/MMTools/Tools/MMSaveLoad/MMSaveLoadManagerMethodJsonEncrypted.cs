@@ -19,8 +19,8 @@ namespace MoreMountains.Tools
 			string json = JsonUtility.ToJson(objectToSave);
 			// if you prefer using NewtonSoft's JSON lib uncomment the line below and commment the line above
 			//string json = Newtonsoft.Json.JsonConvert.SerializeObject(objectToSave);
-			using (MemoryStream memoryStream = new MemoryStream())
-				using (StreamWriter streamWriter = new StreamWriter(memoryStream))
+			using (MemoryStream memoryStream = new())
+				using (StreamWriter streamWriter = new(memoryStream))
 				{
 					streamWriter.Write(json);
 					streamWriter.Flush();
@@ -39,8 +39,8 @@ namespace MoreMountains.Tools
 		public object Load(System.Type objectType, FileStream saveFile)
 		{
 			object savedObject = null;
-			using (MemoryStream memoryStream = new MemoryStream())
-				using (StreamReader streamReader = new StreamReader(memoryStream))
+			using (MemoryStream memoryStream = new())
+				using (StreamReader streamReader = new(memoryStream))
 				{
 					try
 					{

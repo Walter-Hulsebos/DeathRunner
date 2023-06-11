@@ -54,7 +54,7 @@ namespace MoreMountains.Feedbacks
 		/// the curve to use when interpolating towards the destination fill
 		[Tooltip("the curve to use when interpolating towards the destination fill")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime, (int)Modes.ToDestination)]
-		public MMTweenType Curve = new MMTweenType(MMTween.MMTweenCurve.EaseInCubic);
+		public MMTweenType Curve = new(MMTween.MMTweenCurve.EaseInCubic);
 		/// the value to which the curve's 0 should be remapped
 		[Tooltip("the value to which the curve's 0 should be remapped")]
 		[MMFEnumCondition("Mode", (int)Modes.OverTime)]
