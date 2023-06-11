@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1050034492396784880}
   - component: {fileID: 1050034492393360594}
   - component: {fileID: 1050034492394360338}
-  - component: {fileID: 1743452510443262699}
   - component: {fileID: 114855173362903596}
-  m_Layer: 0
+  - component: {fileID: 2250072941299321499}
+  m_Layer: 13
   m_Name: Bench_01a_snaps020_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,20 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1743452510443262699
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050034492396294352}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 3dfc002fbd9755b4490f53c5f37cf81d, type: 3}
 --- !u!114 &114855173362903596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,7 +96,20 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 575d9b3c6266dd64da966fcc573aeaba, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LightmappedLOD, Assembly-CSharp
+--- !u!65 &2250072941299321499
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050034492396294352}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2274718, y: 1.0701475, z: 0.76447666}
+  m_Center: {x: 1.1125853, y: 0.53507364, z: 0.38223833}
 --- !u!1 &1050034492396294354
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,8 +121,8 @@ GameObject:
   - component: {fileID: 1050034492396784882}
   - component: {fileID: 1050034492393360596}
   - component: {fileID: 1050034492394360340}
-  - component: {fileID: 8995068003116363873}
-  m_Layer: 0
+  - component: {fileID: 2305498354397076740}
+  m_Layer: 13
   m_Name: Bench_01a_snaps020_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,8 +194,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8995068003116363873
-MeshCollider:
+--- !u!65 &2305498354397076740
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -205,10 +204,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 3dfc002fbd9755b4490f53c5f37cf81d, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.2274718, y: 1.0701475, z: 0.76447666}
+  m_Center: {x: 1.1125853, y: 0.53507364, z: 0.38223833}
 --- !u!1 &1050034492396294356
 GameObject:
   m_ObjectHideFlags: 0
@@ -296,9 +294,9 @@ GameObject:
   - component: {fileID: 1050034492396784894}
   - component: {fileID: 1050034492393360592}
   - component: {fileID: 1050034492394360336}
-  - component: {fileID: 8359051213123378835}
   - component: {fileID: 114241816929820890}
-  m_Layer: 0
+  - component: {fileID: 6448601093359338321}
+  m_Layer: 13
   m_Name: Bench_01a_snaps020_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -370,20 +368,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &8359051213123378835
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1050034492396294366}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 3dfc002fbd9755b4490f53c5f37cf81d, type: 3}
 --- !u!114 &114241816929820890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -395,4 +379,17 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 575d9b3c6266dd64da966fcc573aeaba, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: LightmappedLOD, Assembly-CSharp
+--- !u!65 &6448601093359338321
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1050034492396294366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.2610173, y: 1.0701476, z: 0.76447666}
+  m_Center: {x: 1.1109877, y: 0.5350736, z: 0.38223833}
