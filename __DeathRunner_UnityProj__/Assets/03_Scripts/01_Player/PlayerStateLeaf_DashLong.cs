@@ -53,7 +53,6 @@ namespace DeathRunner.Player
             
             Debug.Log("State.DashLong.Enter");
             
-            //TODO: [Walter] Figure out the reason slow-mo doesn't work here.
             Commands.IsSlowMotionEnabled = true;
 
             _settings.OnLongDashEnter.Invoke();
@@ -65,8 +64,7 @@ namespace DeathRunner.Player
             
             Debug.Log("State.DashLong.Exit");
             
-            //TODO: [Walter] Figure out the reason slow-mo doesn't work here.
-            Commands.IsSlowMotionEnabled = false;
+            //Commands.IsSlowMotionEnabled = false;
             
             _settings.OnLongDashExit.Invoke();
         }
@@ -95,7 +93,7 @@ namespace DeathRunner.Player
                 _references.Motor.velocity = lerp(
                     _references.Motor.velocity, 
                     __desiredVelocity,
-                    1f - exp(-_settings.FrictionGround * Commands.DeltaTime));
+                    1f - exp(-_settings.FrictionGround * Time.unscaledDeltaTime));
             }
             else
             {
@@ -118,7 +116,7 @@ namespace DeathRunner.Player
             
             //Debug.Log($"TargetMoveDirectionRelativeToCamera: {__targetMoveDirectionRelativeToCamera}");
             
-            _references.Motor.Move(deltaTime: Commands.DeltaTime);
+            _references.Motor.Move(deltaTime: Time.unscaledDeltaTime);
             _settings.OnLongDashMove.Invoke(__targetMoveDirectionRelativeToCamera);
         }
 
@@ -160,7 +158,7 @@ namespace DeathRunner.Player
 
             Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
 
-            _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: _settings.OrientationSpeed.Value * Commands.DeltaTime);
+            _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: _settings.OrientationSpeed.Value * Time.unscaledDeltaTime);
         }
 
 

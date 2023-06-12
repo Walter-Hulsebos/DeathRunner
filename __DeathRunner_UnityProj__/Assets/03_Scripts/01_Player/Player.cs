@@ -104,6 +104,12 @@ namespace DeathRunner.Player
         private Boolean HasMoveInput   => any(playerReferences.InputHandler.MoveInput != F32x2.zero);
         private Boolean HasNoMoveInput => !HasMoveInput;
         
+        private Boolean DashInputIsHeld     => playerReferences.InputHandler.DashInputIsHeld;
+        private Boolean DashInputIsNotHeld  => !DashInputIsHeld;
+        
+        private Boolean HasStaminaLeft   => playerReferences.Stamina.stamina.Value > 0;
+        private Boolean HasNoStaminaLeft => !HasStaminaLeft;
+        
         // private Boolean DashInputIsHeld     => playerReferences.InputHandler.DashInputIsHeld;
         // private Boolean DashInputIsNotHeld  => !DashInputIsHeld;
         // //private Boolean DashInputWasStarted => playerReferences.InputHandler.DashInputStarted;
@@ -166,13 +172,13 @@ namespace DeathRunner.Player
             //     transitionAction: () => playerReferences.InputHandler.shortDashInputQueue.Dequeue()); //Walk -> DashShort
             // _dashShortNT.AddTransition(to: _walkNT, conditions: () => _dashShortNT.IsDoneDashing && HasMoveInput);                  //DashShort -> Walk
             
-            // _idleNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld && (DashHoldTime >= holdTimeForLongDash)); //Idle -> DashLong
-            // _dashLongNT.AddTransition(to: _idleNT, conditions: () => DashInputIsNotHeld                      && HasNoMoveInput);        //DashLong -> Idle
-            // _dashLongNT.AddTransition(to: _idleNT, conditions: () => playerReferences.Stamina.stamina.IsZero && HasNoMoveInput);        //DashLong -> Idle
+            _idleNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld); //Idle -> DashLong
+            _dashLongNT.AddTransition(to: _idleNT, conditions: () => DashInputIsNotHeld && HasNoMoveInput); //DashLong -> Idle
+            _dashLongNT.AddTransition(to: _idleNT, conditions: () => HasNoStaminaLeft   && HasNoMoveInput); //DashLong -> Idle
             
-            // _walkNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld && (DashHoldTime >= holdTimeForLongDash)); //Walk -> DashLong
-            // _dashLongNT.AddTransition(to: _walkNT, conditions: () => DashInputIsNotHeld                      && HasMoveInput);          //DashLong -> Walk
-            // _dashLongNT.AddTransition(to: _walkNT, conditions: () => playerReferences.Stamina.stamina.IsZero && HasMoveInput);          //DashLong -> Walk
+            _walkNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld); //Walk -> DashLong
+            _dashLongNT.AddTransition(to: _walkNT, conditions: () => DashInputIsNotHeld && HasMoveInput); //DashLong -> Walk
+            _dashLongNT.AddTransition(to: _walkNT, conditions: () => HasNoStaminaLeft   && HasMoveInput); //DashLong -> Walk
             
             //TODO: Add post transitions after attacks when back to walk/idle in which you can still follow up with another attack.
             

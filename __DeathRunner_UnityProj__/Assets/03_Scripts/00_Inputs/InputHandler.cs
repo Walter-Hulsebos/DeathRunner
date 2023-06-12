@@ -31,8 +31,8 @@ namespace DeathRunner.Inputs
 
         public F32x2                                  MouseScreenPosition => (F32x2)Mouse.current.position.ReadValue();
         
-        private CancellationTokenSource _dashInputCancellationTokenSource;
-        private CancellationToken       _dashInputCancellationToken;
+        //private CancellationTokenSource _dashInputCancellationTokenSource;
+        //private CancellationToken       _dashInputCancellationToken;
 
         #endregion
 
@@ -41,44 +41,46 @@ namespace DeathRunner.Inputs
         private void OnEnable()
         {
             primaryFireInputQueue = new InputQueue<Bool>(bufferTimeInSeconds: primaryFireInputBufferTimeSeconds.Value);
-            shortDashInputQueue   = new InputQueue<Bool>(bufferTimeInSeconds: shortDashInputBufferTimeSeconds.Value);
+            //shortDashInputQueue   = new InputQueue<Bool>(bufferTimeInSeconds: shortDashInputBufferTimeSeconds.Value);
             
             moveInputActionReference.action.Enable();
             aimInputActionReference.action.Enable();
-            shortDashInputActionReference.action.Enable();
+            dashInputActionReference.action.Enable();
             primaryFireInputActionReference.action.Enable();
             secondaryFireInputActionReference.action.Enable();
 
-            _dashInputCancellationTokenSource = new CancellationTokenSource();
-            _dashInputCancellationToken       = _dashInputCancellationTokenSource.Token;
+            //_dashInputCancellationTokenSource = new CancellationTokenSource();
+            //_dashInputCancellationToken       = _dashInputCancellationTokenSource.Token;
         }
         
         private void OnDisable()
         {
             moveInputActionReference.action.Disable();
             aimInputActionReference.action.Disable();
-            shortDashInputActionReference.action.Disable();
+            dashInputActionReference.action.Disable();
             primaryFireInputActionReference.action.Disable();
             secondaryFireInputActionReference.action.Disable();
 
-            _dashInputCancellationTokenSource.Cancel();
+            //_dashInputCancellationTokenSource.Cancel();
         }
         
         private void Awake()
         {
             moveInputActionReference.action.started            += OnMoveInputStarted;
             aimInputActionReference.action.started             += OnAimInputStarted;
-            shortDashInputActionReference.action.started       += OnDashInputStarted;
+            dashInputActionReference.action.started            += OnDashInputStarted;
             primaryFireInputActionReference.action.started     += OnPrimaryFireInputStarted;
             secondaryFireInputActionReference.action.started   += OnSecondaryFireInputStarted;
 
             moveInputActionReference.action.performed          += OnMoveInputPerformed;
             aimInputActionReference.action.performed           += OnAimInputPerformed;
+            dashInputActionReference.action.performed          += OnDashInputPerformed;
             //shortDashInputActionReference.action.performed     += OnDashInputPerformed;
             secondaryFireInputActionReference.action.performed += OnSecondaryFireInputPerformed;
 
             moveInputActionReference.action.canceled           += OnMoveInputCanceled;
             aimInputActionReference.action.canceled            += OnAimInputCanceled;
+            dashInputActionReference.action.canceled           += OnDashInputCanceled;
             //shortDashInputActionReference.action.canceled      += OnDashInputCanceled;
             secondaryFireInputActionReference.action.canceled  += OnSecondaryFireInputCanceled;
         }
@@ -87,17 +89,19 @@ namespace DeathRunner.Inputs
         {
             moveInputActionReference.action.started            -= OnMoveInputStarted;
             aimInputActionReference.action.started             -= OnAimInputStarted;
-            shortDashInputActionReference.action.started       -= OnDashInputStarted;
+            dashInputActionReference.action.started            -= OnDashInputStarted;
             primaryFireInputActionReference.action.started     -= OnPrimaryFireInputStarted;
             secondaryFireInputActionReference.action.started   -= OnSecondaryFireInputStarted;
 
             moveInputActionReference.action.performed          -= OnMoveInputPerformed;
             aimInputActionReference.action.performed           -= OnAimInputPerformed;
+            dashInputActionReference.action.performed          -= OnDashInputPerformed;
             //shortDashInputActionReference.action.performed     -= OnDashInputPerformed;
             secondaryFireInputActionReference.action.performed -= OnSecondaryFireInputPerformed;
 
             moveInputActionReference.action.canceled           -= OnMoveInputCanceled;
             aimInputActionReference.action.canceled            -= OnAimInputCanceled;
+            dashInputActionReference.action.canceled           -= OnDashInputCanceled;
             //shortDashInputActionReference.action.canceled      -= OnDashInputCanceled;
             secondaryFireInputActionReference.action.canceled  -= OnSecondaryFireInputCanceled;
         }
@@ -186,17 +190,18 @@ namespace DeathRunner.Inputs
         #region Short Dash Input Callbacks
         
         [FoldoutGroup(groupName: "Dash")]
-        [SerializeField] private InputActionReference shortDashInputActionReference;
-        
-        [FoldoutGroup(groupName: "Dash")]
-        [SerializeField] private Constant<F32> shortDashInputBufferTimeSeconds;
-        
+        [SerializeField] private InputActionReference dashInputActionReference;
+
         //private F32 _shortDashInputStartTime = 0.0f;
 
         // F32 is the time since the dash input was started.
-        public InputQueue<Bool> shortDashInputQueue;
+        //public InputQueue<Bool> shortDashInputQueue;
         
-        private void OnDashInputStarted(InputAction.CallbackContext ctx) => shortDashInputQueue.Enqueue(input: true).Forget();
+        public Bool DashInputIsHeld { get; private set; }
+
+        private void OnDashInputStarted(InputAction.CallbackContext ctx)   => DashInputIsHeld = ctx.ReadValueAsButton();
+        private void OnDashInputPerformed(InputAction.CallbackContext ctx) => DashInputIsHeld = ctx.ReadValueAsButton();
+        private void OnDashInputCanceled(InputAction.CallbackContext ctx)  => DashInputIsHeld = false;
         
         // [FoldoutGroup(groupName: "Dash")]
         // [SerializeField] private Constant<F32> minHoldTimeForLongDashSeconds;
