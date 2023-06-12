@@ -1,11 +1,8 @@
-using System;
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using Sirenix.OdinInspector;
 using Sirenix.Utilities;
 using UnityEngine;
 using UnityEngine.Pool;
-using UnityEngine.Serialization;
 using F32 = System.Single;
 
 namespace DeathRunner
@@ -13,7 +10,6 @@ namespace DeathRunner
     public class MeshTrail : MonoBehaviour
     {
         [SerializeField] private F32 distanceToSpawnNewMesh = 1.0f;
-        //[SerializeField] private F32 meshDestroyDelay = 3f;
 
         [SerializeField] private Material mat;
 
@@ -21,8 +17,7 @@ namespace DeathRunner
         [SerializeField] private MeshFilter[]          characterMeshes;
 
         private IObjectPool<GameObject> _objectPool;
-        //private ListPool<MeshRenderer>  _listPool;
-        
+
         private List<GameObject> _spawnedObjects = new();
 
         private Vector3 _previousSpawnPoint;
@@ -62,7 +57,6 @@ namespace DeathRunner
         private void Start()
         {
             _objectPool = new ObjectPool<GameObject>(createFunc: CreatePooledItem, actionOnGet: null, actionOnRelease: OnReturnedToPool, actionOnDestroy: OnDestroyPoolObject);
-            //_listPool   = new ListPool<SkinnedMeshRenderer>();
             _previousSpawnPoint = transform.position;
         }
 
@@ -105,31 +99,28 @@ namespace DeathRunner
         private void CreateCopyOfSkinnedMesh(SkinnedMeshRenderer skinnedMeshRenderer)
         {
             GameObject __obj = _objectPool.Get();
-                    
             __obj.transform.SetPositionAndRotation(position: transform.position, rotation: transform.rotation);
             MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
             MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
+            __obj.name = skinnedMeshRenderer.name + " AfterImage";
 
             Mesh __mesh = new();
             skinnedMeshRenderer.BakeMesh(mesh: __mesh);
 
             __filter.mesh = __mesh;
             __renderer.material = mat;
-            
-            //await UniTask.Delay(TimeSpan.FromSeconds(meshDestroyDelay));
-            //Destroy(obj: __obj, t: meshDestroyDelay);
-            //_objectPool.Release(__obj);
-            
+
             _spawnedObjects.Add(__obj);
         }
 
         private void CreateCopyOfMesh(MeshFilter meshFilter)
         {
             GameObject __obj = _objectPool.Get();
-            
-            __obj.transform.SetPositionAndRotation(position: transform.position, rotation: transform.rotation);
+            Transform __meshFilterTransform = meshFilter.transform;
+            __obj.transform.SetPositionAndRotation(position: __meshFilterTransform.position, rotation: __meshFilterTransform.rotation);
             MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
             MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
+            __obj.name = meshFilter.name + " AfterImage";
             
             __filter.mesh = meshFilter.mesh;
             __renderer.material = mat;
