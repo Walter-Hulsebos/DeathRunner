@@ -352,7 +352,7 @@ namespace Animancer
         /// keep a static template to avoid allocating an extra garbage one every time. This is why the fields are
         /// assigned in <see cref="OnPlayableCreate"/> rather than being readonly with field initializers.
         /// </summary>
-        private static readonly AnimancerPlayable Template = new AnimancerPlayable();
+        private static readonly AnimancerPlayable Template = new();
 
         /// <summary>Creates an <see cref="AnimancerPlayable"/> in an existing <see cref="PlayableGraph"/>.</summary>
         public static AnimancerPlayable Create(PlayableGraph graph)
@@ -1312,7 +1312,7 @@ namespace Animancer
             /************************************************************************************************************************/
 
             /// <summary>See <see cref="AnimancerPlayable.Template"/>.</summary>
-            private static readonly PostUpdate Template = new PostUpdate();
+            private static readonly PostUpdate Template = new();
 
             /// <summary>The <see cref="AnimancerPlayable"/> this behaviour is connected to.</summary>
             private AnimancerPlayable _Root;

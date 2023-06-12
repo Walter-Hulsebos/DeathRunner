@@ -97,7 +97,7 @@ namespace Animancer
         /************************************************************************************************************************/
 
         private static readonly Dictionary<Texture2D, Dictionary<Sprite, Sprite>>
-            TextureToSpriteMap = new Dictionary<Texture2D, Dictionary<Sprite, Sprite>>();
+            TextureToSpriteMap = new();
 
         /************************************************************************************************************************/
 

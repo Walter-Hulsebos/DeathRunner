@@ -12,12 +12,12 @@ public class LocalNavMeshBuilder : MonoBehaviour
     public Transform m_Tracked;
 
     // The size of the build bounds
-    public Vector3 m_Size = new Vector3(80.0f, 20.0f, 80.0f);
+    public Vector3 m_Size = new(80.0f, 20.0f, 80.0f);
 
     NavMeshData m_NavMesh;
     AsyncOperation m_Operation;
     NavMeshDataInstance m_Instance;
-    List<NavMeshBuildSource> m_Sources = new List<NavMeshBuildSource>();
+    List<NavMeshBuildSource> m_Sources = new();
 
     IEnumerator Start()
     {

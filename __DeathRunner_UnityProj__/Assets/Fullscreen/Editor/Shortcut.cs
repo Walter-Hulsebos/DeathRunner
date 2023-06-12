@@ -42,7 +42,7 @@ namespace FullscreenEditor {
         private const char ALT_CHAR = '&';
         private const char NONE_CHAR = '_';
 
-        private static readonly List<Shortcut> fieldsInfo = new List<Shortcut>();
+        private static readonly List<Shortcut> fieldsInfo = new();
         /* fixformat ignore:start */
         private static readonly string[] keys = new string[] {
             "None",

@@ -4,7 +4,7 @@ namespace QFSW.QC
 {
     public class LogQueue : ILogQueue
     {
-        private readonly ConcurrentQueue<ILog> _queuedLogs = new ConcurrentQueue<ILog>();
+        private readonly ConcurrentQueue<ILog> _queuedLogs = new();
         
         public int MaxStoredLogs { get; set; }
         public bool IsEmpty => _queuedLogs.IsEmpty;

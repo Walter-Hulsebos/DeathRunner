@@ -52,13 +52,13 @@ namespace Animancer.Units
 
         /// <summary>[Editor-Only] A converter that adds an 'x' suffix to the given number.</summary>
         public static readonly CompactUnitConversionCache
-            XSuffix = new CompactUnitConversionCache("x");
+            XSuffix = new("x");
 
         private static new readonly CompactUnitConversionCache[] DisplayConverters =
         {
             XSuffix,
-            new CompactUnitConversionCache("s"),
-            new CompactUnitConversionCache("f"),
+            new("s"),
+            new("f"),
         };
 
         /************************************************************************************************************************/

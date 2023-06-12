@@ -14,9 +14,9 @@ namespace QFSW.QC
     public class SuggestionStack
     {
         private readonly QuantumSuggestor _suggestor;
-        private readonly List<SuggestionSet> _suggestionSets = new List<SuggestionSet>();
-        private readonly Pool<SuggestionSet> _setPool = new Pool<SuggestionSet>();
-        private readonly StringBuilder _stringBuilder = new StringBuilder();
+        private readonly List<SuggestionSet> _suggestionSets = new();
+        private readonly Pool<SuggestionSet> _setPool = new();
+        private readonly StringBuilder _stringBuilder = new();
 
         /// <summary>
         /// The topmost valid suggestion set in the stack.
@@ -139,7 +139,7 @@ namespace QFSW.QC
         {
             if (_suggestionSets.Count == 0)
             {
-                SuggestionContext context = new SuggestionContext
+                SuggestionContext context = new()
                 {
                     Prompt = prompt,
                     Depth = 0,

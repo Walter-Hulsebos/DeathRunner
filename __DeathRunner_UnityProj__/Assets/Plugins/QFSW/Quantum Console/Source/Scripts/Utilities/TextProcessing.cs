@@ -12,7 +12,7 @@ namespace QFSW.QC
         public static readonly char[] DefaultLeftScopers = { '<', '[', '(', '{', '"' };
         public static readonly char[] DefaultRightScopers = { '>', ']', ')', '}', '"' };
 
-        private static readonly ConcurrentStringBuilderPool _stringBuilderPool = new ConcurrentStringBuilderPool();
+        private static readonly ConcurrentStringBuilderPool _stringBuilderPool = new();
 
         /// <summary>
         /// Options to provide the ReduceScoped functions with
@@ -36,7 +36,7 @@ namespace QFSW.QC
             /// <summary>
             /// The default set of options for the ReduceScope functions
             /// </summary>
-            public static readonly ReduceScopeOptions Default = new ReduceScopeOptions
+            public static readonly ReduceScopeOptions Default = new()
             {
                 MaxReductions = -1,
                 ReduceIncompleteScope = false
@@ -62,7 +62,7 @@ namespace QFSW.QC
             /// <summary>
             /// The default set of options for the SplitScoped functions
             /// </summary>
-            public static readonly ScopedSplitOptions Default = new ScopedSplitOptions
+            public static readonly ScopedSplitOptions Default = new()
             {
                 MaxCount = -1,
                 AutoReduceScope = false,

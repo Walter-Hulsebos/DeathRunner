@@ -6,7 +6,7 @@ namespace QFSW.QC.Suggestors
 {
     public class EnumSuggestor : BasicCachedQcSuggestor<string>
     {
-        private readonly Dictionary<Type, string[]> _enumCaseCache = new Dictionary<Type, string[]>();
+        private readonly Dictionary<Type, string[]> _enumCaseCache = new();
 
         protected override bool CanProvideSuggestions(SuggestionContext context, SuggestorOptions options)
         {

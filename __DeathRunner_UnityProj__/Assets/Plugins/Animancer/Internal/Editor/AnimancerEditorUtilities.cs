@@ -78,7 +78,7 @@ namespace Animancer.Editor
 
         // The "g" format gives a lower case 'e' for exponentials instead of upper case 'E'.
         private static readonly ConversionCache<float, string>
-            FloatToString = new ConversionCache<float, string>((value) => $"{value:g}");
+            FloatToString = new((value) => $"{value:g}");
 
         /// <summary>[Animancer Extension]
         /// Calls <see cref="float.ToString(string)"/> using <c>"g"</c> as the format and caches the result.
@@ -323,7 +323,7 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         private static readonly Dictionary<Type, string>
-            TypeNames = new Dictionary<Type, string>
+            TypeNames = new()
             {
                 { typeof(object), "object" },
                 { typeof(void), "void" },
@@ -344,7 +344,7 @@ namespace Animancer.Editor
             };
 
         private static readonly Dictionary<Type, string>
-            FullTypeNames = new Dictionary<Type, string>(TypeNames);
+            FullTypeNames = new(TypeNames);
 
         /************************************************************************************************************************/
 

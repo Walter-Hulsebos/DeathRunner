@@ -8,8 +8,8 @@ namespace QFSW.QC.Extras
 {
     public static class MegaCommands
     {
-        private static readonly QuantumSerializer Serializer = new QuantumSerializer();
-        private static readonly QuantumParser Parser = new QuantumParser();
+        private static readonly QuantumSerializer Serializer = new();
+        private static readonly QuantumParser Parser = new();
 
         private static MethodInfo[] ExtractMethods(Type type, string name)
         {

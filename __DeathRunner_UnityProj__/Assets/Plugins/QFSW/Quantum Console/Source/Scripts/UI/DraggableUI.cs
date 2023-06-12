@@ -46,7 +46,7 @@ namespace QFSW.QC.UI
 
                 if (_lockInScreen)
                 {
-                    Vector2 resolution = new Vector2(Screen.width, Screen.height);
+                    Vector2 resolution = new(Screen.width, Screen.height);
                     if (pos.x <= 0 || pos.x >= resolution.x) { delta.x = 0; }
                     if (pos.y <= 0 || pos.y >= resolution.y) { delta.y = 0; }
                 }

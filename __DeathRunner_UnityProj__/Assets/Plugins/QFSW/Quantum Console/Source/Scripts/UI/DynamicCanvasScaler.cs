@@ -36,7 +36,7 @@ namespace QFSW.QC.UI
 
         [SerializeField] private CanvasScaler _scaler = null;
         [SerializeField] private RectTransform _uiRoot = null;
-        [SerializeField] private Vector2 _referenceResolution = new Vector2(1920, 1080);
+        [SerializeField] private Vector2 _referenceResolution = new(1920, 1080);
 
         private float RootScaler => _rectMagnification / _zoomMagnification;
 
@@ -53,7 +53,7 @@ namespace QFSW.QC.UI
             {
                 if (RootScaler != _lastScaler)
                 {
-                    Rect rootRect = new Rect(_uiRoot.offsetMin.x / _lastScaler, _uiRoot.offsetMin.y / _lastScaler, _uiRoot.offsetMax.x / _lastScaler, _uiRoot.offsetMax.y / _lastScaler);
+                    Rect rootRect = new(_uiRoot.offsetMin.x / _lastScaler, _uiRoot.offsetMin.y / _lastScaler, _uiRoot.offsetMax.x / _lastScaler, _uiRoot.offsetMax.y / _lastScaler);
                     _lastScaler = RootScaler;
 
                     _scaler.referenceResolution = _referenceResolution / _zoomMagnification;

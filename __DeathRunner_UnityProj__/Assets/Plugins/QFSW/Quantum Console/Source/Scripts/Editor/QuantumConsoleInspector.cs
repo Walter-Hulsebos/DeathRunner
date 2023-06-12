@@ -141,7 +141,7 @@ namespace QFSW.QC.Editor
             EditorGUILayout.PropertyField(_themeProperty, new GUIContent("Theme", "QuantumTheme to use for this Quantum Console."));
             if (_themeProperty.objectReferenceValue)
             {
-                GUIContent applyBtnContent = new GUIContent("Apply", "Forces an application of the theme now allowing you to see any GUI changes it would make");
+                GUIContent applyBtnContent = new("Apply", "Forces an application of the theme now allowing you to see any GUI changes it would make");
                 if (QGUILayout.ButtonAuto(applyBtnContent, EditorStyles.miniButton))
                 {
                     Undo.RecordObject(QCInstance, "Applied a theme to the Quantum Console");
@@ -253,7 +253,7 @@ namespace QFSW.QC.Editor
             bool containerHidden = containerFound ? consoleContainer.gameObject.activeSelf : false;
 
             GUI.enabled = containerFound;
-            GUIContent message = new GUIContent(containerFound ? containerHidden ? "Hide Console" : "Show Console" : "Console Missing");
+            GUIContent message = new(containerFound ? containerHidden ? "Hide Console" : "Show Console" : "Console Missing");
             if (QGUILayout.ButtonAuto(message, EditorStyles.miniButton)) { consoleContainer.gameObject.SetActive(!consoleContainer.gameObject.activeSelf); }
             GUI.enabled = true;
         }

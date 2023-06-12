@@ -142,7 +142,7 @@ namespace QFSW.QC
                                          || _currentActions.Count > 0) 
                                          && !_isHandlingUserResponse;
 
-        private readonly QuantumSerializer _serializer = new QuantumSerializer();
+        private readonly QuantumSerializer _serializer = new();
 
         private SuggestionStack _suggestionStack;
         private ILogStorage _logStorage;
@@ -156,10 +156,10 @@ namespace QFSW.QC
         /// </summary>
         public bool AreActionsExecuting => _currentActions.Count > 0;
 
-        private readonly List<string> _previousCommands = new List<string>();
-        private readonly List<Task> _currentTasks = new List<Task>();
-        private readonly List<IEnumerator<ICommandAction>> _currentActions = new List<IEnumerator<ICommandAction>>();
-        private readonly StringBuilderPool _stringBuilderPool = new StringBuilderPool();
+        private readonly List<string> _previousCommands = new();
+        private readonly List<Task> _currentTasks = new();
+        private readonly List<IEnumerator<ICommandAction>> _currentActions = new();
+        private readonly StringBuilderPool _stringBuilderPool = new();
 
         private int _selectedPreviousCommandIndex = -1;
         private string _currentInput;
@@ -333,7 +333,7 @@ namespace QFSW.QC
                 return;
             }
 
-            SuggestorOptions options = new SuggestorOptions
+            SuggestorOptions options = new()
             {
                 CaseSensitive = _caseSensitiveSearch,
                 Fuzzy = _useFuzzySearch,
@@ -658,7 +658,7 @@ namespace QFSW.QC
         [Command("qc-script-extern", "Executes an external source of QC script file, where each line is a separate QC command.", MonoTargetType.Registry, Platform.AllPlatforms ^ Platform.WebGLPlayer)]
         public async Task InvokeExternalCommandsAsync(string filePath)
         {
-            using (StreamReader reader = new StreamReader(filePath))
+            using (StreamReader reader = new(filePath))
             {
                 while (!reader.EndOfStream)
                 {
@@ -716,7 +716,7 @@ namespace QFSW.QC
         {
             if (!string.IsNullOrWhiteSpace(logText))
             {
-                Log log = new Log(logText, logType);
+                Log log = new(logText, logType);
                 LogToConsoleAsync(log);
             }
         }
@@ -834,7 +834,7 @@ namespace QFSW.QC
                 return;
             }
 
-            ActionContext context = new ActionContext
+            ActionContext context = new()
             {
                 Console = this
             };
@@ -1109,7 +1109,7 @@ namespace QFSW.QC
 
         protected virtual ILogStorage CreateLogStorage() => new LogStorage(_maxStoredLogs);
         protected virtual ILogQueue CreateLogQueue() => new LogQueue(_maxStoredLogs);
-        protected virtual SuggestionStack CreateSuggestionStack() => new SuggestionStack();
+        protected virtual SuggestionStack CreateSuggestionStack() => new();
         
         /// <summary>
         /// Toggles the Quantum Console.

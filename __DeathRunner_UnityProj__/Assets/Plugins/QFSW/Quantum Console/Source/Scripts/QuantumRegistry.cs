@@ -8,7 +8,7 @@ namespace QFSW.QC
 {
     public static class QuantumRegistry
     {
-        private static readonly Dictionary<Type, List<object>> _objectRegistry = new Dictionary<Type, List<object>>();
+        private static readonly Dictionary<Type, List<object>> _objectRegistry = new();
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         private static void ResetRegistry()

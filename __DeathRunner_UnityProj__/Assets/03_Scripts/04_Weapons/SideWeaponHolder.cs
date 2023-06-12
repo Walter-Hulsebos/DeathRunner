@@ -71,7 +71,7 @@ namespace DeathRunner.Weapons
                     }
                     break;
                 case WeaponState.Active:
-                    Debug.Log("Active");
+                    //Debug.Log("Active");
                     if (activeTime > 0)
                     {
                         activeTime -= Time.deltaTime;
@@ -85,7 +85,7 @@ namespace DeathRunner.Weapons
                     break;
                 
                 case WeaponState.Cooldown:
-                    Debug.Log("Cooldown");
+                    //Debug.Log("Cooldown");
                     if (cooldownTime > 0)
                     {
                         cooldownTime -= Time.deltaTime;

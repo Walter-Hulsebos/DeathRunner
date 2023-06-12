@@ -55,10 +55,10 @@ namespace QFSW.QC
                 throw new ArgumentException($"No command with the name {commandName} was found.");
             }
 
-            Dictionary<string, ParameterInfo> foundParams = new Dictionary<string, ParameterInfo>();
-            Dictionary<string, Type> foundGenericArguments = new Dictionary<string, Type>();
-            Dictionary<string, CommandParameterDescriptionAttribute> foundParamDescriptions = new Dictionary<string, CommandParameterDescriptionAttribute>();
-            List<Type> declaringTypes = new List<Type>(1);
+            Dictionary<string, ParameterInfo> foundParams = new();
+            Dictionary<string, Type> foundGenericArguments = new();
+            Dictionary<string, CommandParameterDescriptionAttribute> foundParamDescriptions = new();
+            List<Type> declaringTypes = new(1);
 
             string manual = $"Generated user manual for {commandName}\nAvailable command signatures:";
 
@@ -112,7 +112,7 @@ namespace QFSW.QC
                     Type[] typeConstraints = arg.GetGenericParameterConstraints();
                     GenericParameterAttributes attributes = arg.GenericParameterAttributes;
 
-                    List<string> formattedConstraints = new List<string>();
+                    List<string> formattedConstraints = new();
                     if (attributes.HasFlag(GenericParameterAttributes.NotNullableValueTypeConstraint)) { formattedConstraints.Add("struct"); }
                     if (attributes.HasFlag(GenericParameterAttributes.ReferenceTypeConstraint)) { formattedConstraints.Add("class"); }
                     for (int j = 0; j < typeConstraints.Length; j++) { formattedConstraints.Add(typeConstraints[i].GetDisplayName()); }

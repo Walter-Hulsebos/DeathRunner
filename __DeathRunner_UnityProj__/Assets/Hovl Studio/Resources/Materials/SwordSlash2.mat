@@ -34,13 +34,15 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 1
-  m_CustomRenderQueue: 2750
+  m_CustomRenderQueue: 3000
   stringTagMap:
+    MotionVector: User
     RenderType: Transparent
   disabledShaderPasses:
   - TransparentBackface
   - TransparentDepthPrepass
   - TransparentDepthPostpass
+  - MOTIONVECTORS
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -102,7 +104,7 @@ Material:
     - _Opacity: 20
     - _OpaqueCullMode: 2
     - _PathSet0ifyouuseinPS: 0
-    - _RenderQueueType: 1
+    - _RenderQueueType: 4
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 0

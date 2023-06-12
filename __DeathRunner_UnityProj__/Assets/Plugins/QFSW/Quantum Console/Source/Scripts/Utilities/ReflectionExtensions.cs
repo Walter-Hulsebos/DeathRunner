@@ -9,7 +9,7 @@ namespace QFSW.QC.Utilities
     public static class ReflectionExtensions
     {
         #region Lookup Tables
-        private static readonly Dictionary<Type, string> _typeDisplayNames = new Dictionary<Type, string>
+        private static readonly Dictionary<Type, string> _typeDisplayNames = new()
         {
             { typeof(int), "int" },
             { typeof(float), "float" },

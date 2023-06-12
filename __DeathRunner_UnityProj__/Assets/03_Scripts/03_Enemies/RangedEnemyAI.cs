@@ -122,7 +122,11 @@ namespace DeathRunner.EnemyAI
             {
                 case States.Chasing:
                     // Set the destination for the NavMeshAgent to the player's position
-                    navMeshAgent.SetDestination(_player.transform.position);
+                    if (navMeshAgent.isOnNavMesh)
+                    {
+                        //Check if the player is on a navmesh
+                        navMeshAgent.SetDestination(_player.transform.position);
+                    }
 
                     // Look at the player
                   //  LookAtPlayer();
@@ -164,7 +168,11 @@ namespace DeathRunner.EnemyAI
                             hasPickedWalkPos = true;
                             currentWalkPos = walkPositions[Random.Range(0, walkPositions.Length)];
                         }
-                        navMeshAgent.SetDestination(currentWalkPos.position);
+
+                        if (navMeshAgent.isOnNavMesh)
+                        {
+                            navMeshAgent.SetDestination(currentWalkPos.position);
+                        }
                         //Make enemy walk back to create distance with the player if they are too close
                     }
                     break;

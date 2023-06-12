@@ -10,7 +10,7 @@ namespace QFSW.QC
     /// <typeparam name="T">The type to parse.</typeparam>
     public abstract class BasicCachedQcParser<T> : BasicQcParser<T>
     {
-        private readonly Dictionary<string, T> _cacheLookup = new Dictionary<string, T>();
+        private readonly Dictionary<string, T> _cacheLookup = new();
 
         public override object Parse(string value, Type type, Func<string, Type, object> recursiveParser)
         {

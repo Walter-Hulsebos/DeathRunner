@@ -141,7 +141,7 @@ namespace Animancer
 
         /// <inheritdoc/>
         public sealed override FastEnumerator<AnimancerState> GetEnumerator()
-            => new FastEnumerator<AnimancerState>(ChildStates, _ChildCount);
+            => new(ChildStates, _ChildCount);
 
         /************************************************************************************************************************/
 

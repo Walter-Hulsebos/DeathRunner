@@ -19,7 +19,7 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         private static readonly ConditionalWeakTable<Sequence, EventSequenceDrawer>
-            SequenceToDrawer = new ConditionalWeakTable<Sequence, EventSequenceDrawer>();
+            SequenceToDrawer = new();
 
         /// <summary>Returns a cached <see cref="EventSequenceDrawer"/> for the `events`.</summary>
         /// <remarks>
@@ -142,8 +142,8 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         private static readonly ConversionCache<int, string>
-            SummaryCache = new ConversionCache<int, string>((count) => $"[{count}]"),
-            EndSummaryCache = new ConversionCache<int, string>((count) => $"[{count}] + End");
+            SummaryCache = new((count) => $"[{count}]"),
+            EndSummaryCache = new((count) => $"[{count}] + End");
 
         /// <summary>Returns a summary of the `events`.</summary>
         public static string GetSummary(Sequence events)

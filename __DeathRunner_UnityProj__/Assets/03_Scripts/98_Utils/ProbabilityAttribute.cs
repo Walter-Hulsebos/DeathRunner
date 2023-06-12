@@ -1,17 +1,18 @@
-using System.Collections.Generic;
-using UnityEngine;
 using System;
+using System.Collections.Generic;
+
+using UnityEngine;
+
 using Sirenix.Utilities;
-using Sirenix.OdinInspector.Editor.ValueResolvers;
+
 using Object = System.Object;
 
 #if UNITY_EDITOR
-
 using Sirenix.Utilities.Editor;
 using Sirenix.OdinInspector.Editor;
+using Sirenix.OdinInspector.Editor.ValueResolvers;
 using UnityEditor;
-
-#endif
+#endif  
 
 public sealed class ProbabilityAttribute : Attribute
 {
@@ -33,10 +34,10 @@ public sealed class ProbabilityAttributeDrawer : OdinAttributeDrawer<Probability
     private ValueResolver<Object[]> baseItemDataGetter;
 
     private State state;
-    private Vector2 selectSzie = new Vector2(30, 30);
-    private List<Single> selectValues = new List<Single>();
+    private Vector2 selectSzie = new(30, 30);
+    private List<Single> selectValues = new();
 
-    private List<Rect> ranges = new List<Rect>();
+    private List<Rect> ranges = new();
 
     private Int32 selectId = -1;
     private Color[] colors;
@@ -142,9 +143,9 @@ public sealed class ProbabilityAttributeDrawer : OdinAttributeDrawer<Probability
         if (inspectorPropertyValueGetter.GetValue() != null && inspectorPropertyValueGetter.GetValue().Length != 0)
         {
             SirenixEditorGUI.DrawSolidRect(rect, new Color(0.7f, 0.7f, 0.7f, 1f));
-            GUIStyle style = new GUIStyle();
+            GUIStyle style = new();
             style.alignment = TextAnchor.UpperCenter;
-            GUIStyle percentageStyle = new GUIStyle();
+            GUIStyle percentageStyle = new();
             percentageStyle.alignment = TextAnchor.LowerCenter;
 
             ValueEntry.SmartValue = SetData(inspectorPropertyValueGetter.GetValue(), ref selectValues, ValueEntry.SmartValue);

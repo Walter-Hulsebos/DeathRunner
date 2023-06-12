@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ public class ShurikenScaler : EditorWindow
     float oldScale = 1.0f;
     float currentScale = 1.0f;
     int currentInstanceId = 0;
-    static Dictionary<int, float> currentScales = new Dictionary<int, float> ();
+    static Dictionary<int, float> currentScales = new();
 
     void OnEnable ()
     {
@@ -123,7 +124,7 @@ public class ShurikenScaler : EditorWindow
         ps.gravityModifier *= multiplier;
         ps.startSpeed *= multiplier;
 
-        SerializedObject so = new SerializedObject (ps);
+        SerializedObject so = new(ps);
 
         so.FindProperty ("ShapeModule.radius").floatValue *= multiplier;
         so.FindProperty ("ShapeModule.length").floatValue *= multiplier;
@@ -175,3 +176,4 @@ public class ShurikenScaler : EditorWindow
     }
 
 }
+#endif

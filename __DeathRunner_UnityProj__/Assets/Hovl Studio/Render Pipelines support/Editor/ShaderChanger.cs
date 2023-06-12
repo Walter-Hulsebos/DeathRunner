@@ -15,7 +15,7 @@ namespace HovlStudio
         {
             if (!File.Exists("Assets/Hovl Studio/Render Pipelines support/startupCheck.asset"))
             {
-                TextAsset text = new TextAsset();
+                TextAsset text = new();
                 AssetDatabase.CreateAsset(text, "Assets/Hovl Studio/Render Pipelines support/startupCheck.asset");
                 ShowWindow();
             }

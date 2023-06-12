@@ -83,7 +83,7 @@ namespace QFSW.QC.Utilities
                     $"Cannot load scene '{sceneName}' as it is not present in the build settings or the AssetDatabase");
             }
 
-            LoadSceneParameters parameters = new LoadSceneParameters {loadSceneMode = mode};
+            LoadSceneParameters parameters = new() {loadSceneMode = mode};
             return EditorSceneManager.LoadSceneAsyncInPlayMode(scenePath, parameters);
 #else
             return SceneManager.LoadSceneAsync(sceneName, mode);

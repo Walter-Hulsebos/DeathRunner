@@ -17,7 +17,7 @@ namespace QFSW.QC.Serializers
 
     public abstract class IEnumerableSerializer<T> : PolymorphicQcSerializer<T> where T : class, IEnumerable
     {
-        private readonly StringBuilderPool _builderPool = new StringBuilderPool();
+        private readonly StringBuilderPool _builderPool = new();
 
         public override string SerializeFormatted(T value, QuantumTheme theme)
         {

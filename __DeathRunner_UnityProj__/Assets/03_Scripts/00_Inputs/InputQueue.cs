@@ -13,14 +13,14 @@ namespace DeathRunner.Inputs
         private readonly F32      _bufferTimeInSeconds;
         private readonly Queue<T> _inputQueue;
         private readonly T        _defaultValueToReturn;
-        private          I32      _manuallyDequeuedCount;
+        //private          I32      _manuallyDequeuedCount;
         
         public InputQueue(F32 bufferTimeInSeconds)
         {
             this._bufferTimeInSeconds = bufferTimeInSeconds;
             this._inputQueue = new Queue<T>();
             this._defaultValueToReturn = default;
-            this._manuallyDequeuedCount = 0;
+            //this._manuallyDequeuedCount = 0;
         }
         
         public InputQueue(F32 bufferTimeInSeconds, T customDefaultValueToReturn)
@@ -28,7 +28,7 @@ namespace DeathRunner.Inputs
             this._bufferTimeInSeconds = bufferTimeInSeconds;
             this._inputQueue = new Queue<T>();
             this._defaultValueToReturn = customDefaultValueToReturn;
-            this._manuallyDequeuedCount = 0;
+            //this._manuallyDequeuedCount = 0;
         }
 
         public async UniTask Enqueue(T input)

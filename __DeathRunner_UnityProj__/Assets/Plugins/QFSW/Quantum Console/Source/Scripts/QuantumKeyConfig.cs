@@ -11,18 +11,18 @@ namespace QFSW.QC
         public ModifierKeyCombo HideConsoleKey = KeyCode.None;
         public ModifierKeyCombo ToggleConsoleVisibilityKey = KeyCode.Escape;
 
-        public ModifierKeyCombo ZoomInKey = new ModifierKeyCombo { Key = KeyCode.Equals, Ctrl = true };
-        public ModifierKeyCombo ZoomOutKey = new ModifierKeyCombo { Key = KeyCode.Minus, Ctrl = true };
-        public ModifierKeyCombo DragConsoleKey = new ModifierKeyCombo { Key = KeyCode.Mouse0, Shift = true };
+        public ModifierKeyCombo ZoomInKey = new() { Key = KeyCode.Equals, Ctrl = true };
+        public ModifierKeyCombo ZoomOutKey = new() { Key = KeyCode.Minus, Ctrl = true };
+        public ModifierKeyCombo DragConsoleKey = new() { Key = KeyCode.Mouse0, Shift = true };
 
         [FormerlySerializedAs("SuggestNextCommandKey")]
         public ModifierKeyCombo SelectNextSuggestionKey = KeyCode.Tab;
         [FormerlySerializedAs("SuggestPreviousCommandKey")]
-        public ModifierKeyCombo SelectPreviousSuggestionKey = new ModifierKeyCombo { Key = KeyCode.Tab, Shift = true };
+        public ModifierKeyCombo SelectPreviousSuggestionKey = new() { Key = KeyCode.Tab, Shift = true };
 
         public KeyCode NextCommandKey = KeyCode.UpArrow;
         public KeyCode PreviousCommandKey = KeyCode.DownArrow;
 
-        public ModifierKeyCombo CancelActionsKey = new ModifierKeyCombo { Key = KeyCode.C, Ctrl = true };
+        public ModifierKeyCombo CancelActionsKey = new() { Key = KeyCode.C, Ctrl = true };
     }
 }

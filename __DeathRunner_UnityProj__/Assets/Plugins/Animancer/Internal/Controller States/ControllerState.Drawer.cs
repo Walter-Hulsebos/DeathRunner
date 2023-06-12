@@ -37,7 +37,7 @@ namespace Animancer
             /************************************************************************************************************************/
 
             private readonly List<AnimatorControllerParameter>
-                Parameters = new List<AnimatorControllerParameter>();
+                Parameters = new();
 
             /// <summary>Fills the <see cref="Parameters"/> list with the current parameter details.</summary>
             private void GatherParameters()

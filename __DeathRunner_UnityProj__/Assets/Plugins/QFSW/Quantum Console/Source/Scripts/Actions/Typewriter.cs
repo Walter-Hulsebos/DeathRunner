@@ -25,15 +25,15 @@ namespace QFSW.QC.Actions
             public float PrintInterval;
             public ChunkType Chunks;
 
-            public static readonly Config Default = new Config
+            public static readonly Config Default = new()
             {
                 PrintInterval = 0f,
                 Chunks = ChunkType.Character
             };
         }
 
-        private static readonly Regex WhiteRegex = new Regex(@"(?<=[\s+])", RegexOptions.Compiled);
-        private static readonly Regex LineRegex = new Regex(@"(?<=[\n+])", RegexOptions.Compiled);
+        private static readonly Regex WhiteRegex = new(@"(?<=[\s+])", RegexOptions.Compiled);
+        private static readonly Regex LineRegex = new(@"(?<=[\n+])", RegexOptions.Compiled);
 
         /// <param name="message">The message to display to the console.</param>
         public Typewriter(string message)

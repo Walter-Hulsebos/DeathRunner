@@ -22,9 +22,9 @@ namespace UnityEngine.AI
         // List of agent types the modifier is applied for.
         // Special values: empty == None, m_AffectedAgents[0] =-1 == All.
         [SerializeField]
-        List<int> m_AffectedAgents = new List<int>(new int[] { -1 });    // Default value is All
+        List<int> m_AffectedAgents = new(new int[] { -1 });    // Default value is All
 
-        static readonly List<NavMeshModifier> s_NavMeshModifiers = new List<NavMeshModifier>();
+        static readonly List<NavMeshModifier> s_NavMeshModifiers = new();
 
         public static List<NavMeshModifier> activeModifiers
         {

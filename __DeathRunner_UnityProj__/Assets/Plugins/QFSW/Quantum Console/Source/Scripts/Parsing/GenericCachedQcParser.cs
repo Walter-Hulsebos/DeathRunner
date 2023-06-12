@@ -9,7 +9,7 @@ namespace QFSW.QC
     /// </summary>
     public abstract class GenericCachedQcParser : GenericQcParser
     {
-        private readonly Dictionary<(string, Type), object> _cacheLookup = new Dictionary<(string, Type), object>();
+        private readonly Dictionary<(string, Type), object> _cacheLookup = new();
 
         public override object Parse(string value, Type type, Func<string, Type, object> recursiveParser)
         {

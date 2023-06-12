@@ -26,34 +26,29 @@ namespace DeathRunner.Player
     {
         //NOTE: [Walter] Make shared states possible??
 
-        [SerializeField] private PlayerReferences      playerReferences = new();
-        //[SerializeField] private PlayerAttributes      playerAttributes = new();
+        [SerializeField] private PlayerReferences   playerReferences = new();
 
-        [Tooltip("Locomotion Settings for Normal-Time")]
-        [SerializeField] private LocomotionSettings    locomotionNTSettings;
+        [Tooltip("Locomotion Settings")]
+        [SerializeField] private LocomotionSettings locomotionNTSettings;
         
-        [Tooltip("Idle Settings for Normal-Time")]
-        [SerializeField] private IdleSettings          idleNTSettings;
-        [Tooltip("Walk Settings for Normal-Time")]
-        [SerializeField] private MoveSettings          moveNtSettings;
-        
-        [SerializeField] private F32                   holdTimeForLongDash = 0.1f;
-        
-        [Tooltip("Short Dash Settings for Normal-Time")]
-        [SerializeField] private DashShortSettings     dashShortNTSettings;
-        [Tooltip("Long Dash Settings for Normal-Time")]
-        [SerializeField] private DashLongSettings      dashLongNTSettings;
+        [Tooltip("Idle Settings")]
+        [SerializeField] private IdleSettings       idleNTSettings;
+        [Tooltip("Walk Settings")]
+        [SerializeField] private MoveSettings       moveNtSettings;
+
+        [Tooltip("Long Dash Settings")]
+        [SerializeField] private DashLongSettings   dashLongNTSettings;
         
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Combat NT")]
+        [FoldoutGroup("Combat")]
         #endif
         [SerializeField] private MeleeAttackData primaryAttack00NT;
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Combat NT")]
+        [FoldoutGroup("Combat")]
         #endif
         [SerializeField] private MeleeAttackData primaryAttack01NT;
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Combat NT")]
+        [FoldoutGroup("Combat")]
         #endif
         [SerializeField] private MeleeAttackData primaryAttack02NT;
 
@@ -62,33 +57,20 @@ namespace DeathRunner.Player
         private PlayerState_Alive               _alive;
         private PlayerStateLeaf_Dead            _dead;
 
-        private PlayerState_NormalTime          _normalTime;
-
+        [UsedImplicitly]
         private PlayerState_Locomotion          _locomotionNT;
         
         private PlayerStateLeaf_Idle            _idleNT;
         private PlayerStateLeaf_Move            _walkNT;
         
-        private PlayerStateLeaf_DashShort       _dashShortNT;
         private PlayerStateLeaf_DashLong        _dashLongNT;
         
         private PlayerStateLeaf_AttackMelee     _lightAttackNt00;
         private PlayerStateLeaf_AttackMelee     _lightAttackNt01;
         private PlayerStateLeaf_AttackMelee     _lightAttackNt02;
         
-        private PlayerStateLeaf_SecondaryAttack _secondaryAttackNT;
-        
-        // private State                           _locomotionBT;
-        //
-        // private StateLeaf                       _idleBT;
-        // private StateLeaf                       _walkBT;
-        //
-        // private PlayerStateLeaf_PrimaryAttack   _primaryAttackBT00;
-        // private PlayerStateLeaf_PrimaryAttack   _primaryAttackBT01;
-        // private PlayerStateLeaf_PrimaryAttack   _primaryAttackBT02;
-        //
-        // private PlayerStateLeaf_SecondaryAttack _secondaryAttackBT;
-        
+        //private PlayerStateLeaf_SecondaryAttack _secondaryAttackNT;
+
 
         #if UNITY_EDITOR
         private void Reset() => playerReferences.Reset(gameObject);
@@ -107,14 +89,12 @@ namespace DeathRunner.Player
         
         private Boolean DashInputIsHeld     => playerReferences.InputHandler.DashInputIsHeld;
         private Boolean DashInputIsNotHeld  => !DashInputIsHeld;
-        //private Boolean DashInputWasStarted => playerReferences.InputHandler.DashInputStarted;
-        private Boolean DashInputWasStopped => playerReferences.InputHandler.DashInputStoppedThisFrame;
-        private F32     DashHoldTime        => playerReferences.InputHandler.DashHoldTime;
         
+        private Boolean HasStaminaLeft   => playerReferences.Stamina.stamina.Value > 0;
+        private Boolean HasNoStaminaLeft => !HasStaminaLeft;
+
         private void Awake()
         {
-            //playerAttributes.Init();
-            //playerAttributes.Init(owner: gameObject);
             playerReferences.Init(gameObject);
             
             CreateStateTree();
@@ -130,22 +110,18 @@ namespace DeathRunner.Player
             (/*params child states */
                 _alive = new PlayerState_Alive
                 (/*params child states */
-                    _normalTime = new PlayerState_NormalTime
-                    (/*params child states */
-                        _locomotionNT = new PlayerState_Locomotion
-                        (settings: locomotionNTSettings, references: playerReferences, /*params child states */
-                            _idleNT            = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
-                            _walkNT            = new PlayerStateLeaf_Move(settings: moveNtSettings, references: playerReferences)
-                        ), 
-                        _dashShortNT     = new PlayerStateLeaf_DashShort(settings: dashShortNTSettings, references: playerReferences), 
-                        _dashLongNT      = new PlayerStateLeaf_DashLong( settings: dashLongNTSettings,  references: playerReferences),
-                        
-                        _lightAttackNt00 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack00NT.Settings, references: playerReferences),
-                        _lightAttackNt01 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack01NT.Settings, references: playerReferences),
-                        _lightAttackNt02 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack02NT.Settings, references: playerReferences),
-                        
-                        _secondaryAttackNT = new PlayerStateLeaf_SecondaryAttack()
-                    )
+                    _locomotionNT = new PlayerState_Locomotion
+                    (settings: locomotionNTSettings, references: playerReferences, /*params child states */
+                        _idleNT            = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
+                        _walkNT            = new PlayerStateLeaf_Move(settings: moveNtSettings, references: playerReferences)
+                    ),
+                    _dashLongNT      = new PlayerStateLeaf_DashLong( settings: dashLongNTSettings,  references: playerReferences),
+                    
+                    _lightAttackNt00 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack00NT.Settings, references: playerReferences),
+                    _lightAttackNt01 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack01NT.Settings, references: playerReferences),
+                    _lightAttackNt02 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack02NT.Settings, references: playerReferences)//,
+                    
+                    //_secondaryAttackNT = new PlayerStateLeaf_SecondaryAttack()
                 ),
                 _dead = new PlayerStateLeaf_Dead()
             );
@@ -162,38 +138,40 @@ namespace DeathRunner.Player
             _idleNT.AddTransition(to: _walkNT, conditions: () => HasMoveInput);   //Idle -> Walk
             _walkNT.AddTransition(to: _idleNT, conditions: () => HasNoMoveInput); //Walk -> Idle
             
-            _idleNT.AddTransition(to: _dashShortNT, conditions: () => DashInputWasStopped && (DashHoldTime < holdTimeForLongDash)); //Idle -> DashShort
-            _dashShortNT.AddTransition(to: _idleNT, conditions: () => _dashShortNT.IsDoneDashing && HasNoMoveInput);                //DashShort -> Idle
+            // _idleNT.AddTransition(to: _dashShortNT, conditions: () => playerReferences.InputHandler.shortDashInputQueue.Peek, 
+            //     transitionAction: () => playerReferences.InputHandler.shortDashInputQueue.Dequeue()); //Idle -> DashShort
+            // _dashShortNT.AddTransition(to: _idleNT, conditions: () => _dashShortNT.IsDoneDashing && HasNoMoveInput);                //DashShort -> Idle
             
-            _walkNT.AddTransition(to: _dashShortNT, conditions: () => DashInputWasStopped && (DashHoldTime < holdTimeForLongDash)); //Walk -> DashShort
-            _dashShortNT.AddTransition(to: _walkNT, conditions: () => _dashShortNT.IsDoneDashing && HasMoveInput);                  //DashShort -> Walk
+            // _walkNT.AddTransition(to: _dashShortNT, conditions: () => playerReferences.InputHandler.shortDashInputQueue.Peek, 
+            //     transitionAction: () => playerReferences.InputHandler.shortDashInputQueue.Dequeue()); //Walk -> DashShort
+            // _dashShortNT.AddTransition(to: _walkNT, conditions: () => _dashShortNT.IsDoneDashing && HasMoveInput);                  //DashShort -> Walk
             
-            _idleNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld && (DashHoldTime >= holdTimeForLongDash)); //Idle -> DashLong
-            _dashLongNT.AddTransition(to: _idleNT, conditions: () => DashInputIsNotHeld                      && HasNoMoveInput);        //DashLong -> Idle
-            _dashLongNT.AddTransition(to: _idleNT, conditions: () => playerReferences.Stamina.stamina.IsZero && HasNoMoveInput);        //DashLong -> Idle
+            _idleNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld); //Idle -> DashLong
+            _dashLongNT.AddTransition(to: _idleNT, conditions: () => DashInputIsNotHeld && HasNoMoveInput); //DashLong -> Idle
+            _dashLongNT.AddTransition(to: _idleNT, conditions: () => HasNoStaminaLeft   && HasNoMoveInput); //DashLong -> Idle
             
-            _walkNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld && (DashHoldTime >= holdTimeForLongDash)); //Walk -> DashLong
-            _dashLongNT.AddTransition(to: _walkNT, conditions: () => DashInputIsNotHeld                      && HasMoveInput);          //DashLong -> Walk
-            _dashLongNT.AddTransition(to: _walkNT, conditions: () => playerReferences.Stamina.stamina.IsZero && HasMoveInput);          //DashLong -> Walk
+            _walkNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld); //Walk -> DashLong
+            _dashLongNT.AddTransition(to: _walkNT, conditions: () => DashInputIsNotHeld && HasMoveInput); //DashLong -> Walk
+            _dashLongNT.AddTransition(to: _walkNT, conditions: () => HasNoStaminaLeft   && HasMoveInput); //DashLong -> Walk
             
             //TODO: Add post transitions after attacks when back to walk/idle in which you can still follow up with another attack.
             
             _lightAttackNt00.AddTransition(to: _idleNT, conditions: () => _lightAttackNt00.CanFadeOut && HasNoMoveInput);  //lightAttackNt00 -> idle
             _lightAttackNt01.AddTransition(to: _idleNT, conditions: () => _lightAttackNt01.CanFadeOut && HasNoMoveInput);  //lightAttackNt00 -> idle
             _lightAttackNt02.AddTransition(to: _idleNT, conditions: () => _lightAttackNt02.CanFadeOut && HasNoMoveInput);  //lightAttackNt00 -> idle
-            _idleNT.AddTransition(to: _lightAttackNt00, conditions: () => playerReferences.InputHandler.PrimaryFireInputQueue.Peek, 
-                transitionAction: () => playerReferences.InputHandler.PrimaryFireInputQueue.Dequeue()); //idle -> lightAttackNt00
+            _idleNT.AddTransition(to: _lightAttackNt00, conditions: () => playerReferences.InputHandler.primaryFireInputQueue.Peek, 
+                transitionAction: () => playerReferences.InputHandler.primaryFireInputQueue.Dequeue()); //idle -> lightAttackNt00
             
             _lightAttackNt00.AddTransition(to: _walkNT, conditions: () => _lightAttackNt00.CanFadeOut && HasMoveInput);    //lightAttackNt00 -> walk
             _lightAttackNt01.AddTransition(to: _walkNT, conditions: () => _lightAttackNt01.CanFadeOut && HasMoveInput);    //lightAttackNt00 -> walk
             _lightAttackNt02.AddTransition(to: _walkNT, conditions: () => _lightAttackNt02.CanFadeOut && HasMoveInput);    //lightAttackNt00 -> walk
-            _walkNT.AddTransition(to: _lightAttackNt00, conditions: () => playerReferences.InputHandler.PrimaryFireInputQueue.Peek, 
-                transitionAction: () => playerReferences.InputHandler.PrimaryFireInputQueue.Dequeue()); //walk -> lightAttackNt00
+            _walkNT.AddTransition(to: _lightAttackNt00, conditions: () => playerReferences.InputHandler.primaryFireInputQueue.Peek, 
+                transitionAction: () => playerReferences.InputHandler.primaryFireInputQueue.Dequeue()); //walk -> lightAttackNt00
             
-            _lightAttackNt00.AddTransition(to: _lightAttackNt01, conditions: () => playerReferences.InputHandler.PrimaryFireInputQueue.Peek && _lightAttackNt00.CanGoIntoNextAttack,  
-                transitionAction: () => playerReferences.InputHandler.PrimaryFireInputQueue.Dequeue()); //lightAttackNt00 -> lightAttackNt01
-            _lightAttackNt01.AddTransition(to: _lightAttackNt02, conditions: () => playerReferences.InputHandler.PrimaryFireInputQueue.Peek && _lightAttackNt01.CanGoIntoNextAttack,  
-                transitionAction: () => playerReferences.InputHandler.PrimaryFireInputQueue.Dequeue() ); //lightAttackNt01 -> lightAttackNt02
+            _lightAttackNt00.AddTransition(to: _lightAttackNt01, conditions: () => playerReferences.InputHandler.primaryFireInputQueue.Peek && _lightAttackNt00.CanGoIntoNextAttack,  
+                transitionAction: () => playerReferences.InputHandler.primaryFireInputQueue.Dequeue()); //lightAttackNt00 -> lightAttackNt01
+            _lightAttackNt01.AddTransition(to: _lightAttackNt02, conditions: () => playerReferences.InputHandler.primaryFireInputQueue.Peek && _lightAttackNt01.CanGoIntoNextAttack,  
+                transitionAction: () => playerReferences.InputHandler.primaryFireInputQueue.Dequeue() ); //lightAttackNt01 -> lightAttackNt02
         }
 
         private void OnEnable()  => EnableLateFixedUpdate();

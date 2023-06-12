@@ -11,7 +11,7 @@ namespace QFSW.QC
         // If the input should be logged back to the console
         public bool LogInput;
 
-        public static readonly ResponseConfig Default = new ResponseConfig
+        public static readonly ResponseConfig Default = new()
         {
             InputPrompt = "Enter input...",
             LogInput = true

@@ -13,9 +13,9 @@ namespace FullscreenEditor {
 
         private static class Styles {
 
-            public static readonly GUIStyle textStyle = new GUIStyle("BoldLabel");
-            public static readonly GUIStyle backgroundShadow = new GUIStyle("InnerShadowBg");
-            public static readonly GUIStyle buttonStyle = new GUIStyle("LargeButton");
+            public static readonly GUIStyle textStyle = new("BoldLabel");
+            public static readonly GUIStyle backgroundShadow = new("InnerShadowBg");
+            public static readonly GUIStyle buttonStyle = new("LargeButton");
 
             static Styles() {
                 textStyle.wordWrap = true;

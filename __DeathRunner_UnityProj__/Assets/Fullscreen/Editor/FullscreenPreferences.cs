@@ -44,19 +44,19 @@ namespace FullscreenEditor {
         private const string FORUM_THREAD = "https://forum.unity.com/threads/released-fullscreen-editor.661519/";
 
         /// <summary>Current version of the Fullscreen Editor plugin.</summary> 
-        public static readonly Version pluginVersion = new Version(2, 2, 7);
+        public static readonly Version pluginVersion = new(2, 2, 7);
         /// <summary>Release date of this version.</summary> 
-        public static readonly DateTime pluginDate = new DateTime(2022, 09, 25);
+        public static readonly DateTime pluginDate = new(2022, 09, 25);
 
-        private static readonly GUIContent resetSettingsContent = new GUIContent("Use Defaults", "Reset all settings to default ones");
-        private static readonly GUIContent versionContent = new GUIContent(string.Format("Version: {0} ({1:d})", pluginVersion, pluginDate));
+        private static readonly GUIContent resetSettingsContent = new("Use Defaults", "Reset all settings to default ones");
+        private static readonly GUIContent versionContent = new(string.Format("Version: {0} ({1:d})", pluginVersion, pluginDate));
 
         private static readonly GUIContent[] links = new GUIContent[] {
             // new GUIContent("Store Page", ASSET_STORE_PAGE),
-            new GUIContent("Forum Thread", FORUM_THREAD),
-            new GUIContent("Email Contact", GetEmailURL()),
-            new GUIContent("Changelog", CHANGE_LOG_LINK),
-            new GUIContent("Readme", GetFilePath("Readme.pdf")),
+            new("Forum Thread", FORUM_THREAD),
+            new("Email Contact", GetEmailURL()),
+            new("Changelog", CHANGE_LOG_LINK),
+            new("Readme", GetFilePath("Readme.pdf")),
         };
 
         private static readonly string[] mosaicDropDownOptions = new[] {
@@ -71,9 +71,9 @@ namespace FullscreenEditor {
         };
 
         internal static Action onLoadDefaults = () => { };
-        internal static readonly List<GUIContent> contents = new List<GUIContent>();
+        internal static readonly List<GUIContent> contents = new();
 
-        private static readonly PrefItem<Vector2> scroll = new PrefItem<Vector2>("Scroll", Vector2.zero, string.Empty, string.Empty);
+        private static readonly PrefItem<Vector2> scroll = new("Scroll", Vector2.zero, string.Empty, string.Empty);
 
         /// <summary>Is the window toolbar currently visible?</summary>
         public static readonly PrefItem<bool> ToolbarVisible;

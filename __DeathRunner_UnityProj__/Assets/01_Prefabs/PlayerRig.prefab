@@ -2524,8 +2524,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410215513009397359}
-  m_LocalRotation: {x: 0.29883054, y: 0.6408686, z: -0.29884186, w: 0.6408442}
-  m_LocalPosition: {x: 173.66818, y: 13.050665, z: 64.920364}
+  m_LocalRotation: {x: 0.23798524, y: 0.5855993, z: -0.16800104, w: 0.75644714}
+  m_LocalPosition: {x: 177.81494, y: 4.4997134, z: 63.02276}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2570,7 +2570,7 @@ Camera:
   m_TargetEye: 3
   m_HDR: 0
   m_AllowMSAA: 0
-  m_AllowDynamicResolution: 0
+  m_AllowDynamicResolution: 1
   m_ForceIntoRT: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
@@ -2618,7 +2618,7 @@ MonoBehaviour:
   flipYMode: 0
   xrRendering: 1
   fullscreenPassthrough: 0
-  allowDynamicResolution: 0
+  allowDynamicResolution: 1
   customRenderingSettings: 0
   invertFaceCulling: 0
   probeLayerMask:
@@ -2772,8 +2772,6 @@ GameObject:
   - component: {fileID: 2410215513753998714}
   - component: {fileID: 2410215513753998715}
   - component: {fileID: 2410215513753998712}
-  - component: {fileID: 2410215513753998713}
-  - component: {fileID: 610366623}
   - component: {fileID: 610366622}
   - component: {fileID: 610366624}
   - component: {fileID: 388316143}
@@ -2783,6 +2781,7 @@ GameObject:
   - component: {fileID: 1608019605}
   - component: {fileID: 1608019606}
   - component: {fileID: 1396091488708395224}
+  - component: {fileID: 3290645771596850252}
   m_Layer: 6
   m_Name: '[Player]'
   m_TagString: Player
@@ -2898,6 +2897,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb17cdfc70b3a8041b0e7620e54ef48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DeathRunner.Inputs.InputHandler, DeathRunner.Inputs
+  secondaryFireInputActionReference: {fileID: -533271173522944404, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
+    type: 3}
+  <SecondaryFireInput>k__BackingField: 0
   moveInputActionReference: {fileID: 6740287480885424194, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
   <MoveInput>k__BackingField:
@@ -2914,18 +2916,10 @@ MonoBehaviour:
     y: 0
   dashInputActionReference: {fileID: 7344340980552612455, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
-  <DashInputStartedThisFrame>k__BackingField: 0
-  <DashInputStoppedThisFrame>k__BackingField: 0
   primaryFireInputActionReference: {fileID: -4813116327349068454, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
   primaryFireInputBufferTimeSeconds: {fileID: 11400000, guid: 15cf10447144def4e8d1d46af048575f,
     type: 2}
-  secondaryFireInputActionReference: {fileID: -533271173522944404, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
-    type: 3}
-  <SecondaryFireInput>k__BackingField: 0
-  slowMoToggleInputActionReference: {fileID: 1147805507886284358, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
-    type: 3}
-  <IsSlowMoToggled>k__BackingField: 0
 --- !u!114 &2410215513429711714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2978,28 +2972,8 @@ MonoBehaviour:
       type: 2}
     <OnMove>k__BackingField: {fileID: 11400000, guid: e782135d5170b6043a9b9df91021d35e,
       type: 2}
-  holdTimeForLongDash: 0.15
-  dashShortNTSettings:
-    <MaxSpeed>k__BackingField: {fileID: 11400000, guid: 4a70cafb91c6e8642bbf4eb2290fa3f4,
-      type: 2}
-    <MaxDistance>k__BackingField: {fileID: 11400000, guid: 54567913fabdd024c85cecb34d8059b5,
-      type: 2}
-    <ConsumptionPerDash>k__BackingField: {fileID: 11400000, guid: d45fa665c5dce0245b983fb3134ca96d,
-      type: 2}
-    <DashCooldown>k__BackingField: {fileID: 11400000, guid: 7b5cf7fa2da042542a269d0e204af93b,
-      type: 2}
-    <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 134c6d3d34951474d8deabf213eb103b,
-      type: 2}
-    <OnDashBegin>k__BackingField: {fileID: 11400000, guid: 854c117fb9d1a7b4fbecafd893f2e4b7,
-      type: 2}
-    <OnDashEnd>k__BackingField: {fileID: 11400000, guid: b0aafc805cb1fef4b96e1d3347224adb,
-      type: 2}
-    <OnDashInterrupted>k__BackingField: {fileID: 11400000, guid: f323a8bcc330d4d4780541da683e0f5a,
-      type: 2}
   dashLongNTSettings:
     <StaminaConsumptionPerSecond>k__BackingField: {fileID: 11400000, guid: bdf2e395dd084264d805e8a21a81ab47,
-      type: 2}
-    <DashCooldown>k__BackingField: {fileID: 11400000, guid: 03a4e581a65ece64e824e67b1a192183,
       type: 2}
     <MaxSpeed>k__BackingField: {fileID: 11400000, guid: 4a70cafb91c6e8642bbf4eb2290fa3f4,
       type: 2}
@@ -3073,6 +3047,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: DeathRunner.Animations.MoveAnimHandler, DeathRunner.Animations
   animationReferences: {fileID: 2410215513753998714}
   onMoveEvent: {fileID: 11400000, guid: e782135d5170b6043a9b9df91021d35e, type: 2}
+  useSlowMo: 0
   smoothTurnInSeconds: 0.2
   deltaRadiansPerSecond: 31.415928
   moveAnimations:
@@ -3129,83 +3104,6 @@ MonoBehaviour:
         - {x: 0.9238796, y: -0.3826834}
         _DefaultParameter: {x: 0, y: 0}
         _Type: 1
---- !u!114 &2410215513753998713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3ba621104a04a4b9791f0eed0111d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DeathRunner.Animations.DashAnimHandler, DeathRunner.Animations
-  animationReferences: {fileID: 2410215513753998714}
-  onDashEvent: {fileID: 11400000, guid: 854c117fb9d1a7b4fbecafd893f2e4b7, type: 2}
-  dashAnimations:
-    rid: 1921082509976403990
-  references:
-    version: 2
-    RefIds:
-    - rid: 1921082509976403990
-      type: {class: MixerTransition2D, ns: Animancer, asm: Animancer}
-      data:
-        _FadeDuration: 0.25
-        _Events:
-          _NormalizedTimes: []
-          _Callbacks: []
-          _Names: []
-        _Speed: 1
-        _Animations:
-        - {fileID: 1981881108250731258, guid: 56523051df06d50439c85ebf5c9a7b04, type: 3}
-        - {fileID: 7400000, guid: 3636469d5f8a08c40a70845b7b49c2f4, type: 3}
-        - {fileID: 7400000, guid: 7d778fa7f45e3fc418df3adaa891e00c, type: 3}
-        - {fileID: 7400000, guid: dba5748ed04c9d84f80bf52437a0b4e1, type: 3}
-        - {fileID: 7400000, guid: 93d5d31e7bf85864ba2681a044a735ca, type: 3}
-        - {fileID: 7400000, guid: 2a2c4c3256ac379409591528342315e2, type: 3}
-        - {fileID: 7400000, guid: 54164a1918ec2c94fa6875488144ab55, type: 3}
-        - {fileID: 7400000, guid: a08b76a08048bbb42b6035ae3e0b58a6, type: 3}
-        - {fileID: 7400000, guid: 1cb287e1315b2fb49acf4130000c7739, type: 3}
-        _Speeds:
-        - 1
-        - 1.25
-        - 1.25
-        - 1.25
-        - 1.25
-        - 1.25
-        - 1.25
-        - 1.25
-        - 1.25
-        _SynchronizeChildren: 
-        _Thresholds:
-        - {x: 0, y: 0}
-        - {x: 0, y: 1}
-        - {x: 1, y: 1}
-        - {x: 1, y: 0}
-        - {x: 1, y: -1}
-        - {x: 0, y: -1}
-        - {x: -1, y: -1}
-        - {x: -1, y: 0}
-        - {x: -1, y: 1}
-        _DefaultParameter: {x: 0, y: 0}
-        _Type: 1
---- !u!114 &610366623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfff50492f792fc4a8d893f63e44114d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DeathRunner.Animations.IdleAnimHandler, DeathRunner.Animations
-  animationReferences: {fileID: 2410215513753998714}
-  idleClip: {fileID: 2827323647375144621, guid: b30717f1b3b77694fb3d61206fb7ef26,
-    type: 3}
-  onEnterIdle: {fileID: 11400000, guid: 74635907ceb978846a56c6d2a2250c3b, type: 2}
 --- !u!114 &610366622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3220,6 +3118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: DeathRunner.Animations.MoveAnimHandler, DeathRunner.Animations
   animationReferences: {fileID: 2410215513753998714}
   onMoveEvent: {fileID: 11400000, guid: 571acd43c0d128446b407e87e0a14bf1, type: 2}
+  useSlowMo: 0
   smoothTurnInSeconds: 0.2
   deltaRadiansPerSecond: 31.415928
   moveAnimations:
@@ -3578,6 +3477,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3290645771596850252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410215513429711716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: facb058fef429124c961f7d3acc42d4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.AfterImage, Assembly-CSharp
+  distanceToSpawnNewMesh: 1
+  mat: {fileID: 2100000, guid: 67a99aaa0ededf0488272c28dd7b52b3, type: 2}
+  characterSkinnedMeshes:
+  - {fileID: 1499374449625817777}
+  - {fileID: 8711595419814660297}
+  - {fileID: 5686210660798335944}
+  - {fileID: 4129589249541640965}
+  - {fileID: 5865858627558946068}
+  - {fileID: 757034987820550507}
+  - {fileID: 5362311271510108160}
+  - {fileID: 1320606764393769002}
+  - {fileID: 7125697607172029912}
+  - {fileID: 2422172696704767813}
+  - {fileID: 2545707907557722487}
+  - {fileID: 9128791139378471523}
+  - {fileID: 1278296523749378457}
+  - {fileID: 6846055805901138362}
+  - {fileID: 3791381266639457018}
+  characterMeshes:
+  - {fileID: 2053923317693518738}
+  - {fileID: 417854649533093726}
+  - {fileID: 6662478040654248236}
+  - {fileID: 3509297825157596848}
 --- !u!1 &2410215513735583748
 GameObject:
   m_ObjectHideFlags: 0
@@ -4278,7 +4212,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4859805230427773813}
   m_LocalRotation: {x: 0.2366595, y: 0.6663362, z: -0.23667274, w: 0.6663141}
-  m_LocalPosition: {x: 174.6792, y: 8.562004, z: 64.92573}
+  m_LocalPosition: {x: 174.67984, y: 8.561485, z: 64.92572}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5122,6 +5056,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 511705075882236811}
   m_PrefabAsset: {fileID: 0}
+--- !u!33 &417854649533093726 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 204198658853555413, guid: 9aa77939f06fcb242b7a10023cda1d62,
+    type: 3}
+  m_PrefabInstance: {fileID: 511705075882236811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2296105010891869665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7438655372416657814, guid: 9aa77939f06fcb242b7a10023cda1d62,
@@ -5131,6 +5071,12 @@ Transform:
 --- !u!4 &3759996557311281887 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5532740325929217708, guid: 9aa77939f06fcb242b7a10023cda1d62,
+    type: 3}
+  m_PrefabInstance: {fileID: 511705075882236811}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &6662478040654248236 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: -2635712489241648473, guid: 9aa77939f06fcb242b7a10023cda1d62,
     type: 3}
   m_PrefabInstance: {fileID: 511705075882236811}
   m_PrefabAsset: {fileID: 0}
@@ -5167,15 +5113,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4513172908254008, guid: 3be98662c9e7ef5468cb9c4e11010dc7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.04
+      value: -0.038
       objectReference: {fileID: 0}
     - target: {fileID: 4513172908254008, guid: 3be98662c9e7ef5468cb9c4e11010dc7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.095
+      value: 0.105
       objectReference: {fileID: 0}
     - target: {fileID: 4513172908254008, guid: 3be98662c9e7ef5468cb9c4e11010dc7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.3
+      value: -0.267
       objectReference: {fileID: 0}
     - target: {fileID: 4513172908254008, guid: 3be98662c9e7ef5468cb9c4e11010dc7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5800,9 +5746,39 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cfd544f408de584a8802004421dbed5, type: 3}
+--- !u!137 &757034987820550507 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2579102612392139154, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1278296523749378457 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4104534683844254048, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &1320606764393769002 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4258412643701192915, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &1499374449625817777 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 4433106054770995784, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2422172696704767813 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 636729770066872252, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &2545707907557722487 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 729438814147041678, guid: 2cfd544f408de584a8802004421dbed5,
     type: 3}
   m_PrefabInstance: {fileID: 2975568075236856057}
   m_PrefabAsset: {fileID: 0}
@@ -5839,7 +5815,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DeathRunner.Animations.AnimationHitBox, DeathRunner.Animations
   colliderToEnable: {fileID: 52137617}
-  feedbacks: {fileID: 6667809275098539126}
 --- !u!114 &5680321049951833221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5872,15 +5847,69 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2975568075236856057}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &3791381266639457018 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2150159080157731331, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4129589249541640965 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1154162770796594172, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5362311271510108160 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2080215703241967367, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5686210660798335944 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7467580739736886065, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &5865858627558946068 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -563829348391197203, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6372046776314992223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -1070350730909333850, guid: 2cfd544f408de584a8802004421dbed5,
     type: 3}
   m_PrefabInstance: {fileID: 2975568075236856057}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &6846055805901138362 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -699953371603224253, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &7125697607172029912 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -3771545479550423775, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &8656414156498201960 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &8711595419814660297 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5885811667253942320, guid: 2cfd544f408de584a8802004421dbed5,
+    type: 3}
+  m_PrefabInstance: {fileID: 2975568075236856057}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &9128791139378471523 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6333376413879464602, guid: 2cfd544f408de584a8802004421dbed5,
     type: 3}
   m_PrefabInstance: {fileID: 2975568075236856057}
   m_PrefabAsset: {fileID: 0}

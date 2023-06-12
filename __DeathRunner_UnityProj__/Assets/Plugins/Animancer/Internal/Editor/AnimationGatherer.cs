@@ -26,7 +26,7 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         private static readonly HashSet<object>
-            RecursionGuard = new HashSet<object>();
+            RecursionGuard = new();
 
         private static int _CallCount;
 
@@ -52,10 +52,10 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         /// <summary>All the <see cref="AnimationClip"/>s that have been gathered.</summary>
-        public readonly HashSet<AnimationClip> Clips = new HashSet<AnimationClip>();
+        public readonly HashSet<AnimationClip> Clips = new();
 
         /// <summary>All the <see cref="ITransition"/>s that have been gathered.</summary>
-        public readonly HashSet<ITransition> Transitions = new HashSet<ITransition>();
+        public readonly HashSet<ITransition> Transitions = new();
 
         /************************************************************************************************************************/
 
@@ -83,7 +83,7 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         private static readonly Dictionary<GameObject, AnimationGatherer>
-            ObjectToGatherer = new Dictionary<GameObject, AnimationGatherer>();
+            ObjectToGatherer = new();
 
         /************************************************************************************************************************/
 
@@ -252,7 +252,7 @@ namespace Animancer.Editor
 
         /// <summary>Types mapped to a delegate that can quickly gather their clips.</summary>
         private static readonly Dictionary<Type, Action<object, AnimationGatherer>>
-            TypeToGathererDelegate = new Dictionary<Type, Action<object, AnimationGatherer>>();
+            TypeToGathererDelegate = new();
 
         /// <summary>
         /// Uses reflection to gather <see cref="AnimationClip"/>s from fields on the `source` object.

@@ -43,7 +43,7 @@ public class PrefabSpawnerSample : MonoBehaviour
 
     IEnumerator SpawnTemporaryCube()
     {
-        List<AsyncOperationHandle<GameObject>> handles = new List<AsyncOperationHandle<GameObject>>();
+        List<AsyncOperationHandle<GameObject>> handles = new();
 
         for (int i = 0; i < NumberOfPrefabsToSpawn; i++)
         {

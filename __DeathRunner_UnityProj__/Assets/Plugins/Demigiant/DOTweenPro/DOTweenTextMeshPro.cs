@@ -105,7 +105,7 @@ namespace DG.Tweening
         public static TweenerCore<Vector3, Vector3, VectorOptions> DOScale(this TMP_Text target, float endValue, float duration)
         {
             Transform trans = target.transform;
-            Vector3 endValueV3 = new Vector3(endValue, endValue, endValue);
+            Vector3 endValueV3 = new(endValue, endValue, endValue);
             TweenerCore<Vector3, Vector3, VectorOptions> t = DOTween.To(() => trans.localScale, x => trans.localScale = x, endValueV3, duration);
             t.SetTarget(target);
             return t;
@@ -191,12 +191,12 @@ namespace DG.Tweening
     /// </summary>
     public class DOTweenTMPAnimator : IDisposable
     {
-        static readonly Dictionary<TMP_Text,DOTweenTMPAnimator> _targetToAnimator = new Dictionary<TMP_Text,DOTweenTMPAnimator>();
+        static readonly Dictionary<TMP_Text,DOTweenTMPAnimator> _targetToAnimator = new();
 
         /// <summary><see cref="TMP_Text"/> that this animator is linked to</summary>
         public TMP_Text target { get; private set; }
         public TMP_TextInfo textInfo { get; private set; }
-        readonly List<CharTransform> _charTransforms = new List<CharTransform>();
+        readonly List<CharTransform> _charTransforms = new();
         TMP_MeshInfo[] _cachedMeshInfos;
         bool _ignoreTextChangedEvent;
 
@@ -387,7 +387,7 @@ namespace DG.Tweening
                 skewFactor *= ratio;
             }
             float offsetY = 0;
-            CharVertices prevCharVertices = new CharVertices();
+            CharVertices prevCharVertices = new();
             float prevCharSkew = 0;
             if (skewRight) {
                 for (int i = firstVisibleCharIndex; i < lastVisibleCharIndex + 1; ++i) {
@@ -550,7 +550,7 @@ namespace DG.Tweening
         public float SkewCharX(int charIndex, float skewFactor, bool skewTop = true)
         {
             if (!ValidateChar(charIndex)) return 0;
-            Vector3 skewV = new Vector3(skewFactor, 0, 0);
+            Vector3 skewV = new(skewFactor, 0, 0);
             CharTransform c = _charTransforms[charIndex];
             if (skewTop) c.ShiftVertices(target, skewV, skewV, Vector3.zero, Vector3.zero);
             else c.ShiftVertices(target, Vector3.zero, Vector3.zero, skewV, skewV);
@@ -570,7 +570,7 @@ namespace DG.Tweening
         {
             if (!ValidateChar(charIndex)) return 0;
             float skew = fixedSkew ? skewFactor : skewFactor * textInfo.characterInfo[charIndex].aspectRatio;
-            Vector3 skewV = new Vector3(0, skew, 0);
+            Vector3 skewV = new(0, skew, 0);
             CharTransform c = _charTransforms[charIndex];
             if (skewRight) c.ShiftVertices(target, Vector3.zero, skewV, Vector3.zero, skewV);
             else c.ShiftVertices(target, skewV, Vector3.zero, skewV, Vector3.zero);

@@ -45,7 +45,7 @@ namespace Animancer
         private AnimancerLayer _Layer;
         private int _CommandCount;
 
-        private readonly List<NodeWeight> FadeOutNodes = new List<NodeWeight>();
+        private readonly List<NodeWeight> FadeOutNodes = new();
 
         /************************************************************************************************************************/
 

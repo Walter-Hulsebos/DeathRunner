@@ -20,7 +20,7 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>Singleton instance.</summary>
-        public static readonly FastComparer Instance = new FastComparer();
+        public static readonly FastComparer Instance = new();
 
         /// <summary>Calls <see cref="object.Equals(object, object)"/>.</summary>
         bool IEqualityComparer<object>.Equals(object x, object y) => Equals(x, y);
@@ -47,7 +47,7 @@ namespace Animancer
         /************************************************************************************************************************/
 
         /// <summary>Singleton instance.</summary>
-        public static readonly FastReferenceComparer Instance = new FastReferenceComparer();
+        public static readonly FastReferenceComparer Instance = new();
 
         /// <summary>Calls <see cref="object.ReferenceEquals"/>.</summary>
         bool IEqualityComparer<object>.Equals(object x, object y) => ReferenceEquals(x, y);

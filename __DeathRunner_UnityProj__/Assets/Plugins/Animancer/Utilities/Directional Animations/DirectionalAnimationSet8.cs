@@ -127,19 +127,19 @@ namespace Animancer
 
             /// <summary>A vector with a magnitude of 1 pointing up to the right.</summary>
             /// <remarks>The value is approximately (0.7, 0.7).</remarks>
-            public static Vector2 UpRight => new Vector2(OneOverSqrt2, OneOverSqrt2);
+            public static Vector2 UpRight => new(OneOverSqrt2, OneOverSqrt2);
 
             /// <summary>A vector with a magnitude of 1 pointing down to the right.</summary>
             /// <remarks>The value is approximately (0.7, -0.7).</remarks>
-            public static Vector2 DownRight => new Vector2(OneOverSqrt2, -OneOverSqrt2);
+            public static Vector2 DownRight => new(OneOverSqrt2, -OneOverSqrt2);
 
             /// <summary>A vector with a magnitude of 1 pointing down to the left.</summary>
             /// <remarks>The value is approximately (-0.7, -0.7).</remarks>
-            public static Vector2 DownLeft => new Vector2(-OneOverSqrt2, -OneOverSqrt2);
+            public static Vector2 DownLeft => new(-OneOverSqrt2, -OneOverSqrt2);
 
             /// <summary>A vector with a magnitude of 1 pointing up to the left.</summary>
             /// <remarks>The value is approximately (-0.707, 0.707).</remarks>
-            public static Vector2 UpLeft => new Vector2(-OneOverSqrt2, OneOverSqrt2);
+            public static Vector2 UpLeft => new(-OneOverSqrt2, OneOverSqrt2);
 
             /************************************************************************************************************************/
         }

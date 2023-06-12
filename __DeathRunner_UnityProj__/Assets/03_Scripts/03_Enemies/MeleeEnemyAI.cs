@@ -113,8 +113,10 @@ namespace DeathRunner.EnemyAI
                     case States.Chasing:
                         // Set the destination for the NavMeshAgent to the player's position
                       //  navMeshAgent.SetDestination(_player.transform.position);
-
-                        navMeshAgent.SetDestination(chasePos);
+                        if (navMeshAgent.isOnNavMesh)
+                        {
+                            navMeshAgent.SetDestination(chasePos);
+                        }
                         // Look at the player
                         LookAtPlayer();
 
@@ -163,7 +165,7 @@ namespace DeathRunner.EnemyAI
                 
                 if(vectorToPlayer == Vector3.zero) return;
                 
-                Vector3 vectorToPlayerFlattened = new Vector3(vectorToPlayer.x, 0, vectorToPlayer.z);
+                Vector3 vectorToPlayerFlattened = new(vectorToPlayer.x, 0, vectorToPlayer.z);
                 Vector3 directionToPlayer = vectorToPlayerFlattened.normalized;
                 
                 if(directionToPlayer == Vector3.zero) return;

@@ -16,8 +16,8 @@ namespace QFSW.QC
     {
         private readonly IQcParser[] _parsers;
         private readonly IQcGrammarConstruct[] _grammarConstructs;
-        private readonly ConcurrentDictionary<Type, IQcParser> _parserLookup = new ConcurrentDictionary<Type, IQcParser>();
-        private readonly HashSet<Type> _unparseableLookup = new HashSet<Type>();
+        private readonly ConcurrentDictionary<Type, IQcParser> _parserLookup = new();
+        private readonly HashSet<Type> _unparseableLookup = new();
 
         private readonly Func<string, Type, object> _recursiveParser;
 
@@ -160,7 +160,7 @@ namespace QFSW.QC
 
 
         #region Type Parser
-        private static readonly Dictionary<Type, string> _typeDisplayNames = new Dictionary<Type, string>
+        private static readonly Dictionary<Type, string> _typeDisplayNames = new()
         {
             { typeof(int), "int" }, { typeof(float), "float" }, { typeof(decimal), "decimal" },
             { typeof(double), "double" }, { typeof(string), "string" }, { typeof(bool), "bool" },
@@ -172,12 +172,12 @@ namespace QFSW.QC
         private static readonly Dictionary<string, Type> _reverseTypeDisplayNames = _typeDisplayNames.Invert();
         private static readonly Assembly[] _loadedAssemblies = AppDomain.CurrentDomain.GetAssemblies();
         private static readonly string[] _defaultNamespaces = new string[] { "System", "System.Collections", "System.Collections.Generic", "UnityEngine", "UnityEngine.UI", "QFSW.QC" };
-        private static readonly List<string> _namespaceTable = new List<string>(_defaultNamespaces);
+        private static readonly List<string> _namespaceTable = new(_defaultNamespaces);
 
-        private static readonly Regex _arrayTypeRegex = new Regex(@"^.*\[,*\]$");
-        private static readonly Regex _genericTypeRegex = new Regex(@"^.+<.*>$");
-        private static readonly Regex _tupleTypeRegex = new Regex(@"^\(.*\)$");
-        private static readonly Regex _nullableTypeRegex = new Regex(@"^.*\?$");
+        private static readonly Regex _arrayTypeRegex = new(@"^.*\[,*\]$");
+        private static readonly Regex _genericTypeRegex = new(@"^.+<.*>$");
+        private static readonly Regex _tupleTypeRegex = new(@"^\(.*\)$");
+        private static readonly Regex _nullableTypeRegex = new(@"^.*\?$");
 
         /// <summary>
         /// Resets the namespace table to its initial state.

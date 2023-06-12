@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
 
 namespace DeathRunner
@@ -9,16 +8,11 @@ namespace DeathRunner
     public class ManageBossEncounter : MonoBehaviour
     {
 
-         private GameObject bossHealthbar;
+        [SerializeField] private GameObject bossHealthbar;
 
-         [SerializeField] private GameObject introTimeline;
-         
         [SerializeField] private GameObject[] doors;
         
         [SerializeField] private GameObject boss;
-
-
-        [SerializeField] private GameObject endCam;
         
         // Start is called before the first frame update
         void Start()
@@ -42,10 +36,9 @@ namespace DeathRunner
             {
                 door.SetActive(false);
             }
-            introTimeline.SetActive(true);
+
             boss.SetActive(true);
         }
-        
         }
         
     

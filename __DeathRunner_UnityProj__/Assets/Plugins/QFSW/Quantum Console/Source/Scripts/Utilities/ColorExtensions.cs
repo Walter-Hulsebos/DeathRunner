@@ -7,7 +7,7 @@ namespace QFSW.QC.Utilities
 {
     public static class ColorExtensions
     {
-        private static readonly ConcurrentStringBuilderPool _stringBuilderPool = new ConcurrentStringBuilderPool();
+        private static readonly ConcurrentStringBuilderPool _stringBuilderPool = new();
 
         /// <summary>Colors a string using rich formatting.</summary>
         /// <returns>The formatted text.</returns>
@@ -40,7 +40,7 @@ namespace QFSW.QC.Utilities
             stringBuilder.Append("</color>");
         }
 
-        private static readonly ConcurrentDictionary<int, string> _colorLookupTable = new ConcurrentDictionary<int, string>();
+        private static readonly ConcurrentDictionary<int, string> _colorLookupTable = new();
         public static unsafe string Color32ToStringNonAlloc(Color32 color)
         {
             int colorKey = color.r << 24 | color.g << 16 | color.b << 8 | color.a;
@@ -53,7 +53,7 @@ namespace QFSW.QC.Utilities
             Color32ToHexNonAlloc(color, buffer);
 
             int bufferLength = color.a < 0xFF ? 8 : 6;
-            string colorText = new string(buffer, 0, bufferLength);
+            string colorText = new(buffer, 0, bufferLength);
 
             _colorLookupTable[colorKey] = colorText;
             return colorText;

@@ -72,7 +72,7 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         private readonly Dictionary<string, SerializedProperty>
-            SerializedProperties = new Dictionary<string, SerializedProperty>();
+            SerializedProperties = new();
 
         private static SerializedProperty GetSerializedProperty(string propertyPath)
         {

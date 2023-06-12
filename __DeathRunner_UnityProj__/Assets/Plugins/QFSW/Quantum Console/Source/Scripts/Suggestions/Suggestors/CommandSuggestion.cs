@@ -13,9 +13,9 @@ namespace QFSW.QC.Suggestors
         private readonly string[] _paramNames;
         private readonly int _numOptionalParams;
 
-        private readonly Dictionary<string, Type[]> _genericSignatureCache = new Dictionary<string, Type[]>();
-        private readonly Dictionary<ParameterInfo, IQcSuggestorTag[]> _parameterTagsCache = new Dictionary<ParameterInfo, IQcSuggestorTag[]>();
-        private readonly StringBuilder _stringBuilder = new StringBuilder();
+        private readonly Dictionary<string, Type[]> _genericSignatureCache = new();
+        private readonly Dictionary<ParameterInfo, IQcSuggestorTag[]> _parameterTagsCache = new();
+        private readonly StringBuilder _stringBuilder = new();
 
         private struct ParsedCommandNameInfo
         {
@@ -139,7 +139,7 @@ namespace QFSW.QC.Suggestors
         {
             string[] commandNameParts = rawName.Split(new[] { '<' }, 2);
 
-            ParsedCommandNameInfo info = new ParsedCommandNameInfo();
+            ParsedCommandNameInfo info = new();
             info.RawName = rawName;
             info.CommandName = commandNameParts[0];
 

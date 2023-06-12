@@ -35,7 +35,7 @@ namespace Animancer.Units
         public UnitsAttribute(string suffix)
         {
 #if UNITY_EDITOR
-            SetUnits(new float[] { 1 }, new CompactUnitConversionCache[] { new CompactUnitConversionCache(suffix) }, 0);
+            SetUnits(new float[] { 1 }, new CompactUnitConversionCache[] { new(suffix) }, 0);
 #endif
         }
 

@@ -19,7 +19,7 @@ public class VolumeSpawnExampleListener : DungeonEventListener {
     public Graph[] roomThemes;
 
     [SerializeField]
-    List<GameObject> managedVolumes = new List<GameObject>();
+    List<GameObject> managedVolumes = new();
 
     /// <summary>
     /// The template required to clone and duplicate a theme override volume. 

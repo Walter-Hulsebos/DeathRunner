@@ -68,7 +68,7 @@ namespace HFSM
     /// <inheritdoc cref="EventTransitionBase" />
     internal class EventTransition<T> : EventTransitionBase
     {
-        private readonly List<T> _args = new List<T>(); // An event can be fired more than once per frame. Cache the args from every fired event.
+        private readonly List<T> _args = new(); // An event can be fired more than once per frame. Cache the args from every fired event.
         private T _currentArg;
 
         private readonly Func<T, Boolean>[] _conditions;
@@ -136,7 +136,7 @@ namespace HFSM
     /// <inheritdoc cref="EventTransitionBase" />
     internal class EventTransition<T1, T2> : EventTransitionBase
     {
-        private readonly List<(T1, T2)> _args = new List<(T1, T2)>(); // An event can be fired more than once per frame. Cache the args from every fired event.
+        private readonly List<(T1, T2)> _args = new(); // An event can be fired more than once per frame. Cache the args from every fired event.
         private (T1, T2) _currentArgs;
 
         private readonly Func<T1, T2, Boolean>[] _conditions;
@@ -202,7 +202,7 @@ namespace HFSM
     /// <inheritdoc cref="EventTransitionBase" />
     internal class EventTransition<T1, T2, T3> : EventTransitionBase
     {
-        private readonly List<(T1, T2, T3)> _args = new List<(T1, T2, T3)>();
+        private readonly List<(T1, T2, T3)> _args = new();
         private (T1, T2, T3) _currentArgs;
         
         private readonly Func<T1, T2, T3, Boolean>[] _conditions;
@@ -271,7 +271,7 @@ namespace HFSM
     /// <inheritdoc cref="EventTransitionBase" />
     internal class EventTransition<T1, T2, T3, T4> : EventTransitionBase
     {
-        private readonly List<(T1, T2, T3, T4)> _args = new List<(T1, T2, T3, T4)>();
+        private readonly List<(T1, T2, T3, T4)> _args = new();
         private (T1, T2, T3, T4) _currentArgs;
 
         private readonly Func<T1, T2, T3, T4, Boolean>[] _conditions;
@@ -341,7 +341,7 @@ namespace HFSM
     /// <inheritdoc cref="EventTransitionBase" />
     internal class EventTransition<T1, T2, T3, T4, T5> : EventTransitionBase
     {
-        private readonly List<(T1, T2, T3, T4, T5)> _args = new List<(T1, T2, T3, T4, T5)>();
+        private readonly List<(T1, T2, T3, T4, T5)> _args = new();
         private (T1, T2, T3, T4, T5) _currentArgs;
 
         private readonly Func<T1, T2, T3, T4, T5, Boolean>[] _conditions;

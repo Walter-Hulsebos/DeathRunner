@@ -23,7 +23,7 @@ namespace Animancer.Editor.Tools
     {
         /************************************************************************************************************************/
 
-        private static readonly List<Sprite> SelectedSprites = new List<Sprite>();
+        private static readonly List<Sprite> SelectedSprites = new();
         private static bool _HasGatheredSprites;
 
         /// <summary>The currently selected <see cref="Sprite"/>s.</summary>

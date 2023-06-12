@@ -5,7 +5,7 @@ namespace QFSW.QC.Grammar
 {
     public abstract class BinaryAndUnaryOperatorGrammar : BinaryOperatorGrammar
     {
-        private readonly HashSet<char> _operatorChars = new HashSet<char>()
+        private readonly HashSet<char> _operatorChars = new()
         {
             '+',
             '-',
@@ -19,7 +19,7 @@ namespace QFSW.QC.Grammar
             ','
         };
 
-        private readonly HashSet<char> _ignoreChars = new HashSet<char>()
+        private readonly HashSet<char> _ignoreChars = new()
         {
             ' ',
             '\0'

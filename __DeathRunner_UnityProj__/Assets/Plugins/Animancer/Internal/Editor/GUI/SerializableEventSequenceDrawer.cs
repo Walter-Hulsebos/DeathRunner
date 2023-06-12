@@ -25,7 +25,7 @@ namespace Animancer.Editor
         public static UnityAction Repaint = AnimancerGUI.RepaintEverything;
 
         private readonly Dictionary<string, List<AnimBool>>
-            EventVisibility = new Dictionary<string, List<AnimBool>>();
+            EventVisibility = new();
 
         private AnimBool GetVisibility(Context context, int index)
         {
@@ -372,7 +372,7 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         private static readonly AnimationTimeAttribute
-            EventTimeAttribute = new AnimationTimeAttribute(AnimationTimeAttribute.Units.Normalized);
+            EventTimeAttribute = new(AnimationTimeAttribute.Units.Normalized);
 
         private static float _PreviousTime = float.NaN;
 
@@ -936,13 +936,13 @@ namespace Animancer.Editor
             }
 
             /// <summary>The property representing the <see cref="Sequence._NormalizedTimes"/> field.</summary>
-            public readonly SerializedArrayProperty Times = new SerializedArrayProperty();
+            public readonly SerializedArrayProperty Times = new();
 
             /// <summary>The property representing the <see cref="Sequence._Names"/> field.</summary>
-            public readonly SerializedArrayProperty Names = new SerializedArrayProperty();
+            public readonly SerializedArrayProperty Names = new();
 
             /// <summary>The property representing the <see cref="Sequence._Callbacks"/> field.</summary>
-            public readonly SerializedArrayProperty Callbacks = new SerializedArrayProperty();
+            public readonly SerializedArrayProperty Callbacks = new();
 
             /************************************************************************************************************************/
 
@@ -983,7 +983,7 @@ namespace Animancer.Editor
             /************************************************************************************************************************/
 
             /// <summary>The stack of active contexts.</summary>
-            private static readonly LazyStack<Context> Stack = new LazyStack<Context>();
+            private static readonly LazyStack<Context> Stack = new();
 
             /// <summary>The currently active instance.</summary>
             public static Context Current { get; private set; }

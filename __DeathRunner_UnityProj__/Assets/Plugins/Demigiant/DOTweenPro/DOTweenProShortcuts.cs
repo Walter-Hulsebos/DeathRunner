@@ -15,7 +15,7 @@ namespace DG.Tweening
         {
             // Create stub instances of custom plugins, in order to allow IL2CPP to understand they must be included in the build
 #pragma warning disable 219
-            SpiralPlugin stub = new SpiralPlugin();
+            SpiralPlugin stub = new();
 #pragma warning restore 219
         }
 

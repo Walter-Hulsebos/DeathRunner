@@ -117,7 +117,7 @@ namespace Animancer
         /// </summary>
         public Vector3 Parameter
         {
-            get => new Vector3(ParameterX, ParameterY, ParameterZ);
+            get => new(ParameterX, ParameterY, ParameterZ);
             set
             {
                 ParameterX = value.x;

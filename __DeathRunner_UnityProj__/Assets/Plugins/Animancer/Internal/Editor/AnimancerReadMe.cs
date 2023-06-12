@@ -87,7 +87,7 @@ namespace Animancer.Editor
         {
             ExtraExamples = new LinkSection[]
             {
-                new LinkSection(
+                new(
                     "Platformer Game Kit",
                     null,
                     "https://kybernetik.com.au/platformer"),

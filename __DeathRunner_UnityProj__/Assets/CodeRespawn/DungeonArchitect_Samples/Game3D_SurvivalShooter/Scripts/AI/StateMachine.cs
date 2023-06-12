@@ -37,7 +37,7 @@ namespace DungeonArchitect.Samples.ShooterGame
 	}
 
 	public class StateMachine {
-		Stack<State> stateStack = new Stack<State>();
+		Stack<State> stateStack = new();
 
 		public State ActiveState {
 			get {

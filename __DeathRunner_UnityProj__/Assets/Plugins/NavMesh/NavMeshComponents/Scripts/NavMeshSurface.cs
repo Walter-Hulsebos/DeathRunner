@@ -28,11 +28,11 @@ namespace UnityEngine.AI
         public CollectObjects collectObjects { get { return m_CollectObjects; } set { m_CollectObjects = value; } }
 
         [SerializeField]
-        Vector3 m_Size = new Vector3(10.0f, 10.0f, 10.0f);
+        Vector3 m_Size = new(10.0f, 10.0f, 10.0f);
         public Vector3 size { get { return m_Size; } set { m_Size = value; } }
 
         [SerializeField]
-        Vector3 m_Center = new Vector3(0, 2.0f, 0);
+        Vector3 m_Center = new(0, 2.0f, 0);
         public Vector3 center { get { return m_Center; } set { m_Center = value; } }
 
         [SerializeField]
@@ -84,7 +84,7 @@ namespace UnityEngine.AI
         Vector3 m_LastPosition = Vector3.zero;
         Quaternion m_LastRotation = Quaternion.identity;
 
-        static readonly List<NavMeshSurface> s_NavMeshSurfaces = new List<NavMeshSurface>();
+        static readonly List<NavMeshSurface> s_NavMeshSurfaces = new();
 
         public static List<NavMeshSurface> activeSurfaces
         {

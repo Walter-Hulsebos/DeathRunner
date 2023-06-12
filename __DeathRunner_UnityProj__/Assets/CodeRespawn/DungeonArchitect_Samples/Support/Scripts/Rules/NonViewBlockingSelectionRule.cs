@@ -5,8 +5,8 @@ using DungeonArchitect.Utils;
 
 public class NonViewBlockingSelectionRule : SelectorRule {
 	static Vector3[] validDirections = new Vector3[] {
-		new Vector3(1, 0, 0),
-		new Vector3(0, 0, 1),
+		new(1, 0, 0),
+		new(0, 0, 1),
 	};
 
 	public override bool CanSelect(PropSocket socket, Matrix4x4 propTransform, DungeonModel model, System.Random random) {

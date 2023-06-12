@@ -62,7 +62,7 @@ namespace HFSM
         /// </param>
         public void AddTransition(StateObject to, params Func<Boolean>[] conditions)
         {
-            Transition __transition = new Transition(from: this, to: to, transitionAction: null, conditions: conditions);
+            Transition __transition = new(from: this, to: to, transitionAction: null, conditions: conditions);
             TryRegisterTransition(transition: __transition);
         }
         
@@ -109,7 +109,7 @@ namespace HFSM
         public void AddTransition(StateObject to, Action transitionAction,
             params Func<Boolean>[] conditions)
         {
-            Transition __transition = new Transition(from: this, to: to, transitionAction: transitionAction, conditions: conditions);
+            Transition __transition = new(from: this, to: to, transitionAction: transitionAction, conditions: conditions);
             TryRegisterTransition(transition: __transition);
         }
 
@@ -334,14 +334,14 @@ namespace HFSM
         /// </returns>
         public Action AddEventTransitionTo(StateObject to, Action transitionAction = null, Boolean processInstantly = false, params Func<Boolean>[] conditions)
         {
-            EventTransition __transition = new EventTransition(from: this, to: to, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
+            EventTransition __transition = new(from: this, to: to, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
         
         public Action AddEventTransitionFrom(StateObject from, Action transitionAction = null, Boolean processInstantly = false, params Func<Boolean>[] conditions)
         {
-            EventTransition __transition = new EventTransition(from: from, to: this, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
+            EventTransition __transition = new(from: from, to: this, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -349,7 +349,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, Func{bool}[])" />
         public Action<T> AddEventTransition<T>(StateObject to, params Func<T, Boolean>[] conditions)
         {
-            EventTransition<T> __transition = new EventTransition<T>(from: this, to: to, transitionAction: null, processInstantly: false, conditions: conditions);
+            EventTransition<T> __transition = new(from: this, to: to, transitionAction: null, processInstantly: false, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -357,7 +357,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, bool, Func{bool}[])" />
         public Action<T> AddEventTransition<T>(StateObject to, Boolean processInstantly, params Func<T, Boolean>[] conditions)
         {
-            EventTransition<T> __transition = new EventTransition<T>(from: this, to: to, transitionAction: null, processInstantly: processInstantly, conditions: conditions);
+            EventTransition<T> __transition = new(from: this, to: to, transitionAction: null, processInstantly: processInstantly, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -365,7 +365,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, Action, Func{bool}[])" />
         public Action<T> AddEventTransition<T>(StateObject to, Action<T> transitionAction, params Func<T, Boolean>[] conditions)
         {
-            EventTransition<T> __transition = new EventTransition<T>(from: this, to: to, transitionAction: transitionAction, processInstantly: false, conditions: conditions);
+            EventTransition<T> __transition = new(from: this, to: to, transitionAction: transitionAction, processInstantly: false, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -373,7 +373,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, Action, bool, Func{bool}[])" />
         public Action<T> AddEventTransition<T>(StateObject to, Action<T> transitionAction, Boolean processInstantly, params Func<T, Boolean>[] conditions)
         {
-            EventTransition<T> __transition = new EventTransition<T>(from: this, to: to, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
+            EventTransition<T> __transition = new(from: this, to: to, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -381,7 +381,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, Func{bool}[])" />
         public Action<T1, T2> AddEventTransition<T1, T2>(StateObject to, params Func<T1, T2, Boolean>[] conditions)
         {
-            EventTransition<T1, T2> __transition = new EventTransition<T1, T2>(from: this, to: to, transitionAction: null, processInstantly: false, conditions: conditions);
+            EventTransition<T1, T2> __transition = new(from: this, to: to, transitionAction: null, processInstantly: false, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -389,7 +389,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, bool, Func{bool}[])" />
         public Action<T1, T2> AddEventTransition<T1, T2>(StateObject to, Boolean processInstantly, params Func<T1, T2, Boolean>[] conditions)
         {
-            EventTransition<T1, T2> __transition = new EventTransition<T1, T2>(from: this, to: to, transitionAction: null, processInstantly: processInstantly, conditions: conditions);
+            EventTransition<T1, T2> __transition = new(from: this, to: to, transitionAction: null, processInstantly: processInstantly, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -397,7 +397,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, Action, Func{bool}[])" />
         public Action<T1, T2> AddEventTransition<T1, T2>(StateObject to, Action<T1, T2> transitionAction, params Func<T1, T2, Boolean>[] conditions)
         {
-            EventTransition<T1, T2> __transition = new EventTransition<T1, T2>(from: this, to: to, transitionAction: transitionAction, processInstantly: false, conditions: conditions);
+            EventTransition<T1, T2> __transition = new(from: this, to: to, transitionAction: transitionAction, processInstantly: false, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -405,7 +405,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, Action, bool, Func{bool}[])" />
         public Action<T1, T2> AddEventTransition<T1, T2>(StateObject to, Action<T1, T2> transitionAction, Boolean processInstantly = false, params Func<T1, T2, Boolean>[] conditions)
         {
-            EventTransition<T1, T2> __transition = new EventTransition<T1, T2>(from: this, to: to, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
+            EventTransition<T1, T2> __transition = new(from: this, to: to, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -413,7 +413,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, Func{bool}[])" />
         public Action<T1, T2, T3> AddEventTransition<T1, T2, T3>(StateObject to, params Func<T1, T2, T3, Boolean>[] conditions)
         {
-            EventTransition<T1, T2, T3> __transition = new EventTransition<T1, T2, T3>(from: this, to: to, transitionAction: null, processInstantly: false, conditions: conditions);
+            EventTransition<T1, T2, T3> __transition = new(from: this, to: to, transitionAction: null, processInstantly: false, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -421,7 +421,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, bool, Func{bool}[])" />
         public Action<T1, T2, T3> AddEventTransition<T1, T2, T3>(StateObject to, Boolean processInstantly, params Func<T1, T2, T3, Boolean>[] conditions)
         {
-            EventTransition<T1, T2, T3> __transition = new EventTransition<T1, T2, T3>(from: this, to: to, transitionAction: null, processInstantly: processInstantly, conditions: conditions);
+            EventTransition<T1, T2, T3> __transition = new(from: this, to: to, transitionAction: null, processInstantly: processInstantly, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -429,7 +429,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, Action, Func{bool}[])" />
         public Action<T1, T2, T3> AddEventTransition<T1, T2, T3>(StateObject to, Action<T1, T2, T3> transitionAction, params Func<T1, T2, T3, Boolean>[] conditions)
         {
-            EventTransition<T1, T2, T3> __transition = new EventTransition<T1, T2, T3>(from: this, to: to, transitionAction: transitionAction, processInstantly: false, conditions: conditions);
+            EventTransition<T1, T2, T3> __transition = new(from: this, to: to, transitionAction: transitionAction, processInstantly: false, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }
@@ -437,7 +437,7 @@ namespace HFSM
         /// <inheritdoc cref="AddEventTransition(StateObject, Action, bool, Func{bool}[])" />
         public Action<T1, T2, T3> AddEventTransition<T1, T2, T3>(StateObject to, Action<T1, T2, T3> transitionAction, Boolean processInstantly = false, params Func<T1, T2, T3, Boolean>[] conditions)
         {
-            EventTransition<T1, T2, T3> __transition = new EventTransition<T1, T2, T3>(from: this, to: to, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
+            EventTransition<T1, T2, T3> __transition = new(from: this, to: to, transitionAction: transitionAction, processInstantly: processInstantly, conditions: conditions);
             TryRegisterEventTransition(eventTransition: __transition);
             return __transition.ListenEvent;
         }

@@ -201,7 +201,7 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         private static readonly HashSet<Object>
-            PreviousAnimations = new HashSet<Object>();
+            PreviousAnimations = new();
 
         private void DrawAnimationElement(Rect area, int index, bool isActive, bool isFocused)
         {

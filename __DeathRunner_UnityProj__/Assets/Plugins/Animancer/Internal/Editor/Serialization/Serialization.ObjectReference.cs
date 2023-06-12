@@ -71,7 +71,7 @@ namespace Animancer.Editor
             /// Creates a new <see cref="ObjectReference"/> which wraps the specified
             /// <see cref="UnityEngine.Object"/>.
             /// </summary>
-            public static implicit operator ObjectReference(Object obj) => new ObjectReference(obj);
+            public static implicit operator ObjectReference(Object obj) => new(obj);
 
             /// <summary>Returns the target <see cref="Object"/>.</summary>
             public static implicit operator Object(ObjectReference reference) => reference.Object;

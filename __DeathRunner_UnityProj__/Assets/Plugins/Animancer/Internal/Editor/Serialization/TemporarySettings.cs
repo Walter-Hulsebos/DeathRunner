@@ -62,7 +62,7 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         private readonly Dictionary<Object, Dictionary<string, int>>
-            ObjectToPropertyPathToSelectedEvent = new Dictionary<Object, Dictionary<string, int>>();
+            ObjectToPropertyPathToSelectedEvent = new();
 
         /************************************************************************************************************************/
 

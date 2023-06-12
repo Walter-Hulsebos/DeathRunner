@@ -18,7 +18,7 @@ namespace Animancer.Editor
         /************************************************************************************************************************/
 
         private static readonly Dictionary<MemberInfo, TAttribute>
-            MemberToAttribute = new Dictionary<MemberInfo, TAttribute>();
+            MemberToAttribute = new();
 
         /************************************************************************************************************************/
 

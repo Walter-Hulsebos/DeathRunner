@@ -51,7 +51,7 @@ namespace Animancer.Editor
         /// <summary>The caches for each character count.</summary>
         /// <remarks><c>this[x]</c> is a cache that outputs strings with <c>x</c> characters.</remarks>
         private List<ConversionCache<float, string>>
-            Caches = new List<ConversionCache<float, string>>();
+            Caches = new();
 
         /************************************************************************************************************************/
 
