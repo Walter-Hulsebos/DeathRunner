@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 namespace DeathRunner
@@ -15,6 +16,9 @@ namespace DeathRunner
         [SerializeField] private GameObject[] doors;
         
         [SerializeField] private GameObject boss;
+
+
+        [SerializeField] private GameObject endCam;
         
         // Start is called before the first frame update
         void Start()

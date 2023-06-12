@@ -145,7 +145,7 @@ namespace DeathRunner
                              {
                             // Trigger the attack animation
                             animator.SetTrigger("attack");
-                            }
+                             }
                              else if (attackNum == 2)
                              {
                                  animator.SetTrigger("attack2");

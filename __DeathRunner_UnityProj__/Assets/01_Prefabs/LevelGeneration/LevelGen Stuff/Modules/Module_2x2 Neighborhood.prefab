@@ -1,5 +1,102 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &23110154005538619
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4984319206397631513}
+  - component: {fileID: 1182969079633043605}
+  - component: {fileID: 2315695280971418783}
+  - component: {fileID: 69205909035146795}
+  m_Layer: 20
+  m_Name: Cube.001
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4984319206397631513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23110154005538619}
+  m_LocalRotation: {x: -0, y: -0.70710677, z: -0, w: 0.7071069}
+  m_LocalPosition: {x: -0.09498595, y: 10, z: 0.095001236}
+  m_LocalScale: {x: 33.091198, y: 1, z: 34.8276}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7552267184089518196}
+  m_RootOrder: 65
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!33 &1182969079633043605
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23110154005538619}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &2315695280971418783
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23110154005538619}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 1
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: aa417a3b2cf4a49469aaa55fe15f9f81, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &69205909035146795
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23110154005538619}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &60850791877940202
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,6 +784,7 @@ Transform:
   - {fileID: 7512145851352284761}
   - {fileID: 4459117472212350544}
   - {fileID: 865855386293724518}
+  - {fileID: 4984319206397631513}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -1049,62 +1147,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7552267184089518196}
     m_Modifications:
-    - target: {fileID: 1033778332994665578, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.ScriptableEventListener<ushort,ushort>,
-        GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 1134050311002178918, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_RayTracingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1134050311002178918, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_LightProbeUsage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1134050311002178918, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1304874936418606447, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337577594340283648, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: DeathRunner.Attributes.HealthComponent, DeathRunner.Attributes
-      objectReference: {fileID: 0}
-    - target: {fileID: 3133437652171485841, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536413736485582818, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 4936430507411200280, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 6549958296700556909, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.ScriptableEventListener, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465312571111369173, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
     - target: {fileID: 7465312571111369173, guid: da633931ba0cf1b42920c9ea48f91370,
         type: 3}
       propertyPath: _response._persistentListeners.Array.size
@@ -1123,16 +1165,6 @@ PrefabInstance:
     - target: {fileID: 7465312571111369173, guid: da633931ba0cf1b42920c9ea48f91370,
         type: 3}
       propertyPath: _response._persistentListeners.Array.data[3]._methodName
-      value: EnemyDied
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964583362915883754, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 6045903997162806703}
-    - target: {fileID: 7964583362915883754, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: EnemyDied
       objectReference: {fileID: 0}
     - target: {fileID: 7964583362915883755, guid: da633931ba0cf1b42920c9ea48f91370,
@@ -1195,16 +1227,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 7964583362915883759, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
-      objectReference: {fileID: 0}
-    - target: {fileID: 8547592454259938272, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.ScriptableEventListener, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da633931ba0cf1b42920c9ea48f91370, type: 3}
 --- !u!1 &7774220280682556586 stripped
@@ -1226,62 +1248,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7552267184089518196}
     m_Modifications:
-    - target: {fileID: 1033778332994665578, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.ScriptableEventListener<ushort,ushort>,
-        GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 1134050311002178918, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_RayTracingMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1134050311002178918, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_LightProbeUsage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1134050311002178918, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_StaticShadowCaster
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1304874936418606447, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1337577594340283648, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: DeathRunner.Attributes.HealthComponent, DeathRunner.Attributes
-      objectReference: {fileID: 0}
-    - target: {fileID: 3133437652171485841, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 4536413736485582818, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 4936430507411200280, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 6549958296700556909, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.ScriptableEventListener, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 7465312571111369173, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
     - target: {fileID: 7465312571111369173, guid: da633931ba0cf1b42920c9ea48f91370,
         type: 3}
       propertyPath: _response._persistentListeners.Array.size
@@ -1300,16 +1266,6 @@ PrefabInstance:
     - target: {fileID: 7465312571111369173, guid: da633931ba0cf1b42920c9ea48f91370,
         type: 3}
       propertyPath: _response._persistentListeners.Array.data[3]._methodName
-      value: EnemyDied
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964583362915883754, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_Target
-      value: 
-      objectReference: {fileID: 6045903997162806703}
-    - target: {fileID: 7964583362915883754, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
       value: EnemyDied
       objectReference: {fileID: 0}
     - target: {fileID: 7964583362915883755, guid: da633931ba0cf1b42920c9ea48f91370,
@@ -1371,16 +1327,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangedEnemy.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 7964583362915883759, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: DeathRunner.EnemyAI.RangedEnemyAI, DeathRunner.Enemies
-      objectReference: {fileID: 0}
-    - target: {fileID: 8547592454259938272, guid: da633931ba0cf1b42920c9ea48f91370,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.ScriptableEventListener, GenericScriptableArchitecture
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da633931ba0cf1b42920c9ea48f91370, type: 3}
@@ -2383,26 +2329,6 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.000007273629
       objectReference: {fileID: 0}
-    - target: {fileID: 1073600809, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073600810, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073600811, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073600812, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 1073600813, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: DeathRunner.Attributes.HealthComponent, DeathRunner.Attributes
-      objectReference: {fileID: 0}
     - target: {fileID: 1073600820, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
       propertyPath: m_EditorClassIdentifier
       value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
@@ -2630,21 +2556,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.55497
       objectReference: {fileID: 0}
@@ -2697,11 +2608,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MeleeEnemy.001
-      objectReference: {fileID: 0}
-    - target: {fileID: 8025951268374177581, guid: e602e2f6340987c499f4bc5545d4ef1d,
-        type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: DeathRunner.EnemyAI.MeleeEnemyAI, DeathRunner.Enemies
       objectReference: {fileID: 0}
     - target: {fileID: 8692085297231568919, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
