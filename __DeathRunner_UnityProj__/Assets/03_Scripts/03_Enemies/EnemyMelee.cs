@@ -77,8 +77,11 @@ namespace DeathRunner.Enemies
         {
             // Set the destination for the NavMeshAgent to the player's position
             //  navMeshAgent.SetDestination(_player.transform.position);
-
-            navMeshAgent.SetDestination(chasePos);
+            
+            if (navMeshAgent.isOnNavMesh)
+            {
+                navMeshAgent.SetDestination(chasePos);   
+            }
             // Look at the player
             LookAtPlayer();
 
@@ -86,7 +89,10 @@ namespace DeathRunner.Enemies
             if (canAttack && (Vector3.Distance(transform.position, player.transform.position) <= attackDistance))
             {
                 // Stop the enemy's movement
-                navMeshAgent.SetDestination(transform.position);
+                if (navMeshAgent.isOnNavMesh)
+                {
+                    navMeshAgent.SetDestination(transform.position);   
+                }
 
                 // Set animator bool to indicate that the enemy is no longer chasing
                 animator.SetBool(is_chasing, false);
@@ -108,7 +114,10 @@ namespace DeathRunner.Enemies
             }
             else
             {
-                navMeshAgent.SetDestination(player.transform.position);
+                if (navMeshAgent.isOnNavMesh)
+                {
+                    navMeshAgent.SetDestination(player.transform.position);   
+                }
             }
         }
     }

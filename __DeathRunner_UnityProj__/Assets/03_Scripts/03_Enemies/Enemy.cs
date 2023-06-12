@@ -120,7 +120,7 @@ namespace DeathRunner.Enemies
             direction.Normalize();
             
             Quaternion rotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 5 * Time.deltaTime);
+            transform.rotation  = Quaternion.Slerp(transform.rotation, rotation, 1.75f * Time.deltaTime);
         }
 
 
@@ -152,7 +152,10 @@ namespace DeathRunner.Enemies
             #endif
 
             StopAllCoroutines();
-            navMeshAgent.SetDestination(transform.position);
+            if (navMeshAgent.isOnNavMesh)
+            {
+                navMeshAgent.SetDestination(transform.position);   
+            }
             navMeshAgent.velocity = Vector3.zero;
             navMeshAgent.enabled = false;
             
