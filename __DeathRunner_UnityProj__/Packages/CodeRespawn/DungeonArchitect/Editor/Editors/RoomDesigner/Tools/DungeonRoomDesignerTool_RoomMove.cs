@@ -15,7 +15,9 @@ namespace DungeonArchitect.RoomDesigner.Editors
             var snap = room.gridSize;
             float size = HandleUtility.GetHandleSize(center) * 0.25f;
             Handles.color = Color.green;
-            var fmh_18_60_638220018778612687 = Quaternion.identity; var newCenter = Handles.FreeMoveHandle(center, size, snap, Handles.SphereHandleCap);
+            //var fmh_18_60_638220018778612687 = Quaternion.identity;
+            //var newCenter = Handles.FreeMoveHandle(center, size, snap, Handles.SphereHandleCap);
+            var newCenter = Handles.FreeMoveHandle(center, Quaternion.identity, size, snap, Handles.SphereHandleCap);
             var diffF = newCenter - center;
             var diff = new IntVector(
                 Mathf.RoundToInt(diffF.x / room.gridSize.x),

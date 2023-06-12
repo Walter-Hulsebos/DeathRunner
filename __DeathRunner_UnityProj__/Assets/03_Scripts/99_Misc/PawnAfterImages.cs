@@ -7,7 +7,7 @@ using F32 = System.Single;
 
 namespace DeathRunner
 {
-    public class MeshTrail : MonoBehaviour
+    public class PawnAfterImages : MonoBehaviour
     {
         [SerializeField] private F32 distanceToSpawnNewMesh = 1.0f;
 
@@ -26,6 +26,8 @@ namespace DeathRunner
         private void Reset()
         {
             FindSkinnedMeshRenderers();
+            
+            FindMeshRenderers();
         }
 
         private void OnValidate()
@@ -65,22 +67,10 @@ namespace DeathRunner
             F32 __distanceSinceLastSpawn = Vector3.Distance(a: _previousSpawnPoint, b: transform.position);
 
             if (__distanceSinceLastSpawn < distanceToSpawnNewMesh) return;
-            
-            Debug.Log(message: "Spawning new mesh");
 
             SpawnAfterImage();
 
             _previousSpawnPoint = transform.position;
-        }
-        
-        [Button]
-        private void ReleaseAllSpawnedObjects()
-        {
-            foreach (GameObject __spawnedObject in _spawnedObjects)
-            {
-                _objectPool.Release(__spawnedObject);
-            }
-            _spawnedObjects.Clear();
         }
 
         private void SpawnAfterImage()
@@ -146,6 +136,16 @@ namespace DeathRunner
         private static void OnDestroyPoolObject(GameObject item)
         {
             Destroy(obj: item);
+        }
+        
+        [Button]
+        private void ReleaseAllSpawnedObjects()
+        {
+            foreach (GameObject __spawnedObject in _spawnedObjects)
+            {
+                _objectPool.Release(__spawnedObject);
+            }
+            _spawnedObjects.Clear();
         }
 
         private void OnDestroy()
