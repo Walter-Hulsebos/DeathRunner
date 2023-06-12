@@ -127,25 +127,7 @@ namespace DeathRunner.Player
             _references.Motor.Move(deltaTime: Time.unscaledDeltaTime);
             _settings.OnLongDashMove.Invoke(__targetMoveDirectionRelativeToCamera);
             
-            _damageAccrued += _settings.HealthConsumptionPerSecond.Value * Time.unscaledDeltaTime;
-            
-            if (_damageAccrued >= 1f)
-            {
-                I32 __healthValue     = _references.Health.health.Value;
-                I32 __damageToInflict = (I32)round(_damageAccrued);
-                    
-                I32 __newHealthValue = __healthValue - __damageToInflict;
-                    
-                if (__newHealthValue < 0)
-                {
-                    __newHealthValue = 0;
-                }
-                
-                _references.Health.health.Value = (U16)__newHealthValue;
-                
-                // subtract the damage that was inflicted.
-                _damageAccrued -= __damageToInflict;
-            }
+            _references.Health.health.Value -= _settings.HealthConsumptionPerSecond.Value * Time.unscaledDeltaTime;
         }
 
         // protected override void OnUpdate()

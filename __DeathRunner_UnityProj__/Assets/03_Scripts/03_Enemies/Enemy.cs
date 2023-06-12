@@ -8,7 +8,6 @@ using Sirenix.OdinInspector;
 #endif
 
 using F32 = System.Single;
-using U16 = System.UInt16;
 
 namespace DeathRunner.Enemies
 {
@@ -55,7 +54,7 @@ namespace DeathRunner.Enemies
 
         [SerializeField] protected EventReference OnHealthDepleted;
         
-        [SerializeField] protected EventReference<U16, U16> OnHealthDecreased;
+        [SerializeField] protected EventReference<F32, F32> OnHealthDecreased;
         
         protected static readonly Int32 death      = Animator.StringToHash("Death");
         protected static readonly Int32 stun       = Animator.StringToHash("Stun");
@@ -79,7 +78,7 @@ namespace DeathRunner.Enemies
             OnDeath();
         }
         
-        protected virtual void OnHealthDecreasedHandler(U16 currentHealth, U16 maxHealth)
+        protected virtual void OnHealthDecreasedHandler(F32 currentHealth, F32 maxHealth)
         {
             OnTakeDamage();
         }

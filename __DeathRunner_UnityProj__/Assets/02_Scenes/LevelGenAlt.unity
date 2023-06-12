@@ -409,8 +409,8 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
+  near clip plane: 0
+  far clip plane: 400
   field of view: 60
   orthographic: 1
   orthographic size: 30
@@ -1428,28 +1428,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 608689643, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 608689645, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: m_EditorClassIdentifier
-      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
-      objectReference: {fileID: 0}
-    - target: {fileID: 610366622, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
-      propertyPath: useSlowMo
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 913492907, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
       propertyPath: cooldownImage
       value: 
       objectReference: {fileID: 634529072}
-    - target: {fileID: 2410215513429711714, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: dashLongNTSettings.<HealthConsumptionPerSecond>k__BackingField
-      value: 
-      objectReference: {fileID: 11400000, guid: 0c3dad4ef09ca494c89130fae8d0aff4,
-        type: 2}
     - target: {fileID: 2410215513735583748, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_Name
@@ -1508,11 +1490,6 @@ PrefabInstance:
     - target: {fileID: 2410215513735583749, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5892367543657583469, guid: c2c357725b71c7f47b1565c9b0d5f376,
-        type: 3}
-      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

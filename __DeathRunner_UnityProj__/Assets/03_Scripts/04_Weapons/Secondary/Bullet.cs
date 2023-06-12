@@ -19,7 +19,6 @@ namespace Damageable
         private void Start()
         {
             rb = ball.GetComponent<Rigidbody>();
-            GetComponent<AudioSource>().Play();
         }
 
         // Update is called once per frame

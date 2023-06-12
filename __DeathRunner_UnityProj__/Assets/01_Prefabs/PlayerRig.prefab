@@ -121,7 +121,6 @@ MonoBehaviour:
   DebugActive: 0
   FeedbacksList:
   - rid: 0
-  - rid: 1
   - rid: 2
   - rid: 3
   - rid: 7334483897798098948
@@ -243,83 +242,6 @@ MonoBehaviour:
           m_PropagationSpeed: 343
         Velocity: {x: 0, y: 0.5, z: 0}
         ClearImpulseOnStop: 0
-    - rid: 1
-      type: {class: MMF_Flicker, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
-      data:
-        Active: 0
-        UniqueID: 42077928
-        Label: Flicker
-        ChannelMode: 0
-        Channel: 0
-        MMChannelDefinition: {fileID: 0}
-        Chance: 100
-        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
-        Timing:
-          TimescaleMode: 0
-          ExcludeFromHoldingPauses: 0
-          ContributeToTotalDuration: 1
-          InitialDelay: 0
-          CooldownDuration: 0
-          InterruptsOnStop: 1
-          NumberOfRepeats: 0
-          RepeatForever: 0
-          DelayBetweenRepeats: 1
-          MMFeedbacksDirectionCondition: 0
-          PlayDirection: 0
-          ConstantIntensity: 0
-          UseIntensityInterval: 0
-          IntensityIntervalMin: 0
-          IntensityIntervalMax: 0
-          Sequence: {fileID: 0}
-          TrackID: 0
-          Quantized: 0
-          TargetBPM: 120
-        AutomatedTargetAcquisition:
-          Mode: 0
-          ChildIndex: 0
-        RandomizeOutput: 0
-        RandomMultiplier: {x: 0.8, y: 1}
-        RandomizeDuration: 0
-        RandomDurationMultiplier: {x: 0.5, y: 2}
-        UseRange: 0
-        RangeDistance: 5
-        UseRangeFalloff: 0
-        RangeFalloff:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        RemapRangeFalloff: {x: 0, y: 1}
-        Owner: {fileID: 32549928}
-        DebugActive: 0
-        BoundRenderer: {fileID: 1499374449625817777}
-        Mode: 0
-        PropertyName: _Tint
-        FlickerDuration: 0.05
-        FlickerOctave: 0.05
-        FlickerColor: {r: 1.4980392, g: 0.30588236, b: 0, a: 1}
-        MaterialIndexes: 0000000001000000
-        UseMaterialPropertyBlocks: 0
-        SpriteRendererTextureProperty: _MainTex
     - rid: 2
       type: {class: MMF_FreezeFrame, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
@@ -1384,7 +1306,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 5057
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -2776,12 +2698,11 @@ GameObject:
   - component: {fileID: 610366624}
   - component: {fileID: 388316143}
   - component: {fileID: 913492907}
-  - component: {fileID: 913492967}
-  - component: {fileID: 913492968}
   - component: {fileID: 1608019605}
-  - component: {fileID: 1608019606}
   - component: {fileID: 1396091488708395224}
   - component: {fileID: 3290645771596850252}
+  - component: {fileID: 6186035690636959513}
+  - component: {fileID: 2147029745653854297}
   m_Layer: 6
   m_Name: '[Player]'
   m_TagString: Player
@@ -2938,7 +2859,6 @@ MonoBehaviour:
     <InputHandler>k__BackingField: {fileID: 2410215513429711717}
     <LookAt>k__BackingField: {fileID: 1037352631}
     <Health>k__BackingField: {fileID: 1608019605}
-    <Stamina>k__BackingField: {fileID: 1608019606}
   locomotionNTSettings:
     <OrientTowardsCursor>k__BackingField: {fileID: 11400000, guid: f2cc625477ad1d049bf6ba25cd14c777,
       type: 2}
@@ -2951,7 +2871,7 @@ MonoBehaviour:
       type: 2}
     <Gravity>k__BackingField: {fileID: 11400000, guid: 78f3436b1ef82c444afefaba428b026d,
       type: 2}
-    <OnEnterIdle>k__BackingField: {fileID: 11400000, guid: 74635907ceb978846a56c6d2a2250c3b,
+    <OnEnterIdle>k__BackingField: {fileID: 11400000, guid: beb8c2ec1b69c3e479ac4cc0c4e264e3,
       type: 2}
   moveNtSettings:
     <MaxSpeed>k__BackingField: {fileID: 11400000, guid: e426c881b7b8ccd4ab416c1ff36afdb9,
@@ -2970,10 +2890,10 @@ MonoBehaviour:
       type: 2}
     <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 134c6d3d34951474d8deabf213eb103b,
       type: 2}
-    <OnMove>k__BackingField: {fileID: 11400000, guid: e782135d5170b6043a9b9df91021d35e,
+    <OnMove>k__BackingField: {fileID: 11400000, guid: 901094dd70bf5c34e99b73ce6bad0aa8,
       type: 2}
   dashLongNTSettings:
-    <StaminaConsumptionPerSecond>k__BackingField: {fileID: 11400000, guid: bdf2e395dd084264d805e8a21a81ab47,
+    <HealthConsumptionPerSecond>k__BackingField: {fileID: 11400000, guid: 0c3dad4ef09ca494c89130fae8d0aff4,
       type: 2}
     <MaxSpeed>k__BackingField: {fileID: 11400000, guid: 4a70cafb91c6e8642bbf4eb2290fa3f4,
       type: 2}
@@ -3032,7 +2952,7 @@ MonoBehaviour:
   animationReferences: {fileID: 2410215513753998714}
   idleClip: {fileID: 1981881108250731258, guid: 56523051df06d50439c85ebf5c9a7b04,
     type: 3}
-  onEnterIdle: {fileID: 11400000, guid: 74635907ceb978846a56c6d2a2250c3b, type: 2}
+  onEnterIdle: {fileID: 11400000, guid: beb8c2ec1b69c3e479ac4cc0c4e264e3, type: 2}
 --- !u!114 &2410215513753998712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3046,10 +2966,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DeathRunner.Animations.MoveAnimHandler, DeathRunner.Animations
   animationReferences: {fileID: 2410215513753998714}
-  onMoveEvent: {fileID: 11400000, guid: e782135d5170b6043a9b9df91021d35e, type: 2}
-  useSlowMo: 0
-  smoothTurnInSeconds: 0.2
-  deltaRadiansPerSecond: 31.415928
+  onMoveEvent: {fileID: 11400000, guid: 901094dd70bf5c34e99b73ce6bad0aa8, type: 2}
   moveAnimations:
     rid: 1921082543025422360
   references:
@@ -3118,9 +3035,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: DeathRunner.Animations.MoveAnimHandler, DeathRunner.Animations
   animationReferences: {fileID: 2410215513753998714}
   onMoveEvent: {fileID: 11400000, guid: 571acd43c0d128446b407e87e0a14bf1, type: 2}
-  useSlowMo: 0
-  smoothTurnInSeconds: 0.2
-  deltaRadiansPerSecond: 31.415928
   moveAnimations:
     rid: 1921082543025422363
   references:
@@ -3186,7 +3100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DeathRunner.Animations.PrimaryAttackAnimHandler, DeathRunner.Animations
   animationReferences: {fileID: 2410215513753998714}
-  onAttackStarted: {fileID: 11400000, guid: 6bd7c2f9af8051c4387cfa6c8f437870, type: 2}
+  onAttackStarted: {fileID: 11400000, guid: 68ac26e79581392489c35b0e22481798, type: 2}
   onAttackStopped: {fileID: 11400000, guid: 59fc4644cfefe8a42bf607a35d714ea7, type: 2}
 --- !u!114 &388316143
 MonoBehaviour:
@@ -3223,54 +3137,6 @@ MonoBehaviour:
   secondaryFire: {fileID: -533271173522944404, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
   _mainCamera: {fileID: 0}
---- !u!114 &913492967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1926729455, guid: e4992c61f8a41b445b38b8f45f00657f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GenericScriptableArchitecture.ScriptableEventListener<ushort,ushort>,
-    GenericScriptableArchitecture
-  _stackTrace:
-    Enabled: 0
-  _eventHolder:
-    _event: {fileID: 11400000, guid: 7f628bfa22e74984fab58511e341fee4, type: 2}
-    _variable: {fileID: 0}
-    _variableInstancer: {fileID: 0}
-    _eventInstancer: {fileID: 0}
-    _type: 0
-    _notifyCurrentValue: 0
-  _response:
-    _persistentListeners:
-    - _persistentArguments: []
-      _target: {fileID: 32549928}
-      _isStatic: 0
-      CallState: 2
-      _staticType:
-        GuidAssignmentFailed: 0
-        GUID: 
-        _typeNameAndAssembly: 
-        _suppressLogs: 0
-      _methodName: PlayFeedbacks
-    Expanded: 1
---- !u!114 &913492968
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component: {fileID: 913492967}
 --- !u!114 &1608019605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3284,7 +3150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DeathRunner.Attributes.HealthComponent, DeathRunner.Attributes
   health:
-    <Max>k__BackingField: {fileID: 11400000, guid: 327bac14ac71a9f40bc1c4bb41e56093,
+    <Max>k__BackingField: {fileID: 11400000, guid: 3d2a92f7a8e27be4bb1e66455ea072df,
       type: 2}
     <InvincibilityFrameDuration>k__BackingField:
       _valueType: 2
@@ -3293,24 +3159,24 @@ MonoBehaviour:
       _constant: {fileID: 0}
       _variableInstancer: {fileID: 0}
     useInfinityBackingField:
-      _valueType: 2
+      _valueType: 0
       _value: 0
-      _variable: {fileID: 11400000, guid: af916a68bb4bd184a932c73fd6475cbf, type: 2}
+      _variable: {fileID: 0}
       _constant: {fileID: 0}
       _variableInstancer: {fileID: 0}
     currentHealthBackingField:
       _valueType: 2
       _value: 0
-      _variable: {fileID: 11400000, guid: 7e0f96badd375b24b964514593b32b9d, type: 2}
+      _variable: {fileID: 11400000, guid: 46084445fd7e16249b17cf62ea9ad4fb, type: 2}
       _constant: {fileID: 0}
       _variableInstancer: {fileID: 0}
     <OnChanged>k__BackingField:
       _eventType: 0
-      _event: {fileID: 11400000, guid: e3d32e645a171fb4db1d064a022e23d5, type: 2}
+      _event: {fileID: 11400000, guid: 5ced9876b4f347147b208114d015d105, type: 2}
       _eventInstancer: {fileID: 0}
     <OnDecreased>k__BackingField:
       _eventType: 0
-      _event: {fileID: 11400000, guid: 7f628bfa22e74984fab58511e341fee4, type: 2}
+      _event: {fileID: 11400000, guid: abf6118fe51c5024ab2a436ad5d94753, type: 2}
       _eventInstancer: {fileID: 0}
     <OnDepleted>k__BackingField:
       _eventType: 0
@@ -3318,7 +3184,7 @@ MonoBehaviour:
       _eventInstancer: {fileID: 0}
     <OnIncreased>k__BackingField:
       _eventType: 0
-      _event: {fileID: 11400000, guid: c907bee6664883344a5221f2aa9bbb4c, type: 2}
+      _event: {fileID: 11400000, guid: 682b01a929e3e754292dface8092fdbf, type: 2}
       _eventInstancer: {fileID: 0}
     <OnInvincibilityEnabled>k__BackingField:
       _eventType: 0
@@ -3335,49 +3201,6 @@ MonoBehaviour:
     <OnIncreasedAttempt>k__BackingField:
       _eventType: 0
       _event: {fileID: 0}
-      _eventInstancer: {fileID: 0}
---- !u!114 &1608019606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d854cb14a0d240499b2a1e747d1a0123, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DeathRunner.Attributes.StaminaComponent, DeathRunner.Attributes
-  stamina:
-    <Max>k__BackingField: {fileID: 11400000, guid: 8af2c425a9d743c45a541bb67b2a00d7,
-      type: 2}
-    useInfinityBackingField:
-      _valueType: 2
-      _value: 0
-      _variable: {fileID: 11400000, guid: 4de4d1ecb4f7f354a8e1e186b2f96fb9, type: 2}
-      _constant: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    currentStaminaBackingField:
-      _valueType: 2
-      _value: 0
-      _variable: {fileID: 11400000, guid: 3106d42d0d8f18644a710aab0d0c8eaf, type: 2}
-      _constant: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    <OnChanged>k__BackingField:
-      _eventType: 0
-      _event: {fileID: 11400000, guid: 9c909c55390d5f847ae47039cda197cf, type: 2}
-      _eventInstancer: {fileID: 0}
-    <OnDecreased>k__BackingField:
-      _eventType: 0
-      _event: {fileID: 11400000, guid: e3270863ec04b10419c459ac44585d5c, type: 2}
-      _eventInstancer: {fileID: 0}
-    <OnDepleted>k__BackingField:
-      _eventType: 0
-      _event: {fileID: 11400000, guid: 9a2b399be49a1bb4ca03929ff32378e3, type: 2}
-      _eventInstancer: {fileID: 0}
-    <OnIncreased>k__BackingField:
-      _eventType: 0
-      _event: {fileID: 11400000, guid: a85d8d177059c4a44b2911e9901f46a5, type: 2}
       _eventInstancer: {fileID: 0}
 --- !u!82 &1396091488708395224
 AudioSource:
@@ -3541,6 +3364,54 @@ MonoBehaviour:
   - {fileID: 3509297825157596848}
   start: {fileID: 11400000, guid: d89a5c7c8b816e342b5085d548372d8f, type: 2}
   stop: {fileID: 11400000, guid: 3edfa69dce08a034db55411417cb4b00, type: 2}
+--- !u!114 &6186035690636959513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410215513429711716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component: {fileID: 2147029745653854297}
+--- !u!114 &2147029745653854297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2410215513429711716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 326983503, guid: 93cbccba3f3cac146b21794a9650b8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.ScriptableEventListener<float,float>,
+    GenericScriptableArchitecture
+  _stackTrace:
+    Enabled: 0
+  _eventHolder:
+    _event: {fileID: 11400000, guid: abf6118fe51c5024ab2a436ad5d94753, type: 2}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
+    _eventInstancer: {fileID: 0}
+    _type: 0
+    _notifyCurrentValue: 0
+  _response:
+    _persistentListeners:
+    - _persistentArguments: []
+      _target: {fileID: 32549928}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: PlayFeedbacks
+    Expanded: 1
 --- !u!1 &2410215513735583748
 GameObject:
   m_ObjectHideFlags: 0
@@ -4243,7 +4114,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4859805230427773813}
   m_LocalRotation: {x: 0.2366595, y: 0.6663362, z: -0.23667274, w: 0.6663141}
-  m_LocalPosition: {x: 174.67996, y: 8.561382, z: 64.92573}
+  m_LocalPosition: {x: 174.67996, y: 8.56138, z: 64.92572}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4862,118 +4733,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1356087272}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &608689646
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726842595099419229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component: {fileID: 608689645}
---- !u!114 &608689645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726842595099419229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b178bdd9bde14366a896b14319f56a92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _stackTrace:
-    Enabled: 0
-  _event: {fileID: 0}
-  _eventHolder:
-    _event: {fileID: 11400000, guid: d89a5c7c8b816e342b5085d548372d8f, type: 2}
-    _eventInstancer: {fileID: 0}
-    _type: 0
-  _response:
-    _persistentListeners:
-    - _persistentArguments:
-      - _index: 0
-        _isSerialized: 1
-        _targetType:
-          GuidAssignmentFailed: 0
-          GUID: 
-          _typeNameAndAssembly: System.Boolean, mscorlib
-          _suppressLogs: 1
-        _fromType:
-          GuidAssignmentFailed: 0
-          GUID: 
-          _typeNameAndAssembly: 
-          _suppressLogs: 0
-        _serializationData:
-          DataFormat: 2
-          ReferencedUnityObjects: []
-          SerializationNodes:
-          - Name: 
-            Entry: 5
-            Data: false
-          Bytes: 
-        _canBeDynamic: 0
-        _serializedArg: 
-      _target: {fileID: 726842595099419230}
-      _isStatic: 0
-      CallState: 2
-      _staticType:
-        GuidAssignmentFailed: 0
-        GUID: 
-        _typeNameAndAssembly: 
-        _suppressLogs: 0
-      _methodName: set_enabled
-    - _persistentArguments:
-      - _index: 0
-        _isSerialized: 1
-        _targetType:
-          GuidAssignmentFailed: 0
-          GUID: 
-          _typeNameAndAssembly: System.Boolean, mscorlib
-          _suppressLogs: 1
-        _fromType:
-          GuidAssignmentFailed: 0
-          GUID: 
-          _typeNameAndAssembly: 
-          _suppressLogs: 0
-        _serializationData:
-          DataFormat: 2
-          ReferencedUnityObjects: []
-          SerializationNodes:
-          - Name: 
-            Entry: 5
-            Data: true
-          Bytes: 
-        _canBeDynamic: 0
-        _serializedArg: 
-      _target: {fileID: 5892367543657583469}
-      _isStatic: 0
-      CallState: 2
-      _staticType:
-        GuidAssignmentFailed: 0
-        GUID: 
-        _typeNameAndAssembly: 
-        _suppressLogs: 0
-      _methodName: set_enabled
-    Expanded: 1
---- !u!114 &608689644
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 726842595099419229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _component: {fileID: 608689643}
 --- !u!114 &608689643
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4985,7 +4744,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b178bdd9bde14366a896b14319f56a92, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.VoidScriptableEventListener,
+    GenericScriptableArchitecture
   _stackTrace:
     Enabled: 0
   _event: {fileID: 0}
@@ -5060,6 +4820,119 @@ MonoBehaviour:
         _suppressLogs: 0
       _methodName: set_enabled
     Expanded: 1
+--- !u!114 &608689644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726842595099419229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component: {fileID: 608689643}
+--- !u!114 &608689645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726842595099419229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b178bdd9bde14366a896b14319f56a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.VoidScriptableEventListener,
+    GenericScriptableArchitecture
+  _stackTrace:
+    Enabled: 0
+  _event: {fileID: 0}
+  _eventHolder:
+    _event: {fileID: 11400000, guid: d89a5c7c8b816e342b5085d548372d8f, type: 2}
+    _eventInstancer: {fileID: 0}
+    _type: 0
+  _response:
+    _persistentListeners:
+    - _persistentArguments:
+      - _index: 0
+        _isSerialized: 1
+        _targetType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: System.Boolean, mscorlib
+          _suppressLogs: 1
+        _fromType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: 
+          _suppressLogs: 0
+        _serializationData:
+          DataFormat: 2
+          ReferencedUnityObjects: []
+          SerializationNodes:
+          - Name: 
+            Entry: 5
+            Data: false
+          Bytes: 
+        _canBeDynamic: 0
+        _serializedArg: 
+      _target: {fileID: 726842595099419230}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: set_enabled
+    - _persistentArguments:
+      - _index: 0
+        _isSerialized: 1
+        _targetType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: System.Boolean, mscorlib
+          _suppressLogs: 1
+        _fromType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: 
+          _suppressLogs: 0
+        _serializationData:
+          DataFormat: 2
+          ReferencedUnityObjects: []
+          SerializationNodes:
+          - Name: 
+            Entry: 5
+            Data: true
+          Bytes: 
+        _canBeDynamic: 0
+        _serializedArg: 
+      _target: {fileID: 5892367543657583469}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: set_enabled
+    Expanded: 1
+--- !u!114 &608689646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 726842595099419229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component: {fileID: 608689645}
 --- !u!114 &726842595099419230 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 726842594290703798, guid: 3ae74bd9e6b2b3f45bb701f301aebef5,

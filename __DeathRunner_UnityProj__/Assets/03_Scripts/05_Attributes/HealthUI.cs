@@ -9,10 +9,10 @@ namespace DeathRunner.Attributes
 {
     public sealed class HealthUI : MonoBehaviour
     {
-        [SerializeField] private Constant<U16> maxHealth;
+        [SerializeField] private Constant<F32> maxHealth;
         //[SerializeField] private Reference<U16> currentHealth;
 
-        [SerializeField] private EventReference</*oldHealth*/U16, /*newHealth*/U16> OnHealthChanged;
+        [SerializeField] private EventReference</*oldHealth*/F32, /*newHealth*/F32> OnHealthChanged;
         
         [SerializeField] private Image healthSlider;
         
@@ -26,12 +26,12 @@ namespace DeathRunner.Attributes
             OnHealthChanged -= OnHealthChangedHandler;
         }
 
-        public void OnHealthChangedHandler(U16 oldHealth, U16 newHealth)
+        public void OnHealthChangedHandler(F32 oldHealth, F32 newHealth)
         {
             //NOTE [Walter] Using the old health you could even tween to the new health, if you wanted to.
             
-            F32 healthPrimantissa = (F32)newHealth / (F32)maxHealth.Value;
-            healthSlider.fillAmount = healthPrimantissa;
+            F32 __healthPrimantissa = newHealth / maxHealth.Value;
+            healthSlider.fillAmount = __healthPrimantissa;
         }
     }
 }

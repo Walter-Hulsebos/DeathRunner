@@ -71,7 +71,6 @@ namespace DeathRunner.Player
         
         //private PlayerStateLeaf_SecondaryAttack _secondaryAttackNT;
 
-
         #if UNITY_EDITOR
         private void Reset() => playerReferences.Reset(gameObject);
 
@@ -89,9 +88,6 @@ namespace DeathRunner.Player
         
         private Boolean DashInputIsHeld     => playerReferences.InputHandler.DashInputIsHeld;
         private Boolean DashInputIsNotHeld  => !DashInputIsHeld;
-        
-        //private Boolean HasStaminaLeft   => playerReferences.Stamina.stamina.Value > 0;
-        //private Boolean HasNoStaminaLeft => !HasStaminaLeft;
 
         private void Awake()
         {
@@ -137,15 +133,7 @@ namespace DeathRunner.Player
 
             _idleNT.AddTransition(to: _walkNT, conditions: () => HasMoveInput);   //Idle -> Walk
             _walkNT.AddTransition(to: _idleNT, conditions: () => HasNoMoveInput); //Walk -> Idle
-            
-            // _idleNT.AddTransition(to: _dashShortNT, conditions: () => playerReferences.InputHandler.shortDashInputQueue.Peek, 
-            //     transitionAction: () => playerReferences.InputHandler.shortDashInputQueue.Dequeue()); //Idle -> DashShort
-            // _dashShortNT.AddTransition(to: _idleNT, conditions: () => _dashShortNT.IsDoneDashing && HasNoMoveInput);                //DashShort -> Idle
-            
-            // _walkNT.AddTransition(to: _dashShortNT, conditions: () => playerReferences.InputHandler.shortDashInputQueue.Peek, 
-            //     transitionAction: () => playerReferences.InputHandler.shortDashInputQueue.Dequeue()); //Walk -> DashShort
-            // _dashShortNT.AddTransition(to: _walkNT, conditions: () => _dashShortNT.IsDoneDashing && HasMoveInput);                  //DashShort -> Walk
-            
+
             _idleNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld); //Idle -> DashLong
             _dashLongNT.AddTransition(to: _idleNT, conditions: () => DashInputIsNotHeld && HasNoMoveInput); //DashLong -> Idle
             //_dashLongNT.AddTransition(to: _idleNT, conditions: () => HasNoStaminaLeft   && HasNoMoveInput); //DashLong -> Idle
@@ -228,7 +216,7 @@ namespace DeathRunner.Player
 
         [Command(aliasOverride: "Player.Health")]
         [UsedImplicitly]
-        public UInt16 Health
+        public F32 Health
         {
             get
             {
@@ -253,12 +241,12 @@ namespace DeathRunner.Player
             #if UNITY_EDITOR
             Debug.Log("Killing player", context: this);
             #endif
-            playerReferences.Health.health.Value = 0;
+            playerReferences.Health.health.Value = 0f;
         }
         
         [Command(aliasOverride: "Player.Health.Add")]
         [UsedImplicitly]
-        public void AddHealth(U16 amount)
+        public void AddHealth(F32 amount)
         {
             #if UNITY_EDITOR
             Debug.Log("Adding health " + amount, context: this);
@@ -268,7 +256,7 @@ namespace DeathRunner.Player
         
         [Command(aliasOverride: "Player.Health.Sub")]
         [UsedImplicitly]
-        public void SubHealth(U16 amount)
+        public void SubHealth(F32 amount)
         {
             #if UNITY_EDITOR
             Debug.Log("Subtracting health " + amount, context: this);

@@ -67,6 +67,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 921683763251770482, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: _base
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e0883cab789f4843ac306cb58336968,
+        type: 2}
+    - target: {fileID: 1374020153693324475, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: _variableReference
+      value: 
+      objectReference: {fileID: 11400000, guid: 5bc59f264996a474a9e359c988952864,
+        type: 2}
     - target: {fileID: 2126888092714004738, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: managedReferences[0].Label
@@ -87,8 +99,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _base
       value: 
-      objectReference: {fileID: 11400000, guid: c073532d711163b4787eaa965e5d1eeb,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094277812897, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: m_EditorClassIdentifier
@@ -98,8 +109,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _base
       value: 
-      objectReference: {fileID: 11400000, guid: 0863667d2978547488e07084d160fc7c,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094277812899, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: m_EditorClassIdentifier
@@ -109,8 +119,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _base
       value: 
-      objectReference: {fileID: 11400000, guid: 4db414ede2446e34ea671ffef3fc62d7,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094277812902, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: m_EditorClassIdentifier
@@ -125,7 +134,7 @@ PrefabInstance:
         type: 3}
       propertyPath: health.<Max>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: b997a168476839d4db257d8a3d5adb95,
+      objectReference: {fileID: 11400000, guid: 50ab41982b4d0f442b26f7b8960efb7a,
         type: 2}
     - target: {fileID: 2126888094277812914, guid: a086f553e1f30694685571bc41982275,
         type: 3}
@@ -147,13 +156,24 @@ PrefabInstance:
         type: 3}
       propertyPath: _variableReference
       value: 
-      objectReference: {fileID: 11400000, guid: 8a18dbde3fc85bd4f9aa272cc69d2229,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 5258032030769169030, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: m_EditorClassIdentifier
       value: GenericScriptableArchitecture.VariableInstancer<ushort>, GenericScriptableArchitecture
       objectReference: {fileID: 0}
+    - target: {fileID: 7185048399067772672, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.ScriptableEventListener<float,float>,
+        GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228635287363490785, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: _base
+      value: 
+      objectReference: {fileID: 11400000, guid: 6e0883cab789f4843ac306cb58336968,
+        type: 2}
     - target: {fileID: 8279253648825646246, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: m_Name
@@ -219,21 +239,14 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: e4d819d0facb81b439dc8589325d15a0, type: 2}
+    - target: {fileID: 8438110731072854678, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: _base
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e8672f3697078742b9e23bff73d9316,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a086f553e1f30694685571bc41982275, type: 3}
---- !u!114 &2460587963394489300 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2126888094277812899, guid: a086f553e1f30694685571bc41982275,
-    type: 3}
-  m_PrefabInstance: {fileID: 4585221618327173495}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5567622939887453649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<ushort,ushort>,
-    GenericScriptableArchitecture
 --- !u!114 &2460587963394489303 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2126888094277812896, guid: a086f553e1f30694685571bc41982275,
@@ -279,7 +292,7 @@ MonoBehaviour:
   OnHealthDecreased:
     _eventType: 1
     _event: {fileID: 0}
-    _eventInstancer: {fileID: 2460587963394489300}
+    _eventInstancer: {fileID: 6625005857496279702}
   canAttack: 0
   moveInAttack: 0
   moveSpeed: 5
@@ -327,6 +340,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleeEnemyAI: {fileID: 0}
   swordHitbox: {fileID: 8003298930030669114}
+--- !u!114 &6625005857496279702 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7228635287363490785, guid: a086f553e1f30694685571bc41982275,
+    type: 3}
+  m_PrefabInstance: {fileID: 4585221618327173495}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5567622939887453649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -516024046, guid: 49db4beacac86fa49971e1509f66ca92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<float,float>,
+    GenericScriptableArchitecture
 --- !u!1001 &4660997628686836968
 PrefabInstance:
   m_ObjectHideFlags: 0

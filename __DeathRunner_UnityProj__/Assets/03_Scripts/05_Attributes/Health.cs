@@ -96,7 +96,7 @@ namespace DeathRunner.Attributes
                 value = clamp(x: value, a: 0f, b: Max.Value); //Make sure we don't go over the max 
 
                 // Exit if the value hasn't changed. (using epsilon to account for floating point errors)
-                if (abs(x: currentHealthBackingField.Value - value) < 0.0001f)
+                if (abs(x: currentHealthBackingField.Value - value) < EPSILON)
                 {
                     #if UNITY_EDITOR
                     if (_hasOwnerObject)
@@ -147,8 +147,6 @@ namespace DeathRunner.Attributes
                 }
             }
         }
-        
-        //public IMod<U16>[] Modifiers { get; [UsedImplicitly] private set; }
 
         [field:SerializeField] public EventReference<F32, F32> OnChanged               { get; [UsedImplicitly] private set; }
         [field:SerializeField] public EventReference<F32, F32> OnDecreased             { get; [UsedImplicitly] private set; }

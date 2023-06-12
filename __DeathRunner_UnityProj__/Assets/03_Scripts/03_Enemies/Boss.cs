@@ -7,6 +7,8 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+using F32 = System.Single;
+
 namespace DeathRunner
 {
     public class Boss : MonoBehaviour
@@ -47,13 +49,11 @@ namespace DeathRunner
 
             private Vector3 chasePos = Vector3.zero;
             
+            [SerializeField] private EventReference<F32, F32> OnHealthDecreased;
             [SerializeField] private EventReference OnHealthDepleted;
-            
-            [SerializeField] private EventReference<ushort, ushort> OnHealthDecreased;
+        
 
             private int timesHit = 0;
-
-            public Image healthImage;
 
             private bool canBeStunlocked = true;
             private void OnEnable()
@@ -73,7 +73,7 @@ namespace DeathRunner
                 OnDeath();
             }
 
-            private void OnHealthDecreasedHandler(UInt16 arg1, UInt16 arg2)
+            private void OnHealthDecreasedHandler(F32 oldHealth, F32 newHealth)
             {
                 OnTakeDamage();
             }
@@ -132,9 +132,9 @@ namespace DeathRunner
                             
                              if (Random.Range(0, 2) == 1) 
                              {
-                            // Trigger the attack animation
-                            animator.SetTrigger("attack");
-                            }
+                                // Trigger the attack animation
+                                animator.SetTrigger("attack");
+                             }
                              else
                              {
                                  animator.SetTrigger("attack2");

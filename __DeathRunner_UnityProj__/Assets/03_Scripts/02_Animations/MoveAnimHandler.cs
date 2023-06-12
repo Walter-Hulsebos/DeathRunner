@@ -32,10 +32,10 @@ namespace DeathRunner.Animations
         #endif
         [SerializeField] private ScriptableEvent<F32x3> onMoveEvent;
 
-        [SerializeField] private Boolean useSlowMo = false;
+        //[SerializeField] private Boolean useSlowMo = false;
 
-        [SerializeField] private F32 smoothTurnInSeconds = 0.2f;
-        [SerializeField, HideInInspector] private F32 deltaRadiansPerSecond;
+        //[SerializeField] private F32 smoothTurnInSeconds = 0.2f;
+        //[SerializeField, HideInInspector] private F32 deltaRadiansPerSecond;
         
         [SerializeReference] private ITransition moveAnimations;
         
@@ -48,21 +48,21 @@ namespace DeathRunner.Animations
         
         #region Methods
 
-        #if UNITY_EDITOR
-        protected override void Reset()
-        {
-            base.Reset();
-            
-            deltaRadiansPerSecond = (TAU_F32 / smoothTurnInSeconds);
-        }
-
-        protected override void OnValidate()
-        {
-            base.OnValidate();
-            
-            deltaRadiansPerSecond = (TAU_F32 / smoothTurnInSeconds);
-        }
-        #endif
+        // #if UNITY_EDITOR
+        // protected override void Reset()
+        // {
+        //     base.Reset();
+        //     
+        //     deltaRadiansPerSecond = (TAU_F32 / smoothTurnInSeconds);
+        // }
+        //
+        // protected override void OnValidate()
+        // {
+        //     base.OnValidate();
+        //     
+        //     deltaRadiansPerSecond = (TAU_F32 / smoothTurnInSeconds);
+        // }
+        // #endif
 
         private void Awake()
         {
@@ -84,13 +84,13 @@ namespace DeathRunner.Animations
             onMoveEvent -= OnMoveHandler;
         }
 
-        private F32x3 _targetMoveVectorLastFrame;
-        private F32x3 _moveVectorLastFrame;
-        private F32x3 _moveVectorVelocity;
+        //private F32x3 _targetMoveVectorLastFrame;
+        //private F32x3 _moveVectorLastFrame;
+        //private F32x3 _moveVectorVelocity;
 
-        private Rotor __moveVectorRotationLastFrame = Rotor.identity;
+        //private Rotor __moveVectorRotationLastFrame = Rotor.identity;
 
-        private Rotor _derivative;
+        //private Rotor _derivative;
 
         // [ContextMenu(itemName: "LogAngles")]
         // private void LogAngles()
@@ -187,10 +187,11 @@ namespace DeathRunner.Animations
             //     deltaTime: (useSlowMo) ? Time.unscaledDeltaTime : Time.deltaTime,
             //     smoothTime: 0.2f,
             //     maxSpeed: 1000);
-            F32x3 __moveVector = targetMoveVector;
+            //F32x3 __moveVector = targetMoveVector;
             
-            _moveVectorLastFrame = __moveVector;
-            F32x3 __moveDirection = normalize(x: __moveVector);
+            //_moveVectorLastFrame = __moveVector;
+            //F32x3 __moveDirection = normalize(x: __moveVector);
+            F32x3 __moveDirection = normalize(x: targetMoveVector);
             
             //TODO: Walter, the speed of this slerp will vary based on the distance between the two quaternions.
             //      I think you want to use a constant speed, so you'll need to calculate the time based on the distance.

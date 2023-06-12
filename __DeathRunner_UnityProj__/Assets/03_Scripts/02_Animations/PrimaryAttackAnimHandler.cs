@@ -20,6 +20,7 @@ namespace DeathRunner.Animations
         #if ODIN_INSPECTOR
         [FoldoutGroup(groupName: "Events")]
         #endif
+        [Tooltip("AnimationClip: Attack Animation, F32: Attack Speed Multiplier")]
         [SerializeField] private ScriptableEvent<AnimationClip, F32> onAttackStarted;
         #if ODIN_INSPECTOR
         [FoldoutGroup(groupName: "Events")]
