@@ -138,54 +138,13 @@ namespace DeathRunner.Player
 
             _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
         }
-        
-        public void OrientTowardsLookDirection()
-        {
-            Plane3D __plane3D = new(normal: up(), distance: 0);
-            
-            F32x3 __projectedLookDirection = normalize(__plane3D.Projection(point: _settings.OrientationLookDirection.Value));
-            
-            if (lengthsq(__projectedLookDirection) == 0) return;
-
-            Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
-
-            _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: _settings.OrientationSpeed.Value * Time.unscaledDeltaTime);
-        }
-
-
-        // private F32x3 DashDirection
-        // {
-        //     get
-        //     {
-        //         F32x3 __dashDir = new(x: _references.InputHandler.MoveInput.x, y: 0, z: _references.InputHandler.MoveInput.y);
-        //         
-        //         // If no input is given, dash in the direction the player is facing
-        //         if (all(x: __dashDir == F32x3.zero))
-        //         {
-        //             __dashDir = (F32x3)_settings.OrientationLookDirection;
-        //         }
-        //         
-        //         // Convert dash direction to be relative to the player camera
-        //         return __dashDir.RelativeTo(relativeToThis: _references.Camera.transform);   
-        //     }
-        // }
-        
-        // private void DashMovement(F32x3 direction)
-        // {
-        //    
-        // }
     }
     
     [Serializable]
     public struct DashLongSettings
     {
         [field:SerializeField] public Constant<U16>   StaminaConsumptionPerSecond { get; [UsedImplicitly] private set; }
-        
-        [field:Tooltip(tooltip: "The duration between possible dashes (s)")]
-        [field:SerializeField] public Constant<F32>   DashCooldown                { get; [UsedImplicitly] private set; }
-        
-        
-        
+
         [field:Tooltip(tooltip: "The character's maximum speed. (m/s)")]
         [field:SerializeField] public Constant<F32>   MaxSpeed                    { get; [UsedImplicitly] private set; }
         
@@ -211,10 +170,8 @@ namespace DeathRunner.Player
         [field:SerializeField] public Constant<F32>   OrientationSpeed            { get; [UsedImplicitly] private set; }
         
         
-        
         [field:SerializeField] public ScriptableEvent        OnLongDashEnter      { get; [UsedImplicitly] private set; }
         [field:SerializeField] public ScriptableEvent<F32x3> OnLongDashMove       { get; [UsedImplicitly] private set; }
         [field:SerializeField] public ScriptableEvent        OnLongDashExit       { get; [UsedImplicitly] private set; }
-        //[field:SerializeField] public ScriptableEvent        OnLongDashInterrupted { get; [UsedImplicitly] private set; }
     }
 }

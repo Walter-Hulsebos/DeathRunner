@@ -26,34 +26,29 @@ namespace DeathRunner.Player
     {
         //NOTE: [Walter] Make shared states possible??
 
-        [SerializeField] private PlayerReferences      playerReferences = new();
-        //[SerializeField] private PlayerAttributes      playerAttributes = new();
+        [SerializeField] private PlayerReferences   playerReferences = new();
 
-        [Tooltip("Locomotion Settings for Normal-Time")]
-        [SerializeField] private LocomotionSettings    locomotionNTSettings;
+        [Tooltip("Locomotion Settings")]
+        [SerializeField] private LocomotionSettings locomotionNTSettings;
         
-        [Tooltip("Idle Settings for Normal-Time")]
-        [SerializeField] private IdleSettings          idleNTSettings;
-        [Tooltip("Walk Settings for Normal-Time")]
-        [SerializeField] private MoveSettings          moveNtSettings;
-        
-        //[SerializeField] private F32                   holdTimeForLongDash = 0.1f;
-        
-        [Tooltip("Short Dash Settings for Normal-Time")]
-        [SerializeField] private DashShortSettings2     dashShortNTSettings;
-        [Tooltip("Long Dash Settings for Normal-Time")]
-        [SerializeField] private DashLongSettings      dashLongNTSettings;
+        [Tooltip("Idle Settings")]
+        [SerializeField] private IdleSettings       idleNTSettings;
+        [Tooltip("Walk Settings")]
+        [SerializeField] private MoveSettings       moveNtSettings;
+
+        [Tooltip("Long Dash Settings")]
+        [SerializeField] private DashLongSettings   dashLongNTSettings;
         
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Combat NT")]
+        [FoldoutGroup("Combat")]
         #endif
         [SerializeField] private MeleeAttackData primaryAttack00NT;
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Combat NT")]
+        [FoldoutGroup("Combat")]
         #endif
         [SerializeField] private MeleeAttackData primaryAttack01NT;
         #if ODIN_INSPECTOR
-        [FoldoutGroup("Combat NT")]
+        [FoldoutGroup("Combat")]
         #endif
         [SerializeField] private MeleeAttackData primaryAttack02NT;
 
@@ -68,26 +63,14 @@ namespace DeathRunner.Player
         private PlayerStateLeaf_Idle            _idleNT;
         private PlayerStateLeaf_Move            _walkNT;
         
-        //private PlayerStateLeaf_DashShort2       _dashShortNT;
         private PlayerStateLeaf_DashLong        _dashLongNT;
         
         private PlayerStateLeaf_AttackMelee     _lightAttackNt00;
         private PlayerStateLeaf_AttackMelee     _lightAttackNt01;
         private PlayerStateLeaf_AttackMelee     _lightAttackNt02;
         
-        private PlayerStateLeaf_SecondaryAttack _secondaryAttackNT;
-        
-        // private State                           _locomotionBT;
-        //
-        // private StateLeaf                       _idleBT;
-        // private StateLeaf                       _walkBT;
-        //
-        // private PlayerStateLeaf_PrimaryAttack   _primaryAttackBT00;
-        // private PlayerStateLeaf_PrimaryAttack   _primaryAttackBT01;
-        // private PlayerStateLeaf_PrimaryAttack   _primaryAttackBT02;
-        //
-        // private PlayerStateLeaf_SecondaryAttack _secondaryAttackBT;
-        
+        //private PlayerStateLeaf_SecondaryAttack _secondaryAttackNT;
+
 
         #if UNITY_EDITOR
         private void Reset() => playerReferences.Reset(gameObject);
@@ -109,17 +92,9 @@ namespace DeathRunner.Player
         
         private Boolean HasStaminaLeft   => playerReferences.Stamina.stamina.Value > 0;
         private Boolean HasNoStaminaLeft => !HasStaminaLeft;
-        
-        // private Boolean DashInputIsHeld     => playerReferences.InputHandler.DashInputIsHeld;
-        // private Boolean DashInputIsNotHeld  => !DashInputIsHeld;
-        // //private Boolean DashInputWasStarted => playerReferences.InputHandler.DashInputStarted;
-        // private Boolean DashInputWasStopped => playerReferences.InputHandler.DashInputStoppedThisFrame;
-        // private F32     DashHoldTime        => playerReferences.InputHandler.DashHoldTime;
-        
+
         private void Awake()
         {
-            //playerAttributes.Init();
-            //playerAttributes.Init(owner: gameObject);
             playerReferences.Init(gameObject);
             
             CreateStateTree();
@@ -139,15 +114,14 @@ namespace DeathRunner.Player
                     (settings: locomotionNTSettings, references: playerReferences, /*params child states */
                         _idleNT            = new PlayerStateLeaf_Idle(settings: idleNTSettings, references: playerReferences), 
                         _walkNT            = new PlayerStateLeaf_Move(settings: moveNtSettings, references: playerReferences)
-                    ), 
-                    //_dashShortNT     = new PlayerStateLeaf_DashShort2(settings: dashShortNTSettings, references: playerReferences), 
+                    ),
                     _dashLongNT      = new PlayerStateLeaf_DashLong( settings: dashLongNTSettings,  references: playerReferences),
                     
                     _lightAttackNt00 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack00NT.Settings, references: playerReferences),
                     _lightAttackNt01 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack01NT.Settings, references: playerReferences),
-                    _lightAttackNt02 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack02NT.Settings, references: playerReferences),
+                    _lightAttackNt02 = new PlayerStateLeaf_AttackMelee(settings: primaryAttack02NT.Settings, references: playerReferences)//,
                     
-                    _secondaryAttackNT = new PlayerStateLeaf_SecondaryAttack()
+                    //_secondaryAttackNT = new PlayerStateLeaf_SecondaryAttack()
                 ),
                 _dead = new PlayerStateLeaf_Dead()
             );

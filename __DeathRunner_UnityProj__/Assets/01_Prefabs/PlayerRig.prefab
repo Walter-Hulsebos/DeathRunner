@@ -1541,7 +1541,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187890989}
   m_LocalRotation: {x: 0.2379853, y: 0.585599, z: -0.16800095, w: 0.7564474}
-  m_LocalPosition: {x: 13.411852, y: 5.449713, z: 111.3469}
+  m_LocalPosition: {x: 13.0148735, y: 5.449713, z: 111.22278}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1758,7 +1758,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41194566079009247}
   m_LocalRotation: {x: 0.29883054, y: 0.6408686, z: -0.29884186, w: 0.6408442}
-  m_LocalPosition: {x: 9.418183, y: 13.050666, z: 112.75037}
+  m_LocalPosition: {x: 9.021205, y: 13.050666, z: 112.62624}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2208,8 +2208,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410215513009397359}
-  m_LocalRotation: {x: 0.2379853, y: 0.585599, z: -0.16800095, w: 0.7564474}
-  m_LocalPosition: {x: 13.411852, y: 5.449713, z: 111.3469}
+  m_LocalRotation: {x: 2.4424907e-13, y: 1, z: 0.00000032782552, w: -0.0000007748604}
+  m_LocalPosition: {x: -93.33721, y: 2.7487192, z: 126.142845}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2247,7 +2247,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 1
+  near clip plane: 5
   far clip plane: 500
   field of view: 40
   orthographic: 0
@@ -2468,8 +2468,6 @@ GameObject:
   - component: {fileID: 2410215513753998714}
   - component: {fileID: 2410215513753998715}
   - component: {fileID: 2410215513753998712}
-  - component: {fileID: 2410215513753998713}
-  - component: {fileID: 610366623}
   - component: {fileID: 610366622}
   - component: {fileID: 610366624}
   - component: {fileID: 388316143}
@@ -2493,7 +2491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2410215513429711716}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.06, y: 0, z: 112.75}
+  m_LocalPosition: {x: 18.663021, y: 0, z: 112.62588}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2612,6 +2610,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb17cdfc70b3a8041b0e7620e54ef48c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DeathRunner.Inputs.InputHandler, DeathRunner.Inputs
+  secondaryFireInputActionReference: {fileID: -533271173522944404, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
+    type: 3}
+  <SecondaryFireInput>k__BackingField: 0
   moveInputActionReference: {fileID: 6740287480885424194, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
   <MoveInput>k__BackingField:
@@ -2628,18 +2629,10 @@ MonoBehaviour:
     y: 0
   dashInputActionReference: {fileID: 7344340980552612455, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
-  <DashInputStartedThisFrame>k__BackingField: 0
-  <DashInputStoppedThisFrame>k__BackingField: 0
   primaryFireInputActionReference: {fileID: -4813116327349068454, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
     type: 3}
   primaryFireInputBufferTimeSeconds: {fileID: 11400000, guid: 15cf10447144def4e8d1d46af048575f,
     type: 2}
-  secondaryFireInputActionReference: {fileID: -533271173522944404, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
-    type: 3}
-  <SecondaryFireInput>k__BackingField: 0
-  slowMoToggleInputActionReference: {fileID: 1147805507886284358, guid: 0a8cf0b3a21d1a540a6dd8f5f97343e7,
-    type: 3}
-  <IsSlowMoToggled>k__BackingField: 0
 --- !u!114 &2410215513429711714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2691,24 +2684,6 @@ MonoBehaviour:
     <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 134c6d3d34951474d8deabf213eb103b,
       type: 2}
     <OnMove>k__BackingField: {fileID: 11400000, guid: e782135d5170b6043a9b9df91021d35e,
-      type: 2}
-  holdTimeForLongDash: 0.15
-  dashShortNTSettings:
-    <MaxSpeed>k__BackingField: {fileID: 11400000, guid: 4a70cafb91c6e8642bbf4eb2290fa3f4,
-      type: 2}
-    <MaxDistance>k__BackingField: {fileID: 11400000, guid: 54567913fabdd024c85cecb34d8059b5,
-      type: 2}
-    <ConsumptionPerDash>k__BackingField: {fileID: 11400000, guid: d45fa665c5dce0245b983fb3134ca96d,
-      type: 2}
-    <DashCooldown>k__BackingField: {fileID: 11400000, guid: 7b5cf7fa2da042542a269d0e204af93b,
-      type: 2}
-    <OrientationLookDirection>k__BackingField: {fileID: 11400000, guid: 134c6d3d34951474d8deabf213eb103b,
-      type: 2}
-    <OnDashBegin>k__BackingField: {fileID: 11400000, guid: 854c117fb9d1a7b4fbecafd893f2e4b7,
-      type: 2}
-    <OnDashEnd>k__BackingField: {fileID: 11400000, guid: b0aafc805cb1fef4b96e1d3347224adb,
-      type: 2}
-    <OnDashInterrupted>k__BackingField: {fileID: 11400000, guid: f323a8bcc330d4d4780541da683e0f5a,
       type: 2}
   dashLongNTSettings:
     <StaminaConsumptionPerSecond>k__BackingField: {fileID: 11400000, guid: bdf2e395dd084264d805e8a21a81ab47,
@@ -2787,6 +2762,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: DeathRunner.Animations.MoveAnimHandler, DeathRunner.Animations
   animationReferences: {fileID: 2410215513753998714}
   onMoveEvent: {fileID: 11400000, guid: e782135d5170b6043a9b9df91021d35e, type: 2}
+  useSlowMo: 0
   smoothTurnInSeconds: 0.2
   deltaRadiansPerSecond: 31.415928
   moveAnimations:
@@ -2843,83 +2819,6 @@ MonoBehaviour:
         - {x: 0.9238796, y: -0.3826834}
         _DefaultParameter: {x: 0, y: 0}
         _Type: 1
---- !u!114 &2410215513753998713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af3ba621104a04a4b9791f0eed0111d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DeathRunner.Animations.DashAnimHandler, DeathRunner.Animations
-  animationReferences: {fileID: 2410215513753998714}
-  onDashEvent: {fileID: 11400000, guid: 854c117fb9d1a7b4fbecafd893f2e4b7, type: 2}
-  dashAnimations:
-    rid: 1921082509976403990
-  references:
-    version: 2
-    RefIds:
-    - rid: 1921082509976403990
-      type: {class: MixerTransition2D, ns: Animancer, asm: Animancer}
-      data:
-        _FadeDuration: 0.25
-        _Events:
-          _NormalizedTimes: []
-          _Callbacks: []
-          _Names: []
-        _Speed: 1
-        _Animations:
-        - {fileID: 1981881108250731258, guid: 56523051df06d50439c85ebf5c9a7b04, type: 3}
-        - {fileID: 7400000, guid: 3636469d5f8a08c40a70845b7b49c2f4, type: 3}
-        - {fileID: 7400000, guid: 7d778fa7f45e3fc418df3adaa891e00c, type: 3}
-        - {fileID: 7400000, guid: dba5748ed04c9d84f80bf52437a0b4e1, type: 3}
-        - {fileID: 7400000, guid: 93d5d31e7bf85864ba2681a044a735ca, type: 3}
-        - {fileID: 7400000, guid: 2a2c4c3256ac379409591528342315e2, type: 3}
-        - {fileID: 7400000, guid: 54164a1918ec2c94fa6875488144ab55, type: 3}
-        - {fileID: 7400000, guid: a08b76a08048bbb42b6035ae3e0b58a6, type: 3}
-        - {fileID: 7400000, guid: 1cb287e1315b2fb49acf4130000c7739, type: 3}
-        _Speeds:
-        - 1
-        - 1.25
-        - 1.25
-        - 1.25
-        - 1.25
-        - 1.25
-        - 1.25
-        - 1.25
-        - 1.25
-        _SynchronizeChildren: 
-        _Thresholds:
-        - {x: 0, y: 0}
-        - {x: 0, y: 1}
-        - {x: 1, y: 1}
-        - {x: 1, y: 0}
-        - {x: 1, y: -1}
-        - {x: 0, y: -1}
-        - {x: -1, y: -1}
-        - {x: -1, y: 0}
-        - {x: -1, y: 1}
-        _DefaultParameter: {x: 0, y: 0}
-        _Type: 1
---- !u!114 &610366623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2410215513429711716}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfff50492f792fc4a8d893f63e44114d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DeathRunner.Animations.IdleAnimHandler, DeathRunner.Animations
-  animationReferences: {fileID: 2410215513753998714}
-  idleClip: {fileID: 2827323647375144621, guid: b30717f1b3b77694fb3d61206fb7ef26,
-    type: 3}
-  onEnterIdle: {fileID: 11400000, guid: 74635907ceb978846a56c6d2a2250c3b, type: 2}
 --- !u!114 &610366622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2934,6 +2833,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: DeathRunner.Animations.MoveAnimHandler, DeathRunner.Animations
   animationReferences: {fileID: 2410215513753998714}
   onMoveEvent: {fileID: 11400000, guid: 571acd43c0d128446b407e87e0a14bf1, type: 2}
+  useSlowMo: 1
   smoothTurnInSeconds: 0.2
   deltaRadiansPerSecond: 31.415928
   moveAnimations:
@@ -2944,14 +2844,13 @@ MonoBehaviour:
     - rid: 1921082543025422363
       type: {class: MixerTransition2D, ns: Animancer, asm: Animancer}
       data:
-        _FadeDuration: 0.25
+        _FadeDuration: 0
         _Events:
           _NormalizedTimes: []
           _Callbacks: []
           _Names: []
         _Speed: 1
         _Animations:
-        - {fileID: 2827323647375144621, guid: b30717f1b3b77694fb3d61206fb7ef26, type: 3}
         - {fileID: -4168155007681022182, guid: 2efd3c7ece6bb7a4c8c2e63114d7444e, type: 3}
         - {fileID: -4168155007681022182, guid: 2efd3c7ece6bb7a4c8c2e63114d7444e, type: 3}
         - {fileID: 6228179528135073033, guid: 5b3d83884ae735846a8b0db10ab86eff, type: 3}
@@ -2971,7 +2870,6 @@ MonoBehaviour:
         _Speeds: []
         _SynchronizeChildren: 
         _Thresholds:
-        - {x: 0, y: 0}
         - {x: 1, y: 0}
         - {x: 0.9238795, y: 0.3826835}
         - {x: 0.7071068, y: 0.7071068}
@@ -3063,17 +2961,7 @@ MonoBehaviour:
     _type: 0
     _notifyCurrentValue: 0
   _response:
-    _persistentListeners:
-    - _persistentArguments: []
-      _target: {fileID: 32549928}
-      _isStatic: 0
-      CallState: 2
-      _staticType:
-        GuidAssignmentFailed: 0
-        GUID: 
-        _typeNameAndAssembly: 
-        _suppressLogs: 0
-      _methodName: PlayFeedbacks
+    _persistentListeners: []
     Expanded: 1
 --- !u!114 &913492968
 MonoBehaviour:
@@ -4020,7 +3908,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8052882447145459213}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.06, y: 1.5600001, z: 112.75}
+  m_LocalPosition: {x: 18.663021, y: 1.5600001, z: 112.62588}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5041,6 +4929,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5680321049951833221}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 2cfd544f408de584a8802004421dbed5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 833790129324654708}
     - targetCorrespondingSourceObject: {fileID: -3504827109450777712, guid: 2cfd544f408de584a8802004421dbed5,
         type: 3}
       insertIndex: -1
@@ -5263,6 +5155,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: DeathRunner.Player.RedirectRootMotionToMotor, DeathRunner.Player
   _Animator: {fileID: 8656414156498201960}
   _Target: {fileID: 2410215513429711726}
+--- !u!114 &833790129324654708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2705043485470322088}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05308d99aa6f154bbb9aaa4570d176b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.SlowMo, Assembly-CSharp
+  enable: {fileID: 11400000, guid: d89a5c7c8b816e342b5085d548372d8f, type: 2}
+  disable: {fileID: 11400000, guid: 3edfa69dce08a034db55411417cb4b00, type: 2}
+  playback: {fileID: 0}
+  _animator: {fileID: 8656414156498201960}
+  _animancerComponent: {fileID: 2843904322907280625}
 --- !u!1 &2975575526873122719 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 10218144667494, guid: 2cfd544f408de584a8802004421dbed5,
