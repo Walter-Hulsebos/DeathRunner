@@ -78,30 +78,66 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 7e46e71331dc1264582875acefc33069,
         type: 2}
+    - target: {fileID: 2126888094277812896, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094277812897, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: _base
       value: 
       objectReference: {fileID: 11400000, guid: c073532d711163b4787eaa965e5d1eeb,
         type: 2}
+    - target: {fileID: 2126888094277812897, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094277812899, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: _base
       value: 
       objectReference: {fileID: 11400000, guid: 0863667d2978547488e07084d160fc7c,
         type: 2}
+    - target: {fileID: 2126888094277812899, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094277812902, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: _base
       value: 
       objectReference: {fileID: 11400000, guid: 4db414ede2446e34ea671ffef3fc62d7,
         type: 2}
+    - target: {fileID: 2126888094277812902, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.EventInstancer<ushort,ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126888094277812903, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.Attributes.HealthComponent, DeathRunner.Attributes
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094277812903, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: health.<Max>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: b997a168476839d4db257d8a3d5adb95,
         type: 2}
+    - target: {fileID: 2126888094277812914, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.ScriptableEventListener<ushort,ushort>,
+        GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 2126888094277812926, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094299513465, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: managedReferences[0].Label
@@ -113,6 +149,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8a18dbde3fc85bd4f9aa272cc69d2229,
         type: 2}
+    - target: {fileID: 5258032030769169030, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.VariableInstancer<ushort>, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
     - target: {fileID: 8279253648825646246, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: m_Name
@@ -191,7 +232,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<ushort,ushort>,
+    GenericScriptableArchitecture
 --- !u!114 &2460587963394489303 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2126888094277812896, guid: a086f553e1f30694685571bc41982275,
@@ -203,7 +245,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6694a34dbdf64e33aa3ca30fba61a580, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
 --- !u!1 &5567622939887453649 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8279253648825646246, guid: a086f553e1f30694685571bc41982275,
@@ -221,7 +263,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2f01e23e75a0e66458a48d08b1d8b8d9, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: DeathRunner.Enemies.EnemyMelee, DeathRunner.Enemies
   navMeshAgent: {fileID: 5567622939887453663}
   currentState: 0
   attackDistance: 2.5

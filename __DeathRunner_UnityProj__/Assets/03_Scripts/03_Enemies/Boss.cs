@@ -138,16 +138,23 @@ namespace DeathRunner
 
                             // Stop the enemy's movement
                             navMeshAgent.SetDestination(transform.position);
-                            
-                             if (Random.Range(0, 2) == 1) 
+
+                            int attackNum;
+                            attackNum = Random.Range(0, 3); 
+                             if (attackNum == 1) 
                              {
                             // Trigger the attack animation
                             animator.SetTrigger("attack");
-                            }
-                             else
+                             }
+                             else if (attackNum == 2)
                              {
                                  animator.SetTrigger("attack2");
                              }
+                             else
+                             {
+                                 animator.SetTrigger("attack3");
+                             }
+                             
                             // Set animator bool to indicate that the enemy is no longer chasing
                             animator.SetBool("isChasing", false);
 

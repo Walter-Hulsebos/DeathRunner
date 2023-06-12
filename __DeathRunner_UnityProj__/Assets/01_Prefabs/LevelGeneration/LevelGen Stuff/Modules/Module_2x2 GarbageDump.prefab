@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4046972433349957339
 Transform:
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 831
+    m_Bits: 9023
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 81bc6c3b4649f2948bea9b049d56a6b6, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 070e5c0ce380a4c45abf8aef04afb8b5, type: 2}
 --- !u!1 &7761608440963386053
 GameObject:
   m_ObjectHideFlags: 0
@@ -2552,6 +2552,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cheap_Chair.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813527395619338196, guid: 955c4794f8fcc3a439805f4f604d22ad,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895972970861217460, guid: 955c4794f8fcc3a439805f4f604d22ad,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.Prop, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 955c4794f8fcc3a439805f4f604d22ad, type: 3}
@@ -8463,9 +8473,22 @@ PrefabInstance:
         type: 3}
       propertyPath: OnHealthDecreased._eventInstancer
       value: 
-      objectReference: {fileID: 5721362492399209407}
+      objectReference: {fileID: 3023042451871616578}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
+--- !u!114 &3023042451871616578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1073600809, guid: e602e2f6340987c499f4bc5545d4ef1d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3023042451981342571}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5086227747144986695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<ushort,ushort>,
+    GenericScriptableArchitecture
 --- !u!1 &5086227747144986695 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8025951268374177580, guid: e602e2f6340987c499f4bc5545d4ef1d,
@@ -10605,6 +10628,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7552267184089518196}
     m_Modifications:
+    - target: {fileID: 5856877250936634215, guid: ff29451d7e4762a41bbe3482bf406f12,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: MoreMountains.Feedbacks.MMFeedbackTimescaleModifier, MoreMountains.Feedbacks
+      objectReference: {fileID: 0}
     - target: {fileID: 7629051473070145482, guid: ff29451d7e4762a41bbe3482bf406f12,
         type: 3}
       propertyPath: m_Name
@@ -10794,7 +10822,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d2cd3f52bfcf10f43add94d31ffa8c00, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Game.ManageEncounter, DeathRunner.Enemies
 --- !u!1001 &4287944492770991025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11391,6 +11419,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bench_A
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 76b8b2b67f03b184c9c4157ab0579c2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76b8b2b67f03b184c9c4157ab0579c2e, type: 3}
@@ -12499,6 +12532,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cheap_Chair.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813527395619338196, guid: 955c4794f8fcc3a439805f4f604d22ad,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895972970861217460, guid: 955c4794f8fcc3a439805f4f604d22ad,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.Prop, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 955c4794f8fcc3a439805f4f604d22ad, type: 3}
@@ -14637,18 +14680,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5721362491906134678}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5721362492399209407 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1073600809, guid: e602e2f6340987c499f4bc5545d4ef1d,
-    type: 3}
-  m_PrefabInstance: {fileID: 5721362491906134678}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2308012312659162554}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &5732017937450534635
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15725,6 +15756,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Cheap_Chair.008
+      objectReference: {fileID: 0}
+    - target: {fileID: 3813527395619338196, guid: 955c4794f8fcc3a439805f4f604d22ad,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6895972970861217460, guid: 955c4794f8fcc3a439805f4f604d22ad,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.Prop, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 955c4794f8fcc3a439805f4f604d22ad, type: 3}
@@ -17725,6 +17766,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7552267184089518196}
     m_Modifications:
+    - target: {fileID: 706637433060341172, guid: 1b65db78f16575c439146b5d0d7b774e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2304089574522633746, guid: 1b65db78f16575c439146b5d0d7b774e,
         type: 3}
       propertyPath: m_Intensity
@@ -17810,10 +17856,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: WasteBinBurning
       objectReference: {fileID: 0}
+    - target: {fileID: 4354582979459127087, guid: 1b65db78f16575c439146b5d0d7b774e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4687616728737496756, guid: 1b65db78f16575c439146b5d0d7b774e,
         type: 3}
       propertyPath: m_Intensity
       value: 1522.2222
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143353157199596039, guid: 1b65db78f16575c439146b5d0d7b774e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012592786869872559, guid: 1b65db78f16575c439146b5d0d7b774e,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.Prop, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9014833114388774041, guid: 1b65db78f16575c439146b5d0d7b774e,
         type: 3}
