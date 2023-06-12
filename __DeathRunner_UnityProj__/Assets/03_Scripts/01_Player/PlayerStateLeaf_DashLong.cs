@@ -18,6 +18,8 @@ using ProjectDawn.Mathematics;
 using F32   = System.Single;
 using F32x3 = Unity.Mathematics.float3;
 
+using I32   = System.Int32;
+
 using U16   = System.UInt16;
 
 using Bool  = System.Boolean;
@@ -32,6 +34,8 @@ namespace DeathRunner.Player
 
         private readonly DashLongSettings _settings;
         private readonly PlayerReferences _references;
+        
+        private F32 _damageAccrued = 0f;
 
         //TODO: Cache all constant settings?
 
@@ -55,6 +59,8 @@ namespace DeathRunner.Player
             Debug.Log("State.DashLong.Enter");
             #endif
             
+            _damageAccrued = 0f;
+            
             _settings.OnLongDashEnter.Invoke();
         }
 
@@ -65,6 +71,8 @@ namespace DeathRunner.Player
             #if UNITY_EDITOR
             Debug.Log("State.DashLong.Exit");
             #endif
+            
+            _damageAccrued = 0f;
             
             _settings.OnLongDashExit.Invoke();
         }
@@ -118,32 +126,52 @@ namespace DeathRunner.Player
             
             _references.Motor.Move(deltaTime: Time.unscaledDeltaTime);
             _settings.OnLongDashMove.Invoke(__targetMoveDirectionRelativeToCamera);
-        }
-
-        protected override void OnUpdate()
-        {
-            base.OnUpdate();
             
-            UpdateLookDirection();
-
-            PlayerHelpers.OrientTowardsDir(references: _references, direction: _settings.OrientationLookDirection.Value, orientationSpeed: _settings.OrientationSpeed);
-            //OrientTowardsLookDirection();
+            _damageAccrued += _settings.HealthConsumptionPerSecond.Value * Time.unscaledDeltaTime;
+            
+            if (_damageAccrued >= 1f)
+            {
+                I32 __healthValue     = _references.Health.health.Value;
+                I32 __damageToInflict = (I32)round(_damageAccrued);
+                    
+                I32 __newHealthValue = __healthValue - __damageToInflict;
+                    
+                if (__newHealthValue < 0)
+                {
+                    __newHealthValue = 0;
+                }
+                
+                _references.Health.health.Value = (U16)__newHealthValue;
+                
+                // subtract the damage that was inflicted.
+                _damageAccrued -= __damageToInflict;
+            }
         }
 
-        private void UpdateLookDirection()
-        {
-            F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references, useCursor: _settings.OrientTowardsCursor.Value);
-
-            _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer); 
-
-            _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
-        }
+        // protected override void OnUpdate()
+        // {
+        //     base.OnUpdate();
+        //     
+        //     UpdateLookDirection();
+        //
+        //     PlayerHelpers.OrientTowardsDir(references: _references, direction: _settings.OrientationLookDirection.Value, orientationSpeed: _settings.OrientationSpeed.Value, Time.unscaledDeltaTime);
+        //     //OrientTowardsLookDirection();
+        // }
+        //
+        // private void UpdateLookDirection()
+        // {
+        //     F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references, useCursor: _settings.OrientTowardsCursor.Value);
+        //
+        //     _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer); 
+        //
+        //     _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
+        // }
     }
     
     [Serializable]
     public struct DashLongSettings
     {
-        [field:SerializeField] public Constant<U16>   StaminaConsumptionPerSecond { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<F32>   HealthConsumptionPerSecond { get; [UsedImplicitly] private set; }
 
         [field:Tooltip(tooltip: "The character's maximum speed. (m/s)")]
         [field:SerializeField] public Constant<F32>   MaxSpeed                    { get; [UsedImplicitly] private set; }

@@ -192,7 +192,10 @@ namespace DeathRunner.EnemyAI
                 animator.SetTrigger("Stun");
                 StopAllCoroutines();
                 navMeshAgent.velocity = Vector3.zero;
-                navMeshAgent.SetDestination(transform.position);
+                if (navMeshAgent.isOnNavMesh)
+                {
+                    navMeshAgent.SetDestination(transform.position);
+                }
                 transform.LookAt(_player.transform.position);
                 hitBox.SetActive(false);
                 ExitAttack();

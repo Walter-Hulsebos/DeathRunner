@@ -35,7 +35,7 @@ namespace Damageable
             {
                 Destroy(gameObject);
             }
-        //TODO make bullet dissapear when it hits anything except an enemy
+            //TODO make bullet dissapear when it hits anything except an enemy
         }
     }
 }

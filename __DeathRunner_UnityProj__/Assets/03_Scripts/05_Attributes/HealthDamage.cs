@@ -28,8 +28,8 @@ namespace DeathRunner.Attributes
                 {
                     //Calculate damage to not go below 0
                     
-                    Int32 __healthValue     = (Int32)__health.health.Value;
-                    Int32 __damageToInflict = (Int32)damageInflicted;
+                    Int32 __healthValue     = __health.health.Value;
+                    Int32 __damageToInflict = damageInflicted;
                     
                     Int32 __newHealthValue = __healthValue - __damageToInflict;
                     

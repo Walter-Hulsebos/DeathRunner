@@ -90,8 +90,8 @@ namespace DeathRunner.Player
         private Boolean DashInputIsHeld     => playerReferences.InputHandler.DashInputIsHeld;
         private Boolean DashInputIsNotHeld  => !DashInputIsHeld;
         
-        private Boolean HasStaminaLeft   => playerReferences.Stamina.stamina.Value > 0;
-        private Boolean HasNoStaminaLeft => !HasStaminaLeft;
+        //private Boolean HasStaminaLeft   => playerReferences.Stamina.stamina.Value > 0;
+        //private Boolean HasNoStaminaLeft => !HasStaminaLeft;
 
         private void Awake()
         {
@@ -148,11 +148,11 @@ namespace DeathRunner.Player
             
             _idleNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld); //Idle -> DashLong
             _dashLongNT.AddTransition(to: _idleNT, conditions: () => DashInputIsNotHeld && HasNoMoveInput); //DashLong -> Idle
-            _dashLongNT.AddTransition(to: _idleNT, conditions: () => HasNoStaminaLeft   && HasNoMoveInput); //DashLong -> Idle
+            //_dashLongNT.AddTransition(to: _idleNT, conditions: () => HasNoStaminaLeft   && HasNoMoveInput); //DashLong -> Idle
             
             _walkNT.AddTransition(to: _dashLongNT, conditions: () => DashInputIsHeld); //Walk -> DashLong
             _dashLongNT.AddTransition(to: _walkNT, conditions: () => DashInputIsNotHeld && HasMoveInput); //DashLong -> Walk
-            _dashLongNT.AddTransition(to: _walkNT, conditions: () => HasNoStaminaLeft   && HasMoveInput); //DashLong -> Walk
+            //_dashLongNT.AddTransition(to: _walkNT, conditions: () => HasNoStaminaLeft   && HasMoveInput); //DashLong -> Walk
             
             //TODO: Add post transitions after attacks when back to walk/idle in which you can still follow up with another attack.
             

@@ -22,7 +22,7 @@ namespace DeathRunner.Player
         [field:SerializeField] public InputHandler     InputHandler { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Transform        LookAt       { get; [UsedImplicitly] private set; }
         [field:SerializeField] public HealthComponent  Health       { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public StaminaComponent Stamina      { get; [UsedImplicitly] private set; }
+        //[field:SerializeField] public StaminaComponent Stamina      { get; [UsedImplicitly] private set; }
 
         public F32x3 WorldPos
         {
@@ -68,7 +68,7 @@ namespace DeathRunner.Player
             
             FindHealthComponent(gameObject: gameObject);
             
-            FindStaminaComponent(gameObject: gameObject);
+            //FindStaminaComponent(gameObject: gameObject);
         }
 
         public void OnValidate(GameObject gameObject)
@@ -93,6 +93,16 @@ namespace DeathRunner.Player
             {
                 FindInputHandler(gameObject: gameObject);
             }
+            
+            if (Health == null)
+            {
+                FindHealthComponent(gameObject: gameObject);
+            }
+            
+            // if (Stamina == null)
+            // {
+            //     FindStaminaComponent(gameObject: gameObject);
+            // }
         }
 
         public void Init(GameObject gameObject)
@@ -105,12 +115,12 @@ namespace DeathRunner.Player
                                $"Health:     {Health.health.Value}", context: gameObject);
             
             
-            Debug.Log(message: "<b><color=red>Before</color></b> Init Stamina, setting to <i>Max</i> \n" +
-                               $"Stamina Max: {Stamina.stamina.Max.Value} \n" +
-                               $"Stamina:     {Stamina.stamina.Value}", context: gameObject);
-            Stamina.stamina.Init(owner: gameObject);
-            Debug.Log(message: "<b><color=green>After</color></b> Init Stamina \n" +
-                               $"Stamina:     {Stamina.stamina.Value}", context: gameObject);
+            // Debug.Log(message: "<b><color=red>Before</color></b> Init Stamina, setting to <i>Max</i> \n" +
+            //                    $"Stamina Max: {Stamina.stamina.Max.Value} \n" +
+            //                    $"Stamina:     {Stamina.stamina.Value}", context: gameObject);
+            // Stamina.stamina.Init(owner: gameObject);
+            // Debug.Log(message: "<b><color=green>After</color></b> Init Stamina \n" +
+            //                    $"Stamina:     {Stamina.stamina.Value}", context: gameObject);
         }
 
         private void FindPlayerCamera()
@@ -161,17 +171,17 @@ namespace DeathRunner.Player
             }
         }
         
-        private void FindStaminaComponent(GameObject gameObject)
-        {
-            //Stamina = gameObject.GetComponent<StaminaComponent>();
-            if (gameObject.TryGetComponent(component: out StaminaComponent __stamina))
-            {
-                Stamina = __stamina;
-            }
-            else
-            {
-                Debug.LogError(message: $"No StaminaComponent found on {gameObject.name}", context: gameObject);
-            }
-        }
+        // private void FindStaminaComponent(GameObject gameObject)
+        // {
+        //     //Stamina = gameObject.GetComponent<StaminaComponent>();
+        //     if (gameObject.TryGetComponent(component: out StaminaComponent __stamina))
+        //     {
+        //         Stamina = __stamina;
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError(message: $"No StaminaComponent found on {gameObject.name}", context: gameObject);
+        //     }
+        // }
     }
 }

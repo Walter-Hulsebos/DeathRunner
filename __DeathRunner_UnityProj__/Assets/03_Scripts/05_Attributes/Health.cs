@@ -2,24 +2,27 @@ using System;
 using Cysharp.Threading.Tasks;
 using GenericScriptableArchitecture;
 using JetBrains.Annotations;
+using Unity.Mathematics;
 
 #if ODIN_INSPECTOR
 using Sirenix.OdinInspector;
 #endif
 
 using UnityEngine;
-using static ProjectDawn.Mathematics.math2;
+using static Unity.Mathematics.math;
+//using static ProjectDawn.Mathematics.math2;
 
-using F32  = System.Single; //max 3.402823E+38
-using U16  = System.UInt16; //max 65,535
+using F32  = System.Single; //min: -3.402823e+38  max: +3.402823e+38
+using I32  = System.Int32;  //min: -2,147,483,648 max: +2,147,483,647
+using U16  = System.UInt16; //min: 0              max: +65,535
 using Bool = System.Boolean;
 
 namespace DeathRunner.Attributes
 {
     [Serializable]
-    public struct Health : IChangeable<U16>, IDamageable
+    public struct Health : IChangeable<F32>, IDamageable
     {
-        [field:SerializeField] public Constant<U16> Max { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<F32> Max { get; [UsedImplicitly] private set; }
         
         #if ODIN_INSPECTOR
         [field:BoxGroup(@group: "IFrames", showLabel: false)]
@@ -58,9 +61,9 @@ namespace DeathRunner.Attributes
         [BoxGroup(@group: "Current", showLabel: false)]
         [LabelText(text: "Current Health")]
         #endif
-        [SerializeField] private Reference<U16> currentHealthBackingField;
+        [SerializeField] private Reference<F32> currentHealthBackingField;
         
-        public U16 Value 
+        public F32 Value 
         {
             get => UseInfinity ? Max.Value : currentHealthBackingField.Value;
             set
@@ -89,11 +92,11 @@ namespace DeathRunner.Attributes
                     Debug.Log(message: $"Attempting Health Change [{currentHealthBackingField.Value}] → [{value}]");
                 }
                 #endif
-                
-                value = clamp(target: value, a: 0, b: Max.Value); //Make sure we don't go over the max 
-                
-                // Exit if the value hasn't changed.
-                if (value == currentHealthBackingField.Value)
+
+                value = clamp(x: value, a: 0f, b: Max.Value); //Make sure we don't go over the max 
+
+                // Exit if the value hasn't changed. (using epsilon to account for floating point errors)
+                if (abs(x: currentHealthBackingField.Value - value) < 0.0001f)
                 {
                     #if UNITY_EDITOR
                     if (_hasOwnerObject)
@@ -109,7 +112,7 @@ namespace DeathRunner.Attributes
                     return;
                 }
 
-                U16 __previous = currentHealthBackingField.Value;
+                F32 __previous = currentHealthBackingField.Value;
                 // Set the new value.
                 currentHealthBackingField.Value = value;
 
@@ -138,7 +141,7 @@ namespace DeathRunner.Attributes
                     OnDecreased?.Invoke(arg0: __previous, arg1: currentHealthBackingField.Value);
                 }
                 
-                if (currentHealthBackingField.Value == 0)
+                if (currentHealthBackingField.Value == 0f)
                 {
                     OnDepleted?.Invoke();
                 }
@@ -147,18 +150,18 @@ namespace DeathRunner.Attributes
         
         //public IMod<U16>[] Modifiers { get; [UsedImplicitly] private set; }
 
-        [field:SerializeField] public EventReference<UInt16, UInt16> OnChanged               { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public EventReference<UInt16, UInt16> OnDecreased             { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public EventReference                 OnDepleted              { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public EventReference<UInt16, UInt16> OnIncreased             { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference<F32, F32> OnChanged               { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference<F32, F32> OnDecreased             { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference           OnDepleted              { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference<F32, F32> OnIncreased             { get; [UsedImplicitly] private set; }
         
-        [field:SerializeField] public EventReference                 OnInvincibilityEnabled  { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public EventReference                 OnInvincibilityDisabled { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference           OnInvincibilityEnabled  { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference           OnInvincibilityDisabled { get; [UsedImplicitly] private set; }
         
-        [field:SerializeField] public EventReference                 OnDecreasedAttempt      { get; [UsedImplicitly] private set; }
-        [field:SerializeField] public EventReference                 OnIncreasedAttempt      { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference           OnDecreasedAttempt      { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public EventReference           OnIncreasedAttempt      { get; [UsedImplicitly] private set; }
 
-        public Bool IsZero => Value == 0;
+        public Bool IsZero => Value == 0f;
 
         #if UNITY_EDITOR
         private Bool _hasOwnerObject;

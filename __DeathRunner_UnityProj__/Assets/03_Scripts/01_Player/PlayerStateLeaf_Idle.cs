@@ -64,7 +64,7 @@ namespace DeathRunner.Player
                 NotGroundedMovement();
             }
             
-            _references.Motor.Move(deltaTime: Commands.DeltaTime);
+            _references.Motor.Move(deltaTime: Time.deltaTime);
         }
         
         /// <summary>
@@ -75,8 +75,8 @@ namespace DeathRunner.Player
             F32x3 __velocity = _references.Motor.velocity;
 
             // Apply friction
-            __velocity -= __velocity * (F32)_settings.GroundFriction * Commands.DeltaTime;
-            //__velocity -= clamp(1.0f - ((F32)_settings.GroundFriction * Commands.DeltaTime), 0.0f, 1.0f);
+            __velocity -= __velocity * (F32)_settings.GroundFriction * Time.deltaTime;
+            //__velocity -= clamp(1.0f - ((F32)_settings.GroundFriction * Time.deltaTime), 0.0f, 1.0f);
 
             // Update character's velocity
             _references.Motor.velocity = __velocity;
@@ -90,11 +90,11 @@ namespace DeathRunner.Player
             F32x3 __velocity = (F32x3)_references.Motor.velocity;
 
             // Apply gravity
-            __velocity += (F32x3)_settings.Gravity * Commands.DeltaTime;
+            __velocity += (F32x3)_settings.Gravity * Time.deltaTime;
 
             // Apply Air friction (Drag)
-            __velocity -= __velocity * (F32)_settings.AirFriction * Commands.DeltaTime;
-            //__velocity -= clamp(1.0f - ((F32)_settings.AirFriction * Commands.DeltaTime), 0.0f, 1.0f);
+            __velocity -= __velocity * (F32)_settings.AirFriction * Time.deltaTime;
+            //__velocity -= clamp(1.0f - ((F32)_settings.AirFriction * Time.deltaTime), 0.0f, 1.0f);
 
             // Update character's velocity
             _references.Motor.velocity = __velocity;
