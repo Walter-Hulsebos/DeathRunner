@@ -63,6 +63,8 @@ namespace DeathRunner.Attributes
         #endif
         [SerializeField] private Reference<F32> currentHealthBackingField;
         
+        private F32 _lastKnownHealth;
+        
         public F32 Value 
         {
             get => UseInfinity ? Max.Value : currentHealthBackingField.Value;
@@ -114,7 +116,7 @@ namespace DeathRunner.Attributes
 
                 F32 __previous = currentHealthBackingField.Value;
                 // Set the new value.
-                currentHealthBackingField.Value = value;
+                _lastKnownHealth = currentHealthBackingField.Value = value;
 
                 #if UNITY_EDITOR
                 if (_hasOwnerObject)
@@ -195,6 +197,20 @@ namespace DeathRunner.Attributes
                 Debug.Log(message: $"InvincibilityFrames ended");
             }
             #endif
+        }
+
+        public void ForceCheckState()
+        {
+            if (!Mathf.Approximately(_lastKnownHealth, currentHealthBackingField.Value))
+            {
+                OnChanged?.Invoke(arg0: _lastKnownHealth, arg1: currentHealthBackingField.Value);
+                _lastKnownHealth = currentHealthBackingField.Value;
+            }
+            
+            if (currentHealthBackingField.Value == 0f)
+            {
+                OnDepleted?.Invoke();
+            }
         }
 
         public void Init()

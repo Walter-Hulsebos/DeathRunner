@@ -76,7 +76,7 @@ namespace DeathRunner.Animations
         
         private void SetFadeDuration(F32 fadeDuration)
         {
-            Debug.Log("Set Fade Duration!!");
+            Debug.Log("Set Fade Duration!! " + fadeDuration);
             _fadeDuration = fadeDuration;
         }
 

@@ -34,8 +34,6 @@ namespace DeathRunner.Player
 
         private readonly DashLongSettings _settings;
         private readonly PlayerReferences _references;
-        
-        private F32 _damageAccrued = 0f;
 
         //TODO: Cache all constant settings?
 
@@ -58,9 +56,7 @@ namespace DeathRunner.Player
             #if UNITY_EDITOR
             Debug.Log("State.DashLong.Enter");
             #endif
-            
-            _damageAccrued = 0f;
-            
+
             _settings.OnLongDashEnter.Invoke();
         }
 
@@ -71,10 +67,18 @@ namespace DeathRunner.Player
             #if UNITY_EDITOR
             Debug.Log("State.DashLong.Exit");
             #endif
-            
-            _damageAccrued = 0f;
-            
+
             _settings.OnLongDashExit.Invoke();
+        }
+        
+        protected override void OnUpdate()
+        {
+            base.OnUpdate();
+
+            F32 __damage = _settings.HealthConsumptionPerSecond.Value * Time.unscaledDeltaTime;
+            Debug.Log($"Dash Damage: {__damage}");
+            _settings.HealthCurrent.Value = max(_settings.HealthCurrent.Value - __damage, 0); //Makes sure it doesn't go below 0
+            _references.Health.health.ForceCheckState();
         }
 
         protected override void OnFixedUpdate()
@@ -127,7 +131,7 @@ namespace DeathRunner.Player
             _references.Motor.Move(deltaTime: Time.unscaledDeltaTime);
             _settings.OnLongDashMove.Invoke(__targetMoveDirectionRelativeToCamera);
             
-            _references.Health.health.Value -= _settings.HealthConsumptionPerSecond.Value * Time.unscaledDeltaTime;
+            //_references.Health.health.Value -= _settings.HealthConsumptionPerSecond.Value * Time.unscaledDeltaTime;
         }
 
         // protected override void OnUpdate()
@@ -153,6 +157,7 @@ namespace DeathRunner.Player
     [Serializable]
     public struct DashLongSettings
     {
+        [field:SerializeField] public Variable<F32>   HealthCurrent              { get; [UsedImplicitly] private set; }
         [field:SerializeField] public Constant<F32>   HealthConsumptionPerSecond { get; [UsedImplicitly] private set; }
 
         [field:Tooltip(tooltip: "The character's maximum speed. (m/s)")]

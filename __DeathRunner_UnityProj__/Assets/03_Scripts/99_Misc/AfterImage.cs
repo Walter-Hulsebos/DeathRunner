@@ -30,9 +30,12 @@ namespace DeathRunner
 
         //private IObjectPool<GameObject> _objectPool;
 
-        private List<GameObject> _spawnedObjects = new();
+        private readonly List<GameObject>   _spawnedObjects = new();
+        private readonly List<MeshRenderer> _spawnedSkinnedMeshes = new();
+        private readonly List<MeshRenderer> _spawnedMeshes = new();
 
         private Vector3 _previousSpawnPoint;
+        private static readonly Int32 color = Shader.PropertyToID(name: "_BaseColor");
 
         #if ODIN_INSPECTOR
         private void Reset()
@@ -102,11 +105,13 @@ namespace DeathRunner
         private void Update()
         {
             if (!_doEffect) return;
+            
+            RefreshAfterImagesGradient();
 
             F32 __distanceSinceLastSpawn = Vector3.Distance(a: _previousSpawnPoint, b: transform.position);
             if (__distanceSinceLastSpawn < distanceToSpawnNewMesh) return;
             
-            Debug.Log(message: "Spawning new mesh");
+            //Debug.Log(message: "Spawning new mesh");
 
             SpawnAfterImage();
 
@@ -134,6 +139,7 @@ namespace DeathRunner
             //MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
             //MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
             MeshRenderer __renderer = __obj.AddComponent<MeshRenderer>();
+            __renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             MeshFilter   __filter   = __obj.AddComponent<MeshFilter>();
             __obj.name = skinnedMeshRenderer.name + " AfterImage";
 
@@ -144,6 +150,7 @@ namespace DeathRunner
             __renderer.material = mat;
 
             _spawnedObjects.Add(__obj);
+            _spawnedSkinnedMeshes.Add(__renderer);
         }
 
         private void CreateCopyOfMesh(MeshFilter meshFilter)
@@ -155,6 +162,7 @@ namespace DeathRunner
             //MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
             //MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
             MeshRenderer __renderer = __obj.AddComponent<MeshRenderer>();
+            __renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             MeshFilter   __filter   = __obj.AddComponent<MeshFilter>();
             __obj.name = meshFilter.name + " AfterImage";
             
@@ -162,6 +170,22 @@ namespace DeathRunner
             __renderer.material = mat;
             
             _spawnedObjects.Add(__obj);
+            _spawnedMeshes.Add(__renderer);
+        }
+
+        private void RefreshAfterImagesGradient()
+        {
+            for (Int32 __index = 0; __index < _spawnedSkinnedMeshes.Count; __index++)
+            {
+                F32 __primantissa = Mathf.Clamp01((F32)__index / _spawnedSkinnedMeshes.Count);
+                _spawnedSkinnedMeshes[__index].material.SetColor(nameID: color, value: colorGradient.Evaluate(time: __primantissa));
+            }
+            
+            for (Int32 __index = 0; __index < _spawnedMeshes.Count; __index++)
+            {
+                F32 __primantissa = Mathf.Clamp01((F32)__index / _spawnedSkinnedMeshes.Count);
+                _spawnedSkinnedMeshes[__index].material.SetColor(nameID: color, value: colorGradient.Evaluate(time: __primantissa));
+            }
         }
 
         // private static GameObject CreatePooledItem()
@@ -198,6 +222,8 @@ namespace DeathRunner
                 Destroy(obj: __spawnedObject);
             }
             _spawnedObjects.Clear();
+            _spawnedMeshes.Clear();
+            _spawnedSkinnedMeshes.Clear();
         }
     }
 }
