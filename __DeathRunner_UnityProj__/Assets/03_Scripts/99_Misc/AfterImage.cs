@@ -28,7 +28,7 @@ namespace DeathRunner
         
         private Boolean _doEffect = false;
 
-        private IObjectPool<GameObject> _objectPool;
+        //private IObjectPool<GameObject> _objectPool;
 
         private List<GameObject> _spawnedObjects = new();
 
@@ -95,7 +95,7 @@ namespace DeathRunner
 
         private void Start()
         {
-            _objectPool = new ObjectPool<GameObject>(createFunc: CreatePooledItem, actionOnGet: null, actionOnRelease: OnReturnedToPool, actionOnDestroy: OnDestroyPoolObject);
+            //_objectPool = new ObjectPool<GameObject>(createFunc: CreatePooledItem, actionOnGet: null, actionOnRelease: OnReturnedToPool, actionOnDestroy: OnDestroyPoolObject);
             _previousSpawnPoint = transform.position;
         }
 
@@ -104,7 +104,6 @@ namespace DeathRunner
             if (!_doEffect) return;
 
             F32 __distanceSinceLastSpawn = Vector3.Distance(a: _previousSpawnPoint, b: transform.position);
-
             if (__distanceSinceLastSpawn < distanceToSpawnNewMesh) return;
             
             Debug.Log(message: "Spawning new mesh");
@@ -129,10 +128,13 @@ namespace DeathRunner
 
         private void CreateCopyOfSkinnedMesh(SkinnedMeshRenderer skinnedMeshRenderer)
         {
-            GameObject __obj = _objectPool.Get();
+            //GameObject __obj = _objectPool.Get();
+            GameObject __obj = new GameObject();
             __obj.transform.SetPositionAndRotation(position: transform.position, rotation: transform.rotation);
-            MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
-            MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
+            //MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
+            //MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
+            MeshRenderer __renderer = __obj.AddComponent<MeshRenderer>();
+            MeshFilter   __filter   = __obj.AddComponent<MeshFilter>();
             __obj.name = skinnedMeshRenderer.name + " AfterImage";
 
             Mesh __mesh = new();
@@ -146,11 +148,14 @@ namespace DeathRunner
 
         private void CreateCopyOfMesh(MeshFilter meshFilter)
         {
-            GameObject __obj = _objectPool.Get();
+            //GameObject __obj = _objectPool.Get();
+            GameObject __obj = new GameObject();
             Transform __meshFilterTransform = meshFilter.transform;
             __obj.transform.SetPositionAndRotation(position: __meshFilterTransform.position, rotation: __meshFilterTransform.rotation);
-            MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
-            MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
+            //MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
+            //MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
+            MeshRenderer __renderer = __obj.AddComponent<MeshRenderer>();
+            MeshFilter   __filter   = __obj.AddComponent<MeshFilter>();
             __obj.name = meshFilter.name + " AfterImage";
             
             __filter.mesh = meshFilter.mesh;
@@ -159,38 +164,38 @@ namespace DeathRunner
             _spawnedObjects.Add(__obj);
         }
 
-        private static GameObject CreatePooledItem()
-        {
-            GameObject __gameObject = new(name: "AfterImage");
-            
-            __gameObject.AddComponent<MeshRenderer>();
-            __gameObject.AddComponent<MeshFilter>();
-            
-            return __gameObject;
-        }
+        // private static GameObject CreatePooledItem()
+        // {
+        //     GameObject __gameObject = new(name: "AfterImage");
+        //     
+        //     __gameObject.AddComponent<MeshRenderer>();
+        //     __gameObject.AddComponent<MeshFilter>();
+        //     
+        //     return __gameObject;
+        // }
 
-        private static void OnReturnedToPool(GameObject item)
-        {
-            item.SetActive(value: false);
-        }
+        // private static void OnReturnedToPool(GameObject item)
+        // {
+        //     item.SetActive(value: false);
+        // }
 
-        private static void OnDestroyPoolObject(GameObject item)
-        {
-            Destroy(obj: item);
-        }
+        // private static void OnDestroyPoolObject(GameObject item)
+        // {
+        //     Destroy(obj: item);
+        // }
 
-        private void OnDestroy()
-        {
-            _objectPool?.Clear();
-            //_listPool?.Clear();
-        }
+        // private void OnDestroy()
+        // {
+        //     _objectPool?.Clear();
+        // }
 
         [Button]
         private void ReleaseAllSpawnedObjects()
         {
             foreach (GameObject __spawnedObject in _spawnedObjects)
             {
-                _objectPool.Release(__spawnedObject);
+                //_objectPool.Release(__spawnedObject);
+                Destroy(obj: __spawnedObject);
             }
             _spawnedObjects.Clear();
         }
