@@ -19,8 +19,8 @@ namespace DeathRunner
         {
             yield return new WaitForSeconds(0.8f);
             hitBox.SetActive(true);
-            // yield return new WaitForSeconds(0.1f);
-            // hitBox.SetActive(false);
+             yield return new WaitForSeconds(2f);
+            Destroy(gameObject);
         }
     }
 }

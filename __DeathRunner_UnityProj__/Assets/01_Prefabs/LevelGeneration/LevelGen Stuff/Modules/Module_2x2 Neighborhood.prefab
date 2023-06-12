@@ -114,7 +114,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4046972433349957339
 Transform:
@@ -699,7 +699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7552267184089518196}
   - component: {fileID: 8930310615973244188}
-  - component: {fileID: 3002532679512841703}
+  - component: {fileID: 8243506059288392510}
   m_Layer: 0
   m_Name: Module_2x2 Neighborhood
   m_TagString: Untagged
@@ -805,7 +805,7 @@ MonoBehaviour:
   affectsNavigation: 1
   userData: -1
   externallyManaged: 0
---- !u!114 &3002532679512841703
+--- !u!114 &8243506059288392510
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -814,7 +814,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7552267184089518203}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Script: {fileID: 11500000, guid: 5eedda3b362ee264397154ab85327062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
@@ -823,7 +823,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 9023
+    m_Bits: 8192
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -833,7 +833,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 717cacbf2bd352c4fb90e551aaa564e5, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 3e9328e5a03eb2e43850d7adbec820dd, type: 2}
 --- !u!1 &7761608440963386053
 GameObject:
   m_ObjectHideFlags: 0

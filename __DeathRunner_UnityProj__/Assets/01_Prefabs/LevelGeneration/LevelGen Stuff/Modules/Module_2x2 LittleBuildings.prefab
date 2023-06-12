@@ -1879,7 +1879,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1327523227255268287}
   - component: {fileID: 93893458173075159}
-  - component: {fileID: 5983144507192045100}
+  - component: {fileID: 314305784775139255}
   m_Layer: 0
   m_Name: Module_2x2 LittleBuildings
   m_TagString: Untagged
@@ -2002,7 +2002,7 @@ MonoBehaviour:
   affectsNavigation: 1
   userData: -1
   externallyManaged: 0
---- !u!114 &5983144507192045100
+--- !u!114 &314305784775139255
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2011,7 +2011,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1327523227255268272}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Script: {fileID: 11500000, guid: 5eedda3b362ee264397154ab85327062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
@@ -2020,7 +2020,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 831
+    m_Bits: 8192
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -2030,7 +2030,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 81bc6c3b4649f2948bea9b049d56a6b6, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 767fee2c518f17340a5b7b4afc18aa8c, type: 2}
 --- !u!1 &1454478666216546602
 GameObject:
   m_ObjectHideFlags: 0
@@ -78147,7 +78147,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &4794924400526812432
 Transform:
