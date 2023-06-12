@@ -1,5 +1,6 @@
 using System;
 using MoreMountains.Feedbacks;
+using Unity.Mathematics;
 using UnityEngine;
 
 namespace DeathRunner.EnemyAI
@@ -11,6 +12,8 @@ namespace DeathRunner.EnemyAI
         [SerializeField] private GameObject swordHitbox;
 
         [SerializeField] private MMF_Player feedbacks;
+
+        [SerializeField] private GameObject aoePrefab;
         //This can also work for combo attacks, call enableattackmove when the character starts slashing, disableattackmove, when he stops slashing, and End Attack
         // when the entire string of attacks is done. these can also be used to handle hitboxes
         
@@ -72,7 +75,11 @@ namespace DeathRunner.EnemyAI
             boss.moveInAttack = false;
             swordHitbox.SetActive(false);
         }
-        
+
+        public void AOEAttack()
+        {
+            Instantiate(aoePrefab, transform.position, quaternion.identity);
+        }
         public void FinishAttack()
         {
             print("EndingAttack");
