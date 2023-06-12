@@ -51,10 +51,10 @@ namespace DeathRunner.Player
         {
             base.OnEnter();
             
+            #if UNITY_EDITOR
             Debug.Log("State.DashLong.Enter");
+            #endif
             
-            Commands.IsSlowMotionEnabled = true;
-
             _settings.OnLongDashEnter.Invoke();
         }
 
@@ -62,9 +62,9 @@ namespace DeathRunner.Player
         {
             base.OnExit();
             
+            #if UNITY_EDITOR
             Debug.Log("State.DashLong.Exit");
-            
-            //Commands.IsSlowMotionEnabled = false;
+            #endif
             
             _settings.OnLongDashExit.Invoke();
         }
@@ -129,23 +129,14 @@ namespace DeathRunner.Player
             PlayerHelpers.OrientTowardsDir(references: _references, direction: _settings.OrientationLookDirection.Value, orientationSpeed: _settings.OrientationSpeed);
             //OrientTowardsLookDirection();
         }
-        
-        protected override void OnLateUpdate()
-        {
-            base.OnLateUpdate();
-            
-            //UpdateLookDirection();
-        }
 
         private void UpdateLookDirection()
         {
             F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references, useCursor: _settings.OrientTowardsCursor.Value);
 
             _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer); 
-            //normalize(__lookPosition - _references.WorldPos);
-            
-            //OrientTowardsPos(lookPosition: __lookPosition);
-            _references.LookAt.DOMove(endValue: (_references.WorldPos + __lookPositionRelativeToPlayer), duration: 0.05f);
+
+            _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
         }
         
         public void OrientTowardsLookDirection()
