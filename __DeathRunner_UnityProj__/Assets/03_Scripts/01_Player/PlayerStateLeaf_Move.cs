@@ -118,10 +118,9 @@ namespace DeathRunner.Player
             if (__targetMoveDirectionRelativeToCamera.ToString() == "float3(NaNf, NaNf, NaNf)") return;
             
             //Debug.Log($"TargetMoveDirectionRelativeToCamera: {__targetMoveDirectionRelativeToCamera}");
-            
-            _references.Motor.Move(deltaTime: Time.unscaledDeltaTime);
-            
+
             _references.Motor.Move(deltaTime: Time.deltaTime);
+            _settings.OnMove.Invoke(__targetMoveDirectionRelativeToCamera);
         }
         
         /// <summary>

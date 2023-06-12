@@ -172,7 +172,9 @@ namespace DeathRunner.Animations
         
         private void OnMoveHandler(F32x3 targetMoveVector)
         {
-            //Debug.Log($"Move vector: {targetMoveVector}");
+            // #if UNITY_EDITOR
+            // Debug.Log($"MoveAnimHandler vector: {targetMoveVector}");
+            // #endif
             
             if (all(x: targetMoveVector == F32x3.zero))
             {
