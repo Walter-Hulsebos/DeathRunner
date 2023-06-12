@@ -3348,7 +3348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be57b5150be2c874f93ca8ea0041da00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DeathRunner.ManageBossEncounter, DeathRunner.Enemies
-  bossHealthbar: {fileID: 0}
+  introTimeline: {fileID: 7418171340593486399}
   doors:
   - {fileID: 2399907539365679513}
   - {fileID: 2399907540468832759}
@@ -3358,6 +3358,7 @@ MonoBehaviour:
   - {fileID: 2399907540261549739}
   - {fileID: 2399907540413532614}
   boss: {fileID: 6782662841264111228}
+  endCam: {fileID: 1970098995705546396}
 --- !u!1 &6782662841264111228
 GameObject:
   m_ObjectHideFlags: 0
@@ -3392,8 +3393,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6782662841264111228}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1728, y: 0.06999999, z: -0.019951}
+  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
+  m_LocalPosition: {x: 0.53392017, y: 0.069999695, z: 0.091126084}
   m_LocalScale: {x: 1.221, y: 1.221, z: 1.221}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3405,7 +3406,7 @@ Transform:
   - {fileID: 5917415462207987308}
   m_Father: {fileID: 7552267184089518196}
   m_RootOrder: 24
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!136 &934569906
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3869,6 +3870,7 @@ GameObject:
   - component: {fileID: 8930310615973244188}
   - component: {fileID: 1918779680}
   - component: {fileID: 7825455961350403199}
+  - component: {fileID: 2019020877}
   m_Layer: 0
   m_Name: Module_Boss
   m_TagString: Untagged
@@ -3989,6 +3991,23 @@ MonoBehaviour:
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 5ca9e9fb8482dee45ac3a25662418643, type: 2}
+--- !u!114 &2019020877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552267184089518203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24dcf6805ba2c44f69a5c394d31a3392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DungeonArchitect.DungeonSceneProviderData, DungeonArchitect.Core
+  NodeId: NODE-SNAPMOD-c05a7735-ddab-453c-97dd-7fb03e31d91b
+  dungeon: {fileID: 0}
+  affectsNavigation: 1
+  userData: -1
+  externallyManaged: 0
 --- !u!1 &8151746079805163560
 GameObject:
   m_ObjectHideFlags: 0
@@ -5636,6 +5655,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DeathRunner.EnemyAI.AnimationEventsBoss, DeathRunner.Enemies
   swordHitbox: {fileID: 424317104}
+  feedbacks: {fileID: 3762853285016707154}
+  aoePrefab: {fileID: 7230900929259635890, guid: 672d6e9d69c7f6448aa40e7ee66a36aa,
+    type: 3}
 --- !u!4 &3679068849279667124 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8013909246233647550, guid: 41f729c706953224b9cf033f02bfd678,
@@ -7567,7 +7589,7 @@ PrefabInstance:
     - target: {fileID: 1892590702502787196, guid: 25ee5a3deca8b134d85e3f5c1db5739f,
         type: 3}
       propertyPath: connectionState
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1892590702502787197, guid: 25ee5a3deca8b134d85e3f5c1db5739f,
         type: 3}
@@ -7682,7 +7704,7 @@ PrefabInstance:
     - target: {fileID: 3364763677350385564, guid: 25ee5a3deca8b134d85e3f5c1db5739f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5296556198959548008, guid: 25ee5a3deca8b134d85e3f5c1db5739f,
         type: 3}

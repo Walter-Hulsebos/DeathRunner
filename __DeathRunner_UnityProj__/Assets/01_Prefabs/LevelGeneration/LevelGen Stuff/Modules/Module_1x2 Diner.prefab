@@ -741,10 +741,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
@@ -754,6 +774,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 285427350286398575}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1096454402594392382 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 285427350286398575}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5648470123910325207
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096454402594392382}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1588598584462868998
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096454402594392382}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8958844817429919230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1096454402594392382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!1001 &311410154436967652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -816,10 +884,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
@@ -829,6 +917,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 311410154436967652}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &617890570935140789 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 311410154436967652}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2895764584480540165
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617890570935140789}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5576107929931538950
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617890570935140789}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2659142217404630821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617890570935140789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!1001 &317191557353631349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1223,13 +1359,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.003
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
+--- !u!1 &563799921485250894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 797819773873863711}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3612440930637503674
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563799921485250894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3071067441021401218
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563799921485250894}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &931235543021866403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 563799921485250894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &907710233960635380 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
@@ -1380,6 +1584,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eddf760138cf3a42a95c944a6683bdc, type: 3}
+--- !u!1 &133329472470469338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7eddf760138cf3a42a95c944a6683bdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 943723624840066955}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6474477172657192575
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133329472470469338}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.3595185, z: 1}
+  m_Center: {x: 0, y: 0.1797593, z: 0}
+--- !u!54 &3933536992240380855
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133329472470469338}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2547318304197519988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133329472470469338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &761810781040873568 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7eddf760138cf3a42a95c944a6683bdc,
@@ -1448,13 +1700,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.011
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
+--- !u!1 &94220135595714761 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 977234283407218072}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &6737287852269216954
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94220135595714761}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1829525332744207927
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94220135595714761}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &971999253407449329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 94220135595714761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &722102175436599923 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
@@ -1625,21 +1945,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1383849808675386530, guid: 37e94434e8017c64eae34a7e79f5e7c3,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383849808675386530, guid: 37e94434e8017c64eae34a7e79f5e7c3,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383849808675386530, guid: 37e94434e8017c64eae34a7e79f5e7c3,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.2999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 1383849808675386530, guid: 37e94434e8017c64eae34a7e79f5e7c3,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: -3
       objectReference: {fileID: 0}
@@ -1712,6 +2017,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Roof_Large_Tiled_4x.002
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0f0050e9e0214e040930207053918b0c, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0f0050e9e0214e040930207053918b0c, type: 3}
       propertyPath: m_RootOrder
       value: 12
@@ -1764,6 +2073,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1374970190373558746}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1374970190373461882 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 0f0050e9e0214e040930207053918b0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1374970190373558746}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &4456555741254606831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374970190373461882}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 14.000001, y: 2.0376928, z: 4.5}
+  m_Center: {x: 4.999993, y: 0.9811536, z: -1.75}
 --- !u!1001 &1428723818641504309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1901,13 +2229,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.009
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
+--- !u!1 &1558567717601170286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1828545858678779455}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1838329567582969227
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558567717601170286}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2603539322142359125
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558567717601170286}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2155603870727666558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558567717601170286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &2227863137463437780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
@@ -2355,6 +2751,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2033457930447359495}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2033457930447456423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: cd0a94bbce448f84fb72817974b042f6,
+    type: 3}
+  m_PrefabInstance: {fileID: 2033457930447359495}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &3256701680631048607
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2033457930447456423}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4500004, y: 3.4706805, z: 3.3428016}
+  m_Center: {x: 0.0016150463, y: -1.010824, z: -1.433562}
 --- !u!1001 &2034176269199947890
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2417,13 +2832,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.005
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
+--- !u!1 &1223766732258936099 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2034176269199947890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2429552745342355161
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223766732258936099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3721488670571545060
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223766732258936099}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &6021288055011394066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223766732258936099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &1995202350264639385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
@@ -3008,13 +3491,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.008
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
+--- !u!1 &2632085485381842224 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2902114883672229985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &255138256113630782
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632085485381842224}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6676957886069364371
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632085485381842224}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5568925071725142459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2632085485381842224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &3444369025429483402 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
@@ -4700,6 +5251,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DumpsterOpen
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 57d0256a58986554587990c4a535c174, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 57d0256a58986554587990c4a535c174, type: 3}
       propertyPath: m_RootOrder
       value: 95
@@ -4752,6 +5307,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4451711897621015149}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4451711897621048525 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 57d0256a58986554587990c4a535c174,
+    type: 3}
+  m_PrefabInstance: {fileID: 4451711897621015149}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1654614387807056335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4451711897621048525}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.7813938, y: 1.1690866, z: 1.1734433}
+  m_Center: {x: 0.043189526, y: 0.58484226, z: 0.000000923872}
 --- !u!1001 &4546297621360239551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5153,10 +5727,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
@@ -5166,6 +5760,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4896132197303464698}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5707159805943943083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 4896132197303464698}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2659677535492052627
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707159805943943083}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &2429568492296546401
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707159805943943083}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7772709789400562760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5707159805943943083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!1001 &4948053041525732757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5466,6 +6108,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5037576048122658551}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5271596852919190438 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 121f586f3a3f2e040b3b03ef0a96b245,
+    type: 3}
+  m_PrefabInstance: {fileID: 5037576048122658551}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7911278898204028892
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5271596852919190438}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 5, z: 1}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!1001 &5082408966974358622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5686,13 +6347,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.001
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
+--- !u!1 &5089773815726917601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5360386918459767472}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8120233099840536137
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089773815726917601}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8100162304980522523
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089773815726917601}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1926564787556947481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5089773815726917601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &5614109657272196443 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
@@ -5761,13 +6490,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.010
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
+--- !u!1 &4656048908856246124 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5502538933821866557}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2867914306211891220
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656048908856246124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.45974672, y: 1, z: 0.57529736}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3548727273284864221
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656048908856246124}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2643880472922911260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656048908856246124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &5464638197290558934 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
@@ -6274,10 +7071,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
@@ -6287,6 +7104,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6176495400941411941}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6446401516625421108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6176495400941411941}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1062410217794796918
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446401516625421108}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &8134320711785256846
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446401516625421108}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &2867179454301229884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6446401516625421108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!1001 &6294014699411078529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6349,10 +7214,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3072471904292981674, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
         type: 3}
       propertyPath: m_Name
       value: Chair_Cafe_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5065071232143599181, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7298105935953931008, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c, type: 3}
@@ -6362,6 +7247,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6294014699411078529}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6600514348772671696 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: de0ee5ef0a0e0fd4da4b807b4ef3f48c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6294014699411078529}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2862122465227569908
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600514348772671696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1464749758586099908
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600514348772671696}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &8061576634286676550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6600514348772671696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!1001 &6367436647457593496
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6664,13 +7597,81 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -5207451174677807583, guid: ad2c63db7211667409a84eacfbf21cce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: ad2c63db7211667409a84eacfbf21cce,
         type: 3}
       propertyPath: m_Name
       value: Bucket.001
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ad2c63db7211667409a84eacfbf21cce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2822434764122791241, guid: ad2c63db7211667409a84eacfbf21cce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5806206528531940040, guid: ad2c63db7211667409a84eacfbf21cce,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad2c63db7211667409a84eacfbf21cce, type: 3}
+--- !u!1 &6314274216058944717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ad2c63db7211667409a84eacfbf21cce,
+    type: 3}
+  m_PrefabInstance: {fileID: 6584727886250688924}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &8518089677732942487
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314274216058944717}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6985427573854012437
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314274216058944717}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &5614358580864666008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6314274216058944717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &6695478657746052727 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ad2c63db7211667409a84eacfbf21cce,
@@ -7282,6 +8283,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dumpster
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0e593d631a19cde4d944354be610667d, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 0e593d631a19cde4d944354be610667d, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 0e593d631a19cde4d944354be610667d, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0e593d631a19cde4d944354be610667d, type: 3}
       propertyPath: m_RootOrder
       value: 96
@@ -7328,6 +8341,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e593d631a19cde4d944354be610667d, type: 3}
+--- !u!1 &7469979283785678475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 0e593d631a19cde4d944354be610667d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7469979283785775147}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &5984731394470781949
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7469979283785678475}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.605808, y: 1.7484877, z: 1.1638867}
+  m_Center: {x: -0.000003784895, y: 0.86843777, z: -0.0009779929}
 --- !u!4 &7469979283785900715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 0e593d631a19cde4d944354be610667d,
@@ -7666,6 +8698,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eddf760138cf3a42a95c944a6683bdc, type: 3}
+--- !u!1 &7358477092035060918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7eddf760138cf3a42a95c944a6683bdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 7701127034316282343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7664552404884459149
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358477092035060918}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.2736297, z: 1}
+  m_Center: {x: 0, y: 0.13681483, z: 0}
+--- !u!54 &2129946409336343355
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358477092035060918}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1323424297782188287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7358477092035060918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &7878307856941399564 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7eddf760138cf3a42a95c944a6683bdc,
@@ -7741,6 +8821,54 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7eddf760138cf3a42a95c944a6683bdc, type: 3}
+--- !u!1 &7361603603018597812 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 7eddf760138cf3a42a95c944a6683bdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 7703621192970008805}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1829619781472326506
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361603603018597812}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.3142887, z: 1}
+  m_Center: {x: 0, y: 0.15714437, z: 0}
+--- !u!54 &8973494989917738835
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361603603018597812}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &1608746707405827796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361603603018597812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c53eaceb30134342901438a059885f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
+  shootStrength: 1
 --- !u!4 &7881998455522500366 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7eddf760138cf3a42a95c944a6683bdc,

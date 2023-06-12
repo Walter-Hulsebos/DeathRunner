@@ -109,6 +109,15 @@ namespace DeathRunner
             // Called once per frame
             private async UniTask Update()
             {
+                if (navMeshAgent.velocity != Vector3.zero)
+                {
+                    animator.SetFloat("Speed", 1);
+                    animator.SetTrigger("isChasing");
+                }
+                else
+                {
+                    animator.SetFloat("Speed", 0);
+                }
                 // Switch between different states based on the current state of the enemy
                 switch (currentState)
                 {
@@ -129,15 +138,20 @@ namespace DeathRunner
 
                             // Stop the enemy's movement
                             navMeshAgent.SetDestination(transform.position);
-                            
-                             if (Random.Range(0, 2) == 1) 
+
+                            int attackNum = Random.Range(0, 3); 
+                             if ( attackNum == 1) 
                              {
                             // Trigger the attack animation
                             animator.SetTrigger("attack");
                             }
-                             else
+                             else if (attackNum == 2)
                              {
                                  animator.SetTrigger("attack2");
+                             }
+                             else
+                             {
+                                 animator.SetTrigger("attack3");
                              }
                             // Set animator bool to indicate that the enemy is no longer chasing
                             animator.SetBool("isChasing", false);
