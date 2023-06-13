@@ -168,6 +168,9 @@ namespace DeathRunner.Enemies
 
             //StopAllCoroutines();
             animator.SetTrigger(death);
+            
+            // Destroy this class
+            
         }
         
         protected async UniTask ExitAttack()
