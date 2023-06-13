@@ -1,3 +1,4 @@
+ using System;
  using Animancer;
  using UnityEngine;
 
@@ -30,12 +31,19 @@ namespace DeathRunner.Animations
         private void OnEnable()
         {
             onEnterIdle += OnEnterIdleHandler;
+            
         }
         private void OnDisable()
         {
             onEnterIdle -= OnEnterIdleHandler;
         }
-        
+
+        private void Start()
+        {
+            //To ensure starting in idle.
+            OnEnterIdleHandler();
+        }
+
         private void OnEnterIdleHandler()
         {
             //TODO: Look into normalized fade mode?

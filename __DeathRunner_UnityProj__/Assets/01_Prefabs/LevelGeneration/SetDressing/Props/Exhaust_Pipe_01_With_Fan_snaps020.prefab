@@ -333,7 +333,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4561034311122162502}
   - component: {fileID: 4561034311141214182}
-  - component: {fileID: 1663617616559697522}
   m_Layer: 0
   m_Name: Exhaust_Pipe_01_With_Fan_snaps020
   m_TagString: Untagged
@@ -392,19 +391,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4561034311124062638}
   m_Enabled: 1
---- !u!114 &1663617616559697522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4561034311121866598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 0}
 --- !u!1 &4561034311121866606
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,6 +514,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 00e0891b2eb374046aee2f5f889940dc, type: 2}
+    - target: {fileID: 651165232703510495, guid: 5165b709a0564a6439c0ca6c7c14ae4a,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3254072483617877151, guid: 5165b709a0564a6439c0ca6c7c14ae4a,
         type: 3}
       propertyPath: m_RootOrder
@@ -588,7 +579,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ventilation_Pipe_01a_Fan_snaps020
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5165b709a0564a6439c0ca6c7c14ae4a, type: 3}
 --- !u!4 &286367258007607755 stripped
 Transform:

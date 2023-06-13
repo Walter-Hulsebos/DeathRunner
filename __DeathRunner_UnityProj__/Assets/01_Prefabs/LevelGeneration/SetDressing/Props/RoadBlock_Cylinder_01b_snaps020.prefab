@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1962943320208584416}
   - component: {fileID: 1962943320195660352}
-  - component: {fileID: 8752569541112730327}
   m_Layer: 0
   m_Name: RoadBlock_Cylinder_01b_snaps020
   m_TagString: Untagged
@@ -64,19 +63,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 1962943320211008516}
   m_Enabled: 1
---- !u!114 &8752569541112730327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962943320208814784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 5d7583cbdef4d5448ac39dedaa4756af, type: 2}
 --- !u!1 &1962943320208814786
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,7 +457,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: RoadBlock_Cylinder_01a_snaps020
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 1411b258468b50c4b9b73f9c591bb673, type: 3}
 --- !u!4 &5564948246087132011 stripped
 Transform:

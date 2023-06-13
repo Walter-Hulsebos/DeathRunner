@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6639780014326736000}
   - component: {fileID: 6639780014341500962}
-  - component: {fileID: 8989221534240673211}
   m_Layer: 0
   m_Name: Ventilation_Machine_02a_snaps020
   m_TagString: Untagged
@@ -71,19 +70,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6639780014324442730}
   m_Enabled: 1
---- !u!114 &8989221534240673211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6639780014326380704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: e91a0530adddae14696371dd7995d36c, type: 2}
 --- !u!1 &6639780014326380708
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,7 +589,13 @@ PrefabInstance:
       propertyPath: m_LODs.Array.data[2].screenRelativeHeight
       value: 0.30019537
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6571880632787837761, guid: 5ec6ace5a408d2c41bfd486f2c85cc3d,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5ec6ace5a408d2c41bfd486f2c85cc3d, type: 3}
 --- !u!4 &2224747500322760940 stripped
 Transform:
@@ -693,7 +685,13 @@ PrefabInstance:
       propertyPath: m_LODs.Array.data[2].screenRelativeHeight
       value: 0.29730624
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6571880632787837761, guid: 5ec6ace5a408d2c41bfd486f2c85cc3d,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5ec6ace5a408d2c41bfd486f2c85cc3d, type: 3}
 --- !u!4 &2224747498620062658 stripped
 Transform:
@@ -768,7 +766,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6571880632787837761, guid: 5ec6ace5a408d2c41bfd486f2c85cc3d,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 5ec6ace5a408d2c41bfd486f2c85cc3d, type: 3}
 --- !u!4 &2224747498773204152 stripped
 Transform:
