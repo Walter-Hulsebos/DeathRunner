@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 4980646386119544134}
   - component: {fileID: 7132074764716079500}
   - component: {fileID: 7935526431006087911}
-  - component: {fileID: 7119975208213650973}
   m_Layer: 0
   m_Name: Lamp_Square
   m_TagString: Untagged
@@ -104,16 +103,3 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7132074764716079500}
   m_Enabled: 1
---- !u!114 &7119975208213650973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8789553428645959769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: ce0302ee1bf740c48a07bb0fce2ddf19, type: 2}

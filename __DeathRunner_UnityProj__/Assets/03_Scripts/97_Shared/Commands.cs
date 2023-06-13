@@ -1,11 +1,6 @@
-using System;
-using DG.Tweening;
-using QFSW.QC;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
-using static Unity.Mathematics.math;
 
 using F32   = System.Single;
 using F32x2 = Unity.Mathematics.float2;

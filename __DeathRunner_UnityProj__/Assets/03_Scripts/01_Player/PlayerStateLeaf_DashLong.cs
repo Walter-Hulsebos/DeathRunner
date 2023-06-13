@@ -1,7 +1,5 @@
 //System libraries first
 using System;
-using DeathRunner.Shared;
-using DG.Tweening;
 
 //Unity-specific libraries next
 using UnityEngine;

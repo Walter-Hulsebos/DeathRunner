@@ -110,7 +110,6 @@ GameObject:
   - component: {fileID: 9192140799676726974}
   - component: {fileID: 9192140799694203420}
   - component: {fileID: 7813782189417623607}
-  - component: {fileID: 860719829228587564}
   m_Layer: 14
   m_Name: Ventilation_Machine_01a_snaps020
   m_TagString: Untagged
@@ -167,19 +166,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.8829765, y: 3.171614, z: 1.9708433}
   m_Center: {x: 2.0996757, y: 1.0858072, z: 1.371501}
---- !u!114 &860719829228587564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9192140799676818078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 350c5e9fed22bb34c860b61c6c512a6c, type: 2}
 --- !u!1001 &4058461983458547638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -445,6 +431,7 @@ PrefabInstance:
     - {fileID: 9043118400436052643, guid: 734b8822024c39e4292e9640d20bfef4, type: 3}
     - {fileID: 3793770169648672765, guid: 734b8822024c39e4292e9640d20bfef4, type: 3}
     - {fileID: 7759129253084417791, guid: 734b8822024c39e4292e9640d20bfef4, type: 3}
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 734b8822024c39e4292e9640d20bfef4, type: 3}
 --- !u!4 &7239449632707162934 stripped
 Transform:

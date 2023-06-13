@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 5515085634770997923}
   - component: {fileID: 569869323552983938}
   - component: {fileID: 2288148209044080249}
-  - component: {fileID: 3285135541593441199}
   m_Layer: 0
   m_Name: Lamp_StreetWall
   m_TagString: Untagged
@@ -169,16 +168,3 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.06, y: 0.14, z: 0.2}
   m_Center: {x: 0, y: 0.14, z: 0.21}
---- !u!114 &3285135541593441199
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 2413f3ef99242ae41a7c55a313406271, type: 2}

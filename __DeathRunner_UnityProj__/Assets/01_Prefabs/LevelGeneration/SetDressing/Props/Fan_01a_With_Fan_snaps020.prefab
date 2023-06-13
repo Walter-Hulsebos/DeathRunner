@@ -406,7 +406,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6168575874622417470}
   - component: {fileID: 6168575874637971102}
-  - component: {fileID: 6931614716645974286}
   m_Layer: 0
   m_Name: Fan_01a_With_Fan_snaps020
   m_TagString: Untagged
@@ -465,19 +464,6 @@ LODGroup:
     renderers:
     - renderer: {fileID: 6168575874620516562}
   m_Enabled: 1
---- !u!114 &6931614716645974286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6168575874622715422}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 0090bca5dcfbf2b4baadf1e56a9b742f, type: 2}
 --- !u!1001 &841759628120194787
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -485,6 +471,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6168575874622417470}
     m_Modifications:
+    - target: {fileID: 2860658121884207989, guid: 2f940992566979d40aa47293127be427,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5968531618666350371, guid: 2f940992566979d40aa47293127be427,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -565,7 +556,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 2f940992566979d40aa47293127be427, type: 3}
 --- !u!4 &6447742955558168040 stripped
 Transform:

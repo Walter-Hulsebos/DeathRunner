@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3380412}
   - component: {fileID: 2310196}
   - component: {fileID: 7830655813071488151}
-  - component: {fileID: 193179119336272145}
   m_Layer: 0
   m_Name: Lamp_HangingBulbs
   m_TagString: Untagged
@@ -101,19 +100,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 11.292749, y: 0.1, z: 0.050252683}
   m_Center: {x: 0.013253927, y: 0.1802391, z: -0.015317383}
---- !u!114 &193179119336272145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 161688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 938b9afae88eb834a8adf9c5b4cc338b, type: 2}
 --- !u!1001 &372343131569108669
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -169,7 +155,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 892d4a4b5038bb746bd9315ec4136f1d, type: 3}
 --- !u!4 &372343131569251907 stripped
 Transform:
@@ -232,7 +219,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 892d4a4b5038bb746bd9315ec4136f1d, type: 3}
 --- !u!4 &3089719530490518804 stripped
 Transform:
@@ -295,7 +283,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 892d4a4b5038bb746bd9315ec4136f1d, type: 3}
 --- !u!4 &7038861059345800786 stripped
 Transform:
