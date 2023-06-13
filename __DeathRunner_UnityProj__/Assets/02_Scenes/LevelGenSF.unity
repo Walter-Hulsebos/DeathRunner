@@ -2026,6 +2026,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 209246024, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 913492907, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
       propertyPath: sideWeapon
       value: 
@@ -2058,12 +2062,12 @@ PrefabInstance:
     - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 162.91829
+      value: 162.9183
       objectReference: {fileID: 0}
     - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.050667
+      value: 13.050654
       objectReference: {fileID: 0}
     - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
@@ -2093,7 +2097,7 @@ PrefabInstance:
     - target: {fileID: 2410215513735583749, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -175.16
+      value: -14.160004
       objectReference: {fileID: 0}
     - target: {fileID: 2410215513735583749, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
@@ -2103,7 +2107,7 @@ PrefabInstance:
     - target: {fileID: 2410215513735583749, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -199.26
+      value: -224.51
       objectReference: {fileID: 0}
     - target: {fileID: 2410215513735583749, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
@@ -2143,12 +2147,12 @@ PrefabInstance:
     - target: {fileID: 3644243820756923822, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 162.91829
+      value: 162.9183
       objectReference: {fileID: 0}
     - target: {fileID: 3644243820756923822, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.050667
+      value: 13.050654
       objectReference: {fileID: 0}
     - target: {fileID: 3644243820756923822, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
@@ -9878,6 +9882,69 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b93209d998103224abd706352fe4471d, type: 3}
+--- !u!1 &1356379308 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2410215513429711716, guid: c2c357725b71c7f47b1565c9b0d5f376,
+    type: 3}
+  m_PrefabInstance: {fileID: 731569360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1356379326
+MonoBehaviour:
+  m_ObjectHideFlags: 2
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356379308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b178bdd9bde14366a896b14319f56a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stackTrace:
+    Enabled: 0
+  _event: {fileID: 0}
+  _eventHolder:
+    _event: {fileID: 11400000, guid: 6f837921cb312b64eb1379e8a8ee6b9a, type: 2}
+    _eventInstancer: {fileID: 0}
+    _type: 0
+  _response:
+    _persistentListeners:
+    - _persistentArguments: []
+      _target: {fileID: 1356379328}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: OnDeath
+    Expanded: 1
+--- !u!114 &1356379327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356379308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _component: {fileID: 1356379326}
+--- !u!114 &1356379328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356379308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdde7d66f3ccb24fa38c980f59c5432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Death, Assembly-CSharp
 --- !u!1001 &1394657876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11967,6 +12034,10 @@ PrefabInstance:
       objectReference: {fileID: 1273188676277678975, guid: 8f2e01be22f73164c870b48c47a51a12,
         type: 3}
     - target: {fileID: 934569902, guid: cbb434dcd22067a4da15dcf3b9000da6, type: 3}
+      propertyPath: attackCooldown
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 934569902, guid: cbb434dcd22067a4da15dcf3b9000da6, type: 3}
       propertyPath: OnHealthDepleted._event
       value: 
       objectReference: {fileID: 11400000, guid: c0f025839d9f02a478912652d5281b54,
@@ -12139,6 +12210,66 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: c0f025839d9f02a478912652d5281b54,
         type: 2}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2]._target
+      value: 
+      objectReference: {fileID: 2019020890}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2]._methodName
+      value: OnDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2]._persistentArguments.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2]._persistentArguments.Array.data[0]._isSerialized
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2]._persistentArguments.Array.data[0]._targetType._suppressLogs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2]._persistentArguments.Array.data[0]._serializationData.DataFormat
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2]._persistentArguments.Array.data[0]._targetType._typeNameAndAssembly
+      value: System.Boolean, mscorlib
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2]._persistentArguments.Array.data[0]._serializationData.SerializationNodes.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2]._persistentArguments.Array.data[0]._serializationData.SerializationNodes.Array.data[0].Data
+      value: true
+      objectReference: {fileID: 0}
+    - target: {fileID: 7737881653191705987, guid: cbb434dcd22067a4da15dcf3b9000da6,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[2]._persistentArguments.Array.data[0]._serializationData.SerializationNodes.Array.data[0].Entry
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8254218279030323153, guid: cbb434dcd22067a4da15dcf3b9000da6,
         type: 3}
       propertyPath: m_IsActive
@@ -12205,6 +12336,18 @@ MonoBehaviour:
         _suppressLogs: 0
       _methodName: PlayFeedbacks
     Expanded: 1
+--- !u!114 &2019020890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019020876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdde7d66f3ccb24fa38c980f59c5432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Death, Assembly-CSharp
 --- !u!4 &2046112145 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2176041664166690696, guid: cc9d37b7bfde2d141955862576f3be21,

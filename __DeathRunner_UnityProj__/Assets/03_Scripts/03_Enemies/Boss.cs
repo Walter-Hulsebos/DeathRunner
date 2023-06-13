@@ -201,7 +201,7 @@ namespace DeathRunner
             public void OnTakeDamage()
             {
               //  healthImage.fillAmount =;
-                if (timesHit <= 2)
+                if (timesHit <= 1)
                 {
                     timesHit++;
                     animator.SetTrigger("Stun");
