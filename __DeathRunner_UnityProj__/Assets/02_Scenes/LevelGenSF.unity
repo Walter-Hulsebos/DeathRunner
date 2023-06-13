@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13495827, g: 0.3528245, b: 0.4005384, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -719,12 +719,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2cd3f52bfcf10f43add94d31ffa8c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Game.ManageEncounter, DeathRunner.Enemies
---- !u!198 &138017929 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 1968074093307576628, guid: c2c357725b71c7f47b1565c9b0d5f376,
-    type: 3}
-  m_PrefabInstance: {fileID: 731569360}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &153968660 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1187890989, guid: c2c357725b71c7f47b1565c9b0d5f376,
@@ -1804,6 +1798,41 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1837513762170247070, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837513762170247070, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.078
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837513762170247070, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.199
+      objectReference: {fileID: 0}
+    - target: {fileID: 1958953052777138272, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968074093307576628, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968181032952501926, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968266528312758154, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1957,7 +1986,7 @@ PrefabInstance:
     - target: {fileID: 6667809275098539126, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: managedReferences[7334483919969452037].Active
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6667809275098539126, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
@@ -2083,7 +2112,8 @@ PrefabInstance:
         type: 3}
       propertyPath: managedReferences[7334483919969452037].ParticlesPrefab
       value: 
-      objectReference: {fileID: 138017929}
+      objectReference: {fileID: 198194972081681810, guid: 3be98662c9e7ef5468cb9c4e11010dc7,
+        type: 3}
     - target: {fileID: 6667809275098539126, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: managedReferences[7334483919969452037].RandomizeOutput
@@ -10923,6 +10953,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905064711366770166, guid: d39cb043e3f11c7428f02fe234f806ad,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 0.1119461
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905064711366770166, guid: d39cb043e3f11c7428f02fe234f806ad,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905064711366770166, guid: d39cb043e3f11c7428f02fe234f806ad,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.27697715
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905064711366770166, guid: d39cb043e3f11c7428f02fe234f806ad,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.022986524
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905064711366770166, guid: d39cb043e3f11c7428f02fe234f806ad,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.7830739e-11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7905064711366770166, guid: d39cb043e3f11c7428f02fe234f806ad,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.12848857
       objectReference: {fileID: 0}
     - target: {fileID: 7960818939021080129, guid: d39cb043e3f11c7428f02fe234f806ad,
         type: 3}
