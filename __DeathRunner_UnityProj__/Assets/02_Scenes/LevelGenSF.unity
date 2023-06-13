@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13495806, g: 0.35282102, b: 0.40054545, a: 1}
+  m_IndirectSpecularColor: {r: 0.13495827, g: 0.3528245, b: 0.4005384, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -157,6 +157,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_EditorClassIdentifier
       value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080047554821834431, guid: da633931ba0cf1b42920c9ea48f91370,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080047554821834431, guid: da633931ba0cf1b42920c9ea48f91370,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 568416775}
+    - target: {fileID: 5080047554821834431, guid: da633931ba0cf1b42920c9ea48f91370,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080047554821834431, guid: da633931ba0cf1b42920c9ea48f91370,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
       objectReference: {fileID: 0}
     - target: {fileID: 6549958296700556909, guid: da633931ba0cf1b42920c9ea48f91370,
         type: 3}
@@ -1324,6 +1344,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8836983493090750574}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &398176287 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4027785287245008786, guid: cfe941d340a0c72448dc89d0e37e9b35,
+    type: 3}
+  m_PrefabInstance: {fileID: 1921409939}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2cd3f52bfcf10f43add94d31ffa8c00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.ManageEncounter, DeathRunner.Enemies
 --- !u!1 &398506541 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8025951268374177580, guid: e602e2f6340987c499f4bc5545d4ef1d,
@@ -1360,6 +1392,26 @@ PrefabInstance:
     - target: {fileID: 1073600823, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
       propertyPath: m_EditorClassIdentifier
       value: GenericScriptableArchitecture.ScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 131748533}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
       objectReference: {fileID: 0}
     - target: {fileID: 8025951268374177574, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
@@ -1723,6 +1775,66 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1143829182}
     m_Modifications:
+    - target: {fileID: 278416009832070581, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 278416009832070581, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 1889212631}
+    - target: {fileID: 278416009832070581, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 278416009832070581, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308012312145134761, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308012312145134761, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 2308012312145134761, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835601754463777017, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835601754463777017, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835601754463777017, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 1889212631}
+    - target: {fileID: 4835601754463777017, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835601754463777017, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
+      objectReference: {fileID: 0}
     - target: {fileID: 5079216235259806769, guid: 30ae5eedead9ef047a3d756dbef63186,
         type: 3}
       propertyPath: m_IsActive
@@ -1732,6 +1844,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699227459066448781, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699227459066448781, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699227459066448781, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 1889212631}
+    - target: {fileID: 5699227459066448781, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699227459066448781, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
       objectReference: {fileID: 0}
     - target: {fileID: 6045903997162806703, guid: 30ae5eedead9ef047a3d756dbef63186,
         type: 3}
@@ -1743,6 +1880,26 @@ PrefabInstance:
       propertyPath: enemies.Array.data[4]
       value: 
       objectReference: {fileID: 1887877479}
+    - target: {fileID: 7300190043905947720, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300190043905947720, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 1889212631}
+    - target: {fileID: 7300190043905947720, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300190043905947720, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
+      objectReference: {fileID: 0}
     - target: {fileID: 7552267184089518196, guid: 30ae5eedead9ef047a3d756dbef63186,
         type: 3}
       propertyPath: m_RootOrder
@@ -1802,6 +1959,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Module_2x2 Neighborhood
+      objectReference: {fileID: 0}
+    - target: {fileID: 7774220280348246636, guid: 30ae5eedead9ef047a3d756dbef63186,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.AnimationEventsRanged, DeathRunner.Enemies
       objectReference: {fileID: 0}
     - target: {fileID: 8243506059288392510, guid: 30ae5eedead9ef047a3d756dbef63186,
         type: 3}
@@ -1864,6 +2026,35 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 913492907, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: sideWeapon
+      value: 
+      objectReference: {fileID: 11400000, guid: 64dd8278c932f284eb754464b8f58502,
+        type: 2}
+    - target: {fileID: 913492907, guid: c2c357725b71c7f47b1565c9b0d5f376, type: 3}
+      propertyPath: cooldownImage
+      value: 
+      objectReference: {fileID: 793598314}
+    - target: {fileID: 1958953052777138272, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968074093307576628, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968181032952501926, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1968266528312758154, guid: c2c357725b71c7f47b1565c9b0d5f376,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2410215513009397354, guid: c2c357725b71c7f47b1565c9b0d5f376,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2024,6 +2215,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DeathRunner.Prop, Assembly-CSharp
   shootStrength: 500
+--- !u!114 &793598314 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2977335224038789678, guid: abf8d3d5d31c3d24eb83d71d265ea1c5,
+    type: 3}
+  m_PrefabInstance: {fileID: 80266197}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &797838304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2951,6 +3154,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1327523225763105771}
     m_Modifications:
+    - target: {fileID: 5080047554821834431, guid: da633931ba0cf1b42920c9ea48f91370,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080047554821834431, guid: da633931ba0cf1b42920c9ea48f91370,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080047554821834431, guid: da633931ba0cf1b42920c9ea48f91370,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 568416775}
+    - target: {fileID: 5080047554821834431, guid: da633931ba0cf1b42920c9ea48f91370,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5080047554821834431, guid: da633931ba0cf1b42920c9ea48f91370,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
+      objectReference: {fileID: 0}
     - target: {fileID: 6549958296700556909, guid: da633931ba0cf1b42920c9ea48f91370,
         type: 3}
       propertyPath: m_EditorClassIdentifier
@@ -9657,6 +9885,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 278416009832070581, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 278416009832070581, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 131748533}
+    - target: {fileID: 278416009832070581, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 278416009832070581, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
+      objectReference: {fileID: 0}
     - target: {fileID: 1374761350380149325, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
       propertyPath: MinDistance
@@ -9677,6 +9925,31 @@ PrefabInstance:
       propertyPath: m_EditorClassIdentifier
       value: GenericScriptableArchitecture.ScriptableEventListener, GenericScriptableArchitecture
       objectReference: {fileID: 0}
+    - target: {fileID: 4835601754463777017, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835601754463777017, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835601754463777017, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 131748533}
+    - target: {fileID: 4835601754463777017, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4835601754463777017, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
+      objectReference: {fileID: 0}
     - target: {fileID: 5086227747144986701, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9686,6 +9959,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699227459066448781, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699227459066448781, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699227459066448781, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 131748533}
+    - target: {fileID: 5699227459066448781, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5699227459066448781, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
       objectReference: {fileID: 0}
     - target: {fileID: 5721362492399209377, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
@@ -9716,6 +10014,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_EditorClassIdentifier
       value: GenericScriptableArchitecture.ScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300190043905947720, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300190043905947720, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 131748533}
+    - target: {fileID: 7300190043905947720, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7300190043905947720, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489397285937543448, guid: fd75b5c71a681574abe1d745c7222644,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: DeathRunner.EnemyAI.AnimationEventsRanged, DeathRunner.Enemies
       objectReference: {fileID: 0}
     - target: {fileID: 7489397286144301017, guid: fd75b5c71a681574abe1d745c7222644,
         type: 3}
@@ -10102,6 +10425,26 @@ PrefabInstance:
     - target: {fileID: 1780393539, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.007908974
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 568416775}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
       objectReference: {fileID: 0}
     - target: {fileID: 6159922866340845836, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
@@ -10733,6 +11076,26 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.007908974
       objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 1889212631}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
+      objectReference: {fileID: 0}
     - target: {fileID: 6159922866340845836, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
       propertyPath: m_EditorClassIdentifier
@@ -11021,6 +11384,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4933157456522711033, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933157456522711033, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 398176287}
+    - target: {fileID: 4933157456522711033, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4933157456522711033, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
+      objectReference: {fileID: 0}
     - target: {fileID: 5403975270864936221, guid: cfe941d340a0c72448dc89d0e37e9b35,
         type: 3}
       propertyPath: m_IsActive
@@ -11040,6 +11423,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_EditorClassIdentifier
       value: OptimiserLightFade, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042758370760137156, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: m_EditorClassIdentifier
+      value: GenericScriptableArchitecture.VoidScriptableEventListener, GenericScriptableArchitecture
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042758370760137156, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042758370760137156, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 398176287}
+    - target: {fileID: 8042758370760137156, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042758370760137156, guid: cfe941d340a0c72448dc89d0e37e9b35,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfe941d340a0c72448dc89d0e37e9b35, type: 3}
@@ -11275,6 +11683,26 @@ PrefabInstance:
     - target: {fileID: 1780393539, guid: e602e2f6340987c499f4bc5545d4ef1d, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: 0.007908974
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._target
+      value: 
+      objectReference: {fileID: 568416775}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3].CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5529150669893496611, guid: e602e2f6340987c499f4bc5545d4ef1d,
+        type: 3}
+      propertyPath: _response._persistentListeners.Array.data[3]._methodName
+      value: EnemyDied
       objectReference: {fileID: 0}
     - target: {fileID: 6159922866340845836, guid: e602e2f6340987c499f4bc5545d4ef1d,
         type: 3}
