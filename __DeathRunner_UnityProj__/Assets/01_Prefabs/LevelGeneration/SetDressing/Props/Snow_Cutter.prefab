@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1790209467001423722}
   - component: {fileID: 4556777848969999264}
   - component: {fileID: 5362023455245777762}
-  - component: {fileID: 512179569190983059}
   m_Layer: 0
   m_Name: Snow_Cutter
   m_TagString: Untagged
@@ -104,16 +103,3 @@ LODGroup:
     renderers:
     - renderer: {fileID: 4556777848969999264}
   m_Enabled: 1
---- !u!114 &512179569190983059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2610980849043509877}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: fdf409bff9f29b2469b5baa98935c6e5, type: 2}

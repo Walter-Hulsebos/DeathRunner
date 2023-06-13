@@ -207,7 +207,6 @@ GameObject:
   - component: {fileID: 5968531618666388235}
   - component: {fileID: 5968531618652147627}
   - component: {fileID: 2860658121884207989}
-  - component: {fileID: 906236861399546917}
   m_Layer: 0
   m_Name: Fan_01a_Fan_snaps020
   m_TagString: Untagged
@@ -276,23 +275,10 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 595bee51772b8dc4998b057313ce6797, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Rotator, Assembly-CSharp
   speed: 80
   ForwardY: 0
   ReverseY: 1
---- !u!114 &906236861399546917
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5968531618666350379}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 9aa38722b804be14da68563918511c5d, type: 2}
 --- !u!1 &5968531618666350381
 GameObject:
   m_ObjectHideFlags: 0

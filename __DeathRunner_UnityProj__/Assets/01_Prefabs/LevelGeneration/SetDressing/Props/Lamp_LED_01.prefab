@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5754439607679586740}
   - component: {fileID: 7511748113900430718}
   - component: {fileID: 9222952837336299909}
-  - component: {fileID: 8357633940184288702}
   m_Layer: 0
   m_Name: Lamp_LED_01
   m_TagString: Untagged
@@ -104,16 +103,3 @@ LODGroup:
     renderers:
     - renderer: {fileID: 7511748113900430718}
   m_Enabled: 1
---- !u!114 &8357633940184288702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8304615088687498411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f13f42112a552354988a63573e49f5d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabPrototype: {fileID: 11400000, guid: 19f63cf5ee827024aa786bdc56e854c7, type: 2}
