@@ -7,8 +7,8 @@ namespace QFSW.QC.Utilities
 {
     public static class GameObjectExtensions
     {
-        private static readonly Dictionary<string, GameObject> GameObjectCache = new Dictionary<string, GameObject>();
-        private static readonly List<GameObject> RootGameObjectBuffer = new List<GameObject>();
+        private static readonly Dictionary<string, GameObject> GameObjectCache = new();
+        private static readonly List<GameObject> RootGameObjectBuffer = new();
 
         public static GameObject Find(string name, bool includeInactive = false)
         {

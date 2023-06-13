@@ -22,7 +22,7 @@ namespace QFSW.QC
             }
         }
 
-        private static readonly Dictionary<string, string> _macroTable = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> _macroTable = new();
 
         public static IReadOnlyDictionary<string, string> GetMacros()
         {
@@ -128,7 +128,7 @@ namespace QFSW.QC
         [CommandPlatform(Platform.AllPlatforms ^ (Platform.WebGLPlayer))]
         public static void DumpMacrosToFile(string filePath)
         {
-            using (StreamWriter dumpFile = new StreamWriter(filePath))
+            using (StreamWriter dumpFile = new(filePath))
             {
                 foreach (KeyValuePair<string, string> macro in _macroTable)
                 {
@@ -149,9 +149,9 @@ namespace QFSW.QC
                 throw new ArgumentException($"file at the specified path '{filePath}' did not exist.");
             }
 
-            using (StreamReader macroFile = new StreamReader(filePath))
+            using (StreamReader macroFile = new(filePath))
             {
-                List<string> messages = new List<string>();
+                List<string> messages = new();
                 while (!macroFile.EndOfStream)
                 {
                     string line = macroFile.ReadLine();

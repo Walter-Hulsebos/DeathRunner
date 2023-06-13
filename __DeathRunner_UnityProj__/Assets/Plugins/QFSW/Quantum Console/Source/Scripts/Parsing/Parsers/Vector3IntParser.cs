@@ -7,7 +7,7 @@ namespace QFSW.QC.Parsers
         public override Vector3Int Parse(string value)
         {
             string[] vectorParts = value.Split(',');
-            Vector3Int parsedVector = new Vector3Int();
+            Vector3Int parsedVector = new();
 
             if (vectorParts.Length < 2 || vectorParts.Length > 3)
             {

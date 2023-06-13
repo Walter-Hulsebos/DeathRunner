@@ -11,7 +11,7 @@ public class DrawTriangle : MonoBehaviour
     public DrawTriangle IntersectionTriangle;
     public Triangle Triangle => new Triangle(PointA.position, PointB.position, PointC.position);
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (PointA == null || PointB == null || PointC == null)
             return;
@@ -37,7 +37,7 @@ public class DrawTriangle : MonoBehaviour
         }
     }
 
-    void DrawTriangleGizmos(Triangle triangle, Color color)
+    private void DrawTriangleGizmos(Triangle triangle, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.color = color;
@@ -45,7 +45,7 @@ public class DrawTriangle : MonoBehaviour
 #endif
     }
 
-    void DrawWireTriangle(Triangle triangle, Color color)
+    private void DrawWireTriangle(Triangle triangle, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.color = color;
@@ -55,7 +55,7 @@ public class DrawTriangle : MonoBehaviour
 #endif
     }
 
-    void DrawDottedLine(Line line, float size, Color color)
+    private void DrawDottedLine(Line line, float size, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.color = color;
@@ -63,7 +63,7 @@ public class DrawTriangle : MonoBehaviour
 #endif
     }
 
-    void DrawPoint(float3 point, float3 normal, float size, Color color)
+    private void DrawPoint(float3 point, float3 normal, float size, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.color = color;

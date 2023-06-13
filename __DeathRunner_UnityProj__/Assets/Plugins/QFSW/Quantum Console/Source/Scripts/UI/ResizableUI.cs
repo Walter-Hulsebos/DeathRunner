@@ -10,7 +10,7 @@ namespace QFSW.QC.UI
         [SerializeField] private Canvas _resizeCanvas = null;
 
         [SerializeField] private bool _lockInScreen = true;
-        [SerializeField] private Vector2 _minSize = new Vector2();
+        [SerializeField] private Vector2 _minSize = new();
 
         public void OnDrag(PointerEventData eventData)
         {
@@ -23,12 +23,12 @@ namespace QFSW.QC.UI
             Vector2 posCurrent = eventData.position;
             Vector2 posLast = posCurrent - delta;
 
-            Vector2 posCurrentBounded = new Vector2(
+            Vector2 posCurrentBounded = new(
                 Mathf.Clamp(posCurrent.x, minBounds.x, maxBounds.x),
                 Mathf.Clamp(posCurrent.y, minBounds.y, maxBounds.y)
             );
 
-            Vector2 posLastBounded = new Vector2(
+            Vector2 posLastBounded = new(
                 Mathf.Clamp(posLast.x, minBounds.x, maxBounds.x),
                 Mathf.Clamp(posLast.y, minBounds.y, maxBounds.y)
             );

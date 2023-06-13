@@ -13,7 +13,7 @@ namespace ProjectDawn.Mathematics
         /// <see cref="int"/> and <see cref="float"/> shares same memory.
         /// </summary>
         [StructLayout(LayoutKind.Explicit)]
-        struct IntFloatUnion
+        private struct IntFloatUnion
         {
             [FieldOffset(0)]
             public float f;
@@ -25,7 +25,7 @@ namespace ProjectDawn.Mathematics
         /// <see cref="int"/> and <see cref="double"/> shares same memory.
         /// </summary>
         [StructLayout(LayoutKind.Explicit)]
-        struct IntDoubleUnion
+        private struct IntDoubleUnion
         {
             //named f because a double is also a floating-point type.
             [FieldOffset(0)]
@@ -65,19 +65,19 @@ namespace ProjectDawn.Mathematics
             return u.f;
         }
 
-        const float RFAC2 = 1f / 2f;
-        const float RFAC3 = 1f / 6f;
-        const float RFAC4 = 1f / 24f;
-        const float RFAC5 = 1f / 120f;
-        const float RFAC6 = 1f / 720f;
-        const float RFAC7 = 1f / 5040f;
-        
-        const double RFAC2_D = 1d / 2d;
-        const double RFAC3_D = 1d / 6d;
-        const double RFAC4_D = 1d / 24d;
-        const double RFAC5_D = 1d / 120d;
-        const double RFAC6_D = 1d / 720d;
-        const double RFAC7_D = 1d / 5040d;
+        private const float RFAC2 = 1f / 2f;
+        private const float RFAC3 = 1f / 6f;
+        private const float RFAC4 = 1f / 24f;
+        private const float RFAC5 = 1f / 120f;
+        private const float RFAC6 = 1f / 720f;
+        private const float RFAC7 = 1f / 5040f;
+
+        private const double RFAC2_D = 1d / 2d;
+        private const double RFAC3_D = 1d / 6d;
+        private const double RFAC4_D = 1d / 24d;
+        private const double RFAC5_D = 1d / 120d;
+        private const double RFAC6_D = 1d / 720d;
+        private const double RFAC7_D = 1d / 5040d;
 
         /// <summary>
         /// Returns cosine of value.

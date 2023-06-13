@@ -15,7 +15,7 @@ namespace ProjectDawn.Collections.Tests
 {
     internal class UnsafeKdTreeBenchmarkTests
     {
-        struct TreeComparer : IKdTreeComparer<float2>
+        private struct TreeComparer : IKdTreeComparer<float2>
         {
             public int Compare(float2 x, float2 y, int depth)
             {
@@ -95,7 +95,7 @@ namespace ProjectDawn.Collections.Tests
             Debug.Log($"KdTreeBenchmarkTests_Float2_FindNearest\n Tree:{treeTime}ms\n TreeBalanced:{treeBalancedTime}ms\n BruteForce:{bruteForceTime}ms");
         }
 
-        static float2 FindNearestBruteForce(NativeList<float2> list, float2 target)
+        private static float2 FindNearestBruteForce(NativeList<float2> list, float2 target)
         {
             float minDistance = float.MaxValue;
             float2 minPoint = float2.zero;

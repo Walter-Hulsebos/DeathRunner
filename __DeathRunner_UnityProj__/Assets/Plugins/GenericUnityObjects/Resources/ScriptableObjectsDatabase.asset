@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 402cb5eb17974d24bb00263b59dc709c, type: 3}
+  m_Name: ScriptableObjectsDatabase
+  m_EditorClassIdentifier: 
+  _keys:
+  - _typeNameAndAssembly: DungeonArchitect.UI.Impl.UnityEditor.UnityEditorUIWindow`1,
+      DungeonArchitect.Editor
+  - _typeNameAndAssembly: GenericScriptableArchitecture.RuntimeSet`1, GenericScriptableArchitecture
+  - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`1, GenericScriptableArchitecture
+  - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`2, GenericScriptableArchitecture
+  - _typeNameAndAssembly: GenericScriptableArchitecture.ScriptableEvent`3, GenericScriptableArchitecture
+  - _typeNameAndAssembly: GenericScriptableArchitecture.Constant`1, GenericScriptableArchitecture
+  - _typeNameAndAssembly: GenericScriptableArchitecture.VariableWithHistory`1, GenericScriptableArchitecture
+  - _typeNameAndAssembly: GenericScriptableArchitecture.Variable`1, GenericScriptableArchitecture
+  - _typeNameAndAssembly: UnityEditor.Rendering.DebugState`1, Unity.RenderPipelines.Core.Editor
+  - _typeNameAndAssembly: UnityEditor.Rendering.HighDefinition.HDBaseEditor`1, Unity.RenderPipelines.HighDefinition.Editor
+  - _typeNameAndAssembly: UnityEditor.Rendering.HighDefinition.HDRenderPipelineMenuItems+DoCreateNewAsset`1,
+      Unity.RenderPipelines.HighDefinition.Editor
+  - _typeNameAndAssembly: Animancer.AnimancerTransitionAsset`1, Animancer
+  - _typeNameAndAssembly: Cinemachine.Editor.CinemachineVirtualCameraBaseEditor`1,
+      com.unity.cinemachine.editor
+  - _typeNameAndAssembly: Cinemachine.Editor.BaseEditor`1, com.unity.cinemachine.editor
+  - _typeNameAndAssembly: UnityEditor.ScriptableSingleton`1, UnityEditor.CoreModule
+  - _typeNameAndAssembly: MoreMountains.Tools.MMReferencedScriptableObject`1, MoreMountains.Tools
+  - _typeNameAndAssembly: GenericScriptableArchitecture.Timeline.ScriptableEventEmitter`1,
+      GenericScriptableArchitecture.Timeline
+  - _typeNameAndAssembly: GenericScriptableArchitecture.Timeline.ScriptableEventEmitter`2,
+      GenericScriptableArchitecture.Timeline
+  - _typeNameAndAssembly: GenericScriptableArchitecture.Timeline.ScriptableEventEmitter`3,
+      GenericScriptableArchitecture.Timeline
+  _values:
+  - _keys: []
+    _values: []
+  - _keys: []
+    _values: []
+  - _keys:
+    - _collection:
+      - _typeNameAndAssembly: System.Single, mscorlib
+    - _collection:
+      - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+    - _collection:
+      - _typeNameAndAssembly: System.UInt16, mscorlib
+    _values:
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_13964160564fe3c4387234c1ab6f413c,
+        z_ScriptableEvent_Single
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_bae9d2d85328fb34ba52b3284978171b,
+        z_ScriptableEvent_float3
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_8ec4e4573bb90644ebdb344086c84153,
+        z_ScriptableEvent_UInt16
+  - _keys:
+    - _collection:
+      - _typeNameAndAssembly: UnityEngine.AnimationClip, UnityEngine.AnimationModule
+      - _typeNameAndAssembly: System.Single, mscorlib
+    - _collection:
+      - _typeNameAndAssembly: System.UInt16, mscorlib
+      - _typeNameAndAssembly: System.UInt16, mscorlib
+    - _collection:
+      - _typeNameAndAssembly: System.Single, mscorlib
+      - _typeNameAndAssembly: System.Single, mscorlib
+    _values:
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_3c4d872781b50b143909c30c79fb51e6,
+        z_ScriptableEvent_AnimationClip_Single
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_baa2c7e613d48db48b8754d601c69a20,
+        z_ScriptableEvent_UInt16_UInt16
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_f2362b7c6c56662478a24a0074d5b2c2,
+        z_ScriptableEvent_Single_Single
+  - _keys: []
+    _values: []
+  - _keys:
+    - _collection:
+      - _typeNameAndAssembly: System.Single, mscorlib
+    - _collection:
+      - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+    - _collection:
+      - _typeNameAndAssembly: System.UInt16, mscorlib
+    _values:
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_b10e1e55d2a8b7e4c844d6ca512b4c1f,
+        z_Constant_Single
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_90556b51d99800842bf9852ce5e81f56,
+        z_Constant_float3
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_a29b7ca54aa4ccf4eae1d3460f8552fb,
+        z_Constant_UInt16
+  - _keys:
+    - _collection:
+      - _typeNameAndAssembly: System.UInt16, mscorlib
+    _values:
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_47a9fa0cc7b648f49a109d921ad516d5,
+        z_VariableWithHistory_UInt16
+  - _keys:
+    - _collection:
+      - _typeNameAndAssembly: System.Single, mscorlib
+    - _collection:
+      - _typeNameAndAssembly: Unity.Mathematics.float3, Unity.Mathematics
+    - _collection:
+      - _typeNameAndAssembly: System.UInt16, mscorlib
+    - _collection:
+      - _typeNameAndAssembly: System.Boolean, mscorlib
+    _values:
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_09ed77e11936d9c49846a38fa4455764,
+        z_Variable_Single
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_c191b2a11df380a40bb94b21034f5981,
+        z_Variable_float3
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_4d914dbade1a18545b2ba59c6cd2a9ca,
+        z_Variable_UInt16
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_6056fe84cd930e64da4a0cd2c8225414,
+        z_Variable_Boolean
+  - _keys: []
+    _values: []
+  - _keys: []
+    _values: []
+  - _keys: []
+    _values: []
+  - _keys: []
+    _values: []
+  - _keys: []
+    _values: []
+  - _keys: []
+    _values: []
+  - _keys: []
+    _values: []
+  - _keys: []
+    _values: []
+  - _keys:
+    - _collection:
+      - _typeNameAndAssembly: System.Single, mscorlib
+    - _collection:
+      - _typeNameAndAssembly: System.UInt16, mscorlib
+    _values:
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_ddb9f259c710d84478e643c1c04f1f53,
+        z_ScriptableEventEmitter_Single
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_21c25912784e16743a7557b410a51912,
+        z_ScriptableEventEmitter_UInt16
+  - _keys:
+    - _collection:
+      - _typeNameAndAssembly: System.Single, mscorlib
+      - _typeNameAndAssembly: System.Single, mscorlib
+    _values:
+    - _typeNameAndAssembly: GenericUnityObjects.ConcreteClasses.ConcreteClass_166c8bf245cc452439238761bccf698a,
+        z_ScriptableEventEmitter_Single_Single
+  - _keys: []
+    _values: []

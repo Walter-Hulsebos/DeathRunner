@@ -6,7 +6,7 @@ namespace QFSW.QC.Grammar
 {
     public class ExpressionBodyGrammar : IQcGrammarConstruct
     {
-        private readonly Regex _expressionBodyRegex = new Regex(@"^{.+}\??$");
+        private readonly Regex _expressionBodyRegex = new(@"^{.+}\??$");
 
         public int Precedence => 0;
 

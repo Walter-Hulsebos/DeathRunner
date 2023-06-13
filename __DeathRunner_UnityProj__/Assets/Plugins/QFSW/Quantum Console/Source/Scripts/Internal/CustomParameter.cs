@@ -19,13 +19,13 @@ namespace QFSW.QC.Internal
 
         public CustomParameter(ParameterInfo internalParameter, string nameOverride) : this(internalParameter, internalParameter.ParameterType, nameOverride) { }
 
-        public override Type ParameterType { get { return _typeOverride; } }
-        public override string Name { get { return _nameOverride; } }
+        public override Type ParameterType => _typeOverride;
+        public override string Name => _nameOverride;
 
-        public override ParameterAttributes Attributes { get { return _internalParameter.Attributes; } }
-        public override object DefaultValue { get { return _internalParameter.DefaultValue; } }
+        public override ParameterAttributes Attributes => _internalParameter.Attributes;
+        public override object DefaultValue => _internalParameter.DefaultValue;
         public override bool Equals(object obj) { return _internalParameter.Equals(obj); }
-        public override IEnumerable<CustomAttributeData> CustomAttributes { get { return _internalParameter.CustomAttributes; } }
+        public override IEnumerable<CustomAttributeData> CustomAttributes => _internalParameter.CustomAttributes;
         public override object[] GetCustomAttributes(bool inherit) { return _internalParameter.GetCustomAttributes(inherit); }
         public override object[] GetCustomAttributes(Type attributeType, bool inherit) { return _internalParameter.GetCustomAttributes(attributeType, inherit); }
         public override IList<CustomAttributeData> GetCustomAttributesData() { return _internalParameter.GetCustomAttributesData(); }
@@ -34,10 +34,10 @@ namespace QFSW.QC.Internal
         public override Type[] GetRequiredCustomModifiers() { return _internalParameter.GetRequiredCustomModifiers(); }
         public override bool HasDefaultValue => _internalParameter.HasDefaultValue;
         public override bool IsDefined(Type attributeType, bool inherit) { return _internalParameter.IsDefined(attributeType, inherit); }
-        public override MemberInfo Member { get { return _internalParameter.Member; } }
-        public override int MetadataToken { get { return _internalParameter.MetadataToken; } }
-        public override int Position { get { return _internalParameter.Position; } }
-        public override object RawDefaultValue { get { return _internalParameter.RawDefaultValue; } }
+        public override MemberInfo Member => _internalParameter.Member;
+        public override int MetadataToken => _internalParameter.MetadataToken;
+        public override int Position => _internalParameter.Position;
+        public override object RawDefaultValue => _internalParameter.RawDefaultValue;
         public override string ToString() { return _internalParameter.ToString(); }
     }
 }

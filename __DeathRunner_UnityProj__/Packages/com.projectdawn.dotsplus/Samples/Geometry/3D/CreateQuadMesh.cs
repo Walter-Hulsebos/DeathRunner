@@ -12,7 +12,7 @@ public class CreateQuadMesh : MonoBehaviour
         public float3 Transform(float3 point) => point;
     }
 
-    void Update()
+    private void Update()
     {
         var filter = GetComponent<MeshFilter>();
         if (filter.sharedMesh != null)

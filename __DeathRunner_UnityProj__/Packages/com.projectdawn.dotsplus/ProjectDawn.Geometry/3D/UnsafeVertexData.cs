@@ -18,18 +18,16 @@ namespace ProjectDawn.Geometry3D.LowLevel.Unsafe
     [DebuggerDisplay("Length = {Length}, Capacity = {Capacity}, IsCreated = {IsCreated}")]
     public unsafe struct UnsafeVertexData : IDisposable
     {
-        [NativeDisableUnsafePtrRestriction]
-        void* m_DataPtr;
-        int m_Length;
-        int m_Capacity;
-        VertexAttributes m_Flags;
-        int m_Size;
+        [NativeDisableUnsafePtrRestriction] private void* m_DataPtr;
+        private int m_Length;
+        private int m_Capacity;
+        private VertexAttributes m_Flags;
+        private int m_Size;
 
-        [NativeDisableUnsafePtrRestriction]
-        VertexAttributeDescriptor* m_AttributePtr;
-        int m_AttributeLength;
+        [NativeDisableUnsafePtrRestriction] private VertexAttributeDescriptor* m_AttributePtr;
+        private int m_AttributeLength;
 
-        AllocatorManager.AllocatorHandle m_Allocator;
+        private AllocatorManager.AllocatorHandle m_Allocator;
 
         /// <summary>
         /// Vertex attribute count.
@@ -234,7 +232,7 @@ namespace ProjectDawn.Geometry3D.LowLevel.Unsafe
             m_Size = 0;
         }
 
-        void CreateHeader(NativeArray<VertexAttributeDescriptor> attributes)
+        private void CreateHeader(NativeArray<VertexAttributeDescriptor> attributes)
         {
             int sizeOf = sizeof(VertexAttributeDescriptor);
             int alignOf = UnsafeUtility.AlignOf<VertexAttributeDescriptor>();
@@ -250,7 +248,7 @@ namespace ProjectDawn.Geometry3D.LowLevel.Unsafe
             }
         }
 
-        void Realloc(AllocatorManager.AllocatorHandle allocator, int newCapacity)
+        private void Realloc(AllocatorManager.AllocatorHandle allocator, int newCapacity)
         {
             void* newPointer = null;
 
@@ -277,7 +275,7 @@ namespace ProjectDawn.Geometry3D.LowLevel.Unsafe
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        static void CheckAttributes(NativeArray<VertexAttributeDescriptor> attributes)
+        private static void CheckAttributes(NativeArray<VertexAttributeDescriptor> attributes)
         {
             if (!attributes.IsCreated || attributes.Length == 0)
                 throw new InvalidOperationException("Attributes array must be created and non zero length!");

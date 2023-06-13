@@ -14,7 +14,7 @@ namespace QFSW.QC.Pooling
 
     public class StringBuilderPool<TPool> where TPool : IPool<StringBuilder>, new()
     {
-        private readonly TPool _pool = new TPool();
+        private readonly TPool _pool = new();
 
         public StringBuilder GetStringBuilder(int minCapacity = 0)
         {

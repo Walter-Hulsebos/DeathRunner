@@ -5,8 +5,8 @@ using UnityEngine;
 namespace Drawing {
 	/// <summary>Stores ALINE project settings</summary>
 	public class DrawingSettings : ScriptableObject {
-		public const string SettingsPathCompatibility = "Assets/Settings/ALINE.asset";
-		public const string SettingsPath = "Assets/Settings/Resources/ALINE.asset";
+		public const string SettingsPathCompatibility = "Assets/99_Settings/ALINE.asset";
+		public const string SettingsPath = "Assets/99_Settings/Resources/ALINE.asset";
 
 		/// <summary>Stores ALINE project settings</summary>
 		[System.Serializable]

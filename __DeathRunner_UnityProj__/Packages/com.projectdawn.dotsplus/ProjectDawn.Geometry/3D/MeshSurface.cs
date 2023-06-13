@@ -160,7 +160,7 @@ namespace ProjectDawn.Geometry3D
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        void CheckSubMesh()
+        private void CheckSubMesh()
         {
             if (SubMeshes.IsEmpty)
                 throw new InvalidOperationException("Can not get bounds from empty mesh surface.");
@@ -168,7 +168,7 @@ namespace ProjectDawn.Geometry3D
     }
 
     [BurstCompile(CompileSynchronously = true)]
-    unsafe struct RecalculateMeshBoundsJob : IJob
+    internal unsafe struct RecalculateMeshBoundsJob : IJob
     {
         [ReadOnly]
         public VertexData VertexData;
@@ -199,7 +199,7 @@ namespace ProjectDawn.Geometry3D
     }
 
     [BurstCompile(CompileSynchronously = true)]
-    unsafe struct ReadMeshJob : IJob
+    internal unsafe struct ReadMeshJob : IJob
     {
         [ReadOnly]
         public Mesh.MeshData MeshData;
@@ -258,7 +258,7 @@ namespace ProjectDawn.Geometry3D
     }
 
     [BurstCompile(CompileSynchronously = true)]
-    unsafe struct WriteMeshJob : IJob
+    internal unsafe struct WriteMeshJob : IJob
     {
         [WriteOnly]
         public Mesh.MeshData MeshData;

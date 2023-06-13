@@ -12,7 +12,7 @@ namespace QFSW.QC
     {
         private readonly IQcSuggestor[] _suggestors;
         private readonly IQcSuggestionFilter[] _suggestionFilters;
-        private readonly List<IQcSuggestion> _suggestionBuffer = new List<IQcSuggestion>();
+        private readonly List<IQcSuggestion> _suggestionBuffer = new();
 
         /// <summary>
         /// Creates a Quantum Suggestor with a custom set of suggestors an suggestion filters.
@@ -43,6 +43,8 @@ namespace QFSW.QC
         /// <returns>The sorted and filtered suggestions for the provided context.</returns>
         public IEnumerable<IQcSuggestion> GetSuggestions(SuggestionContext context, SuggestorOptions options)
         {
+            PreprocessContext(ref context);
+
             // Get and filter suggestions
             IEnumerable<IQcSuggestion> suggestions = 
                 _suggestors
@@ -53,7 +55,7 @@ namespace QFSW.QC
             _suggestionBuffer.AddRange(suggestions);
 
             // Sort suggestions
-            AlphanumComparator comparator = new AlphanumComparator();
+            AlphanumComparator comparator = new();
             IOrderedEnumerable<IQcSuggestion> sortedSuggestions =
                 _suggestionBuffer
                     .OrderBy(x => x.PrimarySignature.Length)
@@ -73,6 +75,17 @@ namespace QFSW.QC
 
             // Return suggestions to user
             return sortedSuggestions;
+        }
+
+        private void PreprocessContext(ref SuggestionContext context)
+        {
+            // Strip the scope on the provided prompt in the context to improve suggestions
+            // We want to allow incomplete scope reduction on the prompt so that you get suggestions
+            // as if you had finished the scope properly
+            TextProcessing.ReduceScopeOptions options = TextProcessing.ReduceScopeOptions.Default;
+            options.ReduceIncompleteScope = true;
+
+            context.Prompt = context.Prompt.ReduceScope(options);
         }
 
         private bool IsSuggestionPermitted(IQcSuggestion suggestion, SuggestionContext context)

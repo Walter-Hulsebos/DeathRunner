@@ -82,15 +82,15 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
     /// </summary>
     public unsafe struct UnsafeVoronoiBuilder : IDisposable
     {
-        UnsafeList<Vertex> m_Vertices;
-        UnsafeList<Edge> m_Edges;
+        private UnsafeList<Vertex> m_Vertices;
+        private UnsafeList<Edge> m_Edges;
 
-        UnsafeLinkedList<HalfEdge> m_HalfEdges;
-        UnsafeLinkedList<HalfEdge>.Handle m_LeftHalfEdge;
-        UnsafeLinkedList<HalfEdge>.Handle m_RightHalfEdge;
+        private UnsafeLinkedList<HalfEdge> m_HalfEdges;
+        private UnsafeLinkedList<HalfEdge>.Handle m_LeftHalfEdge;
+        private UnsafeLinkedList<HalfEdge>.Handle m_RightHalfEdge;
 
-        UnsafeLinkedPriorityQueue<SiteEvent, SiteComparer> m_SiteEvents;
-        UnsafeLinkedPriorityQueue<IntersectionEvent, IntersectionComparer> m_IntersectionEvents;
+        private UnsafeLinkedPriorityQueue<SiteEvent, SiteComparer> m_SiteEvents;
+        private UnsafeLinkedPriorityQueue<IntersectionEvent, IntersectionComparer> m_IntersectionEvents;
 
         /// <summary>
         /// Returns the number of sites.
@@ -214,7 +214,7 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             m_HalfEdges.Dispose();
         }
 
-        Edge* CreateSitesBisectingEdge(SiteEvent s1, SiteEvent s2)
+        private Edge* CreateSitesBisectingEdge(SiteEvent s1, SiteEvent s2)
         {
             int edgeIndex = m_Edges.Length;
             m_Edges.AddNoResize(new Edge());
@@ -247,7 +247,7 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             return edge;
         }
 
-        bool IntersectionHalfEdges(UnsafeLinkedList<HalfEdge>.Handle el1, UnsafeLinkedList<HalfEdge>.Handle el2, out Vertex* vertex)
+        private bool IntersectionHalfEdges(UnsafeLinkedList<HalfEdge>.Handle el1, UnsafeLinkedList<HalfEdge>.Handle el2, out Vertex* vertex)
         {
             vertex = null;
 
@@ -294,7 +294,7 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             return true;
         }
 
-        bool right_of(UnsafeLinkedList<HalfEdge>.Handle el, double2 p)
+        private bool right_of(UnsafeLinkedList<HalfEdge>.Handle el, double2 p)
         {
             Edge* e;
             SiteEvent topsite;
@@ -357,7 +357,7 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             return (ptr->Side == HalfEdgeSide.Left ? above : !above);
         }
 
-        void CreateIntersectionEvent(UnsafeLinkedList<HalfEdge>.Handle he, Vertex* v, double offset )
+        private void CreateIntersectionEvent(UnsafeLinkedList<HalfEdge>.Handle he, Vertex* v, double offset )
         {
             m_IntersectionEvents.Enqueue(new IntersectionEvent
             { 
@@ -367,7 +367,7 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             });
         }
 
-        void RemoveIntersectionEvent(UnsafeLinkedList<HalfEdge>.Handle he)
+        private void RemoveIntersectionEvent(UnsafeLinkedList<HalfEdge>.Handle he)
         {
             ref var data = ref m_IntersectionEvents.m_Data;
             for (var itr = data.Begin; itr != data.End; itr = data.Next(itr))
@@ -380,7 +380,7 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             }
         }
 
-        UnsafeLinkedList<HalfEdge>.Handle CreateHalfEdge(UnsafeLinkedList<HalfEdge>.Handle he, Edge* edge, HalfEdgeSide side)
+        private UnsafeLinkedList<HalfEdge>.Handle CreateHalfEdge(UnsafeLinkedList<HalfEdge>.Handle he, Edge* edge, HalfEdgeSide side)
         {
             return m_HalfEdges.Insert(m_HalfEdges.Next(he), new HalfEdge
             {
@@ -388,21 +388,21 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
                 Side = side,
             });
         }
-        
-        UnsafeLinkedList<HalfEdge>.Handle RightHalfEdge(UnsafeLinkedList<HalfEdge>.Handle he) => m_HalfEdges.Next(he);
-        UnsafeLinkedList<HalfEdge>.Handle LeftHalfEdge(UnsafeLinkedList<HalfEdge>.Handle he) => m_HalfEdges.Previous(he);
-        bool IsDummy(UnsafeLinkedList<HalfEdge>.Handle he) => he == m_LeftHalfEdge || he == m_RightHalfEdge;
 
-        SiteEvent LeftSite(UnsafeLinkedList<HalfEdge>.Handle he) => m_HalfEdges.GetUnsafePtr(he)->LeftSite;
+        private UnsafeLinkedList<HalfEdge>.Handle RightHalfEdge(UnsafeLinkedList<HalfEdge>.Handle he) => m_HalfEdges.Next(he);
+        private UnsafeLinkedList<HalfEdge>.Handle LeftHalfEdge(UnsafeLinkedList<HalfEdge>.Handle he) => m_HalfEdges.Previous(he);
+        private bool IsDummy(UnsafeLinkedList<HalfEdge>.Handle he) => he == m_LeftHalfEdge || he == m_RightHalfEdge;
 
-        SiteEvent RightSite(UnsafeLinkedList<HalfEdge>.Handle he) => m_HalfEdges.GetUnsafePtr(he)->RightSite;
+        private SiteEvent LeftSite(UnsafeLinkedList<HalfEdge>.Handle he) => m_HalfEdges.GetUnsafePtr(he)->LeftSite;
 
-        void RemoveHalfEdge(UnsafeLinkedList<HalfEdge>.Handle he)
+        private SiteEvent RightSite(UnsafeLinkedList<HalfEdge>.Handle he) => m_HalfEdges.GetUnsafePtr(he)->RightSite;
+
+        private void RemoveHalfEdge(UnsafeLinkedList<HalfEdge>.Handle he)
         {
             m_HalfEdges.RemoveAt(he);
         }
-        
-        UnsafeLinkedList<HalfEdge>.Handle LeftHalfEdge(double2 point)
+
+        private UnsafeLinkedList<HalfEdge>.Handle LeftHalfEdge(double2 point)
         {
             UnsafeLinkedList<HalfEdge>.Handle he = m_LeftHalfEdge;
             
@@ -432,7 +432,7 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             return he;
         }
 
-        void AddVertexToEdge<T>(Edge* edge, Vertex* vertex, HalfEdgeSide side, ref T output) where T : IVoronoiOutput
+        private void AddVertexToEdge<T>(Edge* edge, Vertex* vertex, HalfEdgeSide side, ref T output) where T : IVoronoiOutput
         {
             if (side == HalfEdgeSide.Left)
             {
@@ -448,12 +448,12 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             }
         }
 
-        void AddEdge<T>(Edge* edge, ref T output) where T : IVoronoiOutput
+        private void AddEdge<T>(Edge* edge, ref T output) where T : IVoronoiOutput
         {
             output.ProcessEdge(edge->a, edge->b, edge->c, edge->LeftVertexIndex, edge->RightVertexIndex, edge->LeftSite.SiteIndex, edge->RightSite.SiteIndex);
         }
 
-        void FortunesAlgorithm<T>(ref T output) where T : IVoronoiOutput
+        private void FortunesAlgorithm<T>(ref T output) where T : IVoronoiOutput
         {
             // Add dummy half edges to the left and the right side
             m_LeftHalfEdge = m_HalfEdges.Add(new HalfEdge());
@@ -587,7 +587,7 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             output.Build();
         }
 
-        void BruteForceAlgorithm<T>(SiteEvent s0, SiteEvent s1, ref T output) where T : IVoronoiOutput
+        private void BruteForceAlgorithm<T>(SiteEvent s0, SiteEvent s1, ref T output) where T : IVoronoiOutput
         {
             output.ProcessSite(s0.Point, s0.SiteIndex);
             output.ProcessSite(s1.Point, s1.SiteIndex);
@@ -598,7 +598,7 @@ namespace ProjectDawn.Geometry2D.LowLevel.Unsafe
             output.Build();
         }
 
-        void BruteForceAlgorithm<T>(SiteEvent s0, ref T output) where T : IVoronoiOutput
+        private void BruteForceAlgorithm<T>(SiteEvent s0, ref T output) where T : IVoronoiOutput
         {
             output.ProcessSite(s0.Point, s0.SiteIndex);;
             output.Build();

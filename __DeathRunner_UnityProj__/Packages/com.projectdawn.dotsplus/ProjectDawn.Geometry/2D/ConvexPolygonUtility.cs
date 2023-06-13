@@ -169,7 +169,7 @@ namespace ProjectDawn.Geometry2D
                 GetDistanceFromAToB(pointsB, transformB, pointsA, tranformA));
         }
 
-        static float GetDistanceFromAToB<TTranform>(NativeSlice<float2> pointsA, TTranform transformA, NativeSlice<float2> pointsB, TTranform transformB)
+        private static float GetDistanceFromAToB<TTranform>(NativeSlice<float2> pointsA, TTranform transformA, NativeSlice<float2> pointsB, TTranform transformB)
             where TTranform : unmanaged, ITransformFloat2
         {
             // This algorithm based on idea if two polygons projection on any 1D line never intersect.
@@ -196,7 +196,7 @@ namespace ProjectDawn.Geometry2D
             return maxDistance;
         }
 
-        static float2 GetMinMaxXAxisAligned<TTranform>(NativeSlice<float2> points, TTranform tranform, float angle)
+        private static float2 GetMinMaxXAxisAligned<TTranform>(NativeSlice<float2> points, TTranform tranform, float angle)
             where TTranform : unmanaged, ITransformFloat2
         {
             float min = float.MaxValue;
@@ -212,7 +212,7 @@ namespace ProjectDawn.Geometry2D
             return new float2(min, max);
         }
 
-        static float2 GetSortPoint(NativeSlice<float2> points)
+        private static float2 GetSortPoint(NativeSlice<float2> points)
         {
             float2 sum = 0;
             for (int i = 0; i < points.Length; ++i)
@@ -222,7 +222,7 @@ namespace ProjectDawn.Geometry2D
             return sum / points.Length;
         }
 
-        static float Distance(float2 rangeA, float2 rangeB)
+        private static float Distance(float2 rangeA, float2 rangeB)
         {
             float distance = math.abs((rangeA.y + rangeA.x) * 0.5f - (rangeB.y + rangeB.x) * 0.5f);
             float radius = (rangeA.y - rangeA.x) * 0.5f + (rangeB.y - rangeB.x) * 0.5f;
@@ -232,7 +232,7 @@ namespace ProjectDawn.Geometry2D
         /// <summary>
         /// Comparer used to sort convext polygon points into counter clockwise.
         /// </summary>
-        struct PointWithCenterClockwiseSort : IComparer<float2>
+        private struct PointWithCenterClockwiseSort : IComparer<float2>
         {
             public float2 Center;
 

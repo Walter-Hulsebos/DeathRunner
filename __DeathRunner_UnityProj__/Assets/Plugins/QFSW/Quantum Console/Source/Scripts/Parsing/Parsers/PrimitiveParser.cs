@@ -7,7 +7,7 @@ namespace QFSW.QC.Parsers
 {
     public class PrimitiveParser : IQcParser
     {
-        private readonly HashSet<Type> _primitiveTypes = new HashSet<Type>
+        private readonly HashSet<Type> _primitiveTypes = new()
         {
             typeof(int),
             typeof(float),

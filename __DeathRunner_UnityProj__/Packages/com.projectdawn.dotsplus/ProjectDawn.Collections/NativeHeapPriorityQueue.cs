@@ -24,8 +24,7 @@ namespace ProjectDawn.Collections
         where TKey : unmanaged, IComparable<TKey>
         where TValue : unmanaged
     {
-        [NativeDisableUnsafePtrRestriction]
-        UnsafeHeap<TKey, TValue>* m_Data;
+        [NativeDisableUnsafePtrRestriction] private UnsafeHeap<TKey, TValue>* m_Data;
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
         internal AtomicSafetyHandle m_Safety;
@@ -257,7 +256,7 @@ namespace ProjectDawn.Collections
         }
 
         [BurstCompile]
-        unsafe struct DisposeJob : IJob
+        private unsafe struct DisposeJob : IJob
         {
             [NativeDisableUnsafePtrRestriction]
             public UnsafeHeap<TKey, TValue>* Data;

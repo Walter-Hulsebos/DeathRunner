@@ -8,7 +8,7 @@ using ProjectDawn.Geometry2D;
 
 namespace ProjectDawn.Collections.Tests
 {
-    struct AABRectangle : ISurfaceArea<AABRectangle>, IUnion<AABRectangle>
+    internal struct AABRectangle : ISurfaceArea<AABRectangle>, IUnion<AABRectangle>
     {
         public Rectangle Rectangle;
 

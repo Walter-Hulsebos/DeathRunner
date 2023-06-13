@@ -219,7 +219,7 @@ namespace ProjectDawn.Geometry3D
         public static implicit operator float4(Plane3D plane) => plane.NormalAndDistance;
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        void CheckPlaneIsNormalized()
+        private void CheckPlaneIsNormalized()
         {
             float ll = math.lengthsq(Normal.xyz);
             const float lowerBound = 0.999f * 0.999f;

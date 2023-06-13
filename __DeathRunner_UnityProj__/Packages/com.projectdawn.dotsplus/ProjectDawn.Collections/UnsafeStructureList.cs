@@ -14,19 +14,17 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
     [DebuggerDisplay("ArrayCount = {ArrayCount}, Length = {Length}, Capacity = {Capacity}, IsCreated = {IsCreated}")]
     public unsafe struct UnsafeStructureList : IDisposable
     {
-        [NativeDisableUnsafePtrRestriction]
-        void* m_DataPtr;
-        int m_Length;
-        int m_Capacity;
+        [NativeDisableUnsafePtrRestriction] private void* m_DataPtr;
+        private int m_Length;
+        private int m_Capacity;
 
-        [NativeDisableUnsafePtrRestriction]
-        int* m_HeaderPtr;
-        int m_ArrayCount;
-        int* m_ArraySizes;
-        byte** m_ArrayPointers;
-        int m_Size;
+        [NativeDisableUnsafePtrRestriction] private int* m_HeaderPtr;
+        private int m_ArrayCount;
+        private int* m_ArraySizes;
+        private byte** m_ArrayPointers;
+        private int m_Size;
 
-        AllocatorManager.AllocatorHandle m_Allocator;
+        private AllocatorManager.AllocatorHandle m_Allocator;
 
         /// <summary>
         /// The number of arrays.
@@ -214,7 +212,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             m_ArrayPointers = null;
         }
 
-        void CreateHeader(NativeArray<int> sizes)
+        private void CreateHeader(NativeArray<int> sizes)
         {
             m_ArrayCount = sizes.Length;
 
@@ -233,7 +231,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
             }
         }
 
-        void Realloc(AllocatorManager.AllocatorHandle allocator, int newCapacity)
+        private void Realloc(AllocatorManager.AllocatorHandle allocator, int newCapacity)
         {
             void* newPointer = null;
 
@@ -290,7 +288,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        void CheckTypeSizeMatch<T>(int index) where T : unmanaged
+        private void CheckTypeSizeMatch<T>(int index) where T : unmanaged
         {
             int arraySize = m_ArraySizes[index];
             int typeSize = sizeof(T);

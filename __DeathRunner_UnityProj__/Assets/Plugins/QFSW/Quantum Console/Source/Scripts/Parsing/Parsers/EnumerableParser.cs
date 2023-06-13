@@ -5,7 +5,7 @@ namespace QFSW.QC.Parsers
 {
     public class EnumerableParser : MassGenericQcParser
     {
-        protected override HashSet<Type> GenericTypes { get; } = new HashSet<Type>()
+        protected override HashSet<Type> GenericTypes { get; } = new()
         {
             typeof(IEnumerable<>),
             typeof(ICollection<>),

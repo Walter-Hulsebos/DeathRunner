@@ -140,8 +140,8 @@ namespace QFSW.QC.Editor
             SerializedProperty colorProperty = currentTypeFormatter.FindPropertyRelative("Color");
 
             string typeName = _themeInstance.TypeFormatters[index].Type.GetDisplayName();
-            Rect labelRect = new Rect(drawRect.x, drawRect.y, nameWidth, EditorGUIUtility.singleLineHeight);
-            Rect colorRect = new Rect(drawRect.x + nameWidth, drawRect.y, drawRect.width - nameWidth, EditorGUIUtility.singleLineHeight);
+            Rect labelRect = new(drawRect.x, drawRect.y, nameWidth, EditorGUIUtility.singleLineHeight);
+            Rect colorRect = new(drawRect.x + nameWidth, drawRect.y, drawRect.width - nameWidth, EditorGUIUtility.singleLineHeight);
             EditorGUI.LabelField(labelRect, typeName);
             EditorGUI.PropertyField(colorRect, colorProperty, new GUIContent());
         }
@@ -182,7 +182,7 @@ namespace QFSW.QC.Editor
             SerializedProperty rightScoperProperty = currentCollectionFormatter.FindPropertyRelative("RightScoper");
 
             string typeName = _themeInstance.CollectionFormatters[index].Type.GetDisplayName();
-            Rect rect = new Rect(drawRect.x, drawRect.y, nameWidth, EditorGUIUtility.singleLineHeight);
+            Rect rect = new(drawRect.x, drawRect.y, nameWidth, EditorGUIUtility.singleLineHeight);
             EditorGUI.LabelField(rect, typeName);
             rect.x += nameWidth + padding;
 

@@ -13,7 +13,7 @@ namespace ProjectDawn.Collections
 {
     internal sealed class NativeLinkedListTDebugView<T> where T : unmanaged
     {
-        NativeLinkedList<T> Data;
+        private NativeLinkedList<T> Data;
 
         public NativeLinkedListTDebugView(NativeLinkedList<T> data)
         {
@@ -53,8 +53,7 @@ namespace ProjectDawn.Collections
         , IEnumerable<T>
         where T : unmanaged
     {
-        [NativeDisableUnsafePtrRestriction]
-        UnsafeLinkedList<T>* m_Data;
+        [NativeDisableUnsafePtrRestriction] private UnsafeLinkedList<T>* m_Data;
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
         internal AtomicSafetyHandle m_Safety;
@@ -346,12 +345,11 @@ namespace ProjectDawn.Collections
         [StructLayout(LayoutKind.Sequential)]
         public unsafe struct Iterator
         {
-            [NativeDisableUnsafePtrRestriction]
-            UnsafeLinkedList<T>* m_Data;
+            [NativeDisableUnsafePtrRestriction] private UnsafeLinkedList<T>* m_Data;
 
             internal UnsafeLinkedList<T>.Handle m_Handle;
 
-            bool m_ReadOnly;
+            private bool m_ReadOnly;
 
             /// <summary>
             /// Returns true if iterator is read only.
@@ -424,7 +422,7 @@ namespace ProjectDawn.Collections
         }
 
         [BurstCompile]
-        unsafe struct DisposeJob : IJob
+        private unsafe struct DisposeJob : IJob
         {
             [NativeDisableUnsafePtrRestriction]
             public UnsafeLinkedList<T>* Data;

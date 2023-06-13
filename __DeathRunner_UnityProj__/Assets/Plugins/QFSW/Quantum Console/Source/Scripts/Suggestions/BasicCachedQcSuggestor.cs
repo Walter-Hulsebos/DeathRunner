@@ -9,7 +9,7 @@ namespace QFSW.QC
     /// <typeparam name="TItem">The item type that suggestions are produced from.</typeparam>
     public abstract class BasicCachedQcSuggestor<TItem> : IQcSuggestor
     {
-        private readonly Dictionary<TItem, IQcSuggestion> _suggestionCache = new Dictionary<TItem, IQcSuggestion>();
+        private readonly Dictionary<TItem, IQcSuggestion> _suggestionCache = new();
 
         /// <summary>
         /// If suggestions can be produced for the provided context.

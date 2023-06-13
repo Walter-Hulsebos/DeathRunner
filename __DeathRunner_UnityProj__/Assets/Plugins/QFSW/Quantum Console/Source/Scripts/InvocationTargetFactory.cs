@@ -11,7 +11,7 @@ namespace QFSW.QC
 {
     public static class InvocationTargetFactory
     {
-        private static readonly Dictionary<(MonoTargetType, Type), object> TargetCache = new Dictionary<(MonoTargetType, Type), object>();
+        private static readonly Dictionary<(MonoTargetType, Type), object> TargetCache = new();
 
         public static IEnumerable<T> FindTargets<T>(MonoTargetType method) where T : MonoBehaviour
         {
@@ -75,16 +75,16 @@ namespace QFSW.QC
             return target == null ? Enumerable.Empty<object>() : target.Yield();
         }
 
-        public static object InvokeOnTargets(MethodInfo invokingMethod, IEnumerable<object> targets, object[] data)
+        public static object InvokeOnTargets(MethodInfo invokingMethod, IEnumerable<object> targets, object[] arguments)
         {
             int returnCount = 0;
             int invokeCount = 0;
-            Dictionary<object, object> resultsParts = new Dictionary<object, object>();
+            Dictionary<object, object> resultsParts = new();
 
             foreach (object target in targets)
             {
                 invokeCount++;
-                object result = invokingMethod.Invoke(target, data);
+                object result = invokingMethod.Invoke(target, arguments);
 
                 if (result != null)
                 {
@@ -152,7 +152,7 @@ namespace QFSW.QC
 
         private static Component CreateCommandSingletonInstance(Type classType)
         {
-            GameObject obj = new GameObject($"{classType}Singleton");
+            GameObject obj = new($"{classType}Singleton");
             Object.DontDestroyOnLoad(obj);
             return obj.AddComponent(classType);
         }

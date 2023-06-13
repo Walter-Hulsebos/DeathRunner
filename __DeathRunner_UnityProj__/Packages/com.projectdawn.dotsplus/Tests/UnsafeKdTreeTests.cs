@@ -7,7 +7,7 @@ using ProjectDawn.Collections.LowLevel.Unsafe;
 
 namespace ProjectDawn.Collections.Tests
 {
-    struct TreeIntComparer : IKdTreeComparer<int>
+    internal struct TreeIntComparer : IKdTreeComparer<int>
     {
         public int Compare(int x, int y, int depth) => x.CompareTo(y);
 
@@ -118,7 +118,7 @@ namespace ProjectDawn.Collections.Tests
             tree.Dispose();
         }
 
-        struct TreeComparer : IKdTreeComparer<float2>
+        private struct TreeComparer : IKdTreeComparer<float2>
         {
             public int Compare(float2 x, float2 y, int depth)
             {
@@ -220,7 +220,7 @@ namespace ProjectDawn.Collections.Tests
             tree.Dispose();
         }
 
-        static float2 FindNearestBruteForce(NativeList<float2> list, float2 target)
+        private static float2 FindNearestBruteForce(NativeList<float2> list, float2 target)
         {
             float minDistance = float.MaxValue;
             float2 minPoint = float2.zero;

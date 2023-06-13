@@ -15,8 +15,7 @@ namespace ProjectDawn.Geometry2D
     [NativeContainer]
     public unsafe struct VoronoiBuilder : IDisposable
     {
-        [NativeDisableUnsafePtrRestriction]
-        UnsafeVoronoiBuilder* m_Data;
+        [NativeDisableUnsafePtrRestriction] private UnsafeVoronoiBuilder* m_Data;
 
 #if ENABLE_UNITY_COLLECTIONS_CHECKS
         internal AtomicSafetyHandle m_Safety;

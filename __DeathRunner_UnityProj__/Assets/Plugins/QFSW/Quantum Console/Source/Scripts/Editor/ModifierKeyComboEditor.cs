@@ -7,13 +7,13 @@ namespace QFSW.QC.Editor
     [CustomPropertyDrawer(typeof(ModifierKeyCombo), true)]
     public class ModifierKeyComboEditor : PropertyDrawer
     {
-        private readonly GUIContent _shiftLabel = new GUIContent("shift");
-        private readonly GUIContent _altLabel = new GUIContent("alt");
-        private readonly GUIContent _ctrlLabel = new GUIContent("ctrl");
+        private readonly GUIContent _shiftLabel = new("shift");
+        private readonly GUIContent _altLabel = new("alt");
+        private readonly GUIContent _ctrlLabel = new("ctrl");
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            LayoutController layout = new LayoutController(position);
+            LayoutController layout = new(position);
             EditorGUI.BeginProperty(layout.CurrentRect, label, property);
 
             const float boolWidth = 10;

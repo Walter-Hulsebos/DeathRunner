@@ -15,86 +15,87 @@ namespace QFSW.QC.Extras
         {
             while (!predicate())
             {
-                await Task.Delay(pollInterval);
+                await Task.Delay(millisecondsDelay: pollInterval);
             }
         }
 
-        [Command("load-scene", "loads a scene by name into the game")]
+        [Command(aliasOverride: "load-scene", description: "loads a scene by name into the game")]
         private static async Task LoadScene(
             [SceneName]
             string sceneName,
 
-            [CommandParameterDescription("'Single' mode replaces the current scene with the new scene, whereas 'Additive' merges them")]
+            [CommandParameterDescription(description: "'Single' mode replaces the current scene with the new scene, whereas 'Additive' merges them")]
             LoadSceneMode loadMode = LoadSceneMode.Single)
         {
-            AsyncOperation asyncOperation = SceneUtilities.LoadSceneAsync(sceneName, loadMode);
-            await PollUntilAsync(16, () => asyncOperation.isDone);
+            AsyncOperation asyncOperation = SceneUtilities.LoadSceneAsync(sceneName: sceneName, mode: loadMode);
+            await PollUntilAsync(pollInterval: 16, predicate: () => asyncOperation.isDone);
         }
 
-        [Command("load-scene-index", "loads a scene by index into the game")]
+        [Command(aliasOverride: "load-scene-index", description: "loads a scene by index into the game")]
         private static async Task LoadScene(int sceneIndex,
-        [CommandParameterDescription("'Single' mode replaces the current scene with the new scene, whereas 'Additive' merges them")]LoadSceneMode loadMode = LoadSceneMode.Single)
+        [CommandParameterDescription(description: "'Single' mode replaces the current scene with the new scene, whereas 'Additive' merges them")]LoadSceneMode loadMode = LoadSceneMode.Single)
         {
-            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneIndex, loadMode);
-            await PollUntilAsync(16, () => asyncOperation.isDone);
+            AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(sceneBuildIndex: sceneIndex, mode: loadMode);
+            await PollUntilAsync(pollInterval: 16, predicate: () => asyncOperation.isDone);
         }
 
-        [Command("unload-scene", "unloads a scene by name")]
+        [Command(aliasOverride: "unload-scene", description: "unloads a scene by name")]
         private static async Task UnloadScene([SceneName(LoadedOnly = true)] string sceneName)
         {
-            AsyncOperation asyncOperation = SceneManager.UnloadSceneAsync(sceneName);
-            await PollUntilAsync(16, () => asyncOperation.isDone);
+            AsyncOperation asyncOperation = SceneManager.UnloadSceneAsync(sceneName: sceneName);
+            await PollUntilAsync(pollInterval: 16, predicate: () => asyncOperation.isDone);
         }
 
-        [Command("unload-scene-index", "unloads a scene by index")]
+        [Command(aliasOverride: "unload-scene-index", description: "unloads a scene by index")]
         private static async Task UnloadScene(int sceneIndex)
         {
-            AsyncOperation asyncOperation = SceneManager.UnloadSceneAsync(sceneIndex);
-            await PollUntilAsync(16, () => asyncOperation.isDone);
+            AsyncOperation asyncOperation = SceneManager.UnloadSceneAsync(sceneBuildIndex: sceneIndex);
+            await PollUntilAsync(pollInterval: 16, predicate: () => asyncOperation.isDone);
         }
 
-        [Command("all-scenes", "gets the name and index of every scene included in the build")]
+        [Command(aliasOverride: "all-scenes", description: "gets the name and index of every scene included in the build")]
         private static Dictionary<int, string> GetAllScenes()
         {
-            Dictionary<int, string> sceneData = new Dictionary<int, string>();
+            Dictionary<int, string> sceneData = new();
             int sceneCount = SceneManager.sceneCountInBuildSettings;
             for (int i = 0; i < sceneCount; i++)
             {
                 int sceneIndex = i;
-                string scenePath = SceneUtility.GetScenePathByBuildIndex(sceneIndex);
-                string sceneName = System.IO.Path.GetFileNameWithoutExtension(scenePath);
+                string scenePath = SceneUtility.GetScenePathByBuildIndex(buildIndex: sceneIndex);
+                string sceneName = System.IO.Path.GetFileNameWithoutExtension(path: scenePath);
 
-                sceneData.Add(sceneIndex, sceneName);
+                sceneData.Add(key: sceneIndex, value: sceneName);
             }
 
             return sceneData;
         }
 
-        [Command("loaded-scenes", "gets the name and index of every scene currently loaded")]
+        [Command(aliasOverride: "loaded-scenes", description: "gets the name and index of every scene currently loaded")]
         private static IEnumerable<KeyValuePair<int, string>> GetLoadedScenes()
         {
             return SceneUtilities.GetLoadedScenes()
-                .OrderBy(x => x.buildIndex)
-                .Select(x => new KeyValuePair<int, string>(x.buildIndex, x.name));
+                .OrderBy(keySelector: x => x.buildIndex)
+                .Select(selector: x => new KeyValuePair<int, string>(key: x.buildIndex, value: x.name));
         }
 
-        [Command("active-scene", "gets the name of the active primary scene")]
+        [Command(aliasOverride: "current-scene", description: "gets the name of the active primary scene")]
+        [Command(aliasOverride: "active-scene", description: "gets the name of the active primary scene")]
         private static string GetCurrentScene()
         {
             Scene scene = SceneManager.GetActiveScene();
             return scene.name;
         }
 
-        [Command("set-active-scene", "sets the active scene to the scene with name 'sceneName'")]
+        [Command(aliasOverride: "set-active-scene", description: "sets the active scene to the scene with name 'sceneName'")]
         private static void SetActiveScene([SceneName(LoadedOnly = true)] string sceneName)
         {
-            Scene scene = SceneManager.GetSceneByName(sceneName);
+            Scene scene = SceneManager.GetSceneByName(name: sceneName);
             if (!scene.isLoaded)
             {
-                throw new ArgumentException($"Scene {sceneName} must be loaded before it can be set active");
+                throw new ArgumentException(message: $"Scene {sceneName} must be loaded before it can be set active");
             }
 
-            SceneManager.SetActiveScene(scene);
+            SceneManager.SetActiveScene(scene: scene);
         }
     }
 }

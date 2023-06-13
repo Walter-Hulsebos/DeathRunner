@@ -7,7 +7,7 @@ namespace ProjectDawn.Collections.Tests
 {
     internal class NativeStackTests
     {
-        struct WriteJob : IJob
+        private struct WriteJob : IJob
         {
             public NativeStack<int> Stack;
 
@@ -42,7 +42,7 @@ namespace ProjectDawn.Collections.Tests
             stack.Dispose();
         }
 
-        struct ParallelWriteJob : IJobParallelFor
+        private struct ParallelWriteJob : IJobParallelFor
         {
             public NativeStack<int>.ParallelWriter Stack;
 

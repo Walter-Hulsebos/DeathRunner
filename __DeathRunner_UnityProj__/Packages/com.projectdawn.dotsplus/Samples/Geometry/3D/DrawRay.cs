@@ -9,7 +9,7 @@ public class DrawRay : MonoBehaviour
 
     public Ray Ray => new Ray(Origin.position, mul(transform.rotation, new float3(1, 0, 0)));
 
-    void OnDrawGizmos()
+    private void OnDrawGizmos()
     {
         if (Origin == null)
             return;
@@ -19,7 +19,7 @@ public class DrawRay : MonoBehaviour
         DrawRayGizmos(ray, Color.green);
     }
 
-    void DrawRayGizmos(Ray ray, Color color)
+    private void DrawRayGizmos(Ray ray, Color color)
     {
 #if UNITY_EDITOR
         UnityEditor.Handles.color = color;

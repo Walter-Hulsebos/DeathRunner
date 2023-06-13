@@ -1,0 +1,36 @@
+{
+    "name": "JBooth.BetterLitShader.Editor",
+    "rootNamespace": "",
+    "references": [
+        "JBooth.BetterLitShader.Scripts",
+        "Unity.RenderPipelines.HighDefinition.Editor",
+        "Unity.RenderPipelines.HighDefinition.Runtime"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [
+        {
+            "name": "com.jbooth.better-shaders",
+            "expression": "",
+            "define": "__BETTERSHADERS__"
+        },
+        {
+            "name": "com.unity.render-pipelines.high-definition",
+            "expression": "",
+            "define": "USING_HDRP"
+        },
+        {
+            "name": "com.unity.render-pipelines.universal",
+            "expression": "",
+            "define": "USING_URP"
+        }
+    ],
+    "noEngineReferences": false
+}

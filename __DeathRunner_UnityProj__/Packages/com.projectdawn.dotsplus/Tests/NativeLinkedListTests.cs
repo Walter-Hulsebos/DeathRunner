@@ -7,7 +7,7 @@ namespace ProjectDawn.Collections.Tests
 {
     internal class NativeLinkedListTests
     {
-        struct ReadJob : IJob
+        private struct ReadJob : IJob
         {
             [ReadOnly]
             public NativeLinkedList<int> List;

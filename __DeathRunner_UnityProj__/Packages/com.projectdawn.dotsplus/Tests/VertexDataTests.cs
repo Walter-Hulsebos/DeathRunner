@@ -9,7 +9,7 @@ namespace ProjectDawn.Geometry3D.Tests
 {
     internal class VertexDataTests
     {
-        struct Vertex
+        private struct Vertex
         {
             public float3 Position;
             public float2 TexCoord0;
@@ -62,7 +62,7 @@ namespace ProjectDawn.Geometry3D.Tests
             attributes.Dispose();
         }
 
-        unsafe struct ChangeVertexDataJob : IJob
+        private unsafe struct ChangeVertexDataJob : IJob
         {
             public VertexData VertexData;
             public void Execute()

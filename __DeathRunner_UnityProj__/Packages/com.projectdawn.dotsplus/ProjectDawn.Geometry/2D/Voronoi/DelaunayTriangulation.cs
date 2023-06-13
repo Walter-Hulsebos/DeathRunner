@@ -23,8 +23,8 @@ namespace ProjectDawn.Geometry2D
         /// </summary>
         public NativeList<int3> Indices;
 
-        NativeList<int2> m_Edges;
-        NativeParallelHashSet<int2> m_EdgeCheck;
+        private NativeList<int2> m_Edges;
+        private NativeParallelHashSet<int2> m_EdgeCheck;
 
         public DelaunayTriangulation(int numSites, AllocatorManager.AllocatorHandle allocator)
         {

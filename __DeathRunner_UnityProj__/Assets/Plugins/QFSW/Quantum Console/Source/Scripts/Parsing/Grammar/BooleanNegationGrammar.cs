@@ -5,7 +5,7 @@ namespace QFSW.QC.Grammar
 {
     public class BooleanNegationGrammar : IQcGrammarConstruct
     {
-        private readonly Regex _negationRegex = new Regex(@"^!\S+$");
+        private readonly Regex _negationRegex = new(@"^!\S+$");
 
         public int Precedence => 0;
 

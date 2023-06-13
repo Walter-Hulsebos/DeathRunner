@@ -10,7 +10,7 @@ namespace ProjectDawn.Collections.Tests
 {
     internal class UnsafeLinkedPriorityQueueBenchmarkTests
     {
-        struct IntComparer : IComparer<int>
+        private struct IntComparer : IComparer<int>
         {
             public int Compare(int x, int y) => x.CompareTo(y);
         }

@@ -228,7 +228,7 @@ namespace ProjectDawn.Collections.LowLevel.Unsafe
         }
 
         [Conditional("ENABLE_UNITY_COLLECTIONS_CHECKS")]
-        void CheckStackEmpty()
+        private void CheckStackEmpty()
         {
             if (IsEmpty)
                 throw new InvalidOperationException("Trying to pop from an empty stack");
