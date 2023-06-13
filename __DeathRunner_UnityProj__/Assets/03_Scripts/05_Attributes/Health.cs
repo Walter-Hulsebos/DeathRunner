@@ -116,7 +116,8 @@ namespace DeathRunner.Attributes
 
                 F32 __previous = currentHealthBackingField.Value;
                 // Set the new value.
-                _lastKnownHealth = currentHealthBackingField.Value = value;
+                currentHealthBackingField.Value = value;
+                _lastKnownHealth = value;
 
                 #if UNITY_EDITOR
                 if (_hasOwnerObject)
