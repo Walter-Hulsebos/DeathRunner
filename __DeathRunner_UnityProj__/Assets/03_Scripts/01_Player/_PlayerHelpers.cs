@@ -82,7 +82,7 @@ namespace DeathRunner.Player
             return _cachedLookPositionRelativeToPlayer;
         }
         
-        public static void OrientTowardsDir(PlayerReferences references, F32x3 direction, F32 orientationSpeed) 
+        public static void OrientTowardsDir(PlayerReferences references, F32x3 direction, F32 orientationSpeed, F32 deltaTime) 
         {
             Plane3D __plane3D = new(normal: up(), distance: 0);
             
@@ -93,7 +93,7 @@ namespace DeathRunner.Player
 
             Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
 
-            references.Rot = slerp(q1: references.Rot, q2: __targetRotation, t: orientationSpeed * Commands.DeltaTime);
+            references.Rot = slerp(q1: references.Rot, q2: __targetRotation, t: orientationSpeed * deltaTime);
         }
 
         public static void OrientTowardsDirInstant(PlayerReferences references, F32x3 direction)
@@ -130,17 +130,17 @@ namespace DeathRunner.Player
             // Accelerate horizontal velocity towards desired velocity
             F32x3 __horizontalVelocity = __flatVelocity.MoveTowards(
                 target:  desiredVelocity, 
-                maxDistanceDelta: maxAcceleration * airControlPrimantissa * Commands.DeltaTime);
+                maxDistanceDelta: maxAcceleration * airControlPrimantissa * Time.deltaTime);
 
             // Update velocity preserving gravity effects (vertical velocity)
             velocity = __horizontalVelocity + __verVelocity;
 
             // Apply gravity
-            velocity += gravity * Commands.DeltaTime;
+            velocity += gravity * Time.deltaTime;
 
             // Apply Air friction (Drag)
-            velocity -= velocity * airFriction * Commands.DeltaTime;
-            //__velocity -= clamp(1.0f - ((F32)_settings.AirFriction * Commands.DeltaTime), 0.0f, 1.0f);
+            velocity -= velocity * airFriction * Time.deltaTime;
+            //__velocity -= clamp(1.0f - ((F32)_settings.AirFriction * Time.deltaTime), 0.0f, 1.0f);
 
             return velocity;
         }

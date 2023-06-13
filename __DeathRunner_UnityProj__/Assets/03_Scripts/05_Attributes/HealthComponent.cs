@@ -4,6 +4,7 @@ using UnityEngine;
 
 using I32 = System.Int32;
 using U16 = System.UInt16;
+using F32 = System.Single;
 
 
 namespace DeathRunner.Attributes
@@ -20,19 +21,17 @@ namespace DeathRunner.Attributes
         #if ODIN_INSPECTOR
         [Button]
         #endif
-        private void DoDamage(U16 damage)
+        private void DoDamage(F32 damage)
         {
-            I32 __newHealth = (health.Value - damage);
-            health.Value = (U16)Unity.Mathematics.math.clamp(__newHealth, 0, health.Max.Value);
+            health.Value -= damage;
         }
         
         #if ODIN_INSPECTOR
         [Button]
         #endif
-        private void Heal(U16 heal)
+        private void Heal(F32 heal)
         {
-            I32 __newHealth = (health.Value + heal);
-            health.Value = (U16)Unity.Mathematics.math.clamp(__newHealth, 0, health.Max.Value);
+            health.Value += heal;
         }
     }
 }

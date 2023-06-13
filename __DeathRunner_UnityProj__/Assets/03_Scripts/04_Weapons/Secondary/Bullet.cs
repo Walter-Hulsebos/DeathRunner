@@ -19,7 +19,6 @@ namespace Damageable
         private void Start()
         {
             rb = ball.GetComponent<Rigidbody>();
-            GetComponent<AudioSource>().Play();
         }
 
         // Update is called once per frame
@@ -35,7 +34,7 @@ namespace Damageable
             {
                 Destroy(gameObject);
             }
-        //TODO make bullet dissapear when it hits anything except an enemy
+            //TODO make bullet dissapear when it hits anything except an enemy
         }
     }
 }

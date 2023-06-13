@@ -7,6 +7,8 @@ using UnityEngine.AI;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
+using F32 = System.Single;
+
 namespace DeathRunner
 {
     public class Boss : MonoBehaviour
@@ -49,7 +51,7 @@ namespace DeathRunner
             
             [SerializeField] private EventReference OnHealthDepleted;
             
-            [SerializeField] private EventReference<ushort, ushort> OnHealthDecreased;
+            [SerializeField] private EventReference<F32, F32> OnHealthDecreased;
 
             private int timesHit = 0;
 
@@ -73,7 +75,7 @@ namespace DeathRunner
                 OnDeath();
             }
 
-            private void OnHealthDecreasedHandler(UInt16 arg1, UInt16 arg2)
+            private void OnHealthDecreasedHandler(F32 arg1, F32 arg2)
             {
                 OnTakeDamage();
             }

@@ -18,6 +18,8 @@ using ProjectDawn.Mathematics;
 using F32   = System.Single;
 using F32x3 = Unity.Mathematics.float3;
 
+using I32   = System.Int32;
+
 using U16   = System.UInt16;
 
 using Bool  = System.Boolean;
@@ -54,7 +56,7 @@ namespace DeathRunner.Player
             #if UNITY_EDITOR
             Debug.Log("State.DashLong.Enter");
             #endif
-            
+
             _settings.OnLongDashEnter.Invoke();
         }
 
@@ -65,8 +67,18 @@ namespace DeathRunner.Player
             #if UNITY_EDITOR
             Debug.Log("State.DashLong.Exit");
             #endif
-            
+
             _settings.OnLongDashExit.Invoke();
+        }
+        
+        protected override void OnUpdate()
+        {
+            base.OnUpdate();
+
+            F32 __damage = _settings.HealthConsumptionPerSecond.Value * Time.unscaledDeltaTime;
+            Debug.Log($"Dash Damage: {__damage}");
+            _settings.HealthCurrent.Value = max(_settings.HealthCurrent.Value - __damage, 0); //Makes sure it doesn't go below 0
+            _references.Health.health.ForceCheckState();
         }
 
         protected override void OnFixedUpdate()
@@ -118,32 +130,35 @@ namespace DeathRunner.Player
             
             _references.Motor.Move(deltaTime: Time.unscaledDeltaTime);
             _settings.OnLongDashMove.Invoke(__targetMoveDirectionRelativeToCamera);
-        }
-
-        protected override void OnUpdate()
-        {
-            base.OnUpdate();
             
-            UpdateLookDirection();
-
-            PlayerHelpers.OrientTowardsDir(references: _references, direction: _settings.OrientationLookDirection.Value, orientationSpeed: _settings.OrientationSpeed);
-            //OrientTowardsLookDirection();
+            //_references.Health.health.Value -= _settings.HealthConsumptionPerSecond.Value * Time.unscaledDeltaTime;
         }
 
-        private void UpdateLookDirection()
-        {
-            F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references, useCursor: _settings.OrientTowardsCursor.Value);
-
-            _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer); 
-
-            _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
-        }
+        // protected override void OnUpdate()
+        // {
+        //     base.OnUpdate();
+        //     
+        //     UpdateLookDirection();
+        //
+        //     PlayerHelpers.OrientTowardsDir(references: _references, direction: _settings.OrientationLookDirection.Value, orientationSpeed: _settings.OrientationSpeed.Value, Time.unscaledDeltaTime);
+        //     //OrientTowardsLookDirection();
+        // }
+        //
+        // private void UpdateLookDirection()
+        // {
+        //     F32x3 __lookPositionRelativeToPlayer = PlayerHelpers.LookPositionRelativeToPlayer(_references, useCursor: _settings.OrientTowardsCursor.Value);
+        //
+        //     _settings.OrientationLookDirection.Value = normalize(__lookPositionRelativeToPlayer); 
+        //
+        //     _references.LookAt.position = (_references.WorldPos + __lookPositionRelativeToPlayer);
+        // }
     }
     
     [Serializable]
     public struct DashLongSettings
     {
-        [field:SerializeField] public Constant<U16>   StaminaConsumptionPerSecond { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Variable<F32>   HealthCurrent              { get; [UsedImplicitly] private set; }
+        [field:SerializeField] public Constant<F32>   HealthConsumptionPerSecond { get; [UsedImplicitly] private set; }
 
         [field:Tooltip(tooltip: "The character's maximum speed. (m/s)")]
         [field:SerializeField] public Constant<F32>   MaxSpeed                    { get; [UsedImplicitly] private set; }

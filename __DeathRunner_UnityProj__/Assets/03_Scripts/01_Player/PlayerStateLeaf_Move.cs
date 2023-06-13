@@ -54,7 +54,7 @@ namespace DeathRunner.Player
         {
             base.OnUpdate();
             
-            PlayerHelpers.OrientTowardsDir(references: _references, direction: _settings.OrientationLookDirection.Value, orientationSpeed: _settings.OrientationSpeed);
+            PlayerHelpers.OrientTowardsDir(references: _references, direction: _settings.OrientationLookDirection.Value, orientationSpeed: _settings.OrientationSpeed.Value, deltaTime: Time.deltaTime);
             //PlayerHelpers.OrientTowardsDirInstant(references: _references, direction: _settings.OrientationLookDirection.Value);
             //OrientTowardsLookDirection();
         }
@@ -69,7 +69,7 @@ namespace DeathRunner.Player
         //
         //     Rotor __targetRotation = Rotor.LookRotation(forward: __projectedLookDirection, up: up());
         //
-        //     _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: _settings.OrientationSpeed.Value * Commands.DeltaTime);
+        //     _references.Rot = slerp(q1: _references.Rot, q2: __targetRotation, t: _settings.OrientationSpeed.Value * Time.deltaTime);
         // }
 
         protected override void OnFixedUpdate()
@@ -77,18 +77,26 @@ namespace DeathRunner.Player
             base.OnFixedUpdate();
 
             F32x3 __targetMoveVector = _references.InputHandler.MoveInputFlat;
-            
-            F32 __targetMoveSpeed = length(__targetMoveVector) * _settings.MaxSpeed.Value;
-            
-            F32x3 __targetMoveDirection = normalize(__targetMoveVector);
-            F32x3 __targetMoveDirectionRelativeToCamera = __targetMoveDirection.RelativeTo(_references.Camera.transform);
-            
-            F32x3 __desiredVelocity = (__targetMoveDirectionRelativeToCamera * __targetMoveSpeed);
+            F32x3 __desiredVelocity  = F32x3.zero;
+            F32x3 __targetMoveDirectionRelativeToCamera = F32x3.zero;
+
+            if (any(__targetMoveVector != F32x3.zero))
+            {
+                F32 __targetMoveSpeed = length(__targetMoveVector) * _settings.MaxSpeed.Value;
+                
+                F32x3 __targetMoveDirection = normalize(__targetMoveVector);
+                
+                __targetMoveDirectionRelativeToCamera = __targetMoveDirection.RelativeTo(_references.Camera.transform);
+                __desiredVelocity = (__targetMoveDirectionRelativeToCamera * __targetMoveSpeed);
+            }
 
             // Update character’s velocity based on its grounding status
             if (_references.Motor.isGrounded)
             {
-                GroundedMovement(desiredVelocity: __desiredVelocity);
+                _references.Motor.velocity = lerp(
+                    _references.Motor.velocity, 
+                    __desiredVelocity,
+                    1f - exp(-_settings.GroundFriction * Time.unscaledDeltaTime));
             }
             else
             {
@@ -102,10 +110,17 @@ namespace DeathRunner.Player
                     airFriction:           _settings.AirFriction.Value, 
                     gravity:               _settings.Gravity.Value);
             }
+
+            if (all(__targetMoveDirectionRelativeToCamera == F32x3.zero)) return;
+            if (any(__targetMoveDirectionRelativeToCamera == F32.NaN)) return;
+            if (any(__targetMoveDirectionRelativeToCamera == F32.PositiveInfinity)) return;
+            //TODO: REMOVE THIS REMOVE THIS REMOVE THIS!!!!!!!
+            if (__targetMoveDirectionRelativeToCamera.ToString() == "float3(NaNf, NaNf, NaNf)") return;
             
+            //Debug.Log($"TargetMoveDirectionRelativeToCamera: {__targetMoveDirectionRelativeToCamera}");
+
+            _references.Motor.Move(deltaTime: Time.deltaTime);
             _settings.OnMove.Invoke(__targetMoveDirectionRelativeToCamera);
-            
-            _references.Motor.Move(deltaTime: Commands.DeltaTime);
         }
         
         /// <summary>
@@ -118,7 +133,7 @@ namespace DeathRunner.Player
             _references.Motor.velocity = lerp(
                 _references.Motor.velocity, 
                 desiredVelocity,
-                1f - exp(-_settings.GroundFriction * Commands.DeltaTime));
+                1f - exp(-_settings.GroundFriction * Time.deltaTime));
         }
 
         // /// <summary>
@@ -145,17 +160,17 @@ namespace DeathRunner.Player
         //     // Accelerate horizontal velocity towards desired velocity
         //     F32x3 __horizontalVelocity = __flatVelocity.MoveTowards(
         //         target:  desiredVelocity, 
-        //         maxDistanceDelta: (F32)_settings.MaxAcceleration * (F32)_settings.AirControlPrimantissa * Commands.DeltaTime);
+        //         maxDistanceDelta: (F32)_settings.MaxAcceleration * (F32)_settings.AirControlPrimantissa * Time.deltaTime);
         //
         //     // Update velocity preserving gravity effects (vertical velocity)
         //     __velocity = __horizontalVelocity + __verVelocity;
         //
         //     // Apply gravity
-        //     __velocity += (F32x3)_settings.Gravity * Commands.DeltaTime;
+        //     __velocity += (F32x3)_settings.Gravity * Time.deltaTime;
         //
         //     // Apply Air friction (Drag)
-        //     __velocity -= __velocity * (F32)_settings.AirFriction * Commands.DeltaTime;
-        //     //__velocity -= clamp(1.0f - ((F32)_settings.AirFriction * Commands.DeltaTime), 0.0f, 1.0f);
+        //     __velocity -= __velocity * (F32)_settings.AirFriction * Time.deltaTime;
+        //     //__velocity -= clamp(1.0f - ((F32)_settings.AirFriction * Time.deltaTime), 0.0f, 1.0f);
         //
         //     // Update character's velocity
         //     _references.Motor.velocity = __velocity;

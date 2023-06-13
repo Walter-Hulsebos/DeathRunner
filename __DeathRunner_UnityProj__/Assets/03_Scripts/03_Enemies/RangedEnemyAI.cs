@@ -64,7 +64,7 @@ namespace DeathRunner.EnemyAI
         
         [SerializeField] private EventReference OnHealthDepleted;
         
-        [SerializeField] private EventReference<ushort, ushort> OnHealthDecreased;
+        [SerializeField] private EventReference<Single, Single> OnHealthDecreased;
 
         private void OnEnable()
         {
@@ -77,7 +77,7 @@ namespace DeathRunner.EnemyAI
             OnHealthDecreased.RemoveListener(OnHealthDecreasedHandler);
         }
         
-        private void OnHealthDecreasedHandler(UInt16 arg1, UInt16 arg2)
+        private void OnHealthDecreasedHandler(Single arg1, Single arg2)
         {
             OnTakeDamage();
             print("OnTakeDamage");

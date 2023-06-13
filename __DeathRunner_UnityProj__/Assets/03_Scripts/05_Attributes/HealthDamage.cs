@@ -1,14 +1,15 @@
 ﻿using System;
 using UnityEngine;
 
+using F32 = System.Single;
+
 namespace DeathRunner.Attributes
 {
     public sealed class HealthDamage : MonoBehaviour
     {
-        
         [SerializeField] private String tagToDamage;
         
-        [SerializeField] private UInt16 damageInflicted = 1;
+        [SerializeField] private F32 damageInflicted = 1;
         
         // [SerializeField] private DamageLogic damageLogic;
         //
@@ -17,29 +18,10 @@ namespace DeathRunner.Attributes
         private void OnTriggerEnter(Collider other)
         {
             if (!other.CompareTag(tagToDamage)) return;
-            
-            //DamageMessage data;
-            //data.amount = damageInflicted;
-            //data.damager = this;
 
             if (other.TryGetComponent(out HealthComponent __health))
             {
-                checked
-                {
-                    //Calculate damage to not go below 0
-                    
-                    Int32 __healthValue     = (Int32)__health.health.Value;
-                    Int32 __damageToInflict = (Int32)damageInflicted;
-                    
-                    Int32 __newHealthValue = __healthValue - __damageToInflict;
-                    
-                    if (__newHealthValue < 0)
-                    {
-                        __newHealthValue = 0;
-                    }
-                    
-                    __health.health.Value = (UInt16)__newHealthValue;
-                }
+                __health.health.Value -= damageInflicted;
             }
         }
     }

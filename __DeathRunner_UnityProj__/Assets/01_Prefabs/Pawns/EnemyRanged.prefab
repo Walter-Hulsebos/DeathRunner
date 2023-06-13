@@ -1504,6 +1504,100 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 5.456968e-12, y: 0, z: -0.0000019073486}
+--- !u!1 &5988972847942227005
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4100773164858452671}
+  - component: {fileID: 5199936100448598225}
+  m_Layer: 0
+  m_Name: NameContainer(EditorOnly)
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4100773164858452671
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988972847942227005}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7964583362915883755}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5199936100448598225
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988972847942227005}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190d9e9918d0aaf48a103a2bb6995059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOverride: OnDepletedHandler
+  tooltipOverride: 
+  target: {fileID: 2475736387245463394}
+--- !u!1 &7361785192284581119
+GameObject:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8916834437677010651}
+  - component: {fileID: 5633649629569654483}
+  m_Layer: 0
+  m_Name: NameContainer(EditorOnly)
+  m_TagString: EditorOnly
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8916834437677010651
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361785192284581119}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7964583362915883755}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5633649629569654483
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7361785192284581119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 190d9e9918d0aaf48a103a2bb6995059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameOverride: OnDecreasedHandler
+  tooltipOverride: 
+  target: {fileID: 6549958296700556909}
 --- !u!1 &7964583361962009929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,15 +1673,17 @@ GameObject:
   - component: {fileID: 7964583362915883753}
   - component: {fileID: 7964583362915883758}
   - component: {fileID: 7964583362915883759}
-  - component: {fileID: 3133437652171485841}
-  - component: {fileID: 4936430507411200280}
-  - component: {fileID: 4536413736485582818}
   - component: {fileID: 1337577594340283648}
+  - component: {fileID: 1937725224360083872}
+  - component: {fileID: 6468017103990029662}
+  - component: {fileID: 5174872040729452271}
+  - component: {fileID: 4536413736485582818}
+  - component: {fileID: 5827392752509225629}
   - component: {fileID: 6549958296700556909}
-  - component: {fileID: 1033778332994665578}
-  - component: {fileID: 8547592454259938272}
-  - component: {fileID: 7465312571111369173}
+  - component: {fileID: 2475736387245463394}
   - component: {fileID: 383816782001962557}
+  - component: {fileID: 2866341022595781886}
+  - component: {fileID: 5080047554821834431}
   m_Layer: 11
   m_Name: EnemyRanged
   m_TagString: Enemy
@@ -1614,6 +1710,8 @@ Transform:
   - {fileID: 119742683}
   - {fileID: 1912280484}
   - {fileID: 1325155549125470572}
+  - {fileID: 8916834437677010651}
+  - {fileID: 4100773164858452671}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1700,8 +1798,8 @@ MonoBehaviour:
   OnHealthDecreased:
     _eventType: 1
     _event: {fileID: 0}
-    _eventInstancer: {fileID: 4936430507411200280}
---- !u!114 &3133437652171485841
+    _eventInstancer: {fileID: 5174872040729452271}
+--- !u!114 &1337577594340283648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1710,16 +1808,100 @@ MonoBehaviour:
   m_GameObject: {fileID: 7964583362915883756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
+  m_Script: {fileID: 11500000, guid: 5d154240c5d2496196ef0485f85d6d36, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<ushort,ushort>,
+  m_EditorClassIdentifier: DeathRunner.Attributes.HealthComponent, DeathRunner.Attributes
+  health:
+    <Max>k__BackingField: {fileID: 11400000, guid: a0242c2e3f54a3a478402031782fd925,
+      type: 2}
+    <InvincibilityFrameDuration>k__BackingField:
+      _valueType: 0
+      _value: 0
+      _variable: {fileID: 0}
+      _constant: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    useInfinityBackingField:
+      _valueType: 0
+      _value: 0
+      _variable: {fileID: 0}
+      _constant: {fileID: 0}
+      _variableInstancer: {fileID: 0}
+    currentHealthBackingField:
+      _valueType: 3
+      _value: 0
+      _variable: {fileID: 0}
+      _constant: {fileID: 0}
+      _variableInstancer: {fileID: 1937725224360083872}
+    <OnChanged>k__BackingField:
+      _eventType: 1
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 6468017103990029662}
+    <OnDecreased>k__BackingField:
+      _eventType: 1
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 5174872040729452271}
+    <OnDepleted>k__BackingField:
+      _eventType: 1
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 4536413736485582818}
+    <OnIncreased>k__BackingField:
+      _eventType: 1
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 5827392752509225629}
+    <OnInvincibilityEnabled>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+    <OnInvincibilityDisabled>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+    <OnDecreasedAttempt>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+    <OnIncreasedAttempt>k__BackingField:
+      _eventType: 0
+      _event: {fileID: 0}
+      _eventInstancer: {fileID: 0}
+--- !u!114 &1937725224360083872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -952828055, guid: 80a17d1bddb0af44594fc51074173d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.VariableInstancer<float>,
     GenericScriptableArchitecture
-  _base: {fileID: 11400000, guid: 64eefd93ad2de7c4597715f91dc2e440, type: 2}
+  _variableReference: {fileID: 11400000, guid: eb62e7830168ea54fa0f22c61b181c32, type: 2}
+  _variableHelper:
+    StackTrace:
+      Enabled: 0
+    Value: 0
+    ListenersExpanded: 0
+--- !u!114 &6468017103990029662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -516024046, guid: 49db4beacac86fa49971e1509f66ca92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<float,float>,
+    GenericScriptableArchitecture
+  _base: {fileID: 11400000, guid: a58900bd51f095342830357fb65058f7, type: 2}
   _scriptableEventHelper:
     ListenersExpanded: 0
     StackTrace:
       Enabled: 0
---- !u!114 &4936430507411200280
+--- !u!114 &5174872040729452271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1728,11 +1910,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7964583362915883756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
+  m_Script: {fileID: -516024046, guid: 49db4beacac86fa49971e1509f66ca92, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<ushort,ushort>,
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<float,float>,
     GenericScriptableArchitecture
-  _base: {fileID: 11400000, guid: 604618385de20244cab00fe8c9e76c05, type: 2}
+  _base: {fileID: 11400000, guid: 8e2abb5e1bc730243a9bea6766a57cdc, type: 2}
   _scriptableEventHelper:
     ListenersExpanded: 0
     StackTrace:
@@ -1754,7 +1936,7 @@ MonoBehaviour:
     ListenersExpanded: 0
     StackTrace:
       Enabled: 0
---- !u!114 &1337577594340283648
+--- !u!114 &5827392752509225629
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1763,62 +1945,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 7964583362915883756}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d154240c5d2496196ef0485f85d6d36, type: 3}
+  m_Script: {fileID: -516024046, guid: 49db4beacac86fa49971e1509f66ca92, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: DeathRunner.Attributes.HealthComponent, DeathRunner.Attributes
-  health:
-    <Max>k__BackingField: {fileID: 11400000, guid: ec89db501eaba3643848cc19bf887933,
-      type: 2}
-    <InvincibilityFrameDuration>k__BackingField:
-      _valueType: 0
-      _value: 0
-      _variable: {fileID: 0}
-      _constant: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    useInfinityBackingField:
-      _valueType: 0
-      _value: 0
-      _variable: {fileID: 0}
-      _constant: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    currentHealthBackingField:
-      _valueType: 0
-      _value: 0
-      _variable: {fileID: 0}
-      _constant: {fileID: 0}
-      _variableInstancer: {fileID: 0}
-    <OnChanged>k__BackingField:
-      _eventType: 1
-      _event: {fileID: 0}
-      _eventInstancer: {fileID: 3133437652171485841}
-    <OnDecreased>k__BackingField:
-      _eventType: 1
-      _event: {fileID: 0}
-      _eventInstancer: {fileID: 4936430507411200280}
-    <OnDepleted>k__BackingField:
-      _eventType: 1
-      _event: {fileID: 0}
-      _eventInstancer: {fileID: 4536413736485582818}
-    <OnIncreased>k__BackingField:
-      _eventType: 0
-      _event: {fileID: 0}
-      _eventInstancer: {fileID: 0}
-    <OnInvincibilityEnabled>k__BackingField:
-      _eventType: 0
-      _event: {fileID: 0}
-      _eventInstancer: {fileID: 0}
-    <OnInvincibilityDisabled>k__BackingField:
-      _eventType: 0
-      _event: {fileID: 0}
-      _eventInstancer: {fileID: 0}
-    <OnDecreasedAttempt>k__BackingField:
-      _eventType: 0
-      _event: {fileID: 0}
-      _eventInstancer: {fileID: 0}
-    <OnIncreasedAttempt>k__BackingField:
-      _eventType: 0
-      _event: {fileID: 0}
-      _eventInstancer: {fileID: 0}
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<float,float>,
+    GenericScriptableArchitecture
+  _base: {fileID: 11400000, guid: 4d4a24f68769414449bc6a8134f835a3, type: 2}
+  _scriptableEventHelper:
+    ListenersExpanded: 0
+    StackTrace:
+      Enabled: 0
 --- !u!114 &6549958296700556909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1831,43 +1966,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _component: {fileID: 1033778332994665578}
---- !u!114 &1033778332994665578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7964583362915883756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1926729455, guid: e4992c61f8a41b445b38b8f45f00657f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GenericScriptableArchitecture.ScriptableEventListener<ushort,ushort>,
-    GenericScriptableArchitecture
-  _stackTrace:
-    Enabled: 0
-  _eventHolder:
-    _event: {fileID: 0}
-    _variable: {fileID: 0}
-    _variableInstancer: {fileID: 0}
-    _eventInstancer: {fileID: 4936430507411200280}
-    _type: 3
-    _notifyCurrentValue: 0
-  _response:
-    _persistentListeners:
-    - _persistentArguments: []
-      _target: {fileID: 119742684}
-      _isStatic: 0
-      CallState: 2
-      _staticType:
-        GuidAssignmentFailed: 0
-        GUID: 
-        _typeNameAndAssembly: 
-        _suppressLogs: 0
-      _methodName: PlayFeedbacks
-    Expanded: 1
---- !u!114 &8547592454259938272
+  _component: {fileID: 2866341022595781886}
+--- !u!114 &2475736387245463394
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1879,104 +1979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _component: {fileID: 7465312571111369173}
---- !u!114 &7465312571111369173
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7964583362915883756}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b178bdd9bde14366a896b14319f56a92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GenericScriptableArchitecture.VoidScriptableEventListener,
-    GenericScriptableArchitecture
-  _stackTrace:
-    Enabled: 0
-  _event: {fileID: 0}
-  _eventHolder:
-    _event: {fileID: 0}
-    _eventInstancer: {fileID: 4536413736485582818}
-    _type: 3
-  _response:
-    _persistentListeners:
-    - _persistentArguments:
-      - _index: 0
-        _isSerialized: 1
-        _targetType:
-          GuidAssignmentFailed: 0
-          GUID: 
-          _typeNameAndAssembly: System.Boolean, mscorlib
-          _suppressLogs: 1
-        _fromType:
-          GuidAssignmentFailed: 0
-          GUID: 
-          _typeNameAndAssembly: 
-          _suppressLogs: 0
-        _serializationData:
-          DataFormat: 2
-          ReferencedUnityObjects: []
-          SerializationNodes:
-          - Name: 
-            Entry: 5
-            Data: false
-          Bytes: 
-        _canBeDynamic: 0
-        _serializedArg: 
-      _target: {fileID: 7964583362915883753}
-      _isStatic: 0
-      CallState: 2
-      _staticType:
-        GuidAssignmentFailed: 0
-        GUID: 
-        _typeNameAndAssembly: 
-        _suppressLogs: 0
-      _methodName: set_enabled
-    - _persistentArguments:
-      - _index: 0
-        _isSerialized: 1
-        _targetType:
-          GuidAssignmentFailed: 0
-          GUID: 
-          _typeNameAndAssembly: System.Boolean, mscorlib
-          _suppressLogs: 1
-        _fromType:
-          GuidAssignmentFailed: 0
-          GUID: 
-          _typeNameAndAssembly: 
-          _suppressLogs: 0
-        _serializationData:
-          DataFormat: 2
-          ReferencedUnityObjects: []
-          SerializationNodes:
-          - Name: 
-            Entry: 5
-            Data: false
-          Bytes: 
-        _canBeDynamic: 0
-        _serializedArg: 
-      _target: {fileID: 7964583363364407052}
-      _isStatic: 0
-      CallState: 2
-      _staticType:
-        GuidAssignmentFailed: 0
-        GUID: 
-        _typeNameAndAssembly: 
-        _suppressLogs: 0
-      _methodName: set_enabled
-    - _persistentArguments: []
-      _target: {fileID: 1912280482}
-      _isStatic: 0
-      CallState: 2
-      _staticType:
-        GuidAssignmentFailed: 0
-        GUID: 
-        _typeNameAndAssembly: 
-        _suppressLogs: 0
-      _methodName: PlayFeedbacks
-    Expanded: 1
+  _component: {fileID: 5080047554821834431}
 --- !u!82 &383816782001962557
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2073,6 +2076,137 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2866341022595781886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 326983503, guid: 93cbccba3f3cac146b21794a9650b8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.ScriptableEventListener<float,float>,
+    GenericScriptableArchitecture
+  _stackTrace:
+    Enabled: 0
+  _eventHolder:
+    _event: {fileID: 0}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
+    _eventInstancer: {fileID: 5174872040729452271}
+    _type: 3
+    _notifyCurrentValue: 0
+  _response:
+    _persistentListeners:
+    - _persistentArguments: []
+      _target: {fileID: 119742684}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: PlayFeedbacks
+    Expanded: 1
+--- !u!114 &5080047554821834431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7964583362915883756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b178bdd9bde14366a896b14319f56a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stackTrace:
+    Enabled: 0
+  _event: {fileID: 0}
+  _eventHolder:
+    _event: {fileID: 0}
+    _eventInstancer: {fileID: 4536413736485582818}
+    _type: 3
+  _response:
+    _persistentListeners:
+    - _persistentArguments:
+      - _index: 0
+        _isSerialized: 1
+        _targetType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: System.Boolean, mscorlib
+          _suppressLogs: 1
+        _fromType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: 
+          _suppressLogs: 0
+        _serializationData:
+          DataFormat: 2
+          ReferencedUnityObjects: []
+          SerializationNodes:
+          - Name: 
+            Entry: 5
+            Data: false
+          Bytes: 
+        _canBeDynamic: 0
+        _serializedArg: 
+      _target: {fileID: 7964583362915883753}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: set_enabled
+    - _persistentArguments:
+      - _index: 0
+        _isSerialized: 1
+        _targetType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: System.Boolean, mscorlib
+          _suppressLogs: 1
+        _fromType:
+          GuidAssignmentFailed: 0
+          GUID: 
+          _typeNameAndAssembly: 
+          _suppressLogs: 0
+        _serializationData:
+          DataFormat: 2
+          ReferencedUnityObjects: []
+          SerializationNodes:
+          - Name: 
+            Entry: 5
+            Data: false
+          Bytes: 
+        _canBeDynamic: 0
+        _serializedArg: 
+      _target: {fileID: 7964583363364407052}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: set_enabled
+    - _persistentArguments: []
+      _target: {fileID: 1912280482}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: PlayFeedbacks
+    Expanded: 1
 --- !u!1 &7964583363491463518
 GameObject:
   m_ObjectHideFlags: 0

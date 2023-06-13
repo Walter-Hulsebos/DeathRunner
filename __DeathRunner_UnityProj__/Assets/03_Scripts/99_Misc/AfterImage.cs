@@ -28,11 +28,14 @@ namespace DeathRunner
         
         private Boolean _doEffect = false;
 
-        private IObjectPool<GameObject> _objectPool;
+        //private IObjectPool<GameObject> _objectPool;
 
-        private List<GameObject> _spawnedObjects = new();
+        private readonly List<GameObject>   _spawnedObjects = new();
+        private readonly List<MeshRenderer> _spawnedSkinnedMeshes = new();
+        private readonly List<MeshRenderer> _spawnedMeshes = new();
 
         private Vector3 _previousSpawnPoint;
+        private static readonly Int32 color = Shader.PropertyToID(name: "_BaseColor");
 
         #if ODIN_INSPECTOR
         private void Reset()
@@ -95,19 +98,20 @@ namespace DeathRunner
 
         private void Start()
         {
-            _objectPool = new ObjectPool<GameObject>(createFunc: CreatePooledItem, actionOnGet: null, actionOnRelease: OnReturnedToPool, actionOnDestroy: OnDestroyPoolObject);
+            //_objectPool = new ObjectPool<GameObject>(createFunc: CreatePooledItem, actionOnGet: null, actionOnRelease: OnReturnedToPool, actionOnDestroy: OnDestroyPoolObject);
             _previousSpawnPoint = transform.position;
         }
 
         private void Update()
         {
             if (!_doEffect) return;
+            
+            RefreshAfterImagesGradient();
 
             F32 __distanceSinceLastSpawn = Vector3.Distance(a: _previousSpawnPoint, b: transform.position);
-
             if (__distanceSinceLastSpawn < distanceToSpawnNewMesh) return;
             
-            Debug.Log(message: "Spawning new mesh");
+            //Debug.Log(message: "Spawning new mesh");
 
             SpawnAfterImage();
 
@@ -129,10 +133,14 @@ namespace DeathRunner
 
         private void CreateCopyOfSkinnedMesh(SkinnedMeshRenderer skinnedMeshRenderer)
         {
-            GameObject __obj = _objectPool.Get();
+            //GameObject __obj = _objectPool.Get();
+            GameObject __obj = new GameObject();
             __obj.transform.SetPositionAndRotation(position: transform.position, rotation: transform.rotation);
-            MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
-            MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
+            //MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
+            //MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
+            MeshRenderer __renderer = __obj.AddComponent<MeshRenderer>();
+            __renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            MeshFilter   __filter   = __obj.AddComponent<MeshFilter>();
             __obj.name = skinnedMeshRenderer.name + " AfterImage";
 
             Mesh __mesh = new();
@@ -142,57 +150,80 @@ namespace DeathRunner
             __renderer.material = mat;
 
             _spawnedObjects.Add(__obj);
+            _spawnedSkinnedMeshes.Add(__renderer);
         }
 
         private void CreateCopyOfMesh(MeshFilter meshFilter)
         {
-            GameObject __obj = _objectPool.Get();
+            //GameObject __obj = _objectPool.Get();
+            GameObject __obj = new GameObject();
             Transform __meshFilterTransform = meshFilter.transform;
             __obj.transform.SetPositionAndRotation(position: __meshFilterTransform.position, rotation: __meshFilterTransform.rotation);
-            MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
-            MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
+            //MeshRenderer __renderer = __obj.GetComponent<MeshRenderer>();
+            //MeshFilter   __filter   = __obj.GetComponent<MeshFilter>();
+            MeshRenderer __renderer = __obj.AddComponent<MeshRenderer>();
+            __renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            MeshFilter   __filter   = __obj.AddComponent<MeshFilter>();
             __obj.name = meshFilter.name + " AfterImage";
             
             __filter.mesh = meshFilter.mesh;
             __renderer.material = mat;
             
             _spawnedObjects.Add(__obj);
+            _spawnedMeshes.Add(__renderer);
         }
 
-        private static GameObject CreatePooledItem()
+        private void RefreshAfterImagesGradient()
         {
-            GameObject __gameObject = new(name: "AfterImage");
+            for (Int32 __index = 0; __index < _spawnedSkinnedMeshes.Count; __index++)
+            {
+                F32 __primantissa = Mathf.Clamp01((F32)__index / _spawnedSkinnedMeshes.Count);
+                _spawnedSkinnedMeshes[__index].material.SetColor(nameID: color, value: colorGradient.Evaluate(time: __primantissa));
+            }
             
-            __gameObject.AddComponent<MeshRenderer>();
-            __gameObject.AddComponent<MeshFilter>();
-            
-            return __gameObject;
+            for (Int32 __index = 0; __index < _spawnedMeshes.Count; __index++)
+            {
+                F32 __primantissa = Mathf.Clamp01((F32)__index / _spawnedSkinnedMeshes.Count);
+                _spawnedSkinnedMeshes[__index].material.SetColor(nameID: color, value: colorGradient.Evaluate(time: __primantissa));
+            }
         }
 
-        private static void OnReturnedToPool(GameObject item)
-        {
-            item.SetActive(value: false);
-        }
+        // private static GameObject CreatePooledItem()
+        // {
+        //     GameObject __gameObject = new(name: "AfterImage");
+        //     
+        //     __gameObject.AddComponent<MeshRenderer>();
+        //     __gameObject.AddComponent<MeshFilter>();
+        //     
+        //     return __gameObject;
+        // }
 
-        private static void OnDestroyPoolObject(GameObject item)
-        {
-            Destroy(obj: item);
-        }
+        // private static void OnReturnedToPool(GameObject item)
+        // {
+        //     item.SetActive(value: false);
+        // }
 
-        private void OnDestroy()
-        {
-            _objectPool?.Clear();
-            //_listPool?.Clear();
-        }
+        // private static void OnDestroyPoolObject(GameObject item)
+        // {
+        //     Destroy(obj: item);
+        // }
+
+        // private void OnDestroy()
+        // {
+        //     _objectPool?.Clear();
+        // }
 
         [Button]
         private void ReleaseAllSpawnedObjects()
         {
             foreach (GameObject __spawnedObject in _spawnedObjects)
             {
-                _objectPool.Release(__spawnedObject);
+                //_objectPool.Release(__spawnedObject);
+                Destroy(obj: __spawnedObject);
             }
             _spawnedObjects.Clear();
+            _spawnedMeshes.Clear();
+            _spawnedSkinnedMeshes.Clear();
         }
     }
 }

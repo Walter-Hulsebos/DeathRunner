@@ -11,12 +11,12 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 1803374445, guid: 90556b51d99800842bf9852ce5e81f56, type: 3}
   m_Name: Player_Move_Gravity
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.Constant<float3>, GenericScriptableArchitecture
   _initialValue:
     x: 0
     y: -30
     z: 0
   _value:
     x: 0
-    y: 0
+    y: -30
     z: 0

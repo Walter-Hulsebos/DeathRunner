@@ -49,7 +49,7 @@ namespace DeathRunner.EnemyAI
             Instantiate(bulletPrefab,shootPos.position, transform.rotation);
         }
 
-        public async UniTask EndAttack()
+        public void EndAttack()
         {
             //TODO maybe this stuff should be handled in main script and just called from here
             rangedEnemyAI.FinishAttack();

@@ -59,7 +59,11 @@ namespace DeathRunner.Enemies
         private void ChasingState()
         {
             // Set the destination for the NavMeshAgent to the player's position
-            navMeshAgent.SetDestination(player.transform.position);
+            if (navMeshAgent.isOnNavMesh)
+            {
+                navMeshAgent.SetDestination(player.transform.position);   
+            }
+
 
             // Look at the player
             //  LookAtPlayer();
@@ -71,7 +75,10 @@ namespace DeathRunner.Enemies
                 currentState = States.Attacking;
 
                 // Stop the enemy's movement
-                navMeshAgent.SetDestination(transform.position);
+                if (navMeshAgent.isOnNavMesh)
+                {
+                    navMeshAgent.SetDestination(transform.position);   
+                }
                 //navMeshAgent.isStopped = true;
 
                 // Trigger the attack animation
@@ -98,7 +105,11 @@ namespace DeathRunner.Enemies
                     hasPickedWalkPos = true;
                     currentWalkPos = walkPositions[Random.Range(0, walkPositions.Length)];
                 }
-                navMeshAgent.SetDestination(currentWalkPos.position);
+
+                if (navMeshAgent.isOnNavMesh)
+                {
+                    navMeshAgent.SetDestination(currentWalkPos.position);   
+                }
                 //Make enemy walk back to create distance with the player if they are too close
             }
         }

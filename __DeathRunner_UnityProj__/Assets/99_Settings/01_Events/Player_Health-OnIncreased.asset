@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: -1021156001, guid: baa2c7e613d48db48b8754d601c69a20, type: 3}
+  m_Script: {fileID: 1664062102, guid: f2362b7c6c56662478a24a0074d5b2c2, type: 3}
   m_Name: Player_Health-OnIncreased
-  m_EditorClassIdentifier: GenericScriptableArchitecture.ScriptableEvent<ushort,ushort>,
+  m_EditorClassIdentifier: GenericScriptableArchitecture.ScriptableEvent<float,float>,
     GenericScriptableArchitecture
   _description: 
   _argNames:
-  - OldHealth
-  - NewHealth
+  - Old
+  - New
   _scriptableEventHelper:
     ListenersExpanded: 0
     StackTrace:

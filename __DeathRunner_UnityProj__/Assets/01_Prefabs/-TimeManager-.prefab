@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5194876926445268577
 MonoBehaviour:
@@ -249,7 +249,7 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
           Initialized: 0
-        TimescaleLerpDuration: 0.5
+        TimescaleLerpDuration: 0.1
         TimeScaleLerpOnReset: 1
         TimescaleLerpCurveOnReset:
           MMTweenDefinitionType: 1
@@ -279,7 +279,7 @@ MonoBehaviour:
             m_PostInfinity: 2
             m_RotationOrder: 4
           Initialized: 0
-        TimescaleLerpDurationOnReset: 0.5
+        TimescaleLerpDurationOnReset: 0.75
 --- !u!114 &3081222212435222766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,5 +295,4 @@ MonoBehaviour:
   enable: {fileID: 11400000, guid: d89a5c7c8b816e342b5085d548372d8f, type: 2}
   disable: {fileID: 11400000, guid: 3edfa69dce08a034db55411417cb4b00, type: 2}
   playback: {fileID: 4909219036956083880}
-  _animator: {fileID: 0}
   _animancerComponent: {fileID: 0}

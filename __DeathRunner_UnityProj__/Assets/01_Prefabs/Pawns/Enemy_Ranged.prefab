@@ -230,6 +230,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 921683763251770482, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: _base
+      value: 
+      objectReference: {fileID: 11400000, guid: a58900bd51f095342830357fb65058f7,
+        type: 2}
+    - target: {fileID: 1374020153693324475, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: _variableReference
+      value: 
+      objectReference: {fileID: 11400000, guid: eb62e7830168ea54fa0f22c61b181c32,
+        type: 2}
     - target: {fileID: 2126888094277812896, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: _base
@@ -240,31 +252,33 @@ PrefabInstance:
         type: 3}
       propertyPath: _base
       value: 
-      objectReference: {fileID: 11400000, guid: e5bcb57441832ce4aa33e1210426f17a,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094277812899, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: _base
       value: 
-      objectReference: {fileID: 11400000, guid: 604618385de20244cab00fe8c9e76c05,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094277812902, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: _base
       value: 
-      objectReference: {fileID: 11400000, guid: 64eefd93ad2de7c4597715f91dc2e440,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 2126888094277812903, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: health.<Max>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: ec89db501eaba3643848cc19bf887933,
+      objectReference: {fileID: 11400000, guid: a0242c2e3f54a3a478402031782fd925,
         type: 2}
     - target: {fileID: 5258032030769169030, guid: a086f553e1f30694685571bc41982275,
         type: 3}
       propertyPath: _variableReference
       value: 
-      objectReference: {fileID: 11400000, guid: d564e1a0743b3a44ca25453b267980a4,
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228635287363490785, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: _base
+      value: 
+      objectReference: {fileID: 11400000, guid: 8e2abb5e1bc730243a9bea6766a57cdc,
         type: 2}
     - target: {fileID: 8279253648825646246, guid: a086f553e1f30694685571bc41982275,
         type: 3}
@@ -331,6 +345,12 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 2101dc7a5b34a5746a323f69e9d0e64c, type: 2}
+    - target: {fileID: 8438110731072854678, guid: a086f553e1f30694685571bc41982275,
+        type: 3}
+      propertyPath: _base
+      value: 
+      objectReference: {fileID: 11400000, guid: 4d4a24f68769414449bc6a8134f835a3,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a086f553e1f30694685571bc41982275, type: 3}
 --- !u!114 &1236276129099432849 stripped
@@ -344,19 +364,20 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6694a34dbdf64e33aa3ca30fba61a580, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1236276129099432850 stripped
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
+--- !u!114 &7565306971365839568 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2126888094277812899, guid: a086f553e1f30694685571bc41982275,
+  m_CorrespondingSourceObject: {fileID: 7228635287363490785, guid: a086f553e1f30694685571bc41982275,
     type: 3}
   m_PrefabInstance: {fileID: 913135495467991345}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9100027384185257367}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 1375331715, guid: 993cbe0615e6f814da2e928a50f11c25, type: 3}
+  m_Script: {fileID: -516024046, guid: 49db4beacac86fa49971e1509f66ca92, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer<float,float>,
+    GenericScriptableArchitecture
 --- !u!1 &9100027384185257367 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8279253648825646246, guid: a086f553e1f30694685571bc41982275,
@@ -374,7 +395,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8d2c9738dbf7493a860475eebb664e73, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: DeathRunner.Enemies.EnemyRanged, DeathRunner.Enemies
   navMeshAgent: {fileID: 9100027384185257369}
   currentState: 0
   attackDistance: 14
@@ -390,7 +411,7 @@ MonoBehaviour:
   OnHealthDecreased:
     _eventType: 1
     _event: {fileID: 0}
-    _eventInstancer: {fileID: 1236276129099432850}
+    _eventInstancer: {fileID: 7565306971365839568}
   walkPositions:
   - {fileID: 755014407743963319}
   - {fileID: 8825229343540396180}
@@ -410,7 +431,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6694a34dbdf64e33aa3ca30fba61a580, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: GenericScriptableArchitecture.EventInstancer, GenericScriptableArchitecture
   _base: {fileID: 11400000, guid: f2c52986c57558748bc93e1251d07c2f, type: 2}
   _scriptableEventHelper:
     ListenersExpanded: 0
@@ -451,14 +472,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de086e1aae19bfc4c9edc9e0cb83e3ec, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: DeathRunner.EnemyAI.AnimationEventsRanged, DeathRunner.Enemies
+  rangedEnemyAI: {fileID: 0}
   bulletPrefab: {fileID: 1170015546580611590, guid: 1eeba3937e9169640b0e08d247f01b7c,
     type: 3}
   shootPos: {fileID: 3483694793217361406}
-  OnAttackFinished:
-    _eventType: 1
-    _event: {fileID: 0}
-    _eventInstancer: {fileID: 2040439659}
 --- !u!4 &9100027384766467322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8279253650383998411, guid: a086f553e1f30694685571bc41982275,
