@@ -2406,9 +2406,8 @@ MonoBehaviour:
   FeedbacksList:
   - rid: 0
   - rid: 1
-  - rid: 2
-  - rid: 3
-  - rid: 7334483897798098949
+  - rid: 7334483919969452043
+  - rid: 7334483919969452044
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
@@ -2597,84 +2596,7 @@ MonoBehaviour:
         DebugActive: 0
         FreezeFrameDuration: 0.05
         MinimumTimescaleThreshold: 0.1
-    - rid: 2
-      type: {class: MMF_Flicker, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
-      data:
-        Active: 0
-        UniqueID: 273676573
-        Label: Flicker
-        ChannelMode: 0
-        Channel: 0
-        MMChannelDefinition: {fileID: 0}
-        Chance: 100
-        DisplayColor: {r: 0, g: 0, b: 0, a: 1}
-        Timing:
-          TimescaleMode: 0
-          ExcludeFromHoldingPauses: 0
-          ContributeToTotalDuration: 1
-          InitialDelay: 0
-          CooldownDuration: 0
-          InterruptsOnStop: 1
-          NumberOfRepeats: 0
-          RepeatForever: 0
-          DelayBetweenRepeats: 1
-          MMFeedbacksDirectionCondition: 0
-          PlayDirection: 0
-          ConstantIntensity: 0
-          UseIntensityInterval: 0
-          IntensityIntervalMin: 0
-          IntensityIntervalMax: 0
-          Sequence: {fileID: 0}
-          TrackID: 0
-          Quantized: 0
-          TargetBPM: 120
-        AutomatedTargetAcquisition:
-          Mode: 0
-          ChildIndex: 0
-        RandomizeOutput: 0
-        RandomMultiplier: {x: 0.8, y: 1}
-        RandomizeDuration: 0
-        RandomDurationMultiplier: {x: 0.5, y: 2}
-        UseRange: 0
-        RangeDistance: 5
-        UseRangeFalloff: 0
-        RangeFalloff:
-          serializedVersion: 2
-          m_Curve:
-          - serializedVersion: 3
-            time: 0
-            value: 1
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          - serializedVersion: 3
-            time: 1
-            value: 0
-            inSlope: 0
-            outSlope: 0
-            tangentMode: 0
-            weightedMode: 0
-            inWeight: 0
-            outWeight: 0
-          m_PreInfinity: 2
-          m_PostInfinity: 2
-          m_RotationOrder: 4
-        RemapRangeFalloff: {x: 0, y: 1}
-        Owner: {fileID: 6898377905388472509}
-        DebugActive: 0
-        BoundRenderer: {fileID: 0}
-        Mode: 0
-        PropertyName: _Tint
-        FlickerDuration: 0.05
-        FlickerOctave: 0.1
-        FlickerColor: {r: 5.992157, g: 1.2235295, b: 0, a: 1}
-        MaterialIndexes: 0000000001000000
-        UseMaterialPropertyBlocks: 0
-        SpriteRendererTextureProperty: _MainTex
-    - rid: 3
+    - rid: 7334483919969452043
       type: {class: MMF_ParticlesInstantiation, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -2754,13 +2676,13 @@ MonoBehaviour:
         ForceSetActiveOnPlay: 0
         StopOnReset: 0
         PositionMode: 1
-        InstantiateParticlesPosition: {fileID: 3679068849279667124}
+        InstantiateParticlesPosition: {fileID: 0}
         TargetWorldPosition: {x: 0, y: 0, z: 0}
         Offset: {x: 0, y: 0, z: 0}
         NestParticles: 1
         ApplyRotation: 0
         ApplyScale: 0
-    - rid: 7334483897798098949
+    - rid: 7334483919969452044
       type: {class: MMF_AudioSource, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
         Active: 1
@@ -2828,7 +2750,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 6898377905388472509}
         DebugActive: 0
-        TargetAudioSource: {fileID: 1128818072544731316}
+        TargetAudioSource: {fileID: 0}
         Mode: 0
         RandomSfx:
         - {fileID: 8300000, guid: 99f1a3e8b1800f541976adf9be9002c3, type: 3}
@@ -3372,13 +3294,14 @@ GameObject:
   - component: {fileID: 934569902}
   - component: {fileID: 934569903}
   - component: {fileID: 934569905}
-  - component: {fileID: 934569907}
   - component: {fileID: 934569908}
   - component: {fileID: 934569910}
   - component: {fileID: 8881661304185212101}
   - component: {fileID: 452811497}
   - component: {fileID: 1128818072544731316}
   - component: {fileID: 7737881653191705987}
+  - component: {fileID: 6399764379663850166}
+  - component: {fileID: 3096167299512493949}
   m_Layer: 11
   m_Name: Boss
   m_TagString: Enemy
@@ -3393,8 +3316,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6782662841264111228}
-  m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0.53392017, y: 0.069999695, z: 0.091126084}
+  m_LocalRotation: {x: -0, y: -0.7071057, z: -0, w: 0.7071079}
+  m_LocalPosition: {x: 0.53392017, y: 0.069999695, z: 0.091126144}
   m_LocalScale: {x: 1.221, y: 1.221, z: 1.221}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3438,18 +3361,19 @@ MonoBehaviour:
   attackDistance: 2
   animator: {fileID: 8263216952810655847}
   canAttack: 0
-  attackCooldown: 1
+  attackCooldown: 0.3
   moveInAttack: 0
   OnHealthDepleted:
     _eventType: 0
-    _event: {fileID: 11400000, guid: a2a49289f23206744a6a780a91f53c9f, type: 2}
+    _event: {fileID: 11400000, guid: c0f025839d9f02a478912652d5281b54, type: 2}
     _eventInstancer: {fileID: 0}
   OnHealthDecreased:
     _eventType: 0
-    _event: {fileID: 11400000, guid: fad8c6d03160a3f488d50f5d2ea5af04, type: 2}
+    _event: {fileID: 11400000, guid: f968b1ba08c4fa2458b4ee8854b752fe, type: 2}
     _eventInstancer: {fileID: 0}
   healthImage: {fileID: 0}
-  healthDrop: {fileID: 0}
+  healthDrop: {fileID: 1273188676277678975, guid: 8f2e01be22f73164c870b48c47a51a12,
+    type: 3}
 --- !u!195 &934569903
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3485,7 +3409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DeathRunner.Attributes.HealthComponent, DeathRunner.Attributes
   health:
-    <Max>k__BackingField: {fileID: 11400000, guid: 24b24983058d7ec43a2e89d6660f77c2,
+    <Max>k__BackingField: {fileID: 11400000, guid: 7d736c6a9fb96354dbfd0c85f621524c,
       type: 2}
     <InvincibilityFrameDuration>k__BackingField:
       _valueType: 0
@@ -3500,26 +3424,26 @@ MonoBehaviour:
       _constant: {fileID: 0}
       _variableInstancer: {fileID: 0}
     currentHealthBackingField:
-      _valueType: 0
+      _valueType: 2
       _value: 0
-      _variable: {fileID: 0}
+      _variable: {fileID: 11400000, guid: 47305574d0e57f24d923403502765822, type: 2}
       _constant: {fileID: 0}
       _variableInstancer: {fileID: 0}
     <OnChanged>k__BackingField:
       _eventType: 0
-      _event: {fileID: 11400000, guid: 8dda9b9bc3acbcf4f90f8560888a2b4d, type: 2}
+      _event: {fileID: 11400000, guid: 1c44d94f129d99548a3ecafa800a0c8c, type: 2}
       _eventInstancer: {fileID: 0}
     <OnDecreased>k__BackingField:
       _eventType: 0
-      _event: {fileID: 11400000, guid: fad8c6d03160a3f488d50f5d2ea5af04, type: 2}
+      _event: {fileID: 11400000, guid: f968b1ba08c4fa2458b4ee8854b752fe, type: 2}
       _eventInstancer: {fileID: 0}
     <OnDepleted>k__BackingField:
       _eventType: 0
-      _event: {fileID: 11400000, guid: a2a49289f23206744a6a780a91f53c9f, type: 2}
+      _event: {fileID: 11400000, guid: c0f025839d9f02a478912652d5281b54, type: 2}
       _eventInstancer: {fileID: 0}
     <OnIncreased>k__BackingField:
       _eventType: 0
-      _event: {fileID: 11400000, guid: 02be77cf8909e7441a7c425ed0ad125a, type: 2}
+      _event: {fileID: 11400000, guid: c3ed93fe7534057469557c62aee0359a, type: 2}
       _eventInstancer: {fileID: 0}
     <OnInvincibilityEnabled>k__BackingField:
       _eventType: 0
@@ -3537,41 +3461,6 @@ MonoBehaviour:
       _eventType: 0
       _event: {fileID: 0}
       _eventInstancer: {fileID: 0}
---- !u!114 &934569907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6782662841264111228}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -1926729455, guid: e4992c61f8a41b445b38b8f45f00657f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: GenericScriptableArchitecture.ScriptableEventListener<ushort,ushort>,
-    GenericScriptableArchitecture
-  _stackTrace:
-    Enabled: 0
-  _eventHolder:
-    _event: {fileID: 11400000, guid: fad8c6d03160a3f488d50f5d2ea5af04, type: 2}
-    _variable: {fileID: 0}
-    _variableInstancer: {fileID: 0}
-    _eventInstancer: {fileID: 0}
-    _type: 0
-    _notifyCurrentValue: 0
-  _response:
-    _persistentListeners:
-    - _persistentArguments: []
-      _target: {fileID: 6898377905388472509}
-      _isStatic: 0
-      CallState: 2
-      _staticType:
-        GuidAssignmentFailed: 0
-        GUID: 
-        _typeNameAndAssembly: 
-        _suppressLogs: 0
-      _methodName: PlayFeedbacks
-    Expanded: 1
 --- !u!114 &934569908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3584,7 +3473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5554e6c479a4dafbd86e3ece00169a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _component: {fileID: 934569907}
+  _component: {fileID: 6399764379663850166}
 --- !u!114 &934569910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3748,7 +3637,7 @@ MonoBehaviour:
     Enabled: 0
   _event: {fileID: 0}
   _eventHolder:
-    _event: {fileID: 11400000, guid: a2a49289f23206744a6a780a91f53c9f, type: 2}
+    _event: {fileID: 11400000, guid: c0f025839d9f02a478912652d5281b54, type: 2}
     _eventInstancer: {fileID: 0}
     _type: 0
   _response:
@@ -3795,7 +3684,63 @@ MonoBehaviour:
         _typeNameAndAssembly: 
         _suppressLogs: 0
       _methodName: set_active
+    - _persistentArguments: []
+      _target: {fileID: 3096167299512493949}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: OnDeath
     Expanded: 1
+--- !u!114 &6399764379663850166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782662841264111228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 326983503, guid: 93cbccba3f3cac146b21794a9650b8e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _stackTrace:
+    Enabled: 0
+  _eventHolder:
+    _event: {fileID: 11400000, guid: f968b1ba08c4fa2458b4ee8854b752fe, type: 2}
+    _variable: {fileID: 0}
+    _variableInstancer: {fileID: 0}
+    _eventInstancer: {fileID: 0}
+    _type: 0
+    _notifyCurrentValue: 0
+  _response:
+    _persistentListeners:
+    - _persistentArguments: []
+      _target: {fileID: 6898377905388472509}
+      _isStatic: 0
+      CallState: 2
+      _staticType:
+        GuidAssignmentFailed: 0
+        GUID: 
+        _typeNameAndAssembly: 
+        _suppressLogs: 0
+      _methodName: PlayFeedbacks
+    Expanded: 1
+--- !u!114 &3096167299512493949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782662841264111228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bdde7d66f3ccb24fa38c980f59c5432, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DeathRunner.Death, Assembly-CSharp
 --- !u!1 &7418171340593486399
 GameObject:
   m_ObjectHideFlags: 0
