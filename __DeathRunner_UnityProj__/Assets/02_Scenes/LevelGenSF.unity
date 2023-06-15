@@ -3672,6 +3672,10 @@ PrefabInstance:
       value: 282
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: e84b65f6b68cbca4a9a9c63e390ea836, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: e84b65f6b68cbca4a9a9c63e390ea836, type: 3}
       propertyPath: operationMode
       value: 2
       objectReference: {fileID: 0}
@@ -5954,7 +5958,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: DeathRunner.Boss, DeathRunner.Enemies
   navMeshAgent: {fileID: 1340323813}
   currentState: 0
-  attackDistance: 3
+  attackDistance: 4
   animator: {fileID: 2577833187477863873}
   canAttack: 0
   attackCooldown: 0.1
@@ -13673,8 +13677,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.3467079, y: 0.95367, z: 1.7831627}
-  m_Center: {x: 0.000000020207004, y: 0.02316477, z: -0.3915815}
+  m_Size: {x: 1.3467079, y: 1.0765207, z: 2.3307412}
+  m_Center: {x: 0.00000021819207, y: -0.038260907, z: -0.11779104}
 --- !u!1 &1629307130
 GameObject:
   m_ObjectHideFlags: 0
@@ -104051,7 +104055,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 5ca9e9fb8482dee45ac3a25662418643, type: 2}
+  m_NavMeshData: {fileID: 0}
 --- !u!4 &7916360191221148445
 Transform:
   m_ObjectHideFlags: 0
